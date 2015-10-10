@@ -1,5 +1,7 @@
 # Developing bssuite
 
+business solution suite 
+
 bssuite was generated using JHipster, you can find documentation and help at [JHipster][].
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
