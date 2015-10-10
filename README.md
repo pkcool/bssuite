@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://travis-ci.org/pkcool/bssuite.svg?branch=master">
+</p>
+
 # Developing bssuite
 
 business solution suite 
