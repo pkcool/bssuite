@@ -1,0 +1,21 @@
+jhipster-prod-elasticsearch:
+  container_name: bssuite-prod-elasticsearch
+  image: elasticsearch
+  # volumes:
+  # - ~/volumes/jhipster/bssuite/prod-elasticsearch/:/usr/share/elasticsearch/data/
+  ports:
+  - "9200:9200"
+  - "9300:9300"
+jhipster-prod-mysql:
+  container_name: bssuite-prod-mysql
+  image: mysql
+  # volumes:
+  # - ~/volumes/jhipster/bssuite/prod-mysql/:/var/lib/mysql/
+  environment:
+  - MYSQL_USER=root
+  - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+  - MYSQL_DATABASE=bssuite
+  ports:
+  - "3306:3306"
+  command: mysqld --lower_case_table_name=1
+

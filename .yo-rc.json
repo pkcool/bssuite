@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "baseName": "bssuite",
+    "packageName": "com.enginemobi.bssuite",
+    "packageFolder": "com/enginemobi/bssuite",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "useSass": true,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "enableTranslation": false,
+    "rememberMeKey": "1f3cf7987e248974d84186dc7c223e5bd7ad92b1"
+  }
+}
