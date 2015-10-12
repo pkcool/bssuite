@@ -1,0 +1,142 @@
+
+<div>
+    <h2><span>Staff</span> {{staff.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Code</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{staff.code}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{staff.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Comment</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{staff.comment}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Commission</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{staff.commission}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Occupation</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{staff.occupation}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>WorkPhone</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{staff.workPhone}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>HomePhone</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{staff.homePhone}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>WorkMobile</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{staff.workMobile}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>HomeMobile</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{staff.homeMobile}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>WebEmail</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{staff.webEmail}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>HomeEmail</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{staff.homeEmail}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Birthday</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{staff.birthday}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsLockedToStore</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{staff.isLockedToStore}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsTechnical</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{staff.isTechnical}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>store</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="store.detail({id:staff.storeId})">{{staff.storeId}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

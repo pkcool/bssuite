@@ -1,0 +1,126 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myStaffLabel">Create or edit a Staff</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="staff.id" readonly>
+        </div>
+        <div class="form-group">
+            <label for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                    ng-model="staff.code"
+                    required ng-minlength="2">
+            <div ng-show="editForm.code.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.code.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.code.$error.minlength" translate-value-min="2">
+                    This field is required to be at least 2 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="staff.name"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_comment">Comment</label>
+            <input type="text" class="form-control" name="comment" id="field_comment"
+                    ng-model="staff.comment"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_commission">Commission</label>
+            <input type="number" class="form-control" name="commission" id="field_commission"
+                    ng-model="staff.commission"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_occupation">Occupation</label>
+            <input type="text" class="form-control" name="occupation" id="field_occupation"
+                    ng-model="staff.occupation"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_workPhone">WorkPhone</label>
+            <input type="text" class="form-control" name="workPhone" id="field_workPhone"
+                    ng-model="staff.workPhone"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_homePhone">HomePhone</label>
+            <input type="text" class="form-control" name="homePhone" id="field_homePhone"
+                    ng-model="staff.homePhone"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_workMobile">WorkMobile</label>
+            <input type="text" class="form-control" name="workMobile" id="field_workMobile"
+                    ng-model="staff.workMobile"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_homeMobile">HomeMobile</label>
+            <input type="text" class="form-control" name="homeMobile" id="field_homeMobile"
+                    ng-model="staff.homeMobile"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_webEmail">WebEmail</label>
+            <input type="text" class="form-control" name="webEmail" id="field_webEmail"
+                    ng-model="staff.webEmail"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_homeEmail">HomeEmail</label>
+            <input type="text" class="form-control" name="homeEmail" id="field_homeEmail"
+                    ng-model="staff.homeEmail"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_birthday">Birthday</label>
+            <input type="date" class="form-control" name="birthday" id="field_birthday"
+                    ng-model="staff.birthday"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isLockedToStore">IsLockedToStore</label>
+            <input type="checkbox" class="form-control" name="isLockedToStore" id="field_isLockedToStore"
+                    ng-model="staff.isLockedToStore"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isTechnical">IsTechnical</label>
+            <input type="checkbox" class="form-control" name="isTechnical" id="field_isTechnical"
+                    ng-model="staff.isTechnical"
+                    >
+        </div>
+
+        <div class="form-group">
+            <label for="field_store">store</label>
+            <select class="form-control" id="field_store" name="store" ng-model="staff.storeId" ng-options="store.id as store.id for store in stores">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

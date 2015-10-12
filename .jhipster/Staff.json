@@ -1,0 +1,91 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "store",
+            "otherEntityName": "store",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "2"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "commission",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "occupation",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "workPhone",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "homePhone",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "workMobile",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "homeMobile",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "webEmail",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "homeEmail",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "birthday",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "isLockedToStore",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "isTechnical",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20151012132331",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}
