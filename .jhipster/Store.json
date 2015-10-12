@@ -1,0 +1,78 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "address1",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "address2",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "suburb",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "postcode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "country",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "phone",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "fax",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "webUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "inBisinessSince",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "isArchived",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20151012044312",
+    "dto": "mapstruct",
+    "pagination": "pager"
+}
