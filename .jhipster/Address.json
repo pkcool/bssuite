@@ -1,0 +1,38 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "addressLine1",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "addressLine2",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "suburb",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "postcode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "country",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151012102544",
+    "dto": "no",
+    "pagination": "pagination"
+}

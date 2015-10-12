@@ -1,0 +1,110 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "supplierCategory",
+            "otherEntityName": "supplierCategory",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "contact",
+            "otherEntityName": "contact",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "supplier"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "webUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "isOnHold",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "isHeadOffice",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "leadTime",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "accountType",
+            "fieldType": "SupplierAccountType",
+            "fieldValues": "STANDARD,INTERNAL"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "settlementTerms",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "credit",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "terms",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "ageingMethod",
+            "fieldType": "SupplierAgeingMethod",
+            "fieldValues": "MONTH,TERMS,DUEDATES"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "isEFTPaymentsUsed",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "bankBSB",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "bankNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 16,
+            "fieldName": "bankAccount",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151012122105",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}

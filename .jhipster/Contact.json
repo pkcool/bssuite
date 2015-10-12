@@ -1,0 +1,63 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "address",
+            "otherEntityName": "address",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "contact"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "fistName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "fullName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "emailAddress",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "companyName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "phonePrimary",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "phoneSecondary",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "fax",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "position",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151012105056",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}

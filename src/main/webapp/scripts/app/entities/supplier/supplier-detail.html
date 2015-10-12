@@ -1,0 +1,166 @@
+
+<div>
+    <h2><span>Supplier</span> {{supplier.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Code</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{supplier.code}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{supplier.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>WebUrl</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{supplier.webUrl}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Comment</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{supplier.comment}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsOnHold</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{supplier.isOnHold}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsHeadOffice</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{supplier.isHeadOffice}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>LeadTime</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{supplier.leadTime}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>AccountType</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'bssuiteApp.SupplierAccountType.' + supplier.accountType}}">{{supplier.accountType}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>SettlementTerms</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{supplier.settlementTerms}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Credit</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{supplier.credit}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Terms</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{supplier.terms}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>AgeingMethod</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'bssuiteApp.SupplierAgeingMethod.' + supplier.ageingMethod}}">{{supplier.ageingMethod}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsEFTPaymentsUsed</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{supplier.isEFTPaymentsUsed}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>BankBSB</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{supplier.bankBSB}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>BankNumber</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{supplier.bankNumber}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>BankAccount</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{supplier.bankAccount}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>supplierCategory</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="supplierCategory.detail({id:supplier.supplierCategoryId})">{{supplier.supplierCategoryId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>contact</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="contact.detail({id:supplier.contactId})">{{supplier.contactId}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

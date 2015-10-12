@@ -1,0 +1,102 @@
+
+<div>
+    <h2><span>Contact</span> {{contact.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>FistName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contact.fistName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>LastName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contact.lastName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>FullName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contact.fullName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>EmailAddress</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contact.emailAddress}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>CompanyName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contact.companyName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>PhonePrimary</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contact.phonePrimary}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>PhoneSecondary</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contact.phoneSecondary}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Fax</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contact.fax}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Position</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{contact.position}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>address</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="address.detail({id:contact.addressId})">{{contact.addressId}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
