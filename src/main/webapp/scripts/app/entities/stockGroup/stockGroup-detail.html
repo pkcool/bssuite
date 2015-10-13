@@ -1,0 +1,110 @@
+
+<div>
+    <h2><span>StockGroup</span> {{stockGroup.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Code</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{stockGroup.code}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{stockGroup.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsDiminishing</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{stockGroup.isDiminishing}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>LowestMargin</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{stockGroup.lowestMargin}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>HighestMargin</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{stockGroup.highestMargin}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsDiscountAllowed</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{stockGroup.isDiscountAllowed}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Comment</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{stockGroup.comment}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsArchived</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{stockGroup.isArchived}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>stockFamily</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="stockFamily.detail({id:stockGroup.stockFamilyId})">{{stockGroup.stockFamilyId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>priceScale</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="priceScale.detail({id:stockGroup.priceScaleId})">{{stockGroup.priceScaleId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>taxRate</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="taxTable.detail({id:stockGroup.taxRateId})">{{stockGroup.taxRateId}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

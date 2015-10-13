@@ -16,5 +16,6 @@
     <include file="classpath:config/liquibase/changelog/20151013114444_added_entity_PriceScale.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151013120311_added_entity_StockFamily.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151013131354_added_entity_TaxTable.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20151013133648_added_entity_StockGroup.xml" relativeToChangelogFile="false"/>
     <!-- JHipster will add liquibase changelogs here -->
 </databaseChangeLog>

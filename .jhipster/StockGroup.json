@@ -1,0 +1,75 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "stockFamily",
+            "otherEntityName": "stockFamily",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "priceScale",
+            "otherEntityName": "priceScale",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "taxRate",
+            "otherEntityName": "taxTable",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "2"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "isDiminishing",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "lowestMargin",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "highestMargin",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "isDiscountAllowed",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "isArchived",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20151013133648",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}
