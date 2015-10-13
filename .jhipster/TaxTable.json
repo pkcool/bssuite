@@ -1,0 +1,50 @@
+{
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "formula",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "isAddedToTotal",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "isSubtractedFromTotal",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "isExcludedOnReporting",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "taxGroup",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "taxBase",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151013131354",
+    "dto": "no",
+    "pagination": "pager"
+}
