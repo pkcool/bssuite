@@ -1,0 +1,264 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "customerCategory",
+            "otherEntityName": "customerCategory",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "contact",
+            "otherEntityName": "contact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "deliveryContact",
+            "otherEntityName": "contact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "salesPrimaryContact",
+            "otherEntityName": "contact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 5,
+            "relationshipName": "salesSecondaryContact",
+            "otherEntityName": "contact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 6,
+            "relationshipName": "accountPrimaryContact",
+            "otherEntityName": "contact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 7,
+            "relationshipName": "accountSecondaryContact",
+            "otherEntityName": "contact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 8,
+            "relationshipName": "rep",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 9,
+            "relationshipName": "centralBillingAccount",
+            "otherEntityName": "customer",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 10,
+            "relationshipName": "store",
+            "otherEntityName": "store",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "2"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "tradingName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "abn",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "deliveryInstruction",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "webUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "isOnHold",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "isOrderNoRequired",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "isBlacklisted",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "isBackorderAllowed",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "isArchived",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "isHeadOfficeAccount",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "ageingMethod",
+            "fieldType": "CustomerAgeingMethod",
+            "fieldValues": "MONTH,TERMS,DUEDATES"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "isWebaccessAllowed",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "bankName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 16,
+            "fieldName": "bsb",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 17,
+            "fieldName": "bankAccountNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 18,
+            "fieldName": "bankSuburb",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 19,
+            "fieldName": "bankAccountName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 20,
+            "fieldName": "isCreditCardBillingActive",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 21,
+            "fieldName": "creditCardNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 22,
+            "fieldName": "creditCardHolderName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 23,
+            "fieldName": "creditCardExpiryDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 24,
+            "fieldName": "creditCardType",
+            "fieldType": "CreditCardType",
+            "fieldValues": "VISA,AMX,MASTER"
+        },
+        {
+            "fieldId": 25,
+            "fieldName": "accountType",
+            "fieldType": "CustomerAccountType",
+            "fieldValues": "STANDARD,INTERNAL,CASH,CREDITCARD"
+        },
+        {
+            "fieldId": 26,
+            "fieldName": "creditAmount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 27,
+            "fieldName": "terms",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 28,
+            "fieldName": "settlementTerms",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 29,
+            "fieldName": "invoiceDeliveryMethod",
+            "fieldType": "CustomerInvoiceDeliveryMethod",
+            "fieldValues": "EMAIL,FAX,POST,PRINT"
+        },
+        {
+            "fieldId": 30,
+            "fieldName": "statementDeliveryMethod",
+            "fieldType": "CustomerStatementDeliveryMethod",
+            "fieldValues": "EMAIL,FAX,POST,PRINT"
+        },
+        {
+            "fieldId": 31,
+            "fieldName": "invoiceEmailAddress",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 32,
+            "fieldName": "invoiceFaxNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 33,
+            "fieldName": "statementEmailAddress",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 34,
+            "fieldName": "statementFaxNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 35,
+            "fieldName": "isPenaltyIssued",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20151012223114",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}

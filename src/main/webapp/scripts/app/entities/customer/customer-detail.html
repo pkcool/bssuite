@@ -1,0 +1,382 @@
+
+<div>
+    <h2><span>Customer</span> {{customer.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Code</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.code}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TradingName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.tradingName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Abn</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.abn}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>DeliveryInstruction</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.deliveryInstruction}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>WebUrl</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.webUrl}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsOnHold</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.isOnHold}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsOrderNoRequired</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.isOrderNoRequired}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsBlacklisted</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.isBlacklisted}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsBackorderAllowed</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.isBackorderAllowed}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsArchived</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.isArchived}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsHeadOfficeAccount</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.isHeadOfficeAccount}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>AgeingMethod</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'bssuiteApp.CustomerAgeingMethod.' + customer.ageingMethod}}">{{customer.ageingMethod}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsWebaccessAllowed</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.isWebaccessAllowed}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>BankName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.bankName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Bsb</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.bsb}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>BankAccountNo</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.bankAccountNo}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>BankSuburb</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.bankSuburb}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>BankAccountName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.bankAccountName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsCreditCardBillingActive</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.isCreditCardBillingActive}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>CreditCardNo</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.creditCardNo}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>CreditCardHolderName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.creditCardHolderName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>CreditCardExpiryDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.creditCardExpiryDate}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>CreditCardType</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'bssuiteApp.CreditCardType.' + customer.creditCardType}}">{{customer.creditCardType}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>AccountType</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'bssuiteApp.CustomerAccountType.' + customer.accountType}}">{{customer.accountType}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>CreditAmount</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.creditAmount}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Terms</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.terms}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>SettlementTerms</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.settlementTerms}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>InvoiceDeliveryMethod</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'bssuiteApp.CustomerInvoiceDeliveryMethod.' + customer.invoiceDeliveryMethod}}">{{customer.invoiceDeliveryMethod}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>StatementDeliveryMethod</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'bssuiteApp.CustomerStatementDeliveryMethod.' + customer.statementDeliveryMethod}}">{{customer.statementDeliveryMethod}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>InvoiceEmailAddress</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.invoiceEmailAddress}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>InvoiceFaxNo</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.invoiceFaxNo}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>StatementEmailAddress</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.statementEmailAddress}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>StatementFaxNo</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.statementFaxNo}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsPenaltyIssued</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{customer.isPenaltyIssued}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>customerCategory</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="customerCategory.detail({id:customer.customerCategoryId})">{{customer.customerCategoryId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>contact</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="contact.detail({id:customer.contactId})">{{customer.contactId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>deliveryContact</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="contact.detail({id:customer.deliveryContactId})">{{customer.deliveryContactId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>salesPrimaryContact</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="contact.detail({id:customer.salesPrimaryContactId})">{{customer.salesPrimaryContactId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>salesSecondaryContact</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="contact.detail({id:customer.salesSecondaryContactId})">{{customer.salesSecondaryContactId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>accountPrimaryContact</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="contact.detail({id:customer.accountPrimaryContactId})">{{customer.accountPrimaryContactId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>accountSecondaryContact</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="contact.detail({id:customer.accountSecondaryContactId})">{{customer.accountSecondaryContactId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>rep</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="staff.detail({id:customer.repId})">{{customer.repId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>centralBillingAccount</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="customer.detail({id:customer.centralBillingAccountId})">{{customer.centralBillingAccountId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>store</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="store.detail({id:customer.storeId})">{{customer.storeId}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

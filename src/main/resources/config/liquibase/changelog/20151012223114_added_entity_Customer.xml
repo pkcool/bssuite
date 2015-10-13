@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql"/>
+    <property name="autoIncrement" value="false" dbms="oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity Customer.
+    -->
+    <changeSet id="20151012223114" author="jhipster">
+        <createTable tableName="customer">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="trading_name" type="varchar(255)"/>
+            <column name="abn" type="varchar(255)"/>
+            <column name="delivery_instruction" type="varchar(255)"/>
+            <column name="web_url" type="varchar(255)"/>
+            <column name="is_on_hold" type="bit"/>
+            <column name="is_order_no_required" type="bit"/>
+            <column name="is_blacklisted" type="bit"/>
+            <column name="is_backorder_allowed" type="bit"/>
+            <column name="is_archived" type="bit"/>
+            <column name="is_head_office_account" type="bit"/>
+            <column name="ageing_method" type="varchar(255)"/>
+            <column name="is_webaccess_allowed" type="bit"/>
+            <column name="bank_name" type="varchar(255)"/>
+            <column name="bsb" type="varchar(255)"/>
+            <column name="bank_account_no" type="varchar(255)"/>
+            <column name="bank_suburb" type="varchar(255)"/>
+            <column name="bank_account_name" type="varchar(255)"/>
+            <column name="is_credit_card_billing_active" type="bit"/>
+            <column name="credit_card_no" type="varchar(255)"/>
+            <column name="credit_card_holder_name" type="varchar(255)"/>
+            <column name="credit_card_expiry_date" type="date"/>
+            <column name="credit_card_type" type="varchar(255)"/>
+            <column name="account_type" type="varchar(255)"/>
+            <column name="credit_amount" type="double"/>
+            <column name="terms" type="integer"/>
+            <column name="settlement_terms" type="integer"/>
+            <column name="invoice_delivery_method" type="varchar(255)"/>
+            <column name="statement_delivery_method" type="varchar(255)"/>
+            <column name="invoice_email_address" type="varchar(255)"/>
+            <column name="invoice_fax_no" type="varchar(255)"/>
+            <column name="statement_email_address" type="varchar(255)"/>
+            <column name="statement_fax_no" type="varchar(255)"/>
+            <column name="is_penalty_issued" type="bit"/>
+            <column name="customer_category_id" type="bigint"/>
+            <column name="contact_id" type="bigint"/>
+            <column name="delivery_contact_id" type="bigint"/>
+            <column name="sales_primary_contact_id" type="bigint"/>
+            <column name="sales_secondary_contact_id" type="bigint"/>
+            <column name="account_primary_contact_id" type="bigint"/>
+            <column name="account_secondary_contact_id" type="bigint"/>
+            <column name="rep_id" type="bigint"/>
+            <column name="central_billing_account_id" type="bigint"/>
+            <column name="store_id" type="bigint"/>
+        </createTable>
+        
+        <addForeignKeyConstraint baseColumnNames="customer_category_id"
+                                 baseTableName="customer"
+                                 constraintName="fk_customer_customercategory_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer_category"/>
+
+        <addForeignKeyConstraint baseColumnNames="contact_id"
+                                 baseTableName="customer"
+                                 constraintName="fk_customer_contact_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact"/>
+
+        <addForeignKeyConstraint baseColumnNames="delivery_contact_id"
+                                 baseTableName="customer"
+                                 constraintName="fk_customer_deliverycontact_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact"/>
+
+        <addForeignKeyConstraint baseColumnNames="sales_primary_contact_id"
+                                 baseTableName="customer"
+                                 constraintName="fk_customer_salesprimarycontact_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact"/>
+
+        <addForeignKeyConstraint baseColumnNames="sales_secondary_contact_id"
+                                 baseTableName="customer"
+                                 constraintName="fk_customer_salessecondarycontact_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact"/>
+
+        <addForeignKeyConstraint baseColumnNames="account_primary_contact_id"
+                                 baseTableName="customer"
+                                 constraintName="fk_customer_accountprimarycontact_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact"/>
+
+        <addForeignKeyConstraint baseColumnNames="account_secondary_contact_id"
+                                 baseTableName="customer"
+                                 constraintName="fk_customer_accountsecondarycontact_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact"/>
+
+        <addForeignKeyConstraint baseColumnNames="rep_id"
+                                 baseTableName="customer"
+                                 constraintName="fk_customer_rep_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="staff"/>
+
+        <addForeignKeyConstraint baseColumnNames="central_billing_account_id"
+                                 baseTableName="customer"
+                                 constraintName="fk_customer_centralbillingaccount_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer"/>
+
+        <addForeignKeyConstraint baseColumnNames="store_id"
+                                 baseTableName="customer"
+                                 constraintName="fk_customer_store_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="store"/>
+
+    </changeSet>
+</databaseChangeLog>
