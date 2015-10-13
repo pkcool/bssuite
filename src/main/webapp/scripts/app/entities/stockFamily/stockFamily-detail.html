@@ -1,0 +1,78 @@
+
+<div>
+    <h2><span>StockFamily</span> {{stockFamily.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Code</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{stockFamily.code}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{stockFamily.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsDiminishing</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{stockFamily.isDiminishing}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>LowestMargin</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{stockFamily.lowestMargin}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>HighestMargin</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{stockFamily.highestMargin}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Comment</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{stockFamily.comment}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>priceScale</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="priceScale.detail({id:stockFamily.priceScale.id})">{{stockFamily.priceScale.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
