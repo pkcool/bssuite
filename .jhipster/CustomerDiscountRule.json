@@ -1,0 +1,118 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "priceGroupCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "ruleNo",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "isAppliedGlobally",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "isAppliedOnSpecialItemsOnly",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "customerCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "customerCategoryCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "fromProductCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "toProductCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "startDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "endDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "qtyBreak",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "fromSupplierCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "toSupplierCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "fromStockGroupCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "toStockGroupCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 16,
+            "fieldName": "taxCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 17,
+            "fieldName": "isAppliedWhenTaxExempt",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 18,
+            "fieldName": "storeCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 19,
+            "fieldName": "discountName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 20,
+            "fieldName": "stockFamilyCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 21,
+            "fieldName": "listPrice",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 22,
+            "fieldName": "discountFormula",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151014234523",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}
