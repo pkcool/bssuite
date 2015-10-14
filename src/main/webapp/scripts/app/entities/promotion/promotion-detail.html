@@ -1,0 +1,102 @@
+
+<div>
+    <h2><span>Promotion</span> {{promotion.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Code</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{promotion.code}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Name</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{promotion.name}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{promotion.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>StartDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{promotion.startDate}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>EndDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{promotion.endDate}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Cost</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{promotion.cost}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Income</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{promotion.income}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Expense</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{promotion.expense}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>DateCreated</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{promotion.dateCreated}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>store</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="store.detail({id:promotion.store.id})">{{promotion.store.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
