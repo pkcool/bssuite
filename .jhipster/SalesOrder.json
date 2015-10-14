@@ -1,0 +1,173 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "customer",
+            "otherEntityName": "customer",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "contact",
+            "otherEntityName": "contact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "deliveryContact",
+            "otherEntityName": "contact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "store",
+            "otherEntityName": "store",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 5,
+            "relationshipName": "carrier",
+            "otherEntityName": "carrier",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 6,
+            "relationshipName": "salesperson",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 7,
+            "relationshipName": "promotion",
+            "otherEntityName": "promotion",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 8,
+            "relationshipName": "createdBy",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 9,
+            "relationshipName": "salesOrderLineItems",
+            "otherEntityName": "salesOrderLineItem",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "salesOrder"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "orderNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "status",
+            "fieldType": "SalesOrderStatus",
+            "fieldValues": "ONORDER,DELIVERED,CANCELLED,PARTIALFILL,SUSPENDED"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "txnDate",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "forwardDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "requiredDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "customerOrderNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "ourRef",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "freight",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "handlingCharge",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "charge2",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "isTaxable",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "isLocked",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "adjustTax",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "adjustTaxExempt",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "prepayment",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 16,
+            "fieldName": "prepaymentNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 17,
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 18,
+            "fieldName": "taxAmount",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 19,
+            "fieldName": "total",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 20,
+            "fieldName": "cost",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "changelogDate": "20151014083317",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}

@@ -1,0 +1,128 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="mySalesOrderLineItemLabel">Create or edit a SalesOrderLineItem</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="salesOrderLineItem.id" readonly>
+        </div>
+        <div class="form-group">
+            <label for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="salesOrderLineItem.description"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_cost">Cost</label>
+            <input type="number" class="form-control" name="cost" id="field_cost"
+                    ng-model="salesOrderLineItem.cost"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_soldFor">SoldFor</label>
+            <input type="number" class="form-control" name="soldFor" id="field_soldFor"
+                    ng-model="salesOrderLineItem.soldFor"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_qtyOrdered">QtyOrdered</label>
+            <input type="number" class="form-control" name="qtyOrdered" id="field_qtyOrdered"
+                    ng-model="salesOrderLineItem.qtyOrdered"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_qtyAllocated">QtyAllocated</label>
+            <input type="number" class="form-control" name="qtyAllocated" id="field_qtyAllocated"
+                    ng-model="salesOrderLineItem.qtyAllocated"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_taxCharge">TaxCharge</label>
+            <input type="number" class="form-control" name="taxCharge" id="field_taxCharge"
+                    ng-model="salesOrderLineItem.taxCharge"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_discountPercentage">DiscountPercentage</label>
+            <input type="number" class="form-control" name="discountPercentage" id="field_discountPercentage"
+                    ng-model="salesOrderLineItem.discountPercentage"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_lineNo">LineNo</label>
+            <input type="number" class="form-control" name="lineNo" id="field_lineNo"
+                    ng-model="salesOrderLineItem.lineNo"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_requiredDate">RequiredDate</label>
+            <input type="date" class="form-control" name="requiredDate" id="field_requiredDate"
+                    ng-model="salesOrderLineItem.requiredDate"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_listPrice">ListPrice</label>
+            <input type="number" class="form-control" name="listPrice" id="field_listPrice"
+                    ng-model="salesOrderLineItem.listPrice"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_listPriceDiscount">ListPriceDiscount</label>
+            <input type="number" class="form-control" name="listPriceDiscount" id="field_listPriceDiscount"
+                    ng-model="salesOrderLineItem.listPriceDiscount"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_cost2">Cost2</label>
+            <input type="number" class="form-control" name="cost2" id="field_cost2"
+                    ng-model="salesOrderLineItem.cost2"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isHidden">IsHidden</label>
+            <input type="checkbox" class="form-control" name="isHidden" id="field_isHidden"
+                    ng-model="salesOrderLineItem.isHidden"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_Refer1">Refer1</label>
+            <input type="text" class="form-control" name="Refer1" id="field_Refer1"
+                    ng-model="salesOrderLineItem.Refer1"
+                    >
+        </div>
+
+        <div class="form-group">
+            <label for="field_salesOrder">salesOrder</label>
+            <select class="form-control" id="field_salesOrder" name="salesOrder" ng-model="salesOrderLineItem.salesOrder" ng-options="salesOrder as salesOrder.id for salesOrder in salesorders track by salesOrder.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_product">product</label>
+            <select class="form-control" id="field_product" name="product" ng-model="salesOrderLineItem.product" ng-options="product as product.id for product in products track by product.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_taxRate">taxRate</label>
+            <select class="form-control" id="field_taxRate" name="taxRate" ng-model="salesOrderLineItem.taxRate" ng-options="taxTable as taxTable.id for taxTable in taxtables track by taxTable.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,69 @@
+'use strict';
+
+angular.module('bssuiteApp')
+    .controller('SalesOrderLineItemController', function ($scope, SalesOrderLineItem, SalesOrderLineItemSearch, ParseLinks) {
+        $scope.salesOrderLineItems = [];
+        $scope.page = 0;
+        $scope.loadAll = function() {
+            SalesOrderLineItem.query({page: $scope.page, size: 20}, function(result, headers) {
+                $scope.links = ParseLinks.parse(headers('link'));
+                $scope.salesOrderLineItems = result;
+            });
+        };
+        $scope.loadPage = function(page) {
+            $scope.page = page;
+            $scope.loadAll();
+        };
+        $scope.loadAll();
+
+        $scope.delete = function (id) {
+            SalesOrderLineItem.get({id: id}, function(result) {
+                $scope.salesOrderLineItem = result;
+                $('#deleteSalesOrderLineItemConfirmation').modal('show');
+            });
+        };
+
+        $scope.confirmDelete = function (id) {
+            SalesOrderLineItem.delete({id: id},
+                function () {
+                    $scope.loadAll();
+                    $('#deleteSalesOrderLineItemConfirmation').modal('hide');
+                    $scope.clear();
+                });
+        };
+
+        $scope.search = function () {
+            SalesOrderLineItemSearch.query({query: $scope.searchQuery}, function(result) {
+                $scope.salesOrderLineItems = result;
+            }, function(response) {
+                if(response.status === 404) {
+                    $scope.loadAll();
+                }
+            });
+        };
+
+        $scope.refresh = function () {
+            $scope.loadAll();
+            $scope.clear();
+        };
+
+        $scope.clear = function () {
+            $scope.salesOrderLineItem = {
+                description: null,
+                cost: null,
+                soldFor: null,
+                qtyOrdered: null,
+                qtyAllocated: null,
+                taxCharge: null,
+                discountPercentage: null,
+                lineNo: null,
+                requiredDate: null,
+                listPrice: null,
+                listPriceDiscount: null,
+                cost2: null,
+                isHidden: null,
+                Refer1: null,
+                id: null
+            };
+        };
+    });
