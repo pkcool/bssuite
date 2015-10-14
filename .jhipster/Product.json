@@ -1,0 +1,294 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "stockGroup",
+            "otherEntityName": "stockGroup",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "supplier",
+            "otherEntityName": "supplier",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "store",
+            "otherEntityName": "store",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "taxRate",
+            "otherEntityName": "taxTable",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "longDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "alternateCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "bin",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "isOnSpecial",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "isOnHold",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "isInPricelistReports",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "qtyOnOrder",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "qtyStockOnHold",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "qtyBackordered",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "qtyAllocated",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "qtyBackorderHold",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "qtyConsigned",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 16,
+            "fieldName": "qtyWarehouseReceived",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 17,
+            "fieldName": "qtyStocktakeVariance",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 18,
+            "fieldName": "qtyTransitIn",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 19,
+            "fieldName": "qtyTransitOut",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 20,
+            "fieldName": "cost",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "min"
+            ],
+            "fieldValidateRulesMin": 0
+        },
+        {
+            "fieldId": 21,
+            "fieldName": "wholesaleListPrice",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 22,
+            "fieldName": "listPrice",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 23,
+            "fieldName": "tradePrice",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 24,
+            "fieldName": "boxCost",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 25,
+            "fieldName": "unitMeasure",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 26,
+            "fieldName": "boxMeasure",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 27,
+            "fieldName": "boxConversionFactor",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 28,
+            "fieldName": "weight",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 29,
+            "fieldName": "volumn",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 30,
+            "fieldName": "serviceCover",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 31,
+            "fieldName": "qtyFloorLevel",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 32,
+            "fieldName": "qtyReorderLevel",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 33,
+            "fieldName": "qtyOverstockLevel",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 34,
+            "fieldName": "isComment",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 35,
+            "fieldName": "isDiminishing",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 36,
+            "fieldName": "isNonTaxExeptable",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 37,
+            "fieldName": "leadTime",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 38,
+            "fieldName": "purchaseUnit",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 39,
+            "fieldName": "estMonthlySales",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 40,
+            "fieldName": "dateFirstSale",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 41,
+            "fieldName": "dateLastSale",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 42,
+            "fieldName": "dateFirstOrder",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 43,
+            "fieldName": "dateCreated",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 44,
+            "fieldName": "dateLastDelivery",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 45,
+            "fieldName": "dateNextDelivery",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 46,
+            "fieldName": "dateLastTransfer",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 47,
+            "fieldName": "dateLastOrder",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 48,
+            "fieldName": "dateLastStocktake",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 49,
+            "fieldName": "isArchived",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 50,
+            "fieldName": "classCode",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151014035926",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}

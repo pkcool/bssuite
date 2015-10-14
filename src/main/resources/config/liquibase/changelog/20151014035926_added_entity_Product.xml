@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql"/>
+    <property name="autoIncrement" value="false" dbms="oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity Product.
+    -->
+    <changeSet id="20151014035926" author="jhipster">
+        <createTable tableName="product">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="description" type="varchar(255)"/>
+            <column name="long_description" type="varchar(255)"/>
+            <column name="alternate_code" type="varchar(255)"/>
+            <column name="bin" type="varchar(255)"/>
+            <column name="is_on_special" type="bit"/>
+            <column name="is_on_hold" type="bit"/>
+            <column name="is_in_pricelist_reports" type="bit"/>
+            <column name="qty_on_order" type="double"/>
+            <column name="qty_stock_on_hold" type="double"/>
+            <column name="qty_backordered" type="double"/>
+            <column name="qty_allocated" type="double"/>
+            <column name="qty_backorder_hold" type="double"/>
+            <column name="qty_consigned" type="double"/>
+            <column name="qty_warehouse_received" type="double"/>
+            <column name="qty_stocktake_variance" type="double"/>
+            <column name="qty_transit_in" type="double"/>
+            <column name="qty_transit_out" type="double"/>
+            <column name="cost" type="decimal(10,2)"/>
+            <column name="wholesale_list_price" type="decimal(10,2)"/>
+            <column name="list_price" type="decimal(10,2)"/>
+            <column name="trade_price" type="decimal(10,2)"/>
+            <column name="box_cost" type="decimal(10,2)"/>
+            <column name="unit_measure" type="varchar(255)"/>
+            <column name="box_measure" type="varchar(255)"/>
+            <column name="box_conversion_factor" type="decimal(10,2)"/>
+            <column name="weight" type="double"/>
+            <column name="volumn" type="double"/>
+            <column name="service_cover" type="integer"/>
+            <column name="qty_floor_level" type="double"/>
+            <column name="qty_reorder_level" type="double"/>
+            <column name="qty_overstock_level" type="double"/>
+            <column name="is_comment" type="bit"/>
+            <column name="is_diminishing" type="bit"/>
+            <column name="is_non_tax_exeptable" type="bit"/>
+            <column name="lead_time" type="integer"/>
+            <column name="purchase_unit" type="integer"/>
+            <column name="est_monthly_sales" type="double"/>
+            <column name="date_first_sale" type="date"/>
+            <column name="date_last_sale" type="date"/>
+            <column name="date_first_order" type="date"/>
+            <column name="date_created" type="date"/>
+            <column name="date_last_delivery" type="date"/>
+            <column name="date_next_delivery" type="date"/>
+            <column name="date_last_transfer" type="date"/>
+            <column name="date_last_order" type="date"/>
+            <column name="date_last_stocktake" type="date"/>
+            <column name="is_archived" type="bit"/>
+            <column name="class_code" type="varchar(255)"/>
+            <column name="stock_group_id" type="bigint"/>
+            <column name="supplier_id" type="bigint"/>
+            <column name="store_id" type="bigint"/>
+            <column name="tax_rate_id" type="bigint"/>
+        </createTable>
+        
+        <addForeignKeyConstraint baseColumnNames="stock_group_id"
+                                 baseTableName="product"
+                                 constraintName="fk_product_stockgroup_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="stock_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="supplier_id"
+                                 baseTableName="product"
+                                 constraintName="fk_product_supplier_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="supplier"/>
+
+        <addForeignKeyConstraint baseColumnNames="store_id"
+                                 baseTableName="product"
+                                 constraintName="fk_product_store_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="store"/>
+
+        <addForeignKeyConstraint baseColumnNames="tax_rate_id"
+                                 baseTableName="product"
+                                 constraintName="fk_product_taxrate_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tax_table"/>
+
+    </changeSet>
+</databaseChangeLog>

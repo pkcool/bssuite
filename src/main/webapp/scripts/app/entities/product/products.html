@@ -1,0 +1,209 @@
+<div>
+    <h2>Products</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="product.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Product</span>
+                </button>
+            </div>
+            <div class="col-md-8">
+                <form name="searchForm" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="query">
+                    </div>
+                    <button class="btn btn-info" ng-click="search()"><span class="glyphicon glyphicon-search"></span> <span>Search a Product</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteProductConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(product.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this Product?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>LongDescription</th>
+                    <th>AlternateCode</th>
+                    <th>Bin</th>
+                    <th>IsOnSpecial</th>
+                    <th>IsOnHold</th>
+                    <th>IsInPricelistReports</th>
+                    <th>QtyOnOrder</th>
+                    <th>QtyStockOnHold</th>
+                    <th>QtyBackordered</th>
+                    <th>QtyAllocated</th>
+                    <th>QtyBackorderHold</th>
+                    <th>QtyConsigned</th>
+                    <th>QtyWarehouseReceived</th>
+                    <th>QtyStocktakeVariance</th>
+                    <th>QtyTransitIn</th>
+                    <th>QtyTransitOut</th>
+                    <th>Cost</th>
+                    <th>WholesaleListPrice</th>
+                    <th>ListPrice</th>
+                    <th>TradePrice</th>
+                    <th>BoxCost</th>
+                    <th>UnitMeasure</th>
+                    <th>BoxMeasure</th>
+                    <th>BoxConversionFactor</th>
+                    <th>Weight</th>
+                    <th>Volumn</th>
+                    <th>ServiceCover</th>
+                    <th>QtyFloorLevel</th>
+                    <th>QtyReorderLevel</th>
+                    <th>QtyOverstockLevel</th>
+                    <th>IsComment</th>
+                    <th>IsDiminishing</th>
+                    <th>IsNonTaxExeptable</th>
+                    <th>LeadTime</th>
+                    <th>PurchaseUnit</th>
+                    <th>EstMonthlySales</th>
+                    <th>DateFirstSale</th>
+                    <th>DateLastSale</th>
+                    <th>DateFirstOrder</th>
+                    <th>DateCreated</th>
+                    <th>DateLastDelivery</th>
+                    <th>DateNextDelivery</th>
+                    <th>DateLastTransfer</th>
+                    <th>DateLastOrder</th>
+                    <th>DateLastStocktake</th>
+                    <th>IsArchived</th>
+                    <th>ClassCode</th>
+                    <th>stockGroup</th>
+                    <th>supplier</th>
+                    <th>store</th>
+                    <th>taxRate</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="product in products track by product.id">
+                    <td><a ui-sref="product.detail({id:product.id})">{{product.id}}</a></td>
+                    <td>{{product.code}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.longDescription}}</td>
+                    <td>{{product.alternateCode}}</td>
+                    <td>{{product.bin}}</td>
+                    <td>{{product.isOnSpecial}}</td>
+                    <td>{{product.isOnHold}}</td>
+                    <td>{{product.isInPricelistReports}}</td>
+                    <td>{{product.qtyOnOrder}}</td>
+                    <td>{{product.qtyStockOnHold}}</td>
+                    <td>{{product.qtyBackordered}}</td>
+                    <td>{{product.qtyAllocated}}</td>
+                    <td>{{product.qtyBackorderHold}}</td>
+                    <td>{{product.qtyConsigned}}</td>
+                    <td>{{product.qtyWarehouseReceived}}</td>
+                    <td>{{product.qtyStocktakeVariance}}</td>
+                    <td>{{product.qtyTransitIn}}</td>
+                    <td>{{product.qtyTransitOut}}</td>
+                    <td>{{product.cost}}</td>
+                    <td>{{product.wholesaleListPrice}}</td>
+                    <td>{{product.listPrice}}</td>
+                    <td>{{product.tradePrice}}</td>
+                    <td>{{product.boxCost}}</td>
+                    <td>{{product.unitMeasure}}</td>
+                    <td>{{product.boxMeasure}}</td>
+                    <td>{{product.boxConversionFactor}}</td>
+                    <td>{{product.weight}}</td>
+                    <td>{{product.volumn}}</td>
+                    <td>{{product.serviceCover}}</td>
+                    <td>{{product.qtyFloorLevel}}</td>
+                    <td>{{product.qtyReorderLevel}}</td>
+                    <td>{{product.qtyOverstockLevel}}</td>
+                    <td>{{product.isComment}}</td>
+                    <td>{{product.isDiminishing}}</td>
+                    <td>{{product.isNonTaxExeptable}}</td>
+                    <td>{{product.leadTime}}</td>
+                    <td>{{product.purchaseUnit}}</td>
+                    <td>{{product.estMonthlySales}}</td>
+                    <td>{{product.dateFirstSale}}</td>
+                    <td>{{product.dateLastSale}}</td>
+                    <td>{{product.dateFirstOrder}}</td>
+                    <td>{{product.dateCreated}}</td>
+                    <td>{{product.dateLastDelivery}}</td>
+                    <td>{{product.dateNextDelivery}}</td>
+                    <td>{{product.dateLastTransfer}}</td>
+                    <td>{{product.dateLastOrder}}</td>
+                    <td>{{product.dateLastStocktake}}</td>
+                    <td>{{product.isArchived}}</td>
+                    <td>{{product.classCode}}</td>
+                    <td>
+                        <a ui-sref="stockGroup.detail({id:product.stockGroupId})">{{product.stockGroupId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="supplier.detail({id:product.supplierId})">{{product.supplierId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="store.detail({id:product.storeId})">{{product.storeId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="taxTable.detail({id:product.taxRateId})">{{product.taxRateId}}</a>
+                    </td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="product.detail({id:product.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="product.edit({id:product.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(product.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pagination">
+                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
+                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a>&lt;</a></li>
+                <li ng-show="page > 1" ng-click="loadPage(page - 2)"><a>{{page - 1}}</a></li>
+                <li ng-show="page > 0" ng-click="loadPage(page - 1)"><a>{{page}}</a></li>
+                <li class="active"><a>{{page + 1}}</a></li>
+                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 2}}</a></li>
+                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 3}}</a></li>
+                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
+                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
