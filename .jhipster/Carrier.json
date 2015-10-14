@@ -1,0 +1,81 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "phone",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "mobile",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "accountNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "isAvailableOnMonday",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "isAvailableOnTuesday",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "isAvailableOnWednesday",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "isAvailableOnThursday",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "isAvailableOnFriday",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "isAvailableOnSaturday",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "isAvailableOnSunday",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "docketRefNo",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151014074744",
+    "dto": "no",
+    "pagination": "pager"
+}

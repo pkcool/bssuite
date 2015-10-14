@@ -18,5 +18,6 @@
     <include file="classpath:config/liquibase/changelog/20151013131354_added_entity_TaxTable.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151013133648_added_entity_StockGroup.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151014035926_added_entity_Product.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20151014074744_added_entity_Carrier.xml" relativeToChangelogFile="false"/>
     <!-- JHipster will add liquibase changelogs here -->
 </databaseChangeLog>
