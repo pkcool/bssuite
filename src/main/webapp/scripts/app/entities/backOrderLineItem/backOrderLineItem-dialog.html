@@ -1,0 +1,80 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myBackOrderLineItemLabel">Create or edit a BackOrderLineItem</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="backOrderLineItem.id" readonly>
+        </div>
+        <div class="form-group">
+            <label for="field_isReadyToRelease">IsReadyToRelease</label>
+            <input type="checkbox" class="form-control" name="isReadyToRelease" id="field_isReadyToRelease"
+                    ng-model="backOrderLineItem.isReadyToRelease"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_qtyAllocated">QtyAllocated</label>
+            <input type="number" class="form-control" name="qtyAllocated" id="field_qtyAllocated"
+                    ng-model="backOrderLineItem.qtyAllocated"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isMarkedForAutoPurchaseOrdering">IsMarkedForAutoPurchaseOrdering</label>
+            <input type="checkbox" class="form-control" name="isMarkedForAutoPurchaseOrdering" id="field_isMarkedForAutoPurchaseOrdering"
+                    ng-model="backOrderLineItem.isMarkedForAutoPurchaseOrdering"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isOnHold">IsOnHold</label>
+            <input type="checkbox" class="form-control" name="isOnHold" id="field_isOnHold"
+                    ng-model="backOrderLineItem.isOnHold"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_allocatedDate">AllocatedDate</label>
+            <input type="datetime-local" class="form-control" name="allocatedDate" id="field_allocatedDate"
+                    ng-model="backOrderLineItem.allocatedDate" ng-model-options="{timezone: 'UTC'}"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_comment">Comment</label>
+            <input type="text" class="form-control" name="comment" id="field_comment"
+                    ng-model="backOrderLineItem.comment"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isPicked">IsPicked</label>
+            <input type="checkbox" class="form-control" name="isPicked" id="field_isPicked"
+                    ng-model="backOrderLineItem.isPicked"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isMarked">IsMarked</label>
+            <input type="checkbox" class="form-control" name="isMarked" id="field_isMarked"
+                    ng-model="backOrderLineItem.isMarked"
+                    >
+        </div>
+
+        <div class="form-group">
+            <label for="field_salesOrderLineItem">salesOrderLineItem</label>
+            <select class="form-control" id="field_salesOrderLineItem" name="salesOrderLineItem" ng-model="backOrderLineItem.salesOrderLineItemId" ng-options="salesOrderLineItem.id as salesOrderLineItem.id for salesOrderLineItem in salesorderlineitems">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,56 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "salesOrderLineItem",
+            "otherEntityName": "salesOrderLineItem",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "isReadyToRelease",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "qtyAllocated",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "isMarkedForAutoPurchaseOrdering",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "isOnHold",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "allocatedDate",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "isPicked",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "isMarked",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20151015044625",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}

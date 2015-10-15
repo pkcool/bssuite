@@ -1,0 +1,94 @@
+
+<div>
+    <h2><span>BackOrderLineItem</span> {{backOrderLineItem.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>IsReadyToRelease</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{backOrderLineItem.isReadyToRelease}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>QtyAllocated</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{backOrderLineItem.qtyAllocated}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsMarkedForAutoPurchaseOrdering</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{backOrderLineItem.isMarkedForAutoPurchaseOrdering}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsOnHold</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{backOrderLineItem.isOnHold}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>AllocatedDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{backOrderLineItem.allocatedDate}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Comment</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{backOrderLineItem.comment}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsPicked</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{backOrderLineItem.isPicked}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsMarked</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{backOrderLineItem.isMarked}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>salesOrderLineItem</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="salesOrderLineItem.detail({id:backOrderLineItem.salesOrderLineItemId})">{{backOrderLineItem.salesOrderLineItemId}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
