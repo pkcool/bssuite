@@ -1,0 +1,106 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "supplierCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "ruleNo",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "isAppliedToSales",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "isAppliedOnSpecialItemsOnly",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "customerCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "customerCategoryCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "productCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "startDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "endDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "qtyBreak",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "fromStockGroupCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "toStockGroupCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "taxCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "isAppliedWhenTaxExempt",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "storeCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 16,
+            "fieldName": "discountName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 17,
+            "fieldName": "stockFamilyCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 18,
+            "fieldName": "cost",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 19,
+            "fieldName": "discountFormula",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151014235000",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}
