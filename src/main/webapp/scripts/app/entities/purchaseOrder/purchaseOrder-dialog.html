@@ -1,0 +1,138 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPurchaseOrderLabel">Create or edit a PurchaseOrder</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="purchaseOrder.id" readonly>
+        </div>
+        <div class="form-group">
+            <label for="field_orderNo">OrderNo</label>
+            <input type="text" class="form-control" name="orderNo" id="field_orderNo"
+                    ng-model="purchaseOrder.orderNo"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="purchaseOrder.status" id="field_status">
+                <option value="ONORDER">ONORDER</option>
+                <option value="DELIVERED">DELIVERED</option>
+                <option value="CANCELLED">CANCELLED</option>
+                <option value="PARTIALFILL">PARTIALFILL</option>
+                <option value="SUSPENDED">SUSPENDED</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_createdDate">CreatedDate</label>
+            <input type="datetime-local" class="form-control" name="createdDate" id="field_createdDate"
+                    ng-model="purchaseOrder.createdDate" ng-model-options="{timezone: 'UTC'}"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_ref">Ref</label>
+            <input type="text" class="form-control" name="ref" id="field_ref"
+                    ng-model="purchaseOrder.ref"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_expectedDeliveryDate">ExpectedDeliveryDate</label>
+            <input type="date" class="form-control" name="expectedDeliveryDate" id="field_expectedDeliveryDate"
+                    ng-model="purchaseOrder.expectedDeliveryDate"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isTaxable">IsTaxable</label>
+            <input type="checkbox" class="form-control" name="isTaxable" id="field_isTaxable"
+                    ng-model="purchaseOrder.isTaxable"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isLocked">IsLocked</label>
+            <input type="checkbox" class="form-control" name="isLocked" id="field_isLocked"
+                    ng-model="purchaseOrder.isLocked"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_comment">Comment</label>
+            <input type="text" class="form-control" name="comment" id="field_comment"
+                    ng-model="purchaseOrder.comment"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_taxAmount">TaxAmount</label>
+            <input type="number" class="form-control" name="taxAmount" id="field_taxAmount"
+                    ng-model="purchaseOrder.taxAmount"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_total">Total</label>
+            <input type="number" class="form-control" name="total" id="field_total"
+                    ng-model="purchaseOrder.total"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_cost">Cost</label>
+            <input type="number" class="form-control" name="cost" id="field_cost"
+                    ng-model="purchaseOrder.cost"
+                    >
+        </div>
+
+        <div class="form-group">
+            <label for="field_supplier">supplier</label>
+            <select class="form-control" id="field_supplier" name="supplier" ng-model="purchaseOrder.supplierId" ng-options="Supplier.id as Supplier.id for Supplier in suppliers">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_supplierContact">supplierContact</label>
+            <select class="form-control" id="field_supplierContact" name="supplierContact" ng-model="purchaseOrder.supplierContactId" ng-options="contact.id as contact.id for contact in contacts">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_supplierDeliveryContact">supplierDeliveryContact</label>
+            <select class="form-control" id="field_supplierDeliveryContact" name="supplierDeliveryContact" ng-model="purchaseOrder.supplierDeliveryContactId" ng-options="contact.id as contact.id for contact in contacts">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_store">store</label>
+            <select class="form-control" id="field_store" name="store" ng-model="purchaseOrder.storeId" ng-options="store.id as store.id for store in stores">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_salesOrder">salesOrder</label>
+            <select class="form-control" id="field_salesOrder" name="salesOrder" ng-model="purchaseOrder.salesOrderId" ng-options="salesOrder.id as salesOrder.id for salesOrder in salesorders">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_updatedByStaff">updatedByStaff</label>
+            <select class="form-control" id="field_updatedByStaff" name="updatedByStaff" ng-model="purchaseOrder.updatedByStaffId" ng-options="staff.id as staff.id for staff in staffs">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_createdBy">createdBy</label>
+            <select class="form-control" id="field_createdBy" name="createdBy" ng-model="purchaseOrder.createdById" ng-options="staff.id as staff.id for staff in staffs">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql"/>
+    <property name="autoIncrement" value="false" dbms="oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity PurchaseOrder.
+    -->
+    <changeSet id="20151015052444" author="jhipster">
+        <createTable tableName="purchase_order">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="order_no" type="varchar(255)"/>
+            <column name="status" type="varchar(255)"/>
+            <column name="created_date" type="timestamp"/>
+            <column name="ref" type="varchar(255)"/>
+            <column name="expected_delivery_date" type="date"/>
+            <column name="is_taxable" type="bit"/>
+            <column name="is_locked" type="bit"/>
+            <column name="comment" type="varchar(255)"/>
+            <column name="tax_amount" type="decimal(10,2)"/>
+            <column name="total" type="decimal(10,2)"/>
+            <column name="cost" type="decimal(10,2)"/>
+            <column name="supplier_id" type="bigint"/>
+            <column name="supplier_contact_id" type="bigint"/>
+            <column name="supplier_delivery_contact_id" type="bigint"/>
+            <column name="store_id" type="bigint"/>
+            <column name="sales_order_id" type="bigint"/>
+            <column name="updated_by_staff_id" type="bigint"/>
+            <column name="created_by_id" type="bigint"/>
+        </createTable>
+        <dropDefaultValue tableName="purchase_order" columnName="created_date" columnDataType="datetime"/>
+
+        
+        <addForeignKeyConstraint baseColumnNames="supplier_id"
+                                 baseTableName="purchase_order"
+                                 constraintName="fk_purchaseorder_supplier_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="supplier"/>
+
+        <addForeignKeyConstraint baseColumnNames="supplier_contact_id"
+                                 baseTableName="purchase_order"
+                                 constraintName="fk_purchaseorder_suppliercontact_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact"/>
+
+        <addForeignKeyConstraint baseColumnNames="supplier_delivery_contact_id"
+                                 baseTableName="purchase_order"
+                                 constraintName="fk_purchaseorder_supplierdeliverycontact_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact"/>
+
+        <addForeignKeyConstraint baseColumnNames="store_id"
+                                 baseTableName="purchase_order"
+                                 constraintName="fk_purchaseorder_store_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="store"/>
+
+        <addForeignKeyConstraint baseColumnNames="sales_order_id"
+                                 baseTableName="purchase_order"
+                                 constraintName="fk_purchaseorder_salesorder_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sales_order"/>
+
+        <addForeignKeyConstraint baseColumnNames="updated_by_staff_id"
+                                 baseTableName="purchase_order"
+                                 constraintName="fk_purchaseorder_updatedbystaff_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="staff"/>
+
+        <addForeignKeyConstraint baseColumnNames="created_by_id"
+                                 baseTableName="purchase_order"
+                                 constraintName="fk_purchaseorder_createdby_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="staff"/>
+
+    </changeSet>
+</databaseChangeLog>

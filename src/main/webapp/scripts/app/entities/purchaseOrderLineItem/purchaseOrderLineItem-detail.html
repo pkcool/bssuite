@@ -1,0 +1,158 @@
+
+<div>
+    <h2><span>PurchaseOrderLineItem</span> {{purchaseOrderLineItem.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{purchaseOrderLineItem.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Cost</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{purchaseOrderLineItem.cost}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>ListPrice</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{purchaseOrderLineItem.listPrice}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>QtyOrdered</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{purchaseOrderLineItem.qtyOrdered}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>QtyDelivered</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{purchaseOrderLineItem.qtyDelivered}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>QtyPreviouslyDelivered</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{purchaseOrderLineItem.qtyPreviouslyDelivered}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>QtyImported</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{purchaseOrderLineItem.qtyImported}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TaxCharge</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{purchaseOrderLineItem.taxCharge}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>DiscountPercentage</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{purchaseOrderLineItem.discountPercentage}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>LineNo</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{purchaseOrderLineItem.lineNo}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>ListPriceDiscount</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{purchaseOrderLineItem.listPriceDiscount}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>UnitMeasure</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{purchaseOrderLineItem.unitMeasure}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsHidden</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{purchaseOrderLineItem.isHidden}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Refer1</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{purchaseOrderLineItem.Refer1}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>purchaseOrder</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="purchaseOrder.detail({id:purchaseOrderLineItem.purchaseOrder.id})">{{purchaseOrderLineItem.purchaseOrder.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>product</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="product.detail({id:purchaseOrderLineItem.product.id})">{{purchaseOrderLineItem.product.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>taxRate</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="taxTable.detail({id:purchaseOrderLineItem.taxRate.id})">{{purchaseOrderLineItem.taxRate.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

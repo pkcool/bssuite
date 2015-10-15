@@ -1,0 +1,121 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "supplier",
+            "otherEntityName": "Supplier",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "supplierContact",
+            "otherEntityName": "contact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "supplierDeliveryContact",
+            "otherEntityName": "contact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "store",
+            "otherEntityName": "store",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 5,
+            "relationshipName": "salesOrder",
+            "otherEntityName": "salesOrder",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 6,
+            "relationshipName": "updatedByStaff",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 7,
+            "relationshipName": "createdBy",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 8,
+            "relationshipName": "purchaseOrderLineItems",
+            "otherEntityName": "purchaseOrderLineItem",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "purchaseOrder"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "orderNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "status",
+            "fieldType": "PurchaseOrderStatus",
+            "fieldValues": "ONORDER,DELIVERED,CANCELLED,PARTIALFILL,SUSPENDED"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "createdDate",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "ref",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "expectedDeliveryDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "isTaxable",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "isLocked",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "taxAmount",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "total",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "cost",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "changelogDate": "20151015052444",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}

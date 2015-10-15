@@ -1,0 +1,283 @@
+package com.enginemobi.bssuite.web.rest;
+
+import com.enginemobi.bssuite.Application;
+import com.enginemobi.bssuite.domain.PurchaseOrder;
+import com.enginemobi.bssuite.repository.PurchaseOrderRepository;
+import com.enginemobi.bssuite.repository.search.PurchaseOrderSearchRepository;
+import com.enginemobi.bssuite.web.rest.dto.PurchaseOrderDTO;
+import com.enginemobi.bssuite.web.rest.mapper.PurchaseOrderMapper;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import static org.hamcrest.Matchers.hasItem;
+import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.IntegrationTest;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.util.ReflectionTestUtils;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+import org.joda.time.LocalDate;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import java.math.BigDecimal;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import com.enginemobi.bssuite.domain.enumeration.PurchaseOrderStatus;
+
+/**
+ * Test class for the PurchaseOrderResource REST controller.
+ *
+ * @see PurchaseOrderResource
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = Application.class)
+@WebAppConfiguration
+@IntegrationTest
+public class PurchaseOrderResourceTest {
+
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+
+    private static final String DEFAULT_ORDER_NO = "AAAAA";
+    private static final String UPDATED_ORDER_NO = "BBBBB";
+
+
+private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ONORDER;
+    private static final PurchaseOrderStatus UPDATED_STATUS = PurchaseOrderStatus.DELIVERED;
+
+    private static final DateTime DEFAULT_CREATED_DATE = new DateTime(0L, DateTimeZone.UTC);
+    private static final DateTime UPDATED_CREATED_DATE = new DateTime(DateTimeZone.UTC).withMillisOfSecond(0);
+    private static final String DEFAULT_CREATED_DATE_STR = dateTimeFormatter.print(DEFAULT_CREATED_DATE);
+    private static final String DEFAULT_REF = "AAAAA";
+    private static final String UPDATED_REF = "BBBBB";
+
+    private static final LocalDate DEFAULT_EXPECTED_DELIVERY_DATE = new LocalDate(0L);
+    private static final LocalDate UPDATED_EXPECTED_DELIVERY_DATE = new LocalDate();
+
+    private static final Boolean DEFAULT_IS_TAXABLE = false;
+    private static final Boolean UPDATED_IS_TAXABLE = true;
+
+    private static final Boolean DEFAULT_IS_LOCKED = false;
+    private static final Boolean UPDATED_IS_LOCKED = true;
+    private static final String DEFAULT_COMMENT = "AAAAA";
+    private static final String UPDATED_COMMENT = "BBBBB";
+
+    private static final BigDecimal DEFAULT_TAX_AMOUNT = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TAX_AMOUNT = new BigDecimal(2);
+
+    private static final BigDecimal DEFAULT_TOTAL = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TOTAL = new BigDecimal(2);
+
+    private static final BigDecimal DEFAULT_COST = new BigDecimal(1);
+    private static final BigDecimal UPDATED_COST = new BigDecimal(2);
+
+    @Inject
+    private PurchaseOrderRepository purchaseOrderRepository;
+
+    @Inject
+    private PurchaseOrderMapper purchaseOrderMapper;
+
+    @Inject
+    private PurchaseOrderSearchRepository purchaseOrderSearchRepository;
+
+    @Inject
+    private MappingJackson2HttpMessageConverter jacksonMessageConverter;
+
+    @Inject
+    private PageableHandlerMethodArgumentResolver pageableArgumentResolver;
+
+    private MockMvc restPurchaseOrderMockMvc;
+
+    private PurchaseOrder purchaseOrder;
+
+    @PostConstruct
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+        PurchaseOrderResource purchaseOrderResource = new PurchaseOrderResource();
+        ReflectionTestUtils.setField(purchaseOrderResource, "purchaseOrderRepository", purchaseOrderRepository);
+        ReflectionTestUtils.setField(purchaseOrderResource, "purchaseOrderMapper", purchaseOrderMapper);
+        ReflectionTestUtils.setField(purchaseOrderResource, "purchaseOrderSearchRepository", purchaseOrderSearchRepository);
+        this.restPurchaseOrderMockMvc = MockMvcBuilders.standaloneSetup(purchaseOrderResource)
+            .setCustomArgumentResolvers(pageableArgumentResolver)
+            .setMessageConverters(jacksonMessageConverter).build();
+    }
+
+    @Before
+    public void initTest() {
+        purchaseOrder = new PurchaseOrder();
+        purchaseOrder.setOrderNo(DEFAULT_ORDER_NO);
+        purchaseOrder.setStatus(DEFAULT_STATUS);
+        purchaseOrder.setCreatedDate(DEFAULT_CREATED_DATE);
+        purchaseOrder.setRef(DEFAULT_REF);
+        purchaseOrder.setExpectedDeliveryDate(DEFAULT_EXPECTED_DELIVERY_DATE);
+        purchaseOrder.setIsTaxable(DEFAULT_IS_TAXABLE);
+        purchaseOrder.setIsLocked(DEFAULT_IS_LOCKED);
+        purchaseOrder.setComment(DEFAULT_COMMENT);
+        purchaseOrder.setTaxAmount(DEFAULT_TAX_AMOUNT);
+        purchaseOrder.setTotal(DEFAULT_TOTAL);
+        purchaseOrder.setCost(DEFAULT_COST);
+    }
+
+    @Test
+    @Transactional
+    public void createPurchaseOrder() throws Exception {
+        int databaseSizeBeforeCreate = purchaseOrderRepository.findAll().size();
+
+        // Create the PurchaseOrder
+        PurchaseOrderDTO purchaseOrderDTO = purchaseOrderMapper.purchaseOrderToPurchaseOrderDTO(purchaseOrder);
+
+        restPurchaseOrderMockMvc.perform(post("/api/purchaseOrders")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(purchaseOrderDTO)))
+                .andExpect(status().isCreated());
+
+        // Validate the PurchaseOrder in the database
+        List<PurchaseOrder> purchaseOrders = purchaseOrderRepository.findAll();
+        assertThat(purchaseOrders).hasSize(databaseSizeBeforeCreate + 1);
+        PurchaseOrder testPurchaseOrder = purchaseOrders.get(purchaseOrders.size() - 1);
+        assertThat(testPurchaseOrder.getOrderNo()).isEqualTo(DEFAULT_ORDER_NO);
+        assertThat(testPurchaseOrder.getStatus()).isEqualTo(DEFAULT_STATUS);
+        assertThat(testPurchaseOrder.getCreatedDate().toDateTime(DateTimeZone.UTC)).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testPurchaseOrder.getRef()).isEqualTo(DEFAULT_REF);
+        assertThat(testPurchaseOrder.getExpectedDeliveryDate()).isEqualTo(DEFAULT_EXPECTED_DELIVERY_DATE);
+        assertThat(testPurchaseOrder.getIsTaxable()).isEqualTo(DEFAULT_IS_TAXABLE);
+        assertThat(testPurchaseOrder.getIsLocked()).isEqualTo(DEFAULT_IS_LOCKED);
+        assertThat(testPurchaseOrder.getComment()).isEqualTo(DEFAULT_COMMENT);
+        assertThat(testPurchaseOrder.getTaxAmount()).isEqualTo(DEFAULT_TAX_AMOUNT);
+        assertThat(testPurchaseOrder.getTotal()).isEqualTo(DEFAULT_TOTAL);
+        assertThat(testPurchaseOrder.getCost()).isEqualTo(DEFAULT_COST);
+    }
+
+    @Test
+    @Transactional
+    public void getAllPurchaseOrders() throws Exception {
+        // Initialize the database
+        purchaseOrderRepository.saveAndFlush(purchaseOrder);
+
+        // Get all the purchaseOrders
+        restPurchaseOrderMockMvc.perform(get("/api/purchaseOrders"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.[*].id").value(hasItem(purchaseOrder.getId().intValue())))
+                .andExpect(jsonPath("$.[*].orderNo").value(hasItem(DEFAULT_ORDER_NO.toString())))
+                .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
+                .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE_STR)))
+                .andExpect(jsonPath("$.[*].ref").value(hasItem(DEFAULT_REF.toString())))
+                .andExpect(jsonPath("$.[*].expectedDeliveryDate").value(hasItem(DEFAULT_EXPECTED_DELIVERY_DATE.toString())))
+                .andExpect(jsonPath("$.[*].isTaxable").value(hasItem(DEFAULT_IS_TAXABLE.booleanValue())))
+                .andExpect(jsonPath("$.[*].isLocked").value(hasItem(DEFAULT_IS_LOCKED.booleanValue())))
+                .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT.toString())))
+                .andExpect(jsonPath("$.[*].taxAmount").value(hasItem(DEFAULT_TAX_AMOUNT.intValue())))
+                .andExpect(jsonPath("$.[*].total").value(hasItem(DEFAULT_TOTAL.intValue())))
+                .andExpect(jsonPath("$.[*].cost").value(hasItem(DEFAULT_COST.intValue())));
+    }
+
+    @Test
+    @Transactional
+    public void getPurchaseOrder() throws Exception {
+        // Initialize the database
+        purchaseOrderRepository.saveAndFlush(purchaseOrder);
+
+        // Get the purchaseOrder
+        restPurchaseOrderMockMvc.perform(get("/api/purchaseOrders/{id}", purchaseOrder.getId()))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$.id").value(purchaseOrder.getId().intValue()))
+            .andExpect(jsonPath("$.orderNo").value(DEFAULT_ORDER_NO.toString()))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
+            .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE_STR))
+            .andExpect(jsonPath("$.ref").value(DEFAULT_REF.toString()))
+            .andExpect(jsonPath("$.expectedDeliveryDate").value(DEFAULT_EXPECTED_DELIVERY_DATE.toString()))
+            .andExpect(jsonPath("$.isTaxable").value(DEFAULT_IS_TAXABLE.booleanValue()))
+            .andExpect(jsonPath("$.isLocked").value(DEFAULT_IS_LOCKED.booleanValue()))
+            .andExpect(jsonPath("$.comment").value(DEFAULT_COMMENT.toString()))
+            .andExpect(jsonPath("$.taxAmount").value(DEFAULT_TAX_AMOUNT.intValue()))
+            .andExpect(jsonPath("$.total").value(DEFAULT_TOTAL.intValue()))
+            .andExpect(jsonPath("$.cost").value(DEFAULT_COST.intValue()));
+    }
+
+    @Test
+    @Transactional
+    public void getNonExistingPurchaseOrder() throws Exception {
+        // Get the purchaseOrder
+        restPurchaseOrderMockMvc.perform(get("/api/purchaseOrders/{id}", Long.MAX_VALUE))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    @Transactional
+    public void updatePurchaseOrder() throws Exception {
+        // Initialize the database
+        purchaseOrderRepository.saveAndFlush(purchaseOrder);
+
+		int databaseSizeBeforeUpdate = purchaseOrderRepository.findAll().size();
+
+        // Update the purchaseOrder
+        purchaseOrder.setOrderNo(UPDATED_ORDER_NO);
+        purchaseOrder.setStatus(UPDATED_STATUS);
+        purchaseOrder.setCreatedDate(UPDATED_CREATED_DATE);
+        purchaseOrder.setRef(UPDATED_REF);
+        purchaseOrder.setExpectedDeliveryDate(UPDATED_EXPECTED_DELIVERY_DATE);
+        purchaseOrder.setIsTaxable(UPDATED_IS_TAXABLE);
+        purchaseOrder.setIsLocked(UPDATED_IS_LOCKED);
+        purchaseOrder.setComment(UPDATED_COMMENT);
+        purchaseOrder.setTaxAmount(UPDATED_TAX_AMOUNT);
+        purchaseOrder.setTotal(UPDATED_TOTAL);
+        purchaseOrder.setCost(UPDATED_COST);
+        PurchaseOrderDTO purchaseOrderDTO = purchaseOrderMapper.purchaseOrderToPurchaseOrderDTO(purchaseOrder);
+
+        restPurchaseOrderMockMvc.perform(put("/api/purchaseOrders")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(purchaseOrderDTO)))
+                .andExpect(status().isOk());
+
+        // Validate the PurchaseOrder in the database
+        List<PurchaseOrder> purchaseOrders = purchaseOrderRepository.findAll();
+        assertThat(purchaseOrders).hasSize(databaseSizeBeforeUpdate);
+        PurchaseOrder testPurchaseOrder = purchaseOrders.get(purchaseOrders.size() - 1);
+        assertThat(testPurchaseOrder.getOrderNo()).isEqualTo(UPDATED_ORDER_NO);
+        assertThat(testPurchaseOrder.getStatus()).isEqualTo(UPDATED_STATUS);
+        assertThat(testPurchaseOrder.getCreatedDate().toDateTime(DateTimeZone.UTC)).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testPurchaseOrder.getRef()).isEqualTo(UPDATED_REF);
+        assertThat(testPurchaseOrder.getExpectedDeliveryDate()).isEqualTo(UPDATED_EXPECTED_DELIVERY_DATE);
+        assertThat(testPurchaseOrder.getIsTaxable()).isEqualTo(UPDATED_IS_TAXABLE);
+        assertThat(testPurchaseOrder.getIsLocked()).isEqualTo(UPDATED_IS_LOCKED);
+        assertThat(testPurchaseOrder.getComment()).isEqualTo(UPDATED_COMMENT);
+        assertThat(testPurchaseOrder.getTaxAmount()).isEqualTo(UPDATED_TAX_AMOUNT);
+        assertThat(testPurchaseOrder.getTotal()).isEqualTo(UPDATED_TOTAL);
+        assertThat(testPurchaseOrder.getCost()).isEqualTo(UPDATED_COST);
+    }
+
+    @Test
+    @Transactional
+    public void deletePurchaseOrder() throws Exception {
+        // Initialize the database
+        purchaseOrderRepository.saveAndFlush(purchaseOrder);
+
+		int databaseSizeBeforeDelete = purchaseOrderRepository.findAll().size();
+
+        // Get the purchaseOrder
+        restPurchaseOrderMockMvc.perform(delete("/api/purchaseOrders/{id}", purchaseOrder.getId())
+                .accept(TestUtil.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk());
+
+        // Validate the database is empty
+        List<PurchaseOrder> purchaseOrders = purchaseOrderRepository.findAll();
+        assertThat(purchaseOrders).hasSize(databaseSizeBeforeDelete - 1);
+    }
+}

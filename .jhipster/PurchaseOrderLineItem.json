@@ -1,0 +1,100 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "purchaseOrder",
+            "otherEntityName": "purchaseOrder",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "taxRate",
+            "otherEntityName": "taxTable",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "cost",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "listPrice",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "qtyOrdered",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "qtyDelivered",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "qtyPreviouslyDelivered",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "qtyImported",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "taxCharge",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "discountPercentage",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "lineNo",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "listPriceDiscount",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "unitMeasure",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "isHidden",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "Refer1",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151015054819",
+    "dto": "no",
+    "pagination": "pagination"
+}
