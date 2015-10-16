@@ -57,13 +57,14 @@
                     <th>QtyDelivered</th>
                     <th>QtyPreviouslyDelivered</th>
                     <th>QtyImported</th>
-                    <th>TaxCharge</th>
+                    <th>TotalTaxCharge</th>
                     <th>DiscountPercentage</th>
                     <th>LineNo</th>
                     <th>ListPriceDiscount</th>
                     <th>UnitMeasure</th>
                     <th>IsHidden</th>
-                    <th>Refer1</th>
+                    <th>Ref1</th>
+                    <th>Ref2</th>
                     <th>purchaseOrder</th>
                     <th>product</th>
                     <th>taxRate</th>
@@ -80,13 +81,14 @@
                     <td>{{purchaseOrderLineItem.qtyDelivered}}</td>
                     <td>{{purchaseOrderLineItem.qtyPreviouslyDelivered}}</td>
                     <td>{{purchaseOrderLineItem.qtyImported}}</td>
-                    <td>{{purchaseOrderLineItem.taxCharge}}</td>
+                    <td>{{purchaseOrderLineItem.totalTaxCharge}}</td>
                     <td>{{purchaseOrderLineItem.discountPercentage}}</td>
                     <td>{{purchaseOrderLineItem.lineNo}}</td>
                     <td>{{purchaseOrderLineItem.listPriceDiscount}}</td>
                     <td>{{purchaseOrderLineItem.unitMeasure}}</td>
                     <td>{{purchaseOrderLineItem.isHidden}}</td>
-                    <td>{{purchaseOrderLineItem.Refer1}}</td>
+                    <td>{{purchaseOrderLineItem.Ref1}}</td>
+                    <td>{{purchaseOrderLineItem.Ref2}}</td>
                     <td>
                         <a ui-sref="purchaseOrder.detail({id:purchaseOrderLineItem.purchaseOrder.id})">{{purchaseOrderLineItem.purchaseOrder.id}}</a>
                     </td>

@@ -66,9 +66,10 @@ angular.module('bssuiteApp')
                 prepayment: null,
                 prepaymentNo: null,
                 comment: null,
-                taxAmount: null,
-                total: null,
-                cost: null,
+                totalTaxAmount: null,
+                totalSellPrice: null,
+                totalCost: null,
+                isSuspended: null,
                 id: null
             };
         };

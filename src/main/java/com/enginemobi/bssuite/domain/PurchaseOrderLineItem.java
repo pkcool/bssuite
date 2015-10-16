@@ -46,8 +46,8 @@ public class PurchaseOrderLineItem implements Serializable {
     @Column(name = "qty_imported")
     private Double qtyImported;
     
-    @Column(name = "tax_charge", precision=10, scale=2)
-    private BigDecimal taxCharge;
+    @Column(name = "total_tax_charge", precision=10, scale=2)
+    private BigDecimal totalTaxCharge;
     
     @Column(name = "discount_percentage", precision=10, scale=2)
     private BigDecimal discountPercentage;
@@ -64,8 +64,11 @@ public class PurchaseOrderLineItem implements Serializable {
     @Column(name = "is_hidden")
     private Boolean isHidden;
     
-    @Column(name = "refer1")
-    private String Refer1;
+    @Column(name = "ref1")
+    private String Ref1;
+    
+    @Column(name = "ref2")
+    private String Ref2;
 
     @ManyToOne
     private PurchaseOrder purchaseOrder;
@@ -140,12 +143,12 @@ public class PurchaseOrderLineItem implements Serializable {
         this.qtyImported = qtyImported;
     }
 
-    public BigDecimal getTaxCharge() {
-        return taxCharge;
+    public BigDecimal getTotalTaxCharge() {
+        return totalTaxCharge;
     }
 
-    public void setTaxCharge(BigDecimal taxCharge) {
-        this.taxCharge = taxCharge;
+    public void setTotalTaxCharge(BigDecimal totalTaxCharge) {
+        this.totalTaxCharge = totalTaxCharge;
     }
 
     public BigDecimal getDiscountPercentage() {
@@ -188,12 +191,20 @@ public class PurchaseOrderLineItem implements Serializable {
         this.isHidden = isHidden;
     }
 
-    public String getRefer1() {
-        return Refer1;
+    public String getRef1() {
+        return Ref1;
     }
 
-    public void setRefer1(String Refer1) {
-        this.Refer1 = Refer1;
+    public void setRef1(String Ref1) {
+        this.Ref1 = Ref1;
+    }
+
+    public String getRef2() {
+        return Ref2;
+    }
+
+    public void setRef2(String Ref2) {
+        this.Ref2 = Ref2;
     }
 
     public PurchaseOrder getPurchaseOrder() {
@@ -252,13 +263,14 @@ public class PurchaseOrderLineItem implements Serializable {
                 ", qtyDelivered='" + qtyDelivered + "'" +
                 ", qtyPreviouslyDelivered='" + qtyPreviouslyDelivered + "'" +
                 ", qtyImported='" + qtyImported + "'" +
-                ", taxCharge='" + taxCharge + "'" +
+                ", totalTaxCharge='" + totalTaxCharge + "'" +
                 ", discountPercentage='" + discountPercentage + "'" +
                 ", lineNo='" + lineNo + "'" +
                 ", listPriceDiscount='" + listPriceDiscount + "'" +
                 ", unitMeasure='" + unitMeasure + "'" +
                 ", isHidden='" + isHidden + "'" +
-                ", Refer1='" + Refer1 + "'" +
+                ", Ref1='" + Ref1 + "'" +
+                ", Ref2='" + Ref2 + "'" +
                 '}';
     }
 }

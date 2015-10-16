@@ -56,13 +56,14 @@ angular.module('bssuiteApp')
                 qtyDelivered: null,
                 qtyPreviouslyDelivered: null,
                 qtyImported: null,
-                taxCharge: null,
+                totalTaxCharge: null,
                 discountPercentage: null,
                 lineNo: null,
                 listPriceDiscount: null,
                 unitMeasure: null,
                 isHidden: null,
-                Refer1: null,
+                Ref1: null,
+                Ref2: null,
                 id: null
             };
         };

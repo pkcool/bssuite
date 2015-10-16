@@ -27,7 +27,7 @@
             <column name="sold_for" type="decimal(10,2)"/>
             <column name="qty_ordered" type="double"/>
             <column name="qty_allocated" type="double"/>
-            <column name="tax_charge" type="decimal(10,2)"/>
+            <column name="total_tax_charge" type="decimal(10,2)"/>
             <column name="discount_percentage" type="decimal(10,2)"/>
             <column name="line_no" type="integer"/>
             <column name="required_date" type="date"/>
@@ -35,7 +35,8 @@
             <column name="list_price_discount" type="decimal(10,2)"/>
             <column name="cost2" type="decimal(10,2)"/>
             <column name="is_hidden" type="bit"/>
-            <column name="refer1" type="varchar(255)"/>
+            <column name="ref1" type="varchar(255)"/>
+            <column name="ref2" type="varchar(255)"/>
             <column name="sales_order_id" type="bigint"/>
             <column name="product_id" type="bigint"/>
             <column name="tax_rate_id" type="bigint"/>

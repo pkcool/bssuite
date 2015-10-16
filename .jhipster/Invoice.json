@@ -250,17 +250,17 @@
         },
         {
             "fieldId": 36,
-            "fieldName": "taxAmount",
+            "fieldName": "totalTaxAmount",
             "fieldType": "BigDecimal"
         },
         {
             "fieldId": 37,
-            "fieldName": "total",
+            "fieldName": "totalSellPrice",
             "fieldType": "BigDecimal"
         },
         {
             "fieldId": 38,
-            "fieldName": "cost",
+            "fieldName": "totalCost",
             "fieldType": "BigDecimal"
         },
         {

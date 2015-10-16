@@ -150,14 +150,14 @@ private static final InvoiceTxnType DEFAULT_INVOICE_TXN_TYPE = InvoiceTxnType.IN
     private static final String DEFAULT_COMMENT = "AAAAA";
     private static final String UPDATED_COMMENT = "BBBBB";
 
-    private static final BigDecimal DEFAULT_TAX_AMOUNT = new BigDecimal(1);
-    private static final BigDecimal UPDATED_TAX_AMOUNT = new BigDecimal(2);
+    private static final BigDecimal DEFAULT_TOTAL_TAX_AMOUNT = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TOTAL_TAX_AMOUNT = new BigDecimal(2);
 
-    private static final BigDecimal DEFAULT_TOTAL = new BigDecimal(1);
-    private static final BigDecimal UPDATED_TOTAL = new BigDecimal(2);
+    private static final BigDecimal DEFAULT_TOTAL_SELL_PRICE = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TOTAL_SELL_PRICE = new BigDecimal(2);
 
-    private static final BigDecimal DEFAULT_COST = new BigDecimal(1);
-    private static final BigDecimal UPDATED_COST = new BigDecimal(2);
+    private static final BigDecimal DEFAULT_TOTAL_COST = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TOTAL_COST = new BigDecimal(2);
 
     private static final Boolean DEFAULT_IS_ON_HOLD = false;
     private static final Boolean UPDATED_IS_ON_HOLD = true;
@@ -244,9 +244,9 @@ private static final InvoiceSource DEFAULT_GENERATED_FROM = InvoiceSource.INVOIC
         invoice.setPrepayment(DEFAULT_PREPAYMENT);
         invoice.setIn2(DEFAULT_IN2);
         invoice.setComment(DEFAULT_COMMENT);
-        invoice.setTaxAmount(DEFAULT_TAX_AMOUNT);
-        invoice.setTotal(DEFAULT_TOTAL);
-        invoice.setCost(DEFAULT_COST);
+        invoice.setTotalTaxAmount(DEFAULT_TOTAL_TAX_AMOUNT);
+        invoice.setTotalSellPrice(DEFAULT_TOTAL_SELL_PRICE);
+        invoice.setTotalCost(DEFAULT_TOTAL_COST);
         invoice.setIsOnHold(DEFAULT_IS_ON_HOLD);
         invoice.setIsLayBy(DEFAULT_IS_LAY_BY);
         invoice.setIsExternalTxn(DEFAULT_IS_EXTERNAL_TXN);
@@ -306,9 +306,9 @@ private static final InvoiceSource DEFAULT_GENERATED_FROM = InvoiceSource.INVOIC
         assertThat(testInvoice.getPrepayment()).isEqualTo(DEFAULT_PREPAYMENT);
         assertThat(testInvoice.getIn2()).isEqualTo(DEFAULT_IN2);
         assertThat(testInvoice.getComment()).isEqualTo(DEFAULT_COMMENT);
-        assertThat(testInvoice.getTaxAmount()).isEqualTo(DEFAULT_TAX_AMOUNT);
-        assertThat(testInvoice.getTotal()).isEqualTo(DEFAULT_TOTAL);
-        assertThat(testInvoice.getCost()).isEqualTo(DEFAULT_COST);
+        assertThat(testInvoice.getTotalTaxAmount()).isEqualTo(DEFAULT_TOTAL_TAX_AMOUNT);
+        assertThat(testInvoice.getTotalSellPrice()).isEqualTo(DEFAULT_TOTAL_SELL_PRICE);
+        assertThat(testInvoice.getTotalCost()).isEqualTo(DEFAULT_TOTAL_COST);
         assertThat(testInvoice.getIsOnHold()).isEqualTo(DEFAULT_IS_ON_HOLD);
         assertThat(testInvoice.getIsLayBy()).isEqualTo(DEFAULT_IS_LAY_BY);
         assertThat(testInvoice.getIsExternalTxn()).isEqualTo(DEFAULT_IS_EXTERNAL_TXN);
@@ -362,9 +362,9 @@ private static final InvoiceSource DEFAULT_GENERATED_FROM = InvoiceSource.INVOIC
                 .andExpect(jsonPath("$.[*].prepayment").value(hasItem(DEFAULT_PREPAYMENT.intValue())))
                 .andExpect(jsonPath("$.[*].in2").value(hasItem(DEFAULT_IN2.toString())))
                 .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT.toString())))
-                .andExpect(jsonPath("$.[*].taxAmount").value(hasItem(DEFAULT_TAX_AMOUNT.intValue())))
-                .andExpect(jsonPath("$.[*].total").value(hasItem(DEFAULT_TOTAL.intValue())))
-                .andExpect(jsonPath("$.[*].cost").value(hasItem(DEFAULT_COST.intValue())))
+                .andExpect(jsonPath("$.[*].totalTaxAmount").value(hasItem(DEFAULT_TOTAL_TAX_AMOUNT.intValue())))
+                .andExpect(jsonPath("$.[*].totalSellPrice").value(hasItem(DEFAULT_TOTAL_SELL_PRICE.intValue())))
+                .andExpect(jsonPath("$.[*].totalCost").value(hasItem(DEFAULT_TOTAL_COST.intValue())))
                 .andExpect(jsonPath("$.[*].isOnHold").value(hasItem(DEFAULT_IS_ON_HOLD.booleanValue())))
                 .andExpect(jsonPath("$.[*].isLayBy").value(hasItem(DEFAULT_IS_LAY_BY.booleanValue())))
                 .andExpect(jsonPath("$.[*].isExternalTxn").value(hasItem(DEFAULT_IS_EXTERNAL_TXN.booleanValue())))
@@ -418,9 +418,9 @@ private static final InvoiceSource DEFAULT_GENERATED_FROM = InvoiceSource.INVOIC
             .andExpect(jsonPath("$.prepayment").value(DEFAULT_PREPAYMENT.intValue()))
             .andExpect(jsonPath("$.in2").value(DEFAULT_IN2.toString()))
             .andExpect(jsonPath("$.comment").value(DEFAULT_COMMENT.toString()))
-            .andExpect(jsonPath("$.taxAmount").value(DEFAULT_TAX_AMOUNT.intValue()))
-            .andExpect(jsonPath("$.total").value(DEFAULT_TOTAL.intValue()))
-            .andExpect(jsonPath("$.cost").value(DEFAULT_COST.intValue()))
+            .andExpect(jsonPath("$.totalTaxAmount").value(DEFAULT_TOTAL_TAX_AMOUNT.intValue()))
+            .andExpect(jsonPath("$.totalSellPrice").value(DEFAULT_TOTAL_SELL_PRICE.intValue()))
+            .andExpect(jsonPath("$.totalCost").value(DEFAULT_TOTAL_COST.intValue()))
             .andExpect(jsonPath("$.isOnHold").value(DEFAULT_IS_ON_HOLD.booleanValue()))
             .andExpect(jsonPath("$.isLayBy").value(DEFAULT_IS_LAY_BY.booleanValue()))
             .andExpect(jsonPath("$.isExternalTxn").value(DEFAULT_IS_EXTERNAL_TXN.booleanValue()))
@@ -480,9 +480,9 @@ private static final InvoiceSource DEFAULT_GENERATED_FROM = InvoiceSource.INVOIC
         invoice.setPrepayment(UPDATED_PREPAYMENT);
         invoice.setIn2(UPDATED_IN2);
         invoice.setComment(UPDATED_COMMENT);
-        invoice.setTaxAmount(UPDATED_TAX_AMOUNT);
-        invoice.setTotal(UPDATED_TOTAL);
-        invoice.setCost(UPDATED_COST);
+        invoice.setTotalTaxAmount(UPDATED_TOTAL_TAX_AMOUNT);
+        invoice.setTotalSellPrice(UPDATED_TOTAL_SELL_PRICE);
+        invoice.setTotalCost(UPDATED_TOTAL_COST);
         invoice.setIsOnHold(UPDATED_IS_ON_HOLD);
         invoice.setIsLayBy(UPDATED_IS_LAY_BY);
         invoice.setIsExternalTxn(UPDATED_IS_EXTERNAL_TXN);
@@ -534,9 +534,9 @@ private static final InvoiceSource DEFAULT_GENERATED_FROM = InvoiceSource.INVOIC
         assertThat(testInvoice.getPrepayment()).isEqualTo(UPDATED_PREPAYMENT);
         assertThat(testInvoice.getIn2()).isEqualTo(UPDATED_IN2);
         assertThat(testInvoice.getComment()).isEqualTo(UPDATED_COMMENT);
-        assertThat(testInvoice.getTaxAmount()).isEqualTo(UPDATED_TAX_AMOUNT);
-        assertThat(testInvoice.getTotal()).isEqualTo(UPDATED_TOTAL);
-        assertThat(testInvoice.getCost()).isEqualTo(UPDATED_COST);
+        assertThat(testInvoice.getTotalTaxAmount()).isEqualTo(UPDATED_TOTAL_TAX_AMOUNT);
+        assertThat(testInvoice.getTotalSellPrice()).isEqualTo(UPDATED_TOTAL_SELL_PRICE);
+        assertThat(testInvoice.getTotalCost()).isEqualTo(UPDATED_TOTAL_COST);
         assertThat(testInvoice.getIsOnHold()).isEqualTo(UPDATED_IS_ON_HOLD);
         assertThat(testInvoice.getIsLayBy()).isEqualTo(UPDATED_IS_LAY_BY);
         assertThat(testInvoice.getIsExternalTxn()).isEqualTo(UPDATED_IS_EXTERNAL_TXN);

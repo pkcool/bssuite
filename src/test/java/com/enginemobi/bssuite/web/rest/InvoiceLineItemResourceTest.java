@@ -64,8 +64,8 @@ public class InvoiceLineItemResourceTest {
     private static final Double DEFAULT_QTY_PICKED = 1D;
     private static final Double UPDATED_QTY_PICKED = 2D;
 
-    private static final BigDecimal DEFAULT_TAX_CHARGE = new BigDecimal(1);
-    private static final BigDecimal UPDATED_TAX_CHARGE = new BigDecimal(2);
+    private static final BigDecimal DEFAULT_TOTAL_TAX_CHARGE = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TOTAL_TAX_CHARGE = new BigDecimal(2);
 
     private static final BigDecimal DEFAULT_DISCOUNT_PERCENTAGE = new BigDecimal(1);
     private static final BigDecimal UPDATED_DISCOUNT_PERCENTAGE = new BigDecimal(2);
@@ -130,7 +130,7 @@ public class InvoiceLineItemResourceTest {
         invoiceLineItem.setQtySold(DEFAULT_QTY_SOLD);
         invoiceLineItem.setQtyReturned(DEFAULT_QTY_RETURNED);
         invoiceLineItem.setQtyPicked(DEFAULT_QTY_PICKED);
-        invoiceLineItem.setTaxCharge(DEFAULT_TAX_CHARGE);
+        invoiceLineItem.setTotalTaxCharge(DEFAULT_TOTAL_TAX_CHARGE);
         invoiceLineItem.setDiscountPercentage(DEFAULT_DISCOUNT_PERCENTAGE);
         invoiceLineItem.setDiscountDescription(DEFAULT_DISCOUNT_DESCRIPTION);
         invoiceLineItem.setDiscountPriceGroupCode(DEFAULT_DISCOUNT_PRICE_GROUP_CODE);
@@ -166,7 +166,7 @@ public class InvoiceLineItemResourceTest {
         assertThat(testInvoiceLineItem.getQtySold()).isEqualTo(DEFAULT_QTY_SOLD);
         assertThat(testInvoiceLineItem.getQtyReturned()).isEqualTo(DEFAULT_QTY_RETURNED);
         assertThat(testInvoiceLineItem.getQtyPicked()).isEqualTo(DEFAULT_QTY_PICKED);
-        assertThat(testInvoiceLineItem.getTaxCharge()).isEqualTo(DEFAULT_TAX_CHARGE);
+        assertThat(testInvoiceLineItem.getTotalTaxCharge()).isEqualTo(DEFAULT_TOTAL_TAX_CHARGE);
         assertThat(testInvoiceLineItem.getDiscountPercentage()).isEqualTo(DEFAULT_DISCOUNT_PERCENTAGE);
         assertThat(testInvoiceLineItem.getDiscountDescription()).isEqualTo(DEFAULT_DISCOUNT_DESCRIPTION);
         assertThat(testInvoiceLineItem.getDiscountPriceGroupCode()).isEqualTo(DEFAULT_DISCOUNT_PRICE_GROUP_CODE);
@@ -197,7 +197,7 @@ public class InvoiceLineItemResourceTest {
                 .andExpect(jsonPath("$.[*].qtySold").value(hasItem(DEFAULT_QTY_SOLD.doubleValue())))
                 .andExpect(jsonPath("$.[*].qtyReturned").value(hasItem(DEFAULT_QTY_RETURNED.doubleValue())))
                 .andExpect(jsonPath("$.[*].qtyPicked").value(hasItem(DEFAULT_QTY_PICKED.doubleValue())))
-                .andExpect(jsonPath("$.[*].taxCharge").value(hasItem(DEFAULT_TAX_CHARGE.intValue())))
+                .andExpect(jsonPath("$.[*].totalTaxCharge").value(hasItem(DEFAULT_TOTAL_TAX_CHARGE.intValue())))
                 .andExpect(jsonPath("$.[*].discountPercentage").value(hasItem(DEFAULT_DISCOUNT_PERCENTAGE.intValue())))
                 .andExpect(jsonPath("$.[*].discountDescription").value(hasItem(DEFAULT_DISCOUNT_DESCRIPTION.toString())))
                 .andExpect(jsonPath("$.[*].discountPriceGroupCode").value(hasItem(DEFAULT_DISCOUNT_PRICE_GROUP_CODE.toString())))
@@ -228,7 +228,7 @@ public class InvoiceLineItemResourceTest {
             .andExpect(jsonPath("$.qtySold").value(DEFAULT_QTY_SOLD.doubleValue()))
             .andExpect(jsonPath("$.qtyReturned").value(DEFAULT_QTY_RETURNED.doubleValue()))
             .andExpect(jsonPath("$.qtyPicked").value(DEFAULT_QTY_PICKED.doubleValue()))
-            .andExpect(jsonPath("$.taxCharge").value(DEFAULT_TAX_CHARGE.intValue()))
+            .andExpect(jsonPath("$.totalTaxCharge").value(DEFAULT_TOTAL_TAX_CHARGE.intValue()))
             .andExpect(jsonPath("$.discountPercentage").value(DEFAULT_DISCOUNT_PERCENTAGE.intValue()))
             .andExpect(jsonPath("$.discountDescription").value(DEFAULT_DISCOUNT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.discountPriceGroupCode").value(DEFAULT_DISCOUNT_PRICE_GROUP_CODE.toString()))
@@ -265,7 +265,7 @@ public class InvoiceLineItemResourceTest {
         invoiceLineItem.setQtySold(UPDATED_QTY_SOLD);
         invoiceLineItem.setQtyReturned(UPDATED_QTY_RETURNED);
         invoiceLineItem.setQtyPicked(UPDATED_QTY_PICKED);
-        invoiceLineItem.setTaxCharge(UPDATED_TAX_CHARGE);
+        invoiceLineItem.setTotalTaxCharge(UPDATED_TOTAL_TAX_CHARGE);
         invoiceLineItem.setDiscountPercentage(UPDATED_DISCOUNT_PERCENTAGE);
         invoiceLineItem.setDiscountDescription(UPDATED_DISCOUNT_DESCRIPTION);
         invoiceLineItem.setDiscountPriceGroupCode(UPDATED_DISCOUNT_PRICE_GROUP_CODE);
@@ -293,7 +293,7 @@ public class InvoiceLineItemResourceTest {
         assertThat(testInvoiceLineItem.getQtySold()).isEqualTo(UPDATED_QTY_SOLD);
         assertThat(testInvoiceLineItem.getQtyReturned()).isEqualTo(UPDATED_QTY_RETURNED);
         assertThat(testInvoiceLineItem.getQtyPicked()).isEqualTo(UPDATED_QTY_PICKED);
-        assertThat(testInvoiceLineItem.getTaxCharge()).isEqualTo(UPDATED_TAX_CHARGE);
+        assertThat(testInvoiceLineItem.getTotalTaxCharge()).isEqualTo(UPDATED_TOTAL_TAX_CHARGE);
         assertThat(testInvoiceLineItem.getDiscountPercentage()).isEqualTo(UPDATED_DISCOUNT_PERCENTAGE);
         assertThat(testInvoiceLineItem.getDiscountDescription()).isEqualTo(UPDATED_DISCOUNT_DESCRIPTION);
         assertThat(testInvoiceLineItem.getDiscountPriceGroupCode()).isEqualTo(UPDATED_DISCOUNT_PRICE_GROUP_CODE);

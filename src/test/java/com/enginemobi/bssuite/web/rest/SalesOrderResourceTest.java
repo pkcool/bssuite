@@ -102,14 +102,17 @@ private static final SalesOrderStatus DEFAULT_STATUS = SalesOrderStatus.ONORDER;
     private static final String DEFAULT_COMMENT = "AAAAA";
     private static final String UPDATED_COMMENT = "BBBBB";
 
-    private static final BigDecimal DEFAULT_TAX_AMOUNT = new BigDecimal(1);
-    private static final BigDecimal UPDATED_TAX_AMOUNT = new BigDecimal(2);
+    private static final BigDecimal DEFAULT_TOTAL_TAX_AMOUNT = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TOTAL_TAX_AMOUNT = new BigDecimal(2);
 
-    private static final BigDecimal DEFAULT_TOTAL = new BigDecimal(1);
-    private static final BigDecimal UPDATED_TOTAL = new BigDecimal(2);
+    private static final BigDecimal DEFAULT_TOTAL_SELL_PRICE = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TOTAL_SELL_PRICE = new BigDecimal(2);
 
-    private static final BigDecimal DEFAULT_COST = new BigDecimal(1);
-    private static final BigDecimal UPDATED_COST = new BigDecimal(2);
+    private static final BigDecimal DEFAULT_TOTAL_COST = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TOTAL_COST = new BigDecimal(2);
+
+    private static final Boolean DEFAULT_IS_SUSPENDED = false;
+    private static final Boolean UPDATED_IS_SUSPENDED = true;
 
     @Inject
     private SalesOrderRepository salesOrderRepository;
@@ -162,9 +165,10 @@ private static final SalesOrderStatus DEFAULT_STATUS = SalesOrderStatus.ONORDER;
         salesOrder.setPrepayment(DEFAULT_PREPAYMENT);
         salesOrder.setPrepaymentNo(DEFAULT_PREPAYMENT_NO);
         salesOrder.setComment(DEFAULT_COMMENT);
-        salesOrder.setTaxAmount(DEFAULT_TAX_AMOUNT);
-        salesOrder.setTotal(DEFAULT_TOTAL);
-        salesOrder.setCost(DEFAULT_COST);
+        salesOrder.setTotalTaxAmount(DEFAULT_TOTAL_TAX_AMOUNT);
+        salesOrder.setTotalSellPrice(DEFAULT_TOTAL_SELL_PRICE);
+        salesOrder.setTotalCost(DEFAULT_TOTAL_COST);
+        salesOrder.setIsSuspended(DEFAULT_IS_SUSPENDED);
     }
 
     @Test
@@ -201,9 +205,10 @@ private static final SalesOrderStatus DEFAULT_STATUS = SalesOrderStatus.ONORDER;
         assertThat(testSalesOrder.getPrepayment()).isEqualTo(DEFAULT_PREPAYMENT);
         assertThat(testSalesOrder.getPrepaymentNo()).isEqualTo(DEFAULT_PREPAYMENT_NO);
         assertThat(testSalesOrder.getComment()).isEqualTo(DEFAULT_COMMENT);
-        assertThat(testSalesOrder.getTaxAmount()).isEqualTo(DEFAULT_TAX_AMOUNT);
-        assertThat(testSalesOrder.getTotal()).isEqualTo(DEFAULT_TOTAL);
-        assertThat(testSalesOrder.getCost()).isEqualTo(DEFAULT_COST);
+        assertThat(testSalesOrder.getTotalTaxAmount()).isEqualTo(DEFAULT_TOTAL_TAX_AMOUNT);
+        assertThat(testSalesOrder.getTotalSellPrice()).isEqualTo(DEFAULT_TOTAL_SELL_PRICE);
+        assertThat(testSalesOrder.getTotalCost()).isEqualTo(DEFAULT_TOTAL_COST);
+        assertThat(testSalesOrder.getIsSuspended()).isEqualTo(DEFAULT_IS_SUSPENDED);
     }
 
     @Test
@@ -234,9 +239,10 @@ private static final SalesOrderStatus DEFAULT_STATUS = SalesOrderStatus.ONORDER;
                 .andExpect(jsonPath("$.[*].prepayment").value(hasItem(DEFAULT_PREPAYMENT.intValue())))
                 .andExpect(jsonPath("$.[*].prepaymentNo").value(hasItem(DEFAULT_PREPAYMENT_NO.toString())))
                 .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT.toString())))
-                .andExpect(jsonPath("$.[*].taxAmount").value(hasItem(DEFAULT_TAX_AMOUNT.intValue())))
-                .andExpect(jsonPath("$.[*].total").value(hasItem(DEFAULT_TOTAL.intValue())))
-                .andExpect(jsonPath("$.[*].cost").value(hasItem(DEFAULT_COST.intValue())));
+                .andExpect(jsonPath("$.[*].totalTaxAmount").value(hasItem(DEFAULT_TOTAL_TAX_AMOUNT.intValue())))
+                .andExpect(jsonPath("$.[*].totalSellPrice").value(hasItem(DEFAULT_TOTAL_SELL_PRICE.intValue())))
+                .andExpect(jsonPath("$.[*].totalCost").value(hasItem(DEFAULT_TOTAL_COST.intValue())))
+                .andExpect(jsonPath("$.[*].isSuspended").value(hasItem(DEFAULT_IS_SUSPENDED.booleanValue())));
     }
 
     @Test
@@ -267,9 +273,10 @@ private static final SalesOrderStatus DEFAULT_STATUS = SalesOrderStatus.ONORDER;
             .andExpect(jsonPath("$.prepayment").value(DEFAULT_PREPAYMENT.intValue()))
             .andExpect(jsonPath("$.prepaymentNo").value(DEFAULT_PREPAYMENT_NO.toString()))
             .andExpect(jsonPath("$.comment").value(DEFAULT_COMMENT.toString()))
-            .andExpect(jsonPath("$.taxAmount").value(DEFAULT_TAX_AMOUNT.intValue()))
-            .andExpect(jsonPath("$.total").value(DEFAULT_TOTAL.intValue()))
-            .andExpect(jsonPath("$.cost").value(DEFAULT_COST.intValue()));
+            .andExpect(jsonPath("$.totalTaxAmount").value(DEFAULT_TOTAL_TAX_AMOUNT.intValue()))
+            .andExpect(jsonPath("$.totalSellPrice").value(DEFAULT_TOTAL_SELL_PRICE.intValue()))
+            .andExpect(jsonPath("$.totalCost").value(DEFAULT_TOTAL_COST.intValue()))
+            .andExpect(jsonPath("$.isSuspended").value(DEFAULT_IS_SUSPENDED.booleanValue()));
     }
 
     @Test
@@ -306,9 +313,10 @@ private static final SalesOrderStatus DEFAULT_STATUS = SalesOrderStatus.ONORDER;
         salesOrder.setPrepayment(UPDATED_PREPAYMENT);
         salesOrder.setPrepaymentNo(UPDATED_PREPAYMENT_NO);
         salesOrder.setComment(UPDATED_COMMENT);
-        salesOrder.setTaxAmount(UPDATED_TAX_AMOUNT);
-        salesOrder.setTotal(UPDATED_TOTAL);
-        salesOrder.setCost(UPDATED_COST);
+        salesOrder.setTotalTaxAmount(UPDATED_TOTAL_TAX_AMOUNT);
+        salesOrder.setTotalSellPrice(UPDATED_TOTAL_SELL_PRICE);
+        salesOrder.setTotalCost(UPDATED_TOTAL_COST);
+        salesOrder.setIsSuspended(UPDATED_IS_SUSPENDED);
         SalesOrderDTO salesOrderDTO = salesOrderMapper.salesOrderToSalesOrderDTO(salesOrder);
 
         restSalesOrderMockMvc.perform(put("/api/salesOrders")
@@ -337,9 +345,10 @@ private static final SalesOrderStatus DEFAULT_STATUS = SalesOrderStatus.ONORDER;
         assertThat(testSalesOrder.getPrepayment()).isEqualTo(UPDATED_PREPAYMENT);
         assertThat(testSalesOrder.getPrepaymentNo()).isEqualTo(UPDATED_PREPAYMENT_NO);
         assertThat(testSalesOrder.getComment()).isEqualTo(UPDATED_COMMENT);
-        assertThat(testSalesOrder.getTaxAmount()).isEqualTo(UPDATED_TAX_AMOUNT);
-        assertThat(testSalesOrder.getTotal()).isEqualTo(UPDATED_TOTAL);
-        assertThat(testSalesOrder.getCost()).isEqualTo(UPDATED_COST);
+        assertThat(testSalesOrder.getTotalTaxAmount()).isEqualTo(UPDATED_TOTAL_TAX_AMOUNT);
+        assertThat(testSalesOrder.getTotalSellPrice()).isEqualTo(UPDATED_TOTAL_SELL_PRICE);
+        assertThat(testSalesOrder.getTotalCost()).isEqualTo(UPDATED_TOTAL_COST);
+        assertThat(testSalesOrder.getIsSuspended()).isEqualTo(UPDATED_IS_SUSPENDED);
     }
 
     @Test

@@ -154,14 +154,14 @@ public class Invoice implements Serializable {
     @Column(name = "comment")
     private String comment;
     
-    @Column(name = "tax_amount", precision=10, scale=2)
-    private BigDecimal taxAmount;
+    @Column(name = "total_tax_amount", precision=10, scale=2)
+    private BigDecimal totalTaxAmount;
     
-    @Column(name = "total", precision=10, scale=2)
-    private BigDecimal total;
+    @Column(name = "total_sell_price", precision=10, scale=2)
+    private BigDecimal totalSellPrice;
     
-    @Column(name = "cost", precision=10, scale=2)
-    private BigDecimal cost;
+    @Column(name = "total_cost", precision=10, scale=2)
+    private BigDecimal totalCost;
     
     @Column(name = "is_on_hold")
     private Boolean isOnHold;
@@ -499,28 +499,28 @@ public class Invoice implements Serializable {
         this.comment = comment;
     }
 
-    public BigDecimal getTaxAmount() {
-        return taxAmount;
+    public BigDecimal getTotalTaxAmount() {
+        return totalTaxAmount;
     }
 
-    public void setTaxAmount(BigDecimal taxAmount) {
-        this.taxAmount = taxAmount;
+    public void setTotalTaxAmount(BigDecimal totalTaxAmount) {
+        this.totalTaxAmount = totalTaxAmount;
     }
 
-    public BigDecimal getTotal() {
-        return total;
+    public BigDecimal getTotalSellPrice() {
+        return totalSellPrice;
     }
 
-    public void setTotal(BigDecimal total) {
-        this.total = total;
+    public void setTotalSellPrice(BigDecimal totalSellPrice) {
+        this.totalSellPrice = totalSellPrice;
     }
 
-    public BigDecimal getCost() {
-        return cost;
+    public BigDecimal getTotalCost() {
+        return totalCost;
     }
 
-    public void setCost(BigDecimal cost) {
-        this.cost = cost;
+    public void setTotalCost(BigDecimal totalCost) {
+        this.totalCost = totalCost;
     }
 
     public Boolean getIsOnHold() {
@@ -703,9 +703,9 @@ public class Invoice implements Serializable {
                 ", prepayment='" + prepayment + "'" +
                 ", in2='" + in2 + "'" +
                 ", comment='" + comment + "'" +
-                ", taxAmount='" + taxAmount + "'" +
-                ", total='" + total + "'" +
-                ", cost='" + cost + "'" +
+                ", totalTaxAmount='" + totalTaxAmount + "'" +
+                ", totalSellPrice='" + totalSellPrice + "'" +
+                ", totalCost='" + totalCost + "'" +
                 ", isOnHold='" + isOnHold + "'" +
                 ", isLayBy='" + isLayBy + "'" +
                 ", isExternalTxn='" + isExternalTxn + "'" +

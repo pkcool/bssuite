@@ -77,14 +77,16 @@ private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ON
     private static final String DEFAULT_COMMENT = "AAAAA";
     private static final String UPDATED_COMMENT = "BBBBB";
 
-    private static final BigDecimal DEFAULT_TAX_AMOUNT = new BigDecimal(1);
-    private static final BigDecimal UPDATED_TAX_AMOUNT = new BigDecimal(2);
+    private static final BigDecimal DEFAULT_TOTAL_TAX_AMOUNT = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TOTAL_TAX_AMOUNT = new BigDecimal(2);
 
-    private static final BigDecimal DEFAULT_TOTAL = new BigDecimal(1);
-    private static final BigDecimal UPDATED_TOTAL = new BigDecimal(2);
+    private static final BigDecimal DEFAULT_TOTAL_COST = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TOTAL_COST = new BigDecimal(2);
+    private static final String DEFAULT_TAX_EXEMPTION_CODE = "AAAAA";
+    private static final String UPDATED_TAX_EXEMPTION_CODE = "BBBBB";
 
-    private static final BigDecimal DEFAULT_COST = new BigDecimal(1);
-    private static final BigDecimal UPDATED_COST = new BigDecimal(2);
+    private static final Boolean DEFAULT_IS_SUSPENDED = false;
+    private static final Boolean UPDATED_IS_SUSPENDED = true;
 
     @Inject
     private PurchaseOrderRepository purchaseOrderRepository;
@@ -128,9 +130,10 @@ private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ON
         purchaseOrder.setIsTaxable(DEFAULT_IS_TAXABLE);
         purchaseOrder.setIsLocked(DEFAULT_IS_LOCKED);
         purchaseOrder.setComment(DEFAULT_COMMENT);
-        purchaseOrder.setTaxAmount(DEFAULT_TAX_AMOUNT);
-        purchaseOrder.setTotal(DEFAULT_TOTAL);
-        purchaseOrder.setCost(DEFAULT_COST);
+        purchaseOrder.setTotalTaxAmount(DEFAULT_TOTAL_TAX_AMOUNT);
+        purchaseOrder.setTotalCost(DEFAULT_TOTAL_COST);
+        purchaseOrder.setTaxExemptionCode(DEFAULT_TAX_EXEMPTION_CODE);
+        purchaseOrder.setIsSuspended(DEFAULT_IS_SUSPENDED);
     }
 
     @Test
@@ -158,9 +161,10 @@ private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ON
         assertThat(testPurchaseOrder.getIsTaxable()).isEqualTo(DEFAULT_IS_TAXABLE);
         assertThat(testPurchaseOrder.getIsLocked()).isEqualTo(DEFAULT_IS_LOCKED);
         assertThat(testPurchaseOrder.getComment()).isEqualTo(DEFAULT_COMMENT);
-        assertThat(testPurchaseOrder.getTaxAmount()).isEqualTo(DEFAULT_TAX_AMOUNT);
-        assertThat(testPurchaseOrder.getTotal()).isEqualTo(DEFAULT_TOTAL);
-        assertThat(testPurchaseOrder.getCost()).isEqualTo(DEFAULT_COST);
+        assertThat(testPurchaseOrder.getTotalTaxAmount()).isEqualTo(DEFAULT_TOTAL_TAX_AMOUNT);
+        assertThat(testPurchaseOrder.getTotalCost()).isEqualTo(DEFAULT_TOTAL_COST);
+        assertThat(testPurchaseOrder.getTaxExemptionCode()).isEqualTo(DEFAULT_TAX_EXEMPTION_CODE);
+        assertThat(testPurchaseOrder.getIsSuspended()).isEqualTo(DEFAULT_IS_SUSPENDED);
     }
 
     @Test
@@ -182,9 +186,10 @@ private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ON
                 .andExpect(jsonPath("$.[*].isTaxable").value(hasItem(DEFAULT_IS_TAXABLE.booleanValue())))
                 .andExpect(jsonPath("$.[*].isLocked").value(hasItem(DEFAULT_IS_LOCKED.booleanValue())))
                 .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT.toString())))
-                .andExpect(jsonPath("$.[*].taxAmount").value(hasItem(DEFAULT_TAX_AMOUNT.intValue())))
-                .andExpect(jsonPath("$.[*].total").value(hasItem(DEFAULT_TOTAL.intValue())))
-                .andExpect(jsonPath("$.[*].cost").value(hasItem(DEFAULT_COST.intValue())));
+                .andExpect(jsonPath("$.[*].totalTaxAmount").value(hasItem(DEFAULT_TOTAL_TAX_AMOUNT.intValue())))
+                .andExpect(jsonPath("$.[*].totalCost").value(hasItem(DEFAULT_TOTAL_COST.intValue())))
+                .andExpect(jsonPath("$.[*].taxExemptionCode").value(hasItem(DEFAULT_TAX_EXEMPTION_CODE.toString())))
+                .andExpect(jsonPath("$.[*].isSuspended").value(hasItem(DEFAULT_IS_SUSPENDED.booleanValue())));
     }
 
     @Test
@@ -206,9 +211,10 @@ private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ON
             .andExpect(jsonPath("$.isTaxable").value(DEFAULT_IS_TAXABLE.booleanValue()))
             .andExpect(jsonPath("$.isLocked").value(DEFAULT_IS_LOCKED.booleanValue()))
             .andExpect(jsonPath("$.comment").value(DEFAULT_COMMENT.toString()))
-            .andExpect(jsonPath("$.taxAmount").value(DEFAULT_TAX_AMOUNT.intValue()))
-            .andExpect(jsonPath("$.total").value(DEFAULT_TOTAL.intValue()))
-            .andExpect(jsonPath("$.cost").value(DEFAULT_COST.intValue()));
+            .andExpect(jsonPath("$.totalTaxAmount").value(DEFAULT_TOTAL_TAX_AMOUNT.intValue()))
+            .andExpect(jsonPath("$.totalCost").value(DEFAULT_TOTAL_COST.intValue()))
+            .andExpect(jsonPath("$.taxExemptionCode").value(DEFAULT_TAX_EXEMPTION_CODE.toString()))
+            .andExpect(jsonPath("$.isSuspended").value(DEFAULT_IS_SUSPENDED.booleanValue()));
     }
 
     @Test
@@ -236,9 +242,10 @@ private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ON
         purchaseOrder.setIsTaxable(UPDATED_IS_TAXABLE);
         purchaseOrder.setIsLocked(UPDATED_IS_LOCKED);
         purchaseOrder.setComment(UPDATED_COMMENT);
-        purchaseOrder.setTaxAmount(UPDATED_TAX_AMOUNT);
-        purchaseOrder.setTotal(UPDATED_TOTAL);
-        purchaseOrder.setCost(UPDATED_COST);
+        purchaseOrder.setTotalTaxAmount(UPDATED_TOTAL_TAX_AMOUNT);
+        purchaseOrder.setTotalCost(UPDATED_TOTAL_COST);
+        purchaseOrder.setTaxExemptionCode(UPDATED_TAX_EXEMPTION_CODE);
+        purchaseOrder.setIsSuspended(UPDATED_IS_SUSPENDED);
         PurchaseOrderDTO purchaseOrderDTO = purchaseOrderMapper.purchaseOrderToPurchaseOrderDTO(purchaseOrder);
 
         restPurchaseOrderMockMvc.perform(put("/api/purchaseOrders")
@@ -258,9 +265,10 @@ private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ON
         assertThat(testPurchaseOrder.getIsTaxable()).isEqualTo(UPDATED_IS_TAXABLE);
         assertThat(testPurchaseOrder.getIsLocked()).isEqualTo(UPDATED_IS_LOCKED);
         assertThat(testPurchaseOrder.getComment()).isEqualTo(UPDATED_COMMENT);
-        assertThat(testPurchaseOrder.getTaxAmount()).isEqualTo(UPDATED_TAX_AMOUNT);
-        assertThat(testPurchaseOrder.getTotal()).isEqualTo(UPDATED_TOTAL);
-        assertThat(testPurchaseOrder.getCost()).isEqualTo(UPDATED_COST);
+        assertThat(testPurchaseOrder.getTotalTaxAmount()).isEqualTo(UPDATED_TOTAL_TAX_AMOUNT);
+        assertThat(testPurchaseOrder.getTotalCost()).isEqualTo(UPDATED_TOTAL_COST);
+        assertThat(testPurchaseOrder.getTaxExemptionCode()).isEqualTo(UPDATED_TAX_EXEMPTION_CODE);
+        assertThat(testPurchaseOrder.getIsSuspended()).isEqualTo(UPDATED_IS_SUSPENDED);
     }
 
     @Test

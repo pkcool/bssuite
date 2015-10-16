@@ -59,7 +59,7 @@ angular.module('bssuiteApp')
                                     qtySold: null,
                                     qtyReturned: null,
                                     qtyPicked: null,
-                                    taxCharge: null,
+                                    totalTaxCharge: null,
                                     discountPercentage: null,
                                     discountDescription: null,
                                     discountPriceGroupCode: null,

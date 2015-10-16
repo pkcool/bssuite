@@ -98,14 +98,17 @@ public class SalesOrder implements Serializable {
     @Column(name = "comment")
     private String comment;
     
-    @Column(name = "tax_amount", precision=10, scale=2)
-    private BigDecimal taxAmount;
+    @Column(name = "total_tax_amount", precision=10, scale=2)
+    private BigDecimal totalTaxAmount;
     
-    @Column(name = "total", precision=10, scale=2)
-    private BigDecimal total;
+    @Column(name = "total_sell_price", precision=10, scale=2)
+    private BigDecimal totalSellPrice;
     
-    @Column(name = "cost", precision=10, scale=2)
-    private BigDecimal cost;
+    @Column(name = "total_cost", precision=10, scale=2)
+    private BigDecimal totalCost;
+    
+    @Column(name = "is_suspended")
+    private Boolean isSuspended;
 
     @ManyToOne
     private Customer customer;
@@ -280,28 +283,36 @@ public class SalesOrder implements Serializable {
         this.comment = comment;
     }
 
-    public BigDecimal getTaxAmount() {
-        return taxAmount;
+    public BigDecimal getTotalTaxAmount() {
+        return totalTaxAmount;
     }
 
-    public void setTaxAmount(BigDecimal taxAmount) {
-        this.taxAmount = taxAmount;
+    public void setTotalTaxAmount(BigDecimal totalTaxAmount) {
+        this.totalTaxAmount = totalTaxAmount;
     }
 
-    public BigDecimal getTotal() {
-        return total;
+    public BigDecimal getTotalSellPrice() {
+        return totalSellPrice;
     }
 
-    public void setTotal(BigDecimal total) {
-        this.total = total;
+    public void setTotalSellPrice(BigDecimal totalSellPrice) {
+        this.totalSellPrice = totalSellPrice;
     }
 
-    public BigDecimal getCost() {
-        return cost;
+    public BigDecimal getTotalCost() {
+        return totalCost;
     }
 
-    public void setCost(BigDecimal cost) {
-        this.cost = cost;
+    public void setTotalCost(BigDecimal totalCost) {
+        this.totalCost = totalCost;
+    }
+
+    public Boolean getIsSuspended() {
+        return isSuspended;
+    }
+
+    public void setIsSuspended(Boolean isSuspended) {
+        this.isSuspended = isSuspended;
     }
 
     public Customer getCustomer() {
@@ -418,9 +429,10 @@ public class SalesOrder implements Serializable {
                 ", prepayment='" + prepayment + "'" +
                 ", prepaymentNo='" + prepaymentNo + "'" +
                 ", comment='" + comment + "'" +
-                ", taxAmount='" + taxAmount + "'" +
-                ", total='" + total + "'" +
-                ", cost='" + cost + "'" +
+                ", totalTaxAmount='" + totalTaxAmount + "'" +
+                ", totalSellPrice='" + totalSellPrice + "'" +
+                ", totalCost='" + totalCost + "'" +
+                ", isSuspended='" + isSuspended + "'" +
                 '}';
     }
 }

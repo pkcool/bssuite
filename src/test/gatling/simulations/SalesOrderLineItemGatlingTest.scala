@@ -67,7 +67,7 @@ class SalesOrderLineItemGatlingTest extends Simulation {
             .exec(http("Create new salesOrderLineItem")
             .post("/api/salesOrderLineItems")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "description":"SAMPLE_TEXT", "cost":null, "soldFor":null, "qtyOrdered":null, "qtyAllocated":null, "taxCharge":null, "discountPercentage":null, "lineNo":"0", "requiredDate":"2020-01-01T00:00:00.000Z", "listPrice":null, "listPriceDiscount":null, "cost2":null, "isHidden":null, "Refer1":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "description":"SAMPLE_TEXT", "cost":null, "soldFor":null, "qtyOrdered":null, "qtyAllocated":null, "totalTaxCharge":null, "discountPercentage":null, "lineNo":"0", "requiredDate":"2020-01-01T00:00:00.000Z", "listPrice":null, "listPriceDiscount":null, "cost2":null, "isHidden":null, "Ref1":"SAMPLE_TEXT", "Ref2":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_salesOrderLineItem_url")))
             .pause(10)

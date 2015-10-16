@@ -39,8 +39,6 @@ public interface PurchaseOrderMapper {
         return Supplier;
     }
 
-
-
     default Contact contactFromId(Long id) {
         if (id == null) {
             return null;
@@ -49,6 +47,7 @@ public interface PurchaseOrderMapper {
         contact.setId(id);
         return contact;
     }
+
 
     default Store storeFromId(Long id) {
         if (id == null) {
@@ -67,6 +66,7 @@ public interface PurchaseOrderMapper {
         salesOrder.setId(id);
         return salesOrder;
     }
+
 
 
     default Staff staffFromId(Long id) {

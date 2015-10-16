@@ -67,7 +67,7 @@ class InvoiceLineItemGatlingTest extends Simulation {
             .exec(http("Create new invoiceLineItem")
             .post("/api/invoiceLineItems")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "description":"SAMPLE_TEXT", "cost":null, "soldFor":null, "qtyOrdered":null, "qtySold":null, "qtyReturned":null, "qtyPicked":null, "taxCharge":null, "discountPercentage":null, "discountDescription":"SAMPLE_TEXT", "discountPriceGroupCode":"SAMPLE_TEXT", "lineNo":"0", "listPrice":null, "listPriceDiscount":null, "cost2":null, "isHidden":null, "Ref1":"SAMPLE_TEXT", "Ref2":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "description":"SAMPLE_TEXT", "cost":null, "soldFor":null, "qtyOrdered":null, "qtySold":null, "qtyReturned":null, "qtyPicked":null, "totalTaxCharge":null, "discountPercentage":null, "discountDescription":"SAMPLE_TEXT", "discountPriceGroupCode":"SAMPLE_TEXT", "lineNo":"0", "listPrice":null, "listPriceDiscount":null, "cost2":null, "isHidden":null, "Ref1":"SAMPLE_TEXT", "Ref2":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_invoiceLineItem_url")))
             .pause(10)

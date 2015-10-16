@@ -57,7 +57,7 @@ angular.module('bssuiteApp')
                                     soldFor: null,
                                     qtyOrdered: null,
                                     qtyAllocated: null,
-                                    taxCharge: null,
+                                    totalTaxCharge: null,
                                     discountPercentage: null,
                                     lineNo: null,
                                     requiredDate: null,
@@ -65,7 +65,8 @@ angular.module('bssuiteApp')
                                     listPriceDiscount: null,
                                     cost2: null,
                                     isHidden: null,
-                                    Refer1: null,
+                                    Ref1: null,
+                                    Ref2: null,
                                     id: null
                                 };
                             }

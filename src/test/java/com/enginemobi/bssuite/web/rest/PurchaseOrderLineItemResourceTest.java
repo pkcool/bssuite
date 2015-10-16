@@ -64,8 +64,8 @@ public class PurchaseOrderLineItemResourceTest {
     private static final Double DEFAULT_QTY_IMPORTED = 1D;
     private static final Double UPDATED_QTY_IMPORTED = 2D;
 
-    private static final BigDecimal DEFAULT_TAX_CHARGE = new BigDecimal(1);
-    private static final BigDecimal UPDATED_TAX_CHARGE = new BigDecimal(2);
+    private static final BigDecimal DEFAULT_TOTAL_TAX_CHARGE = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TOTAL_TAX_CHARGE = new BigDecimal(2);
 
     private static final BigDecimal DEFAULT_DISCOUNT_PERCENTAGE = new BigDecimal(1);
     private static final BigDecimal UPDATED_DISCOUNT_PERCENTAGE = new BigDecimal(2);
@@ -80,8 +80,10 @@ public class PurchaseOrderLineItemResourceTest {
 
     private static final Boolean DEFAULT_IS_HIDDEN = false;
     private static final Boolean UPDATED_IS_HIDDEN = true;
-    private static final String DEFAULT_REFER1 = "AAAAA";
-    private static final String UPDATED_REFER1 = "BBBBB";
+    private static final String DEFAULT_REF1 = "AAAAA";
+    private static final String UPDATED_REF1 = "BBBBB";
+    private static final String DEFAULT_REF2 = "AAAAA";
+    private static final String UPDATED_REF2 = "BBBBB";
 
     @Inject
     private PurchaseOrderLineItemRepository purchaseOrderLineItemRepository;
@@ -120,13 +122,14 @@ public class PurchaseOrderLineItemResourceTest {
         purchaseOrderLineItem.setQtyDelivered(DEFAULT_QTY_DELIVERED);
         purchaseOrderLineItem.setQtyPreviouslyDelivered(DEFAULT_QTY_PREVIOUSLY_DELIVERED);
         purchaseOrderLineItem.setQtyImported(DEFAULT_QTY_IMPORTED);
-        purchaseOrderLineItem.setTaxCharge(DEFAULT_TAX_CHARGE);
+        purchaseOrderLineItem.setTotalTaxCharge(DEFAULT_TOTAL_TAX_CHARGE);
         purchaseOrderLineItem.setDiscountPercentage(DEFAULT_DISCOUNT_PERCENTAGE);
         purchaseOrderLineItem.setLineNo(DEFAULT_LINE_NO);
         purchaseOrderLineItem.setListPriceDiscount(DEFAULT_LIST_PRICE_DISCOUNT);
         purchaseOrderLineItem.setUnitMeasure(DEFAULT_UNIT_MEASURE);
         purchaseOrderLineItem.setIsHidden(DEFAULT_IS_HIDDEN);
-        purchaseOrderLineItem.setRefer1(DEFAULT_REFER1);
+        purchaseOrderLineItem.setRef1(DEFAULT_REF1);
+        purchaseOrderLineItem.setRef2(DEFAULT_REF2);
     }
 
     @Test
@@ -152,13 +155,14 @@ public class PurchaseOrderLineItemResourceTest {
         assertThat(testPurchaseOrderLineItem.getQtyDelivered()).isEqualTo(DEFAULT_QTY_DELIVERED);
         assertThat(testPurchaseOrderLineItem.getQtyPreviouslyDelivered()).isEqualTo(DEFAULT_QTY_PREVIOUSLY_DELIVERED);
         assertThat(testPurchaseOrderLineItem.getQtyImported()).isEqualTo(DEFAULT_QTY_IMPORTED);
-        assertThat(testPurchaseOrderLineItem.getTaxCharge()).isEqualTo(DEFAULT_TAX_CHARGE);
+        assertThat(testPurchaseOrderLineItem.getTotalTaxCharge()).isEqualTo(DEFAULT_TOTAL_TAX_CHARGE);
         assertThat(testPurchaseOrderLineItem.getDiscountPercentage()).isEqualTo(DEFAULT_DISCOUNT_PERCENTAGE);
         assertThat(testPurchaseOrderLineItem.getLineNo()).isEqualTo(DEFAULT_LINE_NO);
         assertThat(testPurchaseOrderLineItem.getListPriceDiscount()).isEqualTo(DEFAULT_LIST_PRICE_DISCOUNT);
         assertThat(testPurchaseOrderLineItem.getUnitMeasure()).isEqualTo(DEFAULT_UNIT_MEASURE);
         assertThat(testPurchaseOrderLineItem.getIsHidden()).isEqualTo(DEFAULT_IS_HIDDEN);
-        assertThat(testPurchaseOrderLineItem.getRefer1()).isEqualTo(DEFAULT_REFER1);
+        assertThat(testPurchaseOrderLineItem.getRef1()).isEqualTo(DEFAULT_REF1);
+        assertThat(testPurchaseOrderLineItem.getRef2()).isEqualTo(DEFAULT_REF2);
     }
 
     @Test
@@ -179,13 +183,14 @@ public class PurchaseOrderLineItemResourceTest {
                 .andExpect(jsonPath("$.[*].qtyDelivered").value(hasItem(DEFAULT_QTY_DELIVERED.doubleValue())))
                 .andExpect(jsonPath("$.[*].qtyPreviouslyDelivered").value(hasItem(DEFAULT_QTY_PREVIOUSLY_DELIVERED.doubleValue())))
                 .andExpect(jsonPath("$.[*].qtyImported").value(hasItem(DEFAULT_QTY_IMPORTED.doubleValue())))
-                .andExpect(jsonPath("$.[*].taxCharge").value(hasItem(DEFAULT_TAX_CHARGE.intValue())))
+                .andExpect(jsonPath("$.[*].totalTaxCharge").value(hasItem(DEFAULT_TOTAL_TAX_CHARGE.intValue())))
                 .andExpect(jsonPath("$.[*].discountPercentage").value(hasItem(DEFAULT_DISCOUNT_PERCENTAGE.intValue())))
                 .andExpect(jsonPath("$.[*].lineNo").value(hasItem(DEFAULT_LINE_NO)))
                 .andExpect(jsonPath("$.[*].listPriceDiscount").value(hasItem(DEFAULT_LIST_PRICE_DISCOUNT.intValue())))
                 .andExpect(jsonPath("$.[*].unitMeasure").value(hasItem(DEFAULT_UNIT_MEASURE.toString())))
                 .andExpect(jsonPath("$.[*].isHidden").value(hasItem(DEFAULT_IS_HIDDEN.booleanValue())))
-                .andExpect(jsonPath("$.[*].Refer1").value(hasItem(DEFAULT_REFER1.toString())));
+                .andExpect(jsonPath("$.[*].Ref1").value(hasItem(DEFAULT_REF1.toString())))
+                .andExpect(jsonPath("$.[*].Ref2").value(hasItem(DEFAULT_REF2.toString())));
     }
 
     @Test
@@ -206,13 +211,14 @@ public class PurchaseOrderLineItemResourceTest {
             .andExpect(jsonPath("$.qtyDelivered").value(DEFAULT_QTY_DELIVERED.doubleValue()))
             .andExpect(jsonPath("$.qtyPreviouslyDelivered").value(DEFAULT_QTY_PREVIOUSLY_DELIVERED.doubleValue()))
             .andExpect(jsonPath("$.qtyImported").value(DEFAULT_QTY_IMPORTED.doubleValue()))
-            .andExpect(jsonPath("$.taxCharge").value(DEFAULT_TAX_CHARGE.intValue()))
+            .andExpect(jsonPath("$.totalTaxCharge").value(DEFAULT_TOTAL_TAX_CHARGE.intValue()))
             .andExpect(jsonPath("$.discountPercentage").value(DEFAULT_DISCOUNT_PERCENTAGE.intValue()))
             .andExpect(jsonPath("$.lineNo").value(DEFAULT_LINE_NO))
             .andExpect(jsonPath("$.listPriceDiscount").value(DEFAULT_LIST_PRICE_DISCOUNT.intValue()))
             .andExpect(jsonPath("$.unitMeasure").value(DEFAULT_UNIT_MEASURE.toString()))
             .andExpect(jsonPath("$.isHidden").value(DEFAULT_IS_HIDDEN.booleanValue()))
-            .andExpect(jsonPath("$.Refer1").value(DEFAULT_REFER1.toString()));
+            .andExpect(jsonPath("$.Ref1").value(DEFAULT_REF1.toString()))
+            .andExpect(jsonPath("$.Ref2").value(DEFAULT_REF2.toString()));
     }
 
     @Test
@@ -239,13 +245,14 @@ public class PurchaseOrderLineItemResourceTest {
         purchaseOrderLineItem.setQtyDelivered(UPDATED_QTY_DELIVERED);
         purchaseOrderLineItem.setQtyPreviouslyDelivered(UPDATED_QTY_PREVIOUSLY_DELIVERED);
         purchaseOrderLineItem.setQtyImported(UPDATED_QTY_IMPORTED);
-        purchaseOrderLineItem.setTaxCharge(UPDATED_TAX_CHARGE);
+        purchaseOrderLineItem.setTotalTaxCharge(UPDATED_TOTAL_TAX_CHARGE);
         purchaseOrderLineItem.setDiscountPercentage(UPDATED_DISCOUNT_PERCENTAGE);
         purchaseOrderLineItem.setLineNo(UPDATED_LINE_NO);
         purchaseOrderLineItem.setListPriceDiscount(UPDATED_LIST_PRICE_DISCOUNT);
         purchaseOrderLineItem.setUnitMeasure(UPDATED_UNIT_MEASURE);
         purchaseOrderLineItem.setIsHidden(UPDATED_IS_HIDDEN);
-        purchaseOrderLineItem.setRefer1(UPDATED_REFER1);
+        purchaseOrderLineItem.setRef1(UPDATED_REF1);
+        purchaseOrderLineItem.setRef2(UPDATED_REF2);
 
         restPurchaseOrderLineItemMockMvc.perform(put("/api/purchaseOrderLineItems")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -263,13 +270,14 @@ public class PurchaseOrderLineItemResourceTest {
         assertThat(testPurchaseOrderLineItem.getQtyDelivered()).isEqualTo(UPDATED_QTY_DELIVERED);
         assertThat(testPurchaseOrderLineItem.getQtyPreviouslyDelivered()).isEqualTo(UPDATED_QTY_PREVIOUSLY_DELIVERED);
         assertThat(testPurchaseOrderLineItem.getQtyImported()).isEqualTo(UPDATED_QTY_IMPORTED);
-        assertThat(testPurchaseOrderLineItem.getTaxCharge()).isEqualTo(UPDATED_TAX_CHARGE);
+        assertThat(testPurchaseOrderLineItem.getTotalTaxCharge()).isEqualTo(UPDATED_TOTAL_TAX_CHARGE);
         assertThat(testPurchaseOrderLineItem.getDiscountPercentage()).isEqualTo(UPDATED_DISCOUNT_PERCENTAGE);
         assertThat(testPurchaseOrderLineItem.getLineNo()).isEqualTo(UPDATED_LINE_NO);
         assertThat(testPurchaseOrderLineItem.getListPriceDiscount()).isEqualTo(UPDATED_LIST_PRICE_DISCOUNT);
         assertThat(testPurchaseOrderLineItem.getUnitMeasure()).isEqualTo(UPDATED_UNIT_MEASURE);
         assertThat(testPurchaseOrderLineItem.getIsHidden()).isEqualTo(UPDATED_IS_HIDDEN);
-        assertThat(testPurchaseOrderLineItem.getRefer1()).isEqualTo(UPDATED_REFER1);
+        assertThat(testPurchaseOrderLineItem.getRef1()).isEqualTo(UPDATED_REF1);
+        assertThat(testPurchaseOrderLineItem.getRef2()).isEqualTo(UPDATED_REF2);
     }
 
     @Test

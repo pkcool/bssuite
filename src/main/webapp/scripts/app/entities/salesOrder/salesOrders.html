@@ -67,9 +67,10 @@
                     <th>Prepayment</th>
                     <th>PrepaymentNo</th>
                     <th>Comment</th>
-                    <th>TaxAmount</th>
-                    <th>Total</th>
-                    <th>Cost</th>
+                    <th>TotalTaxAmount</th>
+                    <th>TotalSellPrice</th>
+                    <th>TotalCost</th>
+                    <th>IsSuspended</th>
                     <th>customer</th>
                     <th>contact</th>
                     <th>deliveryContact</th>
@@ -101,9 +102,10 @@
                     <td>{{salesOrder.prepayment}}</td>
                     <td>{{salesOrder.prepaymentNo}}</td>
                     <td>{{salesOrder.comment}}</td>
-                    <td>{{salesOrder.taxAmount}}</td>
-                    <td>{{salesOrder.total}}</td>
-                    <td>{{salesOrder.cost}}</td>
+                    <td>{{salesOrder.totalTaxAmount}}</td>
+                    <td>{{salesOrder.totalSellPrice}}</td>
+                    <td>{{salesOrder.totalCost}}</td>
+                    <td>{{salesOrder.isSuspended}}</td>
                     <td>
                         <a ui-sref="customer.detail({id:salesOrder.customerId})">{{salesOrder.customerId}}</a>
                     </td>

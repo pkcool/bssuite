@@ -60,9 +60,10 @@ angular.module('bssuiteApp')
                                     isTaxable: null,
                                     isLocked: null,
                                     comment: null,
-                                    taxAmount: null,
-                                    total: null,
-                                    cost: null,
+                                    totalTaxAmount: null,
+                                    totalCost: null,
+                                    taxExemptionCode: null,
+                                    isSuspended: null,
                                     id: null
                                 };
                             }

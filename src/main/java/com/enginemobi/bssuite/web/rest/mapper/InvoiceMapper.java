@@ -34,8 +34,6 @@ public interface InvoiceMapper {
     @Mapping(target = "invoiceLineItemss", ignore = true)
     Invoice invoiceDTOToInvoice(InvoiceDTO invoiceDTO);
 
-
-
     default Customer customerFromId(Long id) {
         if (id == null) {
             return null;
@@ -72,6 +70,8 @@ public interface InvoiceMapper {
         carrier.setId(id);
         return carrier;
     }
+
+
 
     default Promotion promotionFromId(Long id) {
         if (id == null) {

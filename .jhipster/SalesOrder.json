@@ -153,18 +153,23 @@
         },
         {
             "fieldId": 18,
-            "fieldName": "taxAmount",
+            "fieldName": "totalTaxAmount",
             "fieldType": "BigDecimal"
         },
         {
             "fieldId": 19,
-            "fieldName": "total",
+            "fieldName": "totalSellPrice",
             "fieldType": "BigDecimal"
         },
         {
             "fieldId": 20,
-            "fieldName": "cost",
+            "fieldName": "totalCost",
             "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 21,
+            "fieldName": "isSuspended",
+            "fieldType": "Boolean"
         }
     ],
     "changelogDate": "20151014083317",

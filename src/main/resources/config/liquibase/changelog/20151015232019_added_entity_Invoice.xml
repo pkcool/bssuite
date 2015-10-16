@@ -57,9 +57,9 @@
             <column name="prepayment" type="decimal(10,2)"/>
             <column name="in2" type="varchar(255)"/>
             <column name="comment" type="varchar(255)"/>
-            <column name="tax_amount" type="decimal(10,2)"/>
-            <column name="total" type="decimal(10,2)"/>
-            <column name="cost" type="decimal(10,2)"/>
+            <column name="total_tax_amount" type="decimal(10,2)"/>
+            <column name="total_sell_price" type="decimal(10,2)"/>
+            <column name="total_cost" type="decimal(10,2)"/>
             <column name="is_on_hold" type="bit"/>
             <column name="is_lay_by" type="bit"/>
             <column name="is_external_txn" type="bit"/>

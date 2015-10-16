@@ -68,14 +68,17 @@ public class PurchaseOrder implements Serializable {
     @Column(name = "comment")
     private String comment;
     
-    @Column(name = "tax_amount", precision=10, scale=2)
-    private BigDecimal taxAmount;
+    @Column(name = "total_tax_amount", precision=10, scale=2)
+    private BigDecimal totalTaxAmount;
     
-    @Column(name = "total", precision=10, scale=2)
-    private BigDecimal total;
+    @Column(name = "total_cost", precision=10, scale=2)
+    private BigDecimal totalCost;
     
-    @Column(name = "cost", precision=10, scale=2)
-    private BigDecimal cost;
+    @Column(name = "tax_exemption_code")
+    private String taxExemptionCode;
+    
+    @Column(name = "is_suspended")
+    private Boolean isSuspended;
 
     @ManyToOne
     private Supplier supplier;
@@ -175,28 +178,36 @@ public class PurchaseOrder implements Serializable {
         this.comment = comment;
     }
 
-    public BigDecimal getTaxAmount() {
-        return taxAmount;
+    public BigDecimal getTotalTaxAmount() {
+        return totalTaxAmount;
     }
 
-    public void setTaxAmount(BigDecimal taxAmount) {
-        this.taxAmount = taxAmount;
+    public void setTotalTaxAmount(BigDecimal totalTaxAmount) {
+        this.totalTaxAmount = totalTaxAmount;
     }
 
-    public BigDecimal getTotal() {
-        return total;
+    public BigDecimal getTotalCost() {
+        return totalCost;
     }
 
-    public void setTotal(BigDecimal total) {
-        this.total = total;
+    public void setTotalCost(BigDecimal totalCost) {
+        this.totalCost = totalCost;
     }
 
-    public BigDecimal getCost() {
-        return cost;
+    public String getTaxExemptionCode() {
+        return taxExemptionCode;
     }
 
-    public void setCost(BigDecimal cost) {
-        this.cost = cost;
+    public void setTaxExemptionCode(String taxExemptionCode) {
+        this.taxExemptionCode = taxExemptionCode;
+    }
+
+    public Boolean getIsSuspended() {
+        return isSuspended;
+    }
+
+    public void setIsSuspended(Boolean isSuspended) {
+        this.isSuspended = isSuspended;
     }
 
     public Supplier getSupplier() {
@@ -296,9 +307,10 @@ public class PurchaseOrder implements Serializable {
                 ", isTaxable='" + isTaxable + "'" +
                 ", isLocked='" + isLocked + "'" +
                 ", comment='" + comment + "'" +
-                ", taxAmount='" + taxAmount + "'" +
-                ", total='" + total + "'" +
-                ", cost='" + cost + "'" +
+                ", totalTaxAmount='" + totalTaxAmount + "'" +
+                ", totalCost='" + totalCost + "'" +
+                ", taxExemptionCode='" + taxExemptionCode + "'" +
+                ", isSuspended='" + isSuspended + "'" +
                 '}';
     }
 }

@@ -46,8 +46,8 @@ public class InvoiceLineItem implements Serializable {
     @Column(name = "qty_picked")
     private Double qtyPicked;
     
-    @Column(name = "tax_charge", precision=10, scale=2)
-    private BigDecimal taxCharge;
+    @Column(name = "total_tax_charge", precision=10, scale=2)
+    private BigDecimal totalTaxCharge;
     
     @Column(name = "discount_percentage", precision=10, scale=2)
     private BigDecimal discountPercentage;
@@ -152,12 +152,12 @@ public class InvoiceLineItem implements Serializable {
         this.qtyPicked = qtyPicked;
     }
 
-    public BigDecimal getTaxCharge() {
-        return taxCharge;
+    public BigDecimal getTotalTaxCharge() {
+        return totalTaxCharge;
     }
 
-    public void setTaxCharge(BigDecimal taxCharge) {
-        this.taxCharge = taxCharge;
+    public void setTotalTaxCharge(BigDecimal totalTaxCharge) {
+        this.totalTaxCharge = totalTaxCharge;
     }
 
     public BigDecimal getDiscountPercentage() {
@@ -296,7 +296,7 @@ public class InvoiceLineItem implements Serializable {
                 ", qtySold='" + qtySold + "'" +
                 ", qtyReturned='" + qtyReturned + "'" +
                 ", qtyPicked='" + qtyPicked + "'" +
-                ", taxCharge='" + taxCharge + "'" +
+                ", totalTaxCharge='" + totalTaxCharge + "'" +
                 ", discountPercentage='" + discountPercentage + "'" +
                 ", discountDescription='" + discountDescription + "'" +
                 ", discountPriceGroupCode='" + discountPriceGroupCode + "'" +

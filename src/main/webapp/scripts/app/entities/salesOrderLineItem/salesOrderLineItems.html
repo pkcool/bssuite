@@ -55,7 +55,7 @@
                     <th>SoldFor</th>
                     <th>QtyOrdered</th>
                     <th>QtyAllocated</th>
-                    <th>TaxCharge</th>
+                    <th>TotalTaxCharge</th>
                     <th>DiscountPercentage</th>
                     <th>LineNo</th>
                     <th>RequiredDate</th>
@@ -63,7 +63,8 @@
                     <th>ListPriceDiscount</th>
                     <th>Cost2</th>
                     <th>IsHidden</th>
-                    <th>Refer1</th>
+                    <th>Ref1</th>
+                    <th>Ref2</th>
                     <th>salesOrder</th>
                     <th>product</th>
                     <th>taxRate</th>
@@ -78,7 +79,7 @@
                     <td>{{salesOrderLineItem.soldFor}}</td>
                     <td>{{salesOrderLineItem.qtyOrdered}}</td>
                     <td>{{salesOrderLineItem.qtyAllocated}}</td>
-                    <td>{{salesOrderLineItem.taxCharge}}</td>
+                    <td>{{salesOrderLineItem.totalTaxCharge}}</td>
                     <td>{{salesOrderLineItem.discountPercentage}}</td>
                     <td>{{salesOrderLineItem.lineNo}}</td>
                     <td>{{salesOrderLineItem.requiredDate}}</td>
@@ -86,7 +87,8 @@
                     <td>{{salesOrderLineItem.listPriceDiscount}}</td>
                     <td>{{salesOrderLineItem.cost2}}</td>
                     <td>{{salesOrderLineItem.isHidden}}</td>
-                    <td>{{salesOrderLineItem.Refer1}}</td>
+                    <td>{{salesOrderLineItem.Ref1}}</td>
+                    <td>{{salesOrderLineItem.Ref2}}</td>
                     <td>
                         <a ui-sref="salesOrder.detail({id:salesOrderLineItem.salesOrder.id})">{{salesOrderLineItem.salesOrder.id}}</a>
                     </td>

@@ -59,8 +59,8 @@ public class SalesOrderLineItemResourceTest {
     private static final Double DEFAULT_QTY_ALLOCATED = 1D;
     private static final Double UPDATED_QTY_ALLOCATED = 2D;
 
-    private static final BigDecimal DEFAULT_TAX_CHARGE = new BigDecimal(1);
-    private static final BigDecimal UPDATED_TAX_CHARGE = new BigDecimal(2);
+    private static final BigDecimal DEFAULT_TOTAL_TAX_CHARGE = new BigDecimal(1);
+    private static final BigDecimal UPDATED_TOTAL_TAX_CHARGE = new BigDecimal(2);
 
     private static final BigDecimal DEFAULT_DISCOUNT_PERCENTAGE = new BigDecimal(1);
     private static final BigDecimal UPDATED_DISCOUNT_PERCENTAGE = new BigDecimal(2);
@@ -82,8 +82,10 @@ public class SalesOrderLineItemResourceTest {
 
     private static final Boolean DEFAULT_IS_HIDDEN = false;
     private static final Boolean UPDATED_IS_HIDDEN = true;
-    private static final String DEFAULT_REFER1 = "AAAAA";
-    private static final String UPDATED_REFER1 = "BBBBB";
+    private static final String DEFAULT_REF1 = "AAAAA";
+    private static final String UPDATED_REF1 = "BBBBB";
+    private static final String DEFAULT_REF2 = "AAAAA";
+    private static final String UPDATED_REF2 = "BBBBB";
 
     @Inject
     private SalesOrderLineItemRepository salesOrderLineItemRepository;
@@ -120,7 +122,7 @@ public class SalesOrderLineItemResourceTest {
         salesOrderLineItem.setSoldFor(DEFAULT_SOLD_FOR);
         salesOrderLineItem.setQtyOrdered(DEFAULT_QTY_ORDERED);
         salesOrderLineItem.setQtyAllocated(DEFAULT_QTY_ALLOCATED);
-        salesOrderLineItem.setTaxCharge(DEFAULT_TAX_CHARGE);
+        salesOrderLineItem.setTotalTaxCharge(DEFAULT_TOTAL_TAX_CHARGE);
         salesOrderLineItem.setDiscountPercentage(DEFAULT_DISCOUNT_PERCENTAGE);
         salesOrderLineItem.setLineNo(DEFAULT_LINE_NO);
         salesOrderLineItem.setRequiredDate(DEFAULT_REQUIRED_DATE);
@@ -128,7 +130,8 @@ public class SalesOrderLineItemResourceTest {
         salesOrderLineItem.setListPriceDiscount(DEFAULT_LIST_PRICE_DISCOUNT);
         salesOrderLineItem.setCost2(DEFAULT_COST2);
         salesOrderLineItem.setIsHidden(DEFAULT_IS_HIDDEN);
-        salesOrderLineItem.setRefer1(DEFAULT_REFER1);
+        salesOrderLineItem.setRef1(DEFAULT_REF1);
+        salesOrderLineItem.setRef2(DEFAULT_REF2);
     }
 
     @Test
@@ -152,7 +155,7 @@ public class SalesOrderLineItemResourceTest {
         assertThat(testSalesOrderLineItem.getSoldFor()).isEqualTo(DEFAULT_SOLD_FOR);
         assertThat(testSalesOrderLineItem.getQtyOrdered()).isEqualTo(DEFAULT_QTY_ORDERED);
         assertThat(testSalesOrderLineItem.getQtyAllocated()).isEqualTo(DEFAULT_QTY_ALLOCATED);
-        assertThat(testSalesOrderLineItem.getTaxCharge()).isEqualTo(DEFAULT_TAX_CHARGE);
+        assertThat(testSalesOrderLineItem.getTotalTaxCharge()).isEqualTo(DEFAULT_TOTAL_TAX_CHARGE);
         assertThat(testSalesOrderLineItem.getDiscountPercentage()).isEqualTo(DEFAULT_DISCOUNT_PERCENTAGE);
         assertThat(testSalesOrderLineItem.getLineNo()).isEqualTo(DEFAULT_LINE_NO);
         assertThat(testSalesOrderLineItem.getRequiredDate()).isEqualTo(DEFAULT_REQUIRED_DATE);
@@ -160,7 +163,8 @@ public class SalesOrderLineItemResourceTest {
         assertThat(testSalesOrderLineItem.getListPriceDiscount()).isEqualTo(DEFAULT_LIST_PRICE_DISCOUNT);
         assertThat(testSalesOrderLineItem.getCost2()).isEqualTo(DEFAULT_COST2);
         assertThat(testSalesOrderLineItem.getIsHidden()).isEqualTo(DEFAULT_IS_HIDDEN);
-        assertThat(testSalesOrderLineItem.getRefer1()).isEqualTo(DEFAULT_REFER1);
+        assertThat(testSalesOrderLineItem.getRef1()).isEqualTo(DEFAULT_REF1);
+        assertThat(testSalesOrderLineItem.getRef2()).isEqualTo(DEFAULT_REF2);
     }
 
     @Test
@@ -179,7 +183,7 @@ public class SalesOrderLineItemResourceTest {
                 .andExpect(jsonPath("$.[*].soldFor").value(hasItem(DEFAULT_SOLD_FOR.intValue())))
                 .andExpect(jsonPath("$.[*].qtyOrdered").value(hasItem(DEFAULT_QTY_ORDERED.doubleValue())))
                 .andExpect(jsonPath("$.[*].qtyAllocated").value(hasItem(DEFAULT_QTY_ALLOCATED.doubleValue())))
-                .andExpect(jsonPath("$.[*].taxCharge").value(hasItem(DEFAULT_TAX_CHARGE.intValue())))
+                .andExpect(jsonPath("$.[*].totalTaxCharge").value(hasItem(DEFAULT_TOTAL_TAX_CHARGE.intValue())))
                 .andExpect(jsonPath("$.[*].discountPercentage").value(hasItem(DEFAULT_DISCOUNT_PERCENTAGE.intValue())))
                 .andExpect(jsonPath("$.[*].lineNo").value(hasItem(DEFAULT_LINE_NO)))
                 .andExpect(jsonPath("$.[*].requiredDate").value(hasItem(DEFAULT_REQUIRED_DATE.toString())))
@@ -187,7 +191,8 @@ public class SalesOrderLineItemResourceTest {
                 .andExpect(jsonPath("$.[*].listPriceDiscount").value(hasItem(DEFAULT_LIST_PRICE_DISCOUNT.intValue())))
                 .andExpect(jsonPath("$.[*].cost2").value(hasItem(DEFAULT_COST2.intValue())))
                 .andExpect(jsonPath("$.[*].isHidden").value(hasItem(DEFAULT_IS_HIDDEN.booleanValue())))
-                .andExpect(jsonPath("$.[*].Refer1").value(hasItem(DEFAULT_REFER1.toString())));
+                .andExpect(jsonPath("$.[*].Ref1").value(hasItem(DEFAULT_REF1.toString())))
+                .andExpect(jsonPath("$.[*].Ref2").value(hasItem(DEFAULT_REF2.toString())));
     }
 
     @Test
@@ -206,7 +211,7 @@ public class SalesOrderLineItemResourceTest {
             .andExpect(jsonPath("$.soldFor").value(DEFAULT_SOLD_FOR.intValue()))
             .andExpect(jsonPath("$.qtyOrdered").value(DEFAULT_QTY_ORDERED.doubleValue()))
             .andExpect(jsonPath("$.qtyAllocated").value(DEFAULT_QTY_ALLOCATED.doubleValue()))
-            .andExpect(jsonPath("$.taxCharge").value(DEFAULT_TAX_CHARGE.intValue()))
+            .andExpect(jsonPath("$.totalTaxCharge").value(DEFAULT_TOTAL_TAX_CHARGE.intValue()))
             .andExpect(jsonPath("$.discountPercentage").value(DEFAULT_DISCOUNT_PERCENTAGE.intValue()))
             .andExpect(jsonPath("$.lineNo").value(DEFAULT_LINE_NO))
             .andExpect(jsonPath("$.requiredDate").value(DEFAULT_REQUIRED_DATE.toString()))
@@ -214,7 +219,8 @@ public class SalesOrderLineItemResourceTest {
             .andExpect(jsonPath("$.listPriceDiscount").value(DEFAULT_LIST_PRICE_DISCOUNT.intValue()))
             .andExpect(jsonPath("$.cost2").value(DEFAULT_COST2.intValue()))
             .andExpect(jsonPath("$.isHidden").value(DEFAULT_IS_HIDDEN.booleanValue()))
-            .andExpect(jsonPath("$.Refer1").value(DEFAULT_REFER1.toString()));
+            .andExpect(jsonPath("$.Ref1").value(DEFAULT_REF1.toString()))
+            .andExpect(jsonPath("$.Ref2").value(DEFAULT_REF2.toString()));
     }
 
     @Test
@@ -239,7 +245,7 @@ public class SalesOrderLineItemResourceTest {
         salesOrderLineItem.setSoldFor(UPDATED_SOLD_FOR);
         salesOrderLineItem.setQtyOrdered(UPDATED_QTY_ORDERED);
         salesOrderLineItem.setQtyAllocated(UPDATED_QTY_ALLOCATED);
-        salesOrderLineItem.setTaxCharge(UPDATED_TAX_CHARGE);
+        salesOrderLineItem.setTotalTaxCharge(UPDATED_TOTAL_TAX_CHARGE);
         salesOrderLineItem.setDiscountPercentage(UPDATED_DISCOUNT_PERCENTAGE);
         salesOrderLineItem.setLineNo(UPDATED_LINE_NO);
         salesOrderLineItem.setRequiredDate(UPDATED_REQUIRED_DATE);
@@ -247,7 +253,8 @@ public class SalesOrderLineItemResourceTest {
         salesOrderLineItem.setListPriceDiscount(UPDATED_LIST_PRICE_DISCOUNT);
         salesOrderLineItem.setCost2(UPDATED_COST2);
         salesOrderLineItem.setIsHidden(UPDATED_IS_HIDDEN);
-        salesOrderLineItem.setRefer1(UPDATED_REFER1);
+        salesOrderLineItem.setRef1(UPDATED_REF1);
+        salesOrderLineItem.setRef2(UPDATED_REF2);
 
         restSalesOrderLineItemMockMvc.perform(put("/api/salesOrderLineItems")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -263,7 +270,7 @@ public class SalesOrderLineItemResourceTest {
         assertThat(testSalesOrderLineItem.getSoldFor()).isEqualTo(UPDATED_SOLD_FOR);
         assertThat(testSalesOrderLineItem.getQtyOrdered()).isEqualTo(UPDATED_QTY_ORDERED);
         assertThat(testSalesOrderLineItem.getQtyAllocated()).isEqualTo(UPDATED_QTY_ALLOCATED);
-        assertThat(testSalesOrderLineItem.getTaxCharge()).isEqualTo(UPDATED_TAX_CHARGE);
+        assertThat(testSalesOrderLineItem.getTotalTaxCharge()).isEqualTo(UPDATED_TOTAL_TAX_CHARGE);
         assertThat(testSalesOrderLineItem.getDiscountPercentage()).isEqualTo(UPDATED_DISCOUNT_PERCENTAGE);
         assertThat(testSalesOrderLineItem.getLineNo()).isEqualTo(UPDATED_LINE_NO);
         assertThat(testSalesOrderLineItem.getRequiredDate()).isEqualTo(UPDATED_REQUIRED_DATE);
@@ -271,7 +278,8 @@ public class SalesOrderLineItemResourceTest {
         assertThat(testSalesOrderLineItem.getListPriceDiscount()).isEqualTo(UPDATED_LIST_PRICE_DISCOUNT);
         assertThat(testSalesOrderLineItem.getCost2()).isEqualTo(UPDATED_COST2);
         assertThat(testSalesOrderLineItem.getIsHidden()).isEqualTo(UPDATED_IS_HIDDEN);
-        assertThat(testSalesOrderLineItem.getRefer1()).isEqualTo(UPDATED_REFER1);
+        assertThat(testSalesOrderLineItem.getRef1()).isEqualTo(UPDATED_REF1);
+        assertThat(testSalesOrderLineItem.getRef2()).isEqualTo(UPDATED_REF2);
     }
 
     @Test

@@ -68,13 +68,16 @@ public class SalesOrderDTO implements Serializable {
     private String comment;
 
 
-    private BigDecimal taxAmount;
+    private BigDecimal totalTaxAmount;
 
 
-    private BigDecimal total;
+    private BigDecimal totalSellPrice;
 
 
-    private BigDecimal cost;
+    private BigDecimal totalCost;
+
+
+    private Boolean isSuspended;
 
 
     private Long customerId;
@@ -254,30 +257,39 @@ public class SalesOrderDTO implements Serializable {
     }
 
 
-    public BigDecimal getTaxAmount() {
-        return taxAmount;
+    public BigDecimal getTotalTaxAmount() {
+        return totalTaxAmount;
     }
 
-    public void setTaxAmount(BigDecimal taxAmount) {
-        this.taxAmount = taxAmount;
-    }
-
-
-    public BigDecimal getTotal() {
-        return total;
-    }
-
-    public void setTotal(BigDecimal total) {
-        this.total = total;
+    public void setTotalTaxAmount(BigDecimal totalTaxAmount) {
+        this.totalTaxAmount = totalTaxAmount;
     }
 
 
-    public BigDecimal getCost() {
-        return cost;
+    public BigDecimal getTotalSellPrice() {
+        return totalSellPrice;
     }
 
-    public void setCost(BigDecimal cost) {
-        this.cost = cost;
+    public void setTotalSellPrice(BigDecimal totalSellPrice) {
+        this.totalSellPrice = totalSellPrice;
+    }
+
+
+    public BigDecimal getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(BigDecimal totalCost) {
+        this.totalCost = totalCost;
+    }
+
+
+    public Boolean getIsSuspended() {
+        return isSuspended;
+    }
+
+    public void setIsSuspended(Boolean isSuspended) {
+        this.isSuspended = isSuspended;
     }
 
 
@@ -387,9 +399,10 @@ public class SalesOrderDTO implements Serializable {
                 ", prepayment='" + prepayment + "'" +
                 ", prepaymentNo='" + prepaymentNo + "'" +
                 ", comment='" + comment + "'" +
-                ", taxAmount='" + taxAmount + "'" +
-                ", total='" + total + "'" +
-                ", cost='" + cost + "'" +
+                ", totalTaxAmount='" + totalTaxAmount + "'" +
+                ", totalSellPrice='" + totalSellPrice + "'" +
+                ", totalCost='" + totalCost + "'" +
+                ", isSuspended='" + isSuspended + "'" +
                 '}';
     }
 }

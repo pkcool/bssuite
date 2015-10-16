@@ -30,9 +30,10 @@
             <column name="is_taxable" type="bit"/>
             <column name="is_locked" type="bit"/>
             <column name="comment" type="varchar(255)"/>
-            <column name="tax_amount" type="decimal(10,2)"/>
-            <column name="total" type="decimal(10,2)"/>
-            <column name="cost" type="decimal(10,2)"/>
+            <column name="total_tax_amount" type="decimal(10,2)"/>
+            <column name="total_cost" type="decimal(10,2)"/>
+            <column name="tax_exemption_code" type="varchar(255)"/>
+            <column name="is_suspended" type="bit"/>
             <column name="supplier_id" type="bigint"/>
             <column name="supplier_contact_id" type="bigint"/>
             <column name="supplier_delivery_contact_id" type="bigint"/>

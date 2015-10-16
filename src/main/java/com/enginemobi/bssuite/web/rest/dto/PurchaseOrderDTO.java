@@ -41,13 +41,16 @@ public class PurchaseOrderDTO implements Serializable {
     private String comment;
 
 
-    private BigDecimal taxAmount;
+    private BigDecimal totalTaxAmount;
 
 
-    private BigDecimal total;
+    private BigDecimal totalCost;
 
 
-    private BigDecimal cost;
+    private String taxExemptionCode;
+
+
+    private Boolean isSuspended;
 
 
     private Long supplierId;
@@ -144,30 +147,39 @@ public class PurchaseOrderDTO implements Serializable {
     }
 
 
-    public BigDecimal getTaxAmount() {
-        return taxAmount;
+    public BigDecimal getTotalTaxAmount() {
+        return totalTaxAmount;
     }
 
-    public void setTaxAmount(BigDecimal taxAmount) {
-        this.taxAmount = taxAmount;
-    }
-
-
-    public BigDecimal getTotal() {
-        return total;
-    }
-
-    public void setTotal(BigDecimal total) {
-        this.total = total;
+    public void setTotalTaxAmount(BigDecimal totalTaxAmount) {
+        this.totalTaxAmount = totalTaxAmount;
     }
 
 
-    public BigDecimal getCost() {
-        return cost;
+    public BigDecimal getTotalCost() {
+        return totalCost;
     }
 
-    public void setCost(BigDecimal cost) {
-        this.cost = cost;
+    public void setTotalCost(BigDecimal totalCost) {
+        this.totalCost = totalCost;
+    }
+
+
+    public String getTaxExemptionCode() {
+        return taxExemptionCode;
+    }
+
+    public void setTaxExemptionCode(String taxExemptionCode) {
+        this.taxExemptionCode = taxExemptionCode;
+    }
+
+
+    public Boolean getIsSuspended() {
+        return isSuspended;
+    }
+
+    public void setIsSuspended(Boolean isSuspended) {
+        this.isSuspended = isSuspended;
     }
 
 
@@ -260,9 +272,10 @@ public class PurchaseOrderDTO implements Serializable {
                 ", isTaxable='" + isTaxable + "'" +
                 ", isLocked='" + isLocked + "'" +
                 ", comment='" + comment + "'" +
-                ", taxAmount='" + taxAmount + "'" +
-                ", total='" + total + "'" +
-                ", cost='" + cost + "'" +
+                ", totalTaxAmount='" + totalTaxAmount + "'" +
+                ", totalCost='" + totalCost + "'" +
+                ", taxExemptionCode='" + taxExemptionCode + "'" +
+                ", isSuspended='" + isSuspended + "'" +
                 '}';
     }
 }

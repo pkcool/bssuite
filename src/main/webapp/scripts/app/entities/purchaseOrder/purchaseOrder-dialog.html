@@ -66,21 +66,27 @@
                     >
         </div>
         <div class="form-group">
-            <label for="field_taxAmount">TaxAmount</label>
-            <input type="number" class="form-control" name="taxAmount" id="field_taxAmount"
-                    ng-model="purchaseOrder.taxAmount"
+            <label for="field_totalTaxAmount">TotalTaxAmount</label>
+            <input type="number" class="form-control" name="totalTaxAmount" id="field_totalTaxAmount"
+                    ng-model="purchaseOrder.totalTaxAmount"
                     >
         </div>
         <div class="form-group">
-            <label for="field_total">Total</label>
-            <input type="number" class="form-control" name="total" id="field_total"
-                    ng-model="purchaseOrder.total"
+            <label for="field_totalCost">TotalCost</label>
+            <input type="number" class="form-control" name="totalCost" id="field_totalCost"
+                    ng-model="purchaseOrder.totalCost"
                     >
         </div>
         <div class="form-group">
-            <label for="field_cost">Cost</label>
-            <input type="number" class="form-control" name="cost" id="field_cost"
-                    ng-model="purchaseOrder.cost"
+            <label for="field_taxExemptionCode">TaxExemptionCode</label>
+            <input type="text" class="form-control" name="taxExemptionCode" id="field_taxExemptionCode"
+                    ng-model="purchaseOrder.taxExemptionCode"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isSuspended">IsSuspended</label>
+            <input type="checkbox" class="form-control" name="isSuspended" id="field_isSuspended"
+                    ng-model="purchaseOrder.isSuspended"
                     >
         </div>
 

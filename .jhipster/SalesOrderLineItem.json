@@ -50,7 +50,7 @@
         },
         {
             "fieldId": 6,
-            "fieldName": "taxCharge",
+            "fieldName": "totalTaxCharge",
             "fieldType": "BigDecimal"
         },
         {
@@ -90,7 +90,12 @@
         },
         {
             "fieldId": 14,
-            "fieldName": "Refer1",
+            "fieldName": "Ref1",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "Ref2",
             "fieldType": "String"
         }
     ],

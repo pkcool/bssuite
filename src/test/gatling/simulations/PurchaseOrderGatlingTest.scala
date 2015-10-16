@@ -67,7 +67,7 @@ class PurchaseOrderGatlingTest extends Simulation {
             .exec(http("Create new purchaseOrder")
             .post("/api/purchaseOrders")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "orderNo":"SAMPLE_TEXT", "status":null, "createdDate":"2020-01-01T00:00:00.000Z", "ref":"SAMPLE_TEXT", "expectedDeliveryDate":"2020-01-01T00:00:00.000Z", "isTaxable":null, "isLocked":null, "comment":"SAMPLE_TEXT", "taxAmount":null, "total":null, "cost":null}""")).asJSON
+            .body(StringBody("""{"id":null, "orderNo":"SAMPLE_TEXT", "status":null, "createdDate":"2020-01-01T00:00:00.000Z", "ref":"SAMPLE_TEXT", "expectedDeliveryDate":"2020-01-01T00:00:00.000Z", "isTaxable":null, "isLocked":null, "comment":"SAMPLE_TEXT", "totalTaxAmount":null, "totalCost":null, "taxExemptionCode":"SAMPLE_TEXT", "isSuspended":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_purchaseOrder_url")))
             .pause(10)

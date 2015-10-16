@@ -60,7 +60,7 @@
         },
         {
             "fieldId": 8,
-            "fieldName": "taxCharge",
+            "fieldName": "totalTaxCharge",
             "fieldType": "BigDecimal"
         },
         {

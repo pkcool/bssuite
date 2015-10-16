@@ -29,7 +29,7 @@
             <column name="qty_sold" type="double"/>
             <column name="qty_returned" type="double"/>
             <column name="qty_picked" type="double"/>
-            <column name="tax_charge" type="decimal(10,2)"/>
+            <column name="total_tax_charge" type="decimal(10,2)"/>
             <column name="discount_percentage" type="decimal(10,2)"/>
             <column name="discount_description" type="varchar(255)"/>
             <column name="discount_price_group_code" type="varchar(255)"/>

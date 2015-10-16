@@ -58,9 +58,10 @@
                     <th>IsTaxable</th>
                     <th>IsLocked</th>
                     <th>Comment</th>
-                    <th>TaxAmount</th>
-                    <th>Total</th>
-                    <th>Cost</th>
+                    <th>TotalTaxAmount</th>
+                    <th>TotalCost</th>
+                    <th>TaxExemptionCode</th>
+                    <th>IsSuspended</th>
                     <th>supplier</th>
                     <th>supplierContact</th>
                     <th>supplierDeliveryContact</th>
@@ -82,9 +83,10 @@
                     <td>{{purchaseOrder.isTaxable}}</td>
                     <td>{{purchaseOrder.isLocked}}</td>
                     <td>{{purchaseOrder.comment}}</td>
-                    <td>{{purchaseOrder.taxAmount}}</td>
-                    <td>{{purchaseOrder.total}}</td>
-                    <td>{{purchaseOrder.cost}}</td>
+                    <td>{{purchaseOrder.totalTaxAmount}}</td>
+                    <td>{{purchaseOrder.totalCost}}</td>
+                    <td>{{purchaseOrder.taxExemptionCode}}</td>
+                    <td>{{purchaseOrder.isSuspended}}</td>
                     <td>
                         <a ui-sref="Supplier.detail({id:purchaseOrder.supplierId})">{{purchaseOrder.supplierId}}</a>
                     </td>
