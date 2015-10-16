@@ -1,0 +1,438 @@
+
+<div>
+    <h2><span>Invoice</span> {{invoice.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>InvoiceNo</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.invoiceNo}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>InvoiceTxnType</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'bssuiteApp.InvoiceTxnType.' + invoice.invoiceTxnType}}">{{invoice.invoiceTxnType}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TxnDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.txnDate}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>DueDate</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.dueDate}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Reference</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.reference}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>OurRef</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.ourRef}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>OurRef2</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.ourRef2}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>OurRef3</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.ourRef3}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TaxExemptionCode</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.taxExemptionCode}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsPenaltyIssued</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.isPenaltyIssued}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Freight</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.freight}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>HandlingCharge</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.handlingCharge}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Charge2</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.charge2}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsTaxable</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.isTaxable}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsLocked</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.isLocked}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>AdjustTax</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.adjustTax}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>AdjustTaxExempt</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.adjustTaxExempt}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>PaymentCash</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.paymentCash}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>PaymentCheque</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.paymentCheque}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>PaymentCreditCard</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.paymentCreditCard}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>PaymentDirectDeposit</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.paymentDirectDeposit}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>PaymentVoucher</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.paymentVoucher}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>PaymentDirectDebit</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.paymentDirectDebit}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Payment1</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.payment1}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Payment2</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.payment2}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Bank</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.bank}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>BankBranch</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.bankBranch}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>BankAccount</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.bankAccount}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>DateOfDeposit</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.dateOfDeposit}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>DrawerName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.drawerName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>NoAlloc</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.NoAlloc}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>CoinRound</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.coinRound}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Prepayment</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.prepayment}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>In2</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.in2}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Comment</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.comment}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TaxAmount</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.taxAmount}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Total</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.total}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Cost</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.cost}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsOnHold</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.isOnHold}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsLayBy</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.isLayBy}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsExternalTxn</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.isExternalTxn}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsSuspended</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoice.isSuspended}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>GeneratedFrom</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'bssuiteApp.InvoiceSource.' + invoice.generatedFrom}}">{{invoice.generatedFrom}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>customer</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="customer.detail({id:invoice.customerId})">{{invoice.customerId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>billingCustomer</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="customer.detail({id:invoice.billingCustomerId})">{{invoice.billingCustomerId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>contact</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="contact.detail({id:invoice.contactId})">{{invoice.contactId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>deliveryContact</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="contact.detail({id:invoice.deliveryContactId})">{{invoice.deliveryContactId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>store</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="store.detail({id:invoice.storeId})">{{invoice.storeId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>carrier</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="carrier.detail({id:invoice.carrierId})">{{invoice.carrierId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>salesperson</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="staff.detail({id:invoice.salespersonId})">{{invoice.salespersonId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>promotion</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="promotion.detail({id:invoice.promotionId})">{{invoice.promotionId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>createdBy</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="staff.detail({id:invoice.createdById})">{{invoice.createdById}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

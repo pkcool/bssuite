@@ -1,0 +1,346 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myInvoiceLabel">Create or edit a Invoice</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="invoice.id" readonly>
+        </div>
+        <div class="form-group">
+            <label for="field_invoiceNo">InvoiceNo</label>
+            <input type="text" class="form-control" name="invoiceNo" id="field_invoiceNo"
+                    ng-model="invoice.invoiceNo"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_invoiceTxnType">InvoiceTxnType</label>
+            <select class="form-control" name="invoiceTxnType" ng-model="invoice.invoiceTxnType" id="field_invoiceTxnType">
+                <option value="INVOICE">INVOICE</option>
+                <option value="ADJUSTMENTNOTE">ADJUSTMENTNOTE</option>
+                <option value="CASHORDER">CASHORDER</option>
+                <option value="CASHSALE">CASHSALE</option>
+                <option value="PPSAMOUNT">PPSAMOUNT</option>
+                <option value="PAYMENT">PAYMENT</option>
+                <option value="LAYBY">LAYBY</option>
+                <option value="SPECIAL">SPECIAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_txnDate">TxnDate</label>
+            <input type="datetime-local" class="form-control" name="txnDate" id="field_txnDate"
+                    ng-model="invoice.txnDate" ng-model-options="{timezone: 'UTC'}"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_dueDate">DueDate</label>
+            <input type="date" class="form-control" name="dueDate" id="field_dueDate"
+                    ng-model="invoice.dueDate"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_reference">Reference</label>
+            <input type="text" class="form-control" name="reference" id="field_reference"
+                    ng-model="invoice.reference"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_ourRef">OurRef</label>
+            <input type="text" class="form-control" name="ourRef" id="field_ourRef"
+                    ng-model="invoice.ourRef"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_ourRef2">OurRef2</label>
+            <input type="text" class="form-control" name="ourRef2" id="field_ourRef2"
+                    ng-model="invoice.ourRef2"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_ourRef3">OurRef3</label>
+            <input type="text" class="form-control" name="ourRef3" id="field_ourRef3"
+                    ng-model="invoice.ourRef3"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_taxExemptionCode">TaxExemptionCode</label>
+            <input type="text" class="form-control" name="taxExemptionCode" id="field_taxExemptionCode"
+                    ng-model="invoice.taxExemptionCode"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isPenaltyIssued">IsPenaltyIssued</label>
+            <input type="checkbox" class="form-control" name="isPenaltyIssued" id="field_isPenaltyIssued"
+                    ng-model="invoice.isPenaltyIssued"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_freight">Freight</label>
+            <input type="number" class="form-control" name="freight" id="field_freight"
+                    ng-model="invoice.freight"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_handlingCharge">HandlingCharge</label>
+            <input type="number" class="form-control" name="handlingCharge" id="field_handlingCharge"
+                    ng-model="invoice.handlingCharge"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_charge2">Charge2</label>
+            <input type="number" class="form-control" name="charge2" id="field_charge2"
+                    ng-model="invoice.charge2"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isTaxable">IsTaxable</label>
+            <input type="checkbox" class="form-control" name="isTaxable" id="field_isTaxable"
+                    ng-model="invoice.isTaxable"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isLocked">IsLocked</label>
+            <input type="checkbox" class="form-control" name="isLocked" id="field_isLocked"
+                    ng-model="invoice.isLocked"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_adjustTax">AdjustTax</label>
+            <input type="number" class="form-control" name="adjustTax" id="field_adjustTax"
+                    ng-model="invoice.adjustTax"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_adjustTaxExempt">AdjustTaxExempt</label>
+            <input type="number" class="form-control" name="adjustTaxExempt" id="field_adjustTaxExempt"
+                    ng-model="invoice.adjustTaxExempt"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_paymentCash">PaymentCash</label>
+            <input type="number" class="form-control" name="paymentCash" id="field_paymentCash"
+                    ng-model="invoice.paymentCash"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_paymentCheque">PaymentCheque</label>
+            <input type="number" class="form-control" name="paymentCheque" id="field_paymentCheque"
+                    ng-model="invoice.paymentCheque"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_paymentCreditCard">PaymentCreditCard</label>
+            <input type="number" class="form-control" name="paymentCreditCard" id="field_paymentCreditCard"
+                    ng-model="invoice.paymentCreditCard"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_paymentDirectDeposit">PaymentDirectDeposit</label>
+            <input type="number" class="form-control" name="paymentDirectDeposit" id="field_paymentDirectDeposit"
+                    ng-model="invoice.paymentDirectDeposit"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_paymentVoucher">PaymentVoucher</label>
+            <input type="number" class="form-control" name="paymentVoucher" id="field_paymentVoucher"
+                    ng-model="invoice.paymentVoucher"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_paymentDirectDebit">PaymentDirectDebit</label>
+            <input type="number" class="form-control" name="paymentDirectDebit" id="field_paymentDirectDebit"
+                    ng-model="invoice.paymentDirectDebit"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_payment1">Payment1</label>
+            <input type="number" class="form-control" name="payment1" id="field_payment1"
+                    ng-model="invoice.payment1"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_payment2">Payment2</label>
+            <input type="number" class="form-control" name="payment2" id="field_payment2"
+                    ng-model="invoice.payment2"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_bank">Bank</label>
+            <input type="text" class="form-control" name="bank" id="field_bank"
+                    ng-model="invoice.bank"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_bankBranch">BankBranch</label>
+            <input type="text" class="form-control" name="bankBranch" id="field_bankBranch"
+                    ng-model="invoice.bankBranch"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_bankAccount">BankAccount</label>
+            <input type="text" class="form-control" name="bankAccount" id="field_bankAccount"
+                    ng-model="invoice.bankAccount"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_dateOfDeposit">DateOfDeposit</label>
+            <input type="date" class="form-control" name="dateOfDeposit" id="field_dateOfDeposit"
+                    ng-model="invoice.dateOfDeposit"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_drawerName">DrawerName</label>
+            <input type="text" class="form-control" name="drawerName" id="field_drawerName"
+                    ng-model="invoice.drawerName"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_NoAlloc">NoAlloc</label>
+            <input type="number" class="form-control" name="NoAlloc" id="field_NoAlloc"
+                    ng-model="invoice.NoAlloc"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_coinRound">CoinRound</label>
+            <input type="number" class="form-control" name="coinRound" id="field_coinRound"
+                    ng-model="invoice.coinRound"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_prepayment">Prepayment</label>
+            <input type="number" class="form-control" name="prepayment" id="field_prepayment"
+                    ng-model="invoice.prepayment"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_in2">In2</label>
+            <input type="text" class="form-control" name="in2" id="field_in2"
+                    ng-model="invoice.in2"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_comment">Comment</label>
+            <input type="text" class="form-control" name="comment" id="field_comment"
+                    ng-model="invoice.comment"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_taxAmount">TaxAmount</label>
+            <input type="number" class="form-control" name="taxAmount" id="field_taxAmount"
+                    ng-model="invoice.taxAmount"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_total">Total</label>
+            <input type="number" class="form-control" name="total" id="field_total"
+                    ng-model="invoice.total"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_cost">Cost</label>
+            <input type="number" class="form-control" name="cost" id="field_cost"
+                    ng-model="invoice.cost"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isOnHold">IsOnHold</label>
+            <input type="checkbox" class="form-control" name="isOnHold" id="field_isOnHold"
+                    ng-model="invoice.isOnHold"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isLayBy">IsLayBy</label>
+            <input type="checkbox" class="form-control" name="isLayBy" id="field_isLayBy"
+                    ng-model="invoice.isLayBy"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isExternalTxn">IsExternalTxn</label>
+            <input type="checkbox" class="form-control" name="isExternalTxn" id="field_isExternalTxn"
+                    ng-model="invoice.isExternalTxn"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isSuspended">IsSuspended</label>
+            <input type="checkbox" class="form-control" name="isSuspended" id="field_isSuspended"
+                    ng-model="invoice.isSuspended"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_generatedFrom">GeneratedFrom</label>
+            <select class="form-control" name="generatedFrom" ng-model="invoice.generatedFrom" id="field_generatedFrom">
+                <option value="INVOICE">INVOICE</option>
+                <option value="SALESORDER">SALESORDER</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="field_customer">customer</label>
+            <select class="form-control" id="field_customer" name="customer" ng-model="invoice.customerId" ng-options="customer.id as customer.id for customer in customers">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_billingCustomer">billingCustomer</label>
+            <select class="form-control" id="field_billingCustomer" name="billingCustomer" ng-model="invoice.billingCustomerId" ng-options="customer.id as customer.id for customer in customers">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_contact">contact</label>
+            <select class="form-control" id="field_contact" name="contact" ng-model="invoice.contactId" ng-options="contact.id as contact.id for contact in contacts">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_deliveryContact">deliveryContact</label>
+            <select class="form-control" id="field_deliveryContact" name="deliveryContact" ng-model="invoice.deliveryContactId" ng-options="contact.id as contact.id for contact in contacts">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_store">store</label>
+            <select class="form-control" id="field_store" name="store" ng-model="invoice.storeId" ng-options="store.id as store.id for store in stores">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_carrier">carrier</label>
+            <select class="form-control" id="field_carrier" name="carrier" ng-model="invoice.carrierId" ng-options="carrier.id as carrier.id for carrier in carriers">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_salesperson">salesperson</label>
+            <select class="form-control" id="field_salesperson" name="salesperson" ng-model="invoice.salespersonId" ng-options="staff.id as staff.id for staff in staffs">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_promotion">promotion</label>
+            <select class="form-control" id="field_promotion" name="promotion" ng-model="invoice.promotionId" ng-options="promotion.id as promotion.id for promotion in promotions">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_createdBy">createdBy</label>
+            <select class="form-control" id="field_createdBy" name="createdBy" ng-model="invoice.createdById" ng-options="staff.id as staff.id for staff in staffs">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,296 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "customer",
+            "otherEntityName": "customer",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "billingCustomer",
+            "otherEntityName": "customer",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "contact",
+            "otherEntityName": "contact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "deliveryContact",
+            "otherEntityName": "contact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 5,
+            "relationshipName": "store",
+            "otherEntityName": "store",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 6,
+            "relationshipName": "carrier",
+            "otherEntityName": "carrier",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 7,
+            "relationshipName": "salesperson",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 8,
+            "relationshipName": "promotion",
+            "otherEntityName": "promotion",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 9,
+            "relationshipName": "createdBy",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 10,
+            "relationshipName": "invoiceLineItems",
+            "otherEntityName": "invoiceLineItem",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "invoice"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "invoiceNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "invoiceTxnType",
+            "fieldType": "InvoiceTxnType",
+            "fieldValues": "INVOICE,ADJUSTMENTNOTE,CASHORDER,CASHSALE,PPSAMOUNT,PAYMENT,LAYBY,SPECIAL"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "txnDate",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "dueDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "reference",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "ourRef",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "ourRef2",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "ourRef3",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "taxExemptionCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "isPenaltyIssued",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "freight",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "handlingCharge",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "charge2",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "isTaxable",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "isLocked",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 16,
+            "fieldName": "adjustTax",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 17,
+            "fieldName": "adjustTaxExempt",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 18,
+            "fieldName": "paymentCash",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 19,
+            "fieldName": "paymentCheque",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 20,
+            "fieldName": "paymentCreditCard",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 21,
+            "fieldName": "paymentDirectDeposit",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 22,
+            "fieldName": "paymentVoucher",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 23,
+            "fieldName": "paymentDirectDebit",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 24,
+            "fieldName": "payment1",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 25,
+            "fieldName": "payment2",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 26,
+            "fieldName": "bank",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 27,
+            "fieldName": "bankBranch",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 28,
+            "fieldName": "bankAccount",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 29,
+            "fieldName": "dateOfDeposit",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 30,
+            "fieldName": "drawerName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 31,
+            "fieldName": "NoAlloc",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 32,
+            "fieldName": "coinRound",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 33,
+            "fieldName": "prepayment",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 34,
+            "fieldName": "in2",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 35,
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 36,
+            "fieldName": "taxAmount",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 37,
+            "fieldName": "total",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 38,
+            "fieldName": "cost",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 39,
+            "fieldName": "isOnHold",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 40,
+            "fieldName": "isLayBy",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 41,
+            "fieldName": "isExternalTxn",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 42,
+            "fieldName": "isSuspended",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 43,
+            "fieldName": "generatedFrom",
+            "fieldType": "InvoiceSource",
+            "fieldValues": "INVOICE,SALESORDER"
+        }
+    ],
+    "changelogDate": "20151015232019",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}

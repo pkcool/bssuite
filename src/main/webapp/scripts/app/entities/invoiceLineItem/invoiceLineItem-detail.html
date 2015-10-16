@@ -1,0 +1,190 @@
+
+<div>
+    <h2><span>InvoiceLineItem</span> {{invoiceLineItem.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Cost</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.cost}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>SoldFor</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.soldFor}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>QtyOrdered</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.qtyOrdered}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>QtySold</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.qtySold}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>QtyReturned</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.qtyReturned}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>QtyPicked</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.qtyPicked}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TaxCharge</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.taxCharge}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>DiscountPercentage</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.discountPercentage}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>DiscountDescription</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.discountDescription}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>DiscountPriceGroupCode</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.discountPriceGroupCode}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>LineNo</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.lineNo}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>ListPrice</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.listPrice}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>ListPriceDiscount</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.listPriceDiscount}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Cost2</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.cost2}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsHidden</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.isHidden}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Ref1</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.Ref1}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Ref2</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{invoiceLineItem.Ref2}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>invoice</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="invoice.detail({id:invoiceLineItem.invoice.id})">{{invoiceLineItem.invoice.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>product</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="product.detail({id:invoiceLineItem.product.id})">{{invoiceLineItem.product.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>taxRate</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="taxTable.detail({id:invoiceLineItem.taxRate.id})">{{invoiceLineItem.taxRate.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
