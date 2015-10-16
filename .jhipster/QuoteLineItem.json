@@ -1,0 +1,100 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "quote",
+            "otherEntityName": "quote",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "taxRate",
+            "otherEntityName": "taxTable",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "cost",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "soldFor",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "qtyQuoted",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "discountPriceGroupCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "totalTaxCharge",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "discountPercentage",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "lineNo",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "listPrice",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "listPriceDiscount",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "cost2",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "isHidden",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "Ref1",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "Ref2",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151016011324",
+    "dto": "no",
+    "pagination": "pagination"
+}

@@ -1,0 +1,154 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "customer",
+            "otherEntityName": "customer",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "contact",
+            "otherEntityName": "contact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "deliveryContact",
+            "otherEntityName": "contact",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "store",
+            "otherEntityName": "store",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 5,
+            "relationshipName": "quoteByStaff",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 6,
+            "relationshipName": "createdBy",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 7,
+            "relationshipName": "quoteLineItems",
+            "otherEntityName": "quoteLineItem",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "quote"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "quoteNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "status",
+            "fieldType": "QuoteStatus",
+            "fieldValues": "OPEN,ACCEPTED,LOST,CANCELLED,SUSPENDED,EXPIRED"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "quoteDate",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "expiryDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "followupDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "reference",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "ourRef",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "freight",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "reasonForLoss",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "isTaxable",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "taxExemptionCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "isLocked",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "adjustTax",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "adjustTaxExempt",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "comment",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 16,
+            "fieldName": "totalTaxAmount",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 17,
+            "fieldName": "totalSellPrice",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 18,
+            "fieldName": "totalCost",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 19,
+            "fieldName": "isSuspended",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20151016010000",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}

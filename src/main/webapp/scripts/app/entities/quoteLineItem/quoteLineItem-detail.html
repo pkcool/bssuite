@@ -1,0 +1,158 @@
+
+<div>
+    <h2><span>QuoteLineItem</span> {{quoteLineItem.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>Description</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{quoteLineItem.description}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Cost</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{quoteLineItem.cost}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>SoldFor</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{quoteLineItem.soldFor}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>QtyQuoted</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{quoteLineItem.qtyQuoted}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>DiscountPriceGroupCode</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{quoteLineItem.discountPriceGroupCode}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TotalTaxCharge</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{quoteLineItem.totalTaxCharge}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>DiscountPercentage</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{quoteLineItem.discountPercentage}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>LineNo</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{quoteLineItem.lineNo}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>ListPrice</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{quoteLineItem.listPrice}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>ListPriceDiscount</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{quoteLineItem.listPriceDiscount}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Cost2</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{quoteLineItem.cost2}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>IsHidden</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{quoteLineItem.isHidden}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Ref1</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{quoteLineItem.Ref1}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Ref2</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{quoteLineItem.Ref2}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>quote</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="quote.detail({id:quoteLineItem.quote.id})">{{quoteLineItem.quote.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>product</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="product.detail({id:quoteLineItem.product.id})">{{quoteLineItem.product.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>taxRate</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="taxTable.detail({id:quoteLineItem.taxRate.id})">{{quoteLineItem.taxRate.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

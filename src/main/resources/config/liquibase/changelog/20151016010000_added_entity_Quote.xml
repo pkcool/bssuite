@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql"/>
+    <property name="autoIncrement" value="false" dbms="oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity Quote.
+    -->
+    <changeSet id="20151016010000" author="jhipster">
+        <createTable tableName="quote">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="quote_no" type="varchar(255)"/>
+            <column name="status" type="varchar(255)"/>
+            <column name="quote_date" type="timestamp"/>
+            <column name="expiry_date" type="date"/>
+            <column name="followup_date" type="date"/>
+            <column name="reference" type="varchar(255)"/>
+            <column name="our_ref" type="varchar(255)"/>
+            <column name="freight" type="decimal(10,2)"/>
+            <column name="reason_for_loss" type="varchar(255)"/>
+            <column name="is_taxable" type="bit"/>
+            <column name="tax_exemption_code" type="varchar(255)"/>
+            <column name="is_locked" type="bit"/>
+            <column name="adjust_tax" type="decimal(10,2)"/>
+            <column name="adjust_tax_exempt" type="decimal(10,2)"/>
+            <column name="comment" type="varchar(255)"/>
+            <column name="total_tax_amount" type="decimal(10,2)"/>
+            <column name="total_sell_price" type="decimal(10,2)"/>
+            <column name="total_cost" type="decimal(10,2)"/>
+            <column name="is_suspended" type="bit"/>
+            <column name="customer_id" type="bigint"/>
+            <column name="contact_id" type="bigint"/>
+            <column name="delivery_contact_id" type="bigint"/>
+            <column name="store_id" type="bigint"/>
+            <column name="quote_by_staff_id" type="bigint"/>
+            <column name="created_by_id" type="bigint"/>
+        </createTable>
+        <dropDefaultValue tableName="quote" columnName="quote_date" columnDataType="datetime"/>
+
+        
+        <addForeignKeyConstraint baseColumnNames="customer_id"
+                                 baseTableName="quote"
+                                 constraintName="fk_quote_customer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer"/>
+
+        <addForeignKeyConstraint baseColumnNames="contact_id"
+                                 baseTableName="quote"
+                                 constraintName="fk_quote_contact_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact"/>
+
+        <addForeignKeyConstraint baseColumnNames="delivery_contact_id"
+                                 baseTableName="quote"
+                                 constraintName="fk_quote_deliverycontact_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contact"/>
+
+        <addForeignKeyConstraint baseColumnNames="store_id"
+                                 baseTableName="quote"
+                                 constraintName="fk_quote_store_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="store"/>
+
+        <addForeignKeyConstraint baseColumnNames="quote_by_staff_id"
+                                 baseTableName="quote"
+                                 constraintName="fk_quote_quotebystaff_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="staff"/>
+
+        <addForeignKeyConstraint baseColumnNames="created_by_id"
+                                 baseTableName="quote"
+                                 constraintName="fk_quote_createdby_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="staff"/>
+
+    </changeSet>
+</databaseChangeLog>

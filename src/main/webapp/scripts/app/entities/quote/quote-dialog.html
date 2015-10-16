@@ -1,0 +1,181 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myQuoteLabel">Create or edit a Quote</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="quote.id" readonly>
+        </div>
+        <div class="form-group">
+            <label for="field_quoteNo">QuoteNo</label>
+            <input type="text" class="form-control" name="quoteNo" id="field_quoteNo"
+                    ng-model="quote.quoteNo"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="quote.status" id="field_status">
+                <option value="OPEN">OPEN</option>
+                <option value="ACCEPTED">ACCEPTED</option>
+                <option value="LOST">LOST</option>
+                <option value="CANCELLED">CANCELLED</option>
+                <option value="SUSPENDED">SUSPENDED</option>
+                <option value="EXPIRED">EXPIRED</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_quoteDate">QuoteDate</label>
+            <input type="datetime-local" class="form-control" name="quoteDate" id="field_quoteDate"
+                    ng-model="quote.quoteDate" ng-model-options="{timezone: 'UTC'}"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_expiryDate">ExpiryDate</label>
+            <input type="date" class="form-control" name="expiryDate" id="field_expiryDate"
+                    ng-model="quote.expiryDate"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_followupDate">FollowupDate</label>
+            <input type="date" class="form-control" name="followupDate" id="field_followupDate"
+                    ng-model="quote.followupDate"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_reference">Reference</label>
+            <input type="text" class="form-control" name="reference" id="field_reference"
+                    ng-model="quote.reference"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_ourRef">OurRef</label>
+            <input type="text" class="form-control" name="ourRef" id="field_ourRef"
+                    ng-model="quote.ourRef"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_freight">Freight</label>
+            <input type="number" class="form-control" name="freight" id="field_freight"
+                    ng-model="quote.freight"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_reasonForLoss">ReasonForLoss</label>
+            <input type="text" class="form-control" name="reasonForLoss" id="field_reasonForLoss"
+                    ng-model="quote.reasonForLoss"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isTaxable">IsTaxable</label>
+            <input type="checkbox" class="form-control" name="isTaxable" id="field_isTaxable"
+                    ng-model="quote.isTaxable"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_taxExemptionCode">TaxExemptionCode</label>
+            <input type="text" class="form-control" name="taxExemptionCode" id="field_taxExemptionCode"
+                    ng-model="quote.taxExemptionCode"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isLocked">IsLocked</label>
+            <input type="checkbox" class="form-control" name="isLocked" id="field_isLocked"
+                    ng-model="quote.isLocked"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_adjustTax">AdjustTax</label>
+            <input type="number" class="form-control" name="adjustTax" id="field_adjustTax"
+                    ng-model="quote.adjustTax"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_adjustTaxExempt">AdjustTaxExempt</label>
+            <input type="number" class="form-control" name="adjustTaxExempt" id="field_adjustTaxExempt"
+                    ng-model="quote.adjustTaxExempt"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_comment">Comment</label>
+            <input type="text" class="form-control" name="comment" id="field_comment"
+                    ng-model="quote.comment"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_totalTaxAmount">TotalTaxAmount</label>
+            <input type="number" class="form-control" name="totalTaxAmount" id="field_totalTaxAmount"
+                    ng-model="quote.totalTaxAmount"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_totalSellPrice">TotalSellPrice</label>
+            <input type="number" class="form-control" name="totalSellPrice" id="field_totalSellPrice"
+                    ng-model="quote.totalSellPrice"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_totalCost">TotalCost</label>
+            <input type="number" class="form-control" name="totalCost" id="field_totalCost"
+                    ng-model="quote.totalCost"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_isSuspended">IsSuspended</label>
+            <input type="checkbox" class="form-control" name="isSuspended" id="field_isSuspended"
+                    ng-model="quote.isSuspended"
+                    >
+        </div>
+
+        <div class="form-group">
+            <label for="field_customer">customer</label>
+            <select class="form-control" id="field_customer" name="customer" ng-model="quote.customerId" ng-options="customer.id as customer.id for customer in customers">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_contact">contact</label>
+            <select class="form-control" id="field_contact" name="contact" ng-model="quote.contactId" ng-options="contact.id as contact.id for contact in contacts">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_deliveryContact">deliveryContact</label>
+            <select class="form-control" id="field_deliveryContact" name="deliveryContact" ng-model="quote.deliveryContactId" ng-options="contact.id as contact.id for contact in contacts">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_store">store</label>
+            <select class="form-control" id="field_store" name="store" ng-model="quote.storeId" ng-options="store.id as store.id for store in stores">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_quoteByStaff">quoteByStaff</label>
+            <select class="form-control" id="field_quoteByStaff" name="quoteByStaff" ng-model="quote.quoteByStaffId" ng-options="staff.id as staff.id for staff in staffs">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_createdBy">createdBy</label>
+            <select class="form-control" id="field_createdBy" name="createdBy" ng-model="quote.createdById" ng-options="staff.id as staff.id for staff in staffs">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
