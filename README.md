@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://travis-ci.org/pkcool/bssuite.svg?branch=master">
+  <img src="https://travis-ci.org/pkcool/bssuite.svg?branch=develop-0.2.x">
 </p>
 
 # Developing bssuite

@@ -11,7 +11,7 @@
 
     <groupId>com.enginemobi.bssuite</groupId>
     <artifactId>bssuite</artifactId>
-    <version>0.1.x-SNAPSHOT</version>
+    <version>0.2.x-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <name>bssuite</name>
