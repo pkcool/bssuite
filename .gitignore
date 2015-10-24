@@ -2,6 +2,10 @@
 # Project Specific
 ######################
 /src/main/webapp/assets/styles/main.css
+/src/main/webapp/assets/styles/smartadmin-production-plugins.css
+/src/main/webapp/assets/styles/smartadmin-production.css
+/src/main/webapp/assets/styles/smartadmin-skins.css
+/src/main/webapp/assets/styles/jhipster-style.css
 /src/main/webapp/dist
 
 ######################
