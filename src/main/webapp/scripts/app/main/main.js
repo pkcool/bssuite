@@ -16,7 +16,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
-                    
+                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                        $translatePartialLoader.addPart('main');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });

@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/docs',
                 data: {
                     authorities: ['ROLE_ADMIN'],
-                    pageTitle: 'API'
+                    pageTitle: 'global.menu.admin.apidocs'
                 },
                 views: {
                     'content@': {
@@ -16,7 +16,9 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', function ($translate) {
+                        return $translate.refresh();
+                    }]
                 }
             });
     });

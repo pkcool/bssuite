@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/social-register/:provider?{success:boolean}',
                 data: {
                     authorities: [],
-                    pageTitle: 'Register with {{ label }}'
+                    pageTitle: 'social.register.title'
                 },
                 views: {
                     'content@': {
@@ -17,7 +17,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('social');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });

@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/activate?key',
                 data: {
                     authorities: [],
-                    pageTitle: 'Activation'
+                    pageTitle: 'activate.title'
                 },
                 views: {
                     'content@': {
@@ -17,7 +17,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('activate');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });

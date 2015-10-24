@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/health',
                 data: {
                     authorities: ['ROLE_ADMIN'],
-                    pageTitle: 'Health checks'
+                    pageTitle: 'health.title'
                 },
                 views: {
                     'content@': {
@@ -17,7 +17,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('health');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });

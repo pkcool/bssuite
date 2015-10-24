@@ -1,9 +1,12 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('UserManagementController', function ($scope, User, ParseLinks) {
+    .controller('UserManagementController', function ($scope, User, ParseLinks, Language) {
         $scope.users = [];
         $scope.authorities = ["ROLE_USER", "ROLE_ADMIN"];
+        Language.getAll().then(function (languages) {
+            $scope.languages = languages;
+        });
 
         $scope.page = 0;
         $scope.loadAll = function () {

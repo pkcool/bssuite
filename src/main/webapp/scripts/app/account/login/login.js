@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/login',
                 data: {
                     authorities: [], 
-                    pageTitle: 'Sign in'
+                    pageTitle: 'login.title'
                 },
                 views: {
                     'content@': {
@@ -17,7 +17,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('login');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });

@@ -17,7 +17,7 @@ angular.module('bssuiteApp')
             ]
         }
     })
-    .directive('jhAlertError', function(AlertService, $rootScope) {
+    .directive('jhAlertError', function(AlertService, $rootScope, $translate) {
         return {
             restrict: 'E',
             template: '<div class="alerts" ng-cloak="">' +
@@ -42,7 +42,7 @@ angular.module('bssuiteApp')
                                         var fieldError = httpResponse.data.fieldErrors[i];
                                         // convert 'something[14].other[4].id' to 'something[].other[].id' so translations can be written to it
                                         var convertedField = fieldError.field.replace(/\[\d*\]/g, "[]");
-                                        var fieldName = convertedField.charAt(0).toUpperCase() + convertedField.slice(1);
+                                        var fieldName = $translate.instant('bssuiteApp.' + fieldError.objectName + '.' + convertedField);
                                         addErrorAlert('Field ' + fieldName + ' cannot be empty', 'error.' + fieldError.message, {fieldName: fieldName});
                                     }
                                 } else if (httpResponse.data && httpResponse.data.message) {
@@ -68,7 +68,9 @@ angular.module('bssuiteApp')
                     });
 
                     var addErrorAlert = function (message, key, data) {
-                         AlertService.error(message); 
+                        
+                        key = key && key != null ? key : message;
+                        AlertService.error(key, data); 
 
                     }
                 }

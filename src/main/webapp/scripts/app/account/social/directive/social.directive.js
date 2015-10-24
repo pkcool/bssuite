@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .directive('jhSocial', function($filter, SocialService) {
+    .directive('jhSocial', function($translatePartialLoader, $translate, $filter, SocialService) {
         return {
             restrict: 'E',
             scope: {
@@ -9,6 +9,9 @@ angular.module('bssuiteApp')
             },
             templateUrl: 'scripts/app/account/social/directive/social.html',
             link: function(scope, element, attrs) {
+                $translatePartialLoader.addPart('social');
+                $translate.refresh();
+
                 scope.label = $filter('capitalize')(scope.provider);
                 scope.providerSetting = SocialService.getProviderSetting(scope.provider);
                 scope.providerURL = SocialService.getProviderURL(scope.provider);

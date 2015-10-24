@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/configuration',
                 data: {
                     authorities: ['ROLE_ADMIN'],
-                    pageTitle: 'Configuration'
+                    pageTitle: 'configuration.title'
                 },
                 views: {
                     'content@': {
@@ -17,7 +17,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('configuration');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });

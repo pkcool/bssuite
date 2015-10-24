@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/register',
                 data: {
                     authorities: [],
-                    pageTitle: 'Registration'
+                    pageTitle: 'register.title'
                 },
                 views: {
                     'content@': {
@@ -17,7 +17,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('register');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });

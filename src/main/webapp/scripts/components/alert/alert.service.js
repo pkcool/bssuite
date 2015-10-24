@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .factory('AlertService', function ($timeout, $sce) {
+    .factory('AlertService', function ($timeout, $sce,$translate) {
         var exports = {
             factory: factory,
             add: addAlert,
@@ -76,6 +76,7 @@ angular.module('bssuiteApp')
 
         function addAlert(alertOptions) {
             alertOptions.alertId = alertId++;
+            alertOptions.msg = $translate.instant(alertOptions.msg, alertOptions.params);
             var that = this;
             this.factory(alertOptions);
             if (alertOptions.timeout && alertOptions.timeout > 0) {

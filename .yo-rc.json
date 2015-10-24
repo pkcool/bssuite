@@ -15,7 +15,7 @@
     "buildTool": "maven",
     "frontendBuilder": "grunt",
     "javaVersion": "8",
-    "enableTranslation": false,
+    "enableTranslation": true,
     "rememberMeKey": "1f3cf7987e248974d84186dc7c223e5bd7ad92b1",
     "enableSocialSignIn": true,
     "testFrameworks": [

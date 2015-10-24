@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/sessions',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Sessions'
+                    pageTitle: 'global.menu.account.sessions'
                 },
                 views: {
                     'content@': {
@@ -17,7 +17,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('sessions');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });

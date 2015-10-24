@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/user-management',
                 data: {
                     authorities: ['ROLE_ADMIN'],
-                    pageTitle: 'bssuite'
+                    pageTitle: 'user-management.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,7 +17,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('user.management');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('user-management-detail', {
@@ -25,7 +28,7 @@ angular.module('bssuiteApp')
                 url: '/user-management/:login',
                 data: {
                     authorities: ['ROLE_ADMIN'],
-                    pageTitle: 'bssuite'
+                    pageTitle: 'user-management.detail.title'
                 },
                 views: {
                     'content@': {
@@ -34,7 +37,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
-                    
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('user.management');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });

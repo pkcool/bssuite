@@ -5,31 +5,5 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151012044312_added_entity_Store.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151013131354_added_entity_TaxTable.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151012102544_added_entity_Address.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151015044625_added_entity_BackOrderLineItem.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151014074744_added_entity_Carrier.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151012105056_added_entity_Contact.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151012223114_added_entity_Customer.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151012124632_added_entity_CustomerCategory.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151014234523_added_entity_CustomerDiscountRule.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151015232019_added_entity_Invoice.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151016001613_added_entity_InvoiceLineItem.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151013114444_added_entity_PriceScale.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151014035926_added_entity_Product.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151014075915_added_entity_Promotion.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151015052444_added_entity_PurchaseOrder.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151015054819_added_entity_PurchaseOrderLineItem.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151016010000_added_entity_Quote.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151016011324_added_entity_QuoteLineItem.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151014083317_added_entity_SalesOrder.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151014085907_added_entity_SalesOrderLineItem.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151012132331_added_entity_Staff.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151013120311_added_entity_StockFamily.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151013133648_added_entity_StockGroup.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151012122105_added_entity_Supplier.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151012120742_added_entity_SupplierCategory.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20151014235000_added_entity_SupplierDiscountRule.xml" relativeToChangelogFile="false"/>
     <!-- JHipster will add liquibase changelogs here -->
 </databaseChangeLog>

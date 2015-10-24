@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/error',
                 data: {
                     authorities: [],
-                    pageTitle: 'Error page!'
+                    pageTitle: 'error.title'
                 },
                 views: {
                     'content@': {
@@ -16,7 +16,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
-                    
+                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                        $translatePartialLoader.addPart('error');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('accessdenied', {
@@ -31,7 +34,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
-                    
+                    mainTranslatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                        $translatePartialLoader.addPart('error');
+                        return $translate.refresh();
+                    }]
                 }
             });
     });
