@@ -1,6 +1,7 @@
 package com.enginemobi.bssuite.config;
 
 import com.enginemobi.bssuite.config.locale.AngularCookieLocaleResolver;
+
 import org.springframework.boot.bind.RelaxedPropertyResolver;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.MessageSource;

@@ -87,9 +87,9 @@
                     <td><a ui-sref="salesOrder.detail({id:salesOrder.id})">{{salesOrder.id}}</a></td>
                     <td>{{salesOrder.orderNo}}</td>
                     <td translate="{{'bssuiteApp.SalesOrderStatus.' + salesOrder.status}}">{{salesOrder.status}}</td>
-                    <td>{{salesOrder.txnDate}}</td>
-                    <td>{{salesOrder.forwardDate}}</td>
-                    <td>{{salesOrder.requiredDate}}</td>
+                    <td>{{salesOrder.txnDate | date:'medium'}}</td>
+                        <td>{{salesOrder.forwardDate | date:'mediumDate'}}</td>
+                        <td>{{salesOrder.requiredDate | date:'mediumDate'}}</td>
                     <td>{{salesOrder.customerOrderNo}}</td>
                     <td>{{salesOrder.ourRef}}</td>
                     <td>{{salesOrder.freight}}</td>

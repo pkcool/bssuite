@@ -52,8 +52,8 @@ public class SalesOrderResource {
      * POST  /salesOrders -> Create a new salesOrder.
      */
     @RequestMapping(value = "/salesOrders",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<SalesOrderDTO> createSalesOrder(@RequestBody SalesOrderDTO salesOrderDTO) throws URISyntaxException {
         log.debug("REST request to save SalesOrder : {}", salesOrderDTO);
@@ -64,8 +64,8 @@ public class SalesOrderResource {
         SalesOrder result = salesOrderRepository.save(salesOrder);
         salesOrderSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/salesOrders/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("salesOrder", result.getId().toString()))
-                .body(salesOrderMapper.salesOrderToSalesOrderDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("salesOrder", result.getId().toString()))
+            .body(salesOrderMapper.salesOrderToSalesOrderDTO(result));
     }
 
     /**
@@ -84,16 +84,16 @@ public class SalesOrderResource {
         SalesOrder result = salesOrderRepository.save(salesOrder);
         salesOrderSearchRepository.save(salesOrder);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("salesOrder", salesOrderDTO.getId().toString()))
-                .body(salesOrderMapper.salesOrderToSalesOrderDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("salesOrder", salesOrderDTO.getId().toString()))
+            .body(salesOrderMapper.salesOrderToSalesOrderDTO(result));
     }
 
     /**
      * GET  /salesOrders -> get all the salesOrders.
      */
     @RequestMapping(value = "/salesOrders",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<SalesOrderDTO>> getAllSalesOrders(Pageable pageable)
@@ -109,8 +109,8 @@ public class SalesOrderResource {
      * GET  /salesOrders/:id -> get the "id" salesOrder.
      */
     @RequestMapping(value = "/salesOrders/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<SalesOrderDTO> getSalesOrder(@PathVariable Long id) {
         log.debug("REST request to get SalesOrder : {}", id);
@@ -126,8 +126,8 @@ public class SalesOrderResource {
      * DELETE  /salesOrders/:id -> delete the "id" salesOrder.
      */
     @RequestMapping(value = "/salesOrders/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteSalesOrder(@PathVariable Long id) {
         log.debug("REST request to delete SalesOrder : {}", id);
@@ -146,7 +146,7 @@ public class SalesOrderResource {
     @Timed
     public List<SalesOrderDTO> searchSalesOrders(@PathVariable String query) {
         return StreamSupport
-            .stream(salesOrderSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(salesOrderSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(salesOrderMapper::salesOrderToSalesOrderDTO)
             .collect(Collectors.toList());
     }

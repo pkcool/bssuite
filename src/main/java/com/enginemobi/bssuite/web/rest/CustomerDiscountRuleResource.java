@@ -52,8 +52,8 @@ public class CustomerDiscountRuleResource {
      * POST  /customerDiscountRules -> Create a new customerDiscountRule.
      */
     @RequestMapping(value = "/customerDiscountRules",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<CustomerDiscountRuleDTO> createCustomerDiscountRule(@RequestBody CustomerDiscountRuleDTO customerDiscountRuleDTO) throws URISyntaxException {
         log.debug("REST request to save CustomerDiscountRule : {}", customerDiscountRuleDTO);
@@ -64,8 +64,8 @@ public class CustomerDiscountRuleResource {
         CustomerDiscountRule result = customerDiscountRuleRepository.save(customerDiscountRule);
         customerDiscountRuleSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/customerDiscountRules/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("customerDiscountRule", result.getId().toString()))
-                .body(customerDiscountRuleMapper.customerDiscountRuleToCustomerDiscountRuleDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("customerDiscountRule", result.getId().toString()))
+            .body(customerDiscountRuleMapper.customerDiscountRuleToCustomerDiscountRuleDTO(result));
     }
 
     /**
@@ -84,16 +84,16 @@ public class CustomerDiscountRuleResource {
         CustomerDiscountRule result = customerDiscountRuleRepository.save(customerDiscountRule);
         customerDiscountRuleSearchRepository.save(customerDiscountRule);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("customerDiscountRule", customerDiscountRuleDTO.getId().toString()))
-                .body(customerDiscountRuleMapper.customerDiscountRuleToCustomerDiscountRuleDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("customerDiscountRule", customerDiscountRuleDTO.getId().toString()))
+            .body(customerDiscountRuleMapper.customerDiscountRuleToCustomerDiscountRuleDTO(result));
     }
 
     /**
      * GET  /customerDiscountRules -> get all the customerDiscountRules.
      */
     @RequestMapping(value = "/customerDiscountRules",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<CustomerDiscountRuleDTO>> getAllCustomerDiscountRules(Pageable pageable)
@@ -109,8 +109,8 @@ public class CustomerDiscountRuleResource {
      * GET  /customerDiscountRules/:id -> get the "id" customerDiscountRule.
      */
     @RequestMapping(value = "/customerDiscountRules/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<CustomerDiscountRuleDTO> getCustomerDiscountRule(@PathVariable Long id) {
         log.debug("REST request to get CustomerDiscountRule : {}", id);
@@ -126,8 +126,8 @@ public class CustomerDiscountRuleResource {
      * DELETE  /customerDiscountRules/:id -> delete the "id" customerDiscountRule.
      */
     @RequestMapping(value = "/customerDiscountRules/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteCustomerDiscountRule(@PathVariable Long id) {
         log.debug("REST request to delete CustomerDiscountRule : {}", id);
@@ -146,7 +146,7 @@ public class CustomerDiscountRuleResource {
     @Timed
     public List<CustomerDiscountRuleDTO> searchCustomerDiscountRules(@PathVariable String query) {
         return StreamSupport
-            .stream(customerDiscountRuleSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(customerDiscountRuleSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(customerDiscountRuleMapper::customerDiscountRuleToCustomerDiscountRuleDTO)
             .collect(Collectors.toList());
     }

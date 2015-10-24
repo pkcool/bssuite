@@ -79,7 +79,7 @@
                     <span>StartDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{customerDiscountRule.startDate}}</span>
+                    <span class="form-control-static">{{customerDiscountRule.startDate | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>
@@ -87,7 +87,7 @@
                     <span>EndDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{customerDiscountRule.endDate}}</span>
+                    <span class="form-control-static">{{customerDiscountRule.endDate | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>

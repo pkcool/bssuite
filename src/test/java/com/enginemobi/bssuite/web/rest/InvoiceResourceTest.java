@@ -26,11 +26,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.joda.time.LocalDate;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -52,7 +52,7 @@ import com.enginemobi.bssuite.domain.enumeration.InvoiceSource;
 @IntegrationTest
 public class InvoiceResourceTest {
 
-    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.of("Z"));
 
     private static final String DEFAULT_INVOICE_NO = "AAAAA";
     private static final String UPDATED_INVOICE_NO = "BBBBB";
@@ -61,12 +61,12 @@ public class InvoiceResourceTest {
 private static final InvoiceTxnType DEFAULT_INVOICE_TXN_TYPE = InvoiceTxnType.INVOICE;
     private static final InvoiceTxnType UPDATED_INVOICE_TXN_TYPE = InvoiceTxnType.ADJUSTMENTNOTE;
 
-    private static final DateTime DEFAULT_TXN_DATE = new DateTime(0L, DateTimeZone.UTC);
-    private static final DateTime UPDATED_TXN_DATE = new DateTime(DateTimeZone.UTC).withMillisOfSecond(0);
-    private static final String DEFAULT_TXN_DATE_STR = dateTimeFormatter.print(DEFAULT_TXN_DATE);
+    private static final ZonedDateTime DEFAULT_TXN_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+    private static final ZonedDateTime UPDATED_TXN_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final String DEFAULT_TXN_DATE_STR = dateTimeFormatter.format(DEFAULT_TXN_DATE);
 
-    private static final LocalDate DEFAULT_DUE_DATE = new LocalDate(0L);
-    private static final LocalDate UPDATED_DUE_DATE = new LocalDate();
+    private static final LocalDate DEFAULT_DUE_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DUE_DATE = LocalDate.now(ZoneId.systemDefault());
     private static final String DEFAULT_REFERENCE = "AAAAA";
     private static final String UPDATED_REFERENCE = "BBBBB";
     private static final String DEFAULT_OUR_REF = "AAAAA";
@@ -132,8 +132,8 @@ private static final InvoiceTxnType DEFAULT_INVOICE_TXN_TYPE = InvoiceTxnType.IN
     private static final String DEFAULT_BANK_ACCOUNT = "AAAAA";
     private static final String UPDATED_BANK_ACCOUNT = "BBBBB";
 
-    private static final LocalDate DEFAULT_DATE_OF_DEPOSIT = new LocalDate(0L);
-    private static final LocalDate UPDATED_DATE_OF_DEPOSIT = new LocalDate();
+    private static final LocalDate DEFAULT_DATE_OF_DEPOSIT = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_OF_DEPOSIT = LocalDate.now(ZoneId.systemDefault());
     private static final String DEFAULT_DRAWER_NAME = "AAAAA";
     private static final String UPDATED_DRAWER_NAME = "BBBBB";
 
@@ -273,7 +273,7 @@ private static final InvoiceSource DEFAULT_GENERATED_FROM = InvoiceSource.INVOIC
         Invoice testInvoice = invoices.get(invoices.size() - 1);
         assertThat(testInvoice.getInvoiceNo()).isEqualTo(DEFAULT_INVOICE_NO);
         assertThat(testInvoice.getInvoiceTxnType()).isEqualTo(DEFAULT_INVOICE_TXN_TYPE);
-        assertThat(testInvoice.getTxnDate().toDateTime(DateTimeZone.UTC)).isEqualTo(DEFAULT_TXN_DATE);
+        assertThat(testInvoice.getTxnDate()).isEqualTo(DEFAULT_TXN_DATE);
         assertThat(testInvoice.getDueDate()).isEqualTo(DEFAULT_DUE_DATE);
         assertThat(testInvoice.getReference()).isEqualTo(DEFAULT_REFERENCE);
         assertThat(testInvoice.getOurRef()).isEqualTo(DEFAULT_OUR_REF);
@@ -501,7 +501,7 @@ private static final InvoiceSource DEFAULT_GENERATED_FROM = InvoiceSource.INVOIC
         Invoice testInvoice = invoices.get(invoices.size() - 1);
         assertThat(testInvoice.getInvoiceNo()).isEqualTo(UPDATED_INVOICE_NO);
         assertThat(testInvoice.getInvoiceTxnType()).isEqualTo(UPDATED_INVOICE_TXN_TYPE);
-        assertThat(testInvoice.getTxnDate().toDateTime(DateTimeZone.UTC)).isEqualTo(UPDATED_TXN_DATE);
+        assertThat(testInvoice.getTxnDate()).isEqualTo(UPDATED_TXN_DATE);
         assertThat(testInvoice.getDueDate()).isEqualTo(UPDATED_DUE_DATE);
         assertThat(testInvoice.getReference()).isEqualTo(UPDATED_REFERENCE);
         assertThat(testInvoice.getOurRef()).isEqualTo(UPDATED_OUR_REF);

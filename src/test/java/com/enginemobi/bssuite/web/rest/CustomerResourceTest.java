@@ -26,7 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -105,8 +106,8 @@ private static final CustomerAgeingMethod DEFAULT_AGEING_METHOD = CustomerAgeing
     private static final String DEFAULT_CREDIT_CARD_HOLDER_NAME = "AAAAA";
     private static final String UPDATED_CREDIT_CARD_HOLDER_NAME = "BBBBB";
 
-    private static final LocalDate DEFAULT_CREDIT_CARD_EXPIRY_DATE = new LocalDate(0L);
-    private static final LocalDate UPDATED_CREDIT_CARD_EXPIRY_DATE = new LocalDate();
+    private static final LocalDate DEFAULT_CREDIT_CARD_EXPIRY_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREDIT_CARD_EXPIRY_DATE = LocalDate.now(ZoneId.systemDefault());
 
 
 private static final CreditCardType DEFAULT_CREDIT_CARD_TYPE = CreditCardType.VISA;

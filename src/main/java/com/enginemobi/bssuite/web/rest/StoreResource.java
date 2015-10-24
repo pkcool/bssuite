@@ -52,8 +52,8 @@ public class StoreResource {
      * POST  /stores -> Create a new store.
      */
     @RequestMapping(value = "/stores",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<StoreDTO> createStore(@RequestBody StoreDTO storeDTO) throws URISyntaxException {
         log.debug("REST request to save Store : {}", storeDTO);
@@ -64,8 +64,8 @@ public class StoreResource {
         Store result = storeRepository.save(store);
         storeSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/stores/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("store", result.getId().toString()))
-                .body(storeMapper.storeToStoreDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("store", result.getId().toString()))
+            .body(storeMapper.storeToStoreDTO(result));
     }
 
     /**
@@ -84,16 +84,16 @@ public class StoreResource {
         Store result = storeRepository.save(store);
         storeSearchRepository.save(store);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("store", storeDTO.getId().toString()))
-                .body(storeMapper.storeToStoreDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("store", storeDTO.getId().toString()))
+            .body(storeMapper.storeToStoreDTO(result));
     }
 
     /**
      * GET  /stores -> get all the stores.
      */
     @RequestMapping(value = "/stores",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<StoreDTO>> getAllStores(Pageable pageable)
@@ -109,8 +109,8 @@ public class StoreResource {
      * GET  /stores/:id -> get the "id" store.
      */
     @RequestMapping(value = "/stores/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<StoreDTO> getStore(@PathVariable Long id) {
         log.debug("REST request to get Store : {}", id);
@@ -126,8 +126,8 @@ public class StoreResource {
      * DELETE  /stores/:id -> delete the "id" store.
      */
     @RequestMapping(value = "/stores/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteStore(@PathVariable Long id) {
         log.debug("REST request to delete Store : {}", id);
@@ -146,7 +146,7 @@ public class StoreResource {
     @Timed
     public List<StoreDTO> searchStores(@PathVariable String query) {
         return StreamSupport
-            .stream(storeSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(storeSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(storeMapper::storeToStoreDTO)
             .collect(Collectors.toList());
     }

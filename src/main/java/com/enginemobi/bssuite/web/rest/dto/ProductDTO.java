@@ -1,6 +1,6 @@
 package com.enginemobi.bssuite.web.rest.dto;
 
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -19,163 +19,109 @@ public class ProductDTO implements Serializable {
     @NotNull
     private String code;
 
-
     private String name;
-
 
     private String description;
 
-
     private String longDescription;
-
 
     private String alternateCode;
 
-
     private String bin;
-
 
     private Boolean isOnSpecial;
 
-
     private Boolean isOnHold;
-
 
     private Boolean isInPricelistReports;
 
-
     private Double qtyOnOrder;
-
 
     private Double qtyStockOnHold;
 
-
     private Double qtyBackordered;
-
 
     private Double qtyAllocated;
 
-
     private Double qtyBackorderHold;
-
 
     private Double qtyConsigned;
 
-
     private Double qtyWarehouseReceived;
-
 
     private Double qtyStocktakeVariance;
 
-
     private Double qtyTransitIn;
 
-
     private Double qtyTransitOut;
-
 
     @Min(value = 0)
     private BigDecimal cost;
 
-
     private BigDecimal wholesaleListPrice;
-
 
     private BigDecimal listPrice;
 
-
     private BigDecimal tradePrice;
-
 
     private BigDecimal boxCost;
 
-
     private String unitMeasure;
-
 
     private String boxMeasure;
 
-
     private BigDecimal boxConversionFactor;
-
 
     private Double weight;
 
-
     private Double volumn;
-
 
     private Integer serviceCover;
 
-
     private Double qtyFloorLevel;
-
 
     private Double qtyReorderLevel;
 
-
     private Double qtyOverstockLevel;
-
 
     private Boolean isComment;
 
-
     private Boolean isDiminishing;
-
 
     private Boolean isNonTaxExeptable;
 
-
     private Integer leadTime;
-
 
     private Integer purchaseUnit;
 
-
     private Double estMonthlySales;
-
 
     private LocalDate dateFirstSale;
 
-
     private LocalDate dateLastSale;
-
 
     private LocalDate dateFirstOrder;
 
-
     private LocalDate dateCreated;
-
 
     private LocalDate dateLastDelivery;
 
-
     private LocalDate dateNextDelivery;
-
 
     private LocalDate dateLastTransfer;
 
-
     private LocalDate dateLastOrder;
-
 
     private LocalDate dateLastStocktake;
 
-
     private Boolean isArchived;
-
 
     private String classCode;
 
-
     private Long stockGroupId;
-
     private Long supplierId;
-
     private Long storeId;
-
     private Long taxRateId;
-
     public Long getId() {
         return id;
     }
@@ -192,7 +138,6 @@ public class ProductDTO implements Serializable {
         this.code = code;
     }
 
-
     public String getName() {
         return name;
     }
@@ -200,7 +145,6 @@ public class ProductDTO implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getDescription() {
         return description;
@@ -210,7 +154,6 @@ public class ProductDTO implements Serializable {
         this.description = description;
     }
 
-
     public String getLongDescription() {
         return longDescription;
     }
@@ -218,7 +161,6 @@ public class ProductDTO implements Serializable {
     public void setLongDescription(String longDescription) {
         this.longDescription = longDescription;
     }
-
 
     public String getAlternateCode() {
         return alternateCode;
@@ -228,7 +170,6 @@ public class ProductDTO implements Serializable {
         this.alternateCode = alternateCode;
     }
 
-
     public String getBin() {
         return bin;
     }
@@ -236,7 +177,6 @@ public class ProductDTO implements Serializable {
     public void setBin(String bin) {
         this.bin = bin;
     }
-
 
     public Boolean getIsOnSpecial() {
         return isOnSpecial;
@@ -246,7 +186,6 @@ public class ProductDTO implements Serializable {
         this.isOnSpecial = isOnSpecial;
     }
 
-
     public Boolean getIsOnHold() {
         return isOnHold;
     }
@@ -254,7 +193,6 @@ public class ProductDTO implements Serializable {
     public void setIsOnHold(Boolean isOnHold) {
         this.isOnHold = isOnHold;
     }
-
 
     public Boolean getIsInPricelistReports() {
         return isInPricelistReports;
@@ -264,7 +202,6 @@ public class ProductDTO implements Serializable {
         this.isInPricelistReports = isInPricelistReports;
     }
 
-
     public Double getQtyOnOrder() {
         return qtyOnOrder;
     }
@@ -272,7 +209,6 @@ public class ProductDTO implements Serializable {
     public void setQtyOnOrder(Double qtyOnOrder) {
         this.qtyOnOrder = qtyOnOrder;
     }
-
 
     public Double getQtyStockOnHold() {
         return qtyStockOnHold;
@@ -282,7 +218,6 @@ public class ProductDTO implements Serializable {
         this.qtyStockOnHold = qtyStockOnHold;
     }
 
-
     public Double getQtyBackordered() {
         return qtyBackordered;
     }
@@ -290,7 +225,6 @@ public class ProductDTO implements Serializable {
     public void setQtyBackordered(Double qtyBackordered) {
         this.qtyBackordered = qtyBackordered;
     }
-
 
     public Double getQtyAllocated() {
         return qtyAllocated;
@@ -300,7 +234,6 @@ public class ProductDTO implements Serializable {
         this.qtyAllocated = qtyAllocated;
     }
 
-
     public Double getQtyBackorderHold() {
         return qtyBackorderHold;
     }
@@ -308,7 +241,6 @@ public class ProductDTO implements Serializable {
     public void setQtyBackorderHold(Double qtyBackorderHold) {
         this.qtyBackorderHold = qtyBackorderHold;
     }
-
 
     public Double getQtyConsigned() {
         return qtyConsigned;
@@ -318,7 +250,6 @@ public class ProductDTO implements Serializable {
         this.qtyConsigned = qtyConsigned;
     }
 
-
     public Double getQtyWarehouseReceived() {
         return qtyWarehouseReceived;
     }
@@ -326,7 +257,6 @@ public class ProductDTO implements Serializable {
     public void setQtyWarehouseReceived(Double qtyWarehouseReceived) {
         this.qtyWarehouseReceived = qtyWarehouseReceived;
     }
-
 
     public Double getQtyStocktakeVariance() {
         return qtyStocktakeVariance;
@@ -336,7 +266,6 @@ public class ProductDTO implements Serializable {
         this.qtyStocktakeVariance = qtyStocktakeVariance;
     }
 
-
     public Double getQtyTransitIn() {
         return qtyTransitIn;
     }
@@ -344,7 +273,6 @@ public class ProductDTO implements Serializable {
     public void setQtyTransitIn(Double qtyTransitIn) {
         this.qtyTransitIn = qtyTransitIn;
     }
-
 
     public Double getQtyTransitOut() {
         return qtyTransitOut;
@@ -354,7 +282,6 @@ public class ProductDTO implements Serializable {
         this.qtyTransitOut = qtyTransitOut;
     }
 
-
     public BigDecimal getCost() {
         return cost;
     }
@@ -362,7 +289,6 @@ public class ProductDTO implements Serializable {
     public void setCost(BigDecimal cost) {
         this.cost = cost;
     }
-
 
     public BigDecimal getWholesaleListPrice() {
         return wholesaleListPrice;
@@ -372,7 +298,6 @@ public class ProductDTO implements Serializable {
         this.wholesaleListPrice = wholesaleListPrice;
     }
 
-
     public BigDecimal getListPrice() {
         return listPrice;
     }
@@ -380,7 +305,6 @@ public class ProductDTO implements Serializable {
     public void setListPrice(BigDecimal listPrice) {
         this.listPrice = listPrice;
     }
-
 
     public BigDecimal getTradePrice() {
         return tradePrice;
@@ -390,7 +314,6 @@ public class ProductDTO implements Serializable {
         this.tradePrice = tradePrice;
     }
 
-
     public BigDecimal getBoxCost() {
         return boxCost;
     }
@@ -398,7 +321,6 @@ public class ProductDTO implements Serializable {
     public void setBoxCost(BigDecimal boxCost) {
         this.boxCost = boxCost;
     }
-
 
     public String getUnitMeasure() {
         return unitMeasure;
@@ -408,7 +330,6 @@ public class ProductDTO implements Serializable {
         this.unitMeasure = unitMeasure;
     }
 
-
     public String getBoxMeasure() {
         return boxMeasure;
     }
@@ -416,7 +337,6 @@ public class ProductDTO implements Serializable {
     public void setBoxMeasure(String boxMeasure) {
         this.boxMeasure = boxMeasure;
     }
-
 
     public BigDecimal getBoxConversionFactor() {
         return boxConversionFactor;
@@ -426,7 +346,6 @@ public class ProductDTO implements Serializable {
         this.boxConversionFactor = boxConversionFactor;
     }
 
-
     public Double getWeight() {
         return weight;
     }
@@ -434,7 +353,6 @@ public class ProductDTO implements Serializable {
     public void setWeight(Double weight) {
         this.weight = weight;
     }
-
 
     public Double getVolumn() {
         return volumn;
@@ -444,7 +362,6 @@ public class ProductDTO implements Serializable {
         this.volumn = volumn;
     }
 
-
     public Integer getServiceCover() {
         return serviceCover;
     }
@@ -452,7 +369,6 @@ public class ProductDTO implements Serializable {
     public void setServiceCover(Integer serviceCover) {
         this.serviceCover = serviceCover;
     }
-
 
     public Double getQtyFloorLevel() {
         return qtyFloorLevel;
@@ -462,7 +378,6 @@ public class ProductDTO implements Serializable {
         this.qtyFloorLevel = qtyFloorLevel;
     }
 
-
     public Double getQtyReorderLevel() {
         return qtyReorderLevel;
     }
@@ -470,7 +385,6 @@ public class ProductDTO implements Serializable {
     public void setQtyReorderLevel(Double qtyReorderLevel) {
         this.qtyReorderLevel = qtyReorderLevel;
     }
-
 
     public Double getQtyOverstockLevel() {
         return qtyOverstockLevel;
@@ -480,7 +394,6 @@ public class ProductDTO implements Serializable {
         this.qtyOverstockLevel = qtyOverstockLevel;
     }
 
-
     public Boolean getIsComment() {
         return isComment;
     }
@@ -488,7 +401,6 @@ public class ProductDTO implements Serializable {
     public void setIsComment(Boolean isComment) {
         this.isComment = isComment;
     }
-
 
     public Boolean getIsDiminishing() {
         return isDiminishing;
@@ -498,7 +410,6 @@ public class ProductDTO implements Serializable {
         this.isDiminishing = isDiminishing;
     }
 
-
     public Boolean getIsNonTaxExeptable() {
         return isNonTaxExeptable;
     }
@@ -506,7 +417,6 @@ public class ProductDTO implements Serializable {
     public void setIsNonTaxExeptable(Boolean isNonTaxExeptable) {
         this.isNonTaxExeptable = isNonTaxExeptable;
     }
-
 
     public Integer getLeadTime() {
         return leadTime;
@@ -516,7 +426,6 @@ public class ProductDTO implements Serializable {
         this.leadTime = leadTime;
     }
 
-
     public Integer getPurchaseUnit() {
         return purchaseUnit;
     }
@@ -524,7 +433,6 @@ public class ProductDTO implements Serializable {
     public void setPurchaseUnit(Integer purchaseUnit) {
         this.purchaseUnit = purchaseUnit;
     }
-
 
     public Double getEstMonthlySales() {
         return estMonthlySales;
@@ -534,7 +442,6 @@ public class ProductDTO implements Serializable {
         this.estMonthlySales = estMonthlySales;
     }
 
-
     public LocalDate getDateFirstSale() {
         return dateFirstSale;
     }
@@ -542,7 +449,6 @@ public class ProductDTO implements Serializable {
     public void setDateFirstSale(LocalDate dateFirstSale) {
         this.dateFirstSale = dateFirstSale;
     }
-
 
     public LocalDate getDateLastSale() {
         return dateLastSale;
@@ -552,7 +458,6 @@ public class ProductDTO implements Serializable {
         this.dateLastSale = dateLastSale;
     }
 
-
     public LocalDate getDateFirstOrder() {
         return dateFirstOrder;
     }
@@ -560,7 +465,6 @@ public class ProductDTO implements Serializable {
     public void setDateFirstOrder(LocalDate dateFirstOrder) {
         this.dateFirstOrder = dateFirstOrder;
     }
-
 
     public LocalDate getDateCreated() {
         return dateCreated;
@@ -570,7 +474,6 @@ public class ProductDTO implements Serializable {
         this.dateCreated = dateCreated;
     }
 
-
     public LocalDate getDateLastDelivery() {
         return dateLastDelivery;
     }
@@ -578,7 +481,6 @@ public class ProductDTO implements Serializable {
     public void setDateLastDelivery(LocalDate dateLastDelivery) {
         this.dateLastDelivery = dateLastDelivery;
     }
-
 
     public LocalDate getDateNextDelivery() {
         return dateNextDelivery;
@@ -588,7 +490,6 @@ public class ProductDTO implements Serializable {
         this.dateNextDelivery = dateNextDelivery;
     }
 
-
     public LocalDate getDateLastTransfer() {
         return dateLastTransfer;
     }
@@ -596,7 +497,6 @@ public class ProductDTO implements Serializable {
     public void setDateLastTransfer(LocalDate dateLastTransfer) {
         this.dateLastTransfer = dateLastTransfer;
     }
-
 
     public LocalDate getDateLastOrder() {
         return dateLastOrder;
@@ -606,7 +506,6 @@ public class ProductDTO implements Serializable {
         this.dateLastOrder = dateLastOrder;
     }
 
-
     public LocalDate getDateLastStocktake() {
         return dateLastStocktake;
     }
@@ -614,7 +513,6 @@ public class ProductDTO implements Serializable {
     public void setDateLastStocktake(LocalDate dateLastStocktake) {
         this.dateLastStocktake = dateLastStocktake;
     }
-
 
     public Boolean getIsArchived() {
         return isArchived;
@@ -624,7 +522,6 @@ public class ProductDTO implements Serializable {
         this.isArchived = isArchived;
     }
 
-
     public String getClassCode() {
         return classCode;
     }
@@ -633,7 +530,6 @@ public class ProductDTO implements Serializable {
         this.classCode = classCode;
     }
 
-
     public Long getStockGroupId() {
         return stockGroupId;
     }
@@ -641,7 +537,6 @@ public class ProductDTO implements Serializable {
     public void setStockGroupId(Long stockGroupId) {
         this.stockGroupId = stockGroupId;
     }
-
     public Long getSupplierId() {
         return supplierId;
     }
@@ -649,7 +544,6 @@ public class ProductDTO implements Serializable {
     public void setSupplierId(Long supplierId) {
         this.supplierId = supplierId;
     }
-
     public Long getStoreId() {
         return storeId;
     }
@@ -657,7 +551,6 @@ public class ProductDTO implements Serializable {
     public void setStoreId(Long storeId) {
         this.storeId = storeId;
     }
-
     public Long getTaxRateId() {
         return taxRateId;
     }
@@ -665,7 +558,6 @@ public class ProductDTO implements Serializable {
     public void setTaxRateId(Long taxTableId) {
         this.taxRateId = taxTableId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -690,57 +582,57 @@ public class ProductDTO implements Serializable {
     @Override
     public String toString() {
         return "ProductDTO{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", description='" + description + "'" +
-                ", longDescription='" + longDescription + "'" +
-                ", alternateCode='" + alternateCode + "'" +
-                ", bin='" + bin + "'" +
-                ", isOnSpecial='" + isOnSpecial + "'" +
-                ", isOnHold='" + isOnHold + "'" +
-                ", isInPricelistReports='" + isInPricelistReports + "'" +
-                ", qtyOnOrder='" + qtyOnOrder + "'" +
-                ", qtyStockOnHold='" + qtyStockOnHold + "'" +
-                ", qtyBackordered='" + qtyBackordered + "'" +
-                ", qtyAllocated='" + qtyAllocated + "'" +
-                ", qtyBackorderHold='" + qtyBackorderHold + "'" +
-                ", qtyConsigned='" + qtyConsigned + "'" +
-                ", qtyWarehouseReceived='" + qtyWarehouseReceived + "'" +
-                ", qtyStocktakeVariance='" + qtyStocktakeVariance + "'" +
-                ", qtyTransitIn='" + qtyTransitIn + "'" +
-                ", qtyTransitOut='" + qtyTransitOut + "'" +
-                ", cost='" + cost + "'" +
-                ", wholesaleListPrice='" + wholesaleListPrice + "'" +
-                ", listPrice='" + listPrice + "'" +
-                ", tradePrice='" + tradePrice + "'" +
-                ", boxCost='" + boxCost + "'" +
-                ", unitMeasure='" + unitMeasure + "'" +
-                ", boxMeasure='" + boxMeasure + "'" +
-                ", boxConversionFactor='" + boxConversionFactor + "'" +
-                ", weight='" + weight + "'" +
-                ", volumn='" + volumn + "'" +
-                ", serviceCover='" + serviceCover + "'" +
-                ", qtyFloorLevel='" + qtyFloorLevel + "'" +
-                ", qtyReorderLevel='" + qtyReorderLevel + "'" +
-                ", qtyOverstockLevel='" + qtyOverstockLevel + "'" +
-                ", isComment='" + isComment + "'" +
-                ", isDiminishing='" + isDiminishing + "'" +
-                ", isNonTaxExeptable='" + isNonTaxExeptable + "'" +
-                ", leadTime='" + leadTime + "'" +
-                ", purchaseUnit='" + purchaseUnit + "'" +
-                ", estMonthlySales='" + estMonthlySales + "'" +
-                ", dateFirstSale='" + dateFirstSale + "'" +
-                ", dateLastSale='" + dateLastSale + "'" +
-                ", dateFirstOrder='" + dateFirstOrder + "'" +
-                ", dateCreated='" + dateCreated + "'" +
-                ", dateLastDelivery='" + dateLastDelivery + "'" +
-                ", dateNextDelivery='" + dateNextDelivery + "'" +
-                ", dateLastTransfer='" + dateLastTransfer + "'" +
-                ", dateLastOrder='" + dateLastOrder + "'" +
-                ", dateLastStocktake='" + dateLastStocktake + "'" +
-                ", isArchived='" + isArchived + "'" +
-                ", classCode='" + classCode + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", description='" + description + "'" +
+            ", longDescription='" + longDescription + "'" +
+            ", alternateCode='" + alternateCode + "'" +
+            ", bin='" + bin + "'" +
+            ", isOnSpecial='" + isOnSpecial + "'" +
+            ", isOnHold='" + isOnHold + "'" +
+            ", isInPricelistReports='" + isInPricelistReports + "'" +
+            ", qtyOnOrder='" + qtyOnOrder + "'" +
+            ", qtyStockOnHold='" + qtyStockOnHold + "'" +
+            ", qtyBackordered='" + qtyBackordered + "'" +
+            ", qtyAllocated='" + qtyAllocated + "'" +
+            ", qtyBackorderHold='" + qtyBackorderHold + "'" +
+            ", qtyConsigned='" + qtyConsigned + "'" +
+            ", qtyWarehouseReceived='" + qtyWarehouseReceived + "'" +
+            ", qtyStocktakeVariance='" + qtyStocktakeVariance + "'" +
+            ", qtyTransitIn='" + qtyTransitIn + "'" +
+            ", qtyTransitOut='" + qtyTransitOut + "'" +
+            ", cost='" + cost + "'" +
+            ", wholesaleListPrice='" + wholesaleListPrice + "'" +
+            ", listPrice='" + listPrice + "'" +
+            ", tradePrice='" + tradePrice + "'" +
+            ", boxCost='" + boxCost + "'" +
+            ", unitMeasure='" + unitMeasure + "'" +
+            ", boxMeasure='" + boxMeasure + "'" +
+            ", boxConversionFactor='" + boxConversionFactor + "'" +
+            ", weight='" + weight + "'" +
+            ", volumn='" + volumn + "'" +
+            ", serviceCover='" + serviceCover + "'" +
+            ", qtyFloorLevel='" + qtyFloorLevel + "'" +
+            ", qtyReorderLevel='" + qtyReorderLevel + "'" +
+            ", qtyOverstockLevel='" + qtyOverstockLevel + "'" +
+            ", isComment='" + isComment + "'" +
+            ", isDiminishing='" + isDiminishing + "'" +
+            ", isNonTaxExeptable='" + isNonTaxExeptable + "'" +
+            ", leadTime='" + leadTime + "'" +
+            ", purchaseUnit='" + purchaseUnit + "'" +
+            ", estMonthlySales='" + estMonthlySales + "'" +
+            ", dateFirstSale='" + dateFirstSale + "'" +
+            ", dateLastSale='" + dateLastSale + "'" +
+            ", dateFirstOrder='" + dateFirstOrder + "'" +
+            ", dateCreated='" + dateCreated + "'" +
+            ", dateLastDelivery='" + dateLastDelivery + "'" +
+            ", dateNextDelivery='" + dateNextDelivery + "'" +
+            ", dateLastTransfer='" + dateLastTransfer + "'" +
+            ", dateLastOrder='" + dateLastOrder + "'" +
+            ", dateLastStocktake='" + dateLastStocktake + "'" +
+            ", isArchived='" + isArchived + "'" +
+            ", classCode='" + classCode + "'" +
+            '}';
     }
 }

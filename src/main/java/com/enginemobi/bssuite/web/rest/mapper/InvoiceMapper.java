@@ -43,6 +43,23 @@ public interface InvoiceMapper {
         return customer;
     }
 
+    default Customer customerFromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Customer customer = new Customer();
+        customer.setId(id);
+        return customer;
+    }
+
+    default Contact contactFromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Contact contact = new Contact();
+        contact.setId(id);
+        return contact;
+    }
 
     default Contact contactFromId(Long id) {
         if (id == null) {
@@ -71,7 +88,14 @@ public interface InvoiceMapper {
         return carrier;
     }
 
-
+    default Staff staffFromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Staff staff = new Staff();
+        staff.setId(id);
+        return staff;
+    }
 
     default Promotion promotionFromId(Long id) {
         if (id == null) {

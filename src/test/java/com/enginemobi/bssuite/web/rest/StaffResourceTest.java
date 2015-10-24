@@ -26,7 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -69,8 +70,8 @@ public class StaffResourceTest {
     private static final String DEFAULT_HOME_EMAIL = "AAAAA";
     private static final String UPDATED_HOME_EMAIL = "BBBBB";
 
-    private static final LocalDate DEFAULT_BIRTHDAY = new LocalDate(0L);
-    private static final LocalDate UPDATED_BIRTHDAY = new LocalDate();
+    private static final LocalDate DEFAULT_BIRTHDAY = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_BIRTHDAY = LocalDate.now(ZoneId.systemDefault());
 
     private static final Boolean DEFAULT_IS_LOCKED_TO_STORE = false;
     private static final Boolean UPDATED_IS_LOCKED_TO_STORE = true;

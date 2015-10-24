@@ -77,9 +77,9 @@
                     <td><a ui-sref="purchaseOrder.detail({id:purchaseOrder.id})">{{purchaseOrder.id}}</a></td>
                     <td>{{purchaseOrder.orderNo}}</td>
                     <td translate="{{'bssuiteApp.PurchaseOrderStatus.' + purchaseOrder.status}}">{{purchaseOrder.status}}</td>
-                    <td>{{purchaseOrder.createdDate}}</td>
+                    <td>{{purchaseOrder.createdDate | date:'medium'}}</td>
                     <td>{{purchaseOrder.ref}}</td>
-                    <td>{{purchaseOrder.expectedDeliveryDate}}</td>
+                        <td>{{purchaseOrder.expectedDeliveryDate | date:'mediumDate'}}</td>
                     <td>{{purchaseOrder.isTaxable}}</td>
                     <td>{{purchaseOrder.isLocked}}</td>
                     <td>{{purchaseOrder.comment}}</td>

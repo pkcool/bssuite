@@ -17,53 +17,52 @@ import java.util.Objects;
 @Entity
 @Table(name = "quote_line_item")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="quotelineitem")
+@Document(indexName = "quotelineitem")
 public class QuoteLineItem implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
     @Column(name = "description")
     private String description;
-    
+
     @Column(name = "cost", precision=10, scale=2)
     private BigDecimal cost;
-    
+
     @Column(name = "sold_for", precision=10, scale=2)
     private BigDecimal soldFor;
-    
+
     @Column(name = "qty_quoted")
     private Double qtyQuoted;
-    
+
     @Column(name = "discount_price_group_code")
     private String discountPriceGroupCode;
-    
+
     @Column(name = "total_tax_charge", precision=10, scale=2)
     private BigDecimal totalTaxCharge;
-    
+
     @Column(name = "discount_percentage", precision=10, scale=2)
     private BigDecimal discountPercentage;
-    
+
     @Column(name = "line_no")
     private Integer lineNo;
-    
+
     @Column(name = "list_price", precision=10, scale=2)
     private BigDecimal listPrice;
-    
+
     @Column(name = "list_price_discount", precision=10, scale=2)
     private BigDecimal listPriceDiscount;
-    
+
     @Column(name = "cost2", precision=10, scale=2)
     private BigDecimal cost2;
-    
+
     @Column(name = "is_hidden")
     private Boolean isHidden;
-    
+
     @Column(name = "ref1")
     private String Ref1;
-    
+
     @Column(name = "ref2")
     private String Ref2;
 
@@ -244,21 +243,21 @@ public class QuoteLineItem implements Serializable {
     @Override
     public String toString() {
         return "QuoteLineItem{" +
-                "id=" + id +
-                ", description='" + description + "'" +
-                ", cost='" + cost + "'" +
-                ", soldFor='" + soldFor + "'" +
-                ", qtyQuoted='" + qtyQuoted + "'" +
-                ", discountPriceGroupCode='" + discountPriceGroupCode + "'" +
-                ", totalTaxCharge='" + totalTaxCharge + "'" +
-                ", discountPercentage='" + discountPercentage + "'" +
-                ", lineNo='" + lineNo + "'" +
-                ", listPrice='" + listPrice + "'" +
-                ", listPriceDiscount='" + listPriceDiscount + "'" +
-                ", cost2='" + cost2 + "'" +
-                ", isHidden='" + isHidden + "'" +
-                ", Ref1='" + Ref1 + "'" +
-                ", Ref2='" + Ref2 + "'" +
-                '}';
+            "id=" + id +
+            ", description='" + description + "'" +
+            ", cost='" + cost + "'" +
+            ", soldFor='" + soldFor + "'" +
+            ", qtyQuoted='" + qtyQuoted + "'" +
+            ", discountPriceGroupCode='" + discountPriceGroupCode + "'" +
+            ", totalTaxCharge='" + totalTaxCharge + "'" +
+            ", discountPercentage='" + discountPercentage + "'" +
+            ", lineNo='" + lineNo + "'" +
+            ", listPrice='" + listPrice + "'" +
+            ", listPriceDiscount='" + listPriceDiscount + "'" +
+            ", cost2='" + cost2 + "'" +
+            ", isHidden='" + isHidden + "'" +
+            ", Ref1='" + Ref1 + "'" +
+            ", Ref2='" + Ref2 + "'" +
+            '}';
     }
 }

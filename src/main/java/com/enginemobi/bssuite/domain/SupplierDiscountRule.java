@@ -1,13 +1,8 @@
 package com.enginemobi.bssuite.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.enginemobi.bssuite.domain.util.CustomLocalDateSerializer;
-import com.enginemobi.bssuite.domain.util.ISO8601LocalDateDeserializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -22,75 +17,68 @@ import java.util.Objects;
 @Entity
 @Table(name = "supplier_discount_rule")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="supplierdiscountrule")
+@Document(indexName = "supplierdiscountrule")
 public class SupplierDiscountRule implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
-    @NotNull        
+    @NotNull
     @Column(name = "supplier_code", nullable = false)
     private String supplierCode;
-    
+
     @Column(name = "rule_no")
     private Integer ruleNo;
-    
+
     @Column(name = "is_applied_to_sales")
     private Boolean isAppliedToSales;
-    
+
     @Column(name = "is_applied_on_special_items_only")
     private Boolean isAppliedOnSpecialItemsOnly;
-    
+
     @Column(name = "customer_code")
     private String customerCode;
-    
+
     @Column(name = "customer_category_code")
     private String customerCategoryCode;
-    
+
     @Column(name = "product_code")
     private String productCode;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
-    
+
     @Column(name = "qty_break")
     private Integer qtyBreak;
-    
+
     @Column(name = "from_stock_group_code")
     private String fromStockGroupCode;
-    
+
     @Column(name = "to_stock_group_code")
     private String toStockGroupCode;
-    
+
     @Column(name = "tax_code")
     private String taxCode;
-    
+
     @Column(name = "is_applied_when_tax_exempt")
     private Boolean isAppliedWhenTaxExempt;
-    
+
     @Column(name = "store_code")
     private String storeCode;
-    
+
     @Column(name = "discount_name")
     private String discountName;
-    
+
     @Column(name = "stock_family_code")
     private String stockFamilyCode;
-    
+
     @Column(name = "cost", precision=10, scale=2, nullable = false)
     private BigDecimal cost;
-    
+
     @Column(name = "discount_formula")
     private String discountFormula;
 
@@ -278,26 +266,26 @@ public class SupplierDiscountRule implements Serializable {
     @Override
     public String toString() {
         return "SupplierDiscountRule{" +
-                "id=" + id +
-                ", supplierCode='" + supplierCode + "'" +
-                ", ruleNo='" + ruleNo + "'" +
-                ", isAppliedToSales='" + isAppliedToSales + "'" +
-                ", isAppliedOnSpecialItemsOnly='" + isAppliedOnSpecialItemsOnly + "'" +
-                ", customerCode='" + customerCode + "'" +
-                ", customerCategoryCode='" + customerCategoryCode + "'" +
-                ", productCode='" + productCode + "'" +
-                ", startDate='" + startDate + "'" +
-                ", endDate='" + endDate + "'" +
-                ", qtyBreak='" + qtyBreak + "'" +
-                ", fromStockGroupCode='" + fromStockGroupCode + "'" +
-                ", toStockGroupCode='" + toStockGroupCode + "'" +
-                ", taxCode='" + taxCode + "'" +
-                ", isAppliedWhenTaxExempt='" + isAppliedWhenTaxExempt + "'" +
-                ", storeCode='" + storeCode + "'" +
-                ", discountName='" + discountName + "'" +
-                ", stockFamilyCode='" + stockFamilyCode + "'" +
-                ", cost='" + cost + "'" +
-                ", discountFormula='" + discountFormula + "'" +
-                '}';
+            "id=" + id +
+            ", supplierCode='" + supplierCode + "'" +
+            ", ruleNo='" + ruleNo + "'" +
+            ", isAppliedToSales='" + isAppliedToSales + "'" +
+            ", isAppliedOnSpecialItemsOnly='" + isAppliedOnSpecialItemsOnly + "'" +
+            ", customerCode='" + customerCode + "'" +
+            ", customerCategoryCode='" + customerCategoryCode + "'" +
+            ", productCode='" + productCode + "'" +
+            ", startDate='" + startDate + "'" +
+            ", endDate='" + endDate + "'" +
+            ", qtyBreak='" + qtyBreak + "'" +
+            ", fromStockGroupCode='" + fromStockGroupCode + "'" +
+            ", toStockGroupCode='" + toStockGroupCode + "'" +
+            ", taxCode='" + taxCode + "'" +
+            ", isAppliedWhenTaxExempt='" + isAppliedWhenTaxExempt + "'" +
+            ", storeCode='" + storeCode + "'" +
+            ", discountName='" + discountName + "'" +
+            ", stockFamilyCode='" + stockFamilyCode + "'" +
+            ", cost='" + cost + "'" +
+            ", discountFormula='" + discountFormula + "'" +
+            '}';
     }
 }

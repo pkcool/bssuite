@@ -26,10 +26,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -48,7 +48,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @IntegrationTest
 public class BackOrderLineItemResourceTest {
 
-    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.of("Z"));
 
 
     private static final Boolean DEFAULT_IS_READY_TO_RELEASE = false;
@@ -63,9 +63,9 @@ public class BackOrderLineItemResourceTest {
     private static final Boolean DEFAULT_IS_ON_HOLD = false;
     private static final Boolean UPDATED_IS_ON_HOLD = true;
 
-    private static final DateTime DEFAULT_ALLOCATED_DATE = new DateTime(0L, DateTimeZone.UTC);
-    private static final DateTime UPDATED_ALLOCATED_DATE = new DateTime(DateTimeZone.UTC).withMillisOfSecond(0);
-    private static final String DEFAULT_ALLOCATED_DATE_STR = dateTimeFormatter.print(DEFAULT_ALLOCATED_DATE);
+    private static final ZonedDateTime DEFAULT_ALLOCATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+    private static final ZonedDateTime UPDATED_ALLOCATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final String DEFAULT_ALLOCATED_DATE_STR = dateTimeFormatter.format(DEFAULT_ALLOCATED_DATE);
     private static final String DEFAULT_COMMENT = "AAAAA";
     private static final String UPDATED_COMMENT = "BBBBB";
 
@@ -140,7 +140,7 @@ public class BackOrderLineItemResourceTest {
         assertThat(testBackOrderLineItem.getQtyAllocated()).isEqualTo(DEFAULT_QTY_ALLOCATED);
         assertThat(testBackOrderLineItem.getIsMarkedForAutoPurchaseOrdering()).isEqualTo(DEFAULT_IS_MARKED_FOR_AUTO_PURCHASE_ORDERING);
         assertThat(testBackOrderLineItem.getIsOnHold()).isEqualTo(DEFAULT_IS_ON_HOLD);
-        assertThat(testBackOrderLineItem.getAllocatedDate().toDateTime(DateTimeZone.UTC)).isEqualTo(DEFAULT_ALLOCATED_DATE);
+        assertThat(testBackOrderLineItem.getAllocatedDate()).isEqualTo(DEFAULT_ALLOCATED_DATE);
         assertThat(testBackOrderLineItem.getComment()).isEqualTo(DEFAULT_COMMENT);
         assertThat(testBackOrderLineItem.getIsPicked()).isEqualTo(DEFAULT_IS_PICKED);
         assertThat(testBackOrderLineItem.getIsMarked()).isEqualTo(DEFAULT_IS_MARKED);
@@ -228,7 +228,7 @@ public class BackOrderLineItemResourceTest {
         assertThat(testBackOrderLineItem.getQtyAllocated()).isEqualTo(UPDATED_QTY_ALLOCATED);
         assertThat(testBackOrderLineItem.getIsMarkedForAutoPurchaseOrdering()).isEqualTo(UPDATED_IS_MARKED_FOR_AUTO_PURCHASE_ORDERING);
         assertThat(testBackOrderLineItem.getIsOnHold()).isEqualTo(UPDATED_IS_ON_HOLD);
-        assertThat(testBackOrderLineItem.getAllocatedDate().toDateTime(DateTimeZone.UTC)).isEqualTo(UPDATED_ALLOCATED_DATE);
+        assertThat(testBackOrderLineItem.getAllocatedDate()).isEqualTo(UPDATED_ALLOCATED_DATE);
         assertThat(testBackOrderLineItem.getComment()).isEqualTo(UPDATED_COMMENT);
         assertThat(testBackOrderLineItem.getIsPicked()).isEqualTo(UPDATED_IS_PICKED);
         assertThat(testBackOrderLineItem.getIsMarked()).isEqualTo(UPDATED_IS_MARKED);

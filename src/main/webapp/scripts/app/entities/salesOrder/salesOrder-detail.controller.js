@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.salesOrder = result;
             });
         };
-        $rootScope.$on('bssuiteApp:salesOrderUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:salesOrderUpdate', function(event, result) {
             $scope.salesOrder = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

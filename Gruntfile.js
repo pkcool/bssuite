@@ -1,4 +1,4 @@
-// Generated on 2015-10-10 using generator-jhipster 2.22.0
+// Generated on 2015-10-24 using generator-jhipster 2.23.0
 'use strict';
 var fs = require('fs');
 
@@ -57,10 +57,9 @@ module.exports = function (grunt) {
                 src: ['src/main/webapp/index.html', 'src/main/scss/main.scss'],
                 exclude: [
                     /angular-i18n/, // localizations are loaded dynamically
-                    'bower_components/bootstrap/', // Exclude Bootstrap LESS as we use bootstrap-sass
-                    'bower_components/components-font-awesome/css' // Exclude font-awesome css as we use font-awesome-sass
+                    'bower_components/bootstrap/' // Exclude Bootstrap LESS as we use bootstrap-sass
                 ],
-                ignorePath: /\.\.\/webapp\/bower_components\// // remove ../webapp/bower_components/ from paths of injected sass files
+                ignorePath: /\.\.\/webapp\/bower_components\// // remove ../webapp/bower_components/ from paths of injected sass files 
             },
             test: {
                 src: 'src/test/javascript/karma.conf.js',
@@ -386,23 +385,6 @@ module.exports = function (grunt) {
         'usemin',
         'htmlmin'
     ]);
-
-	grunt.registerTask('appendSkipBower', 'Force skip of bower for Gradle', function () {
-
-		if (!grunt.file.exists(filepath)) {
-			// Assume this is a maven project
-			return true;
-		}
-
-		var fileContent = grunt.file.read(filepath);
-		var skipBowerIndex = fileContent.indexOf("skipBower=true");
-
-		if (skipBowerIndex != -1) {
-			return true;
-		}
-
-		grunt.file.write(filepath, fileContent + "\nskipBower=true\n");
-	});
 
     grunt.registerTask('buildOpenshift', [
         'test',

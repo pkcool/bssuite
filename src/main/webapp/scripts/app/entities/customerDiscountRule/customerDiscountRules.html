@@ -86,8 +86,8 @@
                     <td>{{customerDiscountRule.customerCategoryCode}}</td>
                     <td>{{customerDiscountRule.fromProductCode}}</td>
                     <td>{{customerDiscountRule.toProductCode}}</td>
-                    <td>{{customerDiscountRule.startDate}}</td>
-                    <td>{{customerDiscountRule.endDate}}</td>
+                        <td>{{customerDiscountRule.startDate | date:'mediumDate'}}</td>
+                        <td>{{customerDiscountRule.endDate | date:'mediumDate'}}</td>
                     <td>{{customerDiscountRule.qtyBreak}}</td>
                     <td>{{customerDiscountRule.fromSupplierCode}}</td>
                     <td>{{customerDiscountRule.toSupplierCode}}</td>

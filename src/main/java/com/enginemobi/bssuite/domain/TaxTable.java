@@ -15,36 +15,35 @@ import java.util.Objects;
 @Entity
 @Table(name = "tax_table")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="taxtable")
+@Document(indexName = "taxtable")
 public class TaxTable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
-    @NotNull        
+    @NotNull
     @Column(name = "code", nullable = false)
     private String code;
-    
+
     @Column(name = "name")
     private String name;
-    
+
     @Column(name = "formula")
     private String formula;
-    
+
     @Column(name = "is_added_to_total")
     private Boolean isAddedToTotal;
-    
+
     @Column(name = "is_subtracted_from_total")
     private Boolean isSubtractedFromTotal;
-    
+
     @Column(name = "is_excluded_on_reporting")
     private Boolean isExcludedOnReporting;
-    
+
     @Column(name = "tax_group")
     private String taxGroup;
-    
+
     @Column(name = "tax_base")
     private String taxBase;
 
@@ -144,15 +143,15 @@ public class TaxTable implements Serializable {
     @Override
     public String toString() {
         return "TaxTable{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", formula='" + formula + "'" +
-                ", isAddedToTotal='" + isAddedToTotal + "'" +
-                ", isSubtractedFromTotal='" + isSubtractedFromTotal + "'" +
-                ", isExcludedOnReporting='" + isExcludedOnReporting + "'" +
-                ", taxGroup='" + taxGroup + "'" +
-                ", taxBase='" + taxBase + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", formula='" + formula + "'" +
+            ", isAddedToTotal='" + isAddedToTotal + "'" +
+            ", isSubtractedFromTotal='" + isSubtractedFromTotal + "'" +
+            ", isExcludedOnReporting='" + isExcludedOnReporting + "'" +
+            ", taxGroup='" + taxGroup + "'" +
+            ", taxBase='" + taxBase + "'" +
+            '}';
     }
 }

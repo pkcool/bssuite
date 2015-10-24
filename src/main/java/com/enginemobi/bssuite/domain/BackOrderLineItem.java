@@ -1,13 +1,8 @@
 package com.enginemobi.bssuite.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeDeserializer;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeSerializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
+import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -22,38 +17,34 @@ import java.util.Objects;
 @Entity
 @Table(name = "back_order_line_item")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="backorderlineitem")
+@Document(indexName = "backorderlineitem")
 public class BackOrderLineItem implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
     @Column(name = "is_ready_to_release")
     private Boolean isReadyToRelease;
-    
+
     @Column(name = "qty_allocated")
     private Double qtyAllocated;
-    
+
     @Column(name = "is_marked_for_auto_purchase_ordering")
     private Boolean isMarkedForAutoPurchaseOrdering;
-    
+
     @Column(name = "is_on_hold")
     private Boolean isOnHold;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
+
     @Column(name = "allocated_date")
-    private DateTime allocatedDate;
-    
+    private ZonedDateTime allocatedDate;
+
     @Column(name = "comment")
     private String comment;
-    
+
     @Column(name = "is_picked")
     private Boolean isPicked;
-    
+
     @Column(name = "is_marked")
     private Boolean isMarked;
 
@@ -100,11 +91,11 @@ public class BackOrderLineItem implements Serializable {
         this.isOnHold = isOnHold;
     }
 
-    public DateTime getAllocatedDate() {
+    public ZonedDateTime getAllocatedDate() {
         return allocatedDate;
     }
 
-    public void setAllocatedDate(DateTime allocatedDate) {
+    public void setAllocatedDate(ZonedDateTime allocatedDate) {
         this.allocatedDate = allocatedDate;
     }
 
@@ -164,15 +155,15 @@ public class BackOrderLineItem implements Serializable {
     @Override
     public String toString() {
         return "BackOrderLineItem{" +
-                "id=" + id +
-                ", isReadyToRelease='" + isReadyToRelease + "'" +
-                ", qtyAllocated='" + qtyAllocated + "'" +
-                ", isMarkedForAutoPurchaseOrdering='" + isMarkedForAutoPurchaseOrdering + "'" +
-                ", isOnHold='" + isOnHold + "'" +
-                ", allocatedDate='" + allocatedDate + "'" +
-                ", comment='" + comment + "'" +
-                ", isPicked='" + isPicked + "'" +
-                ", isMarked='" + isMarked + "'" +
-                '}';
+            "id=" + id +
+            ", isReadyToRelease='" + isReadyToRelease + "'" +
+            ", qtyAllocated='" + qtyAllocated + "'" +
+            ", isMarkedForAutoPurchaseOrdering='" + isMarkedForAutoPurchaseOrdering + "'" +
+            ", isOnHold='" + isOnHold + "'" +
+            ", allocatedDate='" + allocatedDate + "'" +
+            ", comment='" + comment + "'" +
+            ", isPicked='" + isPicked + "'" +
+            ", isMarked='" + isMarked + "'" +
+            '}';
     }
 }

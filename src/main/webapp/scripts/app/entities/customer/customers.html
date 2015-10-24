@@ -123,7 +123,7 @@
                     <td>{{customer.isCreditCardBillingActive}}</td>
                     <td>{{customer.creditCardNo}}</td>
                     <td>{{customer.creditCardHolderName}}</td>
-                    <td>{{customer.creditCardExpiryDate}}</td>
+                        <td>{{customer.creditCardExpiryDate | date:'mediumDate'}}</td>
                     <td translate="{{'bssuiteApp.CreditCardType.' + customer.creditCardType}}">{{customer.creditCardType}}</td>
                     <td translate="{{'bssuiteApp.CustomerAccountType.' + customer.accountType}}">{{customer.accountType}}</td>
                     <td>{{customer.creditAmount}}</td>

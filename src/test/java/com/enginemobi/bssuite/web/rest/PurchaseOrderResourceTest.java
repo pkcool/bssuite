@@ -26,11 +26,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.joda.time.LocalDate;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -51,7 +51,7 @@ import com.enginemobi.bssuite.domain.enumeration.PurchaseOrderStatus;
 @IntegrationTest
 public class PurchaseOrderResourceTest {
 
-    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.of("Z"));
 
     private static final String DEFAULT_ORDER_NO = "AAAAA";
     private static final String UPDATED_ORDER_NO = "BBBBB";
@@ -60,14 +60,14 @@ public class PurchaseOrderResourceTest {
 private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ONORDER;
     private static final PurchaseOrderStatus UPDATED_STATUS = PurchaseOrderStatus.DELIVERED;
 
-    private static final DateTime DEFAULT_CREATED_DATE = new DateTime(0L, DateTimeZone.UTC);
-    private static final DateTime UPDATED_CREATED_DATE = new DateTime(DateTimeZone.UTC).withMillisOfSecond(0);
-    private static final String DEFAULT_CREATED_DATE_STR = dateTimeFormatter.print(DEFAULT_CREATED_DATE);
+    private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+    private static final ZonedDateTime UPDATED_CREATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final String DEFAULT_CREATED_DATE_STR = dateTimeFormatter.format(DEFAULT_CREATED_DATE);
     private static final String DEFAULT_REF = "AAAAA";
     private static final String UPDATED_REF = "BBBBB";
 
-    private static final LocalDate DEFAULT_EXPECTED_DELIVERY_DATE = new LocalDate(0L);
-    private static final LocalDate UPDATED_EXPECTED_DELIVERY_DATE = new LocalDate();
+    private static final LocalDate DEFAULT_EXPECTED_DELIVERY_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_EXPECTED_DELIVERY_DATE = LocalDate.now(ZoneId.systemDefault());
 
     private static final Boolean DEFAULT_IS_TAXABLE = false;
     private static final Boolean UPDATED_IS_TAXABLE = true;
@@ -155,7 +155,7 @@ private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ON
         PurchaseOrder testPurchaseOrder = purchaseOrders.get(purchaseOrders.size() - 1);
         assertThat(testPurchaseOrder.getOrderNo()).isEqualTo(DEFAULT_ORDER_NO);
         assertThat(testPurchaseOrder.getStatus()).isEqualTo(DEFAULT_STATUS);
-        assertThat(testPurchaseOrder.getCreatedDate().toDateTime(DateTimeZone.UTC)).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testPurchaseOrder.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
         assertThat(testPurchaseOrder.getRef()).isEqualTo(DEFAULT_REF);
         assertThat(testPurchaseOrder.getExpectedDeliveryDate()).isEqualTo(DEFAULT_EXPECTED_DELIVERY_DATE);
         assertThat(testPurchaseOrder.getIsTaxable()).isEqualTo(DEFAULT_IS_TAXABLE);
@@ -259,7 +259,7 @@ private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ON
         PurchaseOrder testPurchaseOrder = purchaseOrders.get(purchaseOrders.size() - 1);
         assertThat(testPurchaseOrder.getOrderNo()).isEqualTo(UPDATED_ORDER_NO);
         assertThat(testPurchaseOrder.getStatus()).isEqualTo(UPDATED_STATUS);
-        assertThat(testPurchaseOrder.getCreatedDate().toDateTime(DateTimeZone.UTC)).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testPurchaseOrder.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
         assertThat(testPurchaseOrder.getRef()).isEqualTo(UPDATED_REF);
         assertThat(testPurchaseOrder.getExpectedDeliveryDate()).isEqualTo(UPDATED_EXPECTED_DELIVERY_DATE);
         assertThat(testPurchaseOrder.getIsTaxable()).isEqualTo(UPDATED_IS_TAXABLE);

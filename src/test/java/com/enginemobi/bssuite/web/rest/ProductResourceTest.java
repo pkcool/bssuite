@@ -26,7 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -156,32 +157,32 @@ public class ProductResourceTest {
     private static final Double DEFAULT_EST_MONTHLY_SALES = 1D;
     private static final Double UPDATED_EST_MONTHLY_SALES = 2D;
 
-    private static final LocalDate DEFAULT_DATE_FIRST_SALE = new LocalDate(0L);
-    private static final LocalDate UPDATED_DATE_FIRST_SALE = new LocalDate();
+    private static final LocalDate DEFAULT_DATE_FIRST_SALE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_FIRST_SALE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final LocalDate DEFAULT_DATE_LAST_SALE = new LocalDate(0L);
-    private static final LocalDate UPDATED_DATE_LAST_SALE = new LocalDate();
+    private static final LocalDate DEFAULT_DATE_LAST_SALE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_LAST_SALE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final LocalDate DEFAULT_DATE_FIRST_ORDER = new LocalDate(0L);
-    private static final LocalDate UPDATED_DATE_FIRST_ORDER = new LocalDate();
+    private static final LocalDate DEFAULT_DATE_FIRST_ORDER = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_FIRST_ORDER = LocalDate.now(ZoneId.systemDefault());
 
-    private static final LocalDate DEFAULT_DATE_CREATED = new LocalDate(0L);
-    private static final LocalDate UPDATED_DATE_CREATED = new LocalDate();
+    private static final LocalDate DEFAULT_DATE_CREATED = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_CREATED = LocalDate.now(ZoneId.systemDefault());
 
-    private static final LocalDate DEFAULT_DATE_LAST_DELIVERY = new LocalDate(0L);
-    private static final LocalDate UPDATED_DATE_LAST_DELIVERY = new LocalDate();
+    private static final LocalDate DEFAULT_DATE_LAST_DELIVERY = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_LAST_DELIVERY = LocalDate.now(ZoneId.systemDefault());
 
-    private static final LocalDate DEFAULT_DATE_NEXT_DELIVERY = new LocalDate(0L);
-    private static final LocalDate UPDATED_DATE_NEXT_DELIVERY = new LocalDate();
+    private static final LocalDate DEFAULT_DATE_NEXT_DELIVERY = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_NEXT_DELIVERY = LocalDate.now(ZoneId.systemDefault());
 
-    private static final LocalDate DEFAULT_DATE_LAST_TRANSFER = new LocalDate(0L);
-    private static final LocalDate UPDATED_DATE_LAST_TRANSFER = new LocalDate();
+    private static final LocalDate DEFAULT_DATE_LAST_TRANSFER = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_LAST_TRANSFER = LocalDate.now(ZoneId.systemDefault());
 
-    private static final LocalDate DEFAULT_DATE_LAST_ORDER = new LocalDate(0L);
-    private static final LocalDate UPDATED_DATE_LAST_ORDER = new LocalDate();
+    private static final LocalDate DEFAULT_DATE_LAST_ORDER = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_LAST_ORDER = LocalDate.now(ZoneId.systemDefault());
 
-    private static final LocalDate DEFAULT_DATE_LAST_STOCKTAKE = new LocalDate(0L);
-    private static final LocalDate UPDATED_DATE_LAST_STOCKTAKE = new LocalDate();
+    private static final LocalDate DEFAULT_DATE_LAST_STOCKTAKE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_LAST_STOCKTAKE = LocalDate.now(ZoneId.systemDefault());
 
     private static final Boolean DEFAULT_IS_ARCHIVED = false;
     private static final Boolean UPDATED_IS_ARCHIVED = true;

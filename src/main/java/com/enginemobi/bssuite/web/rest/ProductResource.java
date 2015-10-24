@@ -53,8 +53,8 @@ public class ProductResource {
      * POST  /products -> Create a new product.
      */
     @RequestMapping(value = "/products",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductDTO productDTO) throws URISyntaxException {
         log.debug("REST request to save Product : {}", productDTO);
@@ -65,8 +65,8 @@ public class ProductResource {
         Product result = productRepository.save(product);
         productSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/products/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("product", result.getId().toString()))
-                .body(productMapper.productToProductDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("product", result.getId().toString()))
+            .body(productMapper.productToProductDTO(result));
     }
 
     /**
@@ -85,16 +85,16 @@ public class ProductResource {
         Product result = productRepository.save(product);
         productSearchRepository.save(product);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("product", productDTO.getId().toString()))
-                .body(productMapper.productToProductDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("product", productDTO.getId().toString()))
+            .body(productMapper.productToProductDTO(result));
     }
 
     /**
      * GET  /products -> get all the products.
      */
     @RequestMapping(value = "/products",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<ProductDTO>> getAllProducts(Pageable pageable)
@@ -110,8 +110,8 @@ public class ProductResource {
      * GET  /products/:id -> get the "id" product.
      */
     @RequestMapping(value = "/products/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<ProductDTO> getProduct(@PathVariable Long id) {
         log.debug("REST request to get Product : {}", id);
@@ -127,8 +127,8 @@ public class ProductResource {
      * DELETE  /products/:id -> delete the "id" product.
      */
     @RequestMapping(value = "/products/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         log.debug("REST request to delete Product : {}", id);
@@ -147,7 +147,7 @@ public class ProductResource {
     @Timed
     public List<ProductDTO> searchProducts(@PathVariable String query) {
         return StreamSupport
-            .stream(productSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(productSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(productMapper::productToProductDTO)
             .collect(Collectors.toList());
     }

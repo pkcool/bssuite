@@ -53,6 +53,50 @@ public interface CustomerMapper {
         return contact;
     }
 
+    default Contact contactFromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Contact contact = new Contact();
+        contact.setId(id);
+        return contact;
+    }
+
+    default Contact contactFromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Contact contact = new Contact();
+        contact.setId(id);
+        return contact;
+    }
+
+    default Contact contactFromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Contact contact = new Contact();
+        contact.setId(id);
+        return contact;
+    }
+
+    default Contact contactFromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Contact contact = new Contact();
+        contact.setId(id);
+        return contact;
+    }
+
+    default Contact contactFromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Contact contact = new Contact();
+        contact.setId(id);
+        return contact;
+    }
 
     default Staff staffFromId(Long id) {
         if (id == null) {

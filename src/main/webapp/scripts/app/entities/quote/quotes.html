@@ -83,9 +83,9 @@
                     <td><a ui-sref="quote.detail({id:quote.id})">{{quote.id}}</a></td>
                     <td>{{quote.quoteNo}}</td>
                     <td translate="{{'bssuiteApp.QuoteStatus.' + quote.status}}">{{quote.status}}</td>
-                    <td>{{quote.quoteDate}}</td>
-                    <td>{{quote.expiryDate}}</td>
-                    <td>{{quote.followupDate}}</td>
+                    <td>{{quote.quoteDate | date:'medium'}}</td>
+                        <td>{{quote.expiryDate | date:'mediumDate'}}</td>
+                        <td>{{quote.followupDate | date:'mediumDate'}}</td>
                     <td>{{quote.reference}}</td>
                     <td>{{quote.ourRef}}</td>
                     <td>{{quote.freight}}</td>

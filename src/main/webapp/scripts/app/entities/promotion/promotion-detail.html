@@ -39,7 +39,7 @@
                     <span>StartDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{promotion.startDate}}</span>
+                    <span class="form-control-static">{{promotion.startDate | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>
@@ -47,7 +47,7 @@
                     <span>EndDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{promotion.endDate}}</span>
+                    <span class="form-control-static">{{promotion.endDate | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>
@@ -79,7 +79,7 @@
                     <span>DateCreated</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{promotion.dateCreated}}</span>
+                    <span class="form-control-static">{{promotion.dateCreated | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>

@@ -37,7 +37,14 @@ public interface QuoteMapper {
         return customer;
     }
 
-
+    default Contact contactFromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Contact contact = new Contact();
+        contact.setId(id);
+        return contact;
+    }
 
     default Contact contactFromId(Long id) {
         if (id == null) {
@@ -55,6 +62,15 @@ public interface QuoteMapper {
         Store store = new Store();
         store.setId(id);
         return store;
+    }
+
+    default Staff staffFromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Staff staff = new Staff();
+        staff.setId(id);
+        return staff;
     }
 
     default Staff staffFromId(Long id) {

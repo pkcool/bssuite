@@ -24,6 +24,21 @@ spring:
             enabled: false
     thymeleaf:
         mode: XHTML
+    social:
+        # see https://developers.google.com/+/web/signin/server-side-flow#step_1_create_a_client_id_and_client_secret
+        google:
+            clientId: xxx
+            clientSecret: xxx
+
+        # see https://developers.facebook.com/docs/facebook-login/v2.2
+        facebook:
+            clientId: xxx
+            clientSecret: xxx
+
+        # see https://apps.twitter.com/app/
+        twitter:
+            clientId: xxx
+            clientSecret: xxx
 
 security:
     basic:
@@ -39,13 +54,6 @@ jhipster:
         maxPoolSize: 50
         queueCapacity: 10000
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
-        protocol: smtp
-        tls: false
-        auth: false
         from: bssuite@localhost
     security:
         rememberme:
@@ -59,3 +67,5 @@ jhipster:
         contact:
         license:
         licenseUrl:
+    social:
+        redirectAfterSignIn: "/#/home"

@@ -1,6 +1,6 @@
 package com.enginemobi.bssuite.web.rest.dto;
 
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -24,129 +24,84 @@ public class CustomerDTO implements Serializable {
     @Size(min = 2)
     private String code;
 
-
     private String name;
-
 
     private String tradingName;
 
-
     private String abn;
-
 
     private String deliveryInstruction;
 
-
     private String webUrl;
-
 
     private Boolean isOnHold;
 
-
     private Boolean isOrderNoRequired;
-
 
     private Boolean isBlacklisted;
 
-
     private Boolean isBackorderAllowed;
-
 
     private Boolean isArchived;
 
-
     private Boolean isHeadOfficeAccount;
-
 
     private CustomerAgeingMethod ageingMethod;
 
-
     private Boolean isWebaccessAllowed;
-
 
     private String bankName;
 
-
     private String bsb;
-
 
     private String bankAccountNo;
 
-
     private String bankSuburb;
-
 
     private String bankAccountName;
 
-
     private Boolean isCreditCardBillingActive;
-
 
     private String creditCardNo;
 
-
     private String creditCardHolderName;
-
 
     private LocalDate creditCardExpiryDate;
 
-
     private CreditCardType creditCardType;
-
 
     private CustomerAccountType accountType;
 
-
     private Double creditAmount;
-
 
     private Integer terms;
 
-
     private Integer settlementTerms;
-
 
     private CustomerInvoiceDeliveryMethod invoiceDeliveryMethod;
 
-
     private CustomerStatementDeliveryMethod statementDeliveryMethod;
-
 
     private String invoiceEmailAddress;
 
-
     private String invoiceFaxNo;
-
 
     private String statementEmailAddress;
 
-
     private String statementFaxNo;
-
 
     private Boolean isPenaltyIssued;
 
-
     private Long customerCategoryId;
-
     private Long contactId;
-
     private Long deliveryContactId;
-
     private Long salesPrimaryContactId;
-
     private Long salesSecondaryContactId;
-
     private Long accountPrimaryContactId;
-
     private Long accountSecondaryContactId;
-
     private Long repId;
-
     private Long centralBillingAccountId;
-
     private Long storeId;
-
     public Long getId() {
         return id;
     }
@@ -163,7 +118,6 @@ public class CustomerDTO implements Serializable {
         this.code = code;
     }
 
-
     public String getName() {
         return name;
     }
@@ -171,7 +125,6 @@ public class CustomerDTO implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getTradingName() {
         return tradingName;
@@ -181,7 +134,6 @@ public class CustomerDTO implements Serializable {
         this.tradingName = tradingName;
     }
 
-
     public String getAbn() {
         return abn;
     }
@@ -189,7 +141,6 @@ public class CustomerDTO implements Serializable {
     public void setAbn(String abn) {
         this.abn = abn;
     }
-
 
     public String getDeliveryInstruction() {
         return deliveryInstruction;
@@ -199,7 +150,6 @@ public class CustomerDTO implements Serializable {
         this.deliveryInstruction = deliveryInstruction;
     }
 
-
     public String getWebUrl() {
         return webUrl;
     }
@@ -207,7 +157,6 @@ public class CustomerDTO implements Serializable {
     public void setWebUrl(String webUrl) {
         this.webUrl = webUrl;
     }
-
 
     public Boolean getIsOnHold() {
         return isOnHold;
@@ -217,7 +166,6 @@ public class CustomerDTO implements Serializable {
         this.isOnHold = isOnHold;
     }
 
-
     public Boolean getIsOrderNoRequired() {
         return isOrderNoRequired;
     }
@@ -225,7 +173,6 @@ public class CustomerDTO implements Serializable {
     public void setIsOrderNoRequired(Boolean isOrderNoRequired) {
         this.isOrderNoRequired = isOrderNoRequired;
     }
-
 
     public Boolean getIsBlacklisted() {
         return isBlacklisted;
@@ -235,7 +182,6 @@ public class CustomerDTO implements Serializable {
         this.isBlacklisted = isBlacklisted;
     }
 
-
     public Boolean getIsBackorderAllowed() {
         return isBackorderAllowed;
     }
@@ -243,7 +189,6 @@ public class CustomerDTO implements Serializable {
     public void setIsBackorderAllowed(Boolean isBackorderAllowed) {
         this.isBackorderAllowed = isBackorderAllowed;
     }
-
 
     public Boolean getIsArchived() {
         return isArchived;
@@ -253,7 +198,6 @@ public class CustomerDTO implements Serializable {
         this.isArchived = isArchived;
     }
 
-
     public Boolean getIsHeadOfficeAccount() {
         return isHeadOfficeAccount;
     }
@@ -261,7 +205,6 @@ public class CustomerDTO implements Serializable {
     public void setIsHeadOfficeAccount(Boolean isHeadOfficeAccount) {
         this.isHeadOfficeAccount = isHeadOfficeAccount;
     }
-
 
     public CustomerAgeingMethod getAgeingMethod() {
         return ageingMethod;
@@ -271,7 +214,6 @@ public class CustomerDTO implements Serializable {
         this.ageingMethod = ageingMethod;
     }
 
-
     public Boolean getIsWebaccessAllowed() {
         return isWebaccessAllowed;
     }
@@ -279,7 +221,6 @@ public class CustomerDTO implements Serializable {
     public void setIsWebaccessAllowed(Boolean isWebaccessAllowed) {
         this.isWebaccessAllowed = isWebaccessAllowed;
     }
-
 
     public String getBankName() {
         return bankName;
@@ -289,7 +230,6 @@ public class CustomerDTO implements Serializable {
         this.bankName = bankName;
     }
 
-
     public String getBsb() {
         return bsb;
     }
@@ -297,7 +237,6 @@ public class CustomerDTO implements Serializable {
     public void setBsb(String bsb) {
         this.bsb = bsb;
     }
-
 
     public String getBankAccountNo() {
         return bankAccountNo;
@@ -307,7 +246,6 @@ public class CustomerDTO implements Serializable {
         this.bankAccountNo = bankAccountNo;
     }
 
-
     public String getBankSuburb() {
         return bankSuburb;
     }
@@ -315,7 +253,6 @@ public class CustomerDTO implements Serializable {
     public void setBankSuburb(String bankSuburb) {
         this.bankSuburb = bankSuburb;
     }
-
 
     public String getBankAccountName() {
         return bankAccountName;
@@ -325,7 +262,6 @@ public class CustomerDTO implements Serializable {
         this.bankAccountName = bankAccountName;
     }
 
-
     public Boolean getIsCreditCardBillingActive() {
         return isCreditCardBillingActive;
     }
@@ -333,7 +269,6 @@ public class CustomerDTO implements Serializable {
     public void setIsCreditCardBillingActive(Boolean isCreditCardBillingActive) {
         this.isCreditCardBillingActive = isCreditCardBillingActive;
     }
-
 
     public String getCreditCardNo() {
         return creditCardNo;
@@ -343,7 +278,6 @@ public class CustomerDTO implements Serializable {
         this.creditCardNo = creditCardNo;
     }
 
-
     public String getCreditCardHolderName() {
         return creditCardHolderName;
     }
@@ -351,7 +285,6 @@ public class CustomerDTO implements Serializable {
     public void setCreditCardHolderName(String creditCardHolderName) {
         this.creditCardHolderName = creditCardHolderName;
     }
-
 
     public LocalDate getCreditCardExpiryDate() {
         return creditCardExpiryDate;
@@ -361,7 +294,6 @@ public class CustomerDTO implements Serializable {
         this.creditCardExpiryDate = creditCardExpiryDate;
     }
 
-
     public CreditCardType getCreditCardType() {
         return creditCardType;
     }
@@ -369,7 +301,6 @@ public class CustomerDTO implements Serializable {
     public void setCreditCardType(CreditCardType creditCardType) {
         this.creditCardType = creditCardType;
     }
-
 
     public CustomerAccountType getAccountType() {
         return accountType;
@@ -379,7 +310,6 @@ public class CustomerDTO implements Serializable {
         this.accountType = accountType;
     }
 
-
     public Double getCreditAmount() {
         return creditAmount;
     }
@@ -387,7 +317,6 @@ public class CustomerDTO implements Serializable {
     public void setCreditAmount(Double creditAmount) {
         this.creditAmount = creditAmount;
     }
-
 
     public Integer getTerms() {
         return terms;
@@ -397,7 +326,6 @@ public class CustomerDTO implements Serializable {
         this.terms = terms;
     }
 
-
     public Integer getSettlementTerms() {
         return settlementTerms;
     }
@@ -405,7 +333,6 @@ public class CustomerDTO implements Serializable {
     public void setSettlementTerms(Integer settlementTerms) {
         this.settlementTerms = settlementTerms;
     }
-
 
     public CustomerInvoiceDeliveryMethod getInvoiceDeliveryMethod() {
         return invoiceDeliveryMethod;
@@ -415,7 +342,6 @@ public class CustomerDTO implements Serializable {
         this.invoiceDeliveryMethod = invoiceDeliveryMethod;
     }
 
-
     public CustomerStatementDeliveryMethod getStatementDeliveryMethod() {
         return statementDeliveryMethod;
     }
@@ -423,7 +349,6 @@ public class CustomerDTO implements Serializable {
     public void setStatementDeliveryMethod(CustomerStatementDeliveryMethod statementDeliveryMethod) {
         this.statementDeliveryMethod = statementDeliveryMethod;
     }
-
 
     public String getInvoiceEmailAddress() {
         return invoiceEmailAddress;
@@ -433,7 +358,6 @@ public class CustomerDTO implements Serializable {
         this.invoiceEmailAddress = invoiceEmailAddress;
     }
 
-
     public String getInvoiceFaxNo() {
         return invoiceFaxNo;
     }
@@ -441,7 +365,6 @@ public class CustomerDTO implements Serializable {
     public void setInvoiceFaxNo(String invoiceFaxNo) {
         this.invoiceFaxNo = invoiceFaxNo;
     }
-
 
     public String getStatementEmailAddress() {
         return statementEmailAddress;
@@ -451,7 +374,6 @@ public class CustomerDTO implements Serializable {
         this.statementEmailAddress = statementEmailAddress;
     }
 
-
     public String getStatementFaxNo() {
         return statementFaxNo;
     }
@@ -459,7 +381,6 @@ public class CustomerDTO implements Serializable {
     public void setStatementFaxNo(String statementFaxNo) {
         this.statementFaxNo = statementFaxNo;
     }
-
 
     public Boolean getIsPenaltyIssued() {
         return isPenaltyIssued;
@@ -469,7 +390,6 @@ public class CustomerDTO implements Serializable {
         this.isPenaltyIssued = isPenaltyIssued;
     }
 
-
     public Long getCustomerCategoryId() {
         return customerCategoryId;
     }
@@ -477,7 +397,6 @@ public class CustomerDTO implements Serializable {
     public void setCustomerCategoryId(Long customerCategoryId) {
         this.customerCategoryId = customerCategoryId;
     }
-
     public Long getContactId() {
         return contactId;
     }
@@ -485,7 +404,6 @@ public class CustomerDTO implements Serializable {
     public void setContactId(Long contactId) {
         this.contactId = contactId;
     }
-
     public Long getDeliveryContactId() {
         return deliveryContactId;
     }
@@ -493,7 +411,6 @@ public class CustomerDTO implements Serializable {
     public void setDeliveryContactId(Long contactId) {
         this.deliveryContactId = contactId;
     }
-
     public Long getSalesPrimaryContactId() {
         return salesPrimaryContactId;
     }
@@ -501,7 +418,6 @@ public class CustomerDTO implements Serializable {
     public void setSalesPrimaryContactId(Long contactId) {
         this.salesPrimaryContactId = contactId;
     }
-
     public Long getSalesSecondaryContactId() {
         return salesSecondaryContactId;
     }
@@ -509,7 +425,6 @@ public class CustomerDTO implements Serializable {
     public void setSalesSecondaryContactId(Long contactId) {
         this.salesSecondaryContactId = contactId;
     }
-
     public Long getAccountPrimaryContactId() {
         return accountPrimaryContactId;
     }
@@ -517,7 +432,6 @@ public class CustomerDTO implements Serializable {
     public void setAccountPrimaryContactId(Long contactId) {
         this.accountPrimaryContactId = contactId;
     }
-
     public Long getAccountSecondaryContactId() {
         return accountSecondaryContactId;
     }
@@ -525,7 +439,6 @@ public class CustomerDTO implements Serializable {
     public void setAccountSecondaryContactId(Long contactId) {
         this.accountSecondaryContactId = contactId;
     }
-
     public Long getRepId() {
         return repId;
     }
@@ -533,7 +446,6 @@ public class CustomerDTO implements Serializable {
     public void setRepId(Long staffId) {
         this.repId = staffId;
     }
-
     public Long getCentralBillingAccountId() {
         return centralBillingAccountId;
     }
@@ -541,7 +453,6 @@ public class CustomerDTO implements Serializable {
     public void setCentralBillingAccountId(Long customerId) {
         this.centralBillingAccountId = customerId;
     }
-
     public Long getStoreId() {
         return storeId;
     }
@@ -549,7 +460,6 @@ public class CustomerDTO implements Serializable {
     public void setStoreId(Long storeId) {
         this.storeId = storeId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -574,42 +484,42 @@ public class CustomerDTO implements Serializable {
     @Override
     public String toString() {
         return "CustomerDTO{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", tradingName='" + tradingName + "'" +
-                ", abn='" + abn + "'" +
-                ", deliveryInstruction='" + deliveryInstruction + "'" +
-                ", webUrl='" + webUrl + "'" +
-                ", isOnHold='" + isOnHold + "'" +
-                ", isOrderNoRequired='" + isOrderNoRequired + "'" +
-                ", isBlacklisted='" + isBlacklisted + "'" +
-                ", isBackorderAllowed='" + isBackorderAllowed + "'" +
-                ", isArchived='" + isArchived + "'" +
-                ", isHeadOfficeAccount='" + isHeadOfficeAccount + "'" +
-                ", ageingMethod='" + ageingMethod + "'" +
-                ", isWebaccessAllowed='" + isWebaccessAllowed + "'" +
-                ", bankName='" + bankName + "'" +
-                ", bsb='" + bsb + "'" +
-                ", bankAccountNo='" + bankAccountNo + "'" +
-                ", bankSuburb='" + bankSuburb + "'" +
-                ", bankAccountName='" + bankAccountName + "'" +
-                ", isCreditCardBillingActive='" + isCreditCardBillingActive + "'" +
-                ", creditCardNo='" + creditCardNo + "'" +
-                ", creditCardHolderName='" + creditCardHolderName + "'" +
-                ", creditCardExpiryDate='" + creditCardExpiryDate + "'" +
-                ", creditCardType='" + creditCardType + "'" +
-                ", accountType='" + accountType + "'" +
-                ", creditAmount='" + creditAmount + "'" +
-                ", terms='" + terms + "'" +
-                ", settlementTerms='" + settlementTerms + "'" +
-                ", invoiceDeliveryMethod='" + invoiceDeliveryMethod + "'" +
-                ", statementDeliveryMethod='" + statementDeliveryMethod + "'" +
-                ", invoiceEmailAddress='" + invoiceEmailAddress + "'" +
-                ", invoiceFaxNo='" + invoiceFaxNo + "'" +
-                ", statementEmailAddress='" + statementEmailAddress + "'" +
-                ", statementFaxNo='" + statementFaxNo + "'" +
-                ", isPenaltyIssued='" + isPenaltyIssued + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", tradingName='" + tradingName + "'" +
+            ", abn='" + abn + "'" +
+            ", deliveryInstruction='" + deliveryInstruction + "'" +
+            ", webUrl='" + webUrl + "'" +
+            ", isOnHold='" + isOnHold + "'" +
+            ", isOrderNoRequired='" + isOrderNoRequired + "'" +
+            ", isBlacklisted='" + isBlacklisted + "'" +
+            ", isBackorderAllowed='" + isBackorderAllowed + "'" +
+            ", isArchived='" + isArchived + "'" +
+            ", isHeadOfficeAccount='" + isHeadOfficeAccount + "'" +
+            ", ageingMethod='" + ageingMethod + "'" +
+            ", isWebaccessAllowed='" + isWebaccessAllowed + "'" +
+            ", bankName='" + bankName + "'" +
+            ", bsb='" + bsb + "'" +
+            ", bankAccountNo='" + bankAccountNo + "'" +
+            ", bankSuburb='" + bankSuburb + "'" +
+            ", bankAccountName='" + bankAccountName + "'" +
+            ", isCreditCardBillingActive='" + isCreditCardBillingActive + "'" +
+            ", creditCardNo='" + creditCardNo + "'" +
+            ", creditCardHolderName='" + creditCardHolderName + "'" +
+            ", creditCardExpiryDate='" + creditCardExpiryDate + "'" +
+            ", creditCardType='" + creditCardType + "'" +
+            ", accountType='" + accountType + "'" +
+            ", creditAmount='" + creditAmount + "'" +
+            ", terms='" + terms + "'" +
+            ", settlementTerms='" + settlementTerms + "'" +
+            ", invoiceDeliveryMethod='" + invoiceDeliveryMethod + "'" +
+            ", statementDeliveryMethod='" + statementDeliveryMethod + "'" +
+            ", invoiceEmailAddress='" + invoiceEmailAddress + "'" +
+            ", invoiceFaxNo='" + invoiceFaxNo + "'" +
+            ", statementEmailAddress='" + statementEmailAddress + "'" +
+            ", statementFaxNo='" + statementFaxNo + "'" +
+            ", isPenaltyIssued='" + isPenaltyIssued + "'" +
+            '}';
     }
 }

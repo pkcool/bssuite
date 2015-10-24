@@ -67,7 +67,7 @@ class StoreGatlingTest extends Simulation {
             .exec(http("Create new store")
             .post("/api/stores")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "code":"SAMPLE_TEXT", "name":"SAMPLE_TEXT", "address1":"SAMPLE_TEXT", "address2":"SAMPLE_TEXT", "suburb":"SAMPLE_TEXT", "state":"SAMPLE_TEXT", "postcode":"SAMPLE_TEXT", "country":"SAMPLE_TEXT", "phone":"SAMPLE_TEXT", "fax":"SAMPLE_TEXT", "email":"SAMPLE_TEXT", "webUrl":"SAMPLE_TEXT", "inBisinessSince":"2020-01-01T00:00:00.000Z", "isArchived":null}""")).asJSON
+            .body(StringBody("""{"id":null, "code":"SAMPLE_TEXT", "name":"SAMPLE_TEXT", "address1":"SAMPLE_TEXT", "address2":"SAMPLE_TEXT", "suburb":"SAMPLE_TEXT", "state":"SAMPLE_TEXT", "postcode":"SAMPLE_TEXT", "country":"SAMPLE_TEXT", "phone":"SAMPLE_TEXT", "fax":"SAMPLE_TEXT", "email":"SAMPLE_TEXT", "webUrl":"SAMPLE_TEXT", "inBusinessSince":"2020-01-01T00:00:00.000Z", "isArchived":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_store_url")))
             .pause(10)

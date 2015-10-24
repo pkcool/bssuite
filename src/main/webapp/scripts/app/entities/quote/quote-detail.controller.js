@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.quote = result;
             });
         };
-        $rootScope.$on('bssuiteApp:quoteUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:quoteUpdate', function(event, result) {
             $scope.quote = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

@@ -21,70 +21,68 @@ import com.enginemobi.bssuite.domain.enumeration.SupplierAgeingMethod;
 @Entity
 @Table(name = "supplier")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="supplier")
+@Document(indexName = "supplier")
 public class Supplier implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
-    @NotNull        
+    @NotNull
     @Column(name = "code", nullable = false)
     private String code;
-    
+
     @Column(name = "name")
     private String name;
-    
+
     @Column(name = "web_url")
     private String webUrl;
-    
+
     @Column(name = "comment")
     private String comment;
-    
+
     @Column(name = "is_on_hold")
     private Boolean isOnHold;
-    
+
     @Column(name = "is_head_office")
     private Boolean isHeadOffice;
-    
+
     @Column(name = "lead_time")
     private Integer leadTime;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "account_type")
     private SupplierAccountType accountType;
-    
+
     @Column(name = "settlement_terms")
     private Integer settlementTerms;
-    
+
     @Column(name = "credit")
     private Double credit;
-    
+
     @Column(name = "terms")
     private Integer terms;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "ageing_method")
     private SupplierAgeingMethod ageingMethod;
-    
+
     @Column(name = "is_eftpayments_used")
     private Boolean isEFTPaymentsUsed;
-    
+
     @Column(name = "bank_bsb")
     private String bankBSB;
-    
+
     @Column(name = "bank_number")
     private String bankNumber;
-    
+
     @Column(name = "bank_account")
     private String bankAccount;
 
     @ManyToOne
     private SupplierCategory supplierCategory;
 
-    @OneToOne
-    private Contact contact;
+    @OneToOne    private Contact contact;
 
     public Long getId() {
         return id;
@@ -262,23 +260,23 @@ public class Supplier implements Serializable {
     @Override
     public String toString() {
         return "Supplier{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", webUrl='" + webUrl + "'" +
-                ", comment='" + comment + "'" +
-                ", isOnHold='" + isOnHold + "'" +
-                ", isHeadOffice='" + isHeadOffice + "'" +
-                ", leadTime='" + leadTime + "'" +
-                ", accountType='" + accountType + "'" +
-                ", settlementTerms='" + settlementTerms + "'" +
-                ", credit='" + credit + "'" +
-                ", terms='" + terms + "'" +
-                ", ageingMethod='" + ageingMethod + "'" +
-                ", isEFTPaymentsUsed='" + isEFTPaymentsUsed + "'" +
-                ", bankBSB='" + bankBSB + "'" +
-                ", bankNumber='" + bankNumber + "'" +
-                ", bankAccount='" + bankAccount + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", webUrl='" + webUrl + "'" +
+            ", comment='" + comment + "'" +
+            ", isOnHold='" + isOnHold + "'" +
+            ", isHeadOffice='" + isHeadOffice + "'" +
+            ", leadTime='" + leadTime + "'" +
+            ", accountType='" + accountType + "'" +
+            ", settlementTerms='" + settlementTerms + "'" +
+            ", credit='" + credit + "'" +
+            ", terms='" + terms + "'" +
+            ", ageingMethod='" + ageingMethod + "'" +
+            ", isEFTPaymentsUsed='" + isEFTPaymentsUsed + "'" +
+            ", bankBSB='" + bankBSB + "'" +
+            ", bankNumber='" + bankNumber + "'" +
+            ", bankAccount='" + bankAccount + "'" +
+            '}';
     }
 }

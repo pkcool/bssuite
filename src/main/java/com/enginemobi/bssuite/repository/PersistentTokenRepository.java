@@ -2,7 +2,7 @@ package com.enginemobi.bssuite.repository;
 
 import com.enginemobi.bssuite.domain.PersistentToken;
 import com.enginemobi.bssuite.domain.User;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

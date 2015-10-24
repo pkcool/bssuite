@@ -26,7 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -66,11 +67,11 @@ public class CustomerDiscountRuleResourceTest {
     private static final String DEFAULT_TO_PRODUCT_CODE = "AAAAA";
     private static final String UPDATED_TO_PRODUCT_CODE = "BBBBB";
 
-    private static final LocalDate DEFAULT_START_DATE = new LocalDate(0L);
-    private static final LocalDate UPDATED_START_DATE = new LocalDate();
+    private static final LocalDate DEFAULT_START_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_START_DATE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final LocalDate DEFAULT_END_DATE = new LocalDate(0L);
-    private static final LocalDate UPDATED_END_DATE = new LocalDate();
+    private static final LocalDate DEFAULT_END_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_END_DATE = LocalDate.now(ZoneId.systemDefault());
 
     private static final Integer DEFAULT_QTY_BREAK = 1;
     private static final Integer UPDATED_QTY_BREAK = 2;

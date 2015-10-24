@@ -53,8 +53,8 @@ public class StaffResource {
      * POST  /staffs -> Create a new staff.
      */
     @RequestMapping(value = "/staffs",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<StaffDTO> createStaff(@Valid @RequestBody StaffDTO staffDTO) throws URISyntaxException {
         log.debug("REST request to save Staff : {}", staffDTO);
@@ -65,8 +65,8 @@ public class StaffResource {
         Staff result = staffRepository.save(staff);
         staffSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/staffs/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("staff", result.getId().toString()))
-                .body(staffMapper.staffToStaffDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("staff", result.getId().toString()))
+            .body(staffMapper.staffToStaffDTO(result));
     }
 
     /**
@@ -85,16 +85,16 @@ public class StaffResource {
         Staff result = staffRepository.save(staff);
         staffSearchRepository.save(staff);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("staff", staffDTO.getId().toString()))
-                .body(staffMapper.staffToStaffDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("staff", staffDTO.getId().toString()))
+            .body(staffMapper.staffToStaffDTO(result));
     }
 
     /**
      * GET  /staffs -> get all the staffs.
      */
     @RequestMapping(value = "/staffs",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<StaffDTO>> getAllStaffs(Pageable pageable)
@@ -110,8 +110,8 @@ public class StaffResource {
      * GET  /staffs/:id -> get the "id" staff.
      */
     @RequestMapping(value = "/staffs/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<StaffDTO> getStaff(@PathVariable Long id) {
         log.debug("REST request to get Staff : {}", id);
@@ -127,8 +127,8 @@ public class StaffResource {
      * DELETE  /staffs/:id -> delete the "id" staff.
      */
     @RequestMapping(value = "/staffs/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteStaff(@PathVariable Long id) {
         log.debug("REST request to delete Staff : {}", id);
@@ -147,7 +147,7 @@ public class StaffResource {
     @Timed
     public List<StaffDTO> searchStaffs(@PathVariable String query) {
         return StreamSupport
-            .stream(staffSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(staffSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(staffMapper::staffToStaffDTO)
             .collect(Collectors.toList());
     }

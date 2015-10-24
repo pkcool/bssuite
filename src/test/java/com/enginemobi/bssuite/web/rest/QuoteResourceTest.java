@@ -26,11 +26,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.joda.time.LocalDate;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -51,7 +51,7 @@ import com.enginemobi.bssuite.domain.enumeration.QuoteStatus;
 @IntegrationTest
 public class QuoteResourceTest {
 
-    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.of("Z"));
 
     private static final String DEFAULT_QUOTE_NO = "AAAAA";
     private static final String UPDATED_QUOTE_NO = "BBBBB";
@@ -60,15 +60,15 @@ public class QuoteResourceTest {
 private static final QuoteStatus DEFAULT_STATUS = QuoteStatus.OPEN;
     private static final QuoteStatus UPDATED_STATUS = QuoteStatus.ACCEPTED;
 
-    private static final DateTime DEFAULT_QUOTE_DATE = new DateTime(0L, DateTimeZone.UTC);
-    private static final DateTime UPDATED_QUOTE_DATE = new DateTime(DateTimeZone.UTC).withMillisOfSecond(0);
-    private static final String DEFAULT_QUOTE_DATE_STR = dateTimeFormatter.print(DEFAULT_QUOTE_DATE);
+    private static final ZonedDateTime DEFAULT_QUOTE_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+    private static final ZonedDateTime UPDATED_QUOTE_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final String DEFAULT_QUOTE_DATE_STR = dateTimeFormatter.format(DEFAULT_QUOTE_DATE);
 
-    private static final LocalDate DEFAULT_EXPIRY_DATE = new LocalDate(0L);
-    private static final LocalDate UPDATED_EXPIRY_DATE = new LocalDate();
+    private static final LocalDate DEFAULT_EXPIRY_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_EXPIRY_DATE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final LocalDate DEFAULT_FOLLOWUP_DATE = new LocalDate(0L);
-    private static final LocalDate UPDATED_FOLLOWUP_DATE = new LocalDate();
+    private static final LocalDate DEFAULT_FOLLOWUP_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_FOLLOWUP_DATE = LocalDate.now(ZoneId.systemDefault());
     private static final String DEFAULT_REFERENCE = "AAAAA";
     private static final String UPDATED_REFERENCE = "BBBBB";
     private static final String DEFAULT_OUR_REF = "AAAAA";
@@ -181,7 +181,7 @@ private static final QuoteStatus DEFAULT_STATUS = QuoteStatus.OPEN;
         Quote testQuote = quotes.get(quotes.size() - 1);
         assertThat(testQuote.getQuoteNo()).isEqualTo(DEFAULT_QUOTE_NO);
         assertThat(testQuote.getStatus()).isEqualTo(DEFAULT_STATUS);
-        assertThat(testQuote.getQuoteDate().toDateTime(DateTimeZone.UTC)).isEqualTo(DEFAULT_QUOTE_DATE);
+        assertThat(testQuote.getQuoteDate()).isEqualTo(DEFAULT_QUOTE_DATE);
         assertThat(testQuote.getExpiryDate()).isEqualTo(DEFAULT_EXPIRY_DATE);
         assertThat(testQuote.getFollowupDate()).isEqualTo(DEFAULT_FOLLOWUP_DATE);
         assertThat(testQuote.getReference()).isEqualTo(DEFAULT_REFERENCE);
@@ -313,7 +313,7 @@ private static final QuoteStatus DEFAULT_STATUS = QuoteStatus.OPEN;
         Quote testQuote = quotes.get(quotes.size() - 1);
         assertThat(testQuote.getQuoteNo()).isEqualTo(UPDATED_QUOTE_NO);
         assertThat(testQuote.getStatus()).isEqualTo(UPDATED_STATUS);
-        assertThat(testQuote.getQuoteDate().toDateTime(DateTimeZone.UTC)).isEqualTo(UPDATED_QUOTE_DATE);
+        assertThat(testQuote.getQuoteDate()).isEqualTo(UPDATED_QUOTE_DATE);
         assertThat(testQuote.getExpiryDate()).isEqualTo(UPDATED_EXPIRY_DATE);
         assertThat(testQuote.getFollowupDate()).isEqualTo(UPDATED_FOLLOWUP_DATE);
         assertThat(testQuote.getReference()).isEqualTo(UPDATED_REFERENCE);

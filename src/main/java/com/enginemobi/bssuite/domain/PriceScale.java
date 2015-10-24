@@ -17,28 +17,27 @@ import com.enginemobi.bssuite.domain.enumeration.RoundingMethod;
 @Entity
 @Table(name = "price_scale")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="pricescale")
+@Document(indexName = "pricescale")
 public class PriceScale implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
     @NotNull
-    @Size(min = 2)        
+    @Size(min = 2)
     @Column(name = "code", nullable = false)
     private String code;
-    
+
     @Column(name = "name")
     private String name;
-    
+
     @Column(name = "price")
     private String price;
-    
+
     @Column(name = "value")
     private String value;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "round")
     private RoundingMethod round;
@@ -115,12 +114,12 @@ public class PriceScale implements Serializable {
     @Override
     public String toString() {
         return "PriceScale{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", price='" + price + "'" +
-                ", value='" + value + "'" +
-                ", round='" + round + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", price='" + price + "'" +
+            ", value='" + value + "'" +
+            ", round='" + round + "'" +
+            '}';
     }
 }

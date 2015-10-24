@@ -69,12 +69,12 @@
                     <td>{{promotion.code}}</td>
                     <td>{{promotion.name}}</td>
                     <td>{{promotion.description}}</td>
-                    <td>{{promotion.startDate}}</td>
-                    <td>{{promotion.endDate}}</td>
+                        <td>{{promotion.startDate | date:'mediumDate'}}</td>
+                        <td>{{promotion.endDate | date:'mediumDate'}}</td>
                     <td>{{promotion.cost}}</td>
                     <td>{{promotion.income}}</td>
                     <td>{{promotion.expense}}</td>
-                    <td>{{promotion.dateCreated}}</td>
+                        <td>{{promotion.dateCreated | date:'mediumDate'}}</td>
                     <td>
                         <a ui-sref="store.detail({id:promotion.store.id})">{{promotion.store.id}}</a>
                     </td>

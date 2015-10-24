@@ -18,34 +18,23 @@ public class StockGroupDTO implements Serializable {
     @Size(min = 2)
     private String code;
 
-
     private String name;
-
 
     private Boolean isDiminishing;
 
-
     private Double lowestMargin;
-
 
     private Double highestMargin;
 
-
     private Boolean isDiscountAllowed;
-
 
     private String comment;
 
-
     private Boolean isArchived;
 
-
     private Long stockFamilyId;
-
     private Long priceScaleId;
-
     private Long taxRateId;
-
     public Long getId() {
         return id;
     }
@@ -62,7 +51,6 @@ public class StockGroupDTO implements Serializable {
         this.code = code;
     }
 
-
     public String getName() {
         return name;
     }
@@ -70,7 +58,6 @@ public class StockGroupDTO implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public Boolean getIsDiminishing() {
         return isDiminishing;
@@ -80,7 +67,6 @@ public class StockGroupDTO implements Serializable {
         this.isDiminishing = isDiminishing;
     }
 
-
     public Double getLowestMargin() {
         return lowestMargin;
     }
@@ -88,7 +74,6 @@ public class StockGroupDTO implements Serializable {
     public void setLowestMargin(Double lowestMargin) {
         this.lowestMargin = lowestMargin;
     }
-
 
     public Double getHighestMargin() {
         return highestMargin;
@@ -98,7 +83,6 @@ public class StockGroupDTO implements Serializable {
         this.highestMargin = highestMargin;
     }
 
-
     public Boolean getIsDiscountAllowed() {
         return isDiscountAllowed;
     }
@@ -106,7 +90,6 @@ public class StockGroupDTO implements Serializable {
     public void setIsDiscountAllowed(Boolean isDiscountAllowed) {
         this.isDiscountAllowed = isDiscountAllowed;
     }
-
 
     public String getComment() {
         return comment;
@@ -116,7 +99,6 @@ public class StockGroupDTO implements Serializable {
         this.comment = comment;
     }
 
-
     public Boolean getIsArchived() {
         return isArchived;
     }
@@ -125,7 +107,6 @@ public class StockGroupDTO implements Serializable {
         this.isArchived = isArchived;
     }
 
-
     public Long getStockFamilyId() {
         return stockFamilyId;
     }
@@ -133,7 +114,6 @@ public class StockGroupDTO implements Serializable {
     public void setStockFamilyId(Long stockFamilyId) {
         this.stockFamilyId = stockFamilyId;
     }
-
     public Long getPriceScaleId() {
         return priceScaleId;
     }
@@ -141,7 +121,6 @@ public class StockGroupDTO implements Serializable {
     public void setPriceScaleId(Long priceScaleId) {
         this.priceScaleId = priceScaleId;
     }
-
     public Long getTaxRateId() {
         return taxRateId;
     }
@@ -149,7 +128,6 @@ public class StockGroupDTO implements Serializable {
     public void setTaxRateId(Long taxTableId) {
         this.taxRateId = taxTableId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -174,15 +152,15 @@ public class StockGroupDTO implements Serializable {
     @Override
     public String toString() {
         return "StockGroupDTO{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", isDiminishing='" + isDiminishing + "'" +
-                ", lowestMargin='" + lowestMargin + "'" +
-                ", highestMargin='" + highestMargin + "'" +
-                ", isDiscountAllowed='" + isDiscountAllowed + "'" +
-                ", comment='" + comment + "'" +
-                ", isArchived='" + isArchived + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", isDiminishing='" + isDiminishing + "'" +
+            ", lowestMargin='" + lowestMargin + "'" +
+            ", highestMargin='" + highestMargin + "'" +
+            ", isDiscountAllowed='" + isDiscountAllowed + "'" +
+            ", comment='" + comment + "'" +
+            ", isArchived='" + isArchived + "'" +
+            '}';
     }
 }

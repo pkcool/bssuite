@@ -53,8 +53,8 @@ public class SupplierDiscountRuleResource {
      * POST  /supplierDiscountRules -> Create a new supplierDiscountRule.
      */
     @RequestMapping(value = "/supplierDiscountRules",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<SupplierDiscountRuleDTO> createSupplierDiscountRule(@Valid @RequestBody SupplierDiscountRuleDTO supplierDiscountRuleDTO) throws URISyntaxException {
         log.debug("REST request to save SupplierDiscountRule : {}", supplierDiscountRuleDTO);
@@ -65,8 +65,8 @@ public class SupplierDiscountRuleResource {
         SupplierDiscountRule result = supplierDiscountRuleRepository.save(supplierDiscountRule);
         supplierDiscountRuleSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/supplierDiscountRules/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("supplierDiscountRule", result.getId().toString()))
-                .body(supplierDiscountRuleMapper.supplierDiscountRuleToSupplierDiscountRuleDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("supplierDiscountRule", result.getId().toString()))
+            .body(supplierDiscountRuleMapper.supplierDiscountRuleToSupplierDiscountRuleDTO(result));
     }
 
     /**
@@ -85,16 +85,16 @@ public class SupplierDiscountRuleResource {
         SupplierDiscountRule result = supplierDiscountRuleRepository.save(supplierDiscountRule);
         supplierDiscountRuleSearchRepository.save(supplierDiscountRule);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("supplierDiscountRule", supplierDiscountRuleDTO.getId().toString()))
-                .body(supplierDiscountRuleMapper.supplierDiscountRuleToSupplierDiscountRuleDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("supplierDiscountRule", supplierDiscountRuleDTO.getId().toString()))
+            .body(supplierDiscountRuleMapper.supplierDiscountRuleToSupplierDiscountRuleDTO(result));
     }
 
     /**
      * GET  /supplierDiscountRules -> get all the supplierDiscountRules.
      */
     @RequestMapping(value = "/supplierDiscountRules",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<SupplierDiscountRuleDTO>> getAllSupplierDiscountRules(Pageable pageable)
@@ -110,8 +110,8 @@ public class SupplierDiscountRuleResource {
      * GET  /supplierDiscountRules/:id -> get the "id" supplierDiscountRule.
      */
     @RequestMapping(value = "/supplierDiscountRules/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<SupplierDiscountRuleDTO> getSupplierDiscountRule(@PathVariable Long id) {
         log.debug("REST request to get SupplierDiscountRule : {}", id);
@@ -127,8 +127,8 @@ public class SupplierDiscountRuleResource {
      * DELETE  /supplierDiscountRules/:id -> delete the "id" supplierDiscountRule.
      */
     @RequestMapping(value = "/supplierDiscountRules/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteSupplierDiscountRule(@PathVariable Long id) {
         log.debug("REST request to delete SupplierDiscountRule : {}", id);
@@ -147,7 +147,7 @@ public class SupplierDiscountRuleResource {
     @Timed
     public List<SupplierDiscountRuleDTO> searchSupplierDiscountRules(@PathVariable String query) {
         return StreamSupport
-            .stream(supplierDiscountRuleSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(supplierDiscountRuleSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(supplierDiscountRuleMapper::supplierDiscountRuleToSupplierDiscountRuleDTO)
             .collect(Collectors.toList());
     }

@@ -1,7 +1,7 @@
 package com.enginemobi.bssuite.web.rest.dto;
 
-import org.joda.time.LocalDate;
-import org.joda.time.DateTime;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -19,54 +19,35 @@ public class PurchaseOrderDTO implements Serializable {
 
     private String orderNo;
 
-
     private PurchaseOrderStatus status;
 
-
-    private DateTime createdDate;
-
+    private ZonedDateTime createdDate;
 
     private String ref;
 
-
     private LocalDate expectedDeliveryDate;
-
 
     private Boolean isTaxable;
 
-
     private Boolean isLocked;
-
 
     private String comment;
 
-
     private BigDecimal totalTaxAmount;
-
 
     private BigDecimal totalCost;
 
-
     private String taxExemptionCode;
-
 
     private Boolean isSuspended;
 
-
     private Long supplierId;
-
     private Long supplierContactId;
-
     private Long supplierDeliveryContactId;
-
     private Long storeId;
-
     private Long salesOrderId;
-
     private Long updatedByStaffId;
-
     private Long createdById;
-
     public Long getId() {
         return id;
     }
@@ -83,7 +64,6 @@ public class PurchaseOrderDTO implements Serializable {
         this.orderNo = orderNo;
     }
 
-
     public PurchaseOrderStatus getStatus() {
         return status;
     }
@@ -92,15 +72,13 @@ public class PurchaseOrderDTO implements Serializable {
         this.status = status;
     }
 
-
-    public DateTime getCreatedDate() {
+    public ZonedDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(DateTime createdDate) {
+    public void setCreatedDate(ZonedDateTime createdDate) {
         this.createdDate = createdDate;
     }
-
 
     public String getRef() {
         return ref;
@@ -110,7 +88,6 @@ public class PurchaseOrderDTO implements Serializable {
         this.ref = ref;
     }
 
-
     public LocalDate getExpectedDeliveryDate() {
         return expectedDeliveryDate;
     }
@@ -118,7 +95,6 @@ public class PurchaseOrderDTO implements Serializable {
     public void setExpectedDeliveryDate(LocalDate expectedDeliveryDate) {
         this.expectedDeliveryDate = expectedDeliveryDate;
     }
-
 
     public Boolean getIsTaxable() {
         return isTaxable;
@@ -128,7 +104,6 @@ public class PurchaseOrderDTO implements Serializable {
         this.isTaxable = isTaxable;
     }
 
-
     public Boolean getIsLocked() {
         return isLocked;
     }
@@ -136,7 +111,6 @@ public class PurchaseOrderDTO implements Serializable {
     public void setIsLocked(Boolean isLocked) {
         this.isLocked = isLocked;
     }
-
 
     public String getComment() {
         return comment;
@@ -146,7 +120,6 @@ public class PurchaseOrderDTO implements Serializable {
         this.comment = comment;
     }
 
-
     public BigDecimal getTotalTaxAmount() {
         return totalTaxAmount;
     }
@@ -154,7 +127,6 @@ public class PurchaseOrderDTO implements Serializable {
     public void setTotalTaxAmount(BigDecimal totalTaxAmount) {
         this.totalTaxAmount = totalTaxAmount;
     }
-
 
     public BigDecimal getTotalCost() {
         return totalCost;
@@ -164,7 +136,6 @@ public class PurchaseOrderDTO implements Serializable {
         this.totalCost = totalCost;
     }
 
-
     public String getTaxExemptionCode() {
         return taxExemptionCode;
     }
@@ -172,7 +143,6 @@ public class PurchaseOrderDTO implements Serializable {
     public void setTaxExemptionCode(String taxExemptionCode) {
         this.taxExemptionCode = taxExemptionCode;
     }
-
 
     public Boolean getIsSuspended() {
         return isSuspended;
@@ -182,7 +152,6 @@ public class PurchaseOrderDTO implements Serializable {
         this.isSuspended = isSuspended;
     }
 
-
     public Long getSupplierId() {
         return supplierId;
     }
@@ -190,7 +159,6 @@ public class PurchaseOrderDTO implements Serializable {
     public void setSupplierId(Long SupplierId) {
         this.supplierId = SupplierId;
     }
-
     public Long getSupplierContactId() {
         return supplierContactId;
     }
@@ -198,7 +166,6 @@ public class PurchaseOrderDTO implements Serializable {
     public void setSupplierContactId(Long contactId) {
         this.supplierContactId = contactId;
     }
-
     public Long getSupplierDeliveryContactId() {
         return supplierDeliveryContactId;
     }
@@ -206,7 +173,6 @@ public class PurchaseOrderDTO implements Serializable {
     public void setSupplierDeliveryContactId(Long contactId) {
         this.supplierDeliveryContactId = contactId;
     }
-
     public Long getStoreId() {
         return storeId;
     }
@@ -214,7 +180,6 @@ public class PurchaseOrderDTO implements Serializable {
     public void setStoreId(Long storeId) {
         this.storeId = storeId;
     }
-
     public Long getSalesOrderId() {
         return salesOrderId;
     }
@@ -222,7 +187,6 @@ public class PurchaseOrderDTO implements Serializable {
     public void setSalesOrderId(Long salesOrderId) {
         this.salesOrderId = salesOrderId;
     }
-
     public Long getUpdatedByStaffId() {
         return updatedByStaffId;
     }
@@ -230,7 +194,6 @@ public class PurchaseOrderDTO implements Serializable {
     public void setUpdatedByStaffId(Long staffId) {
         this.updatedByStaffId = staffId;
     }
-
     public Long getCreatedById() {
         return createdById;
     }
@@ -238,7 +201,6 @@ public class PurchaseOrderDTO implements Serializable {
     public void setCreatedById(Long staffId) {
         this.createdById = staffId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -263,19 +225,19 @@ public class PurchaseOrderDTO implements Serializable {
     @Override
     public String toString() {
         return "PurchaseOrderDTO{" +
-                "id=" + id +
-                ", orderNo='" + orderNo + "'" +
-                ", status='" + status + "'" +
-                ", createdDate='" + createdDate + "'" +
-                ", ref='" + ref + "'" +
-                ", expectedDeliveryDate='" + expectedDeliveryDate + "'" +
-                ", isTaxable='" + isTaxable + "'" +
-                ", isLocked='" + isLocked + "'" +
-                ", comment='" + comment + "'" +
-                ", totalTaxAmount='" + totalTaxAmount + "'" +
-                ", totalCost='" + totalCost + "'" +
-                ", taxExemptionCode='" + taxExemptionCode + "'" +
-                ", isSuspended='" + isSuspended + "'" +
-                '}';
+            "id=" + id +
+            ", orderNo='" + orderNo + "'" +
+            ", status='" + status + "'" +
+            ", createdDate='" + createdDate + "'" +
+            ", ref='" + ref + "'" +
+            ", expectedDeliveryDate='" + expectedDeliveryDate + "'" +
+            ", isTaxable='" + isTaxable + "'" +
+            ", isLocked='" + isLocked + "'" +
+            ", comment='" + comment + "'" +
+            ", totalTaxAmount='" + totalTaxAmount + "'" +
+            ", totalCost='" + totalCost + "'" +
+            ", taxExemptionCode='" + taxExemptionCode + "'" +
+            ", isSuspended='" + isSuspended + "'" +
+            '}';
     }
 }

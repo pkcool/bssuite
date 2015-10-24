@@ -52,8 +52,8 @@ public class PurchaseOrderResource {
      * POST  /purchaseOrders -> Create a new purchaseOrder.
      */
     @RequestMapping(value = "/purchaseOrders",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<PurchaseOrderDTO> createPurchaseOrder(@RequestBody PurchaseOrderDTO purchaseOrderDTO) throws URISyntaxException {
         log.debug("REST request to save PurchaseOrder : {}", purchaseOrderDTO);
@@ -64,8 +64,8 @@ public class PurchaseOrderResource {
         PurchaseOrder result = purchaseOrderRepository.save(purchaseOrder);
         purchaseOrderSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/purchaseOrders/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("purchaseOrder", result.getId().toString()))
-                .body(purchaseOrderMapper.purchaseOrderToPurchaseOrderDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("purchaseOrder", result.getId().toString()))
+            .body(purchaseOrderMapper.purchaseOrderToPurchaseOrderDTO(result));
     }
 
     /**
@@ -84,16 +84,16 @@ public class PurchaseOrderResource {
         PurchaseOrder result = purchaseOrderRepository.save(purchaseOrder);
         purchaseOrderSearchRepository.save(purchaseOrder);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("purchaseOrder", purchaseOrderDTO.getId().toString()))
-                .body(purchaseOrderMapper.purchaseOrderToPurchaseOrderDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("purchaseOrder", purchaseOrderDTO.getId().toString()))
+            .body(purchaseOrderMapper.purchaseOrderToPurchaseOrderDTO(result));
     }
 
     /**
      * GET  /purchaseOrders -> get all the purchaseOrders.
      */
     @RequestMapping(value = "/purchaseOrders",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<PurchaseOrderDTO>> getAllPurchaseOrders(Pageable pageable)
@@ -109,8 +109,8 @@ public class PurchaseOrderResource {
      * GET  /purchaseOrders/:id -> get the "id" purchaseOrder.
      */
     @RequestMapping(value = "/purchaseOrders/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<PurchaseOrderDTO> getPurchaseOrder(@PathVariable Long id) {
         log.debug("REST request to get PurchaseOrder : {}", id);
@@ -126,8 +126,8 @@ public class PurchaseOrderResource {
      * DELETE  /purchaseOrders/:id -> delete the "id" purchaseOrder.
      */
     @RequestMapping(value = "/purchaseOrders/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deletePurchaseOrder(@PathVariable Long id) {
         log.debug("REST request to delete PurchaseOrder : {}", id);
@@ -146,7 +146,7 @@ public class PurchaseOrderResource {
     @Timed
     public List<PurchaseOrderDTO> searchPurchaseOrders(@PathVariable String query) {
         return StreamSupport
-            .stream(purchaseOrderSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(purchaseOrderSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(purchaseOrderMapper::purchaseOrderToPurchaseOrderDTO)
             .collect(Collectors.toList());
     }

@@ -15,33 +15,23 @@ public class ContactDTO implements Serializable {
 
     private String fistName;
 
-
     private String lastName;
-
 
     private String fullName;
 
-
     private String emailAddress;
-
 
     private String companyName;
 
-
     private String phonePrimary;
-
 
     private String phoneSecondary;
 
-
     private String fax;
-
 
     private String position;
 
-
     private Long addressId;
-
     public Long getId() {
         return id;
     }
@@ -58,7 +48,6 @@ public class ContactDTO implements Serializable {
         this.fistName = fistName;
     }
 
-
     public String getLastName() {
         return lastName;
     }
@@ -66,7 +55,6 @@ public class ContactDTO implements Serializable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
 
     public String getFullName() {
         return fullName;
@@ -76,7 +64,6 @@ public class ContactDTO implements Serializable {
         this.fullName = fullName;
     }
 
-
     public String getEmailAddress() {
         return emailAddress;
     }
@@ -84,7 +71,6 @@ public class ContactDTO implements Serializable {
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
-
 
     public String getCompanyName() {
         return companyName;
@@ -94,7 +80,6 @@ public class ContactDTO implements Serializable {
         this.companyName = companyName;
     }
 
-
     public String getPhonePrimary() {
         return phonePrimary;
     }
@@ -102,7 +87,6 @@ public class ContactDTO implements Serializable {
     public void setPhonePrimary(String phonePrimary) {
         this.phonePrimary = phonePrimary;
     }
-
 
     public String getPhoneSecondary() {
         return phoneSecondary;
@@ -112,7 +96,6 @@ public class ContactDTO implements Serializable {
         this.phoneSecondary = phoneSecondary;
     }
 
-
     public String getFax() {
         return fax;
     }
@@ -120,7 +103,6 @@ public class ContactDTO implements Serializable {
     public void setFax(String fax) {
         this.fax = fax;
     }
-
 
     public String getPosition() {
         return position;
@@ -130,7 +112,6 @@ public class ContactDTO implements Serializable {
         this.position = position;
     }
 
-
     public Long getAddressId() {
         return addressId;
     }
@@ -138,7 +119,6 @@ public class ContactDTO implements Serializable {
     public void setAddressId(Long addressId) {
         this.addressId = addressId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -163,16 +143,16 @@ public class ContactDTO implements Serializable {
     @Override
     public String toString() {
         return "ContactDTO{" +
-                "id=" + id +
-                ", fistName='" + fistName + "'" +
-                ", lastName='" + lastName + "'" +
-                ", fullName='" + fullName + "'" +
-                ", emailAddress='" + emailAddress + "'" +
-                ", companyName='" + companyName + "'" +
-                ", phonePrimary='" + phonePrimary + "'" +
-                ", phoneSecondary='" + phoneSecondary + "'" +
-                ", fax='" + fax + "'" +
-                ", position='" + position + "'" +
-                '}';
+            "id=" + id +
+            ", fistName='" + fistName + "'" +
+            ", lastName='" + lastName + "'" +
+            ", fullName='" + fullName + "'" +
+            ", emailAddress='" + emailAddress + "'" +
+            ", companyName='" + companyName + "'" +
+            ", phonePrimary='" + phonePrimary + "'" +
+            ", phoneSecondary='" + phoneSecondary + "'" +
+            ", fax='" + fax + "'" +
+            ", position='" + position + "'" +
+            '}';
     }
 }

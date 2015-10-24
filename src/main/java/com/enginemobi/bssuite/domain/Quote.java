@@ -1,17 +1,10 @@
 package com.enginemobi.bssuite.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.enginemobi.bssuite.domain.util.CustomLocalDateSerializer;
-import com.enginemobi.bssuite.domain.util.ISO8601LocalDateDeserializer;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeDeserializer;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeSerializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
-import org.joda.time.DateTime;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -29,78 +22,68 @@ import com.enginemobi.bssuite.domain.enumeration.QuoteStatus;
 @Entity
 @Table(name = "quote")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="quote")
+@Document(indexName = "quote")
 public class Quote implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
     @Column(name = "quote_no")
     private String quoteNo;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private QuoteStatus status;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
+
     @Column(name = "quote_date")
-    private DateTime quoteDate;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+    private ZonedDateTime quoteDate;
+
     @Column(name = "expiry_date")
     private LocalDate expiryDate;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "followup_date")
     private LocalDate followupDate;
-    
+
     @Column(name = "reference")
     private String reference;
-    
+
     @Column(name = "our_ref")
     private String ourRef;
-    
+
     @Column(name = "freight", precision=10, scale=2)
     private BigDecimal freight;
-    
+
     @Column(name = "reason_for_loss")
     private String reasonForLoss;
-    
+
     @Column(name = "is_taxable")
     private Boolean isTaxable;
-    
+
     @Column(name = "tax_exemption_code")
     private String taxExemptionCode;
-    
+
     @Column(name = "is_locked")
     private Boolean isLocked;
-    
+
     @Column(name = "adjust_tax", precision=10, scale=2)
     private BigDecimal adjustTax;
-    
+
     @Column(name = "adjust_tax_exempt", precision=10, scale=2)
     private BigDecimal adjustTaxExempt;
-    
+
     @Column(name = "comment")
     private String comment;
-    
+
     @Column(name = "total_tax_amount", precision=10, scale=2)
     private BigDecimal totalTaxAmount;
-    
+
     @Column(name = "total_sell_price", precision=10, scale=2)
     private BigDecimal totalSellPrice;
-    
+
     @Column(name = "total_cost", precision=10, scale=2)
     private BigDecimal totalCost;
-    
+
     @Column(name = "is_suspended")
     private Boolean isSuspended;
 
@@ -151,11 +134,11 @@ public class Quote implements Serializable {
         this.status = status;
     }
 
-    public DateTime getQuoteDate() {
+    public ZonedDateTime getQuoteDate() {
         return quoteDate;
     }
 
-    public void setQuoteDate(DateTime quoteDate) {
+    public void setQuoteDate(ZonedDateTime quoteDate) {
         this.quoteDate = quoteDate;
     }
 
@@ -367,26 +350,26 @@ public class Quote implements Serializable {
     @Override
     public String toString() {
         return "Quote{" +
-                "id=" + id +
-                ", quoteNo='" + quoteNo + "'" +
-                ", status='" + status + "'" +
-                ", quoteDate='" + quoteDate + "'" +
-                ", expiryDate='" + expiryDate + "'" +
-                ", followupDate='" + followupDate + "'" +
-                ", reference='" + reference + "'" +
-                ", ourRef='" + ourRef + "'" +
-                ", freight='" + freight + "'" +
-                ", reasonForLoss='" + reasonForLoss + "'" +
-                ", isTaxable='" + isTaxable + "'" +
-                ", taxExemptionCode='" + taxExemptionCode + "'" +
-                ", isLocked='" + isLocked + "'" +
-                ", adjustTax='" + adjustTax + "'" +
-                ", adjustTaxExempt='" + adjustTaxExempt + "'" +
-                ", comment='" + comment + "'" +
-                ", totalTaxAmount='" + totalTaxAmount + "'" +
-                ", totalSellPrice='" + totalSellPrice + "'" +
-                ", totalCost='" + totalCost + "'" +
-                ", isSuspended='" + isSuspended + "'" +
-                '}';
+            "id=" + id +
+            ", quoteNo='" + quoteNo + "'" +
+            ", status='" + status + "'" +
+            ", quoteDate='" + quoteDate + "'" +
+            ", expiryDate='" + expiryDate + "'" +
+            ", followupDate='" + followupDate + "'" +
+            ", reference='" + reference + "'" +
+            ", ourRef='" + ourRef + "'" +
+            ", freight='" + freight + "'" +
+            ", reasonForLoss='" + reasonForLoss + "'" +
+            ", isTaxable='" + isTaxable + "'" +
+            ", taxExemptionCode='" + taxExemptionCode + "'" +
+            ", isLocked='" + isLocked + "'" +
+            ", adjustTax='" + adjustTax + "'" +
+            ", adjustTaxExempt='" + adjustTaxExempt + "'" +
+            ", comment='" + comment + "'" +
+            ", totalTaxAmount='" + totalTaxAmount + "'" +
+            ", totalSellPrice='" + totalSellPrice + "'" +
+            ", totalCost='" + totalCost + "'" +
+            ", isSuspended='" + isSuspended + "'" +
+            '}';
     }
 }

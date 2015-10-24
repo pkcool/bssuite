@@ -45,8 +45,8 @@ public class QuoteLineItemResource {
      * POST  /quoteLineItems -> Create a new quoteLineItem.
      */
     @RequestMapping(value = "/quoteLineItems",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<QuoteLineItem> createQuoteLineItem(@RequestBody QuoteLineItem quoteLineItem) throws URISyntaxException {
         log.debug("REST request to save QuoteLineItem : {}", quoteLineItem);
@@ -56,8 +56,8 @@ public class QuoteLineItemResource {
         QuoteLineItem result = quoteLineItemRepository.save(quoteLineItem);
         quoteLineItemSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/quoteLineItems/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("quoteLineItem", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("quoteLineItem", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -75,16 +75,16 @@ public class QuoteLineItemResource {
         QuoteLineItem result = quoteLineItemRepository.save(quoteLineItem);
         quoteLineItemSearchRepository.save(quoteLineItem);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("quoteLineItem", quoteLineItem.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("quoteLineItem", quoteLineItem.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /quoteLineItems -> get all the quoteLineItems.
      */
     @RequestMapping(value = "/quoteLineItems",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<QuoteLineItem>> getAllQuoteLineItems(Pageable pageable)
         throws URISyntaxException {
@@ -97,8 +97,8 @@ public class QuoteLineItemResource {
      * GET  /quoteLineItems/:id -> get the "id" quoteLineItem.
      */
     @RequestMapping(value = "/quoteLineItems/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<QuoteLineItem> getQuoteLineItem(@PathVariable Long id) {
         log.debug("REST request to get QuoteLineItem : {}", id);
@@ -113,8 +113,8 @@ public class QuoteLineItemResource {
      * DELETE  /quoteLineItems/:id -> delete the "id" quoteLineItem.
      */
     @RequestMapping(value = "/quoteLineItems/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteQuoteLineItem(@PathVariable Long id) {
         log.debug("REST request to delete QuoteLineItem : {}", id);
@@ -133,7 +133,7 @@ public class QuoteLineItemResource {
     @Timed
     public List<QuoteLineItem> searchQuoteLineItems(@PathVariable String query) {
         return StreamSupport
-            .stream(quoteLineItemSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(quoteLineItemSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
 }

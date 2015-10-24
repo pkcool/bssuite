@@ -149,15 +149,15 @@
                     <td>{{product.leadTime}}</td>
                     <td>{{product.purchaseUnit}}</td>
                     <td>{{product.estMonthlySales}}</td>
-                    <td>{{product.dateFirstSale}}</td>
-                    <td>{{product.dateLastSale}}</td>
-                    <td>{{product.dateFirstOrder}}</td>
-                    <td>{{product.dateCreated}}</td>
-                    <td>{{product.dateLastDelivery}}</td>
-                    <td>{{product.dateNextDelivery}}</td>
-                    <td>{{product.dateLastTransfer}}</td>
-                    <td>{{product.dateLastOrder}}</td>
-                    <td>{{product.dateLastStocktake}}</td>
+                        <td>{{product.dateFirstSale | date:'mediumDate'}}</td>
+                        <td>{{product.dateLastSale | date:'mediumDate'}}</td>
+                        <td>{{product.dateFirstOrder | date:'mediumDate'}}</td>
+                        <td>{{product.dateCreated | date:'mediumDate'}}</td>
+                        <td>{{product.dateLastDelivery | date:'mediumDate'}}</td>
+                        <td>{{product.dateNextDelivery | date:'mediumDate'}}</td>
+                        <td>{{product.dateLastTransfer | date:'mediumDate'}}</td>
+                        <td>{{product.dateLastOrder | date:'mediumDate'}}</td>
+                        <td>{{product.dateLastStocktake | date:'mediumDate'}}</td>
                     <td>{{product.isArchived}}</td>
                     <td>{{product.classCode}}</td>
                     <td>

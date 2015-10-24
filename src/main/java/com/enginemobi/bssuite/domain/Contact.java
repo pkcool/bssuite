@@ -16,43 +16,41 @@ import java.util.Objects;
 @Entity
 @Table(name = "contact")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="contact")
+@Document(indexName = "contact")
 public class Contact implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
     @Column(name = "fist_name")
     private String fistName;
-    
+
     @Column(name = "last_name")
     private String lastName;
-    
+
     @Column(name = "full_name")
     private String fullName;
-    
+
     @Column(name = "email_address")
     private String emailAddress;
-    
+
     @Column(name = "company_name")
     private String companyName;
-    
+
     @Column(name = "phone_primary")
     private String phonePrimary;
-    
+
     @Column(name = "phone_secondary")
     private String phoneSecondary;
-    
+
     @Column(name = "fax")
     private String fax;
-    
+
     @Column(name = "position")
     private String position;
 
-    @OneToOne
-    private Address address;
+    @OneToOne    private Address address;
 
     public Long getId() {
         return id;
@@ -166,16 +164,16 @@ public class Contact implements Serializable {
     @Override
     public String toString() {
         return "Contact{" +
-                "id=" + id +
-                ", fistName='" + fistName + "'" +
-                ", lastName='" + lastName + "'" +
-                ", fullName='" + fullName + "'" +
-                ", emailAddress='" + emailAddress + "'" +
-                ", companyName='" + companyName + "'" +
-                ", phonePrimary='" + phonePrimary + "'" +
-                ", phoneSecondary='" + phoneSecondary + "'" +
-                ", fax='" + fax + "'" +
-                ", position='" + position + "'" +
-                '}';
+            "id=" + id +
+            ", fistName='" + fistName + "'" +
+            ", lastName='" + lastName + "'" +
+            ", fullName='" + fullName + "'" +
+            ", emailAddress='" + emailAddress + "'" +
+            ", companyName='" + companyName + "'" +
+            ", phonePrimary='" + phonePrimary + "'" +
+            ", phoneSecondary='" + phoneSecondary + "'" +
+            ", fax='" + fax + "'" +
+            ", position='" + position + "'" +
+            '}';
     }
 }

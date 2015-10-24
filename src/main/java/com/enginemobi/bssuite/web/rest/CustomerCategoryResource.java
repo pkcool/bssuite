@@ -46,8 +46,8 @@ public class CustomerCategoryResource {
      * POST  /customerCategorys -> Create a new customerCategory.
      */
     @RequestMapping(value = "/customerCategorys",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<CustomerCategory> createCustomerCategory(@Valid @RequestBody CustomerCategory customerCategory) throws URISyntaxException {
         log.debug("REST request to save CustomerCategory : {}", customerCategory);
@@ -57,8 +57,8 @@ public class CustomerCategoryResource {
         CustomerCategory result = customerCategoryRepository.save(customerCategory);
         customerCategorySearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/customerCategorys/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("customerCategory", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("customerCategory", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -76,16 +76,16 @@ public class CustomerCategoryResource {
         CustomerCategory result = customerCategoryRepository.save(customerCategory);
         customerCategorySearchRepository.save(customerCategory);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("customerCategory", customerCategory.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("customerCategory", customerCategory.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /customerCategorys -> get all the customerCategorys.
      */
     @RequestMapping(value = "/customerCategorys",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<CustomerCategory>> getAllCustomerCategorys(Pageable pageable)
         throws URISyntaxException {
@@ -98,8 +98,8 @@ public class CustomerCategoryResource {
      * GET  /customerCategorys/:id -> get the "id" customerCategory.
      */
     @RequestMapping(value = "/customerCategorys/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<CustomerCategory> getCustomerCategory(@PathVariable Long id) {
         log.debug("REST request to get CustomerCategory : {}", id);
@@ -114,8 +114,8 @@ public class CustomerCategoryResource {
      * DELETE  /customerCategorys/:id -> delete the "id" customerCategory.
      */
     @RequestMapping(value = "/customerCategorys/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteCustomerCategory(@PathVariable Long id) {
         log.debug("REST request to delete CustomerCategory : {}", id);
@@ -134,7 +134,7 @@ public class CustomerCategoryResource {
     @Timed
     public List<CustomerCategory> searchCustomerCategorys(@PathVariable String query) {
         return StreamSupport
-            .stream(customerCategorySearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(customerCategorySearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
 }

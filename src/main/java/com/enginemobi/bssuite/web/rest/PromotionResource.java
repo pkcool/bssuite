@@ -46,8 +46,8 @@ public class PromotionResource {
      * POST  /promotions -> Create a new promotion.
      */
     @RequestMapping(value = "/promotions",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Promotion> createPromotion(@Valid @RequestBody Promotion promotion) throws URISyntaxException {
         log.debug("REST request to save Promotion : {}", promotion);
@@ -57,8 +57,8 @@ public class PromotionResource {
         Promotion result = promotionRepository.save(promotion);
         promotionSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/promotions/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("promotion", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("promotion", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -76,16 +76,16 @@ public class PromotionResource {
         Promotion result = promotionRepository.save(promotion);
         promotionSearchRepository.save(promotion);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("promotion", promotion.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("promotion", promotion.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /promotions -> get all the promotions.
      */
     @RequestMapping(value = "/promotions",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<Promotion>> getAllPromotions(Pageable pageable)
         throws URISyntaxException {
@@ -98,8 +98,8 @@ public class PromotionResource {
      * GET  /promotions/:id -> get the "id" promotion.
      */
     @RequestMapping(value = "/promotions/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Promotion> getPromotion(@PathVariable Long id) {
         log.debug("REST request to get Promotion : {}", id);
@@ -114,8 +114,8 @@ public class PromotionResource {
      * DELETE  /promotions/:id -> delete the "id" promotion.
      */
     @RequestMapping(value = "/promotions/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deletePromotion(@PathVariable Long id) {
         log.debug("REST request to delete Promotion : {}", id);
@@ -134,7 +134,7 @@ public class PromotionResource {
     @Timed
     public List<Promotion> searchPromotions(@PathVariable String query) {
         return StreamSupport
-            .stream(promotionSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(promotionSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
 }

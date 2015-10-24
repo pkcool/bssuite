@@ -15,54 +15,53 @@ import java.util.Objects;
 @Entity
 @Table(name = "carrier")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="carrier")
+@Document(indexName = "carrier")
 public class Carrier implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
-    @NotNull        
+    @NotNull
     @Column(name = "code", nullable = false)
     private String code;
-    
+
     @Column(name = "name")
     private String name;
-    
+
     @Column(name = "phone")
     private String phone;
-    
+
     @Column(name = "mobile")
     private String mobile;
-    
+
     @Column(name = "account_no")
     private String accountNo;
-    
+
     @Column(name = "comment")
     private String comment;
-    
+
     @Column(name = "is_available_on_monday")
     private Boolean isAvailableOnMonday;
-    
+
     @Column(name = "is_available_on_tuesday")
     private Boolean isAvailableOnTuesday;
-    
+
     @Column(name = "is_available_on_wednesday")
     private Boolean isAvailableOnWednesday;
-    
+
     @Column(name = "is_available_on_thursday")
     private Boolean isAvailableOnThursday;
-    
+
     @Column(name = "is_available_on_friday")
     private Boolean isAvailableOnFriday;
-    
+
     @Column(name = "is_available_on_saturday")
     private Boolean isAvailableOnSaturday;
-    
+
     @Column(name = "is_available_on_sunday")
     private Boolean isAvailableOnSunday;
-    
+
     @Column(name = "docket_ref_no")
     private String docketRefNo;
 
@@ -210,21 +209,21 @@ public class Carrier implements Serializable {
     @Override
     public String toString() {
         return "Carrier{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", phone='" + phone + "'" +
-                ", mobile='" + mobile + "'" +
-                ", accountNo='" + accountNo + "'" +
-                ", comment='" + comment + "'" +
-                ", isAvailableOnMonday='" + isAvailableOnMonday + "'" +
-                ", isAvailableOnTuesday='" + isAvailableOnTuesday + "'" +
-                ", isAvailableOnWednesday='" + isAvailableOnWednesday + "'" +
-                ", isAvailableOnThursday='" + isAvailableOnThursday + "'" +
-                ", isAvailableOnFriday='" + isAvailableOnFriday + "'" +
-                ", isAvailableOnSaturday='" + isAvailableOnSaturday + "'" +
-                ", isAvailableOnSunday='" + isAvailableOnSunday + "'" +
-                ", docketRefNo='" + docketRefNo + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", phone='" + phone + "'" +
+            ", mobile='" + mobile + "'" +
+            ", accountNo='" + accountNo + "'" +
+            ", comment='" + comment + "'" +
+            ", isAvailableOnMonday='" + isAvailableOnMonday + "'" +
+            ", isAvailableOnTuesday='" + isAvailableOnTuesday + "'" +
+            ", isAvailableOnWednesday='" + isAvailableOnWednesday + "'" +
+            ", isAvailableOnThursday='" + isAvailableOnThursday + "'" +
+            ", isAvailableOnFriday='" + isAvailableOnFriday + "'" +
+            ", isAvailableOnSaturday='" + isAvailableOnSaturday + "'" +
+            ", isAvailableOnSunday='" + isAvailableOnSunday + "'" +
+            ", docketRefNo='" + docketRefNo + "'" +
+            '}';
     }
 }

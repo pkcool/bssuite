@@ -1,6 +1,7 @@
 package com.enginemobi.bssuite.repository;
 
 import com.enginemobi.bssuite.domain.Authority;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

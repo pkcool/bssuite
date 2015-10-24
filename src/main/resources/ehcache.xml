@@ -36,4 +36,8 @@
     <cache name="com.enginemobi.bssuite.domain.User.persistentTokens"
            timeToLiveSeconds="3600">
     </cache>
+    
+    <cache name="com.enginemobi.bssuite.social.SocialUserConnection"
+           timeToLiveSeconds="3600">
+    </cache>
 </ehcache>

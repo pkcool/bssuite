@@ -1,17 +1,10 @@
 package com.enginemobi.bssuite.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.enginemobi.bssuite.domain.util.CustomLocalDateSerializer;
-import com.enginemobi.bssuite.domain.util.ISO8601LocalDateDeserializer;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeDeserializer;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeSerializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
-import org.joda.time.DateTime;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -29,54 +22,47 @@ import com.enginemobi.bssuite.domain.enumeration.PurchaseOrderStatus;
 @Entity
 @Table(name = "purchase_order")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="purchaseorder")
+@Document(indexName = "purchaseorder")
 public class PurchaseOrder implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
     @Column(name = "order_no")
     private String orderNo;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private PurchaseOrderStatus status;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
+
     @Column(name = "created_date")
-    private DateTime createdDate;
-    
+    private ZonedDateTime createdDate;
+
     @Column(name = "ref")
     private String ref;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "expected_delivery_date")
     private LocalDate expectedDeliveryDate;
-    
+
     @Column(name = "is_taxable")
     private Boolean isTaxable;
-    
+
     @Column(name = "is_locked")
     private Boolean isLocked;
-    
+
     @Column(name = "comment")
     private String comment;
-    
+
     @Column(name = "total_tax_amount", precision=10, scale=2)
     private BigDecimal totalTaxAmount;
-    
+
     @Column(name = "total_cost", precision=10, scale=2)
     private BigDecimal totalCost;
-    
+
     @Column(name = "tax_exemption_code")
     private String taxExemptionCode;
-    
+
     @Column(name = "is_suspended")
     private Boolean isSuspended;
 
@@ -130,11 +116,11 @@ public class PurchaseOrder implements Serializable {
         this.status = status;
     }
 
-    public DateTime getCreatedDate() {
+    public ZonedDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(DateTime createdDate) {
+    public void setCreatedDate(ZonedDateTime createdDate) {
         this.createdDate = createdDate;
     }
 
@@ -298,19 +284,19 @@ public class PurchaseOrder implements Serializable {
     @Override
     public String toString() {
         return "PurchaseOrder{" +
-                "id=" + id +
-                ", orderNo='" + orderNo + "'" +
-                ", status='" + status + "'" +
-                ", createdDate='" + createdDate + "'" +
-                ", ref='" + ref + "'" +
-                ", expectedDeliveryDate='" + expectedDeliveryDate + "'" +
-                ", isTaxable='" + isTaxable + "'" +
-                ", isLocked='" + isLocked + "'" +
-                ", comment='" + comment + "'" +
-                ", totalTaxAmount='" + totalTaxAmount + "'" +
-                ", totalCost='" + totalCost + "'" +
-                ", taxExemptionCode='" + taxExemptionCode + "'" +
-                ", isSuspended='" + isSuspended + "'" +
-                '}';
+            "id=" + id +
+            ", orderNo='" + orderNo + "'" +
+            ", status='" + status + "'" +
+            ", createdDate='" + createdDate + "'" +
+            ", ref='" + ref + "'" +
+            ", expectedDeliveryDate='" + expectedDeliveryDate + "'" +
+            ", isTaxable='" + isTaxable + "'" +
+            ", isLocked='" + isLocked + "'" +
+            ", comment='" + comment + "'" +
+            ", totalTaxAmount='" + totalTaxAmount + "'" +
+            ", totalCost='" + totalCost + "'" +
+            ", taxExemptionCode='" + taxExemptionCode + "'" +
+            ", isSuspended='" + isSuspended + "'" +
+            '}';
     }
 }

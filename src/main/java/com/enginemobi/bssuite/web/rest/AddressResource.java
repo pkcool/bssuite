@@ -45,8 +45,8 @@ public class AddressResource {
      * POST  /addresss -> Create a new address.
      */
     @RequestMapping(value = "/addresss",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Address> createAddress(@RequestBody Address address) throws URISyntaxException {
         log.debug("REST request to save Address : {}", address);
@@ -56,8 +56,8 @@ public class AddressResource {
         Address result = addressRepository.save(address);
         addressSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/addresss/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("address", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("address", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -75,16 +75,16 @@ public class AddressResource {
         Address result = addressRepository.save(address);
         addressSearchRepository.save(address);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("address", address.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("address", address.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /addresss -> get all the addresss.
      */
     @RequestMapping(value = "/addresss",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<Address>> getAllAddresss(Pageable pageable)
         throws URISyntaxException {
@@ -97,8 +97,8 @@ public class AddressResource {
      * GET  /addresss/:id -> get the "id" address.
      */
     @RequestMapping(value = "/addresss/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Address> getAddress(@PathVariable Long id) {
         log.debug("REST request to get Address : {}", id);
@@ -113,8 +113,8 @@ public class AddressResource {
      * DELETE  /addresss/:id -> delete the "id" address.
      */
     @RequestMapping(value = "/addresss/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteAddress(@PathVariable Long id) {
         log.debug("REST request to delete Address : {}", id);
@@ -133,7 +133,7 @@ public class AddressResource {
     @Timed
     public List<Address> searchAddresss(@PathVariable String query) {
         return StreamSupport
-            .stream(addressSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(addressSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
 }

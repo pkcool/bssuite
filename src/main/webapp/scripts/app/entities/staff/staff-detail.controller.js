@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.staff = result;
             });
         };
-        $rootScope.$on('bssuiteApp:staffUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:staffUpdate', function(event, result) {
             $scope.staff = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

@@ -48,6 +48,14 @@ public interface PurchaseOrderMapper {
         return contact;
     }
 
+    default Contact contactFromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Contact contact = new Contact();
+        contact.setId(id);
+        return contact;
+    }
 
     default Store storeFromId(Long id) {
         if (id == null) {
@@ -67,7 +75,14 @@ public interface PurchaseOrderMapper {
         return salesOrder;
     }
 
-
+    default Staff staffFromId(Long id) {
+        if (id == null) {
+            return null;
+        }
+        Staff staff = new Staff();
+        staff.setId(id);
+        return staff;
+    }
 
     default Staff staffFromId(Long id) {
         if (id == null) {

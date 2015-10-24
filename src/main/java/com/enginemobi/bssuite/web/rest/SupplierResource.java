@@ -53,8 +53,8 @@ public class SupplierResource {
      * POST  /suppliers -> Create a new supplier.
      */
     @RequestMapping(value = "/suppliers",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<SupplierDTO> createSupplier(@Valid @RequestBody SupplierDTO supplierDTO) throws URISyntaxException {
         log.debug("REST request to save Supplier : {}", supplierDTO);
@@ -65,8 +65,8 @@ public class SupplierResource {
         Supplier result = supplierRepository.save(supplier);
         supplierSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/suppliers/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("supplier", result.getId().toString()))
-                .body(supplierMapper.supplierToSupplierDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("supplier", result.getId().toString()))
+            .body(supplierMapper.supplierToSupplierDTO(result));
     }
 
     /**
@@ -85,16 +85,16 @@ public class SupplierResource {
         Supplier result = supplierRepository.save(supplier);
         supplierSearchRepository.save(supplier);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("supplier", supplierDTO.getId().toString()))
-                .body(supplierMapper.supplierToSupplierDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("supplier", supplierDTO.getId().toString()))
+            .body(supplierMapper.supplierToSupplierDTO(result));
     }
 
     /**
      * GET  /suppliers -> get all the suppliers.
      */
     @RequestMapping(value = "/suppliers",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<SupplierDTO>> getAllSuppliers(Pageable pageable)
@@ -110,8 +110,8 @@ public class SupplierResource {
      * GET  /suppliers/:id -> get the "id" supplier.
      */
     @RequestMapping(value = "/suppliers/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<SupplierDTO> getSupplier(@PathVariable Long id) {
         log.debug("REST request to get Supplier : {}", id);
@@ -127,8 +127,8 @@ public class SupplierResource {
      * DELETE  /suppliers/:id -> delete the "id" supplier.
      */
     @RequestMapping(value = "/suppliers/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteSupplier(@PathVariable Long id) {
         log.debug("REST request to delete Supplier : {}", id);
@@ -147,7 +147,7 @@ public class SupplierResource {
     @Timed
     public List<SupplierDTO> searchSuppliers(@PathVariable String query) {
         return StreamSupport
-            .stream(supplierSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(supplierSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(supplierMapper::supplierToSupplierDTO)
             .collect(Collectors.toList());
     }

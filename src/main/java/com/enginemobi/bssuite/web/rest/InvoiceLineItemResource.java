@@ -45,8 +45,8 @@ public class InvoiceLineItemResource {
      * POST  /invoiceLineItems -> Create a new invoiceLineItem.
      */
     @RequestMapping(value = "/invoiceLineItems",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<InvoiceLineItem> createInvoiceLineItem(@RequestBody InvoiceLineItem invoiceLineItem) throws URISyntaxException {
         log.debug("REST request to save InvoiceLineItem : {}", invoiceLineItem);
@@ -56,8 +56,8 @@ public class InvoiceLineItemResource {
         InvoiceLineItem result = invoiceLineItemRepository.save(invoiceLineItem);
         invoiceLineItemSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/invoiceLineItems/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("invoiceLineItem", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("invoiceLineItem", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -75,16 +75,16 @@ public class InvoiceLineItemResource {
         InvoiceLineItem result = invoiceLineItemRepository.save(invoiceLineItem);
         invoiceLineItemSearchRepository.save(invoiceLineItem);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("invoiceLineItem", invoiceLineItem.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("invoiceLineItem", invoiceLineItem.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /invoiceLineItems -> get all the invoiceLineItems.
      */
     @RequestMapping(value = "/invoiceLineItems",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<InvoiceLineItem>> getAllInvoiceLineItems(Pageable pageable)
         throws URISyntaxException {
@@ -97,8 +97,8 @@ public class InvoiceLineItemResource {
      * GET  /invoiceLineItems/:id -> get the "id" invoiceLineItem.
      */
     @RequestMapping(value = "/invoiceLineItems/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<InvoiceLineItem> getInvoiceLineItem(@PathVariable Long id) {
         log.debug("REST request to get InvoiceLineItem : {}", id);
@@ -113,8 +113,8 @@ public class InvoiceLineItemResource {
      * DELETE  /invoiceLineItems/:id -> delete the "id" invoiceLineItem.
      */
     @RequestMapping(value = "/invoiceLineItems/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteInvoiceLineItem(@PathVariable Long id) {
         log.debug("REST request to delete InvoiceLineItem : {}", id);
@@ -133,7 +133,7 @@ public class InvoiceLineItemResource {
     @Timed
     public List<InvoiceLineItem> searchInvoiceLineItems(@PathVariable String query) {
         return StreamSupport
-            .stream(invoiceLineItemSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(invoiceLineItemSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
 }

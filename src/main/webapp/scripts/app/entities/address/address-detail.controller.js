@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.address = result;
             });
         };
-        $rootScope.$on('bssuiteApp:addressUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:addressUpdate', function(event, result) {
             $scope.address = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

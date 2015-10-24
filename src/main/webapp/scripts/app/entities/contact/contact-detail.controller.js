@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.contact = result;
             });
         };
-        $rootScope.$on('bssuiteApp:contactUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:contactUpdate', function(event, result) {
             $scope.contact = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

@@ -8,21 +8,21 @@ angular.module('bssuiteApp')
                 method: 'GET',
                 transformResponse: function (data) {
                     data = angular.fromJson(data);
-                    data.inBisinessSince = DateUtils.convertLocaleDateFromServer(data.inBisinessSince);
+                    data.inBusinessSince = DateUtils.convertLocaleDateFromServer(data.inBusinessSince);
                     return data;
                 }
             },
             'update': {
                 method: 'PUT',
                 transformRequest: function (data) {
-                    data.inBisinessSince = DateUtils.convertLocaleDateToServer(data.inBisinessSince);
+                    data.inBusinessSince = DateUtils.convertLocaleDateToServer(data.inBusinessSince);
                     return angular.toJson(data);
                 }
             },
             'save': {
                 method: 'POST',
                 transformRequest: function (data) {
-                    data.inBisinessSince = DateUtils.convertLocaleDateToServer(data.inBisinessSince);
+                    data.inBusinessSince = DateUtils.convertLocaleDateToServer(data.inBusinessSince);
                     return angular.toJson(data);
                 }
             }

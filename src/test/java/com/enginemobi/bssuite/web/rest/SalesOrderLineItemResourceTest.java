@@ -24,7 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -68,8 +69,8 @@ public class SalesOrderLineItemResourceTest {
     private static final Integer DEFAULT_LINE_NO = 1;
     private static final Integer UPDATED_LINE_NO = 2;
 
-    private static final LocalDate DEFAULT_REQUIRED_DATE = new LocalDate(0L);
-    private static final LocalDate UPDATED_REQUIRED_DATE = new LocalDate();
+    private static final LocalDate DEFAULT_REQUIRED_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_REQUIRED_DATE = LocalDate.now(ZoneId.systemDefault());
 
     private static final BigDecimal DEFAULT_LIST_PRICE = new BigDecimal(1);
     private static final BigDecimal UPDATED_LIST_PRICE = new BigDecimal(2);

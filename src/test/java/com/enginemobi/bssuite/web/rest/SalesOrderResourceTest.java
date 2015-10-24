@@ -26,11 +26,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.joda.time.LocalDate;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -51,7 +51,7 @@ import com.enginemobi.bssuite.domain.enumeration.SalesOrderStatus;
 @IntegrationTest
 public class SalesOrderResourceTest {
 
-    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.of("Z"));
 
     private static final String DEFAULT_ORDER_NO = "AAAAA";
     private static final String UPDATED_ORDER_NO = "BBBBB";
@@ -60,15 +60,15 @@ public class SalesOrderResourceTest {
 private static final SalesOrderStatus DEFAULT_STATUS = SalesOrderStatus.ONORDER;
     private static final SalesOrderStatus UPDATED_STATUS = SalesOrderStatus.DELIVERED;
 
-    private static final DateTime DEFAULT_TXN_DATE = new DateTime(0L, DateTimeZone.UTC);
-    private static final DateTime UPDATED_TXN_DATE = new DateTime(DateTimeZone.UTC).withMillisOfSecond(0);
-    private static final String DEFAULT_TXN_DATE_STR = dateTimeFormatter.print(DEFAULT_TXN_DATE);
+    private static final ZonedDateTime DEFAULT_TXN_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
+    private static final ZonedDateTime UPDATED_TXN_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+    private static final String DEFAULT_TXN_DATE_STR = dateTimeFormatter.format(DEFAULT_TXN_DATE);
 
-    private static final LocalDate DEFAULT_FORWARD_DATE = new LocalDate(0L);
-    private static final LocalDate UPDATED_FORWARD_DATE = new LocalDate();
+    private static final LocalDate DEFAULT_FORWARD_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_FORWARD_DATE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final LocalDate DEFAULT_REQUIRED_DATE = new LocalDate(0L);
-    private static final LocalDate UPDATED_REQUIRED_DATE = new LocalDate();
+    private static final LocalDate DEFAULT_REQUIRED_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_REQUIRED_DATE = LocalDate.now(ZoneId.systemDefault());
     private static final String DEFAULT_CUSTOMER_ORDER_NO = "AAAAA";
     private static final String UPDATED_CUSTOMER_ORDER_NO = "BBBBB";
     private static final String DEFAULT_OUR_REF = "AAAAA";
@@ -190,7 +190,7 @@ private static final SalesOrderStatus DEFAULT_STATUS = SalesOrderStatus.ONORDER;
         SalesOrder testSalesOrder = salesOrders.get(salesOrders.size() - 1);
         assertThat(testSalesOrder.getOrderNo()).isEqualTo(DEFAULT_ORDER_NO);
         assertThat(testSalesOrder.getStatus()).isEqualTo(DEFAULT_STATUS);
-        assertThat(testSalesOrder.getTxnDate().toDateTime(DateTimeZone.UTC)).isEqualTo(DEFAULT_TXN_DATE);
+        assertThat(testSalesOrder.getTxnDate()).isEqualTo(DEFAULT_TXN_DATE);
         assertThat(testSalesOrder.getForwardDate()).isEqualTo(DEFAULT_FORWARD_DATE);
         assertThat(testSalesOrder.getRequiredDate()).isEqualTo(DEFAULT_REQUIRED_DATE);
         assertThat(testSalesOrder.getCustomerOrderNo()).isEqualTo(DEFAULT_CUSTOMER_ORDER_NO);
@@ -330,7 +330,7 @@ private static final SalesOrderStatus DEFAULT_STATUS = SalesOrderStatus.ONORDER;
         SalesOrder testSalesOrder = salesOrders.get(salesOrders.size() - 1);
         assertThat(testSalesOrder.getOrderNo()).isEqualTo(UPDATED_ORDER_NO);
         assertThat(testSalesOrder.getStatus()).isEqualTo(UPDATED_STATUS);
-        assertThat(testSalesOrder.getTxnDate().toDateTime(DateTimeZone.UTC)).isEqualTo(UPDATED_TXN_DATE);
+        assertThat(testSalesOrder.getTxnDate()).isEqualTo(UPDATED_TXN_DATE);
         assertThat(testSalesOrder.getForwardDate()).isEqualTo(UPDATED_FORWARD_DATE);
         assertThat(testSalesOrder.getRequiredDate()).isEqualTo(UPDATED_REQUIRED_DATE);
         assertThat(testSalesOrder.getCustomerOrderNo()).isEqualTo(UPDATED_CUSTOMER_ORDER_NO);

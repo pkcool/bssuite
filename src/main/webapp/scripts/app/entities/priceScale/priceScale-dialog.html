@@ -11,13 +11,13 @@
         <div class="form-group">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="priceScale.id" readonly>
+                    ng-model="priceScale.id" readonly />
         </div>
         <div class="form-group">
             <label for="field_code">Code</label>
             <input type="text" class="form-control" name="code" id="field_code"
                     ng-model="priceScale.code"
-                    required ng-minlength="2">
+                    required ng-minlength="2" />
             <div ng-show="editForm.code.$invalid">
                 <p class="help-block"
                     ng-show="editForm.code.$error.required">
@@ -33,19 +33,19 @@
             <label for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                     ng-model="priceScale.name"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_price">Price</label>
             <input type="text" class="form-control" name="price" id="field_price"
                     ng-model="priceScale.price"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_value">Value</label>
             <input type="text" class="form-control" name="value" id="field_value"
                     ng-model="priceScale.value"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_round">Round</label>

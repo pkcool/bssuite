@@ -19,56 +19,38 @@ public class SupplierDTO implements Serializable {
     @NotNull
     private String code;
 
-
     private String name;
-
 
     private String webUrl;
 
-
     private String comment;
-
 
     private Boolean isOnHold;
 
-
     private Boolean isHeadOffice;
-
 
     private Integer leadTime;
 
-
     private SupplierAccountType accountType;
-
 
     private Integer settlementTerms;
 
-
     private Double credit;
-
 
     private Integer terms;
 
-
     private SupplierAgeingMethod ageingMethod;
-
 
     private Boolean isEFTPaymentsUsed;
 
-
     private String bankBSB;
-
 
     private String bankNumber;
 
-
     private String bankAccount;
 
-
     private Long supplierCategoryId;
-
     private Long contactId;
-
     public Long getId() {
         return id;
     }
@@ -85,7 +67,6 @@ public class SupplierDTO implements Serializable {
         this.code = code;
     }
 
-
     public String getName() {
         return name;
     }
@@ -93,7 +74,6 @@ public class SupplierDTO implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getWebUrl() {
         return webUrl;
@@ -103,7 +83,6 @@ public class SupplierDTO implements Serializable {
         this.webUrl = webUrl;
     }
 
-
     public String getComment() {
         return comment;
     }
@@ -111,7 +90,6 @@ public class SupplierDTO implements Serializable {
     public void setComment(String comment) {
         this.comment = comment;
     }
-
 
     public Boolean getIsOnHold() {
         return isOnHold;
@@ -121,7 +99,6 @@ public class SupplierDTO implements Serializable {
         this.isOnHold = isOnHold;
     }
 
-
     public Boolean getIsHeadOffice() {
         return isHeadOffice;
     }
@@ -129,7 +106,6 @@ public class SupplierDTO implements Serializable {
     public void setIsHeadOffice(Boolean isHeadOffice) {
         this.isHeadOffice = isHeadOffice;
     }
-
 
     public Integer getLeadTime() {
         return leadTime;
@@ -139,7 +115,6 @@ public class SupplierDTO implements Serializable {
         this.leadTime = leadTime;
     }
 
-
     public SupplierAccountType getAccountType() {
         return accountType;
     }
@@ -147,7 +122,6 @@ public class SupplierDTO implements Serializable {
     public void setAccountType(SupplierAccountType accountType) {
         this.accountType = accountType;
     }
-
 
     public Integer getSettlementTerms() {
         return settlementTerms;
@@ -157,7 +131,6 @@ public class SupplierDTO implements Serializable {
         this.settlementTerms = settlementTerms;
     }
 
-
     public Double getCredit() {
         return credit;
     }
@@ -165,7 +138,6 @@ public class SupplierDTO implements Serializable {
     public void setCredit(Double credit) {
         this.credit = credit;
     }
-
 
     public Integer getTerms() {
         return terms;
@@ -175,7 +147,6 @@ public class SupplierDTO implements Serializable {
         this.terms = terms;
     }
 
-
     public SupplierAgeingMethod getAgeingMethod() {
         return ageingMethod;
     }
@@ -183,7 +154,6 @@ public class SupplierDTO implements Serializable {
     public void setAgeingMethod(SupplierAgeingMethod ageingMethod) {
         this.ageingMethod = ageingMethod;
     }
-
 
     public Boolean getIsEFTPaymentsUsed() {
         return isEFTPaymentsUsed;
@@ -193,7 +163,6 @@ public class SupplierDTO implements Serializable {
         this.isEFTPaymentsUsed = isEFTPaymentsUsed;
     }
 
-
     public String getBankBSB() {
         return bankBSB;
     }
@@ -201,7 +170,6 @@ public class SupplierDTO implements Serializable {
     public void setBankBSB(String bankBSB) {
         this.bankBSB = bankBSB;
     }
-
 
     public String getBankNumber() {
         return bankNumber;
@@ -211,7 +179,6 @@ public class SupplierDTO implements Serializable {
         this.bankNumber = bankNumber;
     }
 
-
     public String getBankAccount() {
         return bankAccount;
     }
@@ -220,7 +187,6 @@ public class SupplierDTO implements Serializable {
         this.bankAccount = bankAccount;
     }
 
-
     public Long getSupplierCategoryId() {
         return supplierCategoryId;
     }
@@ -228,7 +194,6 @@ public class SupplierDTO implements Serializable {
     public void setSupplierCategoryId(Long supplierCategoryId) {
         this.supplierCategoryId = supplierCategoryId;
     }
-
     public Long getContactId() {
         return contactId;
     }
@@ -236,7 +201,6 @@ public class SupplierDTO implements Serializable {
     public void setContactId(Long contactId) {
         this.contactId = contactId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -261,23 +225,23 @@ public class SupplierDTO implements Serializable {
     @Override
     public String toString() {
         return "SupplierDTO{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", webUrl='" + webUrl + "'" +
-                ", comment='" + comment + "'" +
-                ", isOnHold='" + isOnHold + "'" +
-                ", isHeadOffice='" + isHeadOffice + "'" +
-                ", leadTime='" + leadTime + "'" +
-                ", accountType='" + accountType + "'" +
-                ", settlementTerms='" + settlementTerms + "'" +
-                ", credit='" + credit + "'" +
-                ", terms='" + terms + "'" +
-                ", ageingMethod='" + ageingMethod + "'" +
-                ", isEFTPaymentsUsed='" + isEFTPaymentsUsed + "'" +
-                ", bankBSB='" + bankBSB + "'" +
-                ", bankNumber='" + bankNumber + "'" +
-                ", bankAccount='" + bankAccount + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", webUrl='" + webUrl + "'" +
+            ", comment='" + comment + "'" +
+            ", isOnHold='" + isOnHold + "'" +
+            ", isHeadOffice='" + isHeadOffice + "'" +
+            ", leadTime='" + leadTime + "'" +
+            ", accountType='" + accountType + "'" +
+            ", settlementTerms='" + settlementTerms + "'" +
+            ", credit='" + credit + "'" +
+            ", terms='" + terms + "'" +
+            ", ageingMethod='" + ageingMethod + "'" +
+            ", isEFTPaymentsUsed='" + isEFTPaymentsUsed + "'" +
+            ", bankBSB='" + bankBSB + "'" +
+            ", bankNumber='" + bankNumber + "'" +
+            ", bankAccount='" + bankAccount + "'" +
+            '}';
     }
 }

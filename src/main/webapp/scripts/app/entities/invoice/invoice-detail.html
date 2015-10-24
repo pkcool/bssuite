@@ -31,7 +31,7 @@
                     <span>TxnDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{invoice.txnDate}}</span>
+                    <span class="form-control-static">{{invoice.txnDate | date:'medium'}}</span>
                 </td>
             </tr>
             <tr>
@@ -39,7 +39,7 @@
                     <span>DueDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{invoice.dueDate}}</span>
+                    <span class="form-control-static">{{invoice.dueDate | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>
@@ -239,7 +239,7 @@
                     <span>DateOfDeposit</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{invoice.dateOfDeposit}}</span>
+                    <span class="form-control-static">{{invoice.dateOfDeposit | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>

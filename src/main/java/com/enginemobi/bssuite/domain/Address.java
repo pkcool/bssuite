@@ -14,29 +14,28 @@ import java.util.Objects;
 @Entity
 @Table(name = "address")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="address")
+@Document(indexName = "address")
 public class Address implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
     @Column(name = "address_line1")
     private String addressLine1;
-    
+
     @Column(name = "address_line2")
     private String addressLine2;
-    
+
     @Column(name = "suburb")
     private String suburb;
-    
+
     @Column(name = "state")
     private String state;
-    
+
     @Column(name = "postcode")
     private String postcode;
-    
+
     @Column(name = "country")
     private String country;
 
@@ -120,13 +119,13 @@ public class Address implements Serializable {
     @Override
     public String toString() {
         return "Address{" +
-                "id=" + id +
-                ", addressLine1='" + addressLine1 + "'" +
-                ", addressLine2='" + addressLine2 + "'" +
-                ", suburb='" + suburb + "'" +
-                ", state='" + state + "'" +
-                ", postcode='" + postcode + "'" +
-                ", country='" + country + "'" +
-                '}';
+            "id=" + id +
+            ", addressLine1='" + addressLine1 + "'" +
+            ", addressLine2='" + addressLine2 + "'" +
+            ", suburb='" + suburb + "'" +
+            ", state='" + state + "'" +
+            ", postcode='" + postcode + "'" +
+            ", country='" + country + "'" +
+            '}';
     }
 }

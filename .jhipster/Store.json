@@ -63,7 +63,7 @@
         },
         {
             "fieldId": 13,
-            "fieldName": "inBisinessSince",
+            "fieldName": "inBusinessSince",
             "fieldType": "LocalDate"
         },
         {

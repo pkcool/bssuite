@@ -31,7 +31,7 @@
                     <span>CreatedDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{purchaseOrder.createdDate}}</span>
+                    <span class="form-control-static">{{purchaseOrder.createdDate | date:'medium'}}</span>
                 </td>
             </tr>
             <tr>
@@ -47,7 +47,7 @@
                     <span>ExpectedDeliveryDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{purchaseOrder.expectedDeliveryDate}}</span>
+                    <span class="form-control-static">{{purchaseOrder.expectedDeliveryDate | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>
