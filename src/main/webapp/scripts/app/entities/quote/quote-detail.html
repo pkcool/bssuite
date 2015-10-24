@@ -1,18 +1,18 @@
 
 <div>
-    <h2><span>Quote</span> {{quote.id}}</h2>
+    <h2><span translate="bssuiteApp.quote.detail.title">Quote</span> {{quote.id}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Field</th>
-                <th>Value</th>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>
-                    <span>QuoteNo</span>
+                    <span translate="bssuiteApp.quote.quoteNo">QuoteNo</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.quoteNo}}</span>
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Status</span>
+                    <span translate="bssuiteApp.quote.status">Status</span>
                 </td>
                 <td>
                     <span class="form-control-static" translate="{{'bssuiteApp.QuoteStatus.' + quote.status}}">{{quote.status}}</span>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>QuoteDate</span>
+                    <span translate="bssuiteApp.quote.quoteDate">QuoteDate</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.quoteDate | date:'medium'}}</span>
@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>ExpiryDate</span>
+                    <span translate="bssuiteApp.quote.expiryDate">ExpiryDate</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.expiryDate | date:'mediumDate'}}</span>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>FollowupDate</span>
+                    <span translate="bssuiteApp.quote.followupDate">FollowupDate</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.followupDate | date:'mediumDate'}}</span>
@@ -52,7 +52,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Reference</span>
+                    <span translate="bssuiteApp.quote.reference">Reference</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.reference}}</span>
@@ -60,7 +60,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>OurRef</span>
+                    <span translate="bssuiteApp.quote.ourRef">OurRef</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.ourRef}}</span>
@@ -68,7 +68,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Freight</span>
+                    <span translate="bssuiteApp.quote.freight">Freight</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.freight}}</span>
@@ -76,7 +76,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>ReasonForLoss</span>
+                    <span translate="bssuiteApp.quote.reasonForLoss">ReasonForLoss</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.reasonForLoss}}</span>
@@ -84,7 +84,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsTaxable</span>
+                    <span translate="bssuiteApp.quote.isTaxable">IsTaxable</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.isTaxable}}</span>
@@ -92,7 +92,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>TaxExemptionCode</span>
+                    <span translate="bssuiteApp.quote.taxExemptionCode">TaxExemptionCode</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.taxExemptionCode}}</span>
@@ -100,7 +100,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsLocked</span>
+                    <span translate="bssuiteApp.quote.isLocked">IsLocked</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.isLocked}}</span>
@@ -108,7 +108,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>AdjustTax</span>
+                    <span translate="bssuiteApp.quote.adjustTax">AdjustTax</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.adjustTax}}</span>
@@ -116,7 +116,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>AdjustTaxExempt</span>
+                    <span translate="bssuiteApp.quote.adjustTaxExempt">AdjustTaxExempt</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.adjustTaxExempt}}</span>
@@ -124,7 +124,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Comment</span>
+                    <span translate="bssuiteApp.quote.comment">Comment</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.comment}}</span>
@@ -132,7 +132,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>TotalTaxAmount</span>
+                    <span translate="bssuiteApp.quote.totalTaxAmount">TotalTaxAmount</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.totalTaxAmount}}</span>
@@ -140,7 +140,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>TotalSellPrice</span>
+                    <span translate="bssuiteApp.quote.totalSellPrice">TotalSellPrice</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.totalSellPrice}}</span>
@@ -148,7 +148,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>TotalCost</span>
+                    <span translate="bssuiteApp.quote.totalCost">TotalCost</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.totalCost}}</span>
@@ -156,7 +156,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsSuspended</span>
+                    <span translate="bssuiteApp.quote.isSuspended">IsSuspended</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{quote.isSuspended}}</span>
@@ -164,7 +164,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>customer</span>
+                    <span translate="bssuiteApp.quote.customer">customer</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="customer.detail({id:quote.customerId})">{{quote.customerId}}</a>
@@ -172,7 +172,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>contact</span>
+                    <span translate="bssuiteApp.quote.contact">contact</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="contact.detail({id:quote.contactId})">{{quote.contactId}}</a>
@@ -180,7 +180,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>deliveryContact</span>
+                    <span translate="bssuiteApp.quote.deliveryContact">deliveryContact</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="contact.detail({id:quote.deliveryContactId})">{{quote.deliveryContactId}}</a>
@@ -188,7 +188,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>store</span>
+                    <span translate="bssuiteApp.quote.store">store</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="store.detail({id:quote.storeId})">{{quote.storeId}}</a>
@@ -196,7 +196,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>quoteByStaff</span>
+                    <span translate="bssuiteApp.quote.quoteByStaff">quoteByStaff</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="staff.detail({id:quote.quoteByStaffId})">{{quote.quoteByStaffId}}</a>
@@ -204,7 +204,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>createdBy</span>
+                    <span translate="bssuiteApp.quote.createdBy">createdBy</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="staff.detail({id:quote.createdById})">{{quote.createdById}}</a>
@@ -217,6 +217,6 @@
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
 </div>

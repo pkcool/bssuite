@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/stockGroups',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'StockGroups'
+                    pageTitle: 'bssuiteApp.stockGroup.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('stockGroup');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('stockGroup.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/stockGroup/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'StockGroup'
+                    pageTitle: 'bssuiteApp.stockGroup.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('stockGroup');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'StockGroup', function($stateParams, StockGroup) {
                         return StockGroup.get({id : $stateParams.id});
                     }]

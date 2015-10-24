@@ -1,0 +1,42 @@
+{
+    "bssuiteApp": {
+        "customerDiscountRule" : {
+            "home": {
+                "title": "CustomerDiscountRules",
+                "createLabel": "Create a new CustomerDiscountRule",
+                "createOrEditLabel": "Create or edit a CustomerDiscountRule"
+            },
+            "created": "A new CustomerDiscountRule is created with identifier {{ param }}",
+            "updated": "A CustomerDiscountRule is updated with identifier {{ param }}",
+            "deleted": "A CustomerDiscountRule is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete CustomerDiscountRule {{ id }}?"
+            },
+            "detail": {
+                "title": "CustomerDiscountRule"
+            },
+            "priceGroupCode": "PriceGroupCode",
+            "ruleNo": "RuleNo",
+            "isAppliedGlobally": "IsAppliedGlobally",
+            "isAppliedOnSpecialItemsOnly": "IsAppliedOnSpecialItemsOnly",
+            "customerCode": "CustomerCode",
+            "customerCategoryCode": "CustomerCategoryCode",
+            "fromProductCode": "FromProductCode",
+            "toProductCode": "ToProductCode",
+            "startDate": "StartDate",
+            "endDate": "EndDate",
+            "qtyBreak": "QtyBreak",
+            "fromSupplierCode": "FromSupplierCode",
+            "toSupplierCode": "ToSupplierCode",
+            "fromStockGroupCode": "FromStockGroupCode",
+            "toStockGroupCode": "ToStockGroupCode",
+            "taxCode": "TaxCode",
+            "isAppliedWhenTaxExempt": "IsAppliedWhenTaxExempt",
+            "storeCode": "StoreCode",
+            "discountName": "DiscountName",
+            "stockFamilyCode": "StockFamilyCode",
+            "listPrice": "ListPrice",
+            "discountFormula": "DiscountFormula"
+        }
+    }
+}

@@ -1,11 +1,11 @@
 <div>
-    <h2>PurchaseOrders</h2>
+    <h2 translate="bssuiteApp.purchaseOrder.home.title">PurchaseOrders</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="purchaseOrder.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new PurchaseOrder</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="bssuiteApp.purchaseOrder.home.createLabel">Create a new PurchaseOrder</span>
                 </button>
             </div>
             <div class="col-md-8">
@@ -27,17 +27,17 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this PurchaseOrder?</p>
+                        <p translate="bssuiteApp.purchaseOrder.delete.question" translate-values="{id: '{{purchaseOrder.id}}'}">Are you sure you want to delete this PurchaseOrder?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -49,26 +49,26 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>OrderNo</th>
-                    <th>Status</th>
-                    <th>CreatedDate</th>
-                    <th>Ref</th>
-                    <th>ExpectedDeliveryDate</th>
-                    <th>IsTaxable</th>
-                    <th>IsLocked</th>
-                    <th>Comment</th>
-                    <th>TotalTaxAmount</th>
-                    <th>TotalCost</th>
-                    <th>TaxExemptionCode</th>
-                    <th>IsSuspended</th>
-                    <th>supplier</th>
-                    <th>supplierContact</th>
-                    <th>supplierDeliveryContact</th>
-                    <th>store</th>
-                    <th>salesOrder</th>
-                    <th>updatedByStaff</th>
-                    <th>createdBy</th>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="bssuiteApp.purchaseOrder.orderNo">OrderNo</th>
+                    <th translate="bssuiteApp.purchaseOrder.status">Status</th>
+                    <th translate="bssuiteApp.purchaseOrder.createdDate">CreatedDate</th>
+                    <th translate="bssuiteApp.purchaseOrder.ref">Ref</th>
+                    <th translate="bssuiteApp.purchaseOrder.expectedDeliveryDate">ExpectedDeliveryDate</th>
+                    <th translate="bssuiteApp.purchaseOrder.isTaxable">IsTaxable</th>
+                    <th translate="bssuiteApp.purchaseOrder.isLocked">IsLocked</th>
+                    <th translate="bssuiteApp.purchaseOrder.comment">Comment</th>
+                    <th translate="bssuiteApp.purchaseOrder.totalTaxAmount">TotalTaxAmount</th>
+                    <th translate="bssuiteApp.purchaseOrder.totalCost">TotalCost</th>
+                    <th translate="bssuiteApp.purchaseOrder.taxExemptionCode">TaxExemptionCode</th>
+                    <th translate="bssuiteApp.purchaseOrder.isSuspended">IsSuspended</th>
+                    <th translate="bssuiteApp.purchaseOrder.supplier">supplier</th>
+                    <th translate="bssuiteApp.purchaseOrder.supplierContact">supplierContact</th>
+                    <th translate="bssuiteApp.purchaseOrder.supplierDeliveryContact">supplierDeliveryContact</th>
+                    <th translate="bssuiteApp.purchaseOrder.store">store</th>
+                    <th translate="bssuiteApp.purchaseOrder.salesOrder">salesOrder</th>
+                    <th translate="bssuiteApp.purchaseOrder.updatedByStaff">updatedByStaff</th>
+                    <th translate="bssuiteApp.purchaseOrder.createdBy">createdBy</th>
                     <th></th>
                 </tr>
             </thead>
@@ -112,17 +112,17 @@
                         <button type="submit"
                                 ui-sref="purchaseOrder.detail({id:purchaseOrder.id})"
                                 class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ui-sref="purchaseOrder.edit({id:purchaseOrder.id})"
                                 class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(purchaseOrder.id)"
                                 class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>

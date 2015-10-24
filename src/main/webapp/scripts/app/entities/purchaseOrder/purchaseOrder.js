@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/purchaseOrders',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'PurchaseOrders'
+                    pageTitle: 'bssuiteApp.purchaseOrder.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,12 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('purchaseOrder');
+                        $translatePartialLoader.addPart('purchaseOrderStatus');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('purchaseOrder.detail', {
@@ -24,7 +30,7 @@ angular.module('bssuiteApp')
                 url: '/purchaseOrder/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'PurchaseOrder'
+                    pageTitle: 'bssuiteApp.purchaseOrder.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +39,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('purchaseOrder');
+                        $translatePartialLoader.addPart('purchaseOrderStatus');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'PurchaseOrder', function($stateParams, PurchaseOrder) {
                         return PurchaseOrder.get({id : $stateParams.id});
                     }]

@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/purchaseOrderLineItems',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'PurchaseOrderLineItems'
+                    pageTitle: 'bssuiteApp.purchaseOrderLineItem.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('purchaseOrderLineItem');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('purchaseOrderLineItem.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/purchaseOrderLineItem/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'PurchaseOrderLineItem'
+                    pageTitle: 'bssuiteApp.purchaseOrderLineItem.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('purchaseOrderLineItem');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'PurchaseOrderLineItem', function($stateParams, PurchaseOrderLineItem) {
                         return PurchaseOrderLineItem.get({id : $stateParams.id});
                     }]

@@ -58,7 +58,7 @@
         },
         {
             "relationshipId": 9,
-            "relationshipName": "salesOrderLineItems",
+            "relationshipName": "salesOrderLineItem",
             "otherEntityName": "salesOrderLineItem",
             "relationshipType": "one-to-many",
             "otherEntityRelationshipName": "salesOrder"

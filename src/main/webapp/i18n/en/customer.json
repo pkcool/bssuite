@@ -1,0 +1,65 @@
+{
+    "bssuiteApp": {
+        "customer" : {
+            "home": {
+                "title": "Customers",
+                "createLabel": "Create a new Customer",
+                "createOrEditLabel": "Create or edit a Customer"
+            },
+            "created": "A new Customer is created with identifier {{ param }}",
+            "updated": "A Customer is updated with identifier {{ param }}",
+            "deleted": "A Customer is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Customer {{ id }}?"
+            },
+            "detail": {
+                "title": "Customer"
+            },
+            "code": "Code",
+            "name": "Name",
+            "tradingName": "TradingName",
+            "abn": "Abn",
+            "deliveryInstruction": "DeliveryInstruction",
+            "webUrl": "WebUrl",
+            "isOnHold": "IsOnHold",
+            "isOrderNoRequired": "IsOrderNoRequired",
+            "isBlacklisted": "IsBlacklisted",
+            "isBackorderAllowed": "IsBackorderAllowed",
+            "isArchived": "IsArchived",
+            "isHeadOfficeAccount": "IsHeadOfficeAccount",
+            "ageingMethod": "AgeingMethod",
+            "isWebaccessAllowed": "IsWebaccessAllowed",
+            "bankName": "BankName",
+            "bsb": "Bsb",
+            "bankAccountNo": "BankAccountNo",
+            "bankSuburb": "BankSuburb",
+            "bankAccountName": "BankAccountName",
+            "isCreditCardBillingActive": "IsCreditCardBillingActive",
+            "creditCardNo": "CreditCardNo",
+            "creditCardHolderName": "CreditCardHolderName",
+            "creditCardExpiryDate": "CreditCardExpiryDate",
+            "creditCardType": "CreditCardType",
+            "accountType": "AccountType",
+            "creditAmount": "CreditAmount",
+            "terms": "Terms",
+            "settlementTerms": "SettlementTerms",
+            "invoiceDeliveryMethod": "InvoiceDeliveryMethod",
+            "statementDeliveryMethod": "StatementDeliveryMethod",
+            "invoiceEmailAddress": "InvoiceEmailAddress",
+            "invoiceFaxNo": "InvoiceFaxNo",
+            "statementEmailAddress": "StatementEmailAddress",
+            "statementFaxNo": "StatementFaxNo",
+            "isPenaltyIssued": "IsPenaltyIssued",
+            "customerCategory": "CustomerCategory",
+            "contact": "Contact",
+            "deliveryContact": "DeliveryContact",
+            "salesPrimaryContact": "SalesPrimaryContact",
+            "salesSecondaryContact": "SalesSecondaryContact",
+            "accountPrimaryContact": "AccountPrimaryContact",
+            "accountSecondaryContact": "AccountSecondaryContact",
+            "rep": "Rep",
+            "centralBillingAccount": "CentralBillingAccount",
+            "store": "Store"
+        }
+    }
+}

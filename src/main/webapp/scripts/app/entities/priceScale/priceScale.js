@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/priceScales',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'PriceScales'
+                    pageTitle: 'bssuiteApp.priceScale.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,12 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('priceScale');
+                        $translatePartialLoader.addPart('roundingMethod');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('priceScale.detail', {
@@ -24,7 +30,7 @@ angular.module('bssuiteApp')
                 url: '/priceScale/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'PriceScale'
+                    pageTitle: 'bssuiteApp.priceScale.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +39,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('priceScale');
+                        $translatePartialLoader.addPart('roundingMethod');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'PriceScale', function($stateParams, PriceScale) {
                         return PriceScale.get({id : $stateParams.id});
                     }]

@@ -1,18 +1,18 @@
 
 <div>
-    <h2><span>Supplier</span> {{supplier.id}}</h2>
+    <h2><span translate="bssuiteApp.supplier.detail.title">Supplier</span> {{supplier.id}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Field</th>
-                <th>Value</th>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>
-                    <span>Code</span>
+                    <span translate="bssuiteApp.supplier.code">Code</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{supplier.code}}</span>
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Name</span>
+                    <span translate="bssuiteApp.supplier.name">Name</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{supplier.name}}</span>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>WebUrl</span>
+                    <span translate="bssuiteApp.supplier.webUrl">WebUrl</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{supplier.webUrl}}</span>
@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Comment</span>
+                    <span translate="bssuiteApp.supplier.comment">Comment</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{supplier.comment}}</span>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsOnHold</span>
+                    <span translate="bssuiteApp.supplier.isOnHold">IsOnHold</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{supplier.isOnHold}}</span>
@@ -52,7 +52,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsHeadOffice</span>
+                    <span translate="bssuiteApp.supplier.isHeadOffice">IsHeadOffice</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{supplier.isHeadOffice}}</span>
@@ -60,7 +60,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>LeadTime</span>
+                    <span translate="bssuiteApp.supplier.leadTime">LeadTime</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{supplier.leadTime}}</span>
@@ -68,7 +68,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>AccountType</span>
+                    <span translate="bssuiteApp.supplier.accountType">AccountType</span>
                 </td>
                 <td>
                     <span class="form-control-static" translate="{{'bssuiteApp.SupplierAccountType.' + supplier.accountType}}">{{supplier.accountType}}</span>
@@ -76,7 +76,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>SettlementTerms</span>
+                    <span translate="bssuiteApp.supplier.settlementTerms">SettlementTerms</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{supplier.settlementTerms}}</span>
@@ -84,7 +84,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Credit</span>
+                    <span translate="bssuiteApp.supplier.credit">Credit</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{supplier.credit}}</span>
@@ -92,7 +92,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Terms</span>
+                    <span translate="bssuiteApp.supplier.terms">Terms</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{supplier.terms}}</span>
@@ -100,7 +100,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>AgeingMethod</span>
+                    <span translate="bssuiteApp.supplier.ageingMethod">AgeingMethod</span>
                 </td>
                 <td>
                     <span class="form-control-static" translate="{{'bssuiteApp.SupplierAgeingMethod.' + supplier.ageingMethod}}">{{supplier.ageingMethod}}</span>
@@ -108,7 +108,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsEFTPaymentsUsed</span>
+                    <span translate="bssuiteApp.supplier.isEFTPaymentsUsed">IsEFTPaymentsUsed</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{supplier.isEFTPaymentsUsed}}</span>
@@ -116,7 +116,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>BankBSB</span>
+                    <span translate="bssuiteApp.supplier.bankBSB">BankBSB</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{supplier.bankBSB}}</span>
@@ -124,7 +124,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>BankNumber</span>
+                    <span translate="bssuiteApp.supplier.bankNumber">BankNumber</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{supplier.bankNumber}}</span>
@@ -132,7 +132,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>BankAccount</span>
+                    <span translate="bssuiteApp.supplier.bankAccount">BankAccount</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{supplier.bankAccount}}</span>
@@ -140,7 +140,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>supplierCategory</span>
+                    <span translate="bssuiteApp.supplier.supplierCategory">supplierCategory</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="supplierCategory.detail({id:supplier.supplierCategoryId})">{{supplier.supplierCategoryId}}</a>
@@ -148,7 +148,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>contact</span>
+                    <span translate="bssuiteApp.supplier.contact">contact</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="contact.detail({id:supplier.contactId})">{{supplier.contactId}}</a>
@@ -161,6 +161,6 @@
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
 </div>

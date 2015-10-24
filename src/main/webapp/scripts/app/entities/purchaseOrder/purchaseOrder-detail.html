@@ -1,18 +1,18 @@
 
 <div>
-    <h2><span>PurchaseOrder</span> {{purchaseOrder.id}}</h2>
+    <h2><span translate="bssuiteApp.purchaseOrder.detail.title">PurchaseOrder</span> {{purchaseOrder.id}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Field</th>
-                <th>Value</th>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>
-                    <span>OrderNo</span>
+                    <span translate="bssuiteApp.purchaseOrder.orderNo">OrderNo</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{purchaseOrder.orderNo}}</span>
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Status</span>
+                    <span translate="bssuiteApp.purchaseOrder.status">Status</span>
                 </td>
                 <td>
                     <span class="form-control-static" translate="{{'bssuiteApp.PurchaseOrderStatus.' + purchaseOrder.status}}">{{purchaseOrder.status}}</span>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>CreatedDate</span>
+                    <span translate="bssuiteApp.purchaseOrder.createdDate">CreatedDate</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{purchaseOrder.createdDate | date:'medium'}}</span>
@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Ref</span>
+                    <span translate="bssuiteApp.purchaseOrder.ref">Ref</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{purchaseOrder.ref}}</span>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>ExpectedDeliveryDate</span>
+                    <span translate="bssuiteApp.purchaseOrder.expectedDeliveryDate">ExpectedDeliveryDate</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{purchaseOrder.expectedDeliveryDate | date:'mediumDate'}}</span>
@@ -52,7 +52,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsTaxable</span>
+                    <span translate="bssuiteApp.purchaseOrder.isTaxable">IsTaxable</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{purchaseOrder.isTaxable}}</span>
@@ -60,7 +60,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsLocked</span>
+                    <span translate="bssuiteApp.purchaseOrder.isLocked">IsLocked</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{purchaseOrder.isLocked}}</span>
@@ -68,7 +68,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Comment</span>
+                    <span translate="bssuiteApp.purchaseOrder.comment">Comment</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{purchaseOrder.comment}}</span>
@@ -76,7 +76,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>TotalTaxAmount</span>
+                    <span translate="bssuiteApp.purchaseOrder.totalTaxAmount">TotalTaxAmount</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{purchaseOrder.totalTaxAmount}}</span>
@@ -84,7 +84,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>TotalCost</span>
+                    <span translate="bssuiteApp.purchaseOrder.totalCost">TotalCost</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{purchaseOrder.totalCost}}</span>
@@ -92,7 +92,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>TaxExemptionCode</span>
+                    <span translate="bssuiteApp.purchaseOrder.taxExemptionCode">TaxExemptionCode</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{purchaseOrder.taxExemptionCode}}</span>
@@ -100,7 +100,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsSuspended</span>
+                    <span translate="bssuiteApp.purchaseOrder.isSuspended">IsSuspended</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{purchaseOrder.isSuspended}}</span>
@@ -108,7 +108,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>supplier</span>
+                    <span translate="bssuiteApp.purchaseOrder.supplier">supplier</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="Supplier.detail({id:purchaseOrder.supplierId})">{{purchaseOrder.supplierId}}</a>
@@ -116,7 +116,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>supplierContact</span>
+                    <span translate="bssuiteApp.purchaseOrder.supplierContact">supplierContact</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="contact.detail({id:purchaseOrder.supplierContactId})">{{purchaseOrder.supplierContactId}}</a>
@@ -124,7 +124,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>supplierDeliveryContact</span>
+                    <span translate="bssuiteApp.purchaseOrder.supplierDeliveryContact">supplierDeliveryContact</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="contact.detail({id:purchaseOrder.supplierDeliveryContactId})">{{purchaseOrder.supplierDeliveryContactId}}</a>
@@ -132,7 +132,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>store</span>
+                    <span translate="bssuiteApp.purchaseOrder.store">store</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="store.detail({id:purchaseOrder.storeId})">{{purchaseOrder.storeId}}</a>
@@ -140,7 +140,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>salesOrder</span>
+                    <span translate="bssuiteApp.purchaseOrder.salesOrder">salesOrder</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="salesOrder.detail({id:purchaseOrder.salesOrderId})">{{purchaseOrder.salesOrderId}}</a>
@@ -148,7 +148,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>updatedByStaff</span>
+                    <span translate="bssuiteApp.purchaseOrder.updatedByStaff">updatedByStaff</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="staff.detail({id:purchaseOrder.updatedByStaffId})">{{purchaseOrder.updatedByStaffId}}</a>
@@ -156,7 +156,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>createdBy</span>
+                    <span translate="bssuiteApp.purchaseOrder.createdBy">createdBy</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="staff.detail({id:purchaseOrder.createdById})">{{purchaseOrder.createdById}}</a>
@@ -169,6 +169,6 @@
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
 </div>

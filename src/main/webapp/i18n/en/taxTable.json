@@ -1,0 +1,28 @@
+{
+    "bssuiteApp": {
+        "taxTable" : {
+            "home": {
+                "title": "TaxTables",
+                "createLabel": "Create a new TaxTable",
+                "createOrEditLabel": "Create or edit a TaxTable"
+            },
+            "created": "A new TaxTable is created with identifier {{ param }}",
+            "updated": "A TaxTable is updated with identifier {{ param }}",
+            "deleted": "A TaxTable is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete TaxTable {{ id }}?"
+            },
+            "detail": {
+                "title": "TaxTable"
+            },
+            "code": "Code",
+            "name": "Name",
+            "formula": "Formula",
+            "isAddedToTotal": "IsAddedToTotal",
+            "isSubtractedFromTotal": "IsSubtractedFromTotal",
+            "isExcludedOnReporting": "IsExcludedOnReporting",
+            "taxGroup": "TaxGroup",
+            "taxBase": "TaxBase"
+        }
+    }
+}

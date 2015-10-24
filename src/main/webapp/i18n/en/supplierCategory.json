@@ -1,0 +1,22 @@
+{
+    "bssuiteApp": {
+        "supplierCategory" : {
+            "home": {
+                "title": "SupplierCategorys",
+                "createLabel": "Create a new SupplierCategory",
+                "createOrEditLabel": "Create or edit a SupplierCategory"
+            },
+            "created": "A new SupplierCategory is created with identifier {{ param }}",
+            "updated": "A SupplierCategory is updated with identifier {{ param }}",
+            "deleted": "A SupplierCategory is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete SupplierCategory {{ id }}?"
+            },
+            "detail": {
+                "title": "SupplierCategory"
+            },
+            "code": "Code",
+            "name": "Name"
+        }
+    }
+}

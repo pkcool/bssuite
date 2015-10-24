@@ -1,18 +1,18 @@
 
 <div>
-    <h2><span>Invoice</span> {{invoice.id}}</h2>
+    <h2><span translate="bssuiteApp.invoice.detail.title">Invoice</span> {{invoice.id}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Field</th>
-                <th>Value</th>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>
-                    <span>InvoiceNo</span>
+                    <span translate="bssuiteApp.invoice.invoiceNo">InvoiceNo</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.invoiceNo}}</span>
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>InvoiceTxnType</span>
+                    <span translate="bssuiteApp.invoice.invoiceTxnType">InvoiceTxnType</span>
                 </td>
                 <td>
                     <span class="form-control-static" translate="{{'bssuiteApp.InvoiceTxnType.' + invoice.invoiceTxnType}}">{{invoice.invoiceTxnType}}</span>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>TxnDate</span>
+                    <span translate="bssuiteApp.invoice.txnDate">TxnDate</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.txnDate | date:'medium'}}</span>
@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>DueDate</span>
+                    <span translate="bssuiteApp.invoice.dueDate">DueDate</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.dueDate | date:'mediumDate'}}</span>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Reference</span>
+                    <span translate="bssuiteApp.invoice.reference">Reference</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.reference}}</span>
@@ -52,7 +52,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>OurRef</span>
+                    <span translate="bssuiteApp.invoice.ourRef">OurRef</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.ourRef}}</span>
@@ -60,7 +60,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>OurRef2</span>
+                    <span translate="bssuiteApp.invoice.ourRef2">OurRef2</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.ourRef2}}</span>
@@ -68,7 +68,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>OurRef3</span>
+                    <span translate="bssuiteApp.invoice.ourRef3">OurRef3</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.ourRef3}}</span>
@@ -76,7 +76,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>TaxExemptionCode</span>
+                    <span translate="bssuiteApp.invoice.taxExemptionCode">TaxExemptionCode</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.taxExemptionCode}}</span>
@@ -84,7 +84,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsPenaltyIssued</span>
+                    <span translate="bssuiteApp.invoice.isPenaltyIssued">IsPenaltyIssued</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.isPenaltyIssued}}</span>
@@ -92,7 +92,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Freight</span>
+                    <span translate="bssuiteApp.invoice.freight">Freight</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.freight}}</span>
@@ -100,7 +100,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>HandlingCharge</span>
+                    <span translate="bssuiteApp.invoice.handlingCharge">HandlingCharge</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.handlingCharge}}</span>
@@ -108,7 +108,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Charge2</span>
+                    <span translate="bssuiteApp.invoice.charge2">Charge2</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.charge2}}</span>
@@ -116,7 +116,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsTaxable</span>
+                    <span translate="bssuiteApp.invoice.isTaxable">IsTaxable</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.isTaxable}}</span>
@@ -124,7 +124,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsLocked</span>
+                    <span translate="bssuiteApp.invoice.isLocked">IsLocked</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.isLocked}}</span>
@@ -132,7 +132,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>AdjustTax</span>
+                    <span translate="bssuiteApp.invoice.adjustTax">AdjustTax</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.adjustTax}}</span>
@@ -140,7 +140,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>AdjustTaxExempt</span>
+                    <span translate="bssuiteApp.invoice.adjustTaxExempt">AdjustTaxExempt</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.adjustTaxExempt}}</span>
@@ -148,7 +148,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>PaymentCash</span>
+                    <span translate="bssuiteApp.invoice.paymentCash">PaymentCash</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.paymentCash}}</span>
@@ -156,7 +156,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>PaymentCheque</span>
+                    <span translate="bssuiteApp.invoice.paymentCheque">PaymentCheque</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.paymentCheque}}</span>
@@ -164,7 +164,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>PaymentCreditCard</span>
+                    <span translate="bssuiteApp.invoice.paymentCreditCard">PaymentCreditCard</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.paymentCreditCard}}</span>
@@ -172,7 +172,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>PaymentDirectDeposit</span>
+                    <span translate="bssuiteApp.invoice.paymentDirectDeposit">PaymentDirectDeposit</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.paymentDirectDeposit}}</span>
@@ -180,7 +180,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>PaymentVoucher</span>
+                    <span translate="bssuiteApp.invoice.paymentVoucher">PaymentVoucher</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.paymentVoucher}}</span>
@@ -188,7 +188,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>PaymentDirectDebit</span>
+                    <span translate="bssuiteApp.invoice.paymentDirectDebit">PaymentDirectDebit</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.paymentDirectDebit}}</span>
@@ -196,7 +196,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Payment1</span>
+                    <span translate="bssuiteApp.invoice.payment1">Payment1</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.payment1}}</span>
@@ -204,7 +204,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Payment2</span>
+                    <span translate="bssuiteApp.invoice.payment2">Payment2</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.payment2}}</span>
@@ -212,7 +212,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Bank</span>
+                    <span translate="bssuiteApp.invoice.bank">Bank</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.bank}}</span>
@@ -220,7 +220,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>BankBranch</span>
+                    <span translate="bssuiteApp.invoice.bankBranch">BankBranch</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.bankBranch}}</span>
@@ -228,7 +228,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>BankAccount</span>
+                    <span translate="bssuiteApp.invoice.bankAccount">BankAccount</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.bankAccount}}</span>
@@ -236,7 +236,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>DateOfDeposit</span>
+                    <span translate="bssuiteApp.invoice.dateOfDeposit">DateOfDeposit</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.dateOfDeposit | date:'mediumDate'}}</span>
@@ -244,7 +244,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>DrawerName</span>
+                    <span translate="bssuiteApp.invoice.drawerName">DrawerName</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.drawerName}}</span>
@@ -252,7 +252,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>NoAlloc</span>
+                    <span translate="bssuiteApp.invoice.NoAlloc">NoAlloc</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.NoAlloc}}</span>
@@ -260,7 +260,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>CoinRound</span>
+                    <span translate="bssuiteApp.invoice.coinRound">CoinRound</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.coinRound}}</span>
@@ -268,7 +268,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Prepayment</span>
+                    <span translate="bssuiteApp.invoice.prepayment">Prepayment</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.prepayment}}</span>
@@ -276,7 +276,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>In2</span>
+                    <span translate="bssuiteApp.invoice.in2">In2</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.in2}}</span>
@@ -284,7 +284,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Comment</span>
+                    <span translate="bssuiteApp.invoice.comment">Comment</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.comment}}</span>
@@ -292,7 +292,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>TotalTaxAmount</span>
+                    <span translate="bssuiteApp.invoice.totalTaxAmount">TotalTaxAmount</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.totalTaxAmount}}</span>
@@ -300,7 +300,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>TotalSellPrice</span>
+                    <span translate="bssuiteApp.invoice.totalSellPrice">TotalSellPrice</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.totalSellPrice}}</span>
@@ -308,7 +308,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>TotalCost</span>
+                    <span translate="bssuiteApp.invoice.totalCost">TotalCost</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.totalCost}}</span>
@@ -316,7 +316,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsOnHold</span>
+                    <span translate="bssuiteApp.invoice.isOnHold">IsOnHold</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.isOnHold}}</span>
@@ -324,7 +324,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsLayBy</span>
+                    <span translate="bssuiteApp.invoice.isLayBy">IsLayBy</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.isLayBy}}</span>
@@ -332,7 +332,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsExternalTxn</span>
+                    <span translate="bssuiteApp.invoice.isExternalTxn">IsExternalTxn</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.isExternalTxn}}</span>
@@ -340,7 +340,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsSuspended</span>
+                    <span translate="bssuiteApp.invoice.isSuspended">IsSuspended</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{invoice.isSuspended}}</span>
@@ -348,7 +348,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>GeneratedFrom</span>
+                    <span translate="bssuiteApp.invoice.generatedFrom">GeneratedFrom</span>
                 </td>
                 <td>
                     <span class="form-control-static" translate="{{'bssuiteApp.InvoiceSource.' + invoice.generatedFrom}}">{{invoice.generatedFrom}}</span>
@@ -356,7 +356,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>customer</span>
+                    <span translate="bssuiteApp.invoice.customer">customer</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="customer.detail({id:invoice.customerId})">{{invoice.customerId}}</a>
@@ -364,7 +364,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>billingCustomer</span>
+                    <span translate="bssuiteApp.invoice.billingCustomer">billingCustomer</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="customer.detail({id:invoice.billingCustomerId})">{{invoice.billingCustomerId}}</a>
@@ -372,7 +372,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>contact</span>
+                    <span translate="bssuiteApp.invoice.contact">contact</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="contact.detail({id:invoice.contactId})">{{invoice.contactId}}</a>
@@ -380,7 +380,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>deliveryContact</span>
+                    <span translate="bssuiteApp.invoice.deliveryContact">deliveryContact</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="contact.detail({id:invoice.deliveryContactId})">{{invoice.deliveryContactId}}</a>
@@ -388,7 +388,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>store</span>
+                    <span translate="bssuiteApp.invoice.store">store</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="store.detail({id:invoice.storeId})">{{invoice.storeId}}</a>
@@ -396,7 +396,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>carrier</span>
+                    <span translate="bssuiteApp.invoice.carrier">carrier</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="carrier.detail({id:invoice.carrierId})">{{invoice.carrierId}}</a>
@@ -404,7 +404,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>salesperson</span>
+                    <span translate="bssuiteApp.invoice.salesperson">salesperson</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="staff.detail({id:invoice.salespersonId})">{{invoice.salespersonId}}</a>
@@ -412,7 +412,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>promotion</span>
+                    <span translate="bssuiteApp.invoice.promotion">promotion</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="promotion.detail({id:invoice.promotionId})">{{invoice.promotionId}}</a>
@@ -420,7 +420,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>createdBy</span>
+                    <span translate="bssuiteApp.invoice.createdBy">createdBy</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="staff.detail({id:invoice.createdById})">{{invoice.createdById}}</a>
@@ -433,6 +433,6 @@
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
 </div>

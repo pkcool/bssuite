@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/taxTables',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'TaxTables'
+                    pageTitle: 'bssuiteApp.taxTable.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('taxTable');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('taxTable.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/taxTable/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'TaxTable'
+                    pageTitle: 'bssuiteApp.taxTable.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('taxTable');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'TaxTable', function($stateParams, TaxTable) {
                         return TaxTable.get({id : $stateParams.id});
                     }]

@@ -1,11 +1,11 @@
 <div>
-    <h2>BackOrderLineItems</h2>
+    <h2 translate="bssuiteApp.backOrderLineItem.home.title">BackOrderLineItems</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="backOrderLineItem.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new BackOrderLineItem</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="bssuiteApp.backOrderLineItem.home.createLabel">Create a new BackOrderLineItem</span>
                 </button>
             </div>
             <div class="col-md-8">
@@ -27,17 +27,17 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this BackOrderLineItem?</p>
+                        <p translate="bssuiteApp.backOrderLineItem.delete.question" translate-values="{id: '{{backOrderLineItem.id}}'}">Are you sure you want to delete this BackOrderLineItem?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -49,16 +49,16 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>IsReadyToRelease</th>
-                    <th>QtyAllocated</th>
-                    <th>IsMarkedForAutoPurchaseOrdering</th>
-                    <th>IsOnHold</th>
-                    <th>AllocatedDate</th>
-                    <th>Comment</th>
-                    <th>IsPicked</th>
-                    <th>IsMarked</th>
-                    <th>salesOrderLineItem</th>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="bssuiteApp.backOrderLineItem.isReadyToRelease">IsReadyToRelease</th>
+                    <th translate="bssuiteApp.backOrderLineItem.qtyAllocated">QtyAllocated</th>
+                    <th translate="bssuiteApp.backOrderLineItem.isMarkedForAutoPurchaseOrdering">IsMarkedForAutoPurchaseOrdering</th>
+                    <th translate="bssuiteApp.backOrderLineItem.isOnHold">IsOnHold</th>
+                    <th translate="bssuiteApp.backOrderLineItem.allocatedDate">AllocatedDate</th>
+                    <th translate="bssuiteApp.backOrderLineItem.comment">Comment</th>
+                    <th translate="bssuiteApp.backOrderLineItem.isPicked">IsPicked</th>
+                    <th translate="bssuiteApp.backOrderLineItem.isMarked">IsMarked</th>
+                    <th translate="bssuiteApp.backOrderLineItem.salesOrderLineItem">salesOrderLineItem</th>
                     <th></th>
                 </tr>
             </thead>
@@ -80,17 +80,17 @@
                         <button type="submit"
                                 ui-sref="backOrderLineItem.detail({id:backOrderLineItem.id})"
                                 class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ui-sref="backOrderLineItem.edit({id:backOrderLineItem.id})"
                                 class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(backOrderLineItem.id)"
                                 class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>

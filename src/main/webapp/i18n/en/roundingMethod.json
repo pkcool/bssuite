@@ -1,0 +1,10 @@
+{
+    "bssuiteApp": {
+        "RoundingMethod" : {
+            "null": "",
+            "UP": "UP",
+            "DOWN": "DOWN",
+            "NEAREST": "NEAREST"
+        }
+    }
+}

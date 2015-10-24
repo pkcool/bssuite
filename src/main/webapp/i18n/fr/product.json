@@ -1,0 +1,72 @@
+{
+    "bssuiteApp": {
+        "product" : {
+            "home": {
+                "title": "Products",
+                "createLabel": "Créer un nouveau Product",
+                "createOrEditLabel": "Créer ou éditer un Product"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Product {{ id }} ?"
+            },
+            "detail": {
+                "title": "Product"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "longDescription": "LongDescription",
+            "alternateCode": "AlternateCode",
+            "bin": "Bin",
+            "isOnSpecial": "IsOnSpecial",
+            "isOnHold": "IsOnHold",
+            "isInPricelistReports": "IsInPricelistReports",
+            "qtyOnOrder": "QtyOnOrder",
+            "qtyStockOnHold": "QtyStockOnHold",
+            "qtyBackordered": "QtyBackordered",
+            "qtyAllocated": "QtyAllocated",
+            "qtyBackorderHold": "QtyBackorderHold",
+            "qtyConsigned": "QtyConsigned",
+            "qtyWarehouseReceived": "QtyWarehouseReceived",
+            "qtyStocktakeVariance": "QtyStocktakeVariance",
+            "qtyTransitIn": "QtyTransitIn",
+            "qtyTransitOut": "QtyTransitOut",
+            "cost": "Cost",
+            "wholesaleListPrice": "WholesaleListPrice",
+            "listPrice": "ListPrice",
+            "tradePrice": "TradePrice",
+            "boxCost": "BoxCost",
+            "unitMeasure": "UnitMeasure",
+            "boxMeasure": "BoxMeasure",
+            "boxConversionFactor": "BoxConversionFactor",
+            "weight": "Weight",
+            "volumn": "Volumn",
+            "serviceCover": "ServiceCover",
+            "qtyFloorLevel": "QtyFloorLevel",
+            "qtyReorderLevel": "QtyReorderLevel",
+            "qtyOverstockLevel": "QtyOverstockLevel",
+            "isComment": "IsComment",
+            "isDiminishing": "IsDiminishing",
+            "isNonTaxExeptable": "IsNonTaxExeptable",
+            "leadTime": "LeadTime",
+            "purchaseUnit": "PurchaseUnit",
+            "estMonthlySales": "EstMonthlySales",
+            "dateFirstSale": "DateFirstSale",
+            "dateLastSale": "DateLastSale",
+            "dateFirstOrder": "DateFirstOrder",
+            "dateCreated": "DateCreated",
+            "dateLastDelivery": "DateLastDelivery",
+            "dateNextDelivery": "DateNextDelivery",
+            "dateLastTransfer": "DateLastTransfer",
+            "dateLastOrder": "DateLastOrder",
+            "dateLastStocktake": "DateLastStocktake",
+            "isArchived": "IsArchived",
+            "classCode": "ClassCode",
+            "stockGroup": "StockGroup",
+            "supplier": "Supplier",
+            "store": "Store",
+            "taxRate": "TaxRate"
+        }
+    }
+}
+

@@ -1,0 +1,38 @@
+{
+    "bssuiteApp": {
+        "purchaseOrder" : {
+            "home": {
+                "title": "PurchaseOrders",
+                "createLabel": "Créer un nouveau PurchaseOrder",
+                "createOrEditLabel": "Créer ou éditer un PurchaseOrder"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le PurchaseOrder {{ id }} ?"
+            },
+            "detail": {
+                "title": "PurchaseOrder"
+            },
+            "orderNo": "OrderNo",
+            "status": "Status",
+            "createdDate": "CreatedDate",
+            "ref": "Ref",
+            "expectedDeliveryDate": "ExpectedDeliveryDate",
+            "isTaxable": "IsTaxable",
+            "isLocked": "IsLocked",
+            "comment": "Comment",
+            "totalTaxAmount": "TotalTaxAmount",
+            "totalCost": "TotalCost",
+            "taxExemptionCode": "TaxExemptionCode",
+            "isSuspended": "IsSuspended",
+            "supplier": "Supplier",
+            "supplierContact": "SupplierContact",
+            "supplierDeliveryContact": "SupplierDeliveryContact",
+            "store": "Store",
+            "salesOrder": "SalesOrder",
+            "updatedByStaff": "UpdatedByStaff",
+            "createdBy": "CreatedBy",
+            "purchaseOrderLineItems": "PurchaseOrderLineItems"
+        }
+    }
+}
+

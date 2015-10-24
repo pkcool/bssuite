@@ -1,11 +1,11 @@
 <div>
-    <h2>SalesOrders</h2>
+    <h2 translate="bssuiteApp.salesOrder.home.title">SalesOrders</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="salesOrder.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new SalesOrder</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="bssuiteApp.salesOrder.home.createLabel">Create a new SalesOrder</span>
                 </button>
             </div>
             <div class="col-md-8">
@@ -27,17 +27,17 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this SalesOrder?</p>
+                        <p translate="bssuiteApp.salesOrder.delete.question" translate-values="{id: '{{salesOrder.id}}'}">Are you sure you want to delete this SalesOrder?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -49,36 +49,36 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>OrderNo</th>
-                    <th>Status</th>
-                    <th>TxnDate</th>
-                    <th>ForwardDate</th>
-                    <th>RequiredDate</th>
-                    <th>CustomerOrderNo</th>
-                    <th>OurRef</th>
-                    <th>Freight</th>
-                    <th>HandlingCharge</th>
-                    <th>Charge2</th>
-                    <th>IsTaxable</th>
-                    <th>IsLocked</th>
-                    <th>AdjustTax</th>
-                    <th>AdjustTaxExempt</th>
-                    <th>Prepayment</th>
-                    <th>PrepaymentNo</th>
-                    <th>Comment</th>
-                    <th>TotalTaxAmount</th>
-                    <th>TotalSellPrice</th>
-                    <th>TotalCost</th>
-                    <th>IsSuspended</th>
-                    <th>customer</th>
-                    <th>contact</th>
-                    <th>deliveryContact</th>
-                    <th>store</th>
-                    <th>carrier</th>
-                    <th>salesperson</th>
-                    <th>promotion</th>
-                    <th>createdBy</th>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="bssuiteApp.salesOrder.orderNo">OrderNo</th>
+                    <th translate="bssuiteApp.salesOrder.status">Status</th>
+                    <th translate="bssuiteApp.salesOrder.txnDate">TxnDate</th>
+                    <th translate="bssuiteApp.salesOrder.forwardDate">ForwardDate</th>
+                    <th translate="bssuiteApp.salesOrder.requiredDate">RequiredDate</th>
+                    <th translate="bssuiteApp.salesOrder.customerOrderNo">CustomerOrderNo</th>
+                    <th translate="bssuiteApp.salesOrder.ourRef">OurRef</th>
+                    <th translate="bssuiteApp.salesOrder.freight">Freight</th>
+                    <th translate="bssuiteApp.salesOrder.handlingCharge">HandlingCharge</th>
+                    <th translate="bssuiteApp.salesOrder.charge2">Charge2</th>
+                    <th translate="bssuiteApp.salesOrder.isTaxable">IsTaxable</th>
+                    <th translate="bssuiteApp.salesOrder.isLocked">IsLocked</th>
+                    <th translate="bssuiteApp.salesOrder.adjustTax">AdjustTax</th>
+                    <th translate="bssuiteApp.salesOrder.adjustTaxExempt">AdjustTaxExempt</th>
+                    <th translate="bssuiteApp.salesOrder.prepayment">Prepayment</th>
+                    <th translate="bssuiteApp.salesOrder.prepaymentNo">PrepaymentNo</th>
+                    <th translate="bssuiteApp.salesOrder.comment">Comment</th>
+                    <th translate="bssuiteApp.salesOrder.totalTaxAmount">TotalTaxAmount</th>
+                    <th translate="bssuiteApp.salesOrder.totalSellPrice">TotalSellPrice</th>
+                    <th translate="bssuiteApp.salesOrder.totalCost">TotalCost</th>
+                    <th translate="bssuiteApp.salesOrder.isSuspended">IsSuspended</th>
+                    <th translate="bssuiteApp.salesOrder.customer">customer</th>
+                    <th translate="bssuiteApp.salesOrder.contact">contact</th>
+                    <th translate="bssuiteApp.salesOrder.deliveryContact">deliveryContact</th>
+                    <th translate="bssuiteApp.salesOrder.store">store</th>
+                    <th translate="bssuiteApp.salesOrder.carrier">carrier</th>
+                    <th translate="bssuiteApp.salesOrder.salesperson">salesperson</th>
+                    <th translate="bssuiteApp.salesOrder.promotion">promotion</th>
+                    <th translate="bssuiteApp.salesOrder.createdBy">createdBy</th>
                     <th></th>
                 </tr>
             </thead>
@@ -134,17 +134,17 @@
                         <button type="submit"
                                 ui-sref="salesOrder.detail({id:salesOrder.id})"
                                 class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ui-sref="salesOrder.edit({id:salesOrder.id})"
                                 class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(salesOrder.id)"
                                 class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>

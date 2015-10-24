@@ -4,352 +4,352 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="myProductLabel">Create or edit a Product</h4>
+        <h4 class="modal-title" id="myProductLabel" translate="bssuiteApp.product.home.createOrEditLabel">Create or edit a Product</h4>
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
         <div class="form-group">
-            <label for="id">ID</label>
+            <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="product.id" readonly />
         </div>
         <div class="form-group">
-            <label for="field_code">Code</label>
+            <label translate="bssuiteApp.product.code" for="field_code">Code</label>
             <input type="text" class="form-control" name="code" id="field_code"
                     ng-model="product.code"
                     required />
             <div ng-show="editForm.code.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.code.$error.required">
+                    ng-show="editForm.code.$error.required" translate="entity.validation.required">
                     This field is required.
                 </p>
             </div>
         </div>
         <div class="form-group">
-            <label for="field_name">Name</label>
+            <label translate="bssuiteApp.product.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                     ng-model="product.name"
                      />
         </div>
         <div class="form-group">
-            <label for="field_description">Description</label>
+            <label translate="bssuiteApp.product.description" for="field_description">Description</label>
             <input type="text" class="form-control" name="description" id="field_description"
                     ng-model="product.description"
                      />
         </div>
         <div class="form-group">
-            <label for="field_longDescription">LongDescription</label>
+            <label translate="bssuiteApp.product.longDescription" for="field_longDescription">LongDescription</label>
             <input type="text" class="form-control" name="longDescription" id="field_longDescription"
                     ng-model="product.longDescription"
                      />
         </div>
         <div class="form-group">
-            <label for="field_alternateCode">AlternateCode</label>
+            <label translate="bssuiteApp.product.alternateCode" for="field_alternateCode">AlternateCode</label>
             <input type="text" class="form-control" name="alternateCode" id="field_alternateCode"
                     ng-model="product.alternateCode"
                      />
         </div>
         <div class="form-group">
-            <label for="field_bin">Bin</label>
+            <label translate="bssuiteApp.product.bin" for="field_bin">Bin</label>
             <input type="text" class="form-control" name="bin" id="field_bin"
                     ng-model="product.bin"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isOnSpecial">IsOnSpecial</label>
+            <label translate="bssuiteApp.product.isOnSpecial" for="field_isOnSpecial">IsOnSpecial</label>
             <input type="checkbox" class="form-control" name="isOnSpecial" id="field_isOnSpecial"
                     ng-model="product.isOnSpecial"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isOnHold">IsOnHold</label>
+            <label translate="bssuiteApp.product.isOnHold" for="field_isOnHold">IsOnHold</label>
             <input type="checkbox" class="form-control" name="isOnHold" id="field_isOnHold"
                     ng-model="product.isOnHold"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isInPricelistReports">IsInPricelistReports</label>
+            <label translate="bssuiteApp.product.isInPricelistReports" for="field_isInPricelistReports">IsInPricelistReports</label>
             <input type="checkbox" class="form-control" name="isInPricelistReports" id="field_isInPricelistReports"
                     ng-model="product.isInPricelistReports"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyOnOrder">QtyOnOrder</label>
+            <label translate="bssuiteApp.product.qtyOnOrder" for="field_qtyOnOrder">QtyOnOrder</label>
             <input type="number" class="form-control" name="qtyOnOrder" id="field_qtyOnOrder"
                     ng-model="product.qtyOnOrder"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyStockOnHold">QtyStockOnHold</label>
+            <label translate="bssuiteApp.product.qtyStockOnHold" for="field_qtyStockOnHold">QtyStockOnHold</label>
             <input type="number" class="form-control" name="qtyStockOnHold" id="field_qtyStockOnHold"
                     ng-model="product.qtyStockOnHold"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyBackordered">QtyBackordered</label>
+            <label translate="bssuiteApp.product.qtyBackordered" for="field_qtyBackordered">QtyBackordered</label>
             <input type="number" class="form-control" name="qtyBackordered" id="field_qtyBackordered"
                     ng-model="product.qtyBackordered"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyAllocated">QtyAllocated</label>
+            <label translate="bssuiteApp.product.qtyAllocated" for="field_qtyAllocated">QtyAllocated</label>
             <input type="number" class="form-control" name="qtyAllocated" id="field_qtyAllocated"
                     ng-model="product.qtyAllocated"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyBackorderHold">QtyBackorderHold</label>
+            <label translate="bssuiteApp.product.qtyBackorderHold" for="field_qtyBackorderHold">QtyBackorderHold</label>
             <input type="number" class="form-control" name="qtyBackorderHold" id="field_qtyBackorderHold"
                     ng-model="product.qtyBackorderHold"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyConsigned">QtyConsigned</label>
+            <label translate="bssuiteApp.product.qtyConsigned" for="field_qtyConsigned">QtyConsigned</label>
             <input type="number" class="form-control" name="qtyConsigned" id="field_qtyConsigned"
                     ng-model="product.qtyConsigned"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyWarehouseReceived">QtyWarehouseReceived</label>
+            <label translate="bssuiteApp.product.qtyWarehouseReceived" for="field_qtyWarehouseReceived">QtyWarehouseReceived</label>
             <input type="number" class="form-control" name="qtyWarehouseReceived" id="field_qtyWarehouseReceived"
                     ng-model="product.qtyWarehouseReceived"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyStocktakeVariance">QtyStocktakeVariance</label>
+            <label translate="bssuiteApp.product.qtyStocktakeVariance" for="field_qtyStocktakeVariance">QtyStocktakeVariance</label>
             <input type="number" class="form-control" name="qtyStocktakeVariance" id="field_qtyStocktakeVariance"
                     ng-model="product.qtyStocktakeVariance"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyTransitIn">QtyTransitIn</label>
+            <label translate="bssuiteApp.product.qtyTransitIn" for="field_qtyTransitIn">QtyTransitIn</label>
             <input type="number" class="form-control" name="qtyTransitIn" id="field_qtyTransitIn"
                     ng-model="product.qtyTransitIn"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyTransitOut">QtyTransitOut</label>
+            <label translate="bssuiteApp.product.qtyTransitOut" for="field_qtyTransitOut">QtyTransitOut</label>
             <input type="number" class="form-control" name="qtyTransitOut" id="field_qtyTransitOut"
                     ng-model="product.qtyTransitOut"
                      />
         </div>
         <div class="form-group">
-            <label for="field_cost">Cost</label>
+            <label translate="bssuiteApp.product.cost" for="field_cost">Cost</label>
             <input type="number" class="form-control" name="cost" id="field_cost"
                     ng-model="product.cost"
                     min="0" />
             <div ng-show="editForm.cost.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.cost.$error.min" translate-value-min="0">
+                    ng-show="editForm.cost.$error.min" translate="entity.validation.min" translate-value-min="0">
                     This field should be more than 0.
                 </p>
                 <p class="help-block"
-                    ng-show="editForm.cost.$error.number">
+                    ng-show="editForm.cost.$error.number" translate="entity.validation.number">
                     This field should be a number.
                 </p>
             </div>
         </div>
         <div class="form-group">
-            <label for="field_wholesaleListPrice">WholesaleListPrice</label>
+            <label translate="bssuiteApp.product.wholesaleListPrice" for="field_wholesaleListPrice">WholesaleListPrice</label>
             <input type="number" class="form-control" name="wholesaleListPrice" id="field_wholesaleListPrice"
                     ng-model="product.wholesaleListPrice"
                      />
         </div>
         <div class="form-group">
-            <label for="field_listPrice">ListPrice</label>
+            <label translate="bssuiteApp.product.listPrice" for="field_listPrice">ListPrice</label>
             <input type="number" class="form-control" name="listPrice" id="field_listPrice"
                     ng-model="product.listPrice"
                      />
         </div>
         <div class="form-group">
-            <label for="field_tradePrice">TradePrice</label>
+            <label translate="bssuiteApp.product.tradePrice" for="field_tradePrice">TradePrice</label>
             <input type="number" class="form-control" name="tradePrice" id="field_tradePrice"
                     ng-model="product.tradePrice"
                      />
         </div>
         <div class="form-group">
-            <label for="field_boxCost">BoxCost</label>
+            <label translate="bssuiteApp.product.boxCost" for="field_boxCost">BoxCost</label>
             <input type="number" class="form-control" name="boxCost" id="field_boxCost"
                     ng-model="product.boxCost"
                      />
         </div>
         <div class="form-group">
-            <label for="field_unitMeasure">UnitMeasure</label>
+            <label translate="bssuiteApp.product.unitMeasure" for="field_unitMeasure">UnitMeasure</label>
             <input type="text" class="form-control" name="unitMeasure" id="field_unitMeasure"
                     ng-model="product.unitMeasure"
                      />
         </div>
         <div class="form-group">
-            <label for="field_boxMeasure">BoxMeasure</label>
+            <label translate="bssuiteApp.product.boxMeasure" for="field_boxMeasure">BoxMeasure</label>
             <input type="text" class="form-control" name="boxMeasure" id="field_boxMeasure"
                     ng-model="product.boxMeasure"
                      />
         </div>
         <div class="form-group">
-            <label for="field_boxConversionFactor">BoxConversionFactor</label>
+            <label translate="bssuiteApp.product.boxConversionFactor" for="field_boxConversionFactor">BoxConversionFactor</label>
             <input type="number" class="form-control" name="boxConversionFactor" id="field_boxConversionFactor"
                     ng-model="product.boxConversionFactor"
                      />
         </div>
         <div class="form-group">
-            <label for="field_weight">Weight</label>
+            <label translate="bssuiteApp.product.weight" for="field_weight">Weight</label>
             <input type="number" class="form-control" name="weight" id="field_weight"
                     ng-model="product.weight"
                      />
         </div>
         <div class="form-group">
-            <label for="field_volumn">Volumn</label>
+            <label translate="bssuiteApp.product.volumn" for="field_volumn">Volumn</label>
             <input type="number" class="form-control" name="volumn" id="field_volumn"
                     ng-model="product.volumn"
                      />
         </div>
         <div class="form-group">
-            <label for="field_serviceCover">ServiceCover</label>
+            <label translate="bssuiteApp.product.serviceCover" for="field_serviceCover">ServiceCover</label>
             <input type="number" class="form-control" name="serviceCover" id="field_serviceCover"
                     ng-model="product.serviceCover"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyFloorLevel">QtyFloorLevel</label>
+            <label translate="bssuiteApp.product.qtyFloorLevel" for="field_qtyFloorLevel">QtyFloorLevel</label>
             <input type="number" class="form-control" name="qtyFloorLevel" id="field_qtyFloorLevel"
                     ng-model="product.qtyFloorLevel"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyReorderLevel">QtyReorderLevel</label>
+            <label translate="bssuiteApp.product.qtyReorderLevel" for="field_qtyReorderLevel">QtyReorderLevel</label>
             <input type="number" class="form-control" name="qtyReorderLevel" id="field_qtyReorderLevel"
                     ng-model="product.qtyReorderLevel"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyOverstockLevel">QtyOverstockLevel</label>
+            <label translate="bssuiteApp.product.qtyOverstockLevel" for="field_qtyOverstockLevel">QtyOverstockLevel</label>
             <input type="number" class="form-control" name="qtyOverstockLevel" id="field_qtyOverstockLevel"
                     ng-model="product.qtyOverstockLevel"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isComment">IsComment</label>
+            <label translate="bssuiteApp.product.isComment" for="field_isComment">IsComment</label>
             <input type="checkbox" class="form-control" name="isComment" id="field_isComment"
                     ng-model="product.isComment"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isDiminishing">IsDiminishing</label>
+            <label translate="bssuiteApp.product.isDiminishing" for="field_isDiminishing">IsDiminishing</label>
             <input type="checkbox" class="form-control" name="isDiminishing" id="field_isDiminishing"
                     ng-model="product.isDiminishing"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isNonTaxExeptable">IsNonTaxExeptable</label>
+            <label translate="bssuiteApp.product.isNonTaxExeptable" for="field_isNonTaxExeptable">IsNonTaxExeptable</label>
             <input type="checkbox" class="form-control" name="isNonTaxExeptable" id="field_isNonTaxExeptable"
                     ng-model="product.isNonTaxExeptable"
                      />
         </div>
         <div class="form-group">
-            <label for="field_leadTime">LeadTime</label>
+            <label translate="bssuiteApp.product.leadTime" for="field_leadTime">LeadTime</label>
             <input type="number" class="form-control" name="leadTime" id="field_leadTime"
                     ng-model="product.leadTime"
                      />
         </div>
         <div class="form-group">
-            <label for="field_purchaseUnit">PurchaseUnit</label>
+            <label translate="bssuiteApp.product.purchaseUnit" for="field_purchaseUnit">PurchaseUnit</label>
             <input type="number" class="form-control" name="purchaseUnit" id="field_purchaseUnit"
                     ng-model="product.purchaseUnit"
                      />
         </div>
         <div class="form-group">
-            <label for="field_estMonthlySales">EstMonthlySales</label>
+            <label translate="bssuiteApp.product.estMonthlySales" for="field_estMonthlySales">EstMonthlySales</label>
             <input type="number" class="form-control" name="estMonthlySales" id="field_estMonthlySales"
                     ng-model="product.estMonthlySales"
                      />
         </div>
         <div class="form-group">
-            <label for="field_dateFirstSale">DateFirstSale</label>
+            <label translate="bssuiteApp.product.dateFirstSale" for="field_dateFirstSale">DateFirstSale</label>
             <input type="date" class="form-control" name="dateFirstSale" id="field_dateFirstSale"
                     ng-model="product.dateFirstSale"
                      />
         </div>
         <div class="form-group">
-            <label for="field_dateLastSale">DateLastSale</label>
+            <label translate="bssuiteApp.product.dateLastSale" for="field_dateLastSale">DateLastSale</label>
             <input type="date" class="form-control" name="dateLastSale" id="field_dateLastSale"
                     ng-model="product.dateLastSale"
                      />
         </div>
         <div class="form-group">
-            <label for="field_dateFirstOrder">DateFirstOrder</label>
+            <label translate="bssuiteApp.product.dateFirstOrder" for="field_dateFirstOrder">DateFirstOrder</label>
             <input type="date" class="form-control" name="dateFirstOrder" id="field_dateFirstOrder"
                     ng-model="product.dateFirstOrder"
                      />
         </div>
         <div class="form-group">
-            <label for="field_dateCreated">DateCreated</label>
+            <label translate="bssuiteApp.product.dateCreated" for="field_dateCreated">DateCreated</label>
             <input type="date" class="form-control" name="dateCreated" id="field_dateCreated"
                     ng-model="product.dateCreated"
                      />
         </div>
         <div class="form-group">
-            <label for="field_dateLastDelivery">DateLastDelivery</label>
+            <label translate="bssuiteApp.product.dateLastDelivery" for="field_dateLastDelivery">DateLastDelivery</label>
             <input type="date" class="form-control" name="dateLastDelivery" id="field_dateLastDelivery"
                     ng-model="product.dateLastDelivery"
                      />
         </div>
         <div class="form-group">
-            <label for="field_dateNextDelivery">DateNextDelivery</label>
+            <label translate="bssuiteApp.product.dateNextDelivery" for="field_dateNextDelivery">DateNextDelivery</label>
             <input type="date" class="form-control" name="dateNextDelivery" id="field_dateNextDelivery"
                     ng-model="product.dateNextDelivery"
                      />
         </div>
         <div class="form-group">
-            <label for="field_dateLastTransfer">DateLastTransfer</label>
+            <label translate="bssuiteApp.product.dateLastTransfer" for="field_dateLastTransfer">DateLastTransfer</label>
             <input type="date" class="form-control" name="dateLastTransfer" id="field_dateLastTransfer"
                     ng-model="product.dateLastTransfer"
                      />
         </div>
         <div class="form-group">
-            <label for="field_dateLastOrder">DateLastOrder</label>
+            <label translate="bssuiteApp.product.dateLastOrder" for="field_dateLastOrder">DateLastOrder</label>
             <input type="date" class="form-control" name="dateLastOrder" id="field_dateLastOrder"
                     ng-model="product.dateLastOrder"
                      />
         </div>
         <div class="form-group">
-            <label for="field_dateLastStocktake">DateLastStocktake</label>
+            <label translate="bssuiteApp.product.dateLastStocktake" for="field_dateLastStocktake">DateLastStocktake</label>
             <input type="date" class="form-control" name="dateLastStocktake" id="field_dateLastStocktake"
                     ng-model="product.dateLastStocktake"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isArchived">IsArchived</label>
+            <label translate="bssuiteApp.product.isArchived" for="field_isArchived">IsArchived</label>
             <input type="checkbox" class="form-control" name="isArchived" id="field_isArchived"
                     ng-model="product.isArchived"
                      />
         </div>
         <div class="form-group">
-            <label for="field_classCode">ClassCode</label>
+            <label translate="bssuiteApp.product.classCode" for="field_classCode">ClassCode</label>
             <input type="text" class="form-control" name="classCode" id="field_classCode"
                     ng-model="product.classCode"
                      />
         </div>
 
         <div class="form-group">
-            <label for="field_stockGroup">stockGroup</label>
+            <label translate="bssuiteApp.product.stockGroup" for="field_stockGroup">stockGroup</label>
             <select class="form-control" id="field_stockGroup" name="stockGroup" ng-model="product.stockGroupId" ng-options="stockGroup.id as stockGroup.id for stockGroup in stockgroups">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_supplier">supplier</label>
+            <label translate="bssuiteApp.product.supplier" for="field_supplier">supplier</label>
             <select class="form-control" id="field_supplier" name="supplier" ng-model="product.supplierId" ng-options="supplier.id as supplier.id for supplier in suppliers">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_store">store</label>
+            <label translate="bssuiteApp.product.store" for="field_store">store</label>
             <select class="form-control" id="field_store" name="store" ng-model="product.storeId" ng-options="store.id as store.id for store in stores">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_taxRate">taxRate</label>
+            <label translate="bssuiteApp.product.taxRate" for="field_taxRate">taxRate</label>
             <select class="form-control" id="field_taxRate" name="taxRate" ng-model="product.taxRateId" ng-options="taxTable.id as taxTable.id for taxTable in taxtables">
                 <option value=""></option>
             </select>
@@ -357,10 +357,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
         </button>
     </div>
 </form>

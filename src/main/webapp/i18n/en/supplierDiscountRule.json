@@ -1,0 +1,39 @@
+{
+    "bssuiteApp": {
+        "supplierDiscountRule" : {
+            "home": {
+                "title": "SupplierDiscountRules",
+                "createLabel": "Create a new SupplierDiscountRule",
+                "createOrEditLabel": "Create or edit a SupplierDiscountRule"
+            },
+            "created": "A new SupplierDiscountRule is created with identifier {{ param }}",
+            "updated": "A SupplierDiscountRule is updated with identifier {{ param }}",
+            "deleted": "A SupplierDiscountRule is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete SupplierDiscountRule {{ id }}?"
+            },
+            "detail": {
+                "title": "SupplierDiscountRule"
+            },
+            "supplierCode": "SupplierCode",
+            "ruleNo": "RuleNo",
+            "isAppliedToSales": "IsAppliedToSales",
+            "isAppliedOnSpecialItemsOnly": "IsAppliedOnSpecialItemsOnly",
+            "customerCode": "CustomerCode",
+            "customerCategoryCode": "CustomerCategoryCode",
+            "productCode": "ProductCode",
+            "startDate": "StartDate",
+            "endDate": "EndDate",
+            "qtyBreak": "QtyBreak",
+            "fromStockGroupCode": "FromStockGroupCode",
+            "toStockGroupCode": "ToStockGroupCode",
+            "taxCode": "TaxCode",
+            "isAppliedWhenTaxExempt": "IsAppliedWhenTaxExempt",
+            "storeCode": "StoreCode",
+            "discountName": "DiscountName",
+            "stockFamilyCode": "StockFamilyCode",
+            "cost": "Cost",
+            "discountFormula": "DiscountFormula"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "bssuiteApp": {
+        "backOrderLineItem" : {
+            "home": {
+                "title": "BackOrderLineItems",
+                "createLabel": "Créer un nouveau BackOrderLineItem",
+                "createOrEditLabel": "Créer ou éditer un BackOrderLineItem"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le BackOrderLineItem {{ id }} ?"
+            },
+            "detail": {
+                "title": "BackOrderLineItem"
+            },
+            "isReadyToRelease": "IsReadyToRelease",
+            "qtyAllocated": "QtyAllocated",
+            "isMarkedForAutoPurchaseOrdering": "IsMarkedForAutoPurchaseOrdering",
+            "isOnHold": "IsOnHold",
+            "allocatedDate": "AllocatedDate",
+            "comment": "Comment",
+            "isPicked": "IsPicked",
+            "isMarked": "IsMarked",
+            "salesOrderLineItem": "SalesOrderLineItem"
+        }
+    }
+}
+

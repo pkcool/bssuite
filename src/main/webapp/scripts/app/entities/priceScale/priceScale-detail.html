@@ -1,18 +1,18 @@
 
 <div>
-    <h2><span>PriceScale</span> {{priceScale.id}}</h2>
+    <h2><span translate="bssuiteApp.priceScale.detail.title">PriceScale</span> {{priceScale.id}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Field</th>
-                <th>Value</th>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>
-                    <span>Code</span>
+                    <span translate="bssuiteApp.priceScale.code">Code</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{priceScale.code}}</span>
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Name</span>
+                    <span translate="bssuiteApp.priceScale.name">Name</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{priceScale.name}}</span>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Price</span>
+                    <span translate="bssuiteApp.priceScale.price">Price</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{priceScale.price}}</span>
@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Value</span>
+                    <span translate="bssuiteApp.priceScale.value">Value</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{priceScale.value}}</span>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Round</span>
+                    <span translate="bssuiteApp.priceScale.round">Round</span>
                 </td>
                 <td>
                     <span class="form-control-static" translate="{{'bssuiteApp.RoundingMethod.' + priceScale.round}}">{{priceScale.round}}</span>
@@ -57,6 +57,6 @@
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
 </div>

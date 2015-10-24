@@ -1,18 +1,18 @@
 
 <div>
-    <h2><span>Promotion</span> {{promotion.id}}</h2>
+    <h2><span translate="bssuiteApp.promotion.detail.title">Promotion</span> {{promotion.id}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Field</th>
-                <th>Value</th>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>
-                    <span>Code</span>
+                    <span translate="bssuiteApp.promotion.code">Code</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{promotion.code}}</span>
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Name</span>
+                    <span translate="bssuiteApp.promotion.name">Name</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{promotion.name}}</span>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Description</span>
+                    <span translate="bssuiteApp.promotion.description">Description</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{promotion.description}}</span>
@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>StartDate</span>
+                    <span translate="bssuiteApp.promotion.startDate">StartDate</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{promotion.startDate | date:'mediumDate'}}</span>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>EndDate</span>
+                    <span translate="bssuiteApp.promotion.endDate">EndDate</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{promotion.endDate | date:'mediumDate'}}</span>
@@ -52,7 +52,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Cost</span>
+                    <span translate="bssuiteApp.promotion.cost">Cost</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{promotion.cost}}</span>
@@ -60,7 +60,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Income</span>
+                    <span translate="bssuiteApp.promotion.income">Income</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{promotion.income}}</span>
@@ -68,7 +68,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Expense</span>
+                    <span translate="bssuiteApp.promotion.expense">Expense</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{promotion.expense}}</span>
@@ -76,7 +76,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>DateCreated</span>
+                    <span translate="bssuiteApp.promotion.dateCreated">DateCreated</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{promotion.dateCreated | date:'mediumDate'}}</span>
@@ -84,7 +84,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>store</span>
+                    <span translate="bssuiteApp.promotion.store">store</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="store.detail({id:promotion.store.id})">{{promotion.store.id}}</a>
@@ -97,6 +97,6 @@
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
 </div>

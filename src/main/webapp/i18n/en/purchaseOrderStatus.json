@@ -1,0 +1,12 @@
+{
+    "bssuiteApp": {
+        "PurchaseOrderStatus" : {
+            "null": "",
+            "ONORDER": "ONORDER",
+            "DELIVERED": "DELIVERED",
+            "CANCELLED": "CANCELLED",
+            "PARTIALFILL": "PARTIALFILL",
+            "SUSPENDED": "SUSPENDED"
+        }
+    }
+}

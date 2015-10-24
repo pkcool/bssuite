@@ -1,0 +1,36 @@
+{
+    "bssuiteApp": {
+        "purchaseOrderLineItem" : {
+            "home": {
+                "title": "PurchaseOrderLineItems",
+                "createLabel": "Créer un nouveau PurchaseOrderLineItem",
+                "createOrEditLabel": "Créer ou éditer un PurchaseOrderLineItem"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le PurchaseOrderLineItem {{ id }} ?"
+            },
+            "detail": {
+                "title": "PurchaseOrderLineItem"
+            },
+            "description": "Description",
+            "cost": "Cost",
+            "listPrice": "ListPrice",
+            "qtyOrdered": "QtyOrdered",
+            "qtyDelivered": "QtyDelivered",
+            "qtyPreviouslyDelivered": "QtyPreviouslyDelivered",
+            "qtyImported": "QtyImported",
+            "totalTaxCharge": "TotalTaxCharge",
+            "discountPercentage": "DiscountPercentage",
+            "lineNo": "LineNo",
+            "listPriceDiscount": "ListPriceDiscount",
+            "unitMeasure": "UnitMeasure",
+            "isHidden": "IsHidden",
+            "Ref1": "Ref1",
+            "Ref2": "Ref2",
+            "purchaseOrder": "PurchaseOrder",
+            "product": "Product",
+            "taxRate": "TaxRate"
+        }
+    }
+}
+

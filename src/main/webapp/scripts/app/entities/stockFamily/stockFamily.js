@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/stockFamilys',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'StockFamilys'
+                    pageTitle: 'bssuiteApp.stockFamily.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('stockFamily');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('stockFamily.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/stockFamily/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'StockFamily'
+                    pageTitle: 'bssuiteApp.stockFamily.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('stockFamily');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'StockFamily', function($stateParams, StockFamily) {
                         return StockFamily.get({id : $stateParams.id});
                     }]

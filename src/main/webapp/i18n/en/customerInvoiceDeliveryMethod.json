@@ -1,0 +1,11 @@
+{
+    "bssuiteApp": {
+        "CustomerInvoiceDeliveryMethod" : {
+            "null": "",
+            "EMAIL": "EMAIL",
+            "FAX": "FAX",
+            "POST": "POST",
+            "PRINT": "PRINT"
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "bssuiteApp": {
+        "store" : {
+            "home": {
+                "title": "Stores",
+                "createLabel": "Create a new Store",
+                "createOrEditLabel": "Create or edit a Store"
+            },
+            "created": "A new Store is created with identifier {{ param }}",
+            "updated": "A Store is updated with identifier {{ param }}",
+            "deleted": "A Store is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Store {{ id }}?"
+            },
+            "detail": {
+                "title": "Store"
+            },
+            "code": "Code",
+            "name": "Name",
+            "address1": "Address1",
+            "address2": "Address2",
+            "suburb": "Suburb",
+            "state": "State",
+            "postcode": "Postcode",
+            "country": "Country",
+            "phone": "Phone",
+            "fax": "Fax",
+            "email": "Email",
+            "webUrl": "WebUrl",
+            "inBusinessSince": "InBusinessSince",
+            "isArchived": "IsArchived"
+        }
+    }
+}

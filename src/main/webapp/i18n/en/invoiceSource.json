@@ -1,0 +1,9 @@
+{
+    "bssuiteApp": {
+        "InvoiceSource" : {
+            "null": "",
+            "INVOICE": "INVOICE",
+            "SALESORDER": "SALESORDER"
+        }
+    }
+}

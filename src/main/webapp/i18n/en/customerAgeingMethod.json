@@ -1,0 +1,10 @@
+{
+    "bssuiteApp": {
+        "CustomerAgeingMethod" : {
+            "null": "",
+            "MONTH": "MONTH",
+            "TERMS": "TERMS",
+            "DUEDATES": "DUEDATES"
+        }
+    }
+}

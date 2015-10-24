@@ -1,0 +1,48 @@
+{
+    "bssuiteApp": {
+        "salesOrder" : {
+            "home": {
+                "title": "SalesOrders",
+                "createLabel": "Créer un nouveau SalesOrder",
+                "createOrEditLabel": "Créer ou éditer un SalesOrder"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le SalesOrder {{ id }} ?"
+            },
+            "detail": {
+                "title": "SalesOrder"
+            },
+            "orderNo": "OrderNo",
+            "status": "Status",
+            "txnDate": "TxnDate",
+            "forwardDate": "ForwardDate",
+            "requiredDate": "RequiredDate",
+            "customerOrderNo": "CustomerOrderNo",
+            "ourRef": "OurRef",
+            "freight": "Freight",
+            "handlingCharge": "HandlingCharge",
+            "charge2": "Charge2",
+            "isTaxable": "IsTaxable",
+            "isLocked": "IsLocked",
+            "adjustTax": "AdjustTax",
+            "adjustTaxExempt": "AdjustTaxExempt",
+            "prepayment": "Prepayment",
+            "prepaymentNo": "PrepaymentNo",
+            "comment": "Comment",
+            "totalTaxAmount": "TotalTaxAmount",
+            "totalSellPrice": "TotalSellPrice",
+            "totalCost": "TotalCost",
+            "isSuspended": "IsSuspended",
+            "customer": "Customer",
+            "contact": "Contact",
+            "deliveryContact": "DeliveryContact",
+            "store": "Store",
+            "carrier": "Carrier",
+            "salesperson": "Salesperson",
+            "promotion": "Promotion",
+            "createdBy": "CreatedBy",
+            "salesOrderLineItem": "SalesOrderLineItem"
+        }
+    }
+}
+

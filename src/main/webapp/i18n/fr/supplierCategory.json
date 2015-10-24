@@ -1,0 +1,20 @@
+{
+    "bssuiteApp": {
+        "supplierCategory" : {
+            "home": {
+                "title": "SupplierCategorys",
+                "createLabel": "Créer un nouveau SupplierCategory",
+                "createOrEditLabel": "Créer ou éditer un SupplierCategory"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le SupplierCategory {{ id }} ?"
+            },
+            "detail": {
+                "title": "SupplierCategory"
+            },
+            "code": "Code",
+            "name": "Name"
+        }
+    }
+}
+

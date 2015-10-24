@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/salesOrders',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'SalesOrders'
+                    pageTitle: 'bssuiteApp.salesOrder.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,12 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('salesOrder');
+                        $translatePartialLoader.addPart('salesOrderStatus');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('salesOrder.detail', {
@@ -24,7 +30,7 @@ angular.module('bssuiteApp')
                 url: '/salesOrder/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'SalesOrder'
+                    pageTitle: 'bssuiteApp.salesOrder.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +39,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('salesOrder');
+                        $translatePartialLoader.addPart('salesOrderStatus');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'SalesOrder', function($stateParams, SalesOrder) {
                         return SalesOrder.get({id : $stateParams.id});
                     }]

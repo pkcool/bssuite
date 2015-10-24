@@ -4,138 +4,138 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="myInvoiceLineItemLabel">Create or edit a InvoiceLineItem</h4>
+        <h4 class="modal-title" id="myInvoiceLineItemLabel" translate="bssuiteApp.invoiceLineItem.home.createOrEditLabel">Create or edit a InvoiceLineItem</h4>
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
         <div class="form-group">
-            <label for="id">ID</label>
+            <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="invoiceLineItem.id" readonly />
         </div>
         <div class="form-group">
-            <label for="field_description">Description</label>
+            <label translate="bssuiteApp.invoiceLineItem.description" for="field_description">Description</label>
             <input type="text" class="form-control" name="description" id="field_description"
                     ng-model="invoiceLineItem.description"
                      />
         </div>
         <div class="form-group">
-            <label for="field_cost">Cost</label>
+            <label translate="bssuiteApp.invoiceLineItem.cost" for="field_cost">Cost</label>
             <input type="number" class="form-control" name="cost" id="field_cost"
                     ng-model="invoiceLineItem.cost"
                      />
         </div>
         <div class="form-group">
-            <label for="field_soldFor">SoldFor</label>
+            <label translate="bssuiteApp.invoiceLineItem.soldFor" for="field_soldFor">SoldFor</label>
             <input type="number" class="form-control" name="soldFor" id="field_soldFor"
                     ng-model="invoiceLineItem.soldFor"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyOrdered">QtyOrdered</label>
+            <label translate="bssuiteApp.invoiceLineItem.qtyOrdered" for="field_qtyOrdered">QtyOrdered</label>
             <input type="number" class="form-control" name="qtyOrdered" id="field_qtyOrdered"
                     ng-model="invoiceLineItem.qtyOrdered"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtySold">QtySold</label>
+            <label translate="bssuiteApp.invoiceLineItem.qtySold" for="field_qtySold">QtySold</label>
             <input type="number" class="form-control" name="qtySold" id="field_qtySold"
                     ng-model="invoiceLineItem.qtySold"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyReturned">QtyReturned</label>
+            <label translate="bssuiteApp.invoiceLineItem.qtyReturned" for="field_qtyReturned">QtyReturned</label>
             <input type="number" class="form-control" name="qtyReturned" id="field_qtyReturned"
                     ng-model="invoiceLineItem.qtyReturned"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyPicked">QtyPicked</label>
+            <label translate="bssuiteApp.invoiceLineItem.qtyPicked" for="field_qtyPicked">QtyPicked</label>
             <input type="number" class="form-control" name="qtyPicked" id="field_qtyPicked"
                     ng-model="invoiceLineItem.qtyPicked"
                      />
         </div>
         <div class="form-group">
-            <label for="field_totalTaxCharge">TotalTaxCharge</label>
+            <label translate="bssuiteApp.invoiceLineItem.totalTaxCharge" for="field_totalTaxCharge">TotalTaxCharge</label>
             <input type="number" class="form-control" name="totalTaxCharge" id="field_totalTaxCharge"
                     ng-model="invoiceLineItem.totalTaxCharge"
                      />
         </div>
         <div class="form-group">
-            <label for="field_discountPercentage">DiscountPercentage</label>
+            <label translate="bssuiteApp.invoiceLineItem.discountPercentage" for="field_discountPercentage">DiscountPercentage</label>
             <input type="number" class="form-control" name="discountPercentage" id="field_discountPercentage"
                     ng-model="invoiceLineItem.discountPercentage"
                      />
         </div>
         <div class="form-group">
-            <label for="field_discountDescription">DiscountDescription</label>
+            <label translate="bssuiteApp.invoiceLineItem.discountDescription" for="field_discountDescription">DiscountDescription</label>
             <input type="text" class="form-control" name="discountDescription" id="field_discountDescription"
                     ng-model="invoiceLineItem.discountDescription"
                      />
         </div>
         <div class="form-group">
-            <label for="field_discountPriceGroupCode">DiscountPriceGroupCode</label>
+            <label translate="bssuiteApp.invoiceLineItem.discountPriceGroupCode" for="field_discountPriceGroupCode">DiscountPriceGroupCode</label>
             <input type="text" class="form-control" name="discountPriceGroupCode" id="field_discountPriceGroupCode"
                     ng-model="invoiceLineItem.discountPriceGroupCode"
                      />
         </div>
         <div class="form-group">
-            <label for="field_lineNo">LineNo</label>
+            <label translate="bssuiteApp.invoiceLineItem.lineNo" for="field_lineNo">LineNo</label>
             <input type="number" class="form-control" name="lineNo" id="field_lineNo"
                     ng-model="invoiceLineItem.lineNo"
                      />
         </div>
         <div class="form-group">
-            <label for="field_listPrice">ListPrice</label>
+            <label translate="bssuiteApp.invoiceLineItem.listPrice" for="field_listPrice">ListPrice</label>
             <input type="number" class="form-control" name="listPrice" id="field_listPrice"
                     ng-model="invoiceLineItem.listPrice"
                      />
         </div>
         <div class="form-group">
-            <label for="field_listPriceDiscount">ListPriceDiscount</label>
+            <label translate="bssuiteApp.invoiceLineItem.listPriceDiscount" for="field_listPriceDiscount">ListPriceDiscount</label>
             <input type="number" class="form-control" name="listPriceDiscount" id="field_listPriceDiscount"
                     ng-model="invoiceLineItem.listPriceDiscount"
                      />
         </div>
         <div class="form-group">
-            <label for="field_cost2">Cost2</label>
+            <label translate="bssuiteApp.invoiceLineItem.cost2" for="field_cost2">Cost2</label>
             <input type="number" class="form-control" name="cost2" id="field_cost2"
                     ng-model="invoiceLineItem.cost2"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isHidden">IsHidden</label>
+            <label translate="bssuiteApp.invoiceLineItem.isHidden" for="field_isHidden">IsHidden</label>
             <input type="checkbox" class="form-control" name="isHidden" id="field_isHidden"
                     ng-model="invoiceLineItem.isHidden"
                      />
         </div>
         <div class="form-group">
-            <label for="field_Ref1">Ref1</label>
+            <label translate="bssuiteApp.invoiceLineItem.Ref1" for="field_Ref1">Ref1</label>
             <input type="text" class="form-control" name="Ref1" id="field_Ref1"
                     ng-model="invoiceLineItem.Ref1"
                      />
         </div>
         <div class="form-group">
-            <label for="field_Ref2">Ref2</label>
+            <label translate="bssuiteApp.invoiceLineItem.Ref2" for="field_Ref2">Ref2</label>
             <input type="text" class="form-control" name="Ref2" id="field_Ref2"
                     ng-model="invoiceLineItem.Ref2"
                      />
         </div>
 
         <div class="form-group">
-            <label for="field_invoice">invoice</label>
+            <label translate="bssuiteApp.invoiceLineItem.invoice" for="field_invoice">invoice</label>
             <select class="form-control" id="field_invoice" name="invoice" ng-model="invoiceLineItem.invoice" ng-options="invoice as invoice.id for invoice in invoices track by invoice.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_product">product</label>
+            <label translate="bssuiteApp.invoiceLineItem.product" for="field_product">product</label>
             <select class="form-control" id="field_product" name="product" ng-model="invoiceLineItem.product" ng-options="product as product.id for product in products track by product.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_taxRate">taxRate</label>
+            <label translate="bssuiteApp.invoiceLineItem.taxRate" for="field_taxRate">taxRate</label>
             <select class="form-control" id="field_taxRate" name="taxRate" ng-model="invoiceLineItem.taxRate" ng-options="taxTable as taxTable.id for taxTable in taxtables track by taxTable.id">
                 <option value=""></option>
             </select>
@@ -143,10 +143,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
         </button>
     </div>
 </form>

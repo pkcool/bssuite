@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/contacts',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Contacts'
+                    pageTitle: 'bssuiteApp.contact.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('contact');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('contact.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/contact/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Contact'
+                    pageTitle: 'bssuiteApp.contact.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('contact');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'Contact', function($stateParams, Contact) {
                         return Contact.get({id : $stateParams.id});
                     }]

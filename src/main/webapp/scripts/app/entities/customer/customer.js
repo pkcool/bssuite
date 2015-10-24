@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/customers',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Customers'
+                    pageTitle: 'bssuiteApp.customer.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,16 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('customer');
+                        $translatePartialLoader.addPart('customerAgeingMethod');
+                        $translatePartialLoader.addPart('creditCardType');
+                        $translatePartialLoader.addPart('customerAccountType');
+                        $translatePartialLoader.addPart('customerInvoiceDeliveryMethod');
+                        $translatePartialLoader.addPart('customerStatementDeliveryMethod');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('customer.detail', {
@@ -24,7 +34,7 @@ angular.module('bssuiteApp')
                 url: '/customer/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Customer'
+                    pageTitle: 'bssuiteApp.customer.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +43,15 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('customer');
+                        $translatePartialLoader.addPart('customerAgeingMethod');
+                        $translatePartialLoader.addPart('creditCardType');
+                        $translatePartialLoader.addPart('customerAccountType');
+                        $translatePartialLoader.addPart('customerInvoiceDeliveryMethod');
+                        $translatePartialLoader.addPart('customerStatementDeliveryMethod');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'Customer', function($stateParams, Customer) {
                         return Customer.get({id : $stateParams.id});
                     }]

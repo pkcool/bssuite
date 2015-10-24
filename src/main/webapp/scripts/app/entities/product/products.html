@@ -1,11 +1,11 @@
 <div>
-    <h2>Products</h2>
+    <h2 translate="bssuiteApp.product.home.title">Products</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="product.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Product</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="bssuiteApp.product.home.createLabel">Create a new Product</span>
                 </button>
             </div>
             <div class="col-md-8">
@@ -27,17 +27,17 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this Product?</p>
+                        <p translate="bssuiteApp.product.delete.question" translate-values="{id: '{{product.id}}'}">Are you sure you want to delete this Product?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -49,61 +49,61 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>LongDescription</th>
-                    <th>AlternateCode</th>
-                    <th>Bin</th>
-                    <th>IsOnSpecial</th>
-                    <th>IsOnHold</th>
-                    <th>IsInPricelistReports</th>
-                    <th>QtyOnOrder</th>
-                    <th>QtyStockOnHold</th>
-                    <th>QtyBackordered</th>
-                    <th>QtyAllocated</th>
-                    <th>QtyBackorderHold</th>
-                    <th>QtyConsigned</th>
-                    <th>QtyWarehouseReceived</th>
-                    <th>QtyStocktakeVariance</th>
-                    <th>QtyTransitIn</th>
-                    <th>QtyTransitOut</th>
-                    <th>Cost</th>
-                    <th>WholesaleListPrice</th>
-                    <th>ListPrice</th>
-                    <th>TradePrice</th>
-                    <th>BoxCost</th>
-                    <th>UnitMeasure</th>
-                    <th>BoxMeasure</th>
-                    <th>BoxConversionFactor</th>
-                    <th>Weight</th>
-                    <th>Volumn</th>
-                    <th>ServiceCover</th>
-                    <th>QtyFloorLevel</th>
-                    <th>QtyReorderLevel</th>
-                    <th>QtyOverstockLevel</th>
-                    <th>IsComment</th>
-                    <th>IsDiminishing</th>
-                    <th>IsNonTaxExeptable</th>
-                    <th>LeadTime</th>
-                    <th>PurchaseUnit</th>
-                    <th>EstMonthlySales</th>
-                    <th>DateFirstSale</th>
-                    <th>DateLastSale</th>
-                    <th>DateFirstOrder</th>
-                    <th>DateCreated</th>
-                    <th>DateLastDelivery</th>
-                    <th>DateNextDelivery</th>
-                    <th>DateLastTransfer</th>
-                    <th>DateLastOrder</th>
-                    <th>DateLastStocktake</th>
-                    <th>IsArchived</th>
-                    <th>ClassCode</th>
-                    <th>stockGroup</th>
-                    <th>supplier</th>
-                    <th>store</th>
-                    <th>taxRate</th>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="bssuiteApp.product.code">Code</th>
+                    <th translate="bssuiteApp.product.name">Name</th>
+                    <th translate="bssuiteApp.product.description">Description</th>
+                    <th translate="bssuiteApp.product.longDescription">LongDescription</th>
+                    <th translate="bssuiteApp.product.alternateCode">AlternateCode</th>
+                    <th translate="bssuiteApp.product.bin">Bin</th>
+                    <th translate="bssuiteApp.product.isOnSpecial">IsOnSpecial</th>
+                    <th translate="bssuiteApp.product.isOnHold">IsOnHold</th>
+                    <th translate="bssuiteApp.product.isInPricelistReports">IsInPricelistReports</th>
+                    <th translate="bssuiteApp.product.qtyOnOrder">QtyOnOrder</th>
+                    <th translate="bssuiteApp.product.qtyStockOnHold">QtyStockOnHold</th>
+                    <th translate="bssuiteApp.product.qtyBackordered">QtyBackordered</th>
+                    <th translate="bssuiteApp.product.qtyAllocated">QtyAllocated</th>
+                    <th translate="bssuiteApp.product.qtyBackorderHold">QtyBackorderHold</th>
+                    <th translate="bssuiteApp.product.qtyConsigned">QtyConsigned</th>
+                    <th translate="bssuiteApp.product.qtyWarehouseReceived">QtyWarehouseReceived</th>
+                    <th translate="bssuiteApp.product.qtyStocktakeVariance">QtyStocktakeVariance</th>
+                    <th translate="bssuiteApp.product.qtyTransitIn">QtyTransitIn</th>
+                    <th translate="bssuiteApp.product.qtyTransitOut">QtyTransitOut</th>
+                    <th translate="bssuiteApp.product.cost">Cost</th>
+                    <th translate="bssuiteApp.product.wholesaleListPrice">WholesaleListPrice</th>
+                    <th translate="bssuiteApp.product.listPrice">ListPrice</th>
+                    <th translate="bssuiteApp.product.tradePrice">TradePrice</th>
+                    <th translate="bssuiteApp.product.boxCost">BoxCost</th>
+                    <th translate="bssuiteApp.product.unitMeasure">UnitMeasure</th>
+                    <th translate="bssuiteApp.product.boxMeasure">BoxMeasure</th>
+                    <th translate="bssuiteApp.product.boxConversionFactor">BoxConversionFactor</th>
+                    <th translate="bssuiteApp.product.weight">Weight</th>
+                    <th translate="bssuiteApp.product.volumn">Volumn</th>
+                    <th translate="bssuiteApp.product.serviceCover">ServiceCover</th>
+                    <th translate="bssuiteApp.product.qtyFloorLevel">QtyFloorLevel</th>
+                    <th translate="bssuiteApp.product.qtyReorderLevel">QtyReorderLevel</th>
+                    <th translate="bssuiteApp.product.qtyOverstockLevel">QtyOverstockLevel</th>
+                    <th translate="bssuiteApp.product.isComment">IsComment</th>
+                    <th translate="bssuiteApp.product.isDiminishing">IsDiminishing</th>
+                    <th translate="bssuiteApp.product.isNonTaxExeptable">IsNonTaxExeptable</th>
+                    <th translate="bssuiteApp.product.leadTime">LeadTime</th>
+                    <th translate="bssuiteApp.product.purchaseUnit">PurchaseUnit</th>
+                    <th translate="bssuiteApp.product.estMonthlySales">EstMonthlySales</th>
+                    <th translate="bssuiteApp.product.dateFirstSale">DateFirstSale</th>
+                    <th translate="bssuiteApp.product.dateLastSale">DateLastSale</th>
+                    <th translate="bssuiteApp.product.dateFirstOrder">DateFirstOrder</th>
+                    <th translate="bssuiteApp.product.dateCreated">DateCreated</th>
+                    <th translate="bssuiteApp.product.dateLastDelivery">DateLastDelivery</th>
+                    <th translate="bssuiteApp.product.dateNextDelivery">DateNextDelivery</th>
+                    <th translate="bssuiteApp.product.dateLastTransfer">DateLastTransfer</th>
+                    <th translate="bssuiteApp.product.dateLastOrder">DateLastOrder</th>
+                    <th translate="bssuiteApp.product.dateLastStocktake">DateLastStocktake</th>
+                    <th translate="bssuiteApp.product.isArchived">IsArchived</th>
+                    <th translate="bssuiteApp.product.classCode">ClassCode</th>
+                    <th translate="bssuiteApp.product.stockGroup">stockGroup</th>
+                    <th translate="bssuiteApp.product.supplier">supplier</th>
+                    <th translate="bssuiteApp.product.store">store</th>
+                    <th translate="bssuiteApp.product.taxRate">taxRate</th>
                     <th></th>
                 </tr>
             </thead>
@@ -176,17 +176,17 @@
                         <button type="submit"
                                 ui-sref="product.detail({id:product.id})"
                                 class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ui-sref="product.edit({id:product.id})"
                                 class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(product.id)"
                                 class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>

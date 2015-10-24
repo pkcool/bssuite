@@ -1,11 +1,11 @@
 <div>
-    <h2>Customers</h2>
+    <h2 translate="bssuiteApp.customer.home.title">Customers</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="customer.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Customer</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="bssuiteApp.customer.home.createLabel">Create a new Customer</span>
                 </button>
             </div>
             <div class="col-md-8">
@@ -27,17 +27,17 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this Customer?</p>
+                        <p translate="bssuiteApp.customer.delete.question" translate-values="{id: '{{customer.id}}'}">Are you sure you want to delete this Customer?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -49,52 +49,52 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>TradingName</th>
-                    <th>Abn</th>
-                    <th>DeliveryInstruction</th>
-                    <th>WebUrl</th>
-                    <th>IsOnHold</th>
-                    <th>IsOrderNoRequired</th>
-                    <th>IsBlacklisted</th>
-                    <th>IsBackorderAllowed</th>
-                    <th>IsArchived</th>
-                    <th>IsHeadOfficeAccount</th>
-                    <th>AgeingMethod</th>
-                    <th>IsWebaccessAllowed</th>
-                    <th>BankName</th>
-                    <th>Bsb</th>
-                    <th>BankAccountNo</th>
-                    <th>BankSuburb</th>
-                    <th>BankAccountName</th>
-                    <th>IsCreditCardBillingActive</th>
-                    <th>CreditCardNo</th>
-                    <th>CreditCardHolderName</th>
-                    <th>CreditCardExpiryDate</th>
-                    <th>CreditCardType</th>
-                    <th>AccountType</th>
-                    <th>CreditAmount</th>
-                    <th>Terms</th>
-                    <th>SettlementTerms</th>
-                    <th>InvoiceDeliveryMethod</th>
-                    <th>StatementDeliveryMethod</th>
-                    <th>InvoiceEmailAddress</th>
-                    <th>InvoiceFaxNo</th>
-                    <th>StatementEmailAddress</th>
-                    <th>StatementFaxNo</th>
-                    <th>IsPenaltyIssued</th>
-                    <th>customerCategory</th>
-                    <th>contact</th>
-                    <th>deliveryContact</th>
-                    <th>salesPrimaryContact</th>
-                    <th>salesSecondaryContact</th>
-                    <th>accountPrimaryContact</th>
-                    <th>accountSecondaryContact</th>
-                    <th>rep</th>
-                    <th>centralBillingAccount</th>
-                    <th>store</th>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="bssuiteApp.customer.code">Code</th>
+                    <th translate="bssuiteApp.customer.name">Name</th>
+                    <th translate="bssuiteApp.customer.tradingName">TradingName</th>
+                    <th translate="bssuiteApp.customer.abn">Abn</th>
+                    <th translate="bssuiteApp.customer.deliveryInstruction">DeliveryInstruction</th>
+                    <th translate="bssuiteApp.customer.webUrl">WebUrl</th>
+                    <th translate="bssuiteApp.customer.isOnHold">IsOnHold</th>
+                    <th translate="bssuiteApp.customer.isOrderNoRequired">IsOrderNoRequired</th>
+                    <th translate="bssuiteApp.customer.isBlacklisted">IsBlacklisted</th>
+                    <th translate="bssuiteApp.customer.isBackorderAllowed">IsBackorderAllowed</th>
+                    <th translate="bssuiteApp.customer.isArchived">IsArchived</th>
+                    <th translate="bssuiteApp.customer.isHeadOfficeAccount">IsHeadOfficeAccount</th>
+                    <th translate="bssuiteApp.customer.ageingMethod">AgeingMethod</th>
+                    <th translate="bssuiteApp.customer.isWebaccessAllowed">IsWebaccessAllowed</th>
+                    <th translate="bssuiteApp.customer.bankName">BankName</th>
+                    <th translate="bssuiteApp.customer.bsb">Bsb</th>
+                    <th translate="bssuiteApp.customer.bankAccountNo">BankAccountNo</th>
+                    <th translate="bssuiteApp.customer.bankSuburb">BankSuburb</th>
+                    <th translate="bssuiteApp.customer.bankAccountName">BankAccountName</th>
+                    <th translate="bssuiteApp.customer.isCreditCardBillingActive">IsCreditCardBillingActive</th>
+                    <th translate="bssuiteApp.customer.creditCardNo">CreditCardNo</th>
+                    <th translate="bssuiteApp.customer.creditCardHolderName">CreditCardHolderName</th>
+                    <th translate="bssuiteApp.customer.creditCardExpiryDate">CreditCardExpiryDate</th>
+                    <th translate="bssuiteApp.customer.creditCardType">CreditCardType</th>
+                    <th translate="bssuiteApp.customer.accountType">AccountType</th>
+                    <th translate="bssuiteApp.customer.creditAmount">CreditAmount</th>
+                    <th translate="bssuiteApp.customer.terms">Terms</th>
+                    <th translate="bssuiteApp.customer.settlementTerms">SettlementTerms</th>
+                    <th translate="bssuiteApp.customer.invoiceDeliveryMethod">InvoiceDeliveryMethod</th>
+                    <th translate="bssuiteApp.customer.statementDeliveryMethod">StatementDeliveryMethod</th>
+                    <th translate="bssuiteApp.customer.invoiceEmailAddress">InvoiceEmailAddress</th>
+                    <th translate="bssuiteApp.customer.invoiceFaxNo">InvoiceFaxNo</th>
+                    <th translate="bssuiteApp.customer.statementEmailAddress">StatementEmailAddress</th>
+                    <th translate="bssuiteApp.customer.statementFaxNo">StatementFaxNo</th>
+                    <th translate="bssuiteApp.customer.isPenaltyIssued">IsPenaltyIssued</th>
+                    <th translate="bssuiteApp.customer.customerCategory">customerCategory</th>
+                    <th translate="bssuiteApp.customer.contact">contact</th>
+                    <th translate="bssuiteApp.customer.deliveryContact">deliveryContact</th>
+                    <th translate="bssuiteApp.customer.salesPrimaryContact">salesPrimaryContact</th>
+                    <th translate="bssuiteApp.customer.salesSecondaryContact">salesSecondaryContact</th>
+                    <th translate="bssuiteApp.customer.accountPrimaryContact">accountPrimaryContact</th>
+                    <th translate="bssuiteApp.customer.accountSecondaryContact">accountSecondaryContact</th>
+                    <th translate="bssuiteApp.customer.rep">rep</th>
+                    <th translate="bssuiteApp.customer.centralBillingAccount">centralBillingAccount</th>
+                    <th translate="bssuiteApp.customer.store">store</th>
                     <th></th>
                 </tr>
             </thead>
@@ -170,17 +170,17 @@
                         <button type="submit"
                                 ui-sref="customer.detail({id:customer.id})"
                                 class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ui-sref="customer.edit({id:customer.id})"
                                 class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(customer.id)"
                                 class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>

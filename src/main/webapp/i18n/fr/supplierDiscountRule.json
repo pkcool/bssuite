@@ -1,0 +1,37 @@
+{
+    "bssuiteApp": {
+        "supplierDiscountRule" : {
+            "home": {
+                "title": "SupplierDiscountRules",
+                "createLabel": "Créer un nouveau SupplierDiscountRule",
+                "createOrEditLabel": "Créer ou éditer un SupplierDiscountRule"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le SupplierDiscountRule {{ id }} ?"
+            },
+            "detail": {
+                "title": "SupplierDiscountRule"
+            },
+            "supplierCode": "SupplierCode",
+            "ruleNo": "RuleNo",
+            "isAppliedToSales": "IsAppliedToSales",
+            "isAppliedOnSpecialItemsOnly": "IsAppliedOnSpecialItemsOnly",
+            "customerCode": "CustomerCode",
+            "customerCategoryCode": "CustomerCategoryCode",
+            "productCode": "ProductCode",
+            "startDate": "StartDate",
+            "endDate": "EndDate",
+            "qtyBreak": "QtyBreak",
+            "fromStockGroupCode": "FromStockGroupCode",
+            "toStockGroupCode": "ToStockGroupCode",
+            "taxCode": "TaxCode",
+            "isAppliedWhenTaxExempt": "IsAppliedWhenTaxExempt",
+            "storeCode": "StoreCode",
+            "discountName": "DiscountName",
+            "stockFamilyCode": "StockFamilyCode",
+            "cost": "Cost",
+            "discountFormula": "DiscountFormula"
+        }
+    }
+}
+

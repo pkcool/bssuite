@@ -1,18 +1,18 @@
 
 <div>
-    <h2><span>CustomerCategory</span> {{customerCategory.id}}</h2>
+    <h2><span translate="bssuiteApp.customerCategory.detail.title">CustomerCategory</span> {{customerCategory.id}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Field</th>
-                <th>Value</th>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>
-                    <span>Code</span>
+                    <span translate="bssuiteApp.customerCategory.code">Code</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{customerCategory.code}}</span>
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Name</span>
+                    <span translate="bssuiteApp.customerCategory.name">Name</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{customerCategory.name}}</span>
@@ -33,6 +33,6 @@
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
 </div>

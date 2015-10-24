@@ -1,0 +1,9 @@
+{
+    "bssuiteApp": {
+        "SupplierAccountType" : {
+            "null": "",
+            "STANDARD": "STANDARD",
+            "INTERNAL": "INTERNAL"
+        }
+    }
+}

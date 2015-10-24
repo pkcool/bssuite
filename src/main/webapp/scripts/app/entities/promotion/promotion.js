@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/promotions',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Promotions'
+                    pageTitle: 'bssuiteApp.promotion.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('promotion');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('promotion.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/promotion/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Promotion'
+                    pageTitle: 'bssuiteApp.promotion.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('promotion');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'Promotion', function($stateParams, Promotion) {
                         return Promotion.get({id : $stateParams.id});
                     }]

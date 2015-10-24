@@ -1,0 +1,30 @@
+{
+    "bssuiteApp": {
+        "promotion" : {
+            "home": {
+                "title": "Promotions",
+                "createLabel": "Create a new Promotion",
+                "createOrEditLabel": "Create or edit a Promotion"
+            },
+            "created": "A new Promotion is created with identifier {{ param }}",
+            "updated": "A Promotion is updated with identifier {{ param }}",
+            "deleted": "A Promotion is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Promotion {{ id }}?"
+            },
+            "detail": {
+                "title": "Promotion"
+            },
+            "code": "Code",
+            "name": "Name",
+            "description": "Description",
+            "startDate": "StartDate",
+            "endDate": "EndDate",
+            "cost": "Cost",
+            "income": "Income",
+            "expense": "Expense",
+            "dateCreated": "DateCreated",
+            "store": "Store"
+        }
+    }
+}

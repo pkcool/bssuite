@@ -1,0 +1,36 @@
+{
+    "bssuiteApp": {
+        "salesOrderLineItem" : {
+            "home": {
+                "title": "SalesOrderLineItems",
+                "createLabel": "Créer un nouveau SalesOrderLineItem",
+                "createOrEditLabel": "Créer ou éditer un SalesOrderLineItem"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le SalesOrderLineItem {{ id }} ?"
+            },
+            "detail": {
+                "title": "SalesOrderLineItem"
+            },
+            "description": "Description",
+            "cost": "Cost",
+            "soldFor": "SoldFor",
+            "qtyOrdered": "QtyOrdered",
+            "qtyAllocated": "QtyAllocated",
+            "totalTaxCharge": "TotalTaxCharge",
+            "discountPercentage": "DiscountPercentage",
+            "lineNo": "LineNo",
+            "requiredDate": "RequiredDate",
+            "listPrice": "ListPrice",
+            "listPriceDiscount": "ListPriceDiscount",
+            "cost2": "Cost2",
+            "isHidden": "IsHidden",
+            "Ref1": "Ref1",
+            "Ref2": "Ref2",
+            "salesOrder": "SalesOrder",
+            "product": "Product",
+            "taxRate": "TaxRate"
+        }
+    }
+}
+

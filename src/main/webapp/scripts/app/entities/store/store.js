@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/stores',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Stores'
+                    pageTitle: 'bssuiteApp.store.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('store');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('store.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/store/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Store'
+                    pageTitle: 'bssuiteApp.store.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('store');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'Store', function($stateParams, Store) {
                         return Store.get({id : $stateParams.id});
                     }]

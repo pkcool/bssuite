@@ -4,72 +4,72 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="myContactLabel">Create or edit a Contact</h4>
+        <h4 class="modal-title" id="myContactLabel" translate="bssuiteApp.contact.home.createOrEditLabel">Create or edit a Contact</h4>
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
         <div class="form-group">
-            <label for="id">ID</label>
+            <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="contact.id" readonly />
         </div>
         <div class="form-group">
-            <label for="field_fistName">FistName</label>
+            <label translate="bssuiteApp.contact.fistName" for="field_fistName">FistName</label>
             <input type="text" class="form-control" name="fistName" id="field_fistName"
                     ng-model="contact.fistName"
                      />
         </div>
         <div class="form-group">
-            <label for="field_lastName">LastName</label>
+            <label translate="bssuiteApp.contact.lastName" for="field_lastName">LastName</label>
             <input type="text" class="form-control" name="lastName" id="field_lastName"
                     ng-model="contact.lastName"
                      />
         </div>
         <div class="form-group">
-            <label for="field_fullName">FullName</label>
+            <label translate="bssuiteApp.contact.fullName" for="field_fullName">FullName</label>
             <input type="text" class="form-control" name="fullName" id="field_fullName"
                     ng-model="contact.fullName"
                      />
         </div>
         <div class="form-group">
-            <label for="field_emailAddress">EmailAddress</label>
+            <label translate="bssuiteApp.contact.emailAddress" for="field_emailAddress">EmailAddress</label>
             <input type="text" class="form-control" name="emailAddress" id="field_emailAddress"
                     ng-model="contact.emailAddress"
                      />
         </div>
         <div class="form-group">
-            <label for="field_companyName">CompanyName</label>
+            <label translate="bssuiteApp.contact.companyName" for="field_companyName">CompanyName</label>
             <input type="text" class="form-control" name="companyName" id="field_companyName"
                     ng-model="contact.companyName"
                      />
         </div>
         <div class="form-group">
-            <label for="field_phonePrimary">PhonePrimary</label>
+            <label translate="bssuiteApp.contact.phonePrimary" for="field_phonePrimary">PhonePrimary</label>
             <input type="text" class="form-control" name="phonePrimary" id="field_phonePrimary"
                     ng-model="contact.phonePrimary"
                      />
         </div>
         <div class="form-group">
-            <label for="field_phoneSecondary">PhoneSecondary</label>
+            <label translate="bssuiteApp.contact.phoneSecondary" for="field_phoneSecondary">PhoneSecondary</label>
             <input type="text" class="form-control" name="phoneSecondary" id="field_phoneSecondary"
                     ng-model="contact.phoneSecondary"
                      />
         </div>
         <div class="form-group">
-            <label for="field_fax">Fax</label>
+            <label translate="bssuiteApp.contact.fax" for="field_fax">Fax</label>
             <input type="text" class="form-control" name="fax" id="field_fax"
                     ng-model="contact.fax"
                      />
         </div>
         <div class="form-group">
-            <label for="field_position">Position</label>
+            <label translate="bssuiteApp.contact.position" for="field_position">Position</label>
             <input type="text" class="form-control" name="position" id="field_position"
                     ng-model="contact.position"
                      />
         </div>
 
         <div class="form-group">
-            <label for="field_address">address</label>
+            <label translate="bssuiteApp.contact.address" for="field_address">address</label>
             <select class="form-control" id="field_address" name="address" ng-model="contact.addressId" ng-options="address.id as address.id for address in addresss | orderBy:'id'">
                 <option value=""></option>
             </select>
@@ -77,10 +77,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
         </button>
     </div>
 </form>

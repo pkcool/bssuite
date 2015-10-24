@@ -1,0 +1,25 @@
+{
+    "bssuiteApp": {
+        "priceScale" : {
+            "home": {
+                "title": "PriceScales",
+                "createLabel": "Create a new PriceScale",
+                "createOrEditLabel": "Create or edit a PriceScale"
+            },
+            "created": "A new PriceScale is created with identifier {{ param }}",
+            "updated": "A PriceScale is updated with identifier {{ param }}",
+            "deleted": "A PriceScale is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete PriceScale {{ id }}?"
+            },
+            "detail": {
+                "title": "PriceScale"
+            },
+            "code": "Code",
+            "name": "Name",
+            "price": "Price",
+            "value": "Value",
+            "round": "Round"
+        }
+    }
+}

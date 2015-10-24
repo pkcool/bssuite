@@ -4,114 +4,114 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="myQuoteLineItemLabel">Create or edit a QuoteLineItem</h4>
+        <h4 class="modal-title" id="myQuoteLineItemLabel" translate="bssuiteApp.quoteLineItem.home.createOrEditLabel">Create or edit a QuoteLineItem</h4>
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
         <div class="form-group">
-            <label for="id">ID</label>
+            <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="quoteLineItem.id" readonly />
         </div>
         <div class="form-group">
-            <label for="field_description">Description</label>
+            <label translate="bssuiteApp.quoteLineItem.description" for="field_description">Description</label>
             <input type="text" class="form-control" name="description" id="field_description"
                     ng-model="quoteLineItem.description"
                      />
         </div>
         <div class="form-group">
-            <label for="field_cost">Cost</label>
+            <label translate="bssuiteApp.quoteLineItem.cost" for="field_cost">Cost</label>
             <input type="number" class="form-control" name="cost" id="field_cost"
                     ng-model="quoteLineItem.cost"
                      />
         </div>
         <div class="form-group">
-            <label for="field_soldFor">SoldFor</label>
+            <label translate="bssuiteApp.quoteLineItem.soldFor" for="field_soldFor">SoldFor</label>
             <input type="number" class="form-control" name="soldFor" id="field_soldFor"
                     ng-model="quoteLineItem.soldFor"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyQuoted">QtyQuoted</label>
+            <label translate="bssuiteApp.quoteLineItem.qtyQuoted" for="field_qtyQuoted">QtyQuoted</label>
             <input type="number" class="form-control" name="qtyQuoted" id="field_qtyQuoted"
                     ng-model="quoteLineItem.qtyQuoted"
                      />
         </div>
         <div class="form-group">
-            <label for="field_discountPriceGroupCode">DiscountPriceGroupCode</label>
+            <label translate="bssuiteApp.quoteLineItem.discountPriceGroupCode" for="field_discountPriceGroupCode">DiscountPriceGroupCode</label>
             <input type="text" class="form-control" name="discountPriceGroupCode" id="field_discountPriceGroupCode"
                     ng-model="quoteLineItem.discountPriceGroupCode"
                      />
         </div>
         <div class="form-group">
-            <label for="field_totalTaxCharge">TotalTaxCharge</label>
+            <label translate="bssuiteApp.quoteLineItem.totalTaxCharge" for="field_totalTaxCharge">TotalTaxCharge</label>
             <input type="number" class="form-control" name="totalTaxCharge" id="field_totalTaxCharge"
                     ng-model="quoteLineItem.totalTaxCharge"
                      />
         </div>
         <div class="form-group">
-            <label for="field_discountPercentage">DiscountPercentage</label>
+            <label translate="bssuiteApp.quoteLineItem.discountPercentage" for="field_discountPercentage">DiscountPercentage</label>
             <input type="number" class="form-control" name="discountPercentage" id="field_discountPercentage"
                     ng-model="quoteLineItem.discountPercentage"
                      />
         </div>
         <div class="form-group">
-            <label for="field_lineNo">LineNo</label>
+            <label translate="bssuiteApp.quoteLineItem.lineNo" for="field_lineNo">LineNo</label>
             <input type="number" class="form-control" name="lineNo" id="field_lineNo"
                     ng-model="quoteLineItem.lineNo"
                      />
         </div>
         <div class="form-group">
-            <label for="field_listPrice">ListPrice</label>
+            <label translate="bssuiteApp.quoteLineItem.listPrice" for="field_listPrice">ListPrice</label>
             <input type="number" class="form-control" name="listPrice" id="field_listPrice"
                     ng-model="quoteLineItem.listPrice"
                      />
         </div>
         <div class="form-group">
-            <label for="field_listPriceDiscount">ListPriceDiscount</label>
+            <label translate="bssuiteApp.quoteLineItem.listPriceDiscount" for="field_listPriceDiscount">ListPriceDiscount</label>
             <input type="number" class="form-control" name="listPriceDiscount" id="field_listPriceDiscount"
                     ng-model="quoteLineItem.listPriceDiscount"
                      />
         </div>
         <div class="form-group">
-            <label for="field_cost2">Cost2</label>
+            <label translate="bssuiteApp.quoteLineItem.cost2" for="field_cost2">Cost2</label>
             <input type="number" class="form-control" name="cost2" id="field_cost2"
                     ng-model="quoteLineItem.cost2"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isHidden">IsHidden</label>
+            <label translate="bssuiteApp.quoteLineItem.isHidden" for="field_isHidden">IsHidden</label>
             <input type="checkbox" class="form-control" name="isHidden" id="field_isHidden"
                     ng-model="quoteLineItem.isHidden"
                      />
         </div>
         <div class="form-group">
-            <label for="field_Ref1">Ref1</label>
+            <label translate="bssuiteApp.quoteLineItem.Ref1" for="field_Ref1">Ref1</label>
             <input type="text" class="form-control" name="Ref1" id="field_Ref1"
                     ng-model="quoteLineItem.Ref1"
                      />
         </div>
         <div class="form-group">
-            <label for="field_Ref2">Ref2</label>
+            <label translate="bssuiteApp.quoteLineItem.Ref2" for="field_Ref2">Ref2</label>
             <input type="text" class="form-control" name="Ref2" id="field_Ref2"
                     ng-model="quoteLineItem.Ref2"
                      />
         </div>
 
         <div class="form-group">
-            <label for="field_quote">quote</label>
+            <label translate="bssuiteApp.quoteLineItem.quote" for="field_quote">quote</label>
             <select class="form-control" id="field_quote" name="quote" ng-model="quoteLineItem.quote" ng-options="quote as quote.id for quote in quotes track by quote.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_product">product</label>
+            <label translate="bssuiteApp.quoteLineItem.product" for="field_product">product</label>
             <select class="form-control" id="field_product" name="product" ng-model="quoteLineItem.product" ng-options="product as product.id for product in products track by product.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_taxRate">taxRate</label>
+            <label translate="bssuiteApp.quoteLineItem.taxRate" for="field_taxRate">taxRate</label>
             <select class="form-control" id="field_taxRate" name="taxRate" ng-model="quoteLineItem.taxRate" ng-options="taxTable as taxTable.id for taxTable in taxtables track by taxTable.id">
                 <option value=""></option>
             </select>
@@ -119,10 +119,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
         </button>
     </div>
 </form>

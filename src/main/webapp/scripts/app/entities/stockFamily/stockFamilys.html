@@ -1,11 +1,11 @@
 <div>
-    <h2>StockFamilys</h2>
+    <h2 translate="bssuiteApp.stockFamily.home.title">StockFamilys</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="stockFamily.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new StockFamily</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="bssuiteApp.stockFamily.home.createLabel">Create a new StockFamily</span>
                 </button>
             </div>
             <div class="col-md-8">
@@ -27,17 +27,17 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this StockFamily?</p>
+                        <p translate="bssuiteApp.stockFamily.delete.question" translate-values="{id: '{{stockFamily.id}}'}">Are you sure you want to delete this StockFamily?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -49,14 +49,14 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>IsDiminishing</th>
-                    <th>LowestMargin</th>
-                    <th>HighestMargin</th>
-                    <th>Comment</th>
-                    <th>priceScale</th>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="bssuiteApp.stockFamily.code">Code</th>
+                    <th translate="bssuiteApp.stockFamily.name">Name</th>
+                    <th translate="bssuiteApp.stockFamily.isDiminishing">IsDiminishing</th>
+                    <th translate="bssuiteApp.stockFamily.lowestMargin">LowestMargin</th>
+                    <th translate="bssuiteApp.stockFamily.highestMargin">HighestMargin</th>
+                    <th translate="bssuiteApp.stockFamily.comment">Comment</th>
+                    <th translate="bssuiteApp.stockFamily.priceScale">priceScale</th>
                     <th></th>
                 </tr>
             </thead>
@@ -76,17 +76,17 @@
                         <button type="submit"
                                 ui-sref="stockFamily.detail({id:stockFamily.id})"
                                 class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ui-sref="stockFamily.edit({id:stockFamily.id})"
                                 class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(stockFamily.id)"
                                 class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>

@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/invoiceLineItems',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'InvoiceLineItems'
+                    pageTitle: 'bssuiteApp.invoiceLineItem.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('invoiceLineItem');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('invoiceLineItem.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/invoiceLineItem/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'InvoiceLineItem'
+                    pageTitle: 'bssuiteApp.invoiceLineItem.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('invoiceLineItem');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'InvoiceLineItem', function($stateParams, InvoiceLineItem) {
                         return InvoiceLineItem.get({id : $stateParams.id});
                     }]

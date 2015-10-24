@@ -1,0 +1,11 @@
+{
+    "bssuiteApp": {
+        "CustomerAccountType" : {
+            "null": "",
+            "STANDARD": "STANDARD",
+            "INTERNAL": "INTERNAL",
+            "CASH": "CASH",
+            "CREDITCARD": "CREDITCARD"
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "bssuiteApp": {
+        "purchaseOrder" : {
+            "home": {
+                "title": "PurchaseOrders",
+                "createLabel": "Create a new PurchaseOrder",
+                "createOrEditLabel": "Create or edit a PurchaseOrder"
+            },
+            "created": "A new PurchaseOrder is created with identifier {{ param }}",
+            "updated": "A PurchaseOrder is updated with identifier {{ param }}",
+            "deleted": "A PurchaseOrder is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete PurchaseOrder {{ id }}?"
+            },
+            "detail": {
+                "title": "PurchaseOrder"
+            },
+            "orderNo": "OrderNo",
+            "status": "Status",
+            "createdDate": "CreatedDate",
+            "ref": "Ref",
+            "expectedDeliveryDate": "ExpectedDeliveryDate",
+            "isTaxable": "IsTaxable",
+            "isLocked": "IsLocked",
+            "comment": "Comment",
+            "totalTaxAmount": "TotalTaxAmount",
+            "totalCost": "TotalCost",
+            "taxExemptionCode": "TaxExemptionCode",
+            "isSuspended": "IsSuspended",
+            "supplier": "Supplier",
+            "supplierContact": "SupplierContact",
+            "supplierDeliveryContact": "SupplierDeliveryContact",
+            "store": "Store",
+            "salesOrder": "SalesOrder",
+            "updatedByStaff": "UpdatedByStaff",
+            "createdBy": "CreatedBy",
+            "purchaseOrderLineItems": "PurchaseOrderLineItems"
+        }
+    }
+}

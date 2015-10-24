@@ -1,0 +1,39 @@
+{
+    "bssuiteApp": {
+        "invoiceLineItem" : {
+            "home": {
+                "title": "InvoiceLineItems",
+                "createLabel": "Créer un nouveau InvoiceLineItem",
+                "createOrEditLabel": "Créer ou éditer un InvoiceLineItem"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le InvoiceLineItem {{ id }} ?"
+            },
+            "detail": {
+                "title": "InvoiceLineItem"
+            },
+            "description": "Description",
+            "cost": "Cost",
+            "soldFor": "SoldFor",
+            "qtyOrdered": "QtyOrdered",
+            "qtySold": "QtySold",
+            "qtyReturned": "QtyReturned",
+            "qtyPicked": "QtyPicked",
+            "totalTaxCharge": "TotalTaxCharge",
+            "discountPercentage": "DiscountPercentage",
+            "discountDescription": "DiscountDescription",
+            "discountPriceGroupCode": "DiscountPriceGroupCode",
+            "lineNo": "LineNo",
+            "listPrice": "ListPrice",
+            "listPriceDiscount": "ListPriceDiscount",
+            "cost2": "Cost2",
+            "isHidden": "IsHidden",
+            "Ref1": "Ref1",
+            "Ref2": "Ref2",
+            "invoice": "Invoice",
+            "product": "Product",
+            "taxRate": "TaxRate"
+        }
+    }
+}
+

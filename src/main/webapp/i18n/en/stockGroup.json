@@ -1,0 +1,31 @@
+{
+    "bssuiteApp": {
+        "stockGroup" : {
+            "home": {
+                "title": "StockGroups",
+                "createLabel": "Create a new StockGroup",
+                "createOrEditLabel": "Create or edit a StockGroup"
+            },
+            "created": "A new StockGroup is created with identifier {{ param }}",
+            "updated": "A StockGroup is updated with identifier {{ param }}",
+            "deleted": "A StockGroup is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete StockGroup {{ id }}?"
+            },
+            "detail": {
+                "title": "StockGroup"
+            },
+            "code": "Code",
+            "name": "Name",
+            "isDiminishing": "IsDiminishing",
+            "lowestMargin": "LowestMargin",
+            "highestMargin": "HighestMargin",
+            "isDiscountAllowed": "IsDiscountAllowed",
+            "comment": "Comment",
+            "isArchived": "IsArchived",
+            "stockFamily": "StockFamily",
+            "priceScale": "PriceScale",
+            "taxRate": "TaxRate"
+        }
+    }
+}

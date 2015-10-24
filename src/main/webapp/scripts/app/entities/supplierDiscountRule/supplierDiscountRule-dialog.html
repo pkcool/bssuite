@@ -4,131 +4,131 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="mySupplierDiscountRuleLabel">Create or edit a SupplierDiscountRule</h4>
+        <h4 class="modal-title" id="mySupplierDiscountRuleLabel" translate="bssuiteApp.supplierDiscountRule.home.createOrEditLabel">Create or edit a SupplierDiscountRule</h4>
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
         <div class="form-group">
-            <label for="id">ID</label>
+            <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="supplierDiscountRule.id" readonly />
         </div>
         <div class="form-group">
-            <label for="field_supplierCode">SupplierCode</label>
+            <label translate="bssuiteApp.supplierDiscountRule.supplierCode" for="field_supplierCode">SupplierCode</label>
             <input type="text" class="form-control" name="supplierCode" id="field_supplierCode"
                     ng-model="supplierDiscountRule.supplierCode"
                     required />
             <div ng-show="editForm.supplierCode.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.supplierCode.$error.required">
+                    ng-show="editForm.supplierCode.$error.required" translate="entity.validation.required">
                     This field is required.
                 </p>
             </div>
         </div>
         <div class="form-group">
-            <label for="field_ruleNo">RuleNo</label>
+            <label translate="bssuiteApp.supplierDiscountRule.ruleNo" for="field_ruleNo">RuleNo</label>
             <input type="number" class="form-control" name="ruleNo" id="field_ruleNo"
                     ng-model="supplierDiscountRule.ruleNo"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isAppliedToSales">IsAppliedToSales</label>
+            <label translate="bssuiteApp.supplierDiscountRule.isAppliedToSales" for="field_isAppliedToSales">IsAppliedToSales</label>
             <input type="checkbox" class="form-control" name="isAppliedToSales" id="field_isAppliedToSales"
                     ng-model="supplierDiscountRule.isAppliedToSales"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isAppliedOnSpecialItemsOnly">IsAppliedOnSpecialItemsOnly</label>
+            <label translate="bssuiteApp.supplierDiscountRule.isAppliedOnSpecialItemsOnly" for="field_isAppliedOnSpecialItemsOnly">IsAppliedOnSpecialItemsOnly</label>
             <input type="checkbox" class="form-control" name="isAppliedOnSpecialItemsOnly" id="field_isAppliedOnSpecialItemsOnly"
                     ng-model="supplierDiscountRule.isAppliedOnSpecialItemsOnly"
                      />
         </div>
         <div class="form-group">
-            <label for="field_customerCode">CustomerCode</label>
+            <label translate="bssuiteApp.supplierDiscountRule.customerCode" for="field_customerCode">CustomerCode</label>
             <input type="text" class="form-control" name="customerCode" id="field_customerCode"
                     ng-model="supplierDiscountRule.customerCode"
                      />
         </div>
         <div class="form-group">
-            <label for="field_customerCategoryCode">CustomerCategoryCode</label>
+            <label translate="bssuiteApp.supplierDiscountRule.customerCategoryCode" for="field_customerCategoryCode">CustomerCategoryCode</label>
             <input type="text" class="form-control" name="customerCategoryCode" id="field_customerCategoryCode"
                     ng-model="supplierDiscountRule.customerCategoryCode"
                      />
         </div>
         <div class="form-group">
-            <label for="field_productCode">ProductCode</label>
+            <label translate="bssuiteApp.supplierDiscountRule.productCode" for="field_productCode">ProductCode</label>
             <input type="text" class="form-control" name="productCode" id="field_productCode"
                     ng-model="supplierDiscountRule.productCode"
                      />
         </div>
         <div class="form-group">
-            <label for="field_startDate">StartDate</label>
+            <label translate="bssuiteApp.supplierDiscountRule.startDate" for="field_startDate">StartDate</label>
             <input type="date" class="form-control" name="startDate" id="field_startDate"
                     ng-model="supplierDiscountRule.startDate"
                      />
         </div>
         <div class="form-group">
-            <label for="field_endDate">EndDate</label>
+            <label translate="bssuiteApp.supplierDiscountRule.endDate" for="field_endDate">EndDate</label>
             <input type="date" class="form-control" name="endDate" id="field_endDate"
                     ng-model="supplierDiscountRule.endDate"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyBreak">QtyBreak</label>
+            <label translate="bssuiteApp.supplierDiscountRule.qtyBreak" for="field_qtyBreak">QtyBreak</label>
             <input type="number" class="form-control" name="qtyBreak" id="field_qtyBreak"
                     ng-model="supplierDiscountRule.qtyBreak"
                      />
         </div>
         <div class="form-group">
-            <label for="field_fromStockGroupCode">FromStockGroupCode</label>
+            <label translate="bssuiteApp.supplierDiscountRule.fromStockGroupCode" for="field_fromStockGroupCode">FromStockGroupCode</label>
             <input type="text" class="form-control" name="fromStockGroupCode" id="field_fromStockGroupCode"
                     ng-model="supplierDiscountRule.fromStockGroupCode"
                      />
         </div>
         <div class="form-group">
-            <label for="field_toStockGroupCode">ToStockGroupCode</label>
+            <label translate="bssuiteApp.supplierDiscountRule.toStockGroupCode" for="field_toStockGroupCode">ToStockGroupCode</label>
             <input type="text" class="form-control" name="toStockGroupCode" id="field_toStockGroupCode"
                     ng-model="supplierDiscountRule.toStockGroupCode"
                      />
         </div>
         <div class="form-group">
-            <label for="field_taxCode">TaxCode</label>
+            <label translate="bssuiteApp.supplierDiscountRule.taxCode" for="field_taxCode">TaxCode</label>
             <input type="text" class="form-control" name="taxCode" id="field_taxCode"
                     ng-model="supplierDiscountRule.taxCode"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isAppliedWhenTaxExempt">IsAppliedWhenTaxExempt</label>
+            <label translate="bssuiteApp.supplierDiscountRule.isAppliedWhenTaxExempt" for="field_isAppliedWhenTaxExempt">IsAppliedWhenTaxExempt</label>
             <input type="checkbox" class="form-control" name="isAppliedWhenTaxExempt" id="field_isAppliedWhenTaxExempt"
                     ng-model="supplierDiscountRule.isAppliedWhenTaxExempt"
                      />
         </div>
         <div class="form-group">
-            <label for="field_storeCode">StoreCode</label>
+            <label translate="bssuiteApp.supplierDiscountRule.storeCode" for="field_storeCode">StoreCode</label>
             <input type="text" class="form-control" name="storeCode" id="field_storeCode"
                     ng-model="supplierDiscountRule.storeCode"
                      />
         </div>
         <div class="form-group">
-            <label for="field_discountName">DiscountName</label>
+            <label translate="bssuiteApp.supplierDiscountRule.discountName" for="field_discountName">DiscountName</label>
             <input type="text" class="form-control" name="discountName" id="field_discountName"
                     ng-model="supplierDiscountRule.discountName"
                      />
         </div>
         <div class="form-group">
-            <label for="field_stockFamilyCode">StockFamilyCode</label>
+            <label translate="bssuiteApp.supplierDiscountRule.stockFamilyCode" for="field_stockFamilyCode">StockFamilyCode</label>
             <input type="text" class="form-control" name="stockFamilyCode" id="field_stockFamilyCode"
                     ng-model="supplierDiscountRule.stockFamilyCode"
                      />
         </div>
         <div class="form-group">
-            <label for="field_cost">Cost</label>
+            <label translate="bssuiteApp.supplierDiscountRule.cost" for="field_cost">Cost</label>
             <input type="number" class="form-control" name="cost" id="field_cost"
                     ng-model="supplierDiscountRule.cost"
                      />
         </div>
         <div class="form-group">
-            <label for="field_discountFormula">DiscountFormula</label>
+            <label translate="bssuiteApp.supplierDiscountRule.discountFormula" for="field_discountFormula">DiscountFormula</label>
             <input type="text" class="form-control" name="discountFormula" id="field_discountFormula"
                     ng-model="supplierDiscountRule.discountFormula"
                      />
@@ -137,10 +137,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
         </button>
     </div>
 </form>

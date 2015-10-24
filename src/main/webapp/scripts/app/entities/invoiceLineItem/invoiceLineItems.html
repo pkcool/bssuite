@@ -1,11 +1,11 @@
 <div>
-    <h2>InvoiceLineItems</h2>
+    <h2 translate="bssuiteApp.invoiceLineItem.home.title">InvoiceLineItems</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="invoiceLineItem.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new InvoiceLineItem</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="bssuiteApp.invoiceLineItem.home.createLabel">Create a new InvoiceLineItem</span>
                 </button>
             </div>
             <div class="col-md-8">
@@ -27,17 +27,17 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this InvoiceLineItem?</p>
+                        <p translate="bssuiteApp.invoiceLineItem.delete.question" translate-values="{id: '{{invoiceLineItem.id}}'}">Are you sure you want to delete this InvoiceLineItem?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -49,28 +49,28 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Description</th>
-                    <th>Cost</th>
-                    <th>SoldFor</th>
-                    <th>QtyOrdered</th>
-                    <th>QtySold</th>
-                    <th>QtyReturned</th>
-                    <th>QtyPicked</th>
-                    <th>TotalTaxCharge</th>
-                    <th>DiscountPercentage</th>
-                    <th>DiscountDescription</th>
-                    <th>DiscountPriceGroupCode</th>
-                    <th>LineNo</th>
-                    <th>ListPrice</th>
-                    <th>ListPriceDiscount</th>
-                    <th>Cost2</th>
-                    <th>IsHidden</th>
-                    <th>Ref1</th>
-                    <th>Ref2</th>
-                    <th>invoice</th>
-                    <th>product</th>
-                    <th>taxRate</th>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="bssuiteApp.invoiceLineItem.description">Description</th>
+                    <th translate="bssuiteApp.invoiceLineItem.cost">Cost</th>
+                    <th translate="bssuiteApp.invoiceLineItem.soldFor">SoldFor</th>
+                    <th translate="bssuiteApp.invoiceLineItem.qtyOrdered">QtyOrdered</th>
+                    <th translate="bssuiteApp.invoiceLineItem.qtySold">QtySold</th>
+                    <th translate="bssuiteApp.invoiceLineItem.qtyReturned">QtyReturned</th>
+                    <th translate="bssuiteApp.invoiceLineItem.qtyPicked">QtyPicked</th>
+                    <th translate="bssuiteApp.invoiceLineItem.totalTaxCharge">TotalTaxCharge</th>
+                    <th translate="bssuiteApp.invoiceLineItem.discountPercentage">DiscountPercentage</th>
+                    <th translate="bssuiteApp.invoiceLineItem.discountDescription">DiscountDescription</th>
+                    <th translate="bssuiteApp.invoiceLineItem.discountPriceGroupCode">DiscountPriceGroupCode</th>
+                    <th translate="bssuiteApp.invoiceLineItem.lineNo">LineNo</th>
+                    <th translate="bssuiteApp.invoiceLineItem.listPrice">ListPrice</th>
+                    <th translate="bssuiteApp.invoiceLineItem.listPriceDiscount">ListPriceDiscount</th>
+                    <th translate="bssuiteApp.invoiceLineItem.cost2">Cost2</th>
+                    <th translate="bssuiteApp.invoiceLineItem.isHidden">IsHidden</th>
+                    <th translate="bssuiteApp.invoiceLineItem.Ref1">Ref1</th>
+                    <th translate="bssuiteApp.invoiceLineItem.Ref2">Ref2</th>
+                    <th translate="bssuiteApp.invoiceLineItem.invoice">invoice</th>
+                    <th translate="bssuiteApp.invoiceLineItem.product">product</th>
+                    <th translate="bssuiteApp.invoiceLineItem.taxRate">taxRate</th>
                     <th></th>
                 </tr>
             </thead>
@@ -108,17 +108,17 @@
                         <button type="submit"
                                 ui-sref="invoiceLineItem.detail({id:invoiceLineItem.id})"
                                 class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ui-sref="invoiceLineItem.edit({id:invoiceLineItem.id})"
                                 class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(invoiceLineItem.id)"
                                 class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>

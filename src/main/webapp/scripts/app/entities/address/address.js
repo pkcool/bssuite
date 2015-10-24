@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/addresss',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Addresss'
+                    pageTitle: 'bssuiteApp.address.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('address');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('address.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/address/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Address'
+                    pageTitle: 'bssuiteApp.address.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('address');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'Address', function($stateParams, Address) {
                         return Address.get({id : $stateParams.id});
                     }]

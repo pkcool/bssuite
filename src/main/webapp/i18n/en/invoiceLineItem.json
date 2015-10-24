@@ -1,0 +1,41 @@
+{
+    "bssuiteApp": {
+        "invoiceLineItem" : {
+            "home": {
+                "title": "InvoiceLineItems",
+                "createLabel": "Create a new InvoiceLineItem",
+                "createOrEditLabel": "Create or edit a InvoiceLineItem"
+            },
+            "created": "A new InvoiceLineItem is created with identifier {{ param }}",
+            "updated": "A InvoiceLineItem is updated with identifier {{ param }}",
+            "deleted": "A InvoiceLineItem is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete InvoiceLineItem {{ id }}?"
+            },
+            "detail": {
+                "title": "InvoiceLineItem"
+            },
+            "description": "Description",
+            "cost": "Cost",
+            "soldFor": "SoldFor",
+            "qtyOrdered": "QtyOrdered",
+            "qtySold": "QtySold",
+            "qtyReturned": "QtyReturned",
+            "qtyPicked": "QtyPicked",
+            "totalTaxCharge": "TotalTaxCharge",
+            "discountPercentage": "DiscountPercentage",
+            "discountDescription": "DiscountDescription",
+            "discountPriceGroupCode": "DiscountPriceGroupCode",
+            "lineNo": "LineNo",
+            "listPrice": "ListPrice",
+            "listPriceDiscount": "ListPriceDiscount",
+            "cost2": "Cost2",
+            "isHidden": "IsHidden",
+            "Ref1": "Ref1",
+            "Ref2": "Ref2",
+            "invoice": "Invoice",
+            "product": "Product",
+            "taxRate": "TaxRate"
+        }
+    }
+}

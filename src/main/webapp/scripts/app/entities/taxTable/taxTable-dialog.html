@@ -4,65 +4,65 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="myTaxTableLabel">Create or edit a TaxTable</h4>
+        <h4 class="modal-title" id="myTaxTableLabel" translate="bssuiteApp.taxTable.home.createOrEditLabel">Create or edit a TaxTable</h4>
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
         <div class="form-group">
-            <label for="id">ID</label>
+            <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="taxTable.id" readonly />
         </div>
         <div class="form-group">
-            <label for="field_code">Code</label>
+            <label translate="bssuiteApp.taxTable.code" for="field_code">Code</label>
             <input type="text" class="form-control" name="code" id="field_code"
                     ng-model="taxTable.code"
                     required />
             <div ng-show="editForm.code.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.code.$error.required">
+                    ng-show="editForm.code.$error.required" translate="entity.validation.required">
                     This field is required.
                 </p>
             </div>
         </div>
         <div class="form-group">
-            <label for="field_name">Name</label>
+            <label translate="bssuiteApp.taxTable.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                     ng-model="taxTable.name"
                      />
         </div>
         <div class="form-group">
-            <label for="field_formula">Formula</label>
+            <label translate="bssuiteApp.taxTable.formula" for="field_formula">Formula</label>
             <input type="text" class="form-control" name="formula" id="field_formula"
                     ng-model="taxTable.formula"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isAddedToTotal">IsAddedToTotal</label>
+            <label translate="bssuiteApp.taxTable.isAddedToTotal" for="field_isAddedToTotal">IsAddedToTotal</label>
             <input type="checkbox" class="form-control" name="isAddedToTotal" id="field_isAddedToTotal"
                     ng-model="taxTable.isAddedToTotal"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isSubtractedFromTotal">IsSubtractedFromTotal</label>
+            <label translate="bssuiteApp.taxTable.isSubtractedFromTotal" for="field_isSubtractedFromTotal">IsSubtractedFromTotal</label>
             <input type="checkbox" class="form-control" name="isSubtractedFromTotal" id="field_isSubtractedFromTotal"
                     ng-model="taxTable.isSubtractedFromTotal"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isExcludedOnReporting">IsExcludedOnReporting</label>
+            <label translate="bssuiteApp.taxTable.isExcludedOnReporting" for="field_isExcludedOnReporting">IsExcludedOnReporting</label>
             <input type="checkbox" class="form-control" name="isExcludedOnReporting" id="field_isExcludedOnReporting"
                     ng-model="taxTable.isExcludedOnReporting"
                      />
         </div>
         <div class="form-group">
-            <label for="field_taxGroup">TaxGroup</label>
+            <label translate="bssuiteApp.taxTable.taxGroup" for="field_taxGroup">TaxGroup</label>
             <input type="text" class="form-control" name="taxGroup" id="field_taxGroup"
                     ng-model="taxTable.taxGroup"
                      />
         </div>
         <div class="form-group">
-            <label for="field_taxBase">TaxBase</label>
+            <label translate="bssuiteApp.taxTable.taxBase" for="field_taxBase">TaxBase</label>
             <input type="text" class="form-control" name="taxBase" id="field_taxBase"
                     ng-model="taxTable.taxBase"
                      />
@@ -71,10 +71,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
         </button>
     </div>
 </form>

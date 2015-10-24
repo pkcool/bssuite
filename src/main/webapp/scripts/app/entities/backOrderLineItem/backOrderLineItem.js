@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/backOrderLineItems',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'BackOrderLineItems'
+                    pageTitle: 'bssuiteApp.backOrderLineItem.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('backOrderLineItem');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('backOrderLineItem.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/backOrderLineItem/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'BackOrderLineItem'
+                    pageTitle: 'bssuiteApp.backOrderLineItem.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('backOrderLineItem');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'BackOrderLineItem', function($stateParams, BackOrderLineItem) {
                         return BackOrderLineItem.get({id : $stateParams.id});
                     }]

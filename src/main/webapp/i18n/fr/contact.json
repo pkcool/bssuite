@@ -1,0 +1,28 @@
+{
+    "bssuiteApp": {
+        "contact" : {
+            "home": {
+                "title": "Contacts",
+                "createLabel": "Créer un nouveau Contact",
+                "createOrEditLabel": "Créer ou éditer un Contact"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Contact {{ id }} ?"
+            },
+            "detail": {
+                "title": "Contact"
+            },
+            "fistName": "FistName",
+            "lastName": "LastName",
+            "fullName": "FullName",
+            "emailAddress": "EmailAddress",
+            "companyName": "CompanyName",
+            "phonePrimary": "PhonePrimary",
+            "phoneSecondary": "PhoneSecondary",
+            "fax": "Fax",
+            "position": "Position",
+            "address": "Address"
+        }
+    }
+}
+

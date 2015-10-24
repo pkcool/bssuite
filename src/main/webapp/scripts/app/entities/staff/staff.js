@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/staffs',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Staffs'
+                    pageTitle: 'bssuiteApp.staff.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('staff');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('staff.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/staff/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Staff'
+                    pageTitle: 'bssuiteApp.staff.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('staff');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'Staff', function($stateParams, Staff) {
                         return Staff.get({id : $stateParams.id});
                     }]

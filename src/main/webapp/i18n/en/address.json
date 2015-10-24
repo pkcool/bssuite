@@ -1,0 +1,26 @@
+{
+    "bssuiteApp": {
+        "address" : {
+            "home": {
+                "title": "Addresss",
+                "createLabel": "Create a new Address",
+                "createOrEditLabel": "Create or edit a Address"
+            },
+            "created": "A new Address is created with identifier {{ param }}",
+            "updated": "A Address is updated with identifier {{ param }}",
+            "deleted": "A Address is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Address {{ id }}?"
+            },
+            "detail": {
+                "title": "Address"
+            },
+            "addressLine1": "AddressLine1",
+            "addressLine2": "AddressLine2",
+            "suburb": "Suburb",
+            "state": "State",
+            "postcode": "Postcode",
+            "country": "Country"
+        }
+    }
+}

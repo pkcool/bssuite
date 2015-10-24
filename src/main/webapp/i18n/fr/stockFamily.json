@@ -1,0 +1,25 @@
+{
+    "bssuiteApp": {
+        "stockFamily" : {
+            "home": {
+                "title": "StockFamilys",
+                "createLabel": "Créer un nouveau StockFamily",
+                "createOrEditLabel": "Créer ou éditer un StockFamily"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le StockFamily {{ id }} ?"
+            },
+            "detail": {
+                "title": "StockFamily"
+            },
+            "code": "Code",
+            "name": "Name",
+            "isDiminishing": "IsDiminishing",
+            "lowestMargin": "LowestMargin",
+            "highestMargin": "HighestMargin",
+            "comment": "Comment",
+            "priceScale": "PriceScale"
+        }
+    }
+}
+

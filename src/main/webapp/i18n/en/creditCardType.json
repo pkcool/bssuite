@@ -1,0 +1,10 @@
+{
+    "bssuiteApp": {
+        "CreditCardType" : {
+            "null": "",
+            "VISA": "VISA",
+            "AMX": "AMX",
+            "MASTER": "MASTER"
+        }
+    }
+}

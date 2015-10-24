@@ -1,0 +1,30 @@
+{
+    "bssuiteApp": {
+        "contact" : {
+            "home": {
+                "title": "Contacts",
+                "createLabel": "Create a new Contact",
+                "createOrEditLabel": "Create or edit a Contact"
+            },
+            "created": "A new Contact is created with identifier {{ param }}",
+            "updated": "A Contact is updated with identifier {{ param }}",
+            "deleted": "A Contact is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Contact {{ id }}?"
+            },
+            "detail": {
+                "title": "Contact"
+            },
+            "fistName": "FistName",
+            "lastName": "LastName",
+            "fullName": "FullName",
+            "emailAddress": "EmailAddress",
+            "companyName": "CompanyName",
+            "phonePrimary": "PhonePrimary",
+            "phoneSecondary": "PhoneSecondary",
+            "fax": "Fax",
+            "position": "Position",
+            "address": "Address"
+        }
+    }
+}

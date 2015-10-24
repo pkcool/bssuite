@@ -1,11 +1,11 @@
 <div>
-    <h2>Contacts</h2>
+    <h2 translate="bssuiteApp.contact.home.title">Contacts</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="contact.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Contact</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="bssuiteApp.contact.home.createLabel">Create a new Contact</span>
                 </button>
             </div>
             <div class="col-md-8">
@@ -27,17 +27,17 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this Contact?</p>
+                        <p translate="bssuiteApp.contact.delete.question" translate-values="{id: '{{contact.id}}'}">Are you sure you want to delete this Contact?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -49,17 +49,17 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>FistName</th>
-                    <th>LastName</th>
-                    <th>FullName</th>
-                    <th>EmailAddress</th>
-                    <th>CompanyName</th>
-                    <th>PhonePrimary</th>
-                    <th>PhoneSecondary</th>
-                    <th>Fax</th>
-                    <th>Position</th>
-                    <th>address</th>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="bssuiteApp.contact.fistName">FistName</th>
+                    <th translate="bssuiteApp.contact.lastName">LastName</th>
+                    <th translate="bssuiteApp.contact.fullName">FullName</th>
+                    <th translate="bssuiteApp.contact.emailAddress">EmailAddress</th>
+                    <th translate="bssuiteApp.contact.companyName">CompanyName</th>
+                    <th translate="bssuiteApp.contact.phonePrimary">PhonePrimary</th>
+                    <th translate="bssuiteApp.contact.phoneSecondary">PhoneSecondary</th>
+                    <th translate="bssuiteApp.contact.fax">Fax</th>
+                    <th translate="bssuiteApp.contact.position">Position</th>
+                    <th translate="bssuiteApp.contact.address">address</th>
                     <th></th>
                 </tr>
             </thead>
@@ -82,17 +82,17 @@
                         <button type="submit"
                                 ui-sref="contact.detail({id:contact.id})"
                                 class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ui-sref="contact.edit({id:contact.id})"
                                 class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(contact.id)"
                                 class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>

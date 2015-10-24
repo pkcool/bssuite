@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/invoices',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Invoices'
+                    pageTitle: 'bssuiteApp.invoice.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,13 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('invoice');
+                        $translatePartialLoader.addPart('invoiceTxnType');
+                        $translatePartialLoader.addPart('invoiceSource');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('invoice.detail', {
@@ -24,7 +31,7 @@ angular.module('bssuiteApp')
                 url: '/invoice/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Invoice'
+                    pageTitle: 'bssuiteApp.invoice.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +40,12 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('invoice');
+                        $translatePartialLoader.addPart('invoiceTxnType');
+                        $translatePartialLoader.addPart('invoiceSource');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'Invoice', function($stateParams, Invoice) {
                         return Invoice.get({id : $stateParams.id});
                     }]

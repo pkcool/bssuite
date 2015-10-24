@@ -1,0 +1,13 @@
+{
+    "bssuiteApp": {
+        "QuoteStatus" : {
+            "null": "",
+            "OPEN": "OPEN",
+            "ACCEPTED": "ACCEPTED",
+            "LOST": "LOST",
+            "CANCELLED": "CANCELLED",
+            "SUSPENDED": "SUSPENDED",
+            "EXPIRED": "EXPIRED"
+        }
+    }
+}

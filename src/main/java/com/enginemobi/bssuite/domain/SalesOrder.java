@@ -1,20 +1,19 @@
 package com.enginemobi.bssuite.domain;
 
+import com.enginemobi.bssuite.domain.enumeration.SalesOrderStatus;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import java.time.LocalDate;
-import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
-
-import com.enginemobi.bssuite.domain.enumeration.SalesOrderStatus;
+import java.util.Set;
 
 /**
  * A SalesOrder.
@@ -120,7 +119,7 @@ public class SalesOrder implements Serializable {
     @OneToMany(mappedBy = "salesOrder")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<SalesOrderLineItem> salesOrderLineItemss = new HashSet<>();
+    private Set<SalesOrderLineItem> salesOrderLineItems = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -362,12 +361,12 @@ public class SalesOrder implements Serializable {
         this.createdBy = staff;
     }
 
-    public Set<SalesOrderLineItem> getSalesOrderLineItemss() {
-        return salesOrderLineItemss;
+    public Set<SalesOrderLineItem> getSalesOrderLineItems() {
+        return salesOrderLineItems;
     }
 
-    public void setSalesOrderLineItemss(Set<SalesOrderLineItem> salesOrderLineItems) {
-        this.salesOrderLineItemss = salesOrderLineItems;
+    public void setSalesOrderLineItems(Set<SalesOrderLineItem> salesOrderLineItems) {
+        this.salesOrderLineItems = salesOrderLineItems;
     }
 
     @Override

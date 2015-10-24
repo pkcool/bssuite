@@ -57,9 +57,10 @@ module.exports = function (grunt) {
                 src: ['src/main/webapp/index.html', 'src/main/scss/main.scss'],
                 exclude: [
                     /angular-i18n/, // localizations are loaded dynamically
-                    'bower_components/bootstrap/' // Exclude Bootstrap LESS as we use bootstrap-sass
+                    'bower_components/bootstrap/', // Exclude Bootstrap LESS as we use bootstrap-sass
+                    'bower_components/components-font-awesome/css' // Exclude font-awesome css as we use font-awesome-sass
                 ],
-                ignorePath: /\.\.\/webapp\/bower_components\// // remove ../webapp/bower_components/ from paths of injected sass files 
+                ignorePath: /\.\.\/webapp\/bower_components\// // remove ../webapp/bower_components/ from paths of injected sass files
             },
             test: {
                 src: 'src/test/javascript/karma.conf.js',

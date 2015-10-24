@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/customerCategorys',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'CustomerCategorys'
+                    pageTitle: 'bssuiteApp.customerCategory.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('customerCategory');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('customerCategory.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/customerCategory/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'CustomerCategory'
+                    pageTitle: 'bssuiteApp.customerCategory.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('customerCategory');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'CustomerCategory', function($stateParams, CustomerCategory) {
                         return CustomerCategory.get({id : $stateParams.id});
                     }]

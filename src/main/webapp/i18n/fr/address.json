@@ -1,0 +1,24 @@
+{
+    "bssuiteApp": {
+        "address" : {
+            "home": {
+                "title": "Addresss",
+                "createLabel": "Créer un nouveau Address",
+                "createOrEditLabel": "Créer ou éditer un Address"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Address {{ id }} ?"
+            },
+            "detail": {
+                "title": "Address"
+            },
+            "addressLine1": "AddressLine1",
+            "addressLine2": "AddressLine2",
+            "suburb": "Suburb",
+            "state": "State",
+            "postcode": "Postcode",
+            "country": "Country"
+        }
+    }
+}
+

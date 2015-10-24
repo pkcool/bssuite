@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/quotes',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Quotes'
+                    pageTitle: 'bssuiteApp.quote.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,12 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('quote');
+                        $translatePartialLoader.addPart('quoteStatus');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('quote.detail', {
@@ -24,7 +30,7 @@ angular.module('bssuiteApp')
                 url: '/quote/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Quote'
+                    pageTitle: 'bssuiteApp.quote.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +39,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('quote');
+                        $translatePartialLoader.addPart('quoteStatus');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'Quote', function($stateParams, Quote) {
                         return Quote.get({id : $stateParams.id});
                     }]

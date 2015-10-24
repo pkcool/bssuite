@@ -1,0 +1,15 @@
+{
+    "bssuiteApp": {
+        "InvoiceTxnType" : {
+            "null": "",
+            "INVOICE": "INVOICE",
+            "ADJUSTMENTNOTE": "ADJUSTMENTNOTE",
+            "CASHORDER": "CASHORDER",
+            "CASHSALE": "CASHSALE",
+            "PPSAMOUNT": "PPSAMOUNT",
+            "PAYMENT": "PAYMENT",
+            "LAYBY": "LAYBY",
+            "SPECIAL": "SPECIAL"
+        }
+    }
+}

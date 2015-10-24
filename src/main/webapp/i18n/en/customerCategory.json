@@ -1,0 +1,22 @@
+{
+    "bssuiteApp": {
+        "customerCategory" : {
+            "home": {
+                "title": "CustomerCategorys",
+                "createLabel": "Create a new CustomerCategory",
+                "createOrEditLabel": "Create or edit a CustomerCategory"
+            },
+            "created": "A new CustomerCategory is created with identifier {{ param }}",
+            "updated": "A CustomerCategory is updated with identifier {{ param }}",
+            "deleted": "A CustomerCategory is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete CustomerCategory {{ id }}?"
+            },
+            "detail": {
+                "title": "CustomerCategory"
+            },
+            "code": "Code",
+            "name": "Name"
+        }
+    }
+}

@@ -1,18 +1,18 @@
 
 <div>
-    <h2><span>TaxTable</span> {{taxTable.id}}</h2>
+    <h2><span translate="bssuiteApp.taxTable.detail.title">TaxTable</span> {{taxTable.id}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Field</th>
-                <th>Value</th>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>
-                    <span>Code</span>
+                    <span translate="bssuiteApp.taxTable.code">Code</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{taxTable.code}}</span>
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Name</span>
+                    <span translate="bssuiteApp.taxTable.name">Name</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{taxTable.name}}</span>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Formula</span>
+                    <span translate="bssuiteApp.taxTable.formula">Formula</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{taxTable.formula}}</span>
@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsAddedToTotal</span>
+                    <span translate="bssuiteApp.taxTable.isAddedToTotal">IsAddedToTotal</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{taxTable.isAddedToTotal}}</span>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsSubtractedFromTotal</span>
+                    <span translate="bssuiteApp.taxTable.isSubtractedFromTotal">IsSubtractedFromTotal</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{taxTable.isSubtractedFromTotal}}</span>
@@ -52,7 +52,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsExcludedOnReporting</span>
+                    <span translate="bssuiteApp.taxTable.isExcludedOnReporting">IsExcludedOnReporting</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{taxTable.isExcludedOnReporting}}</span>
@@ -60,7 +60,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>TaxGroup</span>
+                    <span translate="bssuiteApp.taxTable.taxGroup">TaxGroup</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{taxTable.taxGroup}}</span>
@@ -68,7 +68,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>TaxBase</span>
+                    <span translate="bssuiteApp.taxTable.taxBase">TaxBase</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{taxTable.taxBase}}</span>
@@ -81,6 +81,6 @@
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
 </div>

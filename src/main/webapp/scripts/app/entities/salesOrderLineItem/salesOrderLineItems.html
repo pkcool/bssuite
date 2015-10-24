@@ -1,11 +1,11 @@
 <div>
-    <h2>SalesOrderLineItems</h2>
+    <h2 translate="bssuiteApp.salesOrderLineItem.home.title">SalesOrderLineItems</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="salesOrderLineItem.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new SalesOrderLineItem</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="bssuiteApp.salesOrderLineItem.home.createLabel">Create a new SalesOrderLineItem</span>
                 </button>
             </div>
             <div class="col-md-8">
@@ -27,17 +27,17 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this SalesOrderLineItem?</p>
+                        <p translate="bssuiteApp.salesOrderLineItem.delete.question" translate-values="{id: '{{salesOrderLineItem.id}}'}">Are you sure you want to delete this SalesOrderLineItem?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -49,25 +49,25 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Description</th>
-                    <th>Cost</th>
-                    <th>SoldFor</th>
-                    <th>QtyOrdered</th>
-                    <th>QtyAllocated</th>
-                    <th>TotalTaxCharge</th>
-                    <th>DiscountPercentage</th>
-                    <th>LineNo</th>
-                    <th>RequiredDate</th>
-                    <th>ListPrice</th>
-                    <th>ListPriceDiscount</th>
-                    <th>Cost2</th>
-                    <th>IsHidden</th>
-                    <th>Ref1</th>
-                    <th>Ref2</th>
-                    <th>salesOrder</th>
-                    <th>product</th>
-                    <th>taxRate</th>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.description">Description</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.cost">Cost</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.soldFor">SoldFor</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.qtyOrdered">QtyOrdered</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.qtyAllocated">QtyAllocated</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.totalTaxCharge">TotalTaxCharge</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.discountPercentage">DiscountPercentage</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.lineNo">LineNo</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.requiredDate">RequiredDate</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.listPrice">ListPrice</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.listPriceDiscount">ListPriceDiscount</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.cost2">Cost2</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.isHidden">IsHidden</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.Ref1">Ref1</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.Ref2">Ref2</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.salesOrder">salesOrder</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.product">product</th>
+                    <th translate="bssuiteApp.salesOrderLineItem.taxRate">taxRate</th>
                     <th></th>
                 </tr>
             </thead>
@@ -102,17 +102,17 @@
                         <button type="submit"
                                 ui-sref="salesOrderLineItem.detail({id:salesOrderLineItem.id})"
                                 class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ui-sref="salesOrderLineItem.edit({id:salesOrderLineItem.id})"
                                 class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(salesOrderLineItem.id)"
                                 class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>

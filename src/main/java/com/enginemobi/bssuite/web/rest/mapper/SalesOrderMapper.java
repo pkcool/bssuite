@@ -29,7 +29,7 @@ public interface SalesOrderMapper {
     @Mapping(source = "salespersonId", target = "salesperson")
     @Mapping(source = "promotionId", target = "promotion")
     @Mapping(source = "createdById", target = "createdBy")
-    @Mapping(target = "salesOrderLineItemss", ignore = true)
+    @Mapping(target = "salesOrderLineItems", ignore = true)
     SalesOrder salesOrderDTOToSalesOrder(SalesOrderDTO salesOrderDTO);
 
     default Customer customerFromId(Long id) {
@@ -41,14 +41,7 @@ public interface SalesOrderMapper {
         return customer;
     }
 
-    default Contact contactFromId(Long id) {
-        if (id == null) {
-            return null;
-        }
-        Contact contact = new Contact();
-        contact.setId(id);
-        return contact;
-    }
+
 
     default Contact contactFromId(Long id) {
         if (id == null) {
@@ -75,15 +68,6 @@ public interface SalesOrderMapper {
         Carrier carrier = new Carrier();
         carrier.setId(id);
         return carrier;
-    }
-
-    default Staff staffFromId(Long id) {
-        if (id == null) {
-            return null;
-        }
-        Staff staff = new Staff();
-        staff.setId(id);
-        return staff;
     }
 
     default Promotion promotionFromId(Long id) {

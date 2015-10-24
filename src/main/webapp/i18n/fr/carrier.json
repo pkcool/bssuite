@@ -1,0 +1,32 @@
+{
+    "bssuiteApp": {
+        "carrier" : {
+            "home": {
+                "title": "Carriers",
+                "createLabel": "Créer un nouveau Carrier",
+                "createOrEditLabel": "Créer ou éditer un Carrier"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Carrier {{ id }} ?"
+            },
+            "detail": {
+                "title": "Carrier"
+            },
+            "code": "Code",
+            "name": "Name",
+            "phone": "Phone",
+            "mobile": "Mobile",
+            "accountNo": "AccountNo",
+            "comment": "Comment",
+            "isAvailableOnMonday": "IsAvailableOnMonday",
+            "isAvailableOnTuesday": "IsAvailableOnTuesday",
+            "isAvailableOnWednesday": "IsAvailableOnWednesday",
+            "isAvailableOnThursday": "IsAvailableOnThursday",
+            "isAvailableOnFriday": "IsAvailableOnFriday",
+            "isAvailableOnSaturday": "IsAvailableOnSaturday",
+            "isAvailableOnSunday": "IsAvailableOnSunday",
+            "docketRefNo": "DocketRefNo"
+        }
+    }
+}
+

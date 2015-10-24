@@ -1,18 +1,18 @@
 
 <div>
-    <h2><span>Staff</span> {{staff.id}}</h2>
+    <h2><span translate="bssuiteApp.staff.detail.title">Staff</span> {{staff.id}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Field</th>
-                <th>Value</th>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>
-                    <span>Code</span>
+                    <span translate="bssuiteApp.staff.code">Code</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{staff.code}}</span>
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Name</span>
+                    <span translate="bssuiteApp.staff.name">Name</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{staff.name}}</span>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Comment</span>
+                    <span translate="bssuiteApp.staff.comment">Comment</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{staff.comment}}</span>
@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Commission</span>
+                    <span translate="bssuiteApp.staff.commission">Commission</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{staff.commission}}</span>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Occupation</span>
+                    <span translate="bssuiteApp.staff.occupation">Occupation</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{staff.occupation}}</span>
@@ -52,7 +52,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>WorkPhone</span>
+                    <span translate="bssuiteApp.staff.workPhone">WorkPhone</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{staff.workPhone}}</span>
@@ -60,7 +60,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>HomePhone</span>
+                    <span translate="bssuiteApp.staff.homePhone">HomePhone</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{staff.homePhone}}</span>
@@ -68,7 +68,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>WorkMobile</span>
+                    <span translate="bssuiteApp.staff.workMobile">WorkMobile</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{staff.workMobile}}</span>
@@ -76,7 +76,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>HomeMobile</span>
+                    <span translate="bssuiteApp.staff.homeMobile">HomeMobile</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{staff.homeMobile}}</span>
@@ -84,7 +84,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>WebEmail</span>
+                    <span translate="bssuiteApp.staff.webEmail">WebEmail</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{staff.webEmail}}</span>
@@ -92,7 +92,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>HomeEmail</span>
+                    <span translate="bssuiteApp.staff.homeEmail">HomeEmail</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{staff.homeEmail}}</span>
@@ -100,7 +100,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Birthday</span>
+                    <span translate="bssuiteApp.staff.birthday">Birthday</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{staff.birthday | date:'mediumDate'}}</span>
@@ -108,7 +108,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsLockedToStore</span>
+                    <span translate="bssuiteApp.staff.isLockedToStore">IsLockedToStore</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{staff.isLockedToStore}}</span>
@@ -116,7 +116,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>IsTechnical</span>
+                    <span translate="bssuiteApp.staff.isTechnical">IsTechnical</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{staff.isTechnical}}</span>
@@ -124,7 +124,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>store</span>
+                    <span translate="bssuiteApp.staff.store">store</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="store.detail({id:staff.storeId})">{{staff.storeId}}</a>
@@ -137,6 +137,6 @@
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
 </div>

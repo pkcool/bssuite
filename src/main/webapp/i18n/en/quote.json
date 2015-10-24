@@ -1,0 +1,46 @@
+{
+    "bssuiteApp": {
+        "quote" : {
+            "home": {
+                "title": "Quotes",
+                "createLabel": "Create a new Quote",
+                "createOrEditLabel": "Create or edit a Quote"
+            },
+            "created": "A new Quote is created with identifier {{ param }}",
+            "updated": "A Quote is updated with identifier {{ param }}",
+            "deleted": "A Quote is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Quote {{ id }}?"
+            },
+            "detail": {
+                "title": "Quote"
+            },
+            "quoteNo": "QuoteNo",
+            "status": "Status",
+            "quoteDate": "QuoteDate",
+            "expiryDate": "ExpiryDate",
+            "followupDate": "FollowupDate",
+            "reference": "Reference",
+            "ourRef": "OurRef",
+            "freight": "Freight",
+            "reasonForLoss": "ReasonForLoss",
+            "isTaxable": "IsTaxable",
+            "taxExemptionCode": "TaxExemptionCode",
+            "isLocked": "IsLocked",
+            "adjustTax": "AdjustTax",
+            "adjustTaxExempt": "AdjustTaxExempt",
+            "comment": "Comment",
+            "totalTaxAmount": "TotalTaxAmount",
+            "totalSellPrice": "TotalSellPrice",
+            "totalCost": "TotalCost",
+            "isSuspended": "IsSuspended",
+            "customer": "Customer",
+            "contact": "Contact",
+            "deliveryContact": "DeliveryContact",
+            "store": "Store",
+            "quoteByStaff": "QuoteByStaff",
+            "createdBy": "CreatedBy",
+            "quoteLineItems": "QuoteLineItems"
+        }
+    }
+}

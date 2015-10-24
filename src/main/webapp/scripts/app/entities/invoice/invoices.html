@@ -1,11 +1,11 @@
 <div>
-    <h2>Invoices</h2>
+    <h2 translate="bssuiteApp.invoice.home.title">Invoices</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="invoice.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Invoice</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="bssuiteApp.invoice.home.createLabel">Create a new Invoice</span>
                 </button>
             </div>
             <div class="col-md-8">
@@ -27,17 +27,17 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this Invoice?</p>
+                        <p translate="bssuiteApp.invoice.delete.question" translate-values="{id: '{{invoice.id}}'}">Are you sure you want to delete this Invoice?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -49,59 +49,59 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>InvoiceNo</th>
-                    <th>InvoiceTxnType</th>
-                    <th>TxnDate</th>
-                    <th>DueDate</th>
-                    <th>Reference</th>
-                    <th>OurRef</th>
-                    <th>OurRef2</th>
-                    <th>OurRef3</th>
-                    <th>TaxExemptionCode</th>
-                    <th>IsPenaltyIssued</th>
-                    <th>Freight</th>
-                    <th>HandlingCharge</th>
-                    <th>Charge2</th>
-                    <th>IsTaxable</th>
-                    <th>IsLocked</th>
-                    <th>AdjustTax</th>
-                    <th>AdjustTaxExempt</th>
-                    <th>PaymentCash</th>
-                    <th>PaymentCheque</th>
-                    <th>PaymentCreditCard</th>
-                    <th>PaymentDirectDeposit</th>
-                    <th>PaymentVoucher</th>
-                    <th>PaymentDirectDebit</th>
-                    <th>Payment1</th>
-                    <th>Payment2</th>
-                    <th>Bank</th>
-                    <th>BankBranch</th>
-                    <th>BankAccount</th>
-                    <th>DateOfDeposit</th>
-                    <th>DrawerName</th>
-                    <th>NoAlloc</th>
-                    <th>CoinRound</th>
-                    <th>Prepayment</th>
-                    <th>In2</th>
-                    <th>Comment</th>
-                    <th>TotalTaxAmount</th>
-                    <th>TotalSellPrice</th>
-                    <th>TotalCost</th>
-                    <th>IsOnHold</th>
-                    <th>IsLayBy</th>
-                    <th>IsExternalTxn</th>
-                    <th>IsSuspended</th>
-                    <th>GeneratedFrom</th>
-                    <th>customer</th>
-                    <th>billingCustomer</th>
-                    <th>contact</th>
-                    <th>deliveryContact</th>
-                    <th>store</th>
-                    <th>carrier</th>
-                    <th>salesperson</th>
-                    <th>promotion</th>
-                    <th>createdBy</th>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="bssuiteApp.invoice.invoiceNo">InvoiceNo</th>
+                    <th translate="bssuiteApp.invoice.invoiceTxnType">InvoiceTxnType</th>
+                    <th translate="bssuiteApp.invoice.txnDate">TxnDate</th>
+                    <th translate="bssuiteApp.invoice.dueDate">DueDate</th>
+                    <th translate="bssuiteApp.invoice.reference">Reference</th>
+                    <th translate="bssuiteApp.invoice.ourRef">OurRef</th>
+                    <th translate="bssuiteApp.invoice.ourRef2">OurRef2</th>
+                    <th translate="bssuiteApp.invoice.ourRef3">OurRef3</th>
+                    <th translate="bssuiteApp.invoice.taxExemptionCode">TaxExemptionCode</th>
+                    <th translate="bssuiteApp.invoice.isPenaltyIssued">IsPenaltyIssued</th>
+                    <th translate="bssuiteApp.invoice.freight">Freight</th>
+                    <th translate="bssuiteApp.invoice.handlingCharge">HandlingCharge</th>
+                    <th translate="bssuiteApp.invoice.charge2">Charge2</th>
+                    <th translate="bssuiteApp.invoice.isTaxable">IsTaxable</th>
+                    <th translate="bssuiteApp.invoice.isLocked">IsLocked</th>
+                    <th translate="bssuiteApp.invoice.adjustTax">AdjustTax</th>
+                    <th translate="bssuiteApp.invoice.adjustTaxExempt">AdjustTaxExempt</th>
+                    <th translate="bssuiteApp.invoice.paymentCash">PaymentCash</th>
+                    <th translate="bssuiteApp.invoice.paymentCheque">PaymentCheque</th>
+                    <th translate="bssuiteApp.invoice.paymentCreditCard">PaymentCreditCard</th>
+                    <th translate="bssuiteApp.invoice.paymentDirectDeposit">PaymentDirectDeposit</th>
+                    <th translate="bssuiteApp.invoice.paymentVoucher">PaymentVoucher</th>
+                    <th translate="bssuiteApp.invoice.paymentDirectDebit">PaymentDirectDebit</th>
+                    <th translate="bssuiteApp.invoice.payment1">Payment1</th>
+                    <th translate="bssuiteApp.invoice.payment2">Payment2</th>
+                    <th translate="bssuiteApp.invoice.bank">Bank</th>
+                    <th translate="bssuiteApp.invoice.bankBranch">BankBranch</th>
+                    <th translate="bssuiteApp.invoice.bankAccount">BankAccount</th>
+                    <th translate="bssuiteApp.invoice.dateOfDeposit">DateOfDeposit</th>
+                    <th translate="bssuiteApp.invoice.drawerName">DrawerName</th>
+                    <th translate="bssuiteApp.invoice.NoAlloc">NoAlloc</th>
+                    <th translate="bssuiteApp.invoice.coinRound">CoinRound</th>
+                    <th translate="bssuiteApp.invoice.prepayment">Prepayment</th>
+                    <th translate="bssuiteApp.invoice.in2">In2</th>
+                    <th translate="bssuiteApp.invoice.comment">Comment</th>
+                    <th translate="bssuiteApp.invoice.totalTaxAmount">TotalTaxAmount</th>
+                    <th translate="bssuiteApp.invoice.totalSellPrice">TotalSellPrice</th>
+                    <th translate="bssuiteApp.invoice.totalCost">TotalCost</th>
+                    <th translate="bssuiteApp.invoice.isOnHold">IsOnHold</th>
+                    <th translate="bssuiteApp.invoice.isLayBy">IsLayBy</th>
+                    <th translate="bssuiteApp.invoice.isExternalTxn">IsExternalTxn</th>
+                    <th translate="bssuiteApp.invoice.isSuspended">IsSuspended</th>
+                    <th translate="bssuiteApp.invoice.generatedFrom">GeneratedFrom</th>
+                    <th translate="bssuiteApp.invoice.customer">customer</th>
+                    <th translate="bssuiteApp.invoice.billingCustomer">billingCustomer</th>
+                    <th translate="bssuiteApp.invoice.contact">contact</th>
+                    <th translate="bssuiteApp.invoice.deliveryContact">deliveryContact</th>
+                    <th translate="bssuiteApp.invoice.store">store</th>
+                    <th translate="bssuiteApp.invoice.carrier">carrier</th>
+                    <th translate="bssuiteApp.invoice.salesperson">salesperson</th>
+                    <th translate="bssuiteApp.invoice.promotion">promotion</th>
+                    <th translate="bssuiteApp.invoice.createdBy">createdBy</th>
                     <th></th>
                 </tr>
             </thead>
@@ -182,17 +182,17 @@
                         <button type="submit"
                                 ui-sref="invoice.detail({id:invoice.id})"
                                 class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ui-sref="invoice.edit({id:invoice.id})"
                                 class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(invoice.id)"
                                 class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>

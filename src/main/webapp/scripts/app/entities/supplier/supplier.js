@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/suppliers',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Suppliers'
+                    pageTitle: 'bssuiteApp.supplier.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,13 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('supplier');
+                        $translatePartialLoader.addPart('supplierAccountType');
+                        $translatePartialLoader.addPart('supplierAgeingMethod');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('supplier.detail', {
@@ -24,7 +31,7 @@ angular.module('bssuiteApp')
                 url: '/supplier/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Supplier'
+                    pageTitle: 'bssuiteApp.supplier.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +40,12 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('supplier');
+                        $translatePartialLoader.addPart('supplierAccountType');
+                        $translatePartialLoader.addPart('supplierAgeingMethod');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'Supplier', function($stateParams, Supplier) {
                         return Supplier.get({id : $stateParams.id});
                     }]

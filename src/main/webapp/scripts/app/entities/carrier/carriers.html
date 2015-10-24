@@ -1,11 +1,11 @@
 <div>
-    <h2>Carriers</h2>
+    <h2 translate="bssuiteApp.carrier.home.title">Carriers</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="carrier.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Carrier</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="bssuiteApp.carrier.home.createLabel">Create a new Carrier</span>
                 </button>
             </div>
             <div class="col-md-8">
@@ -27,17 +27,17 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this Carrier?</p>
+                        <p translate="bssuiteApp.carrier.delete.question" translate-values="{id: '{{carrier.id}}'}">Are you sure you want to delete this Carrier?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -49,21 +49,21 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Mobile</th>
-                    <th>AccountNo</th>
-                    <th>Comment</th>
-                    <th>IsAvailableOnMonday</th>
-                    <th>IsAvailableOnTuesday</th>
-                    <th>IsAvailableOnWednesday</th>
-                    <th>IsAvailableOnThursday</th>
-                    <th>IsAvailableOnFriday</th>
-                    <th>IsAvailableOnSaturday</th>
-                    <th>IsAvailableOnSunday</th>
-                    <th>DocketRefNo</th>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="bssuiteApp.carrier.code">Code</th>
+                    <th translate="bssuiteApp.carrier.name">Name</th>
+                    <th translate="bssuiteApp.carrier.phone">Phone</th>
+                    <th translate="bssuiteApp.carrier.mobile">Mobile</th>
+                    <th translate="bssuiteApp.carrier.accountNo">AccountNo</th>
+                    <th translate="bssuiteApp.carrier.comment">Comment</th>
+                    <th translate="bssuiteApp.carrier.isAvailableOnMonday">IsAvailableOnMonday</th>
+                    <th translate="bssuiteApp.carrier.isAvailableOnTuesday">IsAvailableOnTuesday</th>
+                    <th translate="bssuiteApp.carrier.isAvailableOnWednesday">IsAvailableOnWednesday</th>
+                    <th translate="bssuiteApp.carrier.isAvailableOnThursday">IsAvailableOnThursday</th>
+                    <th translate="bssuiteApp.carrier.isAvailableOnFriday">IsAvailableOnFriday</th>
+                    <th translate="bssuiteApp.carrier.isAvailableOnSaturday">IsAvailableOnSaturday</th>
+                    <th translate="bssuiteApp.carrier.isAvailableOnSunday">IsAvailableOnSunday</th>
+                    <th translate="bssuiteApp.carrier.docketRefNo">DocketRefNo</th>
                     <th></th>
                 </tr>
             </thead>
@@ -88,17 +88,17 @@
                         <button type="submit"
                                 ui-sref="carrier.detail({id:carrier.id})"
                                 class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ui-sref="carrier.edit({id:carrier.id})"
                                 class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(carrier.id)"
                                 class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>

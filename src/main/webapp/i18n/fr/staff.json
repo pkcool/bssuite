@@ -1,0 +1,33 @@
+{
+    "bssuiteApp": {
+        "staff" : {
+            "home": {
+                "title": "Staffs",
+                "createLabel": "Créer un nouveau Staff",
+                "createOrEditLabel": "Créer ou éditer un Staff"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Staff {{ id }} ?"
+            },
+            "detail": {
+                "title": "Staff"
+            },
+            "code": "Code",
+            "name": "Name",
+            "comment": "Comment",
+            "commission": "Commission",
+            "occupation": "Occupation",
+            "workPhone": "WorkPhone",
+            "homePhone": "HomePhone",
+            "workMobile": "WorkMobile",
+            "homeMobile": "HomeMobile",
+            "webEmail": "WebEmail",
+            "homeEmail": "HomeEmail",
+            "birthday": "Birthday",
+            "isLockedToStore": "IsLockedToStore",
+            "isTechnical": "IsTechnical",
+            "store": "Store"
+        }
+    }
+}
+

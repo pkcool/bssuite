@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/customerDiscountRules',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'CustomerDiscountRules'
+                    pageTitle: 'bssuiteApp.customerDiscountRule.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('customerDiscountRule');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('customerDiscountRule.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/customerDiscountRule/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'CustomerDiscountRule'
+                    pageTitle: 'bssuiteApp.customerDiscountRule.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('customerDiscountRule');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'CustomerDiscountRule', function($stateParams, CustomerDiscountRule) {
                         return CustomerDiscountRule.get({id : $stateParams.id});
                     }]

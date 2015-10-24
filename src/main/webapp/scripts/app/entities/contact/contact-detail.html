@@ -1,18 +1,18 @@
 
 <div>
-    <h2><span>Contact</span> {{contact.id}}</h2>
+    <h2><span translate="bssuiteApp.contact.detail.title">Contact</span> {{contact.id}}</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Field</th>
-                <th>Value</th>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>
-                    <span>FistName</span>
+                    <span translate="bssuiteApp.contact.fistName">FistName</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{contact.fistName}}</span>
@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>LastName</span>
+                    <span translate="bssuiteApp.contact.lastName">LastName</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{contact.lastName}}</span>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>FullName</span>
+                    <span translate="bssuiteApp.contact.fullName">FullName</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{contact.fullName}}</span>
@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>EmailAddress</span>
+                    <span translate="bssuiteApp.contact.emailAddress">EmailAddress</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{contact.emailAddress}}</span>
@@ -44,7 +44,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>CompanyName</span>
+                    <span translate="bssuiteApp.contact.companyName">CompanyName</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{contact.companyName}}</span>
@@ -52,7 +52,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>PhonePrimary</span>
+                    <span translate="bssuiteApp.contact.phonePrimary">PhonePrimary</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{contact.phonePrimary}}</span>
@@ -60,7 +60,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>PhoneSecondary</span>
+                    <span translate="bssuiteApp.contact.phoneSecondary">PhoneSecondary</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{contact.phoneSecondary}}</span>
@@ -68,7 +68,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Fax</span>
+                    <span translate="bssuiteApp.contact.fax">Fax</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{contact.fax}}</span>
@@ -76,7 +76,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>Position</span>
+                    <span translate="bssuiteApp.contact.position">Position</span>
                 </td>
                 <td>
                     <span class="form-control-static">{{contact.position}}</span>
@@ -84,7 +84,7 @@
             </tr>
             <tr>
                 <td>
-                    <span>address</span>
+                    <span translate="bssuiteApp.contact.address">address</span>
                 </td>
                 <td>
                     <a class="form-control-static" ui-sref="address.detail({id:contact.addressId})">{{contact.addressId}}</a>
@@ -97,6 +97,6 @@
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
 </div>

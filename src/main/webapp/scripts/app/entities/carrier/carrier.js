@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/carriers',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Carriers'
+                    pageTitle: 'bssuiteApp.carrier.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('carrier');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('carrier.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/carrier/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'Carrier'
+                    pageTitle: 'bssuiteApp.carrier.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('carrier');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'Carrier', function($stateParams, Carrier) {
                         return Carrier.get({id : $stateParams.id});
                     }]

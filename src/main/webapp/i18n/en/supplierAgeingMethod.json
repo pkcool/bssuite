@@ -1,0 +1,10 @@
+{
+    "bssuiteApp": {
+        "SupplierAgeingMethod" : {
+            "null": "",
+            "MONTH": "MONTH",
+            "TERMS": "TERMS",
+            "DUEDATES": "DUEDATES"
+        }
+    }
+}

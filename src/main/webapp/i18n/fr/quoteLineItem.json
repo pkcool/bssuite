@@ -1,0 +1,35 @@
+{
+    "bssuiteApp": {
+        "quoteLineItem" : {
+            "home": {
+                "title": "QuoteLineItems",
+                "createLabel": "Créer un nouveau QuoteLineItem",
+                "createOrEditLabel": "Créer ou éditer un QuoteLineItem"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le QuoteLineItem {{ id }} ?"
+            },
+            "detail": {
+                "title": "QuoteLineItem"
+            },
+            "description": "Description",
+            "cost": "Cost",
+            "soldFor": "SoldFor",
+            "qtyQuoted": "QtyQuoted",
+            "discountPriceGroupCode": "DiscountPriceGroupCode",
+            "totalTaxCharge": "TotalTaxCharge",
+            "discountPercentage": "DiscountPercentage",
+            "lineNo": "LineNo",
+            "listPrice": "ListPrice",
+            "listPriceDiscount": "ListPriceDiscount",
+            "cost2": "Cost2",
+            "isHidden": "IsHidden",
+            "Ref1": "Ref1",
+            "Ref2": "Ref2",
+            "quote": "Quote",
+            "product": "Product",
+            "taxRate": "TaxRate"
+        }
+    }
+}
+

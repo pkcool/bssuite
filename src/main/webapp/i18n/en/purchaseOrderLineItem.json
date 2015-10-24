@@ -1,0 +1,38 @@
+{
+    "bssuiteApp": {
+        "purchaseOrderLineItem" : {
+            "home": {
+                "title": "PurchaseOrderLineItems",
+                "createLabel": "Create a new PurchaseOrderLineItem",
+                "createOrEditLabel": "Create or edit a PurchaseOrderLineItem"
+            },
+            "created": "A new PurchaseOrderLineItem is created with identifier {{ param }}",
+            "updated": "A PurchaseOrderLineItem is updated with identifier {{ param }}",
+            "deleted": "A PurchaseOrderLineItem is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete PurchaseOrderLineItem {{ id }}?"
+            },
+            "detail": {
+                "title": "PurchaseOrderLineItem"
+            },
+            "description": "Description",
+            "cost": "Cost",
+            "listPrice": "ListPrice",
+            "qtyOrdered": "QtyOrdered",
+            "qtyDelivered": "QtyDelivered",
+            "qtyPreviouslyDelivered": "QtyPreviouslyDelivered",
+            "qtyImported": "QtyImported",
+            "totalTaxCharge": "TotalTaxCharge",
+            "discountPercentage": "DiscountPercentage",
+            "lineNo": "LineNo",
+            "listPriceDiscount": "ListPriceDiscount",
+            "unitMeasure": "UnitMeasure",
+            "isHidden": "IsHidden",
+            "Ref1": "Ref1",
+            "Ref2": "Ref2",
+            "purchaseOrder": "PurchaseOrder",
+            "product": "Product",
+            "taxRate": "TaxRate"
+        }
+    }
+}

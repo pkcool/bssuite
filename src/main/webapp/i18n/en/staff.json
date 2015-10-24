@@ -1,0 +1,35 @@
+{
+    "bssuiteApp": {
+        "staff" : {
+            "home": {
+                "title": "Staffs",
+                "createLabel": "Create a new Staff",
+                "createOrEditLabel": "Create or edit a Staff"
+            },
+            "created": "A new Staff is created with identifier {{ param }}",
+            "updated": "A Staff is updated with identifier {{ param }}",
+            "deleted": "A Staff is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Staff {{ id }}?"
+            },
+            "detail": {
+                "title": "Staff"
+            },
+            "code": "Code",
+            "name": "Name",
+            "comment": "Comment",
+            "commission": "Commission",
+            "occupation": "Occupation",
+            "workPhone": "WorkPhone",
+            "homePhone": "HomePhone",
+            "workMobile": "WorkMobile",
+            "homeMobile": "HomeMobile",
+            "webEmail": "WebEmail",
+            "homeEmail": "HomeEmail",
+            "birthday": "Birthday",
+            "isLockedToStore": "IsLockedToStore",
+            "isTechnical": "IsTechnical",
+            "store": "Store"
+        }
+    }
+}

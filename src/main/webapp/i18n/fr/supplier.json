@@ -1,0 +1,36 @@
+{
+    "bssuiteApp": {
+        "supplier" : {
+            "home": {
+                "title": "Suppliers",
+                "createLabel": "Créer un nouveau Supplier",
+                "createOrEditLabel": "Créer ou éditer un Supplier"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Supplier {{ id }} ?"
+            },
+            "detail": {
+                "title": "Supplier"
+            },
+            "code": "Code",
+            "name": "Name",
+            "webUrl": "WebUrl",
+            "comment": "Comment",
+            "isOnHold": "IsOnHold",
+            "isHeadOffice": "IsHeadOffice",
+            "leadTime": "LeadTime",
+            "accountType": "AccountType",
+            "settlementTerms": "SettlementTerms",
+            "credit": "Credit",
+            "terms": "Terms",
+            "ageingMethod": "AgeingMethod",
+            "isEFTPaymentsUsed": "IsEFTPaymentsUsed",
+            "bankBSB": "BankBSB",
+            "bankNumber": "BankNumber",
+            "bankAccount": "BankAccount",
+            "supplierCategory": "SupplierCategory",
+            "contact": "Contact"
+        }
+    }
+}
+

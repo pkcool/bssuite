@@ -1,0 +1,73 @@
+{
+    "bssuiteApp": {
+        "invoice" : {
+            "home": {
+                "title": "Invoices",
+                "createLabel": "Create a new Invoice",
+                "createOrEditLabel": "Create or edit a Invoice"
+            },
+            "created": "A new Invoice is created with identifier {{ param }}",
+            "updated": "A Invoice is updated with identifier {{ param }}",
+            "deleted": "A Invoice is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Invoice {{ id }}?"
+            },
+            "detail": {
+                "title": "Invoice"
+            },
+            "invoiceNo": "InvoiceNo",
+            "invoiceTxnType": "InvoiceTxnType",
+            "txnDate": "TxnDate",
+            "dueDate": "DueDate",
+            "reference": "Reference",
+            "ourRef": "OurRef",
+            "ourRef2": "OurRef2",
+            "ourRef3": "OurRef3",
+            "taxExemptionCode": "TaxExemptionCode",
+            "isPenaltyIssued": "IsPenaltyIssued",
+            "freight": "Freight",
+            "handlingCharge": "HandlingCharge",
+            "charge2": "Charge2",
+            "isTaxable": "IsTaxable",
+            "isLocked": "IsLocked",
+            "adjustTax": "AdjustTax",
+            "adjustTaxExempt": "AdjustTaxExempt",
+            "paymentCash": "PaymentCash",
+            "paymentCheque": "PaymentCheque",
+            "paymentCreditCard": "PaymentCreditCard",
+            "paymentDirectDeposit": "PaymentDirectDeposit",
+            "paymentVoucher": "PaymentVoucher",
+            "paymentDirectDebit": "PaymentDirectDebit",
+            "payment1": "Payment1",
+            "payment2": "Payment2",
+            "bank": "Bank",
+            "bankBranch": "BankBranch",
+            "bankAccount": "BankAccount",
+            "dateOfDeposit": "DateOfDeposit",
+            "drawerName": "DrawerName",
+            "NoAlloc": "NoAlloc",
+            "coinRound": "CoinRound",
+            "prepayment": "Prepayment",
+            "in2": "In2",
+            "comment": "Comment",
+            "totalTaxAmount": "TotalTaxAmount",
+            "totalSellPrice": "TotalSellPrice",
+            "totalCost": "TotalCost",
+            "isOnHold": "IsOnHold",
+            "isLayBy": "IsLayBy",
+            "isExternalTxn": "IsExternalTxn",
+            "isSuspended": "IsSuspended",
+            "generatedFrom": "GeneratedFrom",
+            "customer": "Customer",
+            "billingCustomer": "BillingCustomer",
+            "contact": "Contact",
+            "deliveryContact": "DeliveryContact",
+            "store": "Store",
+            "carrier": "Carrier",
+            "salesperson": "Salesperson",
+            "promotion": "Promotion",
+            "createdBy": "CreatedBy",
+            "invoiceLineItems": "InvoiceLineItems"
+        }
+    }
+}

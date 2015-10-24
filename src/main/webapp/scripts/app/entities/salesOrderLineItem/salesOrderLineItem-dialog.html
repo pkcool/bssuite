@@ -4,120 +4,120 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="mySalesOrderLineItemLabel">Create or edit a SalesOrderLineItem</h4>
+        <h4 class="modal-title" id="mySalesOrderLineItemLabel" translate="bssuiteApp.salesOrderLineItem.home.createOrEditLabel">Create or edit a SalesOrderLineItem</h4>
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
         <div class="form-group">
-            <label for="id">ID</label>
+            <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="salesOrderLineItem.id" readonly />
         </div>
         <div class="form-group">
-            <label for="field_description">Description</label>
+            <label translate="bssuiteApp.salesOrderLineItem.description" for="field_description">Description</label>
             <input type="text" class="form-control" name="description" id="field_description"
                     ng-model="salesOrderLineItem.description"
                      />
         </div>
         <div class="form-group">
-            <label for="field_cost">Cost</label>
+            <label translate="bssuiteApp.salesOrderLineItem.cost" for="field_cost">Cost</label>
             <input type="number" class="form-control" name="cost" id="field_cost"
                     ng-model="salesOrderLineItem.cost"
                      />
         </div>
         <div class="form-group">
-            <label for="field_soldFor">SoldFor</label>
+            <label translate="bssuiteApp.salesOrderLineItem.soldFor" for="field_soldFor">SoldFor</label>
             <input type="number" class="form-control" name="soldFor" id="field_soldFor"
                     ng-model="salesOrderLineItem.soldFor"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyOrdered">QtyOrdered</label>
+            <label translate="bssuiteApp.salesOrderLineItem.qtyOrdered" for="field_qtyOrdered">QtyOrdered</label>
             <input type="number" class="form-control" name="qtyOrdered" id="field_qtyOrdered"
                     ng-model="salesOrderLineItem.qtyOrdered"
                      />
         </div>
         <div class="form-group">
-            <label for="field_qtyAllocated">QtyAllocated</label>
+            <label translate="bssuiteApp.salesOrderLineItem.qtyAllocated" for="field_qtyAllocated">QtyAllocated</label>
             <input type="number" class="form-control" name="qtyAllocated" id="field_qtyAllocated"
                     ng-model="salesOrderLineItem.qtyAllocated"
                      />
         </div>
         <div class="form-group">
-            <label for="field_totalTaxCharge">TotalTaxCharge</label>
+            <label translate="bssuiteApp.salesOrderLineItem.totalTaxCharge" for="field_totalTaxCharge">TotalTaxCharge</label>
             <input type="number" class="form-control" name="totalTaxCharge" id="field_totalTaxCharge"
                     ng-model="salesOrderLineItem.totalTaxCharge"
                      />
         </div>
         <div class="form-group">
-            <label for="field_discountPercentage">DiscountPercentage</label>
+            <label translate="bssuiteApp.salesOrderLineItem.discountPercentage" for="field_discountPercentage">DiscountPercentage</label>
             <input type="number" class="form-control" name="discountPercentage" id="field_discountPercentage"
                     ng-model="salesOrderLineItem.discountPercentage"
                      />
         </div>
         <div class="form-group">
-            <label for="field_lineNo">LineNo</label>
+            <label translate="bssuiteApp.salesOrderLineItem.lineNo" for="field_lineNo">LineNo</label>
             <input type="number" class="form-control" name="lineNo" id="field_lineNo"
                     ng-model="salesOrderLineItem.lineNo"
                      />
         </div>
         <div class="form-group">
-            <label for="field_requiredDate">RequiredDate</label>
+            <label translate="bssuiteApp.salesOrderLineItem.requiredDate" for="field_requiredDate">RequiredDate</label>
             <input type="date" class="form-control" name="requiredDate" id="field_requiredDate"
                     ng-model="salesOrderLineItem.requiredDate"
                      />
         </div>
         <div class="form-group">
-            <label for="field_listPrice">ListPrice</label>
+            <label translate="bssuiteApp.salesOrderLineItem.listPrice" for="field_listPrice">ListPrice</label>
             <input type="number" class="form-control" name="listPrice" id="field_listPrice"
                     ng-model="salesOrderLineItem.listPrice"
                      />
         </div>
         <div class="form-group">
-            <label for="field_listPriceDiscount">ListPriceDiscount</label>
+            <label translate="bssuiteApp.salesOrderLineItem.listPriceDiscount" for="field_listPriceDiscount">ListPriceDiscount</label>
             <input type="number" class="form-control" name="listPriceDiscount" id="field_listPriceDiscount"
                     ng-model="salesOrderLineItem.listPriceDiscount"
                      />
         </div>
         <div class="form-group">
-            <label for="field_cost2">Cost2</label>
+            <label translate="bssuiteApp.salesOrderLineItem.cost2" for="field_cost2">Cost2</label>
             <input type="number" class="form-control" name="cost2" id="field_cost2"
                     ng-model="salesOrderLineItem.cost2"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isHidden">IsHidden</label>
+            <label translate="bssuiteApp.salesOrderLineItem.isHidden" for="field_isHidden">IsHidden</label>
             <input type="checkbox" class="form-control" name="isHidden" id="field_isHidden"
                     ng-model="salesOrderLineItem.isHidden"
                      />
         </div>
         <div class="form-group">
-            <label for="field_Ref1">Ref1</label>
+            <label translate="bssuiteApp.salesOrderLineItem.Ref1" for="field_Ref1">Ref1</label>
             <input type="text" class="form-control" name="Ref1" id="field_Ref1"
                     ng-model="salesOrderLineItem.Ref1"
                      />
         </div>
         <div class="form-group">
-            <label for="field_Ref2">Ref2</label>
+            <label translate="bssuiteApp.salesOrderLineItem.Ref2" for="field_Ref2">Ref2</label>
             <input type="text" class="form-control" name="Ref2" id="field_Ref2"
                     ng-model="salesOrderLineItem.Ref2"
                      />
         </div>
 
         <div class="form-group">
-            <label for="field_salesOrder">salesOrder</label>
+            <label translate="bssuiteApp.salesOrderLineItem.salesOrder" for="field_salesOrder">salesOrder</label>
             <select class="form-control" id="field_salesOrder" name="salesOrder" ng-model="salesOrderLineItem.salesOrder" ng-options="salesOrder as salesOrder.id for salesOrder in salesorders track by salesOrder.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_product">product</label>
+            <label translate="bssuiteApp.salesOrderLineItem.product" for="field_product">product</label>
             <select class="form-control" id="field_product" name="product" ng-model="salesOrderLineItem.product" ng-options="product as product.id for product in products track by product.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_taxRate">taxRate</label>
+            <label translate="bssuiteApp.salesOrderLineItem.taxRate" for="field_taxRate">taxRate</label>
             <select class="form-control" id="field_taxRate" name="taxRate" ng-model="salesOrderLineItem.taxRate" ng-options="taxTable as taxTable.id for taxTable in taxtables track by taxTable.id">
                 <option value=""></option>
             </select>
@@ -125,10 +125,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
         </button>
     </div>
 </form>

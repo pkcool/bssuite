@@ -8,7 +8,7 @@ angular.module('bssuiteApp')
                 url: '/salesOrderLineItems',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'SalesOrderLineItems'
+                    pageTitle: 'bssuiteApp.salesOrderLineItem.home.title'
                 },
                 views: {
                     'content@': {
@@ -17,6 +17,11 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('salesOrderLineItem');
+                        $translatePartialLoader.addPart('global');
+                        return $translate.refresh();
+                    }]
                 }
             })
             .state('salesOrderLineItem.detail', {
@@ -24,7 +29,7 @@ angular.module('bssuiteApp')
                 url: '/salesOrderLineItem/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
-                    pageTitle: 'SalesOrderLineItem'
+                    pageTitle: 'bssuiteApp.salesOrderLineItem.detail.title'
                 },
                 views: {
                     'content@': {
@@ -33,6 +38,10 @@ angular.module('bssuiteApp')
                     }
                 },
                 resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                        $translatePartialLoader.addPart('salesOrderLineItem');
+                        return $translate.refresh();
+                    }],
                     entity: ['$stateParams', 'SalesOrderLineItem', function($stateParams, SalesOrderLineItem) {
                         return SalesOrderLineItem.get({id : $stateParams.id});
                     }]

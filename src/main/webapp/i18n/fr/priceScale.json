@@ -1,0 +1,23 @@
+{
+    "bssuiteApp": {
+        "priceScale" : {
+            "home": {
+                "title": "PriceScales",
+                "createLabel": "Créer un nouveau PriceScale",
+                "createOrEditLabel": "Créer ou éditer un PriceScale"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le PriceScale {{ id }} ?"
+            },
+            "detail": {
+                "title": "PriceScale"
+            },
+            "code": "Code",
+            "name": "Name",
+            "price": "Price",
+            "value": "Value",
+            "round": "Round"
+        }
+    }
+}
+

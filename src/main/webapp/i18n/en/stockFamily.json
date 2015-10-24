@@ -1,0 +1,27 @@
+{
+    "bssuiteApp": {
+        "stockFamily" : {
+            "home": {
+                "title": "StockFamilys",
+                "createLabel": "Create a new StockFamily",
+                "createOrEditLabel": "Create or edit a StockFamily"
+            },
+            "created": "A new StockFamily is created with identifier {{ param }}",
+            "updated": "A StockFamily is updated with identifier {{ param }}",
+            "deleted": "A StockFamily is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete StockFamily {{ id }}?"
+            },
+            "detail": {
+                "title": "StockFamily"
+            },
+            "code": "Code",
+            "name": "Name",
+            "isDiminishing": "IsDiminishing",
+            "lowestMargin": "LowestMargin",
+            "highestMargin": "HighestMargin",
+            "comment": "Comment",
+            "priceScale": "PriceScale"
+        }
+    }
+}

@@ -4,190 +4,190 @@
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="clear()">&times;</button>
-        <h4 class="modal-title" id="mySalesOrderLabel">Create or edit a SalesOrder</h4>
+        <h4 class="modal-title" id="mySalesOrderLabel" translate="bssuiteApp.salesOrder.home.createOrEditLabel">Create or edit a SalesOrder</h4>
     </div>
     <div class="modal-body">
         <jh-alert-error></jh-alert-error>
         <div class="form-group">
-            <label for="id">ID</label>
+            <label for="id" translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="salesOrder.id" readonly />
         </div>
         <div class="form-group">
-            <label for="field_orderNo">OrderNo</label>
+            <label translate="bssuiteApp.salesOrder.orderNo" for="field_orderNo">OrderNo</label>
             <input type="text" class="form-control" name="orderNo" id="field_orderNo"
                     ng-model="salesOrder.orderNo"
                      />
         </div>
         <div class="form-group">
-            <label for="field_status">Status</label>
+            <label translate="bssuiteApp.salesOrder.status" for="field_status">Status</label>
             <select class="form-control" name="status" ng-model="salesOrder.status" id="field_status">
-                <option value="ONORDER">ONORDER</option>
-                <option value="DELIVERED">DELIVERED</option>
-                <option value="CANCELLED">CANCELLED</option>
-                <option value="PARTIALFILL">PARTIALFILL</option>
-                <option value="SUSPENDED">SUSPENDED</option>
+                <option value="ONORDER" translate="bssuiteApp.SalesOrderStatus.ONORDER">ONORDER</option>
+                <option value="DELIVERED" translate="bssuiteApp.SalesOrderStatus.DELIVERED">DELIVERED</option>
+                <option value="CANCELLED" translate="bssuiteApp.SalesOrderStatus.CANCELLED">CANCELLED</option>
+                <option value="PARTIALFILL" translate="bssuiteApp.SalesOrderStatus.PARTIALFILL">PARTIALFILL</option>
+                <option value="SUSPENDED" translate="bssuiteApp.SalesOrderStatus.SUSPENDED">SUSPENDED</option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_txnDate">TxnDate</label>
+            <label translate="bssuiteApp.salesOrder.txnDate" for="field_txnDate">TxnDate</label>
             <input type="datetime-local" class="form-control" name="txnDate" id="field_txnDate"
                     ng-model="salesOrder.txnDate"
                      />
         </div>
         <div class="form-group">
-            <label for="field_forwardDate">ForwardDate</label>
+            <label translate="bssuiteApp.salesOrder.forwardDate" for="field_forwardDate">ForwardDate</label>
             <input type="date" class="form-control" name="forwardDate" id="field_forwardDate"
                     ng-model="salesOrder.forwardDate"
                      />
         </div>
         <div class="form-group">
-            <label for="field_requiredDate">RequiredDate</label>
+            <label translate="bssuiteApp.salesOrder.requiredDate" for="field_requiredDate">RequiredDate</label>
             <input type="date" class="form-control" name="requiredDate" id="field_requiredDate"
                     ng-model="salesOrder.requiredDate"
                      />
         </div>
         <div class="form-group">
-            <label for="field_customerOrderNo">CustomerOrderNo</label>
+            <label translate="bssuiteApp.salesOrder.customerOrderNo" for="field_customerOrderNo">CustomerOrderNo</label>
             <input type="text" class="form-control" name="customerOrderNo" id="field_customerOrderNo"
                     ng-model="salesOrder.customerOrderNo"
                      />
         </div>
         <div class="form-group">
-            <label for="field_ourRef">OurRef</label>
+            <label translate="bssuiteApp.salesOrder.ourRef" for="field_ourRef">OurRef</label>
             <input type="text" class="form-control" name="ourRef" id="field_ourRef"
                     ng-model="salesOrder.ourRef"
                      />
         </div>
         <div class="form-group">
-            <label for="field_freight">Freight</label>
+            <label translate="bssuiteApp.salesOrder.freight" for="field_freight">Freight</label>
             <input type="number" class="form-control" name="freight" id="field_freight"
                     ng-model="salesOrder.freight"
                      />
         </div>
         <div class="form-group">
-            <label for="field_handlingCharge">HandlingCharge</label>
+            <label translate="bssuiteApp.salesOrder.handlingCharge" for="field_handlingCharge">HandlingCharge</label>
             <input type="number" class="form-control" name="handlingCharge" id="field_handlingCharge"
                     ng-model="salesOrder.handlingCharge"
                      />
         </div>
         <div class="form-group">
-            <label for="field_charge2">Charge2</label>
+            <label translate="bssuiteApp.salesOrder.charge2" for="field_charge2">Charge2</label>
             <input type="number" class="form-control" name="charge2" id="field_charge2"
                     ng-model="salesOrder.charge2"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isTaxable">IsTaxable</label>
+            <label translate="bssuiteApp.salesOrder.isTaxable" for="field_isTaxable">IsTaxable</label>
             <input type="checkbox" class="form-control" name="isTaxable" id="field_isTaxable"
                     ng-model="salesOrder.isTaxable"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isLocked">IsLocked</label>
+            <label translate="bssuiteApp.salesOrder.isLocked" for="field_isLocked">IsLocked</label>
             <input type="checkbox" class="form-control" name="isLocked" id="field_isLocked"
                     ng-model="salesOrder.isLocked"
                      />
         </div>
         <div class="form-group">
-            <label for="field_adjustTax">AdjustTax</label>
+            <label translate="bssuiteApp.salesOrder.adjustTax" for="field_adjustTax">AdjustTax</label>
             <input type="number" class="form-control" name="adjustTax" id="field_adjustTax"
                     ng-model="salesOrder.adjustTax"
                      />
         </div>
         <div class="form-group">
-            <label for="field_adjustTaxExempt">AdjustTaxExempt</label>
+            <label translate="bssuiteApp.salesOrder.adjustTaxExempt" for="field_adjustTaxExempt">AdjustTaxExempt</label>
             <input type="number" class="form-control" name="adjustTaxExempt" id="field_adjustTaxExempt"
                     ng-model="salesOrder.adjustTaxExempt"
                      />
         </div>
         <div class="form-group">
-            <label for="field_prepayment">Prepayment</label>
+            <label translate="bssuiteApp.salesOrder.prepayment" for="field_prepayment">Prepayment</label>
             <input type="number" class="form-control" name="prepayment" id="field_prepayment"
                     ng-model="salesOrder.prepayment"
                      />
         </div>
         <div class="form-group">
-            <label for="field_prepaymentNo">PrepaymentNo</label>
+            <label translate="bssuiteApp.salesOrder.prepaymentNo" for="field_prepaymentNo">PrepaymentNo</label>
             <input type="text" class="form-control" name="prepaymentNo" id="field_prepaymentNo"
                     ng-model="salesOrder.prepaymentNo"
                      />
         </div>
         <div class="form-group">
-            <label for="field_comment">Comment</label>
+            <label translate="bssuiteApp.salesOrder.comment" for="field_comment">Comment</label>
             <input type="text" class="form-control" name="comment" id="field_comment"
                     ng-model="salesOrder.comment"
                      />
         </div>
         <div class="form-group">
-            <label for="field_totalTaxAmount">TotalTaxAmount</label>
+            <label translate="bssuiteApp.salesOrder.totalTaxAmount" for="field_totalTaxAmount">TotalTaxAmount</label>
             <input type="number" class="form-control" name="totalTaxAmount" id="field_totalTaxAmount"
                     ng-model="salesOrder.totalTaxAmount"
                      />
         </div>
         <div class="form-group">
-            <label for="field_totalSellPrice">TotalSellPrice</label>
+            <label translate="bssuiteApp.salesOrder.totalSellPrice" for="field_totalSellPrice">TotalSellPrice</label>
             <input type="number" class="form-control" name="totalSellPrice" id="field_totalSellPrice"
                     ng-model="salesOrder.totalSellPrice"
                      />
         </div>
         <div class="form-group">
-            <label for="field_totalCost">TotalCost</label>
+            <label translate="bssuiteApp.salesOrder.totalCost" for="field_totalCost">TotalCost</label>
             <input type="number" class="form-control" name="totalCost" id="field_totalCost"
                     ng-model="salesOrder.totalCost"
                      />
         </div>
         <div class="form-group">
-            <label for="field_isSuspended">IsSuspended</label>
+            <label translate="bssuiteApp.salesOrder.isSuspended" for="field_isSuspended">IsSuspended</label>
             <input type="checkbox" class="form-control" name="isSuspended" id="field_isSuspended"
                     ng-model="salesOrder.isSuspended"
                      />
         </div>
 
         <div class="form-group">
-            <label for="field_customer">customer</label>
+            <label translate="bssuiteApp.salesOrder.customer" for="field_customer">customer</label>
             <select class="form-control" id="field_customer" name="customer" ng-model="salesOrder.customerId" ng-options="customer.id as customer.id for customer in customers">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_contact">contact</label>
+            <label translate="bssuiteApp.salesOrder.contact" for="field_contact">contact</label>
             <select class="form-control" id="field_contact" name="contact" ng-model="salesOrder.contactId" ng-options="contact.id as contact.id for contact in contacts">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_deliveryContact">deliveryContact</label>
+            <label translate="bssuiteApp.salesOrder.deliveryContact" for="field_deliveryContact">deliveryContact</label>
             <select class="form-control" id="field_deliveryContact" name="deliveryContact" ng-model="salesOrder.deliveryContactId" ng-options="contact.id as contact.id for contact in contacts">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_store">store</label>
+            <label translate="bssuiteApp.salesOrder.store" for="field_store">store</label>
             <select class="form-control" id="field_store" name="store" ng-model="salesOrder.storeId" ng-options="store.id as store.id for store in stores">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_carrier">carrier</label>
+            <label translate="bssuiteApp.salesOrder.carrier" for="field_carrier">carrier</label>
             <select class="form-control" id="field_carrier" name="carrier" ng-model="salesOrder.carrierId" ng-options="carrier.id as carrier.id for carrier in carriers">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_salesperson">salesperson</label>
+            <label translate="bssuiteApp.salesOrder.salesperson" for="field_salesperson">salesperson</label>
             <select class="form-control" id="field_salesperson" name="salesperson" ng-model="salesOrder.salespersonId" ng-options="staff.id as staff.id for staff in staffs">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_promotion">promotion</label>
+            <label translate="bssuiteApp.salesOrder.promotion" for="field_promotion">promotion</label>
             <select class="form-control" id="field_promotion" name="promotion" ng-model="salesOrder.promotionId" ng-options="promotion.id as promotion.id for promotion in promotions">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
-            <label for="field_createdBy">createdBy</label>
+            <label translate="bssuiteApp.salesOrder.createdBy" for="field_createdBy">createdBy</label>
             <select class="form-control" id="field_createdBy" name="createdBy" ng-model="salesOrder.createdById" ng-options="staff.id as staff.id for staff in staffs">
                 <option value=""></option>
             </select>
@@ -195,10 +195,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
         </button>
     </div>
 </form>

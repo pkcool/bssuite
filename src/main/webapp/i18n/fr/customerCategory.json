@@ -1,0 +1,20 @@
+{
+    "bssuiteApp": {
+        "customerCategory" : {
+            "home": {
+                "title": "CustomerCategorys",
+                "createLabel": "Créer un nouveau CustomerCategory",
+                "createOrEditLabel": "Créer ou éditer un CustomerCategory"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le CustomerCategory {{ id }} ?"
+            },
+            "detail": {
+                "title": "CustomerCategory"
+            },
+            "code": "Code",
+            "name": "Name"
+        }
+    }
+}
+

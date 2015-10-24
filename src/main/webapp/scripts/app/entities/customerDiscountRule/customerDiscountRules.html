@@ -1,11 +1,11 @@
 <div>
-    <h2>CustomerDiscountRules</h2>
+    <h2 translate="bssuiteApp.customerDiscountRule.home.title">CustomerDiscountRules</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="customerDiscountRule.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new CustomerDiscountRule</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="bssuiteApp.customerDiscountRule.home.createLabel">Create a new CustomerDiscountRule</span>
                 </button>
             </div>
             <div class="col-md-8">
@@ -27,17 +27,17 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this CustomerDiscountRule?</p>
+                        <p translate="bssuiteApp.customerDiscountRule.delete.question" translate-values="{id: '{{customerDiscountRule.id}}'}">Are you sure you want to delete this CustomerDiscountRule?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -49,29 +49,29 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>PriceGroupCode</th>
-                    <th>RuleNo</th>
-                    <th>IsAppliedGlobally</th>
-                    <th>IsAppliedOnSpecialItemsOnly</th>
-                    <th>CustomerCode</th>
-                    <th>CustomerCategoryCode</th>
-                    <th>FromProductCode</th>
-                    <th>ToProductCode</th>
-                    <th>StartDate</th>
-                    <th>EndDate</th>
-                    <th>QtyBreak</th>
-                    <th>FromSupplierCode</th>
-                    <th>ToSupplierCode</th>
-                    <th>FromStockGroupCode</th>
-                    <th>ToStockGroupCode</th>
-                    <th>TaxCode</th>
-                    <th>IsAppliedWhenTaxExempt</th>
-                    <th>StoreCode</th>
-                    <th>DiscountName</th>
-                    <th>StockFamilyCode</th>
-                    <th>ListPrice</th>
-                    <th>DiscountFormula</th>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="bssuiteApp.customerDiscountRule.priceGroupCode">PriceGroupCode</th>
+                    <th translate="bssuiteApp.customerDiscountRule.ruleNo">RuleNo</th>
+                    <th translate="bssuiteApp.customerDiscountRule.isAppliedGlobally">IsAppliedGlobally</th>
+                    <th translate="bssuiteApp.customerDiscountRule.isAppliedOnSpecialItemsOnly">IsAppliedOnSpecialItemsOnly</th>
+                    <th translate="bssuiteApp.customerDiscountRule.customerCode">CustomerCode</th>
+                    <th translate="bssuiteApp.customerDiscountRule.customerCategoryCode">CustomerCategoryCode</th>
+                    <th translate="bssuiteApp.customerDiscountRule.fromProductCode">FromProductCode</th>
+                    <th translate="bssuiteApp.customerDiscountRule.toProductCode">ToProductCode</th>
+                    <th translate="bssuiteApp.customerDiscountRule.startDate">StartDate</th>
+                    <th translate="bssuiteApp.customerDiscountRule.endDate">EndDate</th>
+                    <th translate="bssuiteApp.customerDiscountRule.qtyBreak">QtyBreak</th>
+                    <th translate="bssuiteApp.customerDiscountRule.fromSupplierCode">FromSupplierCode</th>
+                    <th translate="bssuiteApp.customerDiscountRule.toSupplierCode">ToSupplierCode</th>
+                    <th translate="bssuiteApp.customerDiscountRule.fromStockGroupCode">FromStockGroupCode</th>
+                    <th translate="bssuiteApp.customerDiscountRule.toStockGroupCode">ToStockGroupCode</th>
+                    <th translate="bssuiteApp.customerDiscountRule.taxCode">TaxCode</th>
+                    <th translate="bssuiteApp.customerDiscountRule.isAppliedWhenTaxExempt">IsAppliedWhenTaxExempt</th>
+                    <th translate="bssuiteApp.customerDiscountRule.storeCode">StoreCode</th>
+                    <th translate="bssuiteApp.customerDiscountRule.discountName">DiscountName</th>
+                    <th translate="bssuiteApp.customerDiscountRule.stockFamilyCode">StockFamilyCode</th>
+                    <th translate="bssuiteApp.customerDiscountRule.listPrice">ListPrice</th>
+                    <th translate="bssuiteApp.customerDiscountRule.discountFormula">DiscountFormula</th>
                     <th></th>
                 </tr>
             </thead>
@@ -104,17 +104,17 @@
                         <button type="submit"
                                 ui-sref="customerDiscountRule.detail({id:customerDiscountRule.id})"
                                 class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ui-sref="customerDiscountRule.edit({id:customerDiscountRule.id})"
                                 class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(customerDiscountRule.id)"
                                 class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>

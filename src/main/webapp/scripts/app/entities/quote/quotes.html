@@ -1,11 +1,11 @@
 <div>
-    <h2>Quotes</h2>
+    <h2 translate="bssuiteApp.quote.home.title">Quotes</h2>
     <jh-alert></jh-alert>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <button class="btn btn-primary" ui-sref="quote.new">
-                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new Quote</span>
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="bssuiteApp.quote.home.createLabel">Create a new Quote</span>
                 </button>
             </div>
             <div class="col-md-8">
@@ -27,17 +27,17 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                                 ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this Quote?</p>
+                        <p translate="bssuiteApp.quote.delete.question" translate-values="{id: '{{quote.id}}'}">Are you sure you want to delete this Quote?</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
                         </button>
                         <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </form>
@@ -49,32 +49,32 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>QuoteNo</th>
-                    <th>Status</th>
-                    <th>QuoteDate</th>
-                    <th>ExpiryDate</th>
-                    <th>FollowupDate</th>
-                    <th>Reference</th>
-                    <th>OurRef</th>
-                    <th>Freight</th>
-                    <th>ReasonForLoss</th>
-                    <th>IsTaxable</th>
-                    <th>TaxExemptionCode</th>
-                    <th>IsLocked</th>
-                    <th>AdjustTax</th>
-                    <th>AdjustTaxExempt</th>
-                    <th>Comment</th>
-                    <th>TotalTaxAmount</th>
-                    <th>TotalSellPrice</th>
-                    <th>TotalCost</th>
-                    <th>IsSuspended</th>
-                    <th>customer</th>
-                    <th>contact</th>
-                    <th>deliveryContact</th>
-                    <th>store</th>
-                    <th>quoteByStaff</th>
-                    <th>createdBy</th>
+                    <th translate="global.field.id">ID</th>
+                    <th translate="bssuiteApp.quote.quoteNo">QuoteNo</th>
+                    <th translate="bssuiteApp.quote.status">Status</th>
+                    <th translate="bssuiteApp.quote.quoteDate">QuoteDate</th>
+                    <th translate="bssuiteApp.quote.expiryDate">ExpiryDate</th>
+                    <th translate="bssuiteApp.quote.followupDate">FollowupDate</th>
+                    <th translate="bssuiteApp.quote.reference">Reference</th>
+                    <th translate="bssuiteApp.quote.ourRef">OurRef</th>
+                    <th translate="bssuiteApp.quote.freight">Freight</th>
+                    <th translate="bssuiteApp.quote.reasonForLoss">ReasonForLoss</th>
+                    <th translate="bssuiteApp.quote.isTaxable">IsTaxable</th>
+                    <th translate="bssuiteApp.quote.taxExemptionCode">TaxExemptionCode</th>
+                    <th translate="bssuiteApp.quote.isLocked">IsLocked</th>
+                    <th translate="bssuiteApp.quote.adjustTax">AdjustTax</th>
+                    <th translate="bssuiteApp.quote.adjustTaxExempt">AdjustTaxExempt</th>
+                    <th translate="bssuiteApp.quote.comment">Comment</th>
+                    <th translate="bssuiteApp.quote.totalTaxAmount">TotalTaxAmount</th>
+                    <th translate="bssuiteApp.quote.totalSellPrice">TotalSellPrice</th>
+                    <th translate="bssuiteApp.quote.totalCost">TotalCost</th>
+                    <th translate="bssuiteApp.quote.isSuspended">IsSuspended</th>
+                    <th translate="bssuiteApp.quote.customer">customer</th>
+                    <th translate="bssuiteApp.quote.contact">contact</th>
+                    <th translate="bssuiteApp.quote.deliveryContact">deliveryContact</th>
+                    <th translate="bssuiteApp.quote.store">store</th>
+                    <th translate="bssuiteApp.quote.quoteByStaff">quoteByStaff</th>
+                    <th translate="bssuiteApp.quote.createdBy">createdBy</th>
                     <th></th>
                 </tr>
             </thead>
@@ -122,17 +122,17 @@
                         <button type="submit"
                                 ui-sref="quote.detail({id:quote.id})"
                                 class="btn btn-info btn-sm">
-                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
                         </button>
                         <button type="submit"
                                 ui-sref="quote.edit({id:quote.id})"
                                 class="btn btn-primary btn-sm">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
                         </button>
                         <button type="submit"
                                 ng-click="delete(quote.id)"
                                 class="btn btn-danger btn-sm">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
                         </button>
                     </td>
                 </tr>
