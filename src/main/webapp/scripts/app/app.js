@@ -82,6 +82,9 @@ angular.module('bssuiteApp',
                     templateUrl: 'scripts/components/navbar/navbar.html',
                     controller: 'NavbarController'
                 }
+                //'aside@': {
+                //    template: '<h2>aside</h2>'
+                //}
             },
             resolve: {
                 authorize: ['Auth',
@@ -93,7 +96,9 @@ angular.module('bssuiteApp',
                     $translatePartialLoader.addPart('global');
                 }]
             }
-        });
+        })
+        ;
+
 
         $httpProvider.interceptors.push('errorHandlerInterceptor');
         $httpProvider.interceptors.push('authExpiredInterceptor');

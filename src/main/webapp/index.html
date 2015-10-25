@@ -37,15 +37,43 @@
 
         <div data-ui-view="root">
             <div ui-view="navbar" ng-cloak=""></div>
-            <div data-ui-view="aside"></div>
-            <div data-ui-view="ribbonBar"></div>
-            <div class="container">
-                <div class="well" ui-view="content"></div>
 
-                <div class="footer">
-                    <p translate="footer">This is your footer</p>
+            <!-- Left panel : Navigation area -->
+            <!-- Note: This width of the aside area can be adjusted through LESS variables -->
+            <div data-smart-include="scripts/components/smart_admin/layout/partials/navigation.tpl.html" class="placeholder-left-panel"></div>
+
+            <!-- END NAVIGATION -->
+
+            <!-- MAIN PANEL -->
+            <div id="main" role="main">
+                <demo-states></demo-states>
+
+                <!-- RIBBON -->
+                <div id="ribbon">
+
+				<span class="ribbon-button-alignment">
+					<span id="refresh" class="btn btn-ribbon" reset-widgets
+                          tooltip-placement="bottom"
+                          tooltip-html="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings.">
+						<i class="fa fa-refresh"></i>
+					</span>
+				</span>
+
+                    <!-- breadcrumb -->
+                    <state-breadcrumbs></state-breadcrumbs>
+                    <!-- end breadcrumb -->
+
+
                 </div>
+                <!-- END RIBBON -->
+
+
+                <div data-smart-router-animation-wrap="content content@app" data-wrap-for="#content">
+                    <div data-ui-view="content" data-autoscroll="false"></div>
+                </div>
+
             </div>
+            <!-- END MAIN PANEL -->
 
         </div>
 
@@ -92,6 +120,15 @@
         <!-- endbower -->
         <!-- endbuild -->
 
+
+
+        <!-- smartAdmin scripts before jhipster scripts -->
+        <script src="scripts/components/smart_admin/app.config.js"></script>
+
+        <!-- configuration -->
+
+
+        <!-- end smartAdmin scripts -->
 
     <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
     <script src="scripts/app/app.js"></script>
@@ -332,9 +369,15 @@
     <script src="scripts/components/entities/taxTable/taxTable.search.service.js"></script>
     <!-- endbuild -->
 
-    <!-- my scripts -->
+    <!-- smartAdmin scripts -->
 
-    <!-- end my scripts -->
+    <script src="scripts/components/smart_admin/app.js"></script>
+
+    <script src="scripts/components/smart_admin/common/layout/directives/smartInclude.js"></script>
+    <script src="scripts/components/smart_admin/common/layout/directives/navigation/smartMenu.js"></script>
+    <script src="scripts/components/smart_admin/common/layout/directives/navigation/smartMenuItems.js"></script>
+    <script src="scripts/components/smart_admin/common/layout/directives/demo/demoStates.js"></script>
+    <!-- end smartAdmin scripts -->
 
 
 </body>
