@@ -1,8 +1,17 @@
 'use strict';
 
-angular.module('bssuiteApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascalprecht.translate', 
-               'ui.bootstrap', // for modal dialogs
-    'ngResource', 'ui.router', 'ngCookies', 'ngAria', 'ngCacheBuster', 'ngFileUpload', 'infinite-scroll'])
+angular.module('bssuiteApp',
+    ['LocalStorageModule',
+        'tmh.dynamicLocale',
+        'pascalprecht.translate',
+        'ui.bootstrap', // for modal dialogs
+        'ngResource',
+        'ui.router',
+        'ngCookies',
+        'ngAria',
+        'ngCacheBuster',
+        'ngFileUpload',
+        'infinite-scroll'])
 
     .run(function ($rootScope, $location, $window, $http, $state, $translate, Language, Auth, Principal, ENV, VERSION) {
         $rootScope.ENV = ENV;
@@ -14,12 +23,12 @@ angular.module('bssuiteApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascal
             if (Principal.isIdentityResolved()) {
                 Auth.authorize();
             }
-            
+
             // Update the language
             Language.getCurrent().then(function (language) {
                 $translate.use(language);
             });
-            
+
         });
 
         $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
@@ -38,12 +47,12 @@ angular.module('bssuiteApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascal
             if (toState.data.pageTitle) {
                 titleKey = toState.data.pageTitle;
             }
-            
+
             $translate(titleKey).then(function (title) {
                 // Change window title with translated one
                 $window.document.title = title;
             });
-            
+
         });
 
         $rootScope.back = function() {
@@ -65,6 +74,7 @@ angular.module('bssuiteApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascal
         httpRequestInterceptorCacheBusterProvider.setMatchlist([/.*api.*/, /.*protected.*/], true);
 
         $urlRouterProvider.otherwise('/');
+
         $stateProvider.state('site', {
             'abstract': true,
             views: {
@@ -88,7 +98,7 @@ angular.module('bssuiteApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascal
         $httpProvider.interceptors.push('errorHandlerInterceptor');
         $httpProvider.interceptors.push('authExpiredInterceptor');
         $httpProvider.interceptors.push('notificationInterceptor');
-        
+
         // Initialize angular-translate
         $translateProvider.useLoader('$translatePartialLoader', {
             urlTemplate: 'i18n/{lang}/{part}.json'
@@ -102,7 +112,7 @@ angular.module('bssuiteApp', ['LocalStorageModule', 'tmh.dynamicLocale', 'pascal
         tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js');
         tmhDynamicLocaleProvider.useCookieStorage();
         tmhDynamicLocaleProvider.storageKey('NG_TRANSLATE_LANG_KEY');
-        
+
     })
     .config(['$urlMatcherFactoryProvider', function($urlMatcherFactory) {
         $urlMatcherFactory.type('boolean', {

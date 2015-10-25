@@ -24,6 +24,9 @@
 
         <!-- Jhipster specific styles -->
         <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/jhipster-style.css">
+
+        <!-- our custom styles -->
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/my-style.css">
         <!-- endbuild -->
     </head>
     <body ng-app="bssuiteApp">
@@ -31,14 +34,21 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
-        <div ui-view="navbar" ng-cloak=""></div>
-        <div class="container">
-            <div class="well" ui-view="content"></div>
 
-            <div class="footer">
-                <p translate="footer">This is your footer</p>
+        <div data-ui-view="root">
+            <div ui-view="navbar" ng-cloak=""></div>
+            <div data-ui-view="aside"></div>
+            <div data-ui-view="ribbonBar"></div>
+            <div class="container">
+                <div class="well" ui-view="content"></div>
+
+                <div class="footer">
+                    <p translate="footer">This is your footer</p>
+                </div>
             </div>
+
         </div>
+
 
         <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
         <script>
@@ -49,6 +59,11 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>-->
+
+        <!--================================================== -->
+        <script src="scripts/app/my-init.js"></script>
+
+        <!--================================================== -->
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
@@ -73,6 +88,7 @@
         <script src="bower_components/json3/lib/json3.js"></script>
         <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
         <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
+        <script src="bower_components/PACE/pace.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -315,5 +331,11 @@
     <script src="scripts/components/entities/taxTable/taxTable.service.js"></script>
     <script src="scripts/components/entities/taxTable/taxTable.search.service.js"></script>
     <!-- endbuild -->
+
+    <!-- my scripts -->
+
+    <!-- end my scripts -->
+
+
 </body>
 </html>
