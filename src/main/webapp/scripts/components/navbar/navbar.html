@@ -1,4 +1,4 @@
-<header id="header">
+<header id="header" ng-switch="isAuthenticated()">
     <div id="logo-group">
 
         <!-- PLACE YOUR LOGO HERE -->
@@ -18,9 +18,9 @@
     <recent-projects></recent-projects>
 
     <!-- entities -->
-    <div class="project-context hidden-xs">
+    <div class="project-context hidden-xs" >
 
-        <span class="label">Entities:</span>
+        <span class="label">v{{VERSION}}</span>
         <span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
 
         <!-- Suggestion: populate this list with fetch and push technique -->
@@ -44,6 +44,64 @@
     </div>
 
     <!-- end entities -->
+
+    <!-- admin -->
+    <div ng-class="{active: $state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN" class="project-context hidden-xs">
+
+        <span class="label">ADMIN</span>
+        <span class="project-selector dropdown-toggle" data-toggle="dropdown">Administration<i class="fa fa-angle-down"></i></span>
+
+        <!-- Suggestion: populate this list with fetch and push technique -->
+        <ul class="dropdown-menu">
+            <li ui-sref-active="active"><a ui-sref="user-management" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-user"></span>
+                &#xA0;<span>User management</span></a></li>
+            <li ui-sref-active="active"><a ui-sref="metrics" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-dashboard"></span>
+                &#xA0;<span>Metrics</span></a></li>
+            <li ui-sref-active="active"><a ui-sref="health" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-heart"></span>
+                &#xA0;<span>Health</span></a></li>
+            <li ui-sref-active="active"><a ui-sref="configuration" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-list-alt"></span>
+                &#xA0;<span>Configuration</span></a></li>
+            <li ui-sref-active="active"><a ui-sref="audits" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-bell"></span>
+                &#xA0;<span>Audits</span></a></li>
+            <li ui-sref-active="active"><a ui-sref="logs" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-tasks"></span>
+                &#xA0;<span>Logs</span></a></li>
+            <li ng-hide="inProduction" ui-sref-active="active"><a ui-sref="docs" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-book"></span>
+                &#xA0;<span>API</span></a></li>
+            <li ng-hide="inProduction"><a href='/console' target="_tab" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-hdd"></span>
+                &#xA0;<span>Database</span></a></li>
+        </ul>
+        <!-- end dropdown-menu-->
+
+    </div>
+
+    <!-- end admin  -->
+
+    <!-- account section -->
+    <div ng-class="{active: $state.includes('account')}"  class="project-context hidden-xs" >
+
+        <span class="label">USER</span>
+        <span class="project-selector dropdown-toggle" data-toggle="dropdown">Account<i class="fa fa-angle-down"></i></span>
+
+        <!-- Suggestion: populate this list with fetch and push technique -->
+        <ul class="dropdown-menu">
+            <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="settings" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-wrench"></span>
+                &#xA0;<span>Settings</span></a></li>
+            <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="password" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-lock"></span>
+                &#xA0;<span>Password</span></a></li>
+            <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="sessions" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-cloud"></span>
+                &#xA0;<span>Sessions</span></a></li>
+            <li ui-sref-active="active" ng-switch-when="true"><a href="" ng-click="logout()" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-out"></span>
+                &#xA0;<span>Sign out</span></a></li>
+            <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="login" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-in"></span>
+                &#xA0;<span>Sign in</span></a></li>
+            <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="register" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-plus-sign"></span>
+                &#xA0;<span>Register</span></a></li>
+        </ul>
+        <!-- end dropdown-menu-->
+
+    </div>
+
+    <!-- end account section -->
 
 
 
@@ -146,6 +204,14 @@
         </div>
         <!-- end fullscreen button -->
 
+        <!-- home button -->
+        <div  class="btn-header transparent pull-right">
+        <span> <a data-ui-sref="home" title="Full Screen"><i
+            class="fa fa-home"></i></a> </span>
+        </div>
+        <!-- end home button -->
+
+
         <!-- #Voice Command: Start Speech -->
         <div id="speech-btn" class="btn-header transparent pull-right hidden-sm hidden-xs">
             <div>
@@ -176,7 +242,45 @@
 
 
         <!-- multiple lang dropdown : find all flags in the flags page -->
-        <language-selector></language-selector>
+        <ul class="header-dropdown-list hidden-xs">
+            <li class="">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img src="../../../assets/images/blank.gif" class="flag flag-us" alt="United States"> <span> English (US) </span> <i class="fa fa-angle-down"></i> </a>
+                <ul class="dropdown-menu pull-right">
+                    <li class="active">
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-us" alt="United States"> English (US)</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-fr" alt="France"> Français</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-es" alt="Spanish"> Español</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-de" alt="German"> Deutsch</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-jp" alt="Japan"> 日本語</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-cn" alt="China"> 中文</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-it" alt="Italy"> Italiano</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-pt" alt="Portugal"> Portugal</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-ru" alt="Russia"> Русский язык</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-kr" alt="Korea"> 한국어</a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+        <!--<language-selector></language-selector>-->
         <!-- end multiple lang -->
 
     </div>

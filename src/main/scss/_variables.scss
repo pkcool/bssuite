@@ -746,7 +746,7 @@ $component-offset-horizontal: 180px;
  *
  * Grays moved to front, because they are needed before this point.
  */
- 
+
 // Main Theme Values
 //
 //##
@@ -768,14 +768,14 @@ $yellow: 					#b09b5b;
 $orange: 					#c79121;
 $orangeDark: 				#a57225;
 $orangeBright:              #ffc40d;
-$pink: 						#ac5287; 
+$pink: 						#ac5287;
 $pinkDark: 					#a8829f;
 $purple: 					#6e587a;
 $darken: 					#404040;
 $lighten: 					#d5e7ec;
 $white: 					#ffffff;
 $greyDark: 					#525252;
-$magenta: 					#6e3671; 
+$magenta: 					#6e3671;
 $teal: 						#568a89;
 $redLight: 					#a65858;
 $redBright:					#ed1c24;
@@ -791,8 +791,8 @@ $animation-ajax-dropdown:	      "flipInY";
 //
 //##
 
-$base-url: 						      "../img";
-//urage: background-image: url("#{$base-url}/images/bg.png");
+$base-url: 						      "../images";
+//usage: background-image: url("#{$base-url}/images/bg.png");
 
 $html-background-image:			  "mybg.png";
 $html-background-color:			  $white;
@@ -803,7 +803,7 @@ $body-background-color:			  $white;
 //== HEADER
 //
 //##
-$smart-navbar-height:			  49px; 
+$smart-navbar-height:			  49px;
 $smart-navbar-color-start:	      #f3f3f3;
 $smart-navbar-color-end:		  #e2e2e2;
 
@@ -862,7 +862,7 @@ $ajaxdropdown-height:			  365px;
 // Used for a bird's eye view of components dependent on the z-axis
 // Try to avoid customizing these :)
 
-$fixed-navigation-zindex:		  900; 
+$fixed-navigation-zindex:		  900;
 $fixed-ribbon-zindex:			  $fixed-navigation-zindex + 1; //901
 $fixed-footer-zindex:			  $fixed-navigation-zindex + 1; //901
 $morris-hover:					  $fixed-navigation-zindex + 3; //903
@@ -871,7 +871,7 @@ $hidden-lefthand-menu-zindex:	  $fixed-navigation-zindex + 3; //903
 $ajax-dropdown-zindex:			  $fixed-navigation-zindex + 5; //905
 $ui-widget-overlay:				  $fixed-navigation-zindex + 49; //949
 $widget-fullscreen-zindex:        $ui-widget-overlay + 101; // 1050
-$pace-zindex:                     2000; 
+$pace-zindex:                     2000;
 $tooltip-zindex:                  9999;
 
 //== WIDGET TUNING
