@@ -1,155 +1,185 @@
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/"><span translate="global.title">jhipster</span> <span class="navbar-version">v{{VERSION}}</span></a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="isAuthenticated()">
-            <ul class="nav navbar-nav navbar-right">
-                <li ui-sref-active="active">
-                    <a ui-sref="home" data-toggle="collapse" data-target=".navbar-collapse.in">
-                        <span class="glyphicon glyphicon-home"></span>
-                        <span class="hidden-sm" translate="global.menu.home">Home</span>
-                    </a>
-                </li>
-                <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span>
-                            <span class="glyphicon glyphicon-th-list"></span>
-                            <span class="hidden-sm" translate="global.menu.entities.main">
-                                Entities
-                            </span>
-                            <b class="caret"></b>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ui-sref-active="active" ><a ui-sref="address" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.address">address</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="backOrderLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.backOrderLineItem">backOrderLineItem</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="carrier" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.carrier">carrier</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="contact" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.contact">contact</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="customerCategory" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.customerCategory">customerCategory</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="customer" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.customer">customer</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="customerDiscountRule" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.customerDiscountRule">customerDiscountRule</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="invoice" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.invoice">invoice</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="invoiceLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.invoiceLineItem">invoiceLineItem</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="priceScale" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.priceScale">priceScale</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="product" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.product">product</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="promotion" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.promotion">promotion</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="purchaseOrder" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.purchaseOrder">purchaseOrder</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="purchaseOrderLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.purchaseOrderLineItem">purchaseOrderLineItem</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="quote" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.quote">quote</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="quoteLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.quoteLineItem">quoteLineItem</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="salesOrder" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.salesOrder">salesOrder</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="salesOrderLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.salesOrderLineItem">salesOrderLineItem</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="staff" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.staff">staff</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="stockFamily" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.stockFamily">stockFamily</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="stockGroup" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.stockGroup">stockGroup</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="store" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.store">store</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="supplier" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.supplier">supplier</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="supplierCategory" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.supplierCategory">supplierCategory</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="supplierDiscountRule" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.supplierDiscountRule">supplierDiscountRule</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="taxTable" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span translate="global.menu.entities.taxTable">taxTable</span></a></li>
-                        <!-- JHipster will add entities to the menu here -->
-                    </ul>
-                </li>
-                <li ng-class="{active: $state.includes('account')}" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span>
-                            <span class="glyphicon glyphicon-user"></span>
-                            <span class="hidden-sm" translate="global.menu.account.main">
-                                Account
-                            </span>
-                            <b class="caret"></b>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="settings" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-wrench"></span>
-                            &#xA0;<span translate="global.menu.account.settings">Settings</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="password" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-lock"></span>
-                            &#xA0;<span translate="global.menu.account.password">Password</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="sessions" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-cloud"></span>
-                            &#xA0;<span translate="global.menu.account.sessions">Sessions</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="true"><a href="" ng-click="logout()" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-out"></span>
-                            &#xA0;<span translate="global.menu.account.logout">Sign out</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="login" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-in"></span>
-                            &#xA0;<span translate="global.menu.account.login">Sign in</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="register" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-plus-sign"></span>
-                            &#xA0;<span translate="global.menu.account.register">Register</span></a></li>
-                    </ul>
-                </li>
-                <li ng-class="{active: $state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span>
-                            <span class="glyphicon glyphicon-tower"></span>
-                            <span class="hidden-sm" translate="global.menu.admin.main">Administration</span>
-                            <b class="caret"></b>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ui-sref-active="active"><a ui-sref="user-management" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-user"></span>
-                            &#xA0;<span translate="global.menu.admin.user-management">User management</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="metrics" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-dashboard"></span>
-                            &#xA0;<span translate="global.menu.admin.metrics">Metrics</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="health" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-heart"></span>
-                            &#xA0;<span translate="global.menu.admin.health">Health</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="configuration" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-list-alt"></span>
-                            &#xA0;<span translate="global.menu.admin.configuration">Configuration</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="audits" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-bell"></span>
-                            &#xA0;<span translate="global.menu.admin.audits">Audits</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="logs" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-tasks"></span>
-                            &#xA0;<span translate="global.menu.admin.logs">Logs</span></a></li>
-                        <li ng-hide="inProduction" ui-sref-active="active"><a ui-sref="docs" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-book"></span>
-                            &#xA0;<span translate="global.menu.admin.apidocs">API</span></a></li>
-                        <li ng-hide="inProduction"><a href='/console' target="_tab" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-hdd"></span>
-                            &#xA0;<span translate="global.menu.admin.database">Database</span></a></li>
-                    </ul>
-                </li>
-                <li ui-sref-active="active" class="dropdown pointer" ng-controller="LanguageController">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span>
-                            <span class="glyphicon glyphicon-flag"></span>
-                            <span class="hidden-sm" translate="global.menu.language">Language</span>
-                            <b class="caret"></b>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li active-menu="{{language}}" ng-repeat="language in languages">
-                            <a href="" ng-click="changeLanguage(language)" data-toggle="collapse" data-target=".navbar-collapse.in">{{language | findLanguageFromKey}}</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+<header id="header">
+    <div id="logo-group">
+
+        <!-- PLACE YOUR LOGO HERE -->
+        <span id="logo"> <img src="../../../assets/images/logo.png" alt="SmartAdmin"> </span>
+        <!-- END LOGO PLACEHOLDER -->
+
+        <!-- Note: The activity badge color changes when clicked and resets the number to 0
+        Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
+    <span id="activity" class="activity-dropdown" activities-dropdown-toggle>
+        <i class="fa fa-user"></i>
+        <b class="badge bg-color-red">21</b>
+    </span>
+        <div smart-include="scripts/components/smart_admin/dashboard/activities/activities.html"></div>
     </div>
-</nav>
+
+
+    <recent-projects></recent-projects>
+
+    <!-- entities -->
+    <div class="project-context hidden-xs">
+
+        <span class="label">Entities:</span>
+        <span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
+
+        <!-- Suggestion: populate this list with fetch and push technique -->
+        <ul class="dropdown-menu">
+            <li>
+                <a href="javascript:void(0);">Online e-merchant management system - attaching integration with the iOS</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Notes on pipeline upgradee</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">Assesment Report for merchant account</a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
+            </li>
+        </ul>
+        <!-- end dropdown-menu-->
+
+    </div>
+
+    <!-- end entities -->
+
+
+
+    <!-- pulled right: nav area -->
+    <div class="pull-right">
+
+        <!-- collapse menu button -->
+        <div id="hide-menu" class="btn-header pull-right">
+        <span> <a toggle-menu title="Collapse Menu"><i
+            class="fa fa-reorder"></i></a> </span>
+        </div>
+        <!-- end collapse menu -->
+
+        <!-- #MOBILE -->
+        <!-- Top menu profile link : this shows only when top menu is active -->
+        <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+            <li class="">
+                <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
+                    <img src="../../../assets/images/avatars/sunny.png" alt="John Doe" class="online"/>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    <li>
+                        <a href-void class="padding-10 padding-top-0 padding-bottom-0"><i
+                            class="fa fa-cog"></i> Setting</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a ui-sref="app.appViews.profileDemo" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i>
+                            <u>P</u>rofile</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href-void class="padding-10 padding-top-0 padding-bottom-0"
+                           data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href-void class="padding-10 padding-top-0 padding-bottom-0"
+                           data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#/login" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i
+                            class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- logout button -->
+        <div id="logout" class="btn-header transparent pull-right">
+        <span> <a ui-sref="login" title="Sign Out" data-action="userLogout"
+                  data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i
+            class="fa fa-sign-out"></i></a> </span>
+        </div>
+        <!-- end logout button -->
+
+        <!-- search mobile button (this is hidden till mobile view port) -->
+        <div id="search-mobile" class="btn-header transparent pull-right" data-search-mobile>
+            <span> <a href="#" title="Search"><i class="fa fa-search"></i></a> </span>
+        </div>
+        <!-- end search mobile button -->
+
+        <!-- input: search field -->
+        <form action="#/search" class="header-search pull-right">
+            <input id="search-fld" type="text" name="param" placeholder="Find reports and more" data-autocomplete='[
+					"ActionScript",
+					"AppleScript",
+					"Asp",
+					"BASIC",
+					"C",
+					"C++",
+					"Clojure",
+					"COBOL",
+					"ColdFusion",
+					"Erlang",
+					"Fortran",
+					"Groovy",
+					"Haskell",
+					"Java",
+					"JavaScript",
+					"Lisp",
+					"Perl",
+					"PHP",
+					"Python",
+					"Ruby",
+					"Scala",
+					"Scheme"]'>
+            <button type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+            <a href="$" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
+        </form>
+        <!-- end input: search field -->
+
+        <!-- fullscreen button -->
+        <div id="fullscreen" class="btn-header transparent pull-right">
+        <span> <a full-screen title="Full Screen"><i
+            class="fa fa-arrows-alt"></i></a> </span>
+        </div>
+        <!-- end fullscreen button -->
+
+        <!-- #Voice Command: Start Speech -->
+        <div id="speech-btn" class="btn-header transparent pull-right hidden-sm hidden-xs">
+            <div>
+                <a title="Voice Command" id="voice-command-btn" speech-recognition><i class="fa fa-microphone"></i></a>
+
+                <div class="popover bottom">
+                    <div class="arrow"></div>
+                    <div class="popover-content">
+                        <h4 class="vc-title">Voice command activated <br>
+                            <small>Please speak clearly into the mic</small>
+                        </h4>
+                        <h4 class="vc-title-error text-center">
+                            <i class="fa fa-microphone-slash"></i> Voice command failed
+                            <br>
+                            <small class="txt-color-red">Must <strong>"Allow"</strong> Microphone</small>
+                            <br>
+                            <small class="txt-color-red">Must have <strong>Internet Connection</strong></small>
+                        </h4>
+                        <a href-void class="btn btn-success" id="speech-help-btn">See Commands</a>
+                        <a href-void class="btn bg-color-purple txt-color-white"
+                           onclick="$('#speech-btn .popover').fadeOut(50);">Close Popup</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end voice command -->
+
+
+
+        <!-- multiple lang dropdown : find all flags in the flags page -->
+        <language-selector></language-selector>
+        <!-- end multiple lang -->
+
+    </div>
+    <!-- end pulled right: nav area -->
+
+</header>
