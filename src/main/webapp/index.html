@@ -27,15 +27,30 @@
 
         <!-- our custom styles -->
         <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/my-style.css">
+
+
+        <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/demo.css">
+
+        <!-- #FAVICONS -->
+        <link rel="shortcut icon" href="assets/images/favicon/favicon.ico" type="image/x-icon">
+
+        <!-- #GOOGLE FONT -->
+        <!-- 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700"> -->
+
         <!-- endbuild -->
     </head>
-    <body ng-app="bssuiteApp">
+    <body ng-app="bssuiteApp"
+          data-smart-device-detect
+          data-smart-fast-click
+          data-smart-layout
+          data-smart-page-title="Business Solution Suite">
         <!--[if lt IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
 
-        <div data-ui-view="root">
+        <div data-ui-view="root" data-autoscroll="false">
             <div ui-view="navbar" ng-cloak=""></div>
 
             <!-- Left panel : Navigation area -->
@@ -46,7 +61,6 @@
 
             <!-- MAIN PANEL -->
             <div id="main" role="main">
-                <demo-states></demo-states>
 
                 <!-- RIBBON -->
                 <div id="ribbon">
@@ -72,6 +86,8 @@
                     <div data-ui-view="content" data-autoscroll="false"></div>
                 </div>
 
+
+                <demo-states></demo-states>
             </div>
             <!-- END MAIN PANEL -->
 
@@ -122,6 +138,8 @@
         <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
         <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
         <script src="bower_components/PACE/pace.js"></script>
+        <script src="bower_components/fastclick/lib/fastclick.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -375,6 +393,9 @@
     <!-- endbuild -->
 
     <!-- smartAdmin scripts -->
+
+        <script src="scripts/components/smart_admin/notification/SmartNotification.js"></script>
+
     <script src="scripts/components/smart_admin/app.js"></script>
 
     <script src="scripts/components/smart_admin/common/layout/directives/smartInclude.js"></script>
@@ -383,6 +404,10 @@
     <script src="scripts/components/smart_admin/common/layout/directives/navigation/smartMenu.js"></script>
     <script src="scripts/components/smart_admin/common/layout/directives/navigation/smartMenuItems.js"></script>
     <script src="scripts/components/smart_admin/common/layout/directives/demo/demoStates.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/smartDeviceDetect.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/smartFastClick.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/smartLayout.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/smartPageTitle.js"></script>
 
 
         <script src="scripts/components/smart_admin/common/layout/service/lazyScript.js"></script>
