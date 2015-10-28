@@ -94,6 +94,8 @@
             <!-- PAGE FOOTER -->
             <div data-smart-include="scripts/components/smart_admin/layout/partials/footer.tpl.html"></div>
 
+            <div data-smart-include="scripts/components/smart_admin/layout/shortcut/shortcut.tpl.html"></div>
+
             <!-- END PAGE FOOTER -->
 
         </div>
@@ -140,6 +142,7 @@
         <script src="bower_components/PACE/pace.js"></script>
         <script src="bower_components/fastclick/lib/fastclick.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/jquery-ui/jquery-ui.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -397,7 +400,12 @@
         <script src="scripts/components/smart_admin/notification/SmartNotification.js"></script>
 
     <script src="scripts/components/smart_admin/app.js"></script>
+
+        <!-- smartAdmin modules -->
         <script src="scripts/components/smart_admin/dashboard/module.js"></script>
+        <!-- end smartAdmin modules -->
+
+        <script src="scripts/components/smart_admin/layout/shortcut/shortcut-directive.js"></script>
 
     <script src="scripts/components/smart_admin/common/layout/directives/smartInclude.js"></script>
         <script src="scripts/components/smart_admin/common/layout/directives/hrefVoid.js"></script>
@@ -423,21 +431,20 @@
         <script src="scripts/components/smart_admin/common/layout/actions/searchMobile.js"></script>
         <script src="scripts/components/smart_admin/common/layout/actions/toggleMenu.js"></script>
 
-        <script src="scripts/components/smart_admin/common/layout/directives/widgets/jarvisWidget.js"></script>
         <script src="scripts/components/smart_admin/common/layout/directives/widgets/widgetGrid.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/widgets/jarvisWidget.js"></script>
 
         <script src="scripts/components/smart_admin/dashboard/activities/activities-dropdown-toggle-directive.js"></script>
+
+        <script src="scripts/components/smart_admin/dashboard/DashboardCtrl.js"></script>
         <script src="scripts/components/smart_admin/dashboard/activities/activities-controller.js"></script>
         <script src="scripts/components/smart_admin/dashboard/activities/activities-service.js"></script>
-        <script src="scripts/components/smart_admin/dashboard/projects/recentProjects.js"></script>
-        <script src="scripts/components/smart_admin/dashboard/projects/Project.js"></script>
 
         <script src="scripts/components/smart_admin/dashboard/todo/TodoCtrl.js"></script>
         <script src="scripts/components/smart_admin/dashboard/todo/directives/todoList.js"></script>
         <script src="scripts/components/smart_admin/dashboard/todo/models/Todo.js"></script>
 
 
-        <script src="scripts/components/smart_admin/auth/directives/loginInfo.js"></script>
 
     <!-- end smartAdmin scripts -->
 

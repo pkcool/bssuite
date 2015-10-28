@@ -15,35 +15,12 @@
     </div>
 
 
-    <recent-projects></recent-projects>
-
-    <!-- entities -->
     <div class="project-context hidden-xs" >
 
         <span class="label">v{{VERSION}}</span>
-        <span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent projects <i class="fa fa-angle-down"></i></span>
-
-        <!-- Suggestion: populate this list with fetch and push technique -->
-        <ul class="dropdown-menu">
-            <li>
-                <a href="javascript:void(0);">Online e-merchant management system - attaching integration with the iOS</a>
-            </li>
-            <li>
-                <a href="javascript:void(0);">Notes on pipeline upgradee</a>
-            </li>
-            <li>
-                <a href="javascript:void(0);">Assesment Report for merchant account</a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a href="javascript:void(0);"><i class="fa fa-power-off"></i> Clear</a>
-            </li>
-        </ul>
-        <!-- end dropdown-menu-->
 
     </div>
 
-    <!-- end entities -->
 
     <!-- entities -->
     <div ui-sref-active="active" ng-switch-when="true"  class="project-context hidden-xs" >
@@ -220,12 +197,19 @@
         </ul>
 
         <!-- logout button -->
-        <div id="logout" class="btn-header transparent pull-right">
-        <span> <a ui-sref="login" title="Sign Out" data-action="userLogout"
+        <div ng-switch-when="true" id="logout" class="btn-header transparent pull-right">
+        <span> <a ng-click = "logout()" title="Sign Out" data-action="userLogout"
                   data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i
             class="fa fa-sign-out"></i></a> </span>
         </div>
         <!-- end logout button -->
+
+        <!-- login button -->
+        <div ng-switch-when="false" id="login" class="btn-header transparent pull-right">
+        <span> <a ui-sref="login" title="Sign In" data-action="userLogin"
+            class="fa fa-sign-in"></i></a> </span>
+        </div>
+        <!-- end login button -->
 
         <!-- search mobile button (this is hidden till mobile view port) -->
         <div id="search-mobile" class="btn-header transparent pull-right" data-search-mobile>
