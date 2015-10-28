@@ -37,6 +37,9 @@ module.exports = function (config) {
             'main/webapp/bower_components/fastclick/lib/fastclick.js',
             'main/webapp/bower_components/underscore/underscore.js',
             'main/webapp/bower_components/jquery-ui/jquery-ui.js',
+            'main/webapp/bower_components/jquery-validation/dist/jquery.validate.js',
+            'main/webapp/bower_components/jquery.maskedinput/dist/jquery.maskedinput.js',
+            'main/webapp/bower_components/select2/dist/js/select2.js',
             'main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'main/webapp/scripts/app/app.js',
