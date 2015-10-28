@@ -380,7 +380,7 @@ module.exports = function (grunt) {
         'copy:dist',
         'ngAnnotate',
         'cssmin',
-        'autoprefixer',
+        //'autoprefixer',
         'uglify',
         'rev',
         'usemin',
