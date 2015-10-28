@@ -8,6 +8,9 @@
 /src/main/webapp/assets/styles/jhipster-style.css
 /src/main/webapp/dist
 
+/src/main/java/com/enginemobi/bssuite/config/HerokuDatabaseConfiguration.java
+
+
 ######################
 # Node
 ######################

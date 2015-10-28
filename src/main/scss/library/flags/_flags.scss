@@ -1,7 +1,7 @@
 .flag {
 	width: 16px;
 	height: 11px;
-	background:url("@{base-url}/flags/flags.png") no-repeat;
+	background:url("#{$base-url}/flags/flags.png") no-repeat;
 	margin-top: -0.18em;
 	display:inline-block;
 }
