@@ -1,8 +1,17 @@
 'use strict';
 
-angular.module('bssuiteApp', ['LocalStorageModule', 
-               'ui.bootstrap', // for modal dialogs
-    'ngResource', 'ui.router', 'ngCookies', 'ngAria', 'ngCacheBuster', 'ngFileUpload', 'infinite-scroll'])
+angular.module('bssuiteApp',
+    ['LocalStorageModule',
+        'tmh.dynamicLocale',
+        'pascalprecht.translate',
+        'ui.bootstrap', // for modal dialogs
+        'ngResource',
+        'ui.router',
+        'ngCookies',
+        'ngAria',
+        'ngCacheBuster',
+        'ngFileUpload',
+        'infinite-scroll'])
 
     .run(function ($rootScope, $location, $window, $http, $state,  Auth, Principal, ENV, VERSION) {
         $rootScope.ENV = ENV;
@@ -14,7 +23,7 @@ angular.module('bssuiteApp', ['LocalStorageModule',
             if (Principal.isIdentityResolved()) {
                 Auth.authorize();
             }
-            
+
         });
 
         $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
@@ -75,5 +84,5 @@ angular.module('bssuiteApp', ['LocalStorageModule',
         $httpProvider.interceptors.push('errorHandlerInterceptor');
         $httpProvider.interceptors.push('authExpiredInterceptor');
         $httpProvider.interceptors.push('notificationInterceptor');
-        
+
     });
