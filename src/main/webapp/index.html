@@ -28,21 +28,70 @@
         <!-- our custom styles -->
         <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/my-style.css">
 
+        <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+        <link rel="stylesheet" type="text/css" media="screen" href="assets/styles/demo.css">
+
         <!-- endbuild -->
     </head>
-    <body ng-app="bssuiteApp">
-        <!--[if lt IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
-        <div ui-view="navbar" ng-cloak=""></div>
-        <div class="container">
-            <div class="well" ui-view="content"></div>
+    <body ng-app="bssuiteApp"
+          data-smart-device-detect
+          data-smart-fast-click
+          data-smart-layout
+          data-smart-page-title="Business Solution Suite">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div ng-show="{{ENV === 'dev'}}" class="development" ng-cloak=""></div>
 
-            <div class="footer">
-                <p translate="footer">This is your footer</p>
+    <div data-ui-view="root" data-autoscroll="false">
+        <div ui-view="navbar" ng-cloak=""></div>
+
+        <!-- Left panel : Navigation area -->
+        <!-- Note: This width of the aside area can be adjusted through LESS variables -->
+        <div data-smart-include="scripts/components/smart_admin/layout/partials/navigation.tpl.html" class="placeholder-left-panel"></div>
+
+        <!-- END NAVIGATION -->
+
+        <!-- MAIN PANEL -->
+        <div id="main" role="main">
+
+            <!-- RIBBON -->
+            <div id="ribbon">
+
+				<span class="ribbon-button-alignment">
+					<span id="refresh" class="btn btn-ribbon" reset-widgets
+                          tooltip-placement="bottom"
+                        >
+						<i class="fa fa-refresh"></i>
+					</span>
+				</span>
+
+                <!-- breadcrumb -->
+                <state-breadcrumbs></state-breadcrumbs>
+                <!-- end breadcrumb -->
+
+
             </div>
+            <!-- END RIBBON -->
+
+
+            <div data-smart-router-animation-wrap="content content@app" data-wrap-for="#content">
+                <div data-ui-view="content" data-autoscroll="false"></div>
+            </div>
+
+
+            <demo-states></demo-states>
         </div>
+        <!-- END MAIN PANEL -->
+
+        <!-- PAGE FOOTER -->
+        <div data-smart-include="scripts/components/smart_admin/layout/partials/footer.tpl.html"></div>
+
+        <div data-smart-include="scripts/components/smart_admin/layout/shortcut/shortcut.tpl.html"></div>
+
+        <!-- END PAGE FOOTER -->
+
+    </div>
 
         <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
         <script>
@@ -86,6 +135,15 @@
         <script src="bower_components/select2/dist/js/select2.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
+
+
+        <!-- smartAdmin scripts before jhipster scripts -->
+        <script src="scripts/components/smart_admin/app.config.js"></script>
+
+        <!-- configuration -->
+
+
+        <!-- end smartAdmin scripts -->
 
 
     <!-- build:js({.tmp,src/main/webapp}) scripts/app.js -->
@@ -317,5 +375,61 @@
     <script src="scripts/components/entities/quoteLineItem/quoteLineItem.service.js"></script>
     <script src="scripts/components/entities/quoteLineItem/quoteLineItem.search.service.js"></script>
     <!-- endbuild -->
+
+        <!-- smartAdmin scripts -->
+
+
+        <script src="scripts/components/smart_admin/lib/jquery.sparkline.js"></script>
+
+        <script src="scripts/components/smart_admin/notification/SmartNotification.js"></script>
+
+        <script src="scripts/components/smart_admin/app.js"></script>
+
+        <!-- smartAdmin modules -->
+        <script src="scripts/components/smart_admin/dashboard/module.js"></script>
+        <!-- end smartAdmin modules -->
+
+        <script src="scripts/components/smart_admin/layout/shortcut/shortcut-directive.js"></script>
+
+        <script src="scripts/components/smart_admin/common/layout/directives/smartInclude.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/hrefVoid.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/smartSpeech.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/navigation/smartMenu.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/navigation/smartMenuItems.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/demo/demoStates.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/smartDeviceDetect.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/smartFastClick.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/smartLayout.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/smartPageTitle.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/smartRouterAnimationWrap.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/stateBreadcrumbs.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/bigBreadcrumbs.js"></script>
+
+
+        <script src="scripts/components/smart_admin/common/layout/service/lazyScript.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/service/SmartCss.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/actions/fullScreen.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/actions/minifyMenu.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/actions/reloadState.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/actions/resetWidgets.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/actions/searchMobile.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/actions/toggleMenu.js"></script>
+
+        <script src="scripts/components/smart_admin/common/layout/directives/widgets/widgetGrid.js"></script>
+        <script src="scripts/components/smart_admin/common/layout/directives/widgets/jarvisWidget.js"></script>
+
+        <script src="scripts/components/smart_admin/dashboard/activities/activities-dropdown-toggle-directive.js"></script>
+
+        <script src="scripts/components/smart_admin/dashboard/DashboardCtrl.js"></script>
+        <script src="scripts/components/smart_admin/dashboard/activities/activities-controller.js"></script>
+        <script src="scripts/components/smart_admin/dashboard/activities/activities-service.js"></script>
+
+        <script src="scripts/components/smart_admin/dashboard/todo/TodoCtrl.js"></script>
+        <script src="scripts/components/smart_admin/dashboard/todo/directives/todoList.js"></script>
+        <script src="scripts/components/smart_admin/dashboard/todo/models/Todo.js"></script>
+
+
+
+        <!-- end smartAdmin scripts -->
 </body>
 </html>

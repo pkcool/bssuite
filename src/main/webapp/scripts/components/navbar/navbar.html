@@ -1,141 +1,341 @@
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/"><span>jhipster</span> <span class="navbar-version">v{{VERSION}}</span></a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="isAuthenticated()">
-            <ul class="nav navbar-nav navbar-right">
-                <li ui-sref-active="active">
-                    <a ui-sref="home" data-toggle="collapse" data-target=".navbar-collapse.in">
-                        <span class="glyphicon glyphicon-home"></span>
-                        <span class="hidden-sm">Home</span>
-                    </a>
-                </li>
-                <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span>
-                            <span class="glyphicon glyphicon-th-list"></span>
-                            <span class="hidden-sm">
-                                Entities
-                            </span>
-                            <b class="caret"></b>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ui-sref-active="active" ><a ui-sref="store" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >store</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="address" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >address</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="contact" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >contact</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="supplierCategory" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >supplierCategory</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="supplier" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >supplier</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="staff" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >staff</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="customerCategory" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >customerCategory</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="customer" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >customer</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="priceScale" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >priceScale</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="stockFamily" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >stockFamily</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="taxTable" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >taxTable</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="stockGroup" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >stockGroup</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="product" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >product</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="carrier" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >carrier</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="promotion" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >promotion</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="salesOrder" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >salesOrder</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="salesOrderLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >salesOrderLineItem</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="customerDiscountRule" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >customerDiscountRule</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="supplierDiscountRule" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >supplierDiscountRule</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="backOrderLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >backOrderLineItem</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="purchaseOrder" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >purchaseOrder</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="purchaseOrderLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >purchaseOrderLineItem</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="invoice" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >invoice</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="invoiceLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >invoiceLineItem</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="quote" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >quote</span></a></li>
-                        <li ui-sref-active="active" ><a ui-sref="quoteLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
-                        &#xA0;<span >quoteLineItem</span></a></li>
-                        <!-- JHipster will add entities to the menu here -->
-                    </ul>
-                </li>
-                <li ng-class="{active: $state.includes('account')}" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span>
-                            <span class="glyphicon glyphicon-user"></span>
-                            <span class="hidden-sm">
-                                Account
-                            </span>
-                            <b class="caret"></b>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="settings" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-wrench"></span>
-                            &#xA0;<span>Settings</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="password" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-lock"></span>
-                            &#xA0;<span>Password</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="sessions" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-cloud"></span>
-                            &#xA0;<span>Sessions</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="true"><a href="" ng-click="logout()" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-out"></span>
-                            &#xA0;<span>Sign out</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="login" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-in"></span>
-                            &#xA0;<span>Sign in</span></a></li>
-                        <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="register" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-plus-sign"></span>
-                            &#xA0;<span>Register</span></a></li>
-                    </ul>
-                </li>
-                <li ng-class="{active: $state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN" class="dropdown pointer">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="">
-                        <span>
-                            <span class="glyphicon glyphicon-tower"></span>
-                            <span class="hidden-sm">Administration</span>
-                            <b class="caret"></b>
-                        </span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li ui-sref-active="active"><a ui-sref="user-management" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-user"></span>
-                            &#xA0;<span>User management</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="metrics" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-dashboard"></span>
-                            &#xA0;<span>Metrics</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="health" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-heart"></span>
-                            &#xA0;<span>Health</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="configuration" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-list-alt"></span>
-                            &#xA0;<span>Configuration</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="audits" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-bell"></span>
-                            &#xA0;<span>Audits</span></a></li>
-                        <li ui-sref-active="active"><a ui-sref="logs" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-tasks"></span>
-                            &#xA0;<span>Logs</span></a></li>
-                        <li ng-hide="inProduction" ui-sref-active="active"><a ui-sref="docs" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-book"></span>
-                            &#xA0;<span>API</span></a></li>
-                        <li ng-hide="inProduction"><a href='/console' target="_tab" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-hdd"></span>
-                            &#xA0;<span>Database</span></a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+<header id="header" ng-switch="isAuthenticated()">
+    <div id="logo-group">
+
+        <!-- PLACE YOUR LOGO HERE -->
+        <span id="logo"> <img src="../../../assets/images/logo.png" alt="SmartAdmin"> </span>
+        <!-- END LOGO PLACEHOLDER -->
+
+        <!-- Note: The activity badge color changes when clicked and resets the number to 0
+        Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
+    <span id="activity" class="activity-dropdown" activities-dropdown-toggle>
+        <i class="fa fa-user"></i>
+        <b class="badge bg-color-red">21</b>
+    </span>
+        <div smart-include="scripts/components/smart_admin/dashboard/activities/activities.html"></div>
     </div>
-</nav>
+
+
+    <div class="project-context hidden-xs" >
+
+        <span class="label">v{{VERSION}}</span>
+
+    </div>
+
+
+    <!-- entities -->
+    <div ui-sref-active="active" ng-switch-when="true"  class="project-context hidden-xs" >
+
+        <span class="label">DATABASE</span>
+        <span class="project-selector dropdown-toggle" data-toggle="dropdown">Entities<i class="fa fa-angle-down"></i></span>
+
+        <!-- Suggestion: populate this list with fetch and push technique -->
+        <ul class="dropdown-menu">
+            <li ui-sref-active="active" ><a ui-sref="store" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >store</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="address" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >address</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="contact" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >contact</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="supplierCategory" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >supplierCategory</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="supplier" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >supplier</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="staff" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >staff</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="customerCategory" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >customerCategory</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="customer" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >customer</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="priceScale" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >priceScale</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="stockFamily" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >stockFamily</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="taxTable" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >taxTable</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="stockGroup" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >stockGroup</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="product" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >product</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="carrier" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >carrier</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="promotion" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >promotion</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="salesOrder" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >salesOrder</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="salesOrderLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >salesOrderLineItem</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="customerDiscountRule" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >customerDiscountRule</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="supplierDiscountRule" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >supplierDiscountRule</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="backOrderLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >backOrderLineItem</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="purchaseOrder" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >purchaseOrder</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="purchaseOrderLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >purchaseOrderLineItem</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="invoice" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >invoice</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="invoiceLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >invoiceLineItem</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="quote" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >quote</span></a></li>
+            <li ui-sref-active="active" ><a ui-sref="quoteLineItem" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-asterisk"></span>
+                &#xA0;<span >quoteLineItem</span></a></li>
+            <!-- JHipster will add entities to the menu here -->
+        </ul>
+        <!-- end dropdown-menu-->
+
+    </div>
+
+    <!-- end entities -->
+
+    <!-- admin -->
+    <div ng-class="{active: $state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN" class="project-context hidden-xs">
+
+        <span class="label">ADMIN</span>
+        <span class="project-selector dropdown-toggle" data-toggle="dropdown">Administration<i class="fa fa-angle-down"></i></span>
+
+        <!-- Suggestion: populate this list with fetch and push technique -->
+        <ul class="dropdown-menu">
+            <li ui-sref-active="active"><a ui-sref="user-management" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-user"></span>
+                &#xA0;<span>User management</span></a></li>
+            <li ui-sref-active="active"><a ui-sref="metrics" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-dashboard"></span>
+                &#xA0;<span>Metrics</span></a></li>
+            <li ui-sref-active="active"><a ui-sref="health" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-heart"></span>
+                &#xA0;<span>Health</span></a></li>
+            <li ui-sref-active="active"><a ui-sref="configuration" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-list-alt"></span>
+                &#xA0;<span>Configuration</span></a></li>
+            <li ui-sref-active="active"><a ui-sref="audits" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-bell"></span>
+                &#xA0;<span>Audits</span></a></li>
+            <li ui-sref-active="active"><a ui-sref="logs" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-tasks"></span>
+                &#xA0;<span>Logs</span></a></li>
+            <li ng-hide="inProduction" ui-sref-active="active"><a ui-sref="docs" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-book"></span>
+                &#xA0;<span>API</span></a></li>
+            <li ng-hide="inProduction"><a href='/console' target="_tab" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-hdd"></span>
+                &#xA0;<span>Database</span></a></li>
+        </ul>
+        <!-- end dropdown-menu-->
+
+    </div>
+
+    <!-- end admin  -->
+
+    <!-- account section -->
+    <div ng-class="{active: $state.includes('account')}"  class="project-context hidden-xs" >
+
+        <span class="label">USER</span>
+        <span class="project-selector dropdown-toggle" data-toggle="dropdown">Account<i class="fa fa-angle-down"></i></span>
+
+        <!-- Suggestion: populate this list with fetch and push technique -->
+        <ul class="dropdown-menu">
+            <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="settings" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-wrench"></span>
+                &#xA0;<span>Settings</span></a></li>
+            <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="password" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-lock"></span>
+                &#xA0;<span>Password</span></a></li>
+            <li ui-sref-active="active" ng-switch-when="true"><a ui-sref="sessions" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-cloud"></span>
+                &#xA0;<span>Sessions</span></a></li>
+            <li ui-sref-active="active" ng-switch-when="true"><a href="" ng-click="logout()" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-out"></span>
+                &#xA0;<span>Sign out</span></a></li>
+            <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="login" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-in"></span>
+                &#xA0;<span>Sign in</span></a></li>
+            <li ui-sref-active="active" ng-switch-when="false"><a ui-sref="register" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-plus-sign"></span>
+                &#xA0;<span>Register</span></a></li>
+        </ul>
+        <!-- end dropdown-menu-->
+
+    </div>
+
+    <!-- end account section -->
+
+
+
+    <!-- pulled right: nav area -->
+    <div class="pull-right">
+
+        <!-- collapse menu button -->
+        <div id="hide-menu" class="btn-header pull-right">
+        <span> <a toggle-menu title="Collapse Menu"><i
+            class="fa fa-reorder"></i></a> </span>
+        </div>
+        <!-- end collapse menu -->
+
+        <!-- #MOBILE -->
+        <!-- Top menu profile link : this shows only when top menu is active -->
+        <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+            <li class="">
+                <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
+                    <img src="../../../assets/images/avatars/sunny.png" alt="John Doe" class="online"/>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    <li>
+                        <a href-void class="padding-10 padding-top-0 padding-bottom-0"><i
+                            class="fa fa-cog"></i> Setting</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a ui-sref="app.appViews.profileDemo" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i>
+                            <u>P</u>rofile</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href-void class="padding-10 padding-top-0 padding-bottom-0"
+                           data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href-void class="padding-10 padding-top-0 padding-bottom-0"
+                           data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#/login" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i
+                            class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- logout button -->
+        <div ng-switch-when="true" id="logout" class="btn-header transparent pull-right">
+        <span> <a ng-click = "logout()" title="Sign Out" data-action="userLogout"
+                  data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i
+            class="fa fa-sign-out"></i></a> </span>
+        </div>
+        <!-- end logout button -->
+
+        <!-- login button -->
+        <div ng-switch-when="false" id="login" class="btn-header transparent pull-right">
+        <span> <a ui-sref="login" title="Sign In" data-action="userLogin"
+                  class="fa fa-sign-in"></i></a> </span>
+        </div>
+        <!-- end login button -->
+
+        <!-- search mobile button (this is hidden till mobile view port) -->
+        <div id="search-mobile" class="btn-header transparent pull-right" data-search-mobile>
+            <span> <a href="#" title="Search"><i class="fa fa-search"></i></a> </span>
+        </div>
+        <!-- end search mobile button -->
+
+        <!-- input: search field -->
+        <form action="#/search" class="header-search pull-right">
+            <input id="search-fld" type="text" name="param" placeholder="Find reports and more" data-autocomplete='[
+					"ActionScript",
+					"AppleScript",
+					"Asp",
+					"BASIC",
+					"C",
+					"C++",
+					"Clojure",
+					"COBOL",
+					"ColdFusion",
+					"Erlang",
+					"Fortran",
+					"Groovy",
+					"Haskell",
+					"Java",
+					"JavaScript",
+					"Lisp",
+					"Perl",
+					"PHP",
+					"Python",
+					"Ruby",
+					"Scala",
+					"Scheme"]'>
+            <button type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+            <a href="$" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
+        </form>
+        <!-- end input: search field -->
+
+        <!-- fullscreen button -->
+        <div id="fullscreen" class="btn-header transparent pull-right">
+        <span> <a full-screen title="Full Screen"><i
+            class="fa fa-arrows-alt"></i></a> </span>
+        </div>
+        <!-- end fullscreen button -->
+
+        <!-- home button -->
+        <div  class="btn-header transparent pull-right">
+        <span> <a data-ui-sref="home" title="Full Screen"><i
+            class="fa fa-home"></i></a> </span>
+        </div>
+        <!-- end home button -->
+
+
+        <!-- #Voice Command: Start Speech -->
+        <div id="speech-btn" class="btn-header transparent pull-right hidden-sm hidden-xs">
+            <div>
+                <a title="Voice Command" id="voice-command-btn" speech-recognition><i class="fa fa-microphone"></i></a>
+
+                <div class="popover bottom">
+                    <div class="arrow"></div>
+                    <div class="popover-content">
+                        <h4 class="vc-title">Voice command activated <br>
+                            <small>Please speak clearly into the mic</small>
+                        </h4>
+                        <h4 class="vc-title-error text-center">
+                            <i class="fa fa-microphone-slash"></i> Voice command failed
+                            <br>
+                            <small class="txt-color-red">Must <strong>"Allow"</strong> Microphone</small>
+                            <br>
+                            <small class="txt-color-red">Must have <strong>Internet Connection</strong></small>
+                        </h4>
+                        <a href-void class="btn btn-success" id="speech-help-btn">See Commands</a>
+                        <a href-void class="btn bg-color-purple txt-color-white"
+                           onclick="$('#speech-btn .popover').fadeOut(50);">Close Popup</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end voice command -->
+
+
+
+        <!-- multiple lang dropdown : find all flags in the flags page -->
+        <ul class="header-dropdown-list hidden-xs">
+            <li class="">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img src="../../../assets/images/blank.gif" class="flag flag-us" alt="United States"> <span> English (US) </span> <i class="fa fa-angle-down"></i> </a>
+                <ul class="dropdown-menu pull-right">
+                    <li class="active">
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-us" alt="United States"> English (US)</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-fr" alt="France"> Français</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-es" alt="Spanish"> Español</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-de" alt="German"> Deutsch</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-jp" alt="Japan"> 日本語</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-cn" alt="China"> 中文</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-it" alt="Italy"> Italiano</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-pt" alt="Portugal"> Portugal</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-ru" alt="Russia"> Русский язык</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><img src="../../../assets/images/blank.gif" class="flag flag-kr" alt="Korea"> 한국어</a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+        <!--<language-selector></language-selector>-->
+        <!-- end multiple lang -->
+
+    </div>
+    <!-- end pulled right: nav area -->
+
+</header>
