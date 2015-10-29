@@ -30,6 +30,18 @@ module.exports = function (grunt) {
     require('time-grunt')(grunt);
 
     grunt.initConfig({
+        app: {
+            // Application variables
+            scripts: [
+                // JS files to be included by includeSource task into index.html
+                'scripts/components/smart_admin/app.config.js',
+                'scripts/app/app.js',
+                'scripts/app/app.constants.js',
+                'scripts/components/**/module.js',
+                'scripts/components/**/*.js',
+                'scripts/app/**/*.js'
+            ]
+        },
         yeoman: {
             // configurable paths
             app: require('./bower.json').appPath || 'app',
@@ -47,6 +59,14 @@ module.exports = function (grunt) {
             sass: {
                 files: ['src/main/scss/**/*.{scss,sass}'],
                 tasks: ['sass:server']
+            },
+            includeSource: {
+                // Watch for added and deleted scripts to update index.html
+                files: 'src/main/webapp/scripts/**/*.js',
+                tasks: ['includeSource'],
+                options: {
+                    event: ['added', 'deleted']
+                }
             }
         },
         autoprefixer: {
@@ -58,7 +78,8 @@ module.exports = function (grunt) {
                 exclude: [
                     /angular-i18n/, // localizations are loaded dynamically
                     'bower_components/bootstrap/', // Exclude Bootstrap LESS as we use bootstrap-sass
-                    'bower_components/components-font-awesome/css' // Exclude font-awesome css as we use font-awesome-sass
+                    'bower_components/components-font-awesome/css', // Exclude font-awesome css as we use font-awesome-sass
+                    'bower_components/select2/dist/css' // Exclude select2 css as we only use the select2 javascript
                 ],
                 ignorePath: /\.\.\/webapp\/bower_components\// // remove ../webapp/bower_components/ from paths of injected sass files
             },
@@ -77,6 +98,19 @@ module.exports = function (grunt) {
                             js: '\'{{filePath}}\','
                         }
                     }
+                }
+            }
+        },
+        includeSource: {
+            // Task to include files into index.html
+            options: {
+                basePath: 'src/main/webapp',
+                baseUrl: '',
+                ordering: 'top-down'
+            },
+            app: {
+                files: {
+                    'src/main/webapp/index.html': 'src/main/webapp/index.html'
                 }
             }
         },
@@ -347,6 +381,7 @@ module.exports = function (grunt) {
     grunt.registerTask('serve', [
         'clean:server',
         'wiredep',
+        'includeSource',
         'ngconstant:dev',
         'sass:server',
         'browserSync',
@@ -369,6 +404,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'wiredep:app',
+        'includeSource',
         'ngconstant:prod',
         'useminPrepare',
         'ngtemplates',
