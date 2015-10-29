@@ -6,6 +6,7 @@
 /src/main/webapp/assets/styles/smartadmin-production.css
 /src/main/webapp/assets/styles/smartadmin-skins.css
 /src/main/webapp/assets/styles/jhipster-style.css
+/src/main/webapp/assets/styles/my-style.css
 /src/main/webapp/dist
 
 /src/main/java/com/enginemobi/bssuite/config/HerokuDatabaseConfiguration.java
