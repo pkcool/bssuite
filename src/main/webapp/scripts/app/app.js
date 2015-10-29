@@ -2,8 +2,6 @@
 
 angular.module('bssuiteApp',
     ['LocalStorageModule',
-        'tmh.dynamicLocale',
-        'pascalprecht.translate',
         'ui.bootstrap', // for modal dialogs
         'ngResource',
         'ui.router',
