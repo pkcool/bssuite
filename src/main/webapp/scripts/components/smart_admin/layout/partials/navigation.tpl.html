@@ -26,51 +26,225 @@
 
         <ul data-smart-menu>
             <li data-ui-sref-active="active">
-                <a data-ui-sref="home" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span
+                <a data-ui-sref="home" title="Dashboard"><i class="fa fa-lg fa-fw fa-dashboard"></i> <span
                         class="menu-item-parent">Dashboard</span></a>
             </li>
             <li data-ui-sref-active="active">
-                <a data-ui-sref="app.inbox.folder" title="Inbox">
-                    <i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">Inbox</span><span
+                <a data-ui-sref="favourite" title="Favourites">
+                    <i class="fa fa-lg fa-fw fa-star"></i> <span class="menu-item-parent">Favourites</span><span
                         unread-messages-count class="badge pull-right inbox-badge"></span></a>
             </li>
             <li data-menu-collapse>
-                <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span class="menu-item-parent">Graphs</span></a>
+                <a href="#"><i class="fa fa-lg fa-fw fa-bars"></i> <span class="menu-item-parent">Accounts</span></a>
+                <ul>
+
+
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.customer">Customers</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.supplier">Suppliers</a>
+                    </li>
+
+
+
+                </ul>
+            </li>
+
+            <li data-menu-collapse>
+                <a href="#"><i class="fa fa-lg fa-fw fa-arrow-circle-right"></i> <span class="menu-item-parent">Sales</span></a>
                 <ul>
                     <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.graphs.flot">Flot Chart</a>
+                        <a data-ui-sref="app.salesorder">Sales Orders</a>
                     </li>
                     <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.graphs.morris">Morris Charts</a>
+                        <a data-ui-sref="app.quotation">Quotations<span
+                                class="badge inbox-badge bg-color-greenLight">v1.10</span></a>
                     </li>
                     <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.graphs.inline">Inline Charts</a>
+                        <a data-ui-sref="app.invoice">Invoicing</a>
                     </li>
                     <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.graphs.dygraphs">Dygraphs</a>
+                        <a data-ui-sref="app.ordercontrol">Order Control</a>
                     </li>
                     <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.graphs.chartjs">Chart.js <span
-                                class="badge pull-right inbox-badge bg-color-yellow">new</span></a>
+                        <a data-ui-sref="app.returnauthority">Return Authority</a>
                     </li>
                 </ul>
             </li>
 
             <li data-menu-collapse>
-                <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Tables</span></a>
+                <a href="#"><i class="fa fa-lg fa-fw fa-arrow-circle-left"></i> <span class="menu-item-parent">Purchase</span></a>
                 <ul>
                     <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.tables.normal">Normal Tables</a>
+                        <a data-ui-sref="app.purchaseorder">Purchase Orders</a>
                     </li>
                     <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.tables.datatables">Data Tables <span
-                                class="badge inbox-badge bg-color-greenLight">v1.10</span></a>
+                        <a data-ui-sref="app.stockreturn">Stock Return<span
+                            class="badge inbox-badge bg-color-greenLight">v1.10</span></a>
                     </li>
                     <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.tables.jqgrid">Jquery Grid</a>
+                        <a data-ui-sref="app.stockreceipt">Stock Receipt</a>
                     </li>
                 </ul>
             </li>
+
+            <li data-menu-collapse>
+                <a href="#"><i class="fa fa-lg fa-fw fa-life-ring"></i> <span class="menu-item-parent">Stock</span></a>
+                <ul>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.stockcontrol">Stock Control</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.stocktransfer">Stock Transfer</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.stockreturn">Stock Return</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.stockreceipt">Stock Receipt</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.stocktake">Stocktake</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.assembly">Assemblies</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.shipment">Shipments</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li data-menu-collapse>
+                <a href="#"><i class="fa fa-lg fa-fw fa-cube"></i> <span class="menu-item-parent">Manager</span></a>
+                <ul>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.myworkday">My Work Day</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.assetmanager">Asset Manager</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.cashmanager">Cash Manager<span
+                            class="badge pull-right inbox-badge bg-color-yellow">new</span></a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.generalledger">General Ledger</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.jobcard">Job Cards</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.hiremanager">Hire Manager</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.task">Tasks</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li data-menu-collapse>
+            <a href="#"><i class="fa fa-lg fa-fw fa-file-text-o"></i> <span class="menu-item-parent">Reports</span></a>
+            <ul>
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="app.report.assembly">Assembly</a>
+                </li>
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="app.report.cashmanager">Cash Manager</a>
+                </li>
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="app.report.customer">Customer</a>
+                </li>
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="app.report.distribution">Distribution</a>
+                </li>
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="app.report.generalledger">General Ledger</a>
+                </li>
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="app.report.overview">Overview</a>
+                </li>
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="app.report.product">Products</a>
+                </li>
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="app.report.sales">Sales</a>
+                </li>
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="app.report.supplier">Suppliers</a>
+                </li>
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="app.report.task">Tasks</a>
+                </li>
+            </ul>
+        </li>
+
+            <li data-menu-collapse>
+                <a href="#"><i class="fa fa-lg fa-fw fa-gear"></i> <span class="menu-item-parent">Configuration</span></a>
+                <ul>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.alert">Alerts</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.assembly">Assembly</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.customer">Back Order</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.distribution">Cash Management</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.generalledger">Company</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.overview">Communications</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.product">Connectivity</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.sales">Stores</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.supplier">Discounts</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.task">Invoice Pricing</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li data-menu-collapse class="top-menu-invisible">
+                <a href="#"><i class="fa fa-lg fa-fw fa-wrench txt-color-blue"></i> <span class="menu-item-parent">Maintenance</span></a>
+                <ul>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.maintenance.maintain"><i class="fa fa-stack-overflow"></i> Maintain</a>
+                    </li>
+
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.maintenance.backup"><i class="fa fa-download"></i> Backup</a>
+                    </li>
+
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.maintenance.restore"><i class="fa fa-upload"></i> Restore</a>
+                    </li>
+
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.maintenance.repair"><i class="fa fa-gavel"></i> Repair</a>
+                    </li>
+
+                    <li>
+                        <a href="http://bootstraphunter.com/smartadmin/BUGTRACK/track_/documentation/index.html" target="_blank"><i class="fa fa-book"></i> {{getWord('Documentation')}}</a>
+                    </li>
+                    <li>
+                        <a href="http://bootstraphunter.com/smartadmin/BUGTRACK/track_/" target="_blank"><i class="fa fa-bug"></i> {{getWord('Bug Tracker')}}</a>
+                    </li>
+                </ul>
+            </li>
+
+
 
             <li data-menu-collapse>
                 <a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">{{getWord('Forms')}}</span></a>
@@ -198,10 +372,7 @@
                 <a data-ui-sref="app.calendar" title="Calendar"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span
                         class="menu-item-parent">{{getWord('Calendar')}}</span></a>
             </li>
-            <li data-ui-sref-active="active">
-                <a data-ui-sref="app.widgets" title="Widgets"><i class="fa fa-lg fa-fw fa-list-alt"></i><span
-                        class="menu-item-parent">{{getWord('Widgets')}}</span></a>
-            </li>
+
 
             <li data-menu-collapse>
                 <a  href="#" >
@@ -286,23 +457,7 @@
                 </ul>
             </li>
 
-          <li data-menu-collapse class="top-menu-invisible">
-                <a href="#"><i class="fa fa-lg fa-fw fa-cube txt-color-blue"></i> <span class="menu-item-parent">{{getWord('SmartAdmin Intel')}}</span></a>
-                <ul>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.smartAdmin.diffVer"><i class="fa fa-stack-overflow"></i> {{getWord('Different Versions')}}</a>
-                    </li>
-                    <!--<li data-ui-sref-active="active">
-                        <a data-ui-sref="app.smartAdmin.appLayout"><i class="fa fa-cube"></i> {{getWord('App Settings')}}</a>
-                    </li>-->
-                    <li>
-                        <a href="http://bootstraphunter.com/smartadmin/BUGTRACK/track_/documentation/index.html" target="_blank"><i class="fa fa-book"></i> {{getWord('Documentation')}}</a>
-                    </li>
-                    <li>
-                        <a href="http://bootstraphunter.com/smartadmin/BUGTRACK/track_/" target="_blank"><i class="fa fa-bug"></i> {{getWord('Bug Tracker')}}</a>
-                    </li>
-                </ul>
-            </li>
+
             <li data-menu-collapse class="chat-users top-menu-invisible">
                 <a href="#"><i class="fa fa-lg fa-fw fa-comment-o"><em class="bg-color-pink flash animated">!</em></i> <span class="menu-item-parent">{{getWord('Smart Chat API')}} <sup>{{getWord('beta')}}</sup></span></a>
                 <div aside-chat-widget></div>
