@@ -301,7 +301,7 @@ module.exports = function (grunt) {
                         'scripts/**/*.html',
                         'assets/images/**/*.{png,gif,webp,jpg,jpeg,svg}',
                         'assets/fonts/*',
-                        'scripts/components/smart_admin/api/activities/*',
+                        'scripts/components/smart_admin/api/**/*',
                         'scripts/components/smart_admin/api/*',
                         'scripts/components/smart_admin/sound/*'
                     ]
