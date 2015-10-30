@@ -2,6 +2,8 @@
   <img src="https://travis-ci.org/pkcool/bssuite.svg?branch=develop-0.2.x">
 </p>
 
+[![Stories in Ready](https://badge.waffle.io/pkcool/bssuite.svg?label=ready&title=Ready)](http://waffle.io/pkcool/bssuite)
+
 # Developing bssuite
 
 business solution suite 
