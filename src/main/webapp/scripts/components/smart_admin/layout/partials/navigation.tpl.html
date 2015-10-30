@@ -74,7 +74,7 @@
             </li>
 
             <li data-menu-collapse>
-                <a href="#"><i class="fa fa-lg fa-fw fa-arrow-circle-left"></i> <span class="menu-item-parent">Purchase</span></a>
+                <a href="#"><i class="fa fa-lg fa-fw fa-arrow-circle-left"></i> <span class="menu-item-parent">Purchasing</span></a>
                 <ul>
                     <li data-ui-sref-active="active">
                         <a data-ui-sref="app.purchaseorder">Purchase Orders</a>
@@ -213,6 +213,42 @@
                     <li data-ui-sref-active="active">
                         <a data-ui-sref="app.config.task">Invoice Pricing</a>
                     </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.invoicetype">Invoice Types</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.invoiceoption">Invoice Options</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.pos">Point of Sale</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.purchasing">Purchasing</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.quotation">Quotations</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.salesorder">Sales Orders</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.security">Security</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.service">Service</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.shipping">Shipping</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.stock">Stock</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.tax">Taxes</a>
+                    </li>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.config.transaction">Transactions</a>
+                    </li>
                 </ul>
             </li>
 
@@ -246,174 +282,11 @@
 
 
 
-            <li data-menu-collapse>
-                <a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">{{getWord('Forms')}}</span></a>
-                <ul>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.form.elements">{{getWord('Smart Form Elements')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.form.layouts">{{getWord('Smart Form Layouts')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.form.validation">{{getWord('Smart Form Validation')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.form.bootstrapForms">{{getWord('Bootstrap Form Elements')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.form.bootstrapValidation">{{getWord('Bootstrap Form Validation')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.form.plugins">{{getWord('Form Plugins')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.form.wizards">{{getWord('Wizards')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.form.editors">{{getWord('Bootstrap Editors')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.form.dropzone">{{getWord('Dropzone')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.form.imageEditor">{{getWord('Image Cropping')}} <span class="badge pull-right inbox-badge bg-color-yellow">new</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li data-menu-collapse>
-                <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span class="menu-item-parent">{{getWord('UI Elements')}}</span></a>
-                <ul>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.ui.general">{{getWord('General Elements')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.ui.buttons">{{getWord('Buttons')}}</a>
-                    </li>
-                    <li data-menu-collapse>
-                        <a href="#">{{getWord('Icons')}}</a>
-                        <ul>
-                            <li data-ui-sref-active="active">
-                                <a data-ui-sref="app.ui.iconsFa"><i class="fa fa-plane"></i> {{getWord('Font Awesome')}}</a>
-                            </li>
-                            <li data-ui-sref-active="active">
-                                <a data-ui-sref="app.ui.iconsGlyph" ><i class="glyphicon glyphicon-plane"></i> {{getWord('Glyph Icons')}}</a>
-                            </li>
-                            <li data-ui-sref-active="active">
-                                <a data-ui-sref="app.ui.iconsFlags" ><i class="fa fa-flag"></i> {{getWord('Flags')}}</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.ui.grid" >{{getWord('Grid')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.ui.treeView">{{getWord('Tree View')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.ui.nestableLists">{{getWord('Nestable Lists')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.ui.jqueryUi">{{getWord('JQuery UI')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.ui.typography">{{getWord('Typography')}}</a>
-                    </li>
-                    <li data-menu-collapse>
-                        <a href="#">{{getWord('Six Level Menu')}}</a>
-                        <ul>
-                            <li data-menu-collapse>
-                                <a href="#"><i class="fa fa-fw fa-folder-open"></i> {{getWord('Item #2')}}</a>
-                                <ul>
-                                    <li data-menu-collapse>
-                                        <a href="#"><i class="fa fa-fw fa-folder-open"></i> {{getWord('Sub #2.1')}} </a>
-                                        <ul>
-                                            <li>
-                                                <a href="#"><i class="fa fa-fw fa-file-text"></i> {{getWord('Item #2.1.1')}}</a>
-                                            </li>
-                                            <li data-menu-collapse>
-                                                <a href="#"><i class="fa fa-fw fa-plus"></i>{{getWord('Expand')}}</a>
-                                                <ul>
-                                                    <li>
-                                                        <a href="#"><i class="fa fa-fw fa-file-text"></i> {{getWord('File')}}</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#"><i class="fa fa-fw fa-trash-o"></i> {{getWord('Delete')}}</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li data-menu-collapse>
-                                <a href="#"><i class="fa fa-fw fa-folder-open"></i> {{getWord('Item #3')}}</a>
-
-                                <ul>
-                                    <li data-menu-collapse>
-                                        <a href="#"><i class="fa fa-fw fa-folder-open"></i> {{getWord('3ed Level')}} </a>
-                                        <ul>
-                                            <li>
-                                                <a href="#"><i class="fa fa-fw fa-file-text"></i> {{getWord('File')}}</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"><i class="fa fa-fw fa-file-text"></i> {{getWord('File')}}</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-
             <li data-ui-sref-active="active">
                 <a data-ui-sref="app.calendar" title="Calendar"><i class="fa fa-lg fa-fw fa-calendar"><em>3</em></i> <span
                         class="menu-item-parent">{{getWord('Calendar')}}</span></a>
             </li>
 
-
-            <li data-menu-collapse>
-                <a  href="#" >
-                    <i class="fa fa-lg fa-fw fa-puzzle-piece"></i> <span class="menu-item-parent">{{getWord('App Views')}}</span></a>
-                <ul>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.appViews.projects"><i class="fa fa-file-text-o"></i> {{getWord('Projects')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.appViews.blogDemo"><i class="fa fa-paragraph"></i> {{getWord('Blog')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.appViews.galleryDemo"><i class="fa fa-picture-o"></i> {{getWord('Gallery')}}</a>
-                    </li>
-
-                    <li data-menu-collapse>
-                        <a href="#"><i class="fa fa-comments"></i> {{getWord('Forum Layout')}}</a>
-                        <ul>
-                            <li data-ui-sref-active="active">
-                                <a data-ui-sref="app.appViews.forumDemo"><i class="fa fa-picture-o"></i> {{getWord('General View')}}</a>
-                            </li>
-                            <li data-ui-sref-active="active">
-                                <a data-ui-sref="app.appViews.forumTopicDemo"><i class="fa fa-picture-o"></i> {{getWord('Topic View')}}</a>
-                            </li>
-                            <li data-ui-sref-active="active">
-                                <a data-ui-sref="app.appViews.forumPostDemo"><i class="fa fa-picture-o"></i> {{getWord('Post View')}}</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.appViews.profileDemo"><i class="fa fa-group"></i> {{getWord('Profile')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.appViews.timelineDemo"><i class="fa fa-clock-o"></i> {{getWord('Timeline')}}</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li data-ui-sref-active="active">
-                <a data-ui-sref="app.maps"><i class="fa fa-lg fa-fw fa-map-marker"></i> <span class="menu-item-parent">{{getWord('GMap Skins')}}</span><span class="badge bg-color-greenLight pull-right inbox-badge">9</span></a>
-            </li>
 
             <li data-menu-collapse>
                 <a href="#"><i class="fa fa-lg fa-fw fa-windows"></i> <span class="menu-item-parent">{{getWord('Miscellaneous')}}</span></a>
@@ -459,7 +332,7 @@
 
 
             <li data-menu-collapse class="chat-users top-menu-invisible">
-                <a href="#"><i class="fa fa-lg fa-fw fa-comment-o"><em class="bg-color-pink flash animated">!</em></i> <span class="menu-item-parent">{{getWord('Smart Chat API')}} <sup>{{getWord('beta')}}</sup></span></a>
+                <a href="#"><i class="fa fa-lg fa-fw fa-comment-o"><em class="bg-color-pink flash animated">!</em></i> <span class="menu-item-parent">{{getWord('Biz Sol Suite API')}} <sup>{{getWord('beta')}}</sup></span></a>
                 <div aside-chat-widget></div>
             </li>
         </ul>
