@@ -1,41 +1,197 @@
-<div ng-cloak>
+<div id="content" ng-switch="isAuthenticated()">
+    <h2 class="row-seperator-header"><i class="fa fa-comments"></i> Messages </h2>
     <div class="row">
-        <div class="col-md-4">
-            <span class="hipster img-responsive img-rounded"></span>
-        </div>
-        <div class="col-md-8">
-            <h1>Welcome, Java Hipster!</h1>
-            <p class="lead">This is your homepage</p>
-
-            <div ng-switch="isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true">
-                    You are logged in as user "{{account.login}}".
-                </div>
-
-                <div class="alert alert-warning" ng-switch-when="false">
-                    If you want to <a class="alert-link" href="#/login">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-                </div>
-
-                <div class="alert alert-warning" ng-switch-when="false">
-                    You don't have an account yet? <a class="alert-link" href="#/register">Register a new account</a>
-                </div>
+        <div class="col-sm-12">
+            <div class="alert alert-success alert-block" ng-switch-when="true">
+                <a class="close" data-dismiss="alert" href="#">×</a>
+                You are logged in as user "{{account.login}}".
             </div>
 
-            <p>
-                If you have any question on JHipster:
-            </p>
+            <div class="alert alert-block alert-warning" ng-switch-when="false">
+                <a class="close" data-dismiss="alert" href="#">×</a>
+                If you want to <a class="alert-link" href="#/login">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
+            </div>
 
-            <ul>
-                <li><a href="http://jhipster.github.io/" target="_blank">JHipster homepage</a></li>
-                <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank">JHipster on Stack Overflow</a></li>
-                <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank">JHipster bug tracker</a></li>
-                <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank">JHipster public chat room</a></li>
-                <li><a href="https://twitter.com/java_hipster" target="_blank" >contact @java_hipster on Twitter</a></li>
-            </ul>
+            <div class="alert alert-warning alert-block" ng-switch-when="false">
+                <a class="close" data-dismiss="alert" href="#">×</a>
+                You don't have an account yet? <a class="alert-link" href="#/register">Register a new account</a>
+            </div>
+        </div>
+    </div>
 
-            <p>
-             <span>If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank">Github</a>!
-            </p>
+    <div class="row" >
+        <div class="col-sm-12">
+            <div class="well well-light">
+                <h1>Welcome <small>{{account.firstName+' '+account.lastName}}</small></h1>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3" >
+                        <div class="panel panel-success pricing-big" >
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <a href="javascript:void(0);" class="btn btn-default btn-circle btn-xl"
+                                       rel="popover-hover" data-placement="top" data-original-title="Popover activated on hover"
+                                       data-content="Prepare and ship customer orders, keep tight control over you inventory level.">
+                                        <i class="glyphicon glyphicon-th"></i>
+                                        </a>
+
+                                </h3>
+                            </div>
+                            <div class="panel-footer text-align-center">
+                                <a href-void class="btn btn-primary btn-block" role="button">Inventory</a>
+                                <div>
+                                    Deliver you orders on time
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3" >
+                        <div class="panel panel-success pricing-big" >
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <a href="javascript:void(0);" class="btn btn-default btn-circle btn-xl"
+                                       rel="popover-hover" data-placement="top" data-original-title="Popover activated on hover"
+                                       data-content="Prepare and ship customer orders, keep tight control over you inventory level.">
+                                        <i class="glyphicon glyphicon-tags"></i>
+                                    </a>
+
+                                </h3>
+                            </div>
+                            <div class="panel-footer text-align-center">
+                                <a href-void class="btn btn-primary btn-block" role="button">Sales</a>
+                                <div>
+                                    Get paid faster
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-3" >
+                        <div class="panel panel-success pricing-big" >
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <a href="javascript:void(0);" class="btn btn-default btn-circle btn-xl">
+                                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                                    </a>
+
+                                </h3>
+                            </div>
+                            <div class="panel-footer text-align-center">
+                                <a href-void class="btn btn-primary btn-block" role="button">Purchasing</a>
+                                <div>
+                                    Simplify your purchasing
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-6 col-md-3" >
+                        <div class="panel panel-success pricing-big" >
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <a href="javascript:void(0);" class="btn btn-default btn-circle btn-xl">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                    </a>
+
+                                </h3>
+                            </div>
+                            <div class="panel-footer text-align-center">
+                                <a href-void class="btn btn-primary btn-block" role="button">Accounts</a>
+                                <div>
+                                    Customers and Suppliers
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3" >
+                        <div class="panel panel-success pricing-big" >
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <a href="javascript:void(0);" class="btn btn-default btn-circle btn-xl">
+                                        <i class="glyphicon glyphicon-th-large"></i>
+                                    </a>
+
+                                </h3>
+                            </div>
+                            <div class="panel-footer text-align-center">
+                                <a href-void class="btn btn-primary btn-block" role="button">Manager</a>
+                                <div>
+                                    manager
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3" >
+                        <div class="panel panel-success pricing-big" >
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <a href="javascript:void(0);" class="btn btn-default btn-circle btn-xl"
+                                       rel="popover-hover" data-placement="top" data-original-title="Popover activated on hover"
+                                       data-content="Prepare and ship customer orders, keep tight control over you inventory level.">
+                                        <i class="glyphicon glyphicon-book"></i>
+                                    </a>
+
+                                </h3>
+                            </div>
+                            <div class="panel-footer text-align-center">
+                                <a href-void class="btn btn-primary btn-block" role="button">Reports</a>
+                                <div>
+                                    reports
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-3" >
+                        <div class="panel panel-success pricing-big" >
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <a href="javascript:void(0);" class="btn btn-default btn-circle btn-xl">
+                                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                                    </a>
+
+                                </h3>
+                            </div>
+                            <div class="panel-footer text-align-center">
+                                <a href-void class="btn btn-primary btn-block" role="button">Purchasing</a>
+                                <div>
+                                    Simplify your purchasing
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-6 col-md-3" >
+                        <div class="panel panel-success pricing-big" >
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <a href="javascript:void(0);" class="btn btn-default btn-circle btn-xl">
+                                        <i class="glyphicon glyphicon-th"></i>
+                                    </a>
+
+                                </h3>
+                            </div>
+                            <div class="panel-footer text-align-center">
+                                <a href-void class="btn btn-primary btn-block" role="button">Accounts</a>
+                                <div>
+                                    Customers and Suppliers
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
