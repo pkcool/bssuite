@@ -1,0 +1,56 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myRelatedProductLabel">Create or edit a RelatedProduct</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="relatedProduct.id" readonly>
+        </div>
+        <div class="form-group">
+            <label for="field_isSuggested">IsSuggested</label>
+            <input type="checkbox" class="form-control" name="isSuggested" id="field_isSuggested"
+                    ng-model="relatedProduct.isSuggested"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_comment">Comment</label>
+            <input type="text" class="form-control" name="comment" id="field_comment"
+                    ng-model="relatedProduct.comment"
+                    >
+        </div>
+
+        <div class="form-group">
+            <label for="field_product">product</label>
+            <select class="form-control" id="field_product" name="product" ng-model="relatedProduct.productId" ng-options="product.id as product.id for product in products">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_equivalentProduct">equivalentProduct</label>
+            <select class="form-control" id="field_equivalentProduct" name="equivalentProduct" ng-model="relatedProduct.equivalentProductId" ng-options="product.id as product.id for product in products">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_relationCategory">relationCategory</label>
+            <select class="form-control" id="field_relationCategory" name="relationCategory" ng-model="relatedProduct.relationCategoryId" ng-options="productRelationCategory.id as productRelationCategory.id for productRelationCategory in productrelationcategorys">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

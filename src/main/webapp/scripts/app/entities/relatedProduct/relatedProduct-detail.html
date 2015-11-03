@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span>RelatedProduct</span> {{relatedProduct.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>IsSuggested</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{relatedProduct.isSuggested}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Comment</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{relatedProduct.comment}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>product</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="product.detail({id:relatedProduct.productId})">{{relatedProduct.productId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>equivalentProduct</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="product.detail({id:relatedProduct.equivalentProductId})">{{relatedProduct.equivalentProductId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>relationCategory</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="productRelationCategory.detail({id:relatedProduct.relationCategoryId})">{{relatedProduct.relationCategoryId}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

@@ -31,5 +31,7 @@
     <include file="classpath:config/liquibase/changelog/20151016001613_added_entity_InvoiceLineItem.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151016010000_added_entity_Quote.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151016011324_added_entity_QuoteLineItem.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20151103031303_added_entity_ProductRelationCategory.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20151103032133_added_entity_RelatedProduct.xml" relativeToChangelogFile="false"/>
     <!-- JHipster will add liquibase changelogs here -->
 </databaseChangeLog>
