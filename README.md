@@ -1,12 +1,11 @@
 <p align="center">
-  <img src="https://travis-ci.org/pkcool/bssuite.svg?branch=develop-0.2.x">
+  [![Build Status](https://travis-ci.org/pkcool/bssuite.svg)](https://travis-ci.org/pkcool/bssuite)
+  [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+  [![Stories in Ready](https://badge.waffle.io/pkcool/bssuite.svg?label=ready&title=Ready)](http://waffle.io/pkcool/bssuite)
 </p>
 
-[![Stories in Ready](https://badge.waffle.io/pkcool/bssuite.svg?label=ready&title=Ready)](http://waffle.io/pkcool/bssuite)
 
-# Developing bssuite
-
-business solution suite 
+# Business Solution Suite 
 
 bssuite was generated using JHipster, you can find documentation and help at [JHipster][].
 
