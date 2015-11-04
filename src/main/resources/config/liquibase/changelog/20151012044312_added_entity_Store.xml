@@ -34,7 +34,7 @@
             <column name="fax" type="varchar(255)"/>
             <column name="email" type="varchar(255)"/>
             <column name="web_url" type="varchar(255)"/>
-            <column name="in_bisiness_since" type="date"/>
+            <column name="in_business_since" type="date"/>
             <column name="is_archived" type="bit"/>
         </createTable>
         

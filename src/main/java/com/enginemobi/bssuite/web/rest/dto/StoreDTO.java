@@ -48,7 +48,7 @@ public class StoreDTO implements Serializable {
     private String webUrl;
 
 
-    private LocalDate inBisinessSince;
+    private LocalDate inBusinessSince;
 
 
     private Boolean isArchived;
@@ -170,12 +170,12 @@ public class StoreDTO implements Serializable {
     }
 
 
-    public LocalDate getInBisinessSince() {
-        return inBisinessSince;
+    public LocalDate getInBusinessSince() {
+        return inBusinessSince;
     }
 
-    public void setInBisinessSince(LocalDate inBisinessSince) {
-        this.inBisinessSince = inBisinessSince;
+    public void setInBusinessSince(LocalDate inBusinessSince) {
+        this.inBusinessSince = inBusinessSince;
     }
 
 
@@ -225,7 +225,7 @@ public class StoreDTO implements Serializable {
                 ", fax='" + fax + "'" +
                 ", email='" + email + "'" +
                 ", webUrl='" + webUrl + "'" +
-                ", inBisinessSince='" + inBisinessSince + "'" +
+                ", inBusinessSince='" + inBusinessSince + "'" +
                 ", isArchived='" + isArchived + "'" +
                 '}';
     }

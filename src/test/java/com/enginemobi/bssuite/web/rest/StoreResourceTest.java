@@ -70,8 +70,8 @@ public class StoreResourceTest {
     private static final String DEFAULT_WEB_URL = "AAAAA";
     private static final String UPDATED_WEB_URL = "BBBBB";
 
-    private static final LocalDate DEFAULT_IN_BISINESS_SINCE = new LocalDate(0L);
-    private static final LocalDate UPDATED_IN_BISINESS_SINCE = new LocalDate();
+    private static final LocalDate DEFAULT_IN_BUSINESS_SINCE = new LocalDate(0L);
+    private static final LocalDate UPDATED_IN_BUSINESS_SINCE = new LocalDate();
 
     private static final Boolean DEFAULT_IS_ARCHIVED = false;
     private static final Boolean UPDATED_IS_ARCHIVED = true;
@@ -122,7 +122,7 @@ public class StoreResourceTest {
         store.setFax(DEFAULT_FAX);
         store.setEmail(DEFAULT_EMAIL);
         store.setWebUrl(DEFAULT_WEB_URL);
-        store.setInBisinessSince(DEFAULT_IN_BISINESS_SINCE);
+        store.setInBusinessSince(DEFAULT_IN_BUSINESS_SINCE);
         store.setIsArchived(DEFAULT_IS_ARCHIVED);
     }
 
@@ -155,7 +155,7 @@ public class StoreResourceTest {
         assertThat(testStore.getFax()).isEqualTo(DEFAULT_FAX);
         assertThat(testStore.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testStore.getWebUrl()).isEqualTo(DEFAULT_WEB_URL);
-        assertThat(testStore.getInBisinessSince()).isEqualTo(DEFAULT_IN_BISINESS_SINCE);
+        assertThat(testStore.getInBusinessSince()).isEqualTo(DEFAULT_IN_BUSINESS_SINCE);
         assertThat(testStore.getIsArchived()).isEqualTo(DEFAULT_IS_ARCHIVED);
     }
 
@@ -182,7 +182,7 @@ public class StoreResourceTest {
                 .andExpect(jsonPath("$.[*].fax").value(hasItem(DEFAULT_FAX.toString())))
                 .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
                 .andExpect(jsonPath("$.[*].webUrl").value(hasItem(DEFAULT_WEB_URL.toString())))
-                .andExpect(jsonPath("$.[*].inBisinessSince").value(hasItem(DEFAULT_IN_BISINESS_SINCE.toString())))
+                .andExpect(jsonPath("$.[*].inBusinessSince").value(hasItem(DEFAULT_IN_BUSINESS_SINCE.toString())))
                 .andExpect(jsonPath("$.[*].isArchived").value(hasItem(DEFAULT_IS_ARCHIVED.booleanValue())));
     }
 
@@ -209,7 +209,7 @@ public class StoreResourceTest {
             .andExpect(jsonPath("$.fax").value(DEFAULT_FAX.toString()))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
             .andExpect(jsonPath("$.webUrl").value(DEFAULT_WEB_URL.toString()))
-            .andExpect(jsonPath("$.inBisinessSince").value(DEFAULT_IN_BISINESS_SINCE.toString()))
+            .andExpect(jsonPath("$.inBusinessSince").value(DEFAULT_IN_BUSINESS_SINCE.toString()))
             .andExpect(jsonPath("$.isArchived").value(DEFAULT_IS_ARCHIVED.booleanValue()));
     }
 
@@ -242,7 +242,7 @@ public class StoreResourceTest {
         store.setFax(UPDATED_FAX);
         store.setEmail(UPDATED_EMAIL);
         store.setWebUrl(UPDATED_WEB_URL);
-        store.setInBisinessSince(UPDATED_IN_BISINESS_SINCE);
+        store.setInBusinessSince(UPDATED_IN_BUSINESS_SINCE);
         store.setIsArchived(UPDATED_IS_ARCHIVED);
         StoreDTO storeDTO = storeMapper.storeToStoreDTO(store);
 
@@ -267,7 +267,7 @@ public class StoreResourceTest {
         assertThat(testStore.getFax()).isEqualTo(UPDATED_FAX);
         assertThat(testStore.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testStore.getWebUrl()).isEqualTo(UPDATED_WEB_URL);
-        assertThat(testStore.getInBisinessSince()).isEqualTo(UPDATED_IN_BISINESS_SINCE);
+        assertThat(testStore.getInBusinessSince()).isEqualTo(UPDATED_IN_BUSINESS_SINCE);
         assertThat(testStore.getIsArchived()).isEqualTo(UPDATED_IS_ARCHIVED);
     }
 

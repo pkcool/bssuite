@@ -67,8 +67,8 @@ public class Store implements Serializable {
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     @JsonSerialize(using = CustomLocalDateSerializer.class)
     @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
-    @Column(name = "in_bisiness_since")
-    private LocalDate inBisinessSince;
+    @Column(name = "in_business_since")
+    private LocalDate inBusinessSince;
     
     @Column(name = "is_archived")
     private Boolean isArchived;
@@ -177,12 +177,12 @@ public class Store implements Serializable {
         this.webUrl = webUrl;
     }
 
-    public LocalDate getInBisinessSince() {
-        return inBisinessSince;
+    public LocalDate getInBusinessSince() {
+        return inBusinessSince;
     }
 
-    public void setInBisinessSince(LocalDate inBisinessSince) {
-        this.inBisinessSince = inBisinessSince;
+    public void setInBusinessSince(LocalDate inBusinessSince) {
+        this.inBusinessSince = inBusinessSince;
     }
 
     public Boolean getIsArchived() {
@@ -230,7 +230,7 @@ public class Store implements Serializable {
                 ", fax='" + fax + "'" +
                 ", email='" + email + "'" +
                 ", webUrl='" + webUrl + "'" +
-                ", inBisinessSince='" + inBisinessSince + "'" +
+                ", inBusinessSince='" + inBusinessSince + "'" +
                 ", isArchived='" + isArchived + "'" +
                 '}';
     }
