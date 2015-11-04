@@ -20,43 +20,39 @@ angular.module('bssuiteApp')
                 }
             })
             .state('store_management.new', {
-                parent: 'store_management',
-                url: '/new',
+                parent: 'system',
+                url: '/store_management/new',
                 data: {
                     authorities: ['ROLE_ADMIN'],
+                    pageTitle: 'New Store'
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
-                        templateUrl: 'scripts/app/system/store/store-dialog.html',
-                        controller: 'StoreManagementDialogController',
-                        size: 'lg',
-                        resolve: {
-                            entity: function () {
-                                return {
-                                    code: null,
-                                    name: null,
-                                    address1: null,
-                                    address2: null,
-                                    suburb: null,
-                                    state: null,
-                                    postcode: null,
-                                    country: null,
-                                    phone: null,
-                                    fax: null,
-                                    email: null,
-                                    webUrl: null,
-                                    inBisinessSince: null,
-                                    isArchived: null,
-                                    id: null
-                                };
-                            }
-                        }
-                    }).result.then(function(result) {
-                            $state.go('store_management', null, { reload: true });
-                        }, function() {
-                            $state.go('store_management');
-                        })
-                }]
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/system/store/store-edit.html',
+                        controller: 'StoreManagementEditController'
+                    }
+                },
+                resolve: {
+                    entity: function () {
+                        return {
+                            code: null,
+                            name: null,
+                            address1: null,
+                            address2: null,
+                            suburb: null,
+                            state: null,
+                            postcode: null,
+                            country: null,
+                            phone: null,
+                            fax: null,
+                            email: null,
+                            webUrl: null,
+                            inBisinessSince: null,
+                            isArchived: null,
+                            id: null
+                        };
+                    }
+                }
             })
             .state('store_management.edit', {
                 parent: 'system',

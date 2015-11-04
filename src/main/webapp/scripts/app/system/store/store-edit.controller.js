@@ -2,8 +2,9 @@
 
 
 angular.module('bssuiteApp')
-    .controller('StoreManagementEditController', function ($scope, $rootScope, $stateParams, entity, Store) {
+    .controller('StoreManagementEditController', function ($scope, $rootScope, $stateParams, entity, Store, formsCommon) {
         $scope.store = entity;
+        $scope.countries = formsCommon.countries;
         $scope.load = function (id) {
             Store.get({id: id}, function(result) {
                 $scope.store = result;
@@ -11,7 +12,6 @@ angular.module('bssuiteApp')
         };
         var onSaveFinished = function (result) {
             $scope.$emit('bssuiteApp:storeUpdate', result);
-            $modalInstance.close(result);
         };
 
         $scope.save = function () {

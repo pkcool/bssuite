@@ -31,74 +31,127 @@
 
 
         <div class="row">
+
             <article class="col-sm-12">
 
                 <div jarvis-widget data-widget-color="darken"
                      data-widget-editbutton="false">
                     <header>
                         <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                        <h2>Store Edit</h2>
+
+                        <h2>Create or Edit a store</h2>
                     </header>
                     <div>
                         <div class="widget-body no-padding">
-                            <form id="checkout-form" class="smart-form" novalidate="novalidate">
+                            <form name="editForm" id="store-edit-form" ng-submit="save()" class="smart-form"
+                                  novalidate="novalidate">
 
-                                <fieldset>
+                                <fieldset class="col-sm-12 col-lg-6 col-md-12">
                                     <div class="row">
-                                        <section class="col col-6">
-                                            <label class="input"> <i class="icon-prepend fa fa-user"></i>
-                                                <input type="text" name="fname" placeholder="First name">
+                                        <section class="col col-4">
+                                            <label class="input"> <i class="icon-prepend fa fa-dot-circle-o"></i>
+                                                <input type="text" name="code" placeholder="Code" ng-model="store.code">
                                             </label>
                                         </section>
                                         <section class="col col-6">
-                                            <label class="input"> <i class="icon-prepend fa fa-user"></i>
-                                                <input type="text" name="lname" placeholder="Last name">
+                                            <label class="input"> <i class="icon-prepend fa fa-square"></i>
+                                                <input type="text" name="name" placeholder="name" ng-model="store.name">
                                             </label>
                                         </section>
                                     </div>
 
                                     <div class="row">
-                                        <section class="col col-6">
-                                            <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
-                                                <input type="email" name="email" placeholder="E-mail">
-                                            </label>
-                                        </section>
-                                        <section class="col col-6">
+                                        <section class="col col-5">
                                             <label class="input"> <i class="icon-prepend fa fa-phone"></i>
-                                                <input type="tel" name="phone" placeholder="Phone" data-smart-masked-input="(999) 999-9999">
+                                                <input ng-model="store.phone" type="tel" name="phone"
+                                                       placeholder="Phone" data-smart-masked-input="(999) 999-9999">
+                                            </label>
+                                        </section>
+                                        <section class="col col-5">
+                                            <label class="input"> <i class="icon-prepend fa fa-fax"></i>
+                                                <input ng-model="store.fax" type="text" name="fax" placeholder="Fax">
                                             </label>
                                         </section>
                                     </div>
+                                    <div class="row">
+                                        <section class="col col-10">
+                                            <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
+                                                <input ng-model="store.email" type="email" name="email"
+                                                       placeholder="E-mail">
+                                            </label>
+                                        </section>
+                                    </div>
+                                    <div class="row">
+                                        <section class="col col-10">
+                                            <label class="input"> <i class="icon-prepend fa fa-globe"></i>
+                                                <input type="text" name="webUrl" placeholder="Web Url"
+                                                       ng-model="store.webUrl">
+                                            </label>
+                                        </section>
+                                    </div>
+                                    <div class="row">
+                                        <section class="col col-6">
+                                            <label class="input"> <i class="icon-append fa fa-calendar"></i>
+                                                <input type="text" name="request" placeholder="In Business Since"
+                                                       data-smart-datepicker data-dateformat="dd/mm/yy"
+                                                       id="field_inBisinessSince" ng-model="store.inBisinessSince">
+                                            </label>
+                                        </section>
+                                    </div>
+                                    <section>
+                                        <label class="checkbox">
+                                            <input ng-model="store.isArchived" type="checkbox" name="field_isArchived"
+                                                   id="field_isArchived">
+                                            <i></i>Is this store record archived?</label>
+                                    </section>
                                 </fieldset>
-
                                 <fieldset>
+                                    <section>
+                                        <label for="address1" class="input">
+                                            <input ng-model="store.address1" type="text" name="address1" id="address1"
+                                                   placeholder="Address Line 1">
+                                        </label>
+                                    </section>
+                                    <section>
+                                        <label for="address2" class="input">
+                                            <input ng-model="store.address2" type="text" name="address2" id="address2"
+                                                   placeholder="Address Line 2">
+                                        </label>
+                                    </section>
+                                    <div class="row">
+                                        <section class="col col-5">
+                                            <label for="field_suburb" class="input">
+                                                <input ng-model="store.suburb" type="text" name="suburb"
+                                                       id="field_suburb" placeholder="Suburb">
+                                            </label>
+                                        </section>
+                                    </div>
                                     <div class="row">
                                         <section class="col col-5">
                                             <label class="select">
-                                                <select name="country">
+                                                <select name="country" ng-model="store.country">
                                                     <option value="0" selected="" disabled="">Country</option>
-                                                    <option value="{{country.key}}" ng-repeat="country in countries" >{{country.value}}</option>
+                                                    <option value="{{country.value}}" ng-repeat="country in countries">
+                                                        {{country.value}}
+                                                    </option>
                                                 </select> <i></i> </label>
                                         </section>
 
                                         <section class="col col-4">
                                             <label class="input">
-                                                <input type="text" name="city" placeholder="City">
+                                                <input type="text" name="state" placeholder="State"
+                                                       ng-model="store.state">
                                             </label>
                                         </section>
 
                                         <section class="col col-3">
                                             <label class="input">
-                                                <input type="text" name="code" placeholder="Post code">
+                                                <input ng-model="store.postcode" type="text" name="code"
+                                                       placeholder="Post code">
                                             </label>
                                         </section>
                                     </div>
 
-                                    <section>
-                                        <label for="address2" class="input">
-                                            <input type="text" name="address2" id="address2" placeholder="Address">
-                                        </label>
-                                    </section>
 
                                     <section>
                                         <label class="textarea">
@@ -106,72 +159,19 @@
                                         </label>
                                     </section>
                                 </fieldset>
-
-                                <fieldset>
-                                    <section>
-                                        <div class="inline-group">
-                                            <label class="radio">
-                                                <input type="radio" name="radio-inline" checked="">
-                                                <i></i>Visa</label>
-                                            <label class="radio">
-                                                <input type="radio" name="radio-inline">
-                                                <i></i>MasterCard</label>
-                                            <label class="radio">
-                                                <input type="radio" name="radio-inline">
-                                                <i></i>American Express</label>
-                                        </div>
-                                    </section>
-
-                                    <section>
-                                        <label class="input">
-                                            <input type="text" name="name" placeholder="Name on card">
-                                        </label>
-                                    </section>
-
-                                    <div class="row">
-                                        <section class="col col-10">
-                                            <label class="input">
-                                                <input type="text" name="card" placeholder="Card number" data-mask="9999-9999-9999-9999">
-                                            </label>
-                                        </section>
-                                        <section class="col col-2">
-                                            <label class="input">
-                                                <input type="text" name="cvv" placeholder="CVV2" data-mask="999">
-                                            </label>
-                                        </section>
-                                    </div>
-
-                                    <div class="row">
-                                        <label class="label col col-4">Expiration date</label>
-                                        <section class="col col-5">
-                                            <label class="select">
-                                                <select name="month">
-                                                    <option value="0" selected="" disabled="">Month</option>
-                                                    <option value="1">January</option>
-                                                    <option value="1">February</option>
-                                                    <option value="3">March</option>
-                                                    <option value="4">April</option>
-                                                    <option value="5">May</option>
-                                                    <option value="6">June</option>
-                                                    <option value="7">July</option>
-                                                    <option value="8">August</option>
-                                                    <option value="9">September</option>
-                                                    <option value="10">October</option>
-                                                    <option value="11">November</option>
-                                                    <option value="12">December</option>
-                                                </select> <i></i> </label>
-                                        </section>
-                                        <section class="col col-3">
-                                            <label class="input">
-                                                <input type="text" name="year" placeholder="Year" data-mask="2099">
-                                            </label>
-                                        </section>
-                                    </div>
-                                </fieldset>
-
-                                <footer>
-                                    <button type="submit" class="btn btn-primary">
-                                        Validate Form
+                                <footer style="clear:both">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"
+                                            ng-click="clear()">
+                                        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                                    </button>
+                                    <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted"
+                                            class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+                                    </button>
+                                    <button type="submit"
+                                            onclick="window.history.back()"
+                                            class="btn btn-info">
+                                        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
                                     </button>
                                 </footer>
                             </form>
@@ -190,169 +190,3 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2>Edit store</h2>
-<div>
-    <h2><span>Store</span> {{store.id}}</h2>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Field</th>
-                <th>Value</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <span>Code</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{store.code}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>Name</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{store.name}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>Address1</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{store.address1}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>Address2</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{store.address2}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>Suburb</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{store.suburb}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>State</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{store.state}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>Postcode</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{store.postcode}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>Country</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{store.country}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>Phone</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{store.phone}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>Fax</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{store.fax}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>Email</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{store.email}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>WebUrl</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{store.webUrl}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>InBisinessSince</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{store.inBisinessSince}}</span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span>IsArchived</span>
-                </td>
-                <td>
-                    <span class="form-control-static">{{store.isArchived}}</span>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <button type="submit"
-            onclick="window.history.back()"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
-    </button>
-</div>
