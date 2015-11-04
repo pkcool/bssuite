@@ -1,8 +1,6 @@
-<p align="center">
-  [![Build Status](https://travis-ci.org/pkcool/bssuite.svg)](https://travis-ci.org/pkcool/bssuite)
-  [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
-  [![Stories in Ready](https://badge.waffle.io/pkcool/bssuite.svg?label=ready&title=Ready)](http://waffle.io/pkcool/bssuite)
-</p>
+[![Build Status](https://travis-ci.org/pkcool/bssuite.svg)](https://travis-ci.org/pkcool/bssuite)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+[![Stories in Ready](https://badge.waffle.io/pkcool/bssuite.svg?label=ready&title=Ready)](http://waffle.io/pkcool/bssuite)
 
 
 # Business Solution Suite 
