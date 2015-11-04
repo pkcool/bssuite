@@ -61,7 +61,7 @@ angular.module('bssuiteApp')
                 fax: null,
                 email: null,
                 webUrl: null,
-                inBisinessSince: null,
+                inBusinessSince: null,
                 isArchived: null,
                 id: null
             };
