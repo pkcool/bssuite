@@ -131,12 +131,7 @@
                                     <td>{{store.isArchived}}</td>
                                     <td>
                                         <button type="submit"
-                                                ui-sref="store.detail({id:store.id})"
-                                                class="btn btn-info btn-sm">
-                                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
-                                        </button>
-                                        <button type="submit"
-                                                ui-sref="store.edit({id:store.id})"
+                                                ui-sref="store_management.edit({id:store.id})"
                                                 class="btn btn-primary btn-sm">
                                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
                                         </button>
@@ -149,65 +144,6 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <!--<table class="table table-striped table-bordered table-hover" width="100%">-->
-                                <!--<thead>-->
-                                <!--<tr>-->
-                                    <!--<th>ID</th>-->
-                                    <!--<th><i class="fa fa-fw fa-calendar txt-color-blue hidden-md hidden-sm hidden-xs"></i>-->
-                                        <!--Code</th>-->
-                                    <!--<th>Name</th>-->
-                                    <!--<th>Address1</th>-->
-                                    <!--<th>Address2</th>-->
-                                    <!--<th>Suburb</th>-->
-                                    <!--<th>State</th>-->
-                                    <!--<th>Postcode</th>-->
-                                    <!--<th>Country</th>-->
-                                    <!--<th>Phone</th>-->
-                                    <!--<th>Fax</th>-->
-                                    <!--<th>Email</th>-->
-                                    <!--<th>WebUrl</th>-->
-                                    <!--<th>InBisinessSince</th>-->
-                                    <!--<th>IsArchived</th>-->
-                                    <!--<th></th>-->
-                                <!--</tr>-->
-                                <!--</thead>-->
-                                <!--<tbody>-->
-                                <!--<tr ng-repeat="store in stores track by store.id">-->
-                                    <!--<td><a ui-sref="store.detail({id:store.id})">{{store.id}}</a></td>-->
-                                    <!--<td>{{store.code}}</td>-->
-                                    <!--<td>{{store.name}}</td>-->
-                                    <!--<td>{{store.address1}}</td>-->
-                                    <!--<td>{{store.address2}}</td>-->
-                                    <!--<td>{{store.suburb}}</td>-->
-                                    <!--<td>{{store.state}}</td>-->
-                                    <!--<td>{{store.postcode}}</td>-->
-                                    <!--<td>{{store.country}}</td>-->
-                                    <!--<td>{{store.phone}}</td>-->
-                                    <!--<td>{{store.fax}}</td>-->
-                                    <!--<td>{{store.email}}</td>-->
-                                    <!--<td>{{store.webUrl}}</td>-->
-                                    <!--<td>{{store.inBisinessSince}}</td>-->
-                                    <!--<td>{{store.isArchived}}</td>-->
-                                    <!--<td>-->
-                                        <!--<button type="submit"-->
-                                                <!--ui-sref="store.detail({id:store.id})"-->
-                                                <!--class="btn btn-info btn-sm">-->
-                                            <!--<span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>-->
-                                        <!--</button>-->
-                                        <!--<button type="submit"-->
-                                                <!--ui-sref="store.edit({id:store.id})"-->
-                                                <!--class="btn btn-primary btn-sm">-->
-                                            <!--<span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>-->
-                                        <!--</button>-->
-                                        <!--<button type="submit"-->
-                                                <!--ng-click="delete(store.id)"-->
-                                                <!--class="btn btn-danger btn-sm">-->
-                                            <!--<span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>-->
-                                        <!--</button>-->
-                                    <!--</td>-->
-                                <!--</tr>-->
-                                <!--</tbody>-->
-                            <!--</table>-->
                             <div class="dt-toolbar-footer">
                                 <div class="col-sm-6 col-xs-12 hidden-xs">
                                     <div class="dataTables_info" id="datatable_tabletools_info" role="status"

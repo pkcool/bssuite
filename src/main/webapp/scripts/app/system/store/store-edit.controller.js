@@ -1,16 +1,14 @@
 'use strict';
 
-angular.module('bssuiteApp').controller('StoreManagementDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Store',
-        function($scope, $stateParams, $modalInstance, entity, Store) {
 
+angular.module('bssuiteApp')
+    .controller('StoreManagementEditController', function ($scope, $rootScope, $stateParams, entity, Store) {
         $scope.store = entity;
-        $scope.load = function(id) {
-            Store.get({id : id}, function(result) {
+        $scope.load = function (id) {
+            Store.get({id: id}, function(result) {
                 $scope.store = result;
             });
         };
-
         var onSaveFinished = function (result) {
             $scope.$emit('bssuiteApp:storeUpdate', result);
             $modalInstance.close(result);
@@ -23,8 +21,4 @@ angular.module('bssuiteApp').controller('StoreManagementDialogController',
                 Store.save($scope.store, onSaveFinished);
             }
         };
-
-        $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
-        };
-}]);
+    });
