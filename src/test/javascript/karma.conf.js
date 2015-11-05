@@ -35,6 +35,8 @@ module.exports = function (config) {
             'main/webapp/bower_components/jquery.maskedinput/dist/jquery.maskedinput.js',
             'main/webapp/bower_components/select2/dist/js/select2.js',
             'main/webapp/bower_components/lodash/lodash.js',
+            'main/webapp/bower_components/highlightjs/highlight.pack.js',
+            'main/webapp/bower_components/angular-highlightjs/build/angular-highlightjs.js',
             'main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'main/webapp/scripts/app/app.js',

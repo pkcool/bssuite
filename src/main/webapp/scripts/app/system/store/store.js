@@ -54,6 +54,20 @@ angular.module('bssuiteApp')
                     }
                 }
             })
+            .state('store_management.import', {
+                parent: 'system',
+                url: '/store_management/import',
+                data: {
+                    authorities: ['ROLE_ADMIN'],
+                    pageTitle: 'Import stores'
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'scripts/app/system/store/store-import.html',
+                        controller: 'StoreManagementImportController'
+                    }
+                }
+            })
             .state('store_management.edit', {
                 parent: 'system',
                 url: '/store_management/{id}',

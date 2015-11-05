@@ -9,6 +9,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css assets/styles/vendor.css -->
         <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/highlightjs/styles/default.css" />
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:css assets/styles/main.css -->
@@ -137,6 +138,8 @@
         <script src="bower_components/jquery.maskedinput/dist/jquery.maskedinput.js"></script>
         <script src="bower_components/select2/dist/js/select2.js"></script>
         <script src="bower_components/lodash/lodash.js"></script>
+        <script src="bower_components/highlightjs/highlight.pack.js"></script>
+        <script src="bower_components/angular-highlightjs/build/angular-highlightjs.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -219,6 +222,7 @@
     <script src="scripts/components/entities/supplierDiscountRule/supplierDiscountRule.service.js"></script>
     <script src="scripts/components/entities/taxTable/taxTable.search.service.js"></script>
     <script src="scripts/components/entities/taxTable/taxTable.service.js"></script>
+    <script src="scripts/components/export_import/angular-csv-import.js"></script>
     <script src="scripts/components/form/form.directive.js"></script>
     <script src="scripts/components/form/maxbytes.directive.js"></script>
     <script src="scripts/components/form/minbytes.directive.js"></script>
@@ -427,6 +431,7 @@
     <script src="scripts/app/main/main.controller.js"></script>
     <script src="scripts/app/main/main.js"></script>
     <script src="scripts/app/system/store/store-edit.controller.js"></script>
+    <script src="scripts/app/system/store/store-import.controller.js"></script>
     <script src="scripts/app/system/store/store.controller.js"></script>
     <script src="scripts/app/system/store/store.js"></script>
     <script src="scripts/app/system/system.js"></script>

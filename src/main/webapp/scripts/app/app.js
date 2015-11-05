@@ -9,7 +9,8 @@ angular.module('bssuiteApp',
         'ngAria',
         'ngCacheBuster',
         'ngFileUpload',
-        'infinite-scroll'])
+        'infinite-scroll',
+        'hljs'])
 
     .run(function ($rootScope, $location, $window, $http, $state,  Auth, Principal, ENV, VERSION) {
         $rootScope.ENV = ENV;
