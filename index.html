@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Bssuite by pkcool</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Bssuite</h1>
+          <h2>business solution suite</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/pkcool/bssuite/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/pkcool/bssuite/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/pkcool/bssuite" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <p><a href="https://travis-ci.org/pkcool/bssuite"><img src="https://travis-ci.org/pkcool/bssuite.svg" alt="Build Status"></a>
+<a href="http://gruntjs.com/"><img src="https://cdn.gruntjs.com/builtwith.png" alt="Built with Grunt"></a>
+<a href="http://waffle.io/pkcool/bssuite"><img src="https://badge.waffle.io/pkcool/bssuite.svg?label=ready&amp;title=Ready" alt="Stories in Ready"></a></p>
+
+<h1>
+<a id="business-solution-suite" class="anchor" href="#business-solution-suite" aria-hidden="true"><span class="octicon octicon-link"></span></a>Business Solution Suite</h1>
+
+<p><a href="https://gitter.im/pkcool/bssuite?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/pkcool/bssuite"></a></p>
+
+<p>bssuite was generated using JHipster, you can find documentation and help at <a href="https://jhipster.github.io/">JHipster</a>.</p>
+
+<p>Before you can build this project, you must install and configure the following dependencies on your machine:</p>
+
+<ol>
+<li>
+<a href="https://nodejs.org/">Node.js</a>: We use Node to run a development web server and build the project.
+Depending on your system, you can install Node either from source or as a pre-packaged bundle.</li>
+</ol>
+
+<p>After installing Node, you should be able to run the following command to install development tools (like
+<a href="http://bower.io/">Bower</a> and <a href="http://www.browsersync.io/">BrowserSync</a>). You will only need to run this command when dependencies change in package.json.</p>
+
+<pre><code>npm install
+</code></pre>
+
+<p>We use <a href="http://gruntjs.com/">Grunt</a> as our build system. Install the grunt command-line tool globally with:</p>
+
+<pre><code>npm install -g grunt-cli
+</code></pre>
+
+<p>Run the following commands in two separate terminals to create a blissful development experience where your browser
+auto-refreshes when files change on your hard drive.</p>
+
+<pre><code>mvn
+grunt
+</code></pre>
+
+<p>Bower is used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
+specifying a newer version in <code>bower.json</code>. You can also run <code>bower update</code> and <code>bower install</code> to manage dependencies.
+Add the <code>-h</code> flag on any command to see how you can use it. For example, <code>bower update -h</code>.</p>
+
+<h1>
+<a id="building-for-production" class="anchor" href="#building-for-production" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building for production</h1>
+
+<p>To optimize the bssuite client for production, run:</p>
+
+<pre><code>mvn -Pprod clean package
+</code></pre>
+
+<p>This will concatenate and minify CSS and JavaScript files. It will also modify <code>index.html</code> so it references
+these new files.</p>
+
+<p>To ensure everything worked, run:</p>
+
+<pre><code>java -jar target/*.war --spring.profiles.active=prod
+</code></pre>
+
+<p>Then navigate to <a href="http://localhost:8080">http://localhost:8080</a> in your browser.</p>
+
+<h1>
+<a id="testing" class="anchor" href="#testing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Testing</h1>
+
+<p>Unit tests are run by <a href="http://karma-runner.github.io/">Karma</a> and written with <a href="http://jasmine.github.io/2.0/introduction.html">Jasmine</a>. They're located in <code>src/test/javascript</code> and can be run with:</p>
+
+<pre><code>grunt test
+</code></pre>
+
+<h1>
+<a id="continuous-integration" class="anchor" href="#continuous-integration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Continuous Integration</h1>
+
+<p>To setup this project in Jenkins, use the following configuration:</p>
+
+<ul>
+<li>Project name: <code>bssuite</code>
+</li>
+<li>Source Code Management
+
+<ul>
+<li>Git Repository: <code>git@github.com:xxxx/bssuite.git</code>
+</li>
+<li>Branches to build: <code>*/master</code>
+</li>
+<li>Additional Behaviours: <code>Wipe out repository &amp; force clone</code>
+</li>
+</ul>
+</li>
+<li>Build Triggers
+
+<ul>
+<li>Poll SCM / Schedule: <code>H/5 * * * *</code>
+</li>
+</ul>
+</li>
+<li>Build
+
+<ul>
+<li>Invoke Maven / Tasks: <code>-Pprod clean package</code>
+</li>
+</ul>
+</li>
+<li>Post-build Actions
+
+<ul>
+<li>Publish JUnit test result report / Test Report XMLs: <code>build/test-results/*.xml</code>
+</li>
+</ul>
+</li>
+</ul>
+        </section>
+
+        <footer>
+          Bssuite is maintained by <a href="https://github.com/pkcool">pkcool</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+                  <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-17279194-4");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+      </div>
+    </div>
+  </body>
+</html>
