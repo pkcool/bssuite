@@ -5,6 +5,8 @@
 
 # Business Solution Suite 
 
+[![Join the chat at https://gitter.im/pkcool/bssuite](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pkcool/bssuite?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 bssuite was generated using JHipster, you can find documentation and help at [JHipster][].
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
