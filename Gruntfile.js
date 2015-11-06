@@ -37,6 +37,7 @@ module.exports = function (grunt) {
                 'scripts/components/smart_admin/app.config.js',
                 'scripts/app/app.js',
                 'scripts/app/app.constants.js',
+                'scripts/components/smart_admin/lib/jarvis.widget.js',
                 'scripts/components/**/module.js',
                 'scripts/components/**/*.js',
                 'scripts/app/**/*.js'
