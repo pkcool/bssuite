@@ -34,26 +34,14 @@
                     <i class="fa fa-lg fa-fw fa-star"></i> <span class="menu-item-parent">Favourites</span><span
                         unread-messages-count class="badge pull-right inbox-badge"></span></a>
             </li>
+
+
             <li data-menu-collapse>
-                <a href="#"><i class="fa fa-lg fa-fw fa-bars"></i> <span class="menu-item-parent">Accounts</span></a>
+                <a href="#"><i class="fa fa-lg fa-fw fa-tags"></i> <span class="menu-item-parent">Sales</span></a>
                 <ul>
-
-
                     <li data-ui-sref-active="active">
                         <a data-ui-sref="app.customer">Customers</a>
                     </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.supplier">Suppliers</a>
-                    </li>
-
-
-
-                </ul>
-            </li>
-
-            <li data-menu-collapse>
-                <a href="#"><i class="fa fa-lg fa-fw fa-arrow-circle-right"></i> <span class="menu-item-parent">Sales</span></a>
-                <ul>
                     <li data-ui-sref-active="active">
                         <a data-ui-sref="app.salesorder">Sales Orders</a>
                     </li>
@@ -73,9 +61,13 @@
                 </ul>
             </li>
 
+
             <li data-menu-collapse>
-                <a href="#"><i class="fa fa-lg fa-fw fa-arrow-circle-left"></i> <span class="menu-item-parent">Purchasing</span></a>
+                <a href="#"><i class="fa fa-lg fa-fw fa-shopping-cart"></i> <span class="menu-item-parent">Purchasing</span></a>
                 <ul>
+                    <li data-ui-sref-active="active">
+                        <a data-ui-sref="app.supplier">Suppliers</a>
+                    </li>
                     <li data-ui-sref-active="active">
                         <a data-ui-sref="app.purchaseorder">Purchase Orders</a>
                     </li>
@@ -288,51 +280,10 @@
             </li>
 
 
-            <li data-menu-collapse>
-                <a href="#"><i class="fa fa-lg fa-fw fa-windows"></i> <span class="menu-item-parent">{{getWord('Miscellaneous')}}</span></a>
-                <ul >
-                    <li>
-                        <a href="http://bootstraphunter.com/smartadmin-landing/" target="_blank">{{getWord('Landing Page')}} <i class="fa fa-external-link"></i></a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.misc.pricingTable">{{getWord('Pricing Tables')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.misc.invoice">{{getWord('Invoice')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="login">{{getWord('Login')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="register">{{getWord('Register')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="lock">{{getWord('Locked Screen')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.misc.error404">{{getWord('Error 404')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.misc.error500">{{getWord('Error 500')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.misc.blank">{{getWord('Blank Page')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.misc.emailTemplate">{{getWord('Email Template')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.misc.search">{{getWord('Search Page')}}</a>
-                    </li>
-                    <li data-ui-sref-active="active">
-                        <a data-ui-sref="app.misc.ckeditor">{{getWord('CK Editor')}}</a>
-                    </li>
-                </ul>
-            </li>
 
 
             <li data-menu-collapse>
-                <a href="#"><i class="fa fa-lg fa-fw fa-cubes"></i> <span class="menu-item-parent">System</span></a>
+                <a href="#"><i class="fa fa-lg fa-fw fa-windows"></i> <span class="menu-item-parent">System</span></a>
                 <ul >
                     <li data-ui-sref-active="active">
                         <a data-ui-sref="store_management"><i class="fa fa-institution"></i> Store Management</a>
