@@ -10,6 +10,7 @@
         <!-- build:css assets/styles/vendor.css -->
         <!-- bower:css -->
         <link rel="stylesheet" href="bower_components/highlightjs/styles/default.css" />
+        <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:css assets/styles/main.css -->
@@ -140,6 +141,8 @@
         <script src="bower_components/lodash/lodash.js"></script>
         <script src="bower_components/highlightjs/highlight.pack.js"></script>
         <script src="bower_components/angular-highlightjs/build/angular-highlightjs.js"></script>
+        <script src="bower_components/moment/moment.js"></script>
+        <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -151,6 +154,7 @@
     <script src="scripts/app/app.js"></script>
     <script src="scripts/app/app.constants.js"></script>
     <script src="scripts/components/smart_admin/lib/jarvis.widget.js"></script>
+    <script src="scripts/components/smart_admin/calendar/module.js"></script>
     <script src="scripts/components/smart_admin/dashboard/module.js"></script>
     <script src="scripts/components/admin/audits.service.js"></script>
     <script src="scripts/components/admin/configuration.service.js"></script>
@@ -235,6 +239,10 @@
     <script src="scripts/components/navbar/navbar.controller.js"></script>
     <script src="scripts/components/navbar/navbar.directive.js"></script>
     <script src="scripts/components/smart_admin/app.js"></script>
+    <script src="scripts/components/smart_admin/calendar/controllers/CalendarCtrl.js"></script>
+    <script src="scripts/components/smart_admin/calendar/directives/dragableEvent.js"></script>
+    <script src="scripts/components/smart_admin/calendar/directives/fullCalendar.js"></script>
+    <script src="scripts/components/smart_admin/calendar/models/CalendarEvent.js"></script>
     <script src="scripts/components/smart_admin/common/forms/directives/input/smartDatepicker.js"></script>
     <script src="scripts/components/smart_admin/common/forms/directives/input/smartMaskedInput.js"></script>
     <script src="scripts/components/smart_admin/common/forms/form_common.js"></script>
@@ -249,6 +257,7 @@
     <script src="scripts/components/smart_admin/common/layout/directives/hrefVoid.js"></script>
     <script src="scripts/components/smart_admin/common/layout/directives/navigation/smartMenu.js"></script>
     <script src="scripts/components/smart_admin/common/layout/directives/navigation/smartMenuItems.js"></script>
+    <script src="scripts/components/smart_admin/common/layout/directives/radioToggle.js"></script>
     <script src="scripts/components/smart_admin/common/layout/directives/smartDeviceDetect.js"></script>
     <script src="scripts/components/smart_admin/common/layout/directives/smartFastClick.js"></script>
     <script src="scripts/components/smart_admin/common/layout/directives/smartInclude.js"></script>

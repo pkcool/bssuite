@@ -37,6 +37,8 @@ module.exports = function (config) {
             'main/webapp/bower_components/lodash/lodash.js',
             'main/webapp/bower_components/highlightjs/highlight.pack.js',
             'main/webapp/bower_components/angular-highlightjs/build/angular-highlightjs.js',
+            'main/webapp/bower_components/moment/moment.js',
+            'main/webapp/bower_components/fullcalendar/dist/fullcalendar.js',
             'main/webapp/bower_components/angular-mocks/angular-mocks.js',
             // endbower
             'main/webapp/scripts/app/app.js',

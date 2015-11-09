@@ -2,21 +2,21 @@
  * FULL CALENDAR
  */
 #calendar-container { position: relative; }
-	
+
 html .fc, .fc table {	font-size:12px; }
-	
+
 .dt-header.calender-spacer {
 	height: 46px;
 	display: block;
 }
-	
-.jarviswidget #calendar { margin-top: -18px; }
-	
+
+.jarviswidget #calendar { margin-top: 18px; }
+
 .fc-widget-header, .fc-widget-content { border-right: none; }
 
 tr.fc-first th.fc-first,  tr td.fc-first{ border-left:none; }
 tr.fc-last td { border-bottom:none; }
-	
+
 .jarviswidget .fc-header-title h2 {
 	text-shadow: 0 1px 0 $white;
 	margin-top: -12px;
@@ -25,7 +25,7 @@ tr.fc-last td { border-bottom:none; }
 	font-weight: bold;
 	margin-bottom: 0px;
 }
-	
+
 .fc-event-time, .fc-event-title {
 	padding: 3px 0px 2px 3px;
 	display: inline-block;
@@ -34,7 +34,7 @@ tr.fc-last td { border-bottom:none; }
 	font-size: 11px;
 	box-sizing: border-box;
 }
-	
+
 /* calendar button */
 #calendar-buttons {
 	position: absolute;
@@ -53,14 +53,14 @@ td.fc-other-month, .dropzone {
 	background-color: #FAFCFD;
 	background-size: 16px 16px;
 }
-	
+
 .fc-corner-right .fc-event-inner { padding-right: 15px; }
-	
-		
+
+
 /*
 	* Select color
 	*/
-		
+
 .btn-select-tick i {
 	display: none;
 }
@@ -68,13 +68,13 @@ td.fc-other-month, .dropzone {
 	opacity: .3;
 	display: block;
 }
-		
+
 .btn-select-tick .active i {
 	display: block;
 	opacity: 1 !important;
 }
-			
-/* 
+
+/*
 	* Drag and drop events
 	*/
 #external-events > li {
@@ -86,7 +86,7 @@ td.fc-other-month, .dropzone {
 	  display: block;
     &:after {
 	    display: block;
-	    color: $white;			
+	    color: $white;
 	    color: rgba(red($white), green($white), blue($white),0.7);
 	    content: attr(data-description);
 	    font-size: 11px;
@@ -98,5 +98,5 @@ td.fc-other-month, .dropzone {
     }
   }
 }
-		
+
 

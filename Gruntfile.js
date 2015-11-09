@@ -81,6 +81,7 @@ module.exports = function (grunt) {
                     'bower_components/bootstrap/', // Exclude Bootstrap LESS as we use bootstrap-sass
                     'bower_components/components-font-awesome/css', // Exclude font-awesome css as we use font-awesome-sass
                     'bower_components/select2/dist/css' // Exclude select2 css as we only use the select2 javascript
+                    //'bower_components/fullcalendar/dist/fullcalendar.css' // Exclude full calendar css
                 ],
                 ignorePath: /\.\.\/webapp\/bower_components\// // remove ../webapp/bower_components/ from paths of injected sass files
             },
