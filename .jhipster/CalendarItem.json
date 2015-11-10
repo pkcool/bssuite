@@ -1,0 +1,62 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "createdBy",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "startedOn",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "endedOn",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "isAllDayEvent",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "isRemainderEnabled",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "remainderTime",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "webUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "isEditable",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "alarmType",
+            "fieldType": "AlarmType",
+            "fieldValues": "SOUND,EMAIL"
+        }
+    ],
+    "changelogDate": "20151110004006",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}
