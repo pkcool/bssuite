@@ -1,0 +1,89 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myBookmarkLabel">Create or edit a Bookmark</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="bookmark.id" readonly>
+        </div>
+        <div class="form-group">
+            <label for="field_createdOn">CreatedOn</label>
+            <input type="datetime-local" class="form-control" name="createdOn" id="field_createdOn"
+                    ng-model="bookmark.createdOn" ng-model-options="{timezone: 'UTC'}"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_txnNumber">TxnNumber</label>
+            <input type="text" class="form-control" name="txnNumber" id="field_txnNumber"
+                    ng-model="bookmark.txnNumber"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_bookmarkType">BookmarkType</label>
+            <select class="form-control" name="bookmarkType" ng-model="bookmark.bookmarkType" id="field_bookmarkType">
+                <option value="HISTORY">HISTORY</option>
+                <option value="FAVOURITE">FAVOURITE</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_bookmarkArea">BookmarkArea</label>
+            <select class="form-control" name="bookmarkArea" ng-model="bookmark.bookmarkArea" id="field_bookmarkArea">
+                <option value="PURCHASEORDER">PURCHASEORDER</option>
+                <option value="SALESORDER">SALESORDER</option>
+                <option value="INVOICE">INVOICE</option>
+                <option value="QUOTE">QUOTE</option>
+                <option value="BACKORDER">BACKORDER</option>
+                <option value="CUSTOMER">CUSTOMER</option>
+                <option value="SUPPLIER">SUPPLIER</option>
+                <option value="STOCKTAKE">STOCKTAKE</option>
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_keyCode">KeyCode</label>
+            <input type="text" class="form-control" name="keyCode" id="field_keyCode"
+                    ng-model="bookmark.keyCode"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                    ng-model="bookmark.title"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_lastEditedOn">LastEditedOn</label>
+            <input type="datetime-local" class="form-control" name="lastEditedOn" id="field_lastEditedOn"
+                    ng-model="bookmark.lastEditedOn" ng-model-options="{timezone: 'UTC'}"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="field_openCount">OpenCount</label>
+            <input type="number" class="form-control" name="openCount" id="field_openCount"
+                    ng-model="bookmark.openCount"
+                    >
+        </div>
+
+        <div class="form-group">
+            <label for="field_createdBy">createdBy</label>
+            <select class="form-control" id="field_createdBy" name="createdBy" ng-model="bookmark.createdById" ng-options="staff.id as staff.id for staff in staffs">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

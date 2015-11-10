@@ -1,0 +1,94 @@
+
+<div>
+    <h2><span>Bookmark</span> {{bookmark.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>CreatedOn</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{bookmark.createdOn}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TxnNumber</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{bookmark.txnNumber}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>BookmarkType</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'bssuiteApp.BookmarkType.' + bookmark.bookmarkType}}">{{bookmark.bookmarkType}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>BookmarkArea</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'bssuiteApp.BookmarkArea.' + bookmark.bookmarkArea}}">{{bookmark.bookmarkArea}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>KeyCode</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{bookmark.keyCode}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Title</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{bookmark.title}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>LastEditedOn</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{bookmark.lastEditedOn}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>OpenCount</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{bookmark.openCount}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>createdBy</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="staff.detail({id:bookmark.createdById})">{{bookmark.createdById}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>

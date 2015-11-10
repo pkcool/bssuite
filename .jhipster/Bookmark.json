@@ -1,0 +1,58 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "createdBy",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "createdOn",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "txnNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "bookmarkType",
+            "fieldType": "BookmarkType",
+            "fieldValues": "HISTORY,FAVOURITE"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "bookmarkArea",
+            "fieldType": "BookmarkArea",
+            "fieldValues": "PURCHASEORDER,SALESORDER,INVOICE,QUOTE,BACKORDER,CUSTOMER,SUPPLIER,STOCKTAKE,"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "keyCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "lastEditedOn",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "openCount",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20151110004009",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}
