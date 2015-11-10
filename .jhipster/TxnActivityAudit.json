@@ -1,0 +1,48 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "editedBy",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "editedOn",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "txnNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "txnType",
+            "fieldType": "TxnType",
+            "fieldValues": "PURCHASEORDER,SALESORDER,INVOICE,QUOTE,BACKORDER"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "txnAmount",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "bankAcc",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "editType",
+            "fieldType": "TxnEditType",
+            "fieldValues": "ADD,EDIT,DELETE,ALL"
+        }
+    ],
+    "changelogDate": "20151110004004",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}

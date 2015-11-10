@@ -1,0 +1,78 @@
+
+<div>
+    <h2><span>TxnActivityAudit</span> {{txnActivityAudit.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>EditedOn</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{txnActivityAudit.editedOn}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TxnNumber</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{txnActivityAudit.txnNumber}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TxnType</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'bssuiteApp.TxnType.' + txnActivityAudit.txnType}}">{{txnActivityAudit.txnType}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TxnAmount</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{txnActivityAudit.txnAmount}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>BankAcc</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{txnActivityAudit.bankAcc}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>EditType</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'bssuiteApp.TxnEditType.' + txnActivityAudit.editType}}">{{txnActivityAudit.editType}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>editedBy</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="staff.detail({id:txnActivityAudit.editedById})">{{txnActivityAudit.editedById}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
