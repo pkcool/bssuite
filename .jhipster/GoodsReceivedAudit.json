@@ -1,0 +1,58 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "receivedBy",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "supplier",
+            "otherEntityName": "supplier",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 3,
+            "relationshipName": "purchaseOrder",
+            "otherEntityName": "purchaseOrder",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 4,
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "receivedOn",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "txnNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "typeReceipt",
+            "fieldType": "GoodsReceiptType",
+            "fieldValues": "PURCHASEORDER,STOCKRETURN"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "qtyReceived",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20151110004005",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}

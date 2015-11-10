@@ -1,0 +1,86 @@
+
+<div>
+    <h2><span>GoodsReceivedAudit</span> {{goodsReceivedAudit.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span>ReceivedOn</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{goodsReceivedAudit.receivedOn}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TxnNumber</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{goodsReceivedAudit.txnNumber}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>TypeReceipt</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'bssuiteApp.GoodsReceiptType.' + goodsReceivedAudit.typeReceipt}}">{{goodsReceivedAudit.typeReceipt}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>QtyReceived</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{goodsReceivedAudit.qtyReceived}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>receivedBy</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="staff.detail({id:goodsReceivedAudit.receivedById})">{{goodsReceivedAudit.receivedById}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>supplier</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="supplier.detail({id:goodsReceivedAudit.supplierId})">{{goodsReceivedAudit.supplierId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>purchaseOrder</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="purchaseOrder.detail({id:goodsReceivedAudit.purchaseOrderId})">{{goodsReceivedAudit.purchaseOrderId}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>product</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="product.detail({id:goodsReceivedAudit.productId})">{{goodsReceivedAudit.productId}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+</div>
