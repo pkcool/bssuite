@@ -1,0 +1,64 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "createdBy",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "createdOn",
+            "fieldType": "DateTime"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "txnNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "activityType",
+            "fieldType": "ProductActivityType",
+            "fieldValues": "PURCHASEORDER,SALESORDER,INVOICE,QUOTE,BACKORDER,TRANSFERIN,TRANSFEROUT,STOCKVARIANCE,STOCKADJUSTMENT"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "qtyTxn",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "qtyAdjusted",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "qtyStockOnHold",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "lineNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "txnAccountCode",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20151110004008",
+    "dto": "mapstruct",
+    "pagination": "pagination"
+}
