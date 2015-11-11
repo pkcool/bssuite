@@ -22,7 +22,6 @@
     "ngInfiniteScroll": "1.2.0",
     "swagger-ui": "2.1.2",
     "components-font-awesome": "~4.4.0",
-    "PACE": "pace#~1.0.2",
     "fastclick": "~1.0.6",
     "underscore": "~1.8.3",
     "jquery-ui": "~1.11.4",
