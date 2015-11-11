@@ -31,7 +31,7 @@
                     <span>TxnDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{salesOrder.txnDate}}</span>
+                    <span class="form-control-static">{{salesOrder.txnDate | date:'medium'}}</span>
                 </td>
             </tr>
             <tr>
@@ -39,7 +39,7 @@
                     <span>ForwardDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{salesOrder.forwardDate}}</span>
+                    <span class="form-control-static">{{salesOrder.forwardDate | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>
@@ -47,7 +47,7 @@
                     <span>RequiredDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{salesOrder.requiredDate}}</span>
+                    <span class="form-control-static">{{salesOrder.requiredDate | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>

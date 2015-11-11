@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('CarrierController', function ($scope, Carrier, CarrierSearch, ParseLinks) {
+    .controller('CarrierController', function ($scope, $state, $modal, Carrier, CarrierSearch, ParseLinks) {
+      
         $scope.carriers = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            Carrier.get({id: id}, function(result) {
-                $scope.carrier = result;
-                $('#deleteCarrierConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            Carrier.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteCarrierConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             CarrierSearch.query({query: $scope.searchQuery}, function(result) {

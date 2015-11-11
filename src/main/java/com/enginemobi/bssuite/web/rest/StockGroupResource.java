@@ -53,8 +53,8 @@ public class StockGroupResource {
      * POST  /stockGroups -> Create a new stockGroup.
      */
     @RequestMapping(value = "/stockGroups",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<StockGroupDTO> createStockGroup(@Valid @RequestBody StockGroupDTO stockGroupDTO) throws URISyntaxException {
         log.debug("REST request to save StockGroup : {}", stockGroupDTO);
@@ -65,8 +65,8 @@ public class StockGroupResource {
         StockGroup result = stockGroupRepository.save(stockGroup);
         stockGroupSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/stockGroups/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("stockGroup", result.getId().toString()))
-                .body(stockGroupMapper.stockGroupToStockGroupDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("stockGroup", result.getId().toString()))
+            .body(stockGroupMapper.stockGroupToStockGroupDTO(result));
     }
 
     /**
@@ -85,16 +85,16 @@ public class StockGroupResource {
         StockGroup result = stockGroupRepository.save(stockGroup);
         stockGroupSearchRepository.save(stockGroup);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("stockGroup", stockGroupDTO.getId().toString()))
-                .body(stockGroupMapper.stockGroupToStockGroupDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("stockGroup", stockGroupDTO.getId().toString()))
+            .body(stockGroupMapper.stockGroupToStockGroupDTO(result));
     }
 
     /**
      * GET  /stockGroups -> get all the stockGroups.
      */
     @RequestMapping(value = "/stockGroups",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<StockGroupDTO>> getAllStockGroups(Pageable pageable)
@@ -110,8 +110,8 @@ public class StockGroupResource {
      * GET  /stockGroups/:id -> get the "id" stockGroup.
      */
     @RequestMapping(value = "/stockGroups/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<StockGroupDTO> getStockGroup(@PathVariable Long id) {
         log.debug("REST request to get StockGroup : {}", id);
@@ -127,8 +127,8 @@ public class StockGroupResource {
      * DELETE  /stockGroups/:id -> delete the "id" stockGroup.
      */
     @RequestMapping(value = "/stockGroups/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteStockGroup(@PathVariable Long id) {
         log.debug("REST request to delete StockGroup : {}", id);
@@ -147,7 +147,7 @@ public class StockGroupResource {
     @Timed
     public List<StockGroupDTO> searchStockGroups(@PathVariable String query) {
         return StreamSupport
-            .stream(stockGroupSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(stockGroupSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(stockGroupMapper::stockGroupToStockGroupDTO)
             .collect(Collectors.toList());
     }

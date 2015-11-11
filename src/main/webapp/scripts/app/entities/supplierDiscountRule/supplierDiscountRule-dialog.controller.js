@@ -11,16 +11,22 @@ angular.module('bssuiteApp').controller('SupplierDiscountRuleDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:supplierDiscountRuleUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.supplierDiscountRule.id != null) {
-                SupplierDiscountRule.update($scope.supplierDiscountRule, onSaveFinished);
+                SupplierDiscountRule.update($scope.supplierDiscountRule, onSaveSuccess, onSaveError);
             } else {
-                SupplierDiscountRule.save($scope.supplierDiscountRule, onSaveFinished);
+                SupplierDiscountRule.save($scope.supplierDiscountRule, onSaveSuccess, onSaveError);
             }
         };
 

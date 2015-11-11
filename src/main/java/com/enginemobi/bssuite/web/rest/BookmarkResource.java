@@ -52,8 +52,8 @@ public class BookmarkResource {
      * POST  /bookmarks -> Create a new bookmark.
      */
     @RequestMapping(value = "/bookmarks",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<BookmarkDTO> createBookmark(@RequestBody BookmarkDTO bookmarkDTO) throws URISyntaxException {
         log.debug("REST request to save Bookmark : {}", bookmarkDTO);
@@ -64,8 +64,8 @@ public class BookmarkResource {
         Bookmark result = bookmarkRepository.save(bookmark);
         bookmarkSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/bookmarks/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("bookmark", result.getId().toString()))
-                .body(bookmarkMapper.bookmarkToBookmarkDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("bookmark", result.getId().toString()))
+            .body(bookmarkMapper.bookmarkToBookmarkDTO(result));
     }
 
     /**
@@ -84,16 +84,16 @@ public class BookmarkResource {
         Bookmark result = bookmarkRepository.save(bookmark);
         bookmarkSearchRepository.save(bookmark);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("bookmark", bookmarkDTO.getId().toString()))
-                .body(bookmarkMapper.bookmarkToBookmarkDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("bookmark", bookmarkDTO.getId().toString()))
+            .body(bookmarkMapper.bookmarkToBookmarkDTO(result));
     }
 
     /**
      * GET  /bookmarks -> get all the bookmarks.
      */
     @RequestMapping(value = "/bookmarks",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<BookmarkDTO>> getAllBookmarks(Pageable pageable)
@@ -109,8 +109,8 @@ public class BookmarkResource {
      * GET  /bookmarks/:id -> get the "id" bookmark.
      */
     @RequestMapping(value = "/bookmarks/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<BookmarkDTO> getBookmark(@PathVariable Long id) {
         log.debug("REST request to get Bookmark : {}", id);
@@ -126,8 +126,8 @@ public class BookmarkResource {
      * DELETE  /bookmarks/:id -> delete the "id" bookmark.
      */
     @RequestMapping(value = "/bookmarks/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteBookmark(@PathVariable Long id) {
         log.debug("REST request to delete Bookmark : {}", id);
@@ -146,7 +146,7 @@ public class BookmarkResource {
     @Timed
     public List<BookmarkDTO> searchBookmarks(@PathVariable String query) {
         return StreamSupport
-            .stream(bookmarkSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(bookmarkSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(bookmarkMapper::bookmarkToBookmarkDTO)
             .collect(Collectors.toList());
     }

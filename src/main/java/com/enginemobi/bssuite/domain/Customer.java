@@ -1,13 +1,8 @@
 package com.enginemobi.bssuite.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.enginemobi.bssuite.domain.util.CustomLocalDateSerializer;
-import com.enginemobi.bssuite.domain.util.ISO8601LocalDateDeserializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -33,126 +28,122 @@ import com.enginemobi.bssuite.domain.enumeration.CustomerStatementDeliveryMethod
 @Entity
 @Table(name = "customer")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="customer")
+@Document(indexName = "customer")
 public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
     @NotNull
-    @Size(min = 2)        
+    @Size(min = 2)
     @Column(name = "code", nullable = false)
     private String code;
-    
+
     @Column(name = "name")
     private String name;
-    
+
     @Column(name = "trading_name")
     private String tradingName;
-    
+
     @Column(name = "abn")
     private String abn;
-    
+
     @Column(name = "delivery_instruction")
     private String deliveryInstruction;
-    
+
     @Column(name = "web_url")
     private String webUrl;
-    
+
     @Column(name = "is_on_hold")
     private Boolean isOnHold;
-    
+
     @Column(name = "is_order_no_required")
     private Boolean isOrderNoRequired;
-    
+
     @Column(name = "is_blacklisted")
     private Boolean isBlacklisted;
-    
+
     @Column(name = "is_backorder_allowed")
     private Boolean isBackorderAllowed;
-    
+
     @Column(name = "is_archived")
     private Boolean isArchived;
-    
+
     @Column(name = "is_head_office_account")
     private Boolean isHeadOfficeAccount;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "ageing_method")
     private CustomerAgeingMethod ageingMethod;
-    
+
     @Column(name = "is_webaccess_allowed")
     private Boolean isWebaccessAllowed;
-    
+
     @Column(name = "bank_name")
     private String bankName;
-    
+
     @Column(name = "bsb")
     private String bsb;
-    
+
     @Column(name = "bank_account_no")
     private String bankAccountNo;
-    
+
     @Column(name = "bank_suburb")
     private String bankSuburb;
-    
+
     @Column(name = "bank_account_name")
     private String bankAccountName;
-    
+
     @Column(name = "is_credit_card_billing_active")
     private Boolean isCreditCardBillingActive;
-    
+
     @Column(name = "credit_card_no")
     private String creditCardNo;
-    
+
     @Column(name = "credit_card_holder_name")
     private String creditCardHolderName;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "credit_card_expiry_date", nullable = false)
     private LocalDate creditCardExpiryDate;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "credit_card_type")
     private CreditCardType creditCardType;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "account_type")
     private CustomerAccountType accountType;
-    
+
     @Column(name = "credit_amount")
     private Double creditAmount;
-    
+
     @Column(name = "terms")
     private Integer terms;
-    
+
     @Column(name = "settlement_terms")
     private Integer settlementTerms;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "invoice_delivery_method")
     private CustomerInvoiceDeliveryMethod invoiceDeliveryMethod;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "statement_delivery_method")
     private CustomerStatementDeliveryMethod statementDeliveryMethod;
-    
+
     @Column(name = "invoice_email_address")
     private String invoiceEmailAddress;
-    
+
     @Column(name = "invoice_fax_no")
     private String invoiceFaxNo;
-    
+
     @Column(name = "statement_email_address")
     private String statementEmailAddress;
-    
+
     @Column(name = "statement_fax_no")
     private String statementFaxNo;
-    
+
     @Column(name = "is_penalty_issued")
     private Boolean isPenaltyIssued;
 
@@ -578,42 +569,42 @@ public class Customer implements Serializable {
     @Override
     public String toString() {
         return "Customer{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", tradingName='" + tradingName + "'" +
-                ", abn='" + abn + "'" +
-                ", deliveryInstruction='" + deliveryInstruction + "'" +
-                ", webUrl='" + webUrl + "'" +
-                ", isOnHold='" + isOnHold + "'" +
-                ", isOrderNoRequired='" + isOrderNoRequired + "'" +
-                ", isBlacklisted='" + isBlacklisted + "'" +
-                ", isBackorderAllowed='" + isBackorderAllowed + "'" +
-                ", isArchived='" + isArchived + "'" +
-                ", isHeadOfficeAccount='" + isHeadOfficeAccount + "'" +
-                ", ageingMethod='" + ageingMethod + "'" +
-                ", isWebaccessAllowed='" + isWebaccessAllowed + "'" +
-                ", bankName='" + bankName + "'" +
-                ", bsb='" + bsb + "'" +
-                ", bankAccountNo='" + bankAccountNo + "'" +
-                ", bankSuburb='" + bankSuburb + "'" +
-                ", bankAccountName='" + bankAccountName + "'" +
-                ", isCreditCardBillingActive='" + isCreditCardBillingActive + "'" +
-                ", creditCardNo='" + creditCardNo + "'" +
-                ", creditCardHolderName='" + creditCardHolderName + "'" +
-                ", creditCardExpiryDate='" + creditCardExpiryDate + "'" +
-                ", creditCardType='" + creditCardType + "'" +
-                ", accountType='" + accountType + "'" +
-                ", creditAmount='" + creditAmount + "'" +
-                ", terms='" + terms + "'" +
-                ", settlementTerms='" + settlementTerms + "'" +
-                ", invoiceDeliveryMethod='" + invoiceDeliveryMethod + "'" +
-                ", statementDeliveryMethod='" + statementDeliveryMethod + "'" +
-                ", invoiceEmailAddress='" + invoiceEmailAddress + "'" +
-                ", invoiceFaxNo='" + invoiceFaxNo + "'" +
-                ", statementEmailAddress='" + statementEmailAddress + "'" +
-                ", statementFaxNo='" + statementFaxNo + "'" +
-                ", isPenaltyIssued='" + isPenaltyIssued + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", tradingName='" + tradingName + "'" +
+            ", abn='" + abn + "'" +
+            ", deliveryInstruction='" + deliveryInstruction + "'" +
+            ", webUrl='" + webUrl + "'" +
+            ", isOnHold='" + isOnHold + "'" +
+            ", isOrderNoRequired='" + isOrderNoRequired + "'" +
+            ", isBlacklisted='" + isBlacklisted + "'" +
+            ", isBackorderAllowed='" + isBackorderAllowed + "'" +
+            ", isArchived='" + isArchived + "'" +
+            ", isHeadOfficeAccount='" + isHeadOfficeAccount + "'" +
+            ", ageingMethod='" + ageingMethod + "'" +
+            ", isWebaccessAllowed='" + isWebaccessAllowed + "'" +
+            ", bankName='" + bankName + "'" +
+            ", bsb='" + bsb + "'" +
+            ", bankAccountNo='" + bankAccountNo + "'" +
+            ", bankSuburb='" + bankSuburb + "'" +
+            ", bankAccountName='" + bankAccountName + "'" +
+            ", isCreditCardBillingActive='" + isCreditCardBillingActive + "'" +
+            ", creditCardNo='" + creditCardNo + "'" +
+            ", creditCardHolderName='" + creditCardHolderName + "'" +
+            ", creditCardExpiryDate='" + creditCardExpiryDate + "'" +
+            ", creditCardType='" + creditCardType + "'" +
+            ", accountType='" + accountType + "'" +
+            ", creditAmount='" + creditAmount + "'" +
+            ", terms='" + terms + "'" +
+            ", settlementTerms='" + settlementTerms + "'" +
+            ", invoiceDeliveryMethod='" + invoiceDeliveryMethod + "'" +
+            ", statementDeliveryMethod='" + statementDeliveryMethod + "'" +
+            ", invoiceEmailAddress='" + invoiceEmailAddress + "'" +
+            ", invoiceFaxNo='" + invoiceFaxNo + "'" +
+            ", statementEmailAddress='" + statementEmailAddress + "'" +
+            ", statementFaxNo='" + statementFaxNo + "'" +
+            ", isPenaltyIssued='" + isPenaltyIssued + "'" +
+            '}';
     }
 }

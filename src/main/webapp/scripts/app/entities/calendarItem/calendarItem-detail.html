@@ -23,7 +23,7 @@
                     <span>StartedOn</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{calendarItem.startedOn}}</span>
+                    <span class="form-control-static">{{calendarItem.startedOn | date:'medium'}}</span>
                 </td>
             </tr>
             <tr>
@@ -31,7 +31,7 @@
                     <span>EndedOn</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{calendarItem.endedOn}}</span>
+                    <span class="form-control-static">{{calendarItem.endedOn | date:'medium'}}</span>
                 </td>
             </tr>
             <tr>
@@ -55,7 +55,7 @@
                     <span>RemainderTime</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{calendarItem.remainderTime}}</span>
+                    <span class="form-control-static">{{calendarItem.remainderTime | date:'medium'}}</span>
                 </td>
             </tr>
             <tr>

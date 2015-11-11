@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('CalendarItemController', function ($scope, CalendarItem, CalendarItemSearch, ParseLinks) {
+    .controller('CalendarItemController', function ($scope, $state, $modal, CalendarItem, CalendarItemSearch, ParseLinks) {
+      
         $scope.calendarItems = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            CalendarItem.get({id: id}, function(result) {
-                $scope.calendarItem = result;
-                $('#deleteCalendarItemConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            CalendarItem.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteCalendarItemConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             CalendarItemSearch.query({query: $scope.searchQuery}, function(result) {

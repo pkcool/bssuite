@@ -11,19 +11,19 @@
         <div class="form-group">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="goodsReceivedAudit.id" readonly>
+                    ng-model="goodsReceivedAudit.id" readonly />
         </div>
         <div class="form-group">
             <label for="field_receivedOn">ReceivedOn</label>
             <input type="datetime-local" class="form-control" name="receivedOn" id="field_receivedOn"
-                    ng-model="goodsReceivedAudit.receivedOn" ng-model-options="{timezone: 'UTC'}"
-                    >
+                    ng-model="goodsReceivedAudit.receivedOn"
+                     />
         </div>
         <div class="form-group">
             <label for="field_txnNumber">TxnNumber</label>
             <input type="text" class="form-control" name="txnNumber" id="field_txnNumber"
                     ng-model="goodsReceivedAudit.txnNumber"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_typeReceipt">TypeReceipt</label>
@@ -36,7 +36,7 @@
             <label for="field_qtyReceived">QtyReceived</label>
             <input type="number" class="form-control" name="qtyReceived" id="field_qtyReceived"
                     ng-model="goodsReceivedAudit.qtyReceived"
-                    >
+                     />
         </div>
 
         <div class="form-group">
@@ -68,7 +68,7 @@
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
         </button>
-        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
         </button>
     </div>

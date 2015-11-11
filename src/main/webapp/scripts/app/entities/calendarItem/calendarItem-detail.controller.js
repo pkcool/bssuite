@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.calendarItem = result;
             });
         };
-        $rootScope.$on('bssuiteApp:calendarItemUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:calendarItemUpdate', function(event, result) {
             $scope.calendarItem = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

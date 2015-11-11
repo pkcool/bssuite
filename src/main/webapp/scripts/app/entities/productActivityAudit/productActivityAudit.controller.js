@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('ProductActivityAuditController', function ($scope, ProductActivityAudit, ProductActivityAuditSearch, ParseLinks) {
+    .controller('ProductActivityAuditController', function ($scope, $state, $modal, ProductActivityAudit, ProductActivityAuditSearch, ParseLinks) {
+      
         $scope.productActivityAudits = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            ProductActivityAudit.get({id: id}, function(result) {
-                $scope.productActivityAudit = result;
-                $('#deleteProductActivityAuditConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            ProductActivityAudit.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteProductActivityAuditConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             ProductActivityAuditSearch.query({query: $scope.searchQuery}, function(result) {

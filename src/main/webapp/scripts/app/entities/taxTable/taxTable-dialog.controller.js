@@ -11,16 +11,22 @@ angular.module('bssuiteApp').controller('TaxTableDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:taxTableUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.taxTable.id != null) {
-                TaxTable.update($scope.taxTable, onSaveFinished);
+                TaxTable.update($scope.taxTable, onSaveSuccess, onSaveError);
             } else {
-                TaxTable.save($scope.taxTable, onSaveFinished);
+                TaxTable.save($scope.taxTable, onSaveSuccess, onSaveError);
             }
         };
 

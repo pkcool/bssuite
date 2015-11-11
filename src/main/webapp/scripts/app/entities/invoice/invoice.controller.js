@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('InvoiceController', function ($scope, Invoice, InvoiceSearch, ParseLinks) {
+    .controller('InvoiceController', function ($scope, $state, $modal, Invoice, InvoiceSearch, ParseLinks) {
+      
         $scope.invoices = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            Invoice.get({id: id}, function(result) {
-                $scope.invoice = result;
-                $('#deleteInvoiceConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            Invoice.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteInvoiceConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             InvoiceSearch.query({query: $scope.searchQuery}, function(result) {

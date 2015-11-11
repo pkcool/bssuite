@@ -46,8 +46,8 @@ public class StockFamilyResource {
      * POST  /stockFamilys -> Create a new stockFamily.
      */
     @RequestMapping(value = "/stockFamilys",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<StockFamily> createStockFamily(@Valid @RequestBody StockFamily stockFamily) throws URISyntaxException {
         log.debug("REST request to save StockFamily : {}", stockFamily);
@@ -57,8 +57,8 @@ public class StockFamilyResource {
         StockFamily result = stockFamilyRepository.save(stockFamily);
         stockFamilySearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/stockFamilys/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("stockFamily", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("stockFamily", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -76,16 +76,16 @@ public class StockFamilyResource {
         StockFamily result = stockFamilyRepository.save(stockFamily);
         stockFamilySearchRepository.save(stockFamily);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("stockFamily", stockFamily.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("stockFamily", stockFamily.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /stockFamilys -> get all the stockFamilys.
      */
     @RequestMapping(value = "/stockFamilys",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<StockFamily>> getAllStockFamilys(Pageable pageable)
         throws URISyntaxException {
@@ -98,8 +98,8 @@ public class StockFamilyResource {
      * GET  /stockFamilys/:id -> get the "id" stockFamily.
      */
     @RequestMapping(value = "/stockFamilys/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<StockFamily> getStockFamily(@PathVariable Long id) {
         log.debug("REST request to get StockFamily : {}", id);
@@ -114,8 +114,8 @@ public class StockFamilyResource {
      * DELETE  /stockFamilys/:id -> delete the "id" stockFamily.
      */
     @RequestMapping(value = "/stockFamilys/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteStockFamily(@PathVariable Long id) {
         log.debug("REST request to delete StockFamily : {}", id);
@@ -134,7 +134,7 @@ public class StockFamilyResource {
     @Timed
     public List<StockFamily> searchStockFamilys(@PathVariable String query) {
         return StreamSupport
-            .stream(stockFamilySearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(stockFamilySearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
 }

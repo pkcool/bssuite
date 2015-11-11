@@ -1,6 +1,6 @@
 package com.enginemobi.bssuite.web.rest.dto;
 
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -15,69 +15,47 @@ public class CustomerDiscountRuleDTO implements Serializable {
 
     private String priceGroupCode;
 
-
     private Integer ruleNo;
-
 
     private Boolean isAppliedGlobally;
 
-
     private Boolean isAppliedOnSpecialItemsOnly;
-
 
     private String customerCode;
 
-
     private String customerCategoryCode;
-
 
     private String fromProductCode;
 
-
     private String toProductCode;
-
 
     private LocalDate startDate;
 
-
     private LocalDate endDate;
-
 
     private Integer qtyBreak;
 
-
     private String fromSupplierCode;
-
 
     private String toSupplierCode;
 
-
     private String fromStockGroupCode;
-
 
     private String toStockGroupCode;
 
-
     private String taxCode;
-
 
     private Boolean isAppliedWhenTaxExempt;
 
-
     private String storeCode;
-
 
     private String discountName;
 
-
     private String stockFamilyCode;
-
 
     private BigDecimal listPrice;
 
-
     private String discountFormula;
-
 
     public Long getId() {
         return id;
@@ -95,7 +73,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
         this.priceGroupCode = priceGroupCode;
     }
 
-
     public Integer getRuleNo() {
         return ruleNo;
     }
@@ -103,7 +80,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
     public void setRuleNo(Integer ruleNo) {
         this.ruleNo = ruleNo;
     }
-
 
     public Boolean getIsAppliedGlobally() {
         return isAppliedGlobally;
@@ -113,7 +89,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
         this.isAppliedGlobally = isAppliedGlobally;
     }
 
-
     public Boolean getIsAppliedOnSpecialItemsOnly() {
         return isAppliedOnSpecialItemsOnly;
     }
@@ -121,7 +96,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
     public void setIsAppliedOnSpecialItemsOnly(Boolean isAppliedOnSpecialItemsOnly) {
         this.isAppliedOnSpecialItemsOnly = isAppliedOnSpecialItemsOnly;
     }
-
 
     public String getCustomerCode() {
         return customerCode;
@@ -131,7 +105,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
         this.customerCode = customerCode;
     }
 
-
     public String getCustomerCategoryCode() {
         return customerCategoryCode;
     }
@@ -139,7 +112,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
     public void setCustomerCategoryCode(String customerCategoryCode) {
         this.customerCategoryCode = customerCategoryCode;
     }
-
 
     public String getFromProductCode() {
         return fromProductCode;
@@ -149,7 +121,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
         this.fromProductCode = fromProductCode;
     }
 
-
     public String getToProductCode() {
         return toProductCode;
     }
@@ -157,7 +128,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
     public void setToProductCode(String toProductCode) {
         this.toProductCode = toProductCode;
     }
-
 
     public LocalDate getStartDate() {
         return startDate;
@@ -167,7 +137,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
         this.startDate = startDate;
     }
 
-
     public LocalDate getEndDate() {
         return endDate;
     }
@@ -175,7 +144,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
-
 
     public Integer getQtyBreak() {
         return qtyBreak;
@@ -185,7 +153,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
         this.qtyBreak = qtyBreak;
     }
 
-
     public String getFromSupplierCode() {
         return fromSupplierCode;
     }
@@ -193,7 +160,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
     public void setFromSupplierCode(String fromSupplierCode) {
         this.fromSupplierCode = fromSupplierCode;
     }
-
 
     public String getToSupplierCode() {
         return toSupplierCode;
@@ -203,7 +169,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
         this.toSupplierCode = toSupplierCode;
     }
 
-
     public String getFromStockGroupCode() {
         return fromStockGroupCode;
     }
@@ -211,7 +176,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
     public void setFromStockGroupCode(String fromStockGroupCode) {
         this.fromStockGroupCode = fromStockGroupCode;
     }
-
 
     public String getToStockGroupCode() {
         return toStockGroupCode;
@@ -221,7 +185,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
         this.toStockGroupCode = toStockGroupCode;
     }
 
-
     public String getTaxCode() {
         return taxCode;
     }
@@ -229,7 +192,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
     public void setTaxCode(String taxCode) {
         this.taxCode = taxCode;
     }
-
 
     public Boolean getIsAppliedWhenTaxExempt() {
         return isAppliedWhenTaxExempt;
@@ -239,7 +201,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
         this.isAppliedWhenTaxExempt = isAppliedWhenTaxExempt;
     }
 
-
     public String getStoreCode() {
         return storeCode;
     }
@@ -247,7 +208,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
     public void setStoreCode(String storeCode) {
         this.storeCode = storeCode;
     }
-
 
     public String getDiscountName() {
         return discountName;
@@ -257,7 +217,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
         this.discountName = discountName;
     }
 
-
     public String getStockFamilyCode() {
         return stockFamilyCode;
     }
@@ -265,7 +224,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
     public void setStockFamilyCode(String stockFamilyCode) {
         this.stockFamilyCode = stockFamilyCode;
     }
-
 
     public BigDecimal getListPrice() {
         return listPrice;
@@ -275,7 +233,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
         this.listPrice = listPrice;
     }
 
-
     public String getDiscountFormula() {
         return discountFormula;
     }
@@ -283,7 +240,6 @@ public class CustomerDiscountRuleDTO implements Serializable {
     public void setDiscountFormula(String discountFormula) {
         this.discountFormula = discountFormula;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -309,29 +265,29 @@ public class CustomerDiscountRuleDTO implements Serializable {
     @Override
     public String toString() {
         return "CustomerDiscountRuleDTO{" +
-                "id=" + id +
-                ", priceGroupCode='" + priceGroupCode + "'" +
-                ", ruleNo='" + ruleNo + "'" +
-                ", isAppliedGlobally='" + isAppliedGlobally + "'" +
-                ", isAppliedOnSpecialItemsOnly='" + isAppliedOnSpecialItemsOnly + "'" +
-                ", customerCode='" + customerCode + "'" +
-                ", customerCategoryCode='" + customerCategoryCode + "'" +
-                ", fromProductCode='" + fromProductCode + "'" +
-                ", toProductCode='" + toProductCode + "'" +
-                ", startDate='" + startDate + "'" +
-                ", endDate='" + endDate + "'" +
-                ", qtyBreak='" + qtyBreak + "'" +
-                ", fromSupplierCode='" + fromSupplierCode + "'" +
-                ", toSupplierCode='" + toSupplierCode + "'" +
-                ", fromStockGroupCode='" + fromStockGroupCode + "'" +
-                ", toStockGroupCode='" + toStockGroupCode + "'" +
-                ", taxCode='" + taxCode + "'" +
-                ", isAppliedWhenTaxExempt='" + isAppliedWhenTaxExempt + "'" +
-                ", storeCode='" + storeCode + "'" +
-                ", discountName='" + discountName + "'" +
-                ", stockFamilyCode='" + stockFamilyCode + "'" +
-                ", listPrice='" + listPrice + "'" +
-                ", discountFormula='" + discountFormula + "'" +
-                '}';
+            "id=" + id +
+            ", priceGroupCode='" + priceGroupCode + "'" +
+            ", ruleNo='" + ruleNo + "'" +
+            ", isAppliedGlobally='" + isAppliedGlobally + "'" +
+            ", isAppliedOnSpecialItemsOnly='" + isAppliedOnSpecialItemsOnly + "'" +
+            ", customerCode='" + customerCode + "'" +
+            ", customerCategoryCode='" + customerCategoryCode + "'" +
+            ", fromProductCode='" + fromProductCode + "'" +
+            ", toProductCode='" + toProductCode + "'" +
+            ", startDate='" + startDate + "'" +
+            ", endDate='" + endDate + "'" +
+            ", qtyBreak='" + qtyBreak + "'" +
+            ", fromSupplierCode='" + fromSupplierCode + "'" +
+            ", toSupplierCode='" + toSupplierCode + "'" +
+            ", fromStockGroupCode='" + fromStockGroupCode + "'" +
+            ", toStockGroupCode='" + toStockGroupCode + "'" +
+            ", taxCode='" + taxCode + "'" +
+            ", isAppliedWhenTaxExempt='" + isAppliedWhenTaxExempt + "'" +
+            ", storeCode='" + storeCode + "'" +
+            ", discountName='" + discountName + "'" +
+            ", stockFamilyCode='" + stockFamilyCode + "'" +
+            ", listPrice='" + listPrice + "'" +
+            ", discountFormula='" + discountFormula + "'" +
+            '}';
     }
 }

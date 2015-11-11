@@ -91,5 +91,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('address.delete', {
+                parent: 'address',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/address/address-delete-dialog.html',
+                        controller: 'AddressDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['Address', function(Address) {
+                                return Address.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('address', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

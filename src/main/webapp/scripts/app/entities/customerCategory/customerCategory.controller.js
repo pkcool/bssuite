@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('CustomerCategoryController', function ($scope, CustomerCategory, CustomerCategorySearch, ParseLinks) {
+    .controller('CustomerCategoryController', function ($scope, $state, $modal, CustomerCategory, CustomerCategorySearch, ParseLinks) {
+      
         $scope.customerCategorys = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            CustomerCategory.get({id: id}, function(result) {
-                $scope.customerCategory = result;
-                $('#deleteCustomerCategoryConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            CustomerCategory.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteCustomerCategoryConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             CustomerCategorySearch.query({query: $scope.searchQuery}, function(result) {

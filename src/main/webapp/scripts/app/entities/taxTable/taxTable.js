@@ -93,5 +93,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('taxTable.delete', {
+                parent: 'taxTable',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/taxTable/taxTable-delete-dialog.html',
+                        controller: 'TaxTableDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['TaxTable', function(TaxTable) {
+                                return TaxTable.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('taxTable', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

@@ -99,5 +99,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('carrier.delete', {
+                parent: 'carrier',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/carrier/carrier-delete-dialog.html',
+                        controller: 'CarrierDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['Carrier', function(Carrier) {
+                                return Carrier.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('carrier', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

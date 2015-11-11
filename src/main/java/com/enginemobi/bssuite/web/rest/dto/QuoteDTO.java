@@ -1,7 +1,7 @@
 package com.enginemobi.bssuite.web.rest.dto;
 
-import org.joda.time.LocalDate;
-import org.joda.time.DateTime;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -19,73 +19,48 @@ public class QuoteDTO implements Serializable {
 
     private String quoteNo;
 
-
     private QuoteStatus status;
 
-
-    private DateTime quoteDate;
-
+    private ZonedDateTime quoteDate;
 
     private LocalDate expiryDate;
 
-
     private LocalDate followupDate;
-
 
     private String reference;
 
-
     private String ourRef;
-
 
     private BigDecimal freight;
 
-
     private String reasonForLoss;
-
 
     private Boolean isTaxable;
 
-
     private String taxExemptionCode;
-
 
     private Boolean isLocked;
 
-
     private BigDecimal adjustTax;
-
 
     private BigDecimal adjustTaxExempt;
 
-
     private String comment;
-
 
     private BigDecimal totalTaxAmount;
 
-
     private BigDecimal totalSellPrice;
-
 
     private BigDecimal totalCost;
 
-
     private Boolean isSuspended;
 
-
     private Long customerId;
-
     private Long contactId;
-
     private Long deliveryContactId;
-
     private Long storeId;
-
     private Long quoteByStaffId;
-
     private Long createdById;
-
     public Long getId() {
         return id;
     }
@@ -102,7 +77,6 @@ public class QuoteDTO implements Serializable {
         this.quoteNo = quoteNo;
     }
 
-
     public QuoteStatus getStatus() {
         return status;
     }
@@ -111,15 +85,13 @@ public class QuoteDTO implements Serializable {
         this.status = status;
     }
 
-
-    public DateTime getQuoteDate() {
+    public ZonedDateTime getQuoteDate() {
         return quoteDate;
     }
 
-    public void setQuoteDate(DateTime quoteDate) {
+    public void setQuoteDate(ZonedDateTime quoteDate) {
         this.quoteDate = quoteDate;
     }
-
 
     public LocalDate getExpiryDate() {
         return expiryDate;
@@ -129,7 +101,6 @@ public class QuoteDTO implements Serializable {
         this.expiryDate = expiryDate;
     }
 
-
     public LocalDate getFollowupDate() {
         return followupDate;
     }
@@ -137,7 +108,6 @@ public class QuoteDTO implements Serializable {
     public void setFollowupDate(LocalDate followupDate) {
         this.followupDate = followupDate;
     }
-
 
     public String getReference() {
         return reference;
@@ -147,7 +117,6 @@ public class QuoteDTO implements Serializable {
         this.reference = reference;
     }
 
-
     public String getOurRef() {
         return ourRef;
     }
@@ -155,7 +124,6 @@ public class QuoteDTO implements Serializable {
     public void setOurRef(String ourRef) {
         this.ourRef = ourRef;
     }
-
 
     public BigDecimal getFreight() {
         return freight;
@@ -165,7 +133,6 @@ public class QuoteDTO implements Serializable {
         this.freight = freight;
     }
 
-
     public String getReasonForLoss() {
         return reasonForLoss;
     }
@@ -173,7 +140,6 @@ public class QuoteDTO implements Serializable {
     public void setReasonForLoss(String reasonForLoss) {
         this.reasonForLoss = reasonForLoss;
     }
-
 
     public Boolean getIsTaxable() {
         return isTaxable;
@@ -183,7 +149,6 @@ public class QuoteDTO implements Serializable {
         this.isTaxable = isTaxable;
     }
 
-
     public String getTaxExemptionCode() {
         return taxExemptionCode;
     }
@@ -191,7 +156,6 @@ public class QuoteDTO implements Serializable {
     public void setTaxExemptionCode(String taxExemptionCode) {
         this.taxExemptionCode = taxExemptionCode;
     }
-
 
     public Boolean getIsLocked() {
         return isLocked;
@@ -201,7 +165,6 @@ public class QuoteDTO implements Serializable {
         this.isLocked = isLocked;
     }
 
-
     public BigDecimal getAdjustTax() {
         return adjustTax;
     }
@@ -209,7 +172,6 @@ public class QuoteDTO implements Serializable {
     public void setAdjustTax(BigDecimal adjustTax) {
         this.adjustTax = adjustTax;
     }
-
 
     public BigDecimal getAdjustTaxExempt() {
         return adjustTaxExempt;
@@ -219,7 +181,6 @@ public class QuoteDTO implements Serializable {
         this.adjustTaxExempt = adjustTaxExempt;
     }
 
-
     public String getComment() {
         return comment;
     }
@@ -227,7 +188,6 @@ public class QuoteDTO implements Serializable {
     public void setComment(String comment) {
         this.comment = comment;
     }
-
 
     public BigDecimal getTotalTaxAmount() {
         return totalTaxAmount;
@@ -237,7 +197,6 @@ public class QuoteDTO implements Serializable {
         this.totalTaxAmount = totalTaxAmount;
     }
 
-
     public BigDecimal getTotalSellPrice() {
         return totalSellPrice;
     }
@@ -245,7 +204,6 @@ public class QuoteDTO implements Serializable {
     public void setTotalSellPrice(BigDecimal totalSellPrice) {
         this.totalSellPrice = totalSellPrice;
     }
-
 
     public BigDecimal getTotalCost() {
         return totalCost;
@@ -255,7 +213,6 @@ public class QuoteDTO implements Serializable {
         this.totalCost = totalCost;
     }
 
-
     public Boolean getIsSuspended() {
         return isSuspended;
     }
@@ -264,7 +221,6 @@ public class QuoteDTO implements Serializable {
         this.isSuspended = isSuspended;
     }
 
-
     public Long getCustomerId() {
         return customerId;
     }
@@ -272,7 +228,6 @@ public class QuoteDTO implements Serializable {
     public void setCustomerId(Long customerId) {
         this.customerId = customerId;
     }
-
     public Long getContactId() {
         return contactId;
     }
@@ -280,7 +235,6 @@ public class QuoteDTO implements Serializable {
     public void setContactId(Long contactId) {
         this.contactId = contactId;
     }
-
     public Long getDeliveryContactId() {
         return deliveryContactId;
     }
@@ -288,7 +242,6 @@ public class QuoteDTO implements Serializable {
     public void setDeliveryContactId(Long contactId) {
         this.deliveryContactId = contactId;
     }
-
     public Long getStoreId() {
         return storeId;
     }
@@ -296,7 +249,6 @@ public class QuoteDTO implements Serializable {
     public void setStoreId(Long storeId) {
         this.storeId = storeId;
     }
-
     public Long getQuoteByStaffId() {
         return quoteByStaffId;
     }
@@ -304,7 +256,6 @@ public class QuoteDTO implements Serializable {
     public void setQuoteByStaffId(Long staffId) {
         this.quoteByStaffId = staffId;
     }
-
     public Long getCreatedById() {
         return createdById;
     }
@@ -312,7 +263,6 @@ public class QuoteDTO implements Serializable {
     public void setCreatedById(Long staffId) {
         this.createdById = staffId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -337,26 +287,26 @@ public class QuoteDTO implements Serializable {
     @Override
     public String toString() {
         return "QuoteDTO{" +
-                "id=" + id +
-                ", quoteNo='" + quoteNo + "'" +
-                ", status='" + status + "'" +
-                ", quoteDate='" + quoteDate + "'" +
-                ", expiryDate='" + expiryDate + "'" +
-                ", followupDate='" + followupDate + "'" +
-                ", reference='" + reference + "'" +
-                ", ourRef='" + ourRef + "'" +
-                ", freight='" + freight + "'" +
-                ", reasonForLoss='" + reasonForLoss + "'" +
-                ", isTaxable='" + isTaxable + "'" +
-                ", taxExemptionCode='" + taxExemptionCode + "'" +
-                ", isLocked='" + isLocked + "'" +
-                ", adjustTax='" + adjustTax + "'" +
-                ", adjustTaxExempt='" + adjustTaxExempt + "'" +
-                ", comment='" + comment + "'" +
-                ", totalTaxAmount='" + totalTaxAmount + "'" +
-                ", totalSellPrice='" + totalSellPrice + "'" +
-                ", totalCost='" + totalCost + "'" +
-                ", isSuspended='" + isSuspended + "'" +
-                '}';
+            "id=" + id +
+            ", quoteNo='" + quoteNo + "'" +
+            ", status='" + status + "'" +
+            ", quoteDate='" + quoteDate + "'" +
+            ", expiryDate='" + expiryDate + "'" +
+            ", followupDate='" + followupDate + "'" +
+            ", reference='" + reference + "'" +
+            ", ourRef='" + ourRef + "'" +
+            ", freight='" + freight + "'" +
+            ", reasonForLoss='" + reasonForLoss + "'" +
+            ", isTaxable='" + isTaxable + "'" +
+            ", taxExemptionCode='" + taxExemptionCode + "'" +
+            ", isLocked='" + isLocked + "'" +
+            ", adjustTax='" + adjustTax + "'" +
+            ", adjustTaxExempt='" + adjustTaxExempt + "'" +
+            ", comment='" + comment + "'" +
+            ", totalTaxAmount='" + totalTaxAmount + "'" +
+            ", totalSellPrice='" + totalSellPrice + "'" +
+            ", totalCost='" + totalCost + "'" +
+            ", isSuspended='" + isSuspended + "'" +
+            '}';
     }
 }

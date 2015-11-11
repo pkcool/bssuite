@@ -52,8 +52,8 @@ public class InvoiceResource {
      * POST  /invoices -> Create a new invoice.
      */
     @RequestMapping(value = "/invoices",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<InvoiceDTO> createInvoice(@RequestBody InvoiceDTO invoiceDTO) throws URISyntaxException {
         log.debug("REST request to save Invoice : {}", invoiceDTO);
@@ -64,8 +64,8 @@ public class InvoiceResource {
         Invoice result = invoiceRepository.save(invoice);
         invoiceSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/invoices/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("invoice", result.getId().toString()))
-                .body(invoiceMapper.invoiceToInvoiceDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("invoice", result.getId().toString()))
+            .body(invoiceMapper.invoiceToInvoiceDTO(result));
     }
 
     /**
@@ -84,16 +84,16 @@ public class InvoiceResource {
         Invoice result = invoiceRepository.save(invoice);
         invoiceSearchRepository.save(invoice);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("invoice", invoiceDTO.getId().toString()))
-                .body(invoiceMapper.invoiceToInvoiceDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("invoice", invoiceDTO.getId().toString()))
+            .body(invoiceMapper.invoiceToInvoiceDTO(result));
     }
 
     /**
      * GET  /invoices -> get all the invoices.
      */
     @RequestMapping(value = "/invoices",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<InvoiceDTO>> getAllInvoices(Pageable pageable)
@@ -109,8 +109,8 @@ public class InvoiceResource {
      * GET  /invoices/:id -> get the "id" invoice.
      */
     @RequestMapping(value = "/invoices/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<InvoiceDTO> getInvoice(@PathVariable Long id) {
         log.debug("REST request to get Invoice : {}", id);
@@ -126,8 +126,8 @@ public class InvoiceResource {
      * DELETE  /invoices/:id -> delete the "id" invoice.
      */
     @RequestMapping(value = "/invoices/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteInvoice(@PathVariable Long id) {
         log.debug("REST request to delete Invoice : {}", id);
@@ -146,7 +146,7 @@ public class InvoiceResource {
     @Timed
     public List<InvoiceDTO> searchInvoices(@PathVariable String query) {
         return StreamSupport
-            .stream(invoiceSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(invoiceSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(invoiceMapper::invoiceToInvoiceDTO)
             .collect(Collectors.toList());
     }

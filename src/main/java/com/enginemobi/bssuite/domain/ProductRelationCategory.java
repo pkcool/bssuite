@@ -14,17 +14,16 @@ import java.util.Objects;
 @Entity
 @Table(name = "product_relation_category")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="productrelationcategory")
+@Document(indexName = "productrelationcategory")
 public class ProductRelationCategory implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
     @Column(name = "code")
     private String code;
-    
+
     @Column(name = "description")
     private String description;
 
@@ -76,9 +75,9 @@ public class ProductRelationCategory implements Serializable {
     @Override
     public String toString() {
         return "ProductRelationCategory{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", description='" + description + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", description='" + description + "'" +
+            '}';
     }
 }

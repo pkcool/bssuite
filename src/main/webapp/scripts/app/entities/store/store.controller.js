@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('StoreController', function ($scope, Store, StoreSearch, ParseLinks) {
+    .controller('StoreController', function ($scope, $state, $modal, Store, StoreSearch, ParseLinks) {
+      
         $scope.stores = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            Store.get({id: id}, function(result) {
-                $scope.store = result;
-                $('#deleteStoreConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            Store.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteStoreConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             StoreSearch.query({query: $scope.searchQuery}, function(result) {

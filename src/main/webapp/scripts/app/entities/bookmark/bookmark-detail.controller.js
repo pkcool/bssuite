@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.bookmark = result;
             });
         };
-        $rootScope.$on('bssuiteApp:bookmarkUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:bookmarkUpdate', function(event, result) {
             $scope.bookmark = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

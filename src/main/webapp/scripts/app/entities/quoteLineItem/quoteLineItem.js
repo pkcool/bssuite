@@ -99,5 +99,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('quoteLineItem.delete', {
+                parent: 'quoteLineItem',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/quoteLineItem/quoteLineItem-delete-dialog.html',
+                        controller: 'QuoteLineItemDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['QuoteLineItem', function(QuoteLineItem) {
+                                return QuoteLineItem.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('quoteLineItem', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

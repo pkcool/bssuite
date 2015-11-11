@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('AddressController', function ($scope, Address, AddressSearch, ParseLinks) {
+    .controller('AddressController', function ($scope, $state, $modal, Address, AddressSearch, ParseLinks) {
+      
         $scope.addresss = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            Address.get({id: id}, function(result) {
-                $scope.address = result;
-                $('#deleteAddressConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            Address.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteAddressConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             AddressSearch.query({query: $scope.searchQuery}, function(result) {

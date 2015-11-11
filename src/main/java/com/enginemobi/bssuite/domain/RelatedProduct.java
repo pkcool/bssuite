@@ -16,17 +16,16 @@ import java.util.Objects;
 @Entity
 @Table(name = "related_product")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="relatedproduct")
+@Document(indexName = "relatedproduct")
 public class RelatedProduct implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
     @Column(name = "is_suggested")
     private Boolean isSuggested;
-    
+
     @Column(name = "comment")
     private String comment;
 
@@ -111,9 +110,9 @@ public class RelatedProduct implements Serializable {
     @Override
     public String toString() {
         return "RelatedProduct{" +
-                "id=" + id +
-                ", isSuggested='" + isSuggested + "'" +
-                ", comment='" + comment + "'" +
-                '}';
+            "id=" + id +
+            ", isSuggested='" + isSuggested + "'" +
+            ", comment='" + comment + "'" +
+            '}';
     }
 }

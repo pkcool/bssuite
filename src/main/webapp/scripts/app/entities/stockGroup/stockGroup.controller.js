@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('StockGroupController', function ($scope, StockGroup, StockGroupSearch, ParseLinks) {
+    .controller('StockGroupController', function ($scope, $state, $modal, StockGroup, StockGroupSearch, ParseLinks) {
+      
         $scope.stockGroups = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            StockGroup.get({id: id}, function(result) {
-                $scope.stockGroup = result;
-                $('#deleteStockGroupConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            StockGroup.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteStockGroupConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             StockGroupSearch.query({query: $scope.searchQuery}, function(result) {

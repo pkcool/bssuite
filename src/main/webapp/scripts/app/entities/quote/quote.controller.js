@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('QuoteController', function ($scope, Quote, QuoteSearch, ParseLinks) {
+    .controller('QuoteController', function ($scope, $state, $modal, Quote, QuoteSearch, ParseLinks) {
+      
         $scope.quotes = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            Quote.get({id: id}, function(result) {
-                $scope.quote = result;
-                $('#deleteQuoteConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            Quote.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteQuoteConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             QuoteSearch.query({query: $scope.searchQuery}, function(result) {

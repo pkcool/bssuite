@@ -93,5 +93,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('bookmark.delete', {
+                parent: 'bookmark',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/bookmark/bookmark-delete-dialog.html',
+                        controller: 'BookmarkDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['Bookmark', function(Bookmark) {
+                                return Bookmark.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('bookmark', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('SupplierDiscountRuleController', function ($scope, SupplierDiscountRule, SupplierDiscountRuleSearch, ParseLinks) {
+    .controller('SupplierDiscountRuleController', function ($scope, $state, $modal, SupplierDiscountRule, SupplierDiscountRuleSearch, ParseLinks) {
+      
         $scope.supplierDiscountRules = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            SupplierDiscountRule.get({id: id}, function(result) {
-                $scope.supplierDiscountRule = result;
-                $('#deleteSupplierDiscountRuleConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            SupplierDiscountRule.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteSupplierDiscountRuleConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             SupplierDiscountRuleSearch.query({query: $scope.searchQuery}, function(result) {

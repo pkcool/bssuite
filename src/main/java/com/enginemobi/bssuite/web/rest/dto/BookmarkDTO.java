@@ -1,6 +1,6 @@
 package com.enginemobi.bssuite.web.rest.dto;
 
-import org.joda.time.DateTime;
+import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,32 +16,23 @@ public class BookmarkDTO implements Serializable {
 
     private Long id;
 
-    private DateTime createdOn;
-
+    private ZonedDateTime createdOn;
 
     private String txnNumber;
 
-
     private BookmarkType bookmarkType;
-
 
     private BookmarkArea bookmarkArea;
 
-
     private String keyCode;
-
 
     private String title;
 
-
-    private DateTime lastEditedOn;
-
+    private ZonedDateTime lastEditedOn;
 
     private Integer openCount;
 
-
     private Long createdById;
-
     public Long getId() {
         return id;
     }
@@ -50,14 +41,13 @@ public class BookmarkDTO implements Serializable {
         this.id = id;
     }
 
-    public DateTime getCreatedOn() {
+    public ZonedDateTime getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(DateTime createdOn) {
+    public void setCreatedOn(ZonedDateTime createdOn) {
         this.createdOn = createdOn;
     }
-
 
     public String getTxnNumber() {
         return txnNumber;
@@ -67,7 +57,6 @@ public class BookmarkDTO implements Serializable {
         this.txnNumber = txnNumber;
     }
 
-
     public BookmarkType getBookmarkType() {
         return bookmarkType;
     }
@@ -75,7 +64,6 @@ public class BookmarkDTO implements Serializable {
     public void setBookmarkType(BookmarkType bookmarkType) {
         this.bookmarkType = bookmarkType;
     }
-
 
     public BookmarkArea getBookmarkArea() {
         return bookmarkArea;
@@ -85,7 +73,6 @@ public class BookmarkDTO implements Serializable {
         this.bookmarkArea = bookmarkArea;
     }
 
-
     public String getKeyCode() {
         return keyCode;
     }
@@ -93,7 +80,6 @@ public class BookmarkDTO implements Serializable {
     public void setKeyCode(String keyCode) {
         this.keyCode = keyCode;
     }
-
 
     public String getTitle() {
         return title;
@@ -103,15 +89,13 @@ public class BookmarkDTO implements Serializable {
         this.title = title;
     }
 
-
-    public DateTime getLastEditedOn() {
+    public ZonedDateTime getLastEditedOn() {
         return lastEditedOn;
     }
 
-    public void setLastEditedOn(DateTime lastEditedOn) {
+    public void setLastEditedOn(ZonedDateTime lastEditedOn) {
         this.lastEditedOn = lastEditedOn;
     }
-
 
     public Integer getOpenCount() {
         return openCount;
@@ -121,7 +105,6 @@ public class BookmarkDTO implements Serializable {
         this.openCount = openCount;
     }
 
-
     public Long getCreatedById() {
         return createdById;
     }
@@ -129,7 +112,6 @@ public class BookmarkDTO implements Serializable {
     public void setCreatedById(Long staffId) {
         this.createdById = staffId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -154,15 +136,15 @@ public class BookmarkDTO implements Serializable {
     @Override
     public String toString() {
         return "BookmarkDTO{" +
-                "id=" + id +
-                ", createdOn='" + createdOn + "'" +
-                ", txnNumber='" + txnNumber + "'" +
-                ", bookmarkType='" + bookmarkType + "'" +
-                ", bookmarkArea='" + bookmarkArea + "'" +
-                ", keyCode='" + keyCode + "'" +
-                ", title='" + title + "'" +
-                ", lastEditedOn='" + lastEditedOn + "'" +
-                ", openCount='" + openCount + "'" +
-                '}';
+            "id=" + id +
+            ", createdOn='" + createdOn + "'" +
+            ", txnNumber='" + txnNumber + "'" +
+            ", bookmarkType='" + bookmarkType + "'" +
+            ", bookmarkArea='" + bookmarkArea + "'" +
+            ", keyCode='" + keyCode + "'" +
+            ", title='" + title + "'" +
+            ", lastEditedOn='" + lastEditedOn + "'" +
+            ", openCount='" + openCount + "'" +
+            '}';
     }
 }

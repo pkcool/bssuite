@@ -1,6 +1,6 @@
 package com.enginemobi.bssuite.web.rest.dto;
 
-import org.joda.time.DateTime;
+import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -17,26 +17,19 @@ public class TxnActivityAuditDTO implements Serializable {
 
     private Long id;
 
-    private DateTime editedOn;
-
+    private ZonedDateTime editedOn;
 
     private String txnNumber;
 
-
     private TxnType txnType;
-
 
     private BigDecimal txnAmount;
 
-
     private String bankAcc;
-
 
     private TxnEditType editType;
 
-
     private Long editedById;
-
     public Long getId() {
         return id;
     }
@@ -45,14 +38,13 @@ public class TxnActivityAuditDTO implements Serializable {
         this.id = id;
     }
 
-    public DateTime getEditedOn() {
+    public ZonedDateTime getEditedOn() {
         return editedOn;
     }
 
-    public void setEditedOn(DateTime editedOn) {
+    public void setEditedOn(ZonedDateTime editedOn) {
         this.editedOn = editedOn;
     }
-
 
     public String getTxnNumber() {
         return txnNumber;
@@ -62,7 +54,6 @@ public class TxnActivityAuditDTO implements Serializable {
         this.txnNumber = txnNumber;
     }
 
-
     public TxnType getTxnType() {
         return txnType;
     }
@@ -70,7 +61,6 @@ public class TxnActivityAuditDTO implements Serializable {
     public void setTxnType(TxnType txnType) {
         this.txnType = txnType;
     }
-
 
     public BigDecimal getTxnAmount() {
         return txnAmount;
@@ -80,7 +70,6 @@ public class TxnActivityAuditDTO implements Serializable {
         this.txnAmount = txnAmount;
     }
 
-
     public String getBankAcc() {
         return bankAcc;
     }
@@ -88,7 +77,6 @@ public class TxnActivityAuditDTO implements Serializable {
     public void setBankAcc(String bankAcc) {
         this.bankAcc = bankAcc;
     }
-
 
     public TxnEditType getEditType() {
         return editType;
@@ -98,7 +86,6 @@ public class TxnActivityAuditDTO implements Serializable {
         this.editType = editType;
     }
 
-
     public Long getEditedById() {
         return editedById;
     }
@@ -106,7 +93,6 @@ public class TxnActivityAuditDTO implements Serializable {
     public void setEditedById(Long staffId) {
         this.editedById = staffId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -131,13 +117,13 @@ public class TxnActivityAuditDTO implements Serializable {
     @Override
     public String toString() {
         return "TxnActivityAuditDTO{" +
-                "id=" + id +
-                ", editedOn='" + editedOn + "'" +
-                ", txnNumber='" + txnNumber + "'" +
-                ", txnType='" + txnType + "'" +
-                ", txnAmount='" + txnAmount + "'" +
-                ", bankAcc='" + bankAcc + "'" +
-                ", editType='" + editType + "'" +
-                '}';
+            "id=" + id +
+            ", editedOn='" + editedOn + "'" +
+            ", txnNumber='" + txnNumber + "'" +
+            ", txnType='" + txnType + "'" +
+            ", txnAmount='" + txnAmount + "'" +
+            ", bankAcc='" + bankAcc + "'" +
+            ", editType='" + editType + "'" +
+            '}';
     }
 }

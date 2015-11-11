@@ -14,16 +14,22 @@ angular.module('bssuiteApp').controller('InvoiceLineItemDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:invoiceLineItemUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.invoiceLineItem.id != null) {
-                InvoiceLineItem.update($scope.invoiceLineItem, onSaveFinished);
+                InvoiceLineItem.update($scope.invoiceLineItem, onSaveSuccess, onSaveError);
             } else {
-                InvoiceLineItem.save($scope.invoiceLineItem, onSaveFinished);
+                InvoiceLineItem.save($scope.invoiceLineItem, onSaveSuccess, onSaveError);
             }
         };
 

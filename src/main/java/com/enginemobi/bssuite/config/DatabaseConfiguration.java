@@ -1,11 +1,13 @@
 package com.enginemobi.bssuite.config;
 
 import com.enginemobi.bssuite.config.liquibase.AsyncSpringLiquibase;
+
 import com.codahale.metrics.MetricRegistry;
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import liquibase.integration.spring.SpringLiquibase;
+import org.h2.tools.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +23,10 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.util.StringUtils;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.Arrays;
 
 @Configuration
@@ -32,7 +34,7 @@ import java.util.Arrays;
 @EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
 @EnableTransactionManagement
 @EnableElasticsearchRepositories("com.enginemobi.bssuite.repository.search")
-public class DatabaseConfiguration  {
+public class DatabaseConfiguration {
 
     private final Logger log = LoggerFactory.getLogger(DatabaseConfiguration.class);
 
@@ -46,22 +48,16 @@ public class DatabaseConfiguration  {
     @ConditionalOnExpression("#{!environment.acceptsProfiles('cloud') && !environment.acceptsProfiles('heroku')}")
     public DataSource dataSource(DataSourceProperties dataSourceProperties, JHipsterProperties jHipsterProperties) {
         log.debug("Configuring Datasource");
-        String databaseName = env.getProperty("spring.datasource.name"); // Standard property not available in DataSourceProperties
-        if (dataSourceProperties.getUrl() == null && databaseName == null) {
+        if (dataSourceProperties.getUrl() == null) {
             log.error("Your database connection pool configuration is incorrect! The application" +
                     " cannot start. Please check your Spring profile, current profiles are: {}",
-                    Arrays.toString(env.getActiveProfiles()));
+                Arrays.toString(env.getActiveProfiles()));
 
             throw new ApplicationContextException("Database connection pool is not configured correctly");
         }
         HikariConfig config = new HikariConfig();
         config.setDataSourceClassName(dataSourceProperties.getDriverClassName());
-        if(StringUtils.isEmpty(dataSourceProperties.getUrl())) {
-            config.addDataSourceProperty("databaseName", databaseName);
-            config.addDataSourceProperty("serverName", jHipsterProperties.getDatasource().getServerName());
-        } else {
-            config.addDataSourceProperty("url", dataSourceProperties.getUrl());
-        }
+        config.addDataSourceProperty("url", dataSourceProperties.getUrl());
         if (dataSourceProperties.getUsername() != null) {
             config.addDataSourceProperty("user", dataSourceProperties.getUsername());
         } else {
@@ -84,6 +80,14 @@ public class DatabaseConfiguration  {
         }
         return new HikariDataSource(config);
     }
+    /**
+     * Open the TCP port for the H2 database, so it is available remotely.
+     */
+    @Bean(initMethod = "start", destroyMethod = "stop")
+    @Profile(Constants.SPRING_PROFILE_DEVELOPMENT)
+    public Server h2TCPServer() throws SQLException {
+        return Server.createTcpServer("-tcp","-tcpAllowOthers");
+    }
 
     @Bean
     public SpringLiquibase liquibase(DataSource dataSource, DataSourceProperties dataSourceProperties,
@@ -94,6 +98,9 @@ public class DatabaseConfiguration  {
         liquibase.setDataSource(dataSource);
         liquibase.setChangeLog("classpath:config/liquibase/master.xml");
         liquibase.setContexts(liquibaseProperties.getContexts());
+        liquibase.setDefaultSchema(liquibaseProperties.getDefaultSchema());
+        liquibase.setDropFirst(liquibaseProperties.isDropFirst());
+        liquibase.setShouldRun(liquibaseProperties.isEnabled());
         if (env.acceptsProfiles(Constants.SPRING_PROFILE_FAST)) {
             if ("org.h2.jdbcx.JdbcDataSource".equals(dataSourceProperties.getDriverClassName())) {
                 liquibase.setShouldRun(true);

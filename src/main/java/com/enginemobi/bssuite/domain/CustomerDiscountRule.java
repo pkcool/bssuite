@@ -1,13 +1,8 @@
 package com.enginemobi.bssuite.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.enginemobi.bssuite.domain.util.CustomLocalDateSerializer;
-import com.enginemobi.bssuite.domain.util.ISO8601LocalDateDeserializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -21,83 +16,76 @@ import java.util.Objects;
 @Entity
 @Table(name = "customer_discount_rule")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="customerdiscountrule")
+@Document(indexName = "customerdiscountrule")
 public class CustomerDiscountRule implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
     @Column(name = "price_group_code")
     private String priceGroupCode;
-    
+
     @Column(name = "rule_no")
     private Integer ruleNo;
-    
+
     @Column(name = "is_applied_globally")
     private Boolean isAppliedGlobally;
-    
+
     @Column(name = "is_applied_on_special_items_only")
     private Boolean isAppliedOnSpecialItemsOnly;
-    
+
     @Column(name = "customer_code")
     private String customerCode;
-    
+
     @Column(name = "customer_category_code")
     private String customerCategoryCode;
-    
+
     @Column(name = "from_product_code")
     private String fromProductCode;
-    
+
     @Column(name = "to_product_code")
     private String toProductCode;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "start_date")
     private LocalDate startDate;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "end_date")
     private LocalDate endDate;
-    
+
     @Column(name = "qty_break")
     private Integer qtyBreak;
-    
+
     @Column(name = "from_supplier_code")
     private String fromSupplierCode;
-    
+
     @Column(name = "to_supplier_code")
     private String toSupplierCode;
-    
+
     @Column(name = "from_stock_group_code")
     private String fromStockGroupCode;
-    
+
     @Column(name = "to_stock_group_code")
     private String toStockGroupCode;
-    
+
     @Column(name = "tax_code")
     private String taxCode;
-    
+
     @Column(name = "is_applied_when_tax_exempt")
     private Boolean isAppliedWhenTaxExempt;
-    
+
     @Column(name = "store_code")
     private String storeCode;
-    
+
     @Column(name = "discount_name")
     private String discountName;
-    
+
     @Column(name = "stock_family_code")
     private String stockFamilyCode;
-    
+
     @Column(name = "list_price", precision=10, scale=2)
     private BigDecimal listPrice;
-    
+
     @Column(name = "discount_formula")
     private String discountFormula;
 
@@ -309,29 +297,29 @@ public class CustomerDiscountRule implements Serializable {
     @Override
     public String toString() {
         return "CustomerDiscountRule{" +
-                "id=" + id +
-                ", priceGroupCode='" + priceGroupCode + "'" +
-                ", ruleNo='" + ruleNo + "'" +
-                ", isAppliedGlobally='" + isAppliedGlobally + "'" +
-                ", isAppliedOnSpecialItemsOnly='" + isAppliedOnSpecialItemsOnly + "'" +
-                ", customerCode='" + customerCode + "'" +
-                ", customerCategoryCode='" + customerCategoryCode + "'" +
-                ", fromProductCode='" + fromProductCode + "'" +
-                ", toProductCode='" + toProductCode + "'" +
-                ", startDate='" + startDate + "'" +
-                ", endDate='" + endDate + "'" +
-                ", qtyBreak='" + qtyBreak + "'" +
-                ", fromSupplierCode='" + fromSupplierCode + "'" +
-                ", toSupplierCode='" + toSupplierCode + "'" +
-                ", fromStockGroupCode='" + fromStockGroupCode + "'" +
-                ", toStockGroupCode='" + toStockGroupCode + "'" +
-                ", taxCode='" + taxCode + "'" +
-                ", isAppliedWhenTaxExempt='" + isAppliedWhenTaxExempt + "'" +
-                ", storeCode='" + storeCode + "'" +
-                ", discountName='" + discountName + "'" +
-                ", stockFamilyCode='" + stockFamilyCode + "'" +
-                ", listPrice='" + listPrice + "'" +
-                ", discountFormula='" + discountFormula + "'" +
-                '}';
+            "id=" + id +
+            ", priceGroupCode='" + priceGroupCode + "'" +
+            ", ruleNo='" + ruleNo + "'" +
+            ", isAppliedGlobally='" + isAppliedGlobally + "'" +
+            ", isAppliedOnSpecialItemsOnly='" + isAppliedOnSpecialItemsOnly + "'" +
+            ", customerCode='" + customerCode + "'" +
+            ", customerCategoryCode='" + customerCategoryCode + "'" +
+            ", fromProductCode='" + fromProductCode + "'" +
+            ", toProductCode='" + toProductCode + "'" +
+            ", startDate='" + startDate + "'" +
+            ", endDate='" + endDate + "'" +
+            ", qtyBreak='" + qtyBreak + "'" +
+            ", fromSupplierCode='" + fromSupplierCode + "'" +
+            ", toSupplierCode='" + toSupplierCode + "'" +
+            ", fromStockGroupCode='" + fromStockGroupCode + "'" +
+            ", toStockGroupCode='" + toStockGroupCode + "'" +
+            ", taxCode='" + taxCode + "'" +
+            ", isAppliedWhenTaxExempt='" + isAppliedWhenTaxExempt + "'" +
+            ", storeCode='" + storeCode + "'" +
+            ", discountName='" + discountName + "'" +
+            ", stockFamilyCode='" + stockFamilyCode + "'" +
+            ", listPrice='" + listPrice + "'" +
+            ", discountFormula='" + discountFormula + "'" +
+            '}';
     }
 }

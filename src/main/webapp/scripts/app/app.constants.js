@@ -4,6 +4,6 @@ angular.module('bssuiteApp')
 
 .constant('ENV', 'dev')
 
-.constant('VERSION', '0.3.x-SNAPSHOT')
+.constant('VERSION', '0.0.1-SNAPSHOT')
 
 ;

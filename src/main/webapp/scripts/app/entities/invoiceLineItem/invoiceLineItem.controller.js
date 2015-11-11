@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('InvoiceLineItemController', function ($scope, InvoiceLineItem, InvoiceLineItemSearch, ParseLinks) {
+    .controller('InvoiceLineItemController', function ($scope, $state, $modal, InvoiceLineItem, InvoiceLineItemSearch, ParseLinks) {
+      
         $scope.invoiceLineItems = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            InvoiceLineItem.get({id: id}, function(result) {
-                $scope.invoiceLineItem = result;
-                $('#deleteInvoiceLineItemConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            InvoiceLineItem.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteInvoiceLineItemConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             InvoiceLineItemSearch.query({query: $scope.searchQuery}, function(result) {

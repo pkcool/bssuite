@@ -31,7 +31,7 @@
                     <span>QuoteDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{quote.quoteDate}}</span>
+                    <span class="form-control-static">{{quote.quoteDate | date:'medium'}}</span>
                 </td>
             </tr>
             <tr>
@@ -39,7 +39,7 @@
                     <span>ExpiryDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{quote.expiryDate}}</span>
+                    <span class="form-control-static">{{quote.expiryDate | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>
@@ -47,7 +47,7 @@
                     <span>FollowupDate</span>
                 </td>
                 <td>
-                    <span class="form-control-static">{{quote.followupDate}}</span>
+                    <span class="form-control-static">{{quote.followupDate | date:'mediumDate'}}</span>
                 </td>
             </tr>
             <tr>

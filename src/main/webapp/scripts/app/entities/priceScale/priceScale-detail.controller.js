@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.priceScale = result;
             });
         };
-        $rootScope.$on('bssuiteApp:priceScaleUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:priceScaleUpdate', function(event, result) {
             $scope.priceScale = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

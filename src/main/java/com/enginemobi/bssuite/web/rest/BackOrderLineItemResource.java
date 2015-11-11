@@ -52,8 +52,8 @@ public class BackOrderLineItemResource {
      * POST  /backOrderLineItems -> Create a new backOrderLineItem.
      */
     @RequestMapping(value = "/backOrderLineItems",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<BackOrderLineItemDTO> createBackOrderLineItem(@RequestBody BackOrderLineItemDTO backOrderLineItemDTO) throws URISyntaxException {
         log.debug("REST request to save BackOrderLineItem : {}", backOrderLineItemDTO);
@@ -64,8 +64,8 @@ public class BackOrderLineItemResource {
         BackOrderLineItem result = backOrderLineItemRepository.save(backOrderLineItem);
         backOrderLineItemSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/backOrderLineItems/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("backOrderLineItem", result.getId().toString()))
-                .body(backOrderLineItemMapper.backOrderLineItemToBackOrderLineItemDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("backOrderLineItem", result.getId().toString()))
+            .body(backOrderLineItemMapper.backOrderLineItemToBackOrderLineItemDTO(result));
     }
 
     /**
@@ -84,16 +84,16 @@ public class BackOrderLineItemResource {
         BackOrderLineItem result = backOrderLineItemRepository.save(backOrderLineItem);
         backOrderLineItemSearchRepository.save(backOrderLineItem);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("backOrderLineItem", backOrderLineItemDTO.getId().toString()))
-                .body(backOrderLineItemMapper.backOrderLineItemToBackOrderLineItemDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("backOrderLineItem", backOrderLineItemDTO.getId().toString()))
+            .body(backOrderLineItemMapper.backOrderLineItemToBackOrderLineItemDTO(result));
     }
 
     /**
      * GET  /backOrderLineItems -> get all the backOrderLineItems.
      */
     @RequestMapping(value = "/backOrderLineItems",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<BackOrderLineItemDTO>> getAllBackOrderLineItems(Pageable pageable)
@@ -109,8 +109,8 @@ public class BackOrderLineItemResource {
      * GET  /backOrderLineItems/:id -> get the "id" backOrderLineItem.
      */
     @RequestMapping(value = "/backOrderLineItems/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<BackOrderLineItemDTO> getBackOrderLineItem(@PathVariable Long id) {
         log.debug("REST request to get BackOrderLineItem : {}", id);
@@ -126,8 +126,8 @@ public class BackOrderLineItemResource {
      * DELETE  /backOrderLineItems/:id -> delete the "id" backOrderLineItem.
      */
     @RequestMapping(value = "/backOrderLineItems/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteBackOrderLineItem(@PathVariable Long id) {
         log.debug("REST request to delete BackOrderLineItem : {}", id);
@@ -146,7 +146,7 @@ public class BackOrderLineItemResource {
     @Timed
     public List<BackOrderLineItemDTO> searchBackOrderLineItems(@PathVariable String query) {
         return StreamSupport
-            .stream(backOrderLineItemSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(backOrderLineItemSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(backOrderLineItemMapper::backOrderLineItemToBackOrderLineItemDTO)
             .collect(Collectors.toList());
     }

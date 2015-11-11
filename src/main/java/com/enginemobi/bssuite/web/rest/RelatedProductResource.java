@@ -52,8 +52,8 @@ public class RelatedProductResource {
      * POST  /relatedProducts -> Create a new relatedProduct.
      */
     @RequestMapping(value = "/relatedProducts",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<RelatedProductDTO> createRelatedProduct(@RequestBody RelatedProductDTO relatedProductDTO) throws URISyntaxException {
         log.debug("REST request to save RelatedProduct : {}", relatedProductDTO);
@@ -64,8 +64,8 @@ public class RelatedProductResource {
         RelatedProduct result = relatedProductRepository.save(relatedProduct);
         relatedProductSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/relatedProducts/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("relatedProduct", result.getId().toString()))
-                .body(relatedProductMapper.relatedProductToRelatedProductDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("relatedProduct", result.getId().toString()))
+            .body(relatedProductMapper.relatedProductToRelatedProductDTO(result));
     }
 
     /**
@@ -84,16 +84,16 @@ public class RelatedProductResource {
         RelatedProduct result = relatedProductRepository.save(relatedProduct);
         relatedProductSearchRepository.save(relatedProduct);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("relatedProduct", relatedProductDTO.getId().toString()))
-                .body(relatedProductMapper.relatedProductToRelatedProductDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("relatedProduct", relatedProductDTO.getId().toString()))
+            .body(relatedProductMapper.relatedProductToRelatedProductDTO(result));
     }
 
     /**
      * GET  /relatedProducts -> get all the relatedProducts.
      */
     @RequestMapping(value = "/relatedProducts",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<RelatedProductDTO>> getAllRelatedProducts(Pageable pageable)
@@ -109,8 +109,8 @@ public class RelatedProductResource {
      * GET  /relatedProducts/:id -> get the "id" relatedProduct.
      */
     @RequestMapping(value = "/relatedProducts/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<RelatedProductDTO> getRelatedProduct(@PathVariable Long id) {
         log.debug("REST request to get RelatedProduct : {}", id);
@@ -126,8 +126,8 @@ public class RelatedProductResource {
      * DELETE  /relatedProducts/:id -> delete the "id" relatedProduct.
      */
     @RequestMapping(value = "/relatedProducts/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteRelatedProduct(@PathVariable Long id) {
         log.debug("REST request to delete RelatedProduct : {}", id);
@@ -146,7 +146,7 @@ public class RelatedProductResource {
     @Timed
     public List<RelatedProductDTO> searchRelatedProducts(@PathVariable String query) {
         return StreamSupport
-            .stream(relatedProductSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(relatedProductSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(relatedProductMapper::relatedProductToRelatedProductDTO)
             .collect(Collectors.toList());
     }

@@ -103,5 +103,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('invoiceLineItem.delete', {
+                parent: 'invoiceLineItem',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/invoiceLineItem/invoiceLineItem-delete-dialog.html',
+                        controller: 'InvoiceLineItemDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['InvoiceLineItem', function(InvoiceLineItem) {
+                                return InvoiceLineItem.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('invoiceLineItem', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

@@ -12,16 +12,22 @@ angular.module('bssuiteApp').controller('BookmarkDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:bookmarkUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.bookmark.id != null) {
-                Bookmark.update($scope.bookmark, onSaveFinished);
+                Bookmark.update($scope.bookmark, onSaveSuccess, onSaveError);
             } else {
-                Bookmark.save($scope.bookmark, onSaveFinished);
+                Bookmark.save($scope.bookmark, onSaveSuccess, onSaveError);
             }
         };
 

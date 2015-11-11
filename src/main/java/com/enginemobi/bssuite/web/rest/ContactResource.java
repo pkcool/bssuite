@@ -52,8 +52,8 @@ public class ContactResource {
      * POST  /contacts -> Create a new contact.
      */
     @RequestMapping(value = "/contacts",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<ContactDTO> createContact(@RequestBody ContactDTO contactDTO) throws URISyntaxException {
         log.debug("REST request to save Contact : {}", contactDTO);
@@ -64,8 +64,8 @@ public class ContactResource {
         Contact result = contactRepository.save(contact);
         contactSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/contacts/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("contact", result.getId().toString()))
-                .body(contactMapper.contactToContactDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("contact", result.getId().toString()))
+            .body(contactMapper.contactToContactDTO(result));
     }
 
     /**
@@ -84,16 +84,16 @@ public class ContactResource {
         Contact result = contactRepository.save(contact);
         contactSearchRepository.save(contact);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("contact", contactDTO.getId().toString()))
-                .body(contactMapper.contactToContactDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("contact", contactDTO.getId().toString()))
+            .body(contactMapper.contactToContactDTO(result));
     }
 
     /**
      * GET  /contacts -> get all the contacts.
      */
     @RequestMapping(value = "/contacts",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<ContactDTO>> getAllContacts(Pageable pageable)
@@ -109,8 +109,8 @@ public class ContactResource {
      * GET  /contacts/:id -> get the "id" contact.
      */
     @RequestMapping(value = "/contacts/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<ContactDTO> getContact(@PathVariable Long id) {
         log.debug("REST request to get Contact : {}", id);
@@ -126,8 +126,8 @@ public class ContactResource {
      * DELETE  /contacts/:id -> delete the "id" contact.
      */
     @RequestMapping(value = "/contacts/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteContact(@PathVariable Long id) {
         log.debug("REST request to delete Contact : {}", id);
@@ -146,7 +146,7 @@ public class ContactResource {
     @Timed
     public List<ContactDTO> searchContacts(@PathVariable String query) {
         return StreamSupport
-            .stream(contactSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(contactSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(contactMapper::contactToContactDTO)
             .collect(Collectors.toList());
     }

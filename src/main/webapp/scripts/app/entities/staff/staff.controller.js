@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('StaffController', function ($scope, Staff, StaffSearch, ParseLinks) {
+    .controller('StaffController', function ($scope, $state, $modal, Staff, StaffSearch, ParseLinks) {
+      
         $scope.staffs = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            Staff.get({id: id}, function(result) {
-                $scope.staff = result;
-                $('#deleteStaffConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            Staff.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteStaffConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             StaffSearch.query({query: $scope.searchQuery}, function(result) {

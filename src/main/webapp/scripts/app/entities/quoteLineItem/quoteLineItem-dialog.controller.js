@@ -14,16 +14,22 @@ angular.module('bssuiteApp').controller('QuoteLineItemDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:quoteLineItemUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.quoteLineItem.id != null) {
-                QuoteLineItem.update($scope.quoteLineItem, onSaveFinished);
+                QuoteLineItem.update($scope.quoteLineItem, onSaveSuccess, onSaveError);
             } else {
-                QuoteLineItem.save($scope.quoteLineItem, onSaveFinished);
+                QuoteLineItem.save($scope.quoteLineItem, onSaveSuccess, onSaveError);
             }
         };
 

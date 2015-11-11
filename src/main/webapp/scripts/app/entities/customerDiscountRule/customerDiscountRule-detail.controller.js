@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.customerDiscountRule = result;
             });
         };
-        $rootScope.$on('bssuiteApp:customerDiscountRuleUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:customerDiscountRuleUpdate', function(event, result) {
             $scope.customerDiscountRule = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

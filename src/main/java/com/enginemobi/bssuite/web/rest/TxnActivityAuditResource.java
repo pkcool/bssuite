@@ -52,8 +52,8 @@ public class TxnActivityAuditResource {
      * POST  /txnActivityAudits -> Create a new txnActivityAudit.
      */
     @RequestMapping(value = "/txnActivityAudits",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<TxnActivityAuditDTO> createTxnActivityAudit(@RequestBody TxnActivityAuditDTO txnActivityAuditDTO) throws URISyntaxException {
         log.debug("REST request to save TxnActivityAudit : {}", txnActivityAuditDTO);
@@ -64,8 +64,8 @@ public class TxnActivityAuditResource {
         TxnActivityAudit result = txnActivityAuditRepository.save(txnActivityAudit);
         txnActivityAuditSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/txnActivityAudits/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("txnActivityAudit", result.getId().toString()))
-                .body(txnActivityAuditMapper.txnActivityAuditToTxnActivityAuditDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("txnActivityAudit", result.getId().toString()))
+            .body(txnActivityAuditMapper.txnActivityAuditToTxnActivityAuditDTO(result));
     }
 
     /**
@@ -84,16 +84,16 @@ public class TxnActivityAuditResource {
         TxnActivityAudit result = txnActivityAuditRepository.save(txnActivityAudit);
         txnActivityAuditSearchRepository.save(txnActivityAudit);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("txnActivityAudit", txnActivityAuditDTO.getId().toString()))
-                .body(txnActivityAuditMapper.txnActivityAuditToTxnActivityAuditDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("txnActivityAudit", txnActivityAuditDTO.getId().toString()))
+            .body(txnActivityAuditMapper.txnActivityAuditToTxnActivityAuditDTO(result));
     }
 
     /**
      * GET  /txnActivityAudits -> get all the txnActivityAudits.
      */
     @RequestMapping(value = "/txnActivityAudits",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<TxnActivityAuditDTO>> getAllTxnActivityAudits(Pageable pageable)
@@ -109,8 +109,8 @@ public class TxnActivityAuditResource {
      * GET  /txnActivityAudits/:id -> get the "id" txnActivityAudit.
      */
     @RequestMapping(value = "/txnActivityAudits/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<TxnActivityAuditDTO> getTxnActivityAudit(@PathVariable Long id) {
         log.debug("REST request to get TxnActivityAudit : {}", id);
@@ -126,8 +126,8 @@ public class TxnActivityAuditResource {
      * DELETE  /txnActivityAudits/:id -> delete the "id" txnActivityAudit.
      */
     @RequestMapping(value = "/txnActivityAudits/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteTxnActivityAudit(@PathVariable Long id) {
         log.debug("REST request to delete TxnActivityAudit : {}", id);
@@ -146,7 +146,7 @@ public class TxnActivityAuditResource {
     @Timed
     public List<TxnActivityAuditDTO> searchTxnActivityAudits(@PathVariable String query) {
         return StreamSupport
-            .stream(txnActivityAuditSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(txnActivityAuditSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(txnActivityAuditMapper::txnActivityAuditToTxnActivityAuditDTO)
             .collect(Collectors.toList());
     }

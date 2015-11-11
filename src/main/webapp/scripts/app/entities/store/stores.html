@@ -20,31 +20,6 @@
         </div>
     </div>
 
-    <div class="modal fade" id="deleteStoreConfirmation">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form name="deleteForm" ng-submit="confirmDelete(store.id)">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                                ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to delete this Store?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
-                        </button>
-                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -82,7 +57,7 @@
                     <td>{{store.fax}}</td>
                     <td>{{store.email}}</td>
                     <td>{{store.webUrl}}</td>
-                    <td>{{store.inBusinessSince}}</td>
+                        <td>{{store.inBusinessSince | date:'mediumDate'}}</td>
                     <td>{{store.isArchived}}</td>
                     <td>
                         <button type="submit"
@@ -96,7 +71,7 @@
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
                         </button>
                         <button type="submit"
-                                ng-click="delete(store.id)"
+                                ui-sref="store.delete({id:store.id})"
                                 class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
                         </button>

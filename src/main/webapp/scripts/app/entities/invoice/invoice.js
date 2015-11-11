@@ -128,5 +128,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('invoice.delete', {
+                parent: 'invoice',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/invoice/invoice-delete-dialog.html',
+                        controller: 'InvoiceDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['Invoice', function(Invoice) {
+                                return Invoice.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('invoice', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

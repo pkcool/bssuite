@@ -107,5 +107,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('customerDiscountRule.delete', {
+                parent: 'customerDiscountRule',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/customerDiscountRule/customerDiscountRule-delete-dialog.html',
+                        controller: 'CustomerDiscountRuleDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['CustomerDiscountRule', function(CustomerDiscountRule) {
+                                return CustomerDiscountRule.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('customerDiscountRule', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

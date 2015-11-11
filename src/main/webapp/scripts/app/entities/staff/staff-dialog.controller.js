@@ -12,16 +12,22 @@ angular.module('bssuiteApp').controller('StaffDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:staffUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.staff.id != null) {
-                Staff.update($scope.staff, onSaveFinished);
+                Staff.update($scope.staff, onSaveSuccess, onSaveError);
             } else {
-                Staff.save($scope.staff, onSaveFinished);
+                Staff.save($scope.staff, onSaveSuccess, onSaveError);
             }
         };
 

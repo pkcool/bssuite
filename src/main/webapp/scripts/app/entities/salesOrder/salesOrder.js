@@ -106,5 +106,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('salesOrder.delete', {
+                parent: 'salesOrder',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/salesOrder/salesOrder-delete-dialog.html',
+                        controller: 'SalesOrderDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['SalesOrder', function(SalesOrder) {
+                                return SalesOrder.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('salesOrder', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

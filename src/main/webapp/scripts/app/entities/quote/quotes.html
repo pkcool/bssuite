@@ -20,31 +20,6 @@
         </div>
     </div>
 
-    <div class="modal fade" id="deleteQuoteConfirmation">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form name="deleteForm" ng-submit="confirmDelete(quote.id)">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                                ng-click="clear()">&times;</button>
-                        <h4 class="modal-title">Confirm delete operation</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to delete this Quote?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
-                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
-                        </button>
-                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span>Delete</span>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -83,9 +58,9 @@
                     <td><a ui-sref="quote.detail({id:quote.id})">{{quote.id}}</a></td>
                     <td>{{quote.quoteNo}}</td>
                     <td translate="{{'bssuiteApp.QuoteStatus.' + quote.status}}">{{quote.status}}</td>
-                    <td>{{quote.quoteDate}}</td>
-                    <td>{{quote.expiryDate}}</td>
-                    <td>{{quote.followupDate}}</td>
+                    <td>{{quote.quoteDate | date:'medium'}}</td>
+                        <td>{{quote.expiryDate | date:'mediumDate'}}</td>
+                        <td>{{quote.followupDate | date:'mediumDate'}}</td>
                     <td>{{quote.reference}}</td>
                     <td>{{quote.ourRef}}</td>
                     <td>{{quote.freight}}</td>
@@ -130,7 +105,7 @@
                             <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
                         </button>
                         <button type="submit"
-                                ng-click="delete(quote.id)"
+                                ui-sref="quote.delete({id:quote.id})"
                                 class="btn btn-danger btn-sm">
                             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
                         </button>

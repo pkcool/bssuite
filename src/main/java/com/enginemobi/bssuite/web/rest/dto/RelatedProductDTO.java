@@ -15,16 +15,11 @@ public class RelatedProductDTO implements Serializable {
 
     private Boolean isSuggested;
 
-
     private String comment;
 
-
     private Long productId;
-
     private Long equivalentProductId;
-
     private Long relationCategoryId;
-
     public Long getId() {
         return id;
     }
@@ -41,7 +36,6 @@ public class RelatedProductDTO implements Serializable {
         this.isSuggested = isSuggested;
     }
 
-
     public String getComment() {
         return comment;
     }
@@ -50,7 +44,6 @@ public class RelatedProductDTO implements Serializable {
         this.comment = comment;
     }
 
-
     public Long getProductId() {
         return productId;
     }
@@ -58,7 +51,6 @@ public class RelatedProductDTO implements Serializable {
     public void setProductId(Long productId) {
         this.productId = productId;
     }
-
     public Long getEquivalentProductId() {
         return equivalentProductId;
     }
@@ -66,7 +58,6 @@ public class RelatedProductDTO implements Serializable {
     public void setEquivalentProductId(Long productId) {
         this.equivalentProductId = productId;
     }
-
     public Long getRelationCategoryId() {
         return relationCategoryId;
     }
@@ -74,7 +65,6 @@ public class RelatedProductDTO implements Serializable {
     public void setRelationCategoryId(Long productRelationCategoryId) {
         this.relationCategoryId = productRelationCategoryId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -99,9 +89,9 @@ public class RelatedProductDTO implements Serializable {
     @Override
     public String toString() {
         return "RelatedProductDTO{" +
-                "id=" + id +
-                ", isSuggested='" + isSuggested + "'" +
-                ", comment='" + comment + "'" +
-                '}';
+            "id=" + id +
+            ", isSuggested='" + isSuggested + "'" +
+            ", comment='" + comment + "'" +
+            '}';
     }
 }

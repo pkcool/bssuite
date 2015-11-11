@@ -12,16 +12,22 @@ angular.module('bssuiteApp').controller('CalendarItemDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:calendarItemUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.calendarItem.id != null) {
-                CalendarItem.update($scope.calendarItem, onSaveFinished);
+                CalendarItem.update($scope.calendarItem, onSaveSuccess, onSaveError);
             } else {
-                CalendarItem.save($scope.calendarItem, onSaveFinished);
+                CalendarItem.save($scope.calendarItem, onSaveSuccess, onSaveError);
             }
         };
 

@@ -90,5 +90,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('priceScale.delete', {
+                parent: 'priceScale',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/priceScale/priceScale-delete-dialog.html',
+                        controller: 'PriceScaleDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['PriceScale', function(PriceScale) {
+                                return PriceScale.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('priceScale', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

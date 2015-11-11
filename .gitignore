@@ -11,7 +11,6 @@
 
 /src/main/java/com/enginemobi/bssuite/config/HerokuDatabaseConfiguration.java
 
-
 ######################
 # Node
 ######################
@@ -130,3 +129,8 @@ Desktop.ini
 # Gradle Wrapper
 ######################
 !gradle/wrapper/gradle-wrapper.jar
+
+######################
+# Maven Wrapper
+######################
+!.mvn/wrapper/maven-wrapper.jar

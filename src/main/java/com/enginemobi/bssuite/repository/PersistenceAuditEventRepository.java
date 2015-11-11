@@ -1,7 +1,8 @@
 package com.enginemobi.bssuite.repository;
 
 import com.enginemobi.bssuite.domain.PersistentAuditEvent;
-import org.joda.time.LocalDateTime;
+
+import java.time.LocalDateTime;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

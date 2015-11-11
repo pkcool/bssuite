@@ -14,16 +14,22 @@ angular.module('bssuiteApp').controller('PurchaseOrderLineItemDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:purchaseOrderLineItemUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.purchaseOrderLineItem.id != null) {
-                PurchaseOrderLineItem.update($scope.purchaseOrderLineItem, onSaveFinished);
+                PurchaseOrderLineItem.update($scope.purchaseOrderLineItem, onSaveSuccess, onSaveError);
             } else {
-                PurchaseOrderLineItem.save($scope.purchaseOrderLineItem, onSaveFinished);
+                PurchaseOrderLineItem.save($scope.purchaseOrderLineItem, onSaveSuccess, onSaveError);
             }
         };
 

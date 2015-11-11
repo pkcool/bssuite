@@ -12,16 +12,22 @@ angular.module('bssuiteApp').controller('StockFamilyDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:stockFamilyUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.stockFamily.id != null) {
-                StockFamily.update($scope.stockFamily, onSaveFinished);
+                StockFamily.update($scope.stockFamily, onSaveSuccess, onSaveError);
             } else {
-                StockFamily.save($scope.stockFamily, onSaveFinished);
+                StockFamily.save($scope.stockFamily, onSaveSuccess, onSaveError);
             }
         };
 

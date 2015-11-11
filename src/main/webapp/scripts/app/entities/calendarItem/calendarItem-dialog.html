@@ -11,55 +11,55 @@
         <div class="form-group">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="calendarItem.id" readonly>
+                    ng-model="calendarItem.id" readonly />
         </div>
         <div class="form-group">
             <label for="field_title">Title</label>
             <input type="text" class="form-control" name="title" id="field_title"
                     ng-model="calendarItem.title"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_startedOn">StartedOn</label>
             <input type="datetime-local" class="form-control" name="startedOn" id="field_startedOn"
-                    ng-model="calendarItem.startedOn" ng-model-options="{timezone: 'UTC'}"
-                    >
+                    ng-model="calendarItem.startedOn"
+                     />
         </div>
         <div class="form-group">
             <label for="field_endedOn">EndedOn</label>
             <input type="datetime-local" class="form-control" name="endedOn" id="field_endedOn"
-                    ng-model="calendarItem.endedOn" ng-model-options="{timezone: 'UTC'}"
-                    >
+                    ng-model="calendarItem.endedOn"
+                     />
         </div>
         <div class="form-group">
             <label for="field_isAllDayEvent">IsAllDayEvent</label>
             <input type="checkbox" class="form-control" name="isAllDayEvent" id="field_isAllDayEvent"
                     ng-model="calendarItem.isAllDayEvent"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_isRemainderEnabled">IsRemainderEnabled</label>
             <input type="checkbox" class="form-control" name="isRemainderEnabled" id="field_isRemainderEnabled"
                     ng-model="calendarItem.isRemainderEnabled"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_remainderTime">RemainderTime</label>
             <input type="datetime-local" class="form-control" name="remainderTime" id="field_remainderTime"
-                    ng-model="calendarItem.remainderTime" ng-model-options="{timezone: 'UTC'}"
-                    >
+                    ng-model="calendarItem.remainderTime"
+                     />
         </div>
         <div class="form-group">
             <label for="field_webUrl">WebUrl</label>
             <input type="text" class="form-control" name="webUrl" id="field_webUrl"
                     ng-model="calendarItem.webUrl"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_isEditable">IsEditable</label>
             <input type="checkbox" class="form-control" name="isEditable" id="field_isEditable"
                     ng-model="calendarItem.isEditable"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_alarmType">AlarmType</label>
@@ -80,7 +80,7 @@
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
         </button>
-        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
         </button>
     </div>

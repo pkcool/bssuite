@@ -13,16 +13,22 @@ angular.module('bssuiteApp').controller('RelatedProductDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:relatedProductUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.relatedProduct.id != null) {
-                RelatedProduct.update($scope.relatedProduct, onSaveFinished);
+                RelatedProduct.update($scope.relatedProduct, onSaveSuccess, onSaveError);
             } else {
-                RelatedProduct.save($scope.relatedProduct, onSaveFinished);
+                RelatedProduct.save($scope.relatedProduct, onSaveSuccess, onSaveError);
             }
         };
 

@@ -91,5 +91,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('txnActivityAudit.delete', {
+                parent: 'txnActivityAudit',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/txnActivityAudit/txnActivityAudit-delete-dialog.html',
+                        controller: 'TxnActivityAuditDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['TxnActivityAudit', function(TxnActivityAudit) {
+                                return TxnActivityAudit.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('txnActivityAudit', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

@@ -14,16 +14,22 @@ angular.module('bssuiteApp').controller('StockGroupDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:stockGroupUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.stockGroup.id != null) {
-                StockGroup.update($scope.stockGroup, onSaveFinished);
+                StockGroup.update($scope.stockGroup, onSaveSuccess, onSaveError);
             } else {
-                StockGroup.save($scope.stockGroup, onSaveFinished);
+                StockGroup.save($scope.stockGroup, onSaveSuccess, onSaveError);
             }
         };
 

@@ -11,16 +11,22 @@ angular.module('bssuiteApp').controller('AddressDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:addressUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.address.id != null) {
-                Address.update($scope.address, onSaveFinished);
+                Address.update($scope.address, onSaveSuccess, onSaveError);
             } else {
-                Address.save($scope.address, onSaveFinished);
+                Address.save($scope.address, onSaveSuccess, onSaveError);
             }
         };
 

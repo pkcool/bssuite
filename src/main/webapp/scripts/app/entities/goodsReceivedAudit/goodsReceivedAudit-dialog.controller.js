@@ -15,16 +15,22 @@ angular.module('bssuiteApp').controller('GoodsReceivedAuditDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:goodsReceivedAuditUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.goodsReceivedAudit.id != null) {
-                GoodsReceivedAudit.update($scope.goodsReceivedAudit, onSaveFinished);
+                GoodsReceivedAudit.update($scope.goodsReceivedAudit, onSaveSuccess, onSaveError);
             } else {
-                GoodsReceivedAudit.save($scope.goodsReceivedAudit, onSaveFinished);
+                GoodsReceivedAudit.save($scope.goodsReceivedAudit, onSaveSuccess, onSaveError);
             }
         };
 

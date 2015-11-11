@@ -46,8 +46,8 @@ public class PriceScaleResource {
      * POST  /priceScales -> Create a new priceScale.
      */
     @RequestMapping(value = "/priceScales",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<PriceScale> createPriceScale(@Valid @RequestBody PriceScale priceScale) throws URISyntaxException {
         log.debug("REST request to save PriceScale : {}", priceScale);
@@ -57,8 +57,8 @@ public class PriceScaleResource {
         PriceScale result = priceScaleRepository.save(priceScale);
         priceScaleSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/priceScales/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("priceScale", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("priceScale", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -76,16 +76,16 @@ public class PriceScaleResource {
         PriceScale result = priceScaleRepository.save(priceScale);
         priceScaleSearchRepository.save(priceScale);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("priceScale", priceScale.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("priceScale", priceScale.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /priceScales -> get all the priceScales.
      */
     @RequestMapping(value = "/priceScales",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<PriceScale>> getAllPriceScales(Pageable pageable)
         throws URISyntaxException {
@@ -98,8 +98,8 @@ public class PriceScaleResource {
      * GET  /priceScales/:id -> get the "id" priceScale.
      */
     @RequestMapping(value = "/priceScales/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<PriceScale> getPriceScale(@PathVariable Long id) {
         log.debug("REST request to get PriceScale : {}", id);
@@ -114,8 +114,8 @@ public class PriceScaleResource {
      * DELETE  /priceScales/:id -> delete the "id" priceScale.
      */
     @RequestMapping(value = "/priceScales/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deletePriceScale(@PathVariable Long id) {
         log.debug("REST request to delete PriceScale : {}", id);
@@ -134,7 +134,7 @@ public class PriceScaleResource {
     @Timed
     public List<PriceScale> searchPriceScales(@PathVariable String query) {
         return StreamSupport
-            .stream(priceScaleSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(priceScaleSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
 }

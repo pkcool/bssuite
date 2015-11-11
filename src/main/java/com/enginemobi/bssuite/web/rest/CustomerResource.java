@@ -53,8 +53,8 @@ public class CustomerResource {
      * POST  /customers -> Create a new customer.
      */
     @RequestMapping(value = "/customers",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<CustomerDTO> createCustomer(@Valid @RequestBody CustomerDTO customerDTO) throws URISyntaxException {
         log.debug("REST request to save Customer : {}", customerDTO);
@@ -65,8 +65,8 @@ public class CustomerResource {
         Customer result = customerRepository.save(customer);
         customerSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/customers/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("customer", result.getId().toString()))
-                .body(customerMapper.customerToCustomerDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("customer", result.getId().toString()))
+            .body(customerMapper.customerToCustomerDTO(result));
     }
 
     /**
@@ -85,16 +85,16 @@ public class CustomerResource {
         Customer result = customerRepository.save(customer);
         customerSearchRepository.save(customer);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("customer", customerDTO.getId().toString()))
-                .body(customerMapper.customerToCustomerDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("customer", customerDTO.getId().toString()))
+            .body(customerMapper.customerToCustomerDTO(result));
     }
 
     /**
      * GET  /customers -> get all the customers.
      */
     @RequestMapping(value = "/customers",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<CustomerDTO>> getAllCustomers(Pageable pageable)
@@ -110,8 +110,8 @@ public class CustomerResource {
      * GET  /customers/:id -> get the "id" customer.
      */
     @RequestMapping(value = "/customers/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<CustomerDTO> getCustomer(@PathVariable Long id) {
         log.debug("REST request to get Customer : {}", id);
@@ -127,8 +127,8 @@ public class CustomerResource {
      * DELETE  /customers/:id -> delete the "id" customer.
      */
     @RequestMapping(value = "/customers/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
         log.debug("REST request to delete Customer : {}", id);
@@ -147,7 +147,7 @@ public class CustomerResource {
     @Timed
     public List<CustomerDTO> searchCustomers(@PathVariable String query) {
         return StreamSupport
-            .stream(customerSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(customerSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(customerMapper::customerToCustomerDTO)
             .collect(Collectors.toList());
     }

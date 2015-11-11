@@ -52,8 +52,8 @@ public class GoodsReceivedAuditResource {
      * POST  /goodsReceivedAudits -> Create a new goodsReceivedAudit.
      */
     @RequestMapping(value = "/goodsReceivedAudits",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<GoodsReceivedAuditDTO> createGoodsReceivedAudit(@RequestBody GoodsReceivedAuditDTO goodsReceivedAuditDTO) throws URISyntaxException {
         log.debug("REST request to save GoodsReceivedAudit : {}", goodsReceivedAuditDTO);
@@ -64,8 +64,8 @@ public class GoodsReceivedAuditResource {
         GoodsReceivedAudit result = goodsReceivedAuditRepository.save(goodsReceivedAudit);
         goodsReceivedAuditSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/goodsReceivedAudits/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("goodsReceivedAudit", result.getId().toString()))
-                .body(goodsReceivedAuditMapper.goodsReceivedAuditToGoodsReceivedAuditDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("goodsReceivedAudit", result.getId().toString()))
+            .body(goodsReceivedAuditMapper.goodsReceivedAuditToGoodsReceivedAuditDTO(result));
     }
 
     /**
@@ -84,16 +84,16 @@ public class GoodsReceivedAuditResource {
         GoodsReceivedAudit result = goodsReceivedAuditRepository.save(goodsReceivedAudit);
         goodsReceivedAuditSearchRepository.save(goodsReceivedAudit);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("goodsReceivedAudit", goodsReceivedAuditDTO.getId().toString()))
-                .body(goodsReceivedAuditMapper.goodsReceivedAuditToGoodsReceivedAuditDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("goodsReceivedAudit", goodsReceivedAuditDTO.getId().toString()))
+            .body(goodsReceivedAuditMapper.goodsReceivedAuditToGoodsReceivedAuditDTO(result));
     }
 
     /**
      * GET  /goodsReceivedAudits -> get all the goodsReceivedAudits.
      */
     @RequestMapping(value = "/goodsReceivedAudits",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<GoodsReceivedAuditDTO>> getAllGoodsReceivedAudits(Pageable pageable)
@@ -109,8 +109,8 @@ public class GoodsReceivedAuditResource {
      * GET  /goodsReceivedAudits/:id -> get the "id" goodsReceivedAudit.
      */
     @RequestMapping(value = "/goodsReceivedAudits/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<GoodsReceivedAuditDTO> getGoodsReceivedAudit(@PathVariable Long id) {
         log.debug("REST request to get GoodsReceivedAudit : {}", id);
@@ -126,8 +126,8 @@ public class GoodsReceivedAuditResource {
      * DELETE  /goodsReceivedAudits/:id -> delete the "id" goodsReceivedAudit.
      */
     @RequestMapping(value = "/goodsReceivedAudits/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteGoodsReceivedAudit(@PathVariable Long id) {
         log.debug("REST request to delete GoodsReceivedAudit : {}", id);
@@ -146,7 +146,7 @@ public class GoodsReceivedAuditResource {
     @Timed
     public List<GoodsReceivedAuditDTO> searchGoodsReceivedAudits(@PathVariable String query) {
         return StreamSupport
-            .stream(goodsReceivedAuditSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(goodsReceivedAuditSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(goodsReceivedAuditMapper::goodsReceivedAuditToGoodsReceivedAuditDTO)
             .collect(Collectors.toList());
     }

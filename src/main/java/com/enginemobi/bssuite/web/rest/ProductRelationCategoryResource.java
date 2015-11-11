@@ -45,8 +45,8 @@ public class ProductRelationCategoryResource {
      * POST  /productRelationCategorys -> Create a new productRelationCategory.
      */
     @RequestMapping(value = "/productRelationCategorys",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<ProductRelationCategory> createProductRelationCategory(@RequestBody ProductRelationCategory productRelationCategory) throws URISyntaxException {
         log.debug("REST request to save ProductRelationCategory : {}", productRelationCategory);
@@ -56,8 +56,8 @@ public class ProductRelationCategoryResource {
         ProductRelationCategory result = productRelationCategoryRepository.save(productRelationCategory);
         productRelationCategorySearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/productRelationCategorys/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("productRelationCategory", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("productRelationCategory", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -75,16 +75,16 @@ public class ProductRelationCategoryResource {
         ProductRelationCategory result = productRelationCategoryRepository.save(productRelationCategory);
         productRelationCategorySearchRepository.save(productRelationCategory);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("productRelationCategory", productRelationCategory.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("productRelationCategory", productRelationCategory.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /productRelationCategorys -> get all the productRelationCategorys.
      */
     @RequestMapping(value = "/productRelationCategorys",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<ProductRelationCategory>> getAllProductRelationCategorys(Pageable pageable)
         throws URISyntaxException {
@@ -97,8 +97,8 @@ public class ProductRelationCategoryResource {
      * GET  /productRelationCategorys/:id -> get the "id" productRelationCategory.
      */
     @RequestMapping(value = "/productRelationCategorys/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<ProductRelationCategory> getProductRelationCategory(@PathVariable Long id) {
         log.debug("REST request to get ProductRelationCategory : {}", id);
@@ -113,8 +113,8 @@ public class ProductRelationCategoryResource {
      * DELETE  /productRelationCategorys/:id -> delete the "id" productRelationCategory.
      */
     @RequestMapping(value = "/productRelationCategorys/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteProductRelationCategory(@PathVariable Long id) {
         log.debug("REST request to delete ProductRelationCategory : {}", id);
@@ -133,7 +133,7 @@ public class ProductRelationCategoryResource {
     @Timed
     public List<ProductRelationCategory> searchProductRelationCategorys(@PathVariable String query) {
         return StreamSupport
-            .stream(productRelationCategorySearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(productRelationCategorySearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
 }

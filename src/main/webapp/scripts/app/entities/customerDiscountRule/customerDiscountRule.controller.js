@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('CustomerDiscountRuleController', function ($scope, CustomerDiscountRule, CustomerDiscountRuleSearch, ParseLinks) {
+    .controller('CustomerDiscountRuleController', function ($scope, $state, $modal, CustomerDiscountRule, CustomerDiscountRuleSearch, ParseLinks) {
+      
         $scope.customerDiscountRules = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            CustomerDiscountRule.get({id: id}, function(result) {
-                $scope.customerDiscountRule = result;
-                $('#deleteCustomerDiscountRuleConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            CustomerDiscountRule.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteCustomerDiscountRuleConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             CustomerDiscountRuleSearch.query({query: $scope.searchQuery}, function(result) {

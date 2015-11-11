@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('PurchaseOrderController', function ($scope, PurchaseOrder, PurchaseOrderSearch, ParseLinks) {
+    .controller('PurchaseOrderController', function ($scope, $state, $modal, PurchaseOrder, PurchaseOrderSearch, ParseLinks) {
+      
         $scope.purchaseOrders = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            PurchaseOrder.get({id: id}, function(result) {
-                $scope.purchaseOrder = result;
-                $('#deletePurchaseOrderConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            PurchaseOrder.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deletePurchaseOrderConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             PurchaseOrderSearch.query({query: $scope.searchQuery}, function(result) {

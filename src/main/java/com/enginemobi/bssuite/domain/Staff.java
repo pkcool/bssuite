@@ -1,13 +1,8 @@
 package com.enginemobi.bssuite.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.enginemobi.bssuite.domain.util.CustomLocalDateSerializer;
-import com.enginemobi.bssuite.domain.util.ISO8601LocalDateDeserializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -23,58 +18,54 @@ import java.util.Objects;
 @Entity
 @Table(name = "staff")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="staff")
+@Document(indexName = "staff")
 public class Staff implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
     @NotNull
-    @Size(min = 2)        
+    @Size(min = 2)
     @Column(name = "code", nullable = false)
     private String code;
-    
+
     @Column(name = "name")
     private String name;
-    
+
     @Column(name = "comment")
     private String comment;
-    
+
     @Column(name = "commission")
     private Double commission;
-    
+
     @Column(name = "occupation")
     private String occupation;
-    
+
     @Column(name = "work_phone")
     private String workPhone;
-    
+
     @Column(name = "home_phone")
     private String homePhone;
-    
+
     @Column(name = "work_mobile")
     private String workMobile;
-    
+
     @Column(name = "home_mobile")
     private String homeMobile;
-    
+
     @Column(name = "web_email")
     private String webEmail;
-    
+
     @Column(name = "home_email")
     private String homeEmail;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "birthday", nullable = false)
     private LocalDate birthday;
-    
+
     @Column(name = "is_locked_to_store")
     private Boolean isLockedToStore;
-    
+
     @Column(name = "is_technical")
     private Boolean isTechnical;
 
@@ -233,21 +224,21 @@ public class Staff implements Serializable {
     @Override
     public String toString() {
         return "Staff{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", comment='" + comment + "'" +
-                ", commission='" + commission + "'" +
-                ", occupation='" + occupation + "'" +
-                ", workPhone='" + workPhone + "'" +
-                ", homePhone='" + homePhone + "'" +
-                ", workMobile='" + workMobile + "'" +
-                ", homeMobile='" + homeMobile + "'" +
-                ", webEmail='" + webEmail + "'" +
-                ", homeEmail='" + homeEmail + "'" +
-                ", birthday='" + birthday + "'" +
-                ", isLockedToStore='" + isLockedToStore + "'" +
-                ", isTechnical='" + isTechnical + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", comment='" + comment + "'" +
+            ", commission='" + commission + "'" +
+            ", occupation='" + occupation + "'" +
+            ", workPhone='" + workPhone + "'" +
+            ", homePhone='" + homePhone + "'" +
+            ", workMobile='" + workMobile + "'" +
+            ", homeMobile='" + homeMobile + "'" +
+            ", webEmail='" + webEmail + "'" +
+            ", homeEmail='" + homeEmail + "'" +
+            ", birthday='" + birthday + "'" +
+            ", isLockedToStore='" + isLockedToStore + "'" +
+            ", isTechnical='" + isTechnical + "'" +
+            '}';
     }
 }

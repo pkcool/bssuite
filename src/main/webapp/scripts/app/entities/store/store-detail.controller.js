@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.store = result;
             });
         };
-        $rootScope.$on('bssuiteApp:storeUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:storeUpdate', function(event, result) {
             $scope.store = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

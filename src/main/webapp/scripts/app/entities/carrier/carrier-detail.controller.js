@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.carrier = result;
             });
         };
-        $rootScope.$on('bssuiteApp:carrierUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:carrierUpdate', function(event, result) {
             $scope.carrier = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

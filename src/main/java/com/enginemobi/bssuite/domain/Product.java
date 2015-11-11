@@ -1,13 +1,8 @@
 package com.enginemobi.bssuite.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.enginemobi.bssuite.domain.util.CustomLocalDateSerializer;
-import com.enginemobi.bssuite.domain.util.ISO8601LocalDateDeserializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -24,190 +19,162 @@ import java.util.Objects;
 @Entity
 @Table(name = "product")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="product")
+@Document(indexName = "product")
 public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
-    @NotNull        
+    @NotNull
     @Column(name = "code", nullable = false)
     private String code;
-    
+
     @Column(name = "name")
     private String name;
-    
+
     @Column(name = "description")
     private String description;
-    
+
     @Column(name = "long_description")
     private String longDescription;
-    
+
     @Column(name = "alternate_code")
     private String alternateCode;
-    
+
     @Column(name = "bin")
     private String bin;
-    
+
     @Column(name = "is_on_special")
     private Boolean isOnSpecial;
-    
+
     @Column(name = "is_on_hold")
     private Boolean isOnHold;
-    
+
     @Column(name = "is_in_pricelist_reports")
     private Boolean isInPricelistReports;
-    
+
     @Column(name = "qty_on_order")
     private Double qtyOnOrder;
-    
+
     @Column(name = "qty_stock_on_hold")
     private Double qtyStockOnHold;
-    
+
     @Column(name = "qty_backordered")
     private Double qtyBackordered;
-    
+
     @Column(name = "qty_allocated")
     private Double qtyAllocated;
-    
+
     @Column(name = "qty_backorder_hold")
     private Double qtyBackorderHold;
-    
+
     @Column(name = "qty_consigned")
     private Double qtyConsigned;
-    
+
     @Column(name = "qty_warehouse_received")
     private Double qtyWarehouseReceived;
-    
+
     @Column(name = "qty_stocktake_variance")
     private Double qtyStocktakeVariance;
-    
+
     @Column(name = "qty_transit_in")
     private Double qtyTransitIn;
-    
+
     @Column(name = "qty_transit_out")
     private Double qtyTransitOut;
 
-    @Min(value = 0)        
+    @Min(value = 0)
     @Column(name = "cost", precision=10, scale=2)
     private BigDecimal cost;
-    
+
     @Column(name = "wholesale_list_price", precision=10, scale=2)
     private BigDecimal wholesaleListPrice;
-    
+
     @Column(name = "list_price", precision=10, scale=2)
     private BigDecimal listPrice;
-    
+
     @Column(name = "trade_price", precision=10, scale=2)
     private BigDecimal tradePrice;
-    
+
     @Column(name = "box_cost", precision=10, scale=2)
     private BigDecimal boxCost;
-    
+
     @Column(name = "unit_measure")
     private String unitMeasure;
-    
+
     @Column(name = "box_measure")
     private String boxMeasure;
-    
+
     @Column(name = "box_conversion_factor", precision=10, scale=2)
     private BigDecimal boxConversionFactor;
-    
+
     @Column(name = "weight")
     private Double weight;
-    
+
     @Column(name = "volumn")
     private Double volumn;
-    
+
     @Column(name = "service_cover")
     private Integer serviceCover;
-    
+
     @Column(name = "qty_floor_level")
     private Double qtyFloorLevel;
-    
+
     @Column(name = "qty_reorder_level")
     private Double qtyReorderLevel;
-    
+
     @Column(name = "qty_overstock_level")
     private Double qtyOverstockLevel;
-    
+
     @Column(name = "is_comment")
     private Boolean isComment;
-    
+
     @Column(name = "is_diminishing")
     private Boolean isDiminishing;
-    
+
     @Column(name = "is_non_tax_exeptable")
     private Boolean isNonTaxExeptable;
-    
+
     @Column(name = "lead_time")
     private Integer leadTime;
-    
+
     @Column(name = "purchase_unit")
     private Integer purchaseUnit;
-    
+
     @Column(name = "est_monthly_sales")
     private Double estMonthlySales;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "date_first_sale")
     private LocalDate dateFirstSale;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "date_last_sale")
     private LocalDate dateLastSale;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "date_first_order")
     private LocalDate dateFirstOrder;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "date_created")
     private LocalDate dateCreated;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "date_last_delivery")
     private LocalDate dateLastDelivery;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "date_next_delivery")
     private LocalDate dateNextDelivery;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "date_last_transfer")
     private LocalDate dateLastTransfer;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "date_last_order")
     private LocalDate dateLastOrder;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "date_last_stocktake")
     private LocalDate dateLastStocktake;
-    
+
     @Column(name = "is_archived")
     private Boolean isArchived;
-    
+
     @Column(name = "class_code")
     private String classCode;
 
@@ -687,57 +654,57 @@ public class Product implements Serializable {
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", description='" + description + "'" +
-                ", longDescription='" + longDescription + "'" +
-                ", alternateCode='" + alternateCode + "'" +
-                ", bin='" + bin + "'" +
-                ", isOnSpecial='" + isOnSpecial + "'" +
-                ", isOnHold='" + isOnHold + "'" +
-                ", isInPricelistReports='" + isInPricelistReports + "'" +
-                ", qtyOnOrder='" + qtyOnOrder + "'" +
-                ", qtyStockOnHold='" + qtyStockOnHold + "'" +
-                ", qtyBackordered='" + qtyBackordered + "'" +
-                ", qtyAllocated='" + qtyAllocated + "'" +
-                ", qtyBackorderHold='" + qtyBackorderHold + "'" +
-                ", qtyConsigned='" + qtyConsigned + "'" +
-                ", qtyWarehouseReceived='" + qtyWarehouseReceived + "'" +
-                ", qtyStocktakeVariance='" + qtyStocktakeVariance + "'" +
-                ", qtyTransitIn='" + qtyTransitIn + "'" +
-                ", qtyTransitOut='" + qtyTransitOut + "'" +
-                ", cost='" + cost + "'" +
-                ", wholesaleListPrice='" + wholesaleListPrice + "'" +
-                ", listPrice='" + listPrice + "'" +
-                ", tradePrice='" + tradePrice + "'" +
-                ", boxCost='" + boxCost + "'" +
-                ", unitMeasure='" + unitMeasure + "'" +
-                ", boxMeasure='" + boxMeasure + "'" +
-                ", boxConversionFactor='" + boxConversionFactor + "'" +
-                ", weight='" + weight + "'" +
-                ", volumn='" + volumn + "'" +
-                ", serviceCover='" + serviceCover + "'" +
-                ", qtyFloorLevel='" + qtyFloorLevel + "'" +
-                ", qtyReorderLevel='" + qtyReorderLevel + "'" +
-                ", qtyOverstockLevel='" + qtyOverstockLevel + "'" +
-                ", isComment='" + isComment + "'" +
-                ", isDiminishing='" + isDiminishing + "'" +
-                ", isNonTaxExeptable='" + isNonTaxExeptable + "'" +
-                ", leadTime='" + leadTime + "'" +
-                ", purchaseUnit='" + purchaseUnit + "'" +
-                ", estMonthlySales='" + estMonthlySales + "'" +
-                ", dateFirstSale='" + dateFirstSale + "'" +
-                ", dateLastSale='" + dateLastSale + "'" +
-                ", dateFirstOrder='" + dateFirstOrder + "'" +
-                ", dateCreated='" + dateCreated + "'" +
-                ", dateLastDelivery='" + dateLastDelivery + "'" +
-                ", dateNextDelivery='" + dateNextDelivery + "'" +
-                ", dateLastTransfer='" + dateLastTransfer + "'" +
-                ", dateLastOrder='" + dateLastOrder + "'" +
-                ", dateLastStocktake='" + dateLastStocktake + "'" +
-                ", isArchived='" + isArchived + "'" +
-                ", classCode='" + classCode + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", description='" + description + "'" +
+            ", longDescription='" + longDescription + "'" +
+            ", alternateCode='" + alternateCode + "'" +
+            ", bin='" + bin + "'" +
+            ", isOnSpecial='" + isOnSpecial + "'" +
+            ", isOnHold='" + isOnHold + "'" +
+            ", isInPricelistReports='" + isInPricelistReports + "'" +
+            ", qtyOnOrder='" + qtyOnOrder + "'" +
+            ", qtyStockOnHold='" + qtyStockOnHold + "'" +
+            ", qtyBackordered='" + qtyBackordered + "'" +
+            ", qtyAllocated='" + qtyAllocated + "'" +
+            ", qtyBackorderHold='" + qtyBackorderHold + "'" +
+            ", qtyConsigned='" + qtyConsigned + "'" +
+            ", qtyWarehouseReceived='" + qtyWarehouseReceived + "'" +
+            ", qtyStocktakeVariance='" + qtyStocktakeVariance + "'" +
+            ", qtyTransitIn='" + qtyTransitIn + "'" +
+            ", qtyTransitOut='" + qtyTransitOut + "'" +
+            ", cost='" + cost + "'" +
+            ", wholesaleListPrice='" + wholesaleListPrice + "'" +
+            ", listPrice='" + listPrice + "'" +
+            ", tradePrice='" + tradePrice + "'" +
+            ", boxCost='" + boxCost + "'" +
+            ", unitMeasure='" + unitMeasure + "'" +
+            ", boxMeasure='" + boxMeasure + "'" +
+            ", boxConversionFactor='" + boxConversionFactor + "'" +
+            ", weight='" + weight + "'" +
+            ", volumn='" + volumn + "'" +
+            ", serviceCover='" + serviceCover + "'" +
+            ", qtyFloorLevel='" + qtyFloorLevel + "'" +
+            ", qtyReorderLevel='" + qtyReorderLevel + "'" +
+            ", qtyOverstockLevel='" + qtyOverstockLevel + "'" +
+            ", isComment='" + isComment + "'" +
+            ", isDiminishing='" + isDiminishing + "'" +
+            ", isNonTaxExeptable='" + isNonTaxExeptable + "'" +
+            ", leadTime='" + leadTime + "'" +
+            ", purchaseUnit='" + purchaseUnit + "'" +
+            ", estMonthlySales='" + estMonthlySales + "'" +
+            ", dateFirstSale='" + dateFirstSale + "'" +
+            ", dateLastSale='" + dateLastSale + "'" +
+            ", dateFirstOrder='" + dateFirstOrder + "'" +
+            ", dateCreated='" + dateCreated + "'" +
+            ", dateLastDelivery='" + dateLastDelivery + "'" +
+            ", dateNextDelivery='" + dateNextDelivery + "'" +
+            ", dateLastTransfer='" + dateLastTransfer + "'" +
+            ", dateLastOrder='" + dateLastOrder + "'" +
+            ", dateLastStocktake='" + dateLastStocktake + "'" +
+            ", isArchived='" + isArchived + "'" +
+            ", classCode='" + classCode + "'" +
+            '}';
     }
 }

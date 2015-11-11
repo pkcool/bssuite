@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('GoodsReceivedAuditController', function ($scope, GoodsReceivedAudit, GoodsReceivedAuditSearch, ParseLinks) {
+    .controller('GoodsReceivedAuditController', function ($scope, $state, $modal, GoodsReceivedAudit, GoodsReceivedAuditSearch, ParseLinks) {
+      
         $scope.goodsReceivedAudits = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            GoodsReceivedAudit.get({id: id}, function(result) {
-                $scope.goodsReceivedAudit = result;
-                $('#deleteGoodsReceivedAuditConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            GoodsReceivedAudit.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteGoodsReceivedAuditConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             GoodsReceivedAuditSearch.query({query: $scope.searchQuery}, function(result) {

@@ -120,5 +120,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('customer.delete', {
+                parent: 'customer',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/customer/customer-delete-dialog.html',
+                        controller: 'CustomerDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['Customer', function(Customer) {
+                                return Customer.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('customer', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

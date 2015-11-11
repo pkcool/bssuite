@@ -1,6 +1,6 @@
 package com.enginemobi.bssuite.web.rest.dto;
 
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -19,48 +19,33 @@ public class StaffDTO implements Serializable {
     @Size(min = 2)
     private String code;
 
-
     private String name;
-
 
     private String comment;
 
-
     private Double commission;
-
 
     private String occupation;
 
-
     private String workPhone;
-
 
     private String homePhone;
 
-
     private String workMobile;
-
 
     private String homeMobile;
 
-
     private String webEmail;
-
 
     private String homeEmail;
 
-
     private LocalDate birthday;
-
 
     private Boolean isLockedToStore;
 
-
     private Boolean isTechnical;
 
-
     private Long storeId;
-
     public Long getId() {
         return id;
     }
@@ -77,7 +62,6 @@ public class StaffDTO implements Serializable {
         this.code = code;
     }
 
-
     public String getName() {
         return name;
     }
@@ -85,7 +69,6 @@ public class StaffDTO implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getComment() {
         return comment;
@@ -95,7 +78,6 @@ public class StaffDTO implements Serializable {
         this.comment = comment;
     }
 
-
     public Double getCommission() {
         return commission;
     }
@@ -103,7 +85,6 @@ public class StaffDTO implements Serializable {
     public void setCommission(Double commission) {
         this.commission = commission;
     }
-
 
     public String getOccupation() {
         return occupation;
@@ -113,7 +94,6 @@ public class StaffDTO implements Serializable {
         this.occupation = occupation;
     }
 
-
     public String getWorkPhone() {
         return workPhone;
     }
@@ -121,7 +101,6 @@ public class StaffDTO implements Serializable {
     public void setWorkPhone(String workPhone) {
         this.workPhone = workPhone;
     }
-
 
     public String getHomePhone() {
         return homePhone;
@@ -131,7 +110,6 @@ public class StaffDTO implements Serializable {
         this.homePhone = homePhone;
     }
 
-
     public String getWorkMobile() {
         return workMobile;
     }
@@ -139,7 +117,6 @@ public class StaffDTO implements Serializable {
     public void setWorkMobile(String workMobile) {
         this.workMobile = workMobile;
     }
-
 
     public String getHomeMobile() {
         return homeMobile;
@@ -149,7 +126,6 @@ public class StaffDTO implements Serializable {
         this.homeMobile = homeMobile;
     }
 
-
     public String getWebEmail() {
         return webEmail;
     }
@@ -157,7 +133,6 @@ public class StaffDTO implements Serializable {
     public void setWebEmail(String webEmail) {
         this.webEmail = webEmail;
     }
-
 
     public String getHomeEmail() {
         return homeEmail;
@@ -167,7 +142,6 @@ public class StaffDTO implements Serializable {
         this.homeEmail = homeEmail;
     }
 
-
     public LocalDate getBirthday() {
         return birthday;
     }
@@ -175,7 +149,6 @@ public class StaffDTO implements Serializable {
     public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
-
 
     public Boolean getIsLockedToStore() {
         return isLockedToStore;
@@ -185,7 +158,6 @@ public class StaffDTO implements Serializable {
         this.isLockedToStore = isLockedToStore;
     }
 
-
     public Boolean getIsTechnical() {
         return isTechnical;
     }
@@ -194,7 +166,6 @@ public class StaffDTO implements Serializable {
         this.isTechnical = isTechnical;
     }
 
-
     public Long getStoreId() {
         return storeId;
     }
@@ -202,7 +173,6 @@ public class StaffDTO implements Serializable {
     public void setStoreId(Long storeId) {
         this.storeId = storeId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -227,21 +197,21 @@ public class StaffDTO implements Serializable {
     @Override
     public String toString() {
         return "StaffDTO{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", comment='" + comment + "'" +
-                ", commission='" + commission + "'" +
-                ", occupation='" + occupation + "'" +
-                ", workPhone='" + workPhone + "'" +
-                ", homePhone='" + homePhone + "'" +
-                ", workMobile='" + workMobile + "'" +
-                ", homeMobile='" + homeMobile + "'" +
-                ", webEmail='" + webEmail + "'" +
-                ", homeEmail='" + homeEmail + "'" +
-                ", birthday='" + birthday + "'" +
-                ", isLockedToStore='" + isLockedToStore + "'" +
-                ", isTechnical='" + isTechnical + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", comment='" + comment + "'" +
+            ", commission='" + commission + "'" +
+            ", occupation='" + occupation + "'" +
+            ", workPhone='" + workPhone + "'" +
+            ", homePhone='" + homePhone + "'" +
+            ", workMobile='" + workMobile + "'" +
+            ", homeMobile='" + homeMobile + "'" +
+            ", webEmail='" + webEmail + "'" +
+            ", homeEmail='" + homeEmail + "'" +
+            ", birthday='" + birthday + "'" +
+            ", isLockedToStore='" + isLockedToStore + "'" +
+            ", isTechnical='" + isTechnical + "'" +
+            '}';
     }
 }

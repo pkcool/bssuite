@@ -17,31 +17,30 @@ import java.util.Objects;
 @Entity
 @Table(name = "stock_family")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="stockfamily")
+@Document(indexName = "stockfamily")
 public class StockFamily implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
     @NotNull
-    @Size(min = 2)        
+    @Size(min = 2)
     @Column(name = "code", nullable = false)
     private String code;
-    
+
     @Column(name = "name")
     private String name;
-    
+
     @Column(name = "is_diminishing")
     private Boolean isDiminishing;
-    
+
     @Column(name = "lowest_margin")
     private Double lowestMargin;
-    
+
     @Column(name = "highest_margin")
     private Double highestMargin;
-    
+
     @Column(name = "comment")
     private String comment;
 
@@ -136,13 +135,13 @@ public class StockFamily implements Serializable {
     @Override
     public String toString() {
         return "StockFamily{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", isDiminishing='" + isDiminishing + "'" +
-                ", lowestMargin='" + lowestMargin + "'" +
-                ", highestMargin='" + highestMargin + "'" +
-                ", comment='" + comment + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", isDiminishing='" + isDiminishing + "'" +
+            ", lowestMargin='" + lowestMargin + "'" +
+            ", highestMargin='" + highestMargin + "'" +
+            ", comment='" + comment + "'" +
+            '}';
     }
 }

@@ -52,8 +52,8 @@ public class QuoteResource {
      * POST  /quotes -> Create a new quote.
      */
     @RequestMapping(value = "/quotes",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<QuoteDTO> createQuote(@RequestBody QuoteDTO quoteDTO) throws URISyntaxException {
         log.debug("REST request to save Quote : {}", quoteDTO);
@@ -64,8 +64,8 @@ public class QuoteResource {
         Quote result = quoteRepository.save(quote);
         quoteSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/quotes/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("quote", result.getId().toString()))
-                .body(quoteMapper.quoteToQuoteDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("quote", result.getId().toString()))
+            .body(quoteMapper.quoteToQuoteDTO(result));
     }
 
     /**
@@ -84,16 +84,16 @@ public class QuoteResource {
         Quote result = quoteRepository.save(quote);
         quoteSearchRepository.save(quote);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("quote", quoteDTO.getId().toString()))
-                .body(quoteMapper.quoteToQuoteDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("quote", quoteDTO.getId().toString()))
+            .body(quoteMapper.quoteToQuoteDTO(result));
     }
 
     /**
      * GET  /quotes -> get all the quotes.
      */
     @RequestMapping(value = "/quotes",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<QuoteDTO>> getAllQuotes(Pageable pageable)
@@ -109,8 +109,8 @@ public class QuoteResource {
      * GET  /quotes/:id -> get the "id" quote.
      */
     @RequestMapping(value = "/quotes/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<QuoteDTO> getQuote(@PathVariable Long id) {
         log.debug("REST request to get Quote : {}", id);
@@ -126,8 +126,8 @@ public class QuoteResource {
      * DELETE  /quotes/:id -> delete the "id" quote.
      */
     @RequestMapping(value = "/quotes/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteQuote(@PathVariable Long id) {
         log.debug("REST request to delete Quote : {}", id);
@@ -146,7 +146,7 @@ public class QuoteResource {
     @Timed
     public List<QuoteDTO> searchQuotes(@PathVariable String query) {
         return StreamSupport
-            .stream(quoteSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(quoteSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(quoteMapper::quoteToQuoteDTO)
             .collect(Collectors.toList());
     }

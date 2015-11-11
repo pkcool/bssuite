@@ -1,13 +1,8 @@
 package com.enginemobi.bssuite.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeDeserializer;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeSerializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
+import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -26,43 +21,36 @@ import com.enginemobi.bssuite.domain.enumeration.BookmarkArea;
 @Entity
 @Table(name = "bookmark")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="bookmark")
+@Document(indexName = "bookmark")
 public class Bookmark implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
     @Column(name = "created_on")
-    private DateTime createdOn;
-    
+    private ZonedDateTime createdOn;
+
     @Column(name = "txn_number")
     private String txnNumber;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "bookmark_type")
     private BookmarkType bookmarkType;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "bookmark_area")
     private BookmarkArea bookmarkArea;
-    
+
     @Column(name = "key_code")
     private String keyCode;
-    
+
     @Column(name = "title")
     private String title;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
+
     @Column(name = "last_edited_on")
-    private DateTime lastEditedOn;
-    
+    private ZonedDateTime lastEditedOn;
+
     @Column(name = "open_count")
     private Integer openCount;
 
@@ -77,11 +65,11 @@ public class Bookmark implements Serializable {
         this.id = id;
     }
 
-    public DateTime getCreatedOn() {
+    public ZonedDateTime getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(DateTime createdOn) {
+    public void setCreatedOn(ZonedDateTime createdOn) {
         this.createdOn = createdOn;
     }
 
@@ -125,11 +113,11 @@ public class Bookmark implements Serializable {
         this.title = title;
     }
 
-    public DateTime getLastEditedOn() {
+    public ZonedDateTime getLastEditedOn() {
         return lastEditedOn;
     }
 
-    public void setLastEditedOn(DateTime lastEditedOn) {
+    public void setLastEditedOn(ZonedDateTime lastEditedOn) {
         this.lastEditedOn = lastEditedOn;
     }
 
@@ -173,15 +161,15 @@ public class Bookmark implements Serializable {
     @Override
     public String toString() {
         return "Bookmark{" +
-                "id=" + id +
-                ", createdOn='" + createdOn + "'" +
-                ", txnNumber='" + txnNumber + "'" +
-                ", bookmarkType='" + bookmarkType + "'" +
-                ", bookmarkArea='" + bookmarkArea + "'" +
-                ", keyCode='" + keyCode + "'" +
-                ", title='" + title + "'" +
-                ", lastEditedOn='" + lastEditedOn + "'" +
-                ", openCount='" + openCount + "'" +
-                '}';
+            "id=" + id +
+            ", createdOn='" + createdOn + "'" +
+            ", txnNumber='" + txnNumber + "'" +
+            ", bookmarkType='" + bookmarkType + "'" +
+            ", bookmarkArea='" + bookmarkArea + "'" +
+            ", keyCode='" + keyCode + "'" +
+            ", title='" + title + "'" +
+            ", lastEditedOn='" + lastEditedOn + "'" +
+            ", openCount='" + openCount + "'" +
+            '}';
     }
 }

@@ -93,5 +93,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('backOrderLineItem.delete', {
+                parent: 'backOrderLineItem',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/backOrderLineItem/backOrderLineItem-delete-dialog.html',
+                        controller: 'BackOrderLineItemDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['BackOrderLineItem', function(BackOrderLineItem) {
+                                return BackOrderLineItem.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('backOrderLineItem', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

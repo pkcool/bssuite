@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('PriceScaleController', function ($scope, PriceScale, PriceScaleSearch, ParseLinks) {
+    .controller('PriceScaleController', function ($scope, $state, $modal, PriceScale, PriceScaleSearch, ParseLinks) {
+      
         $scope.priceScales = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            PriceScale.get({id: id}, function(result) {
-                $scope.priceScale = result;
-                $('#deletePriceScaleConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            PriceScale.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deletePriceScaleConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             PriceScaleSearch.query({query: $scope.searchQuery}, function(result) {

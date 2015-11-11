@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.productRelationCategory = result;
             });
         };
-        $rootScope.$on('bssuiteApp:productRelationCategoryUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:productRelationCategoryUpdate', function(event, result) {
             $scope.productRelationCategory = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

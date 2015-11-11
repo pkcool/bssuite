@@ -12,16 +12,22 @@ angular.module('bssuiteApp').controller('BackOrderLineItemDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:backOrderLineItemUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.backOrderLineItem.id != null) {
-                BackOrderLineItem.update($scope.backOrderLineItem, onSaveFinished);
+                BackOrderLineItem.update($scope.backOrderLineItem, onSaveSuccess, onSaveError);
             } else {
-                BackOrderLineItem.save($scope.backOrderLineItem, onSaveFinished);
+                BackOrderLineItem.save($scope.backOrderLineItem, onSaveSuccess, onSaveError);
             }
         };
 

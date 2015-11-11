@@ -17,37 +17,36 @@ import java.util.Objects;
 @Entity
 @Table(name = "stock_group")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="stockgroup")
+@Document(indexName = "stockgroup")
 public class StockGroup implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
     @NotNull
-    @Size(min = 2)        
+    @Size(min = 2)
     @Column(name = "code", nullable = false)
     private String code;
-    
+
     @Column(name = "name")
     private String name;
-    
+
     @Column(name = "is_diminishing")
     private Boolean isDiminishing;
-    
+
     @Column(name = "lowest_margin")
     private Double lowestMargin;
-    
+
     @Column(name = "highest_margin")
     private Double highestMargin;
-    
+
     @Column(name = "is_discount_allowed")
     private Boolean isDiscountAllowed;
-    
+
     @Column(name = "comment")
     private String comment;
-    
+
     @Column(name = "is_archived")
     private Boolean isArchived;
 
@@ -180,15 +179,15 @@ public class StockGroup implements Serializable {
     @Override
     public String toString() {
         return "StockGroup{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", isDiminishing='" + isDiminishing + "'" +
-                ", lowestMargin='" + lowestMargin + "'" +
-                ", highestMargin='" + highestMargin + "'" +
-                ", isDiscountAllowed='" + isDiscountAllowed + "'" +
-                ", comment='" + comment + "'" +
-                ", isArchived='" + isArchived + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", isDiminishing='" + isDiminishing + "'" +
+            ", lowestMargin='" + lowestMargin + "'" +
+            ", highestMargin='" + highestMargin + "'" +
+            ", isDiscountAllowed='" + isDiscountAllowed + "'" +
+            ", comment='" + comment + "'" +
+            ", isArchived='" + isArchived + "'" +
+            '}';
     }
 }

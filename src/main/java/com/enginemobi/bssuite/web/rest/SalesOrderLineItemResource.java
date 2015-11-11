@@ -45,8 +45,8 @@ public class SalesOrderLineItemResource {
      * POST  /salesOrderLineItems -> Create a new salesOrderLineItem.
      */
     @RequestMapping(value = "/salesOrderLineItems",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<SalesOrderLineItem> createSalesOrderLineItem(@RequestBody SalesOrderLineItem salesOrderLineItem) throws URISyntaxException {
         log.debug("REST request to save SalesOrderLineItem : {}", salesOrderLineItem);
@@ -56,8 +56,8 @@ public class SalesOrderLineItemResource {
         SalesOrderLineItem result = salesOrderLineItemRepository.save(salesOrderLineItem);
         salesOrderLineItemSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/salesOrderLineItems/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("salesOrderLineItem", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("salesOrderLineItem", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -75,16 +75,16 @@ public class SalesOrderLineItemResource {
         SalesOrderLineItem result = salesOrderLineItemRepository.save(salesOrderLineItem);
         salesOrderLineItemSearchRepository.save(salesOrderLineItem);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("salesOrderLineItem", salesOrderLineItem.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("salesOrderLineItem", salesOrderLineItem.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /salesOrderLineItems -> get all the salesOrderLineItems.
      */
     @RequestMapping(value = "/salesOrderLineItems",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<SalesOrderLineItem>> getAllSalesOrderLineItems(Pageable pageable)
         throws URISyntaxException {
@@ -97,8 +97,8 @@ public class SalesOrderLineItemResource {
      * GET  /salesOrderLineItems/:id -> get the "id" salesOrderLineItem.
      */
     @RequestMapping(value = "/salesOrderLineItems/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<SalesOrderLineItem> getSalesOrderLineItem(@PathVariable Long id) {
         log.debug("REST request to get SalesOrderLineItem : {}", id);
@@ -113,8 +113,8 @@ public class SalesOrderLineItemResource {
      * DELETE  /salesOrderLineItems/:id -> delete the "id" salesOrderLineItem.
      */
     @RequestMapping(value = "/salesOrderLineItems/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteSalesOrderLineItem(@PathVariable Long id) {
         log.debug("REST request to delete SalesOrderLineItem : {}", id);
@@ -133,7 +133,7 @@ public class SalesOrderLineItemResource {
     @Timed
     public List<SalesOrderLineItem> searchSalesOrderLineItems(@PathVariable String query) {
         return StreamSupport
-            .stream(salesOrderLineItemSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(salesOrderLineItemSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
 }

@@ -15,19 +15,18 @@ import java.util.Objects;
 @Entity
 @Table(name = "customer_category")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="customercategory")
+@Document(indexName = "customercategory")
 public class CustomerCategory implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
     @NotNull
-    @Size(min = 2)        
+    @Size(min = 2)
     @Column(name = "code", nullable = false)
     private String code;
-    
+
     @Column(name = "name")
     private String name;
 
@@ -79,9 +78,9 @@ public class CustomerCategory implements Serializable {
     @Override
     public String toString() {
         return "CustomerCategory{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            '}';
     }
 }

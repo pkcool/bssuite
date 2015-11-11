@@ -1,13 +1,8 @@
 package com.enginemobi.bssuite.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.enginemobi.bssuite.domain.util.CustomLocalDateSerializer;
-import com.enginemobi.bssuite.domain.util.ISO8601LocalDateDeserializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -20,56 +15,52 @@ import java.util.Objects;
 @Entity
 @Table(name = "store")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="store")
+@Document(indexName = "store")
 public class Store implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
     @Column(name = "code")
     private String code;
-    
+
     @Column(name = "name")
     private String name;
-    
+
     @Column(name = "address1")
     private String address1;
-    
+
     @Column(name = "address2")
     private String address2;
-    
+
     @Column(name = "suburb")
     private String suburb;
-    
+
     @Column(name = "state")
     private String state;
-    
+
     @Column(name = "postcode")
     private String postcode;
-    
+
     @Column(name = "country")
     private String country;
-    
+
     @Column(name = "phone")
     private String phone;
-    
+
     @Column(name = "fax")
     private String fax;
-    
+
     @Column(name = "email")
     private String email;
-    
+
     @Column(name = "web_url")
     private String webUrl;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "in_business_since")
     private LocalDate inBusinessSince;
-    
+
     @Column(name = "is_archived")
     private Boolean isArchived;
 
@@ -217,21 +208,21 @@ public class Store implements Serializable {
     @Override
     public String toString() {
         return "Store{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", address1='" + address1 + "'" +
-                ", address2='" + address2 + "'" +
-                ", suburb='" + suburb + "'" +
-                ", state='" + state + "'" +
-                ", postcode='" + postcode + "'" +
-                ", country='" + country + "'" +
-                ", phone='" + phone + "'" +
-                ", fax='" + fax + "'" +
-                ", email='" + email + "'" +
-                ", webUrl='" + webUrl + "'" +
-                ", inBusinessSince='" + inBusinessSince + "'" +
-                ", isArchived='" + isArchived + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", address1='" + address1 + "'" +
+            ", address2='" + address2 + "'" +
+            ", suburb='" + suburb + "'" +
+            ", state='" + state + "'" +
+            ", postcode='" + postcode + "'" +
+            ", country='" + country + "'" +
+            ", phone='" + phone + "'" +
+            ", fax='" + fax + "'" +
+            ", email='" + email + "'" +
+            ", webUrl='" + webUrl + "'" +
+            ", inBusinessSince='" + inBusinessSince + "'" +
+            ", isArchived='" + isArchived + "'" +
+            '}';
     }
 }

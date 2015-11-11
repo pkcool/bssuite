@@ -46,8 +46,8 @@ public class TaxTableResource {
      * POST  /taxTables -> Create a new taxTable.
      */
     @RequestMapping(value = "/taxTables",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<TaxTable> createTaxTable(@Valid @RequestBody TaxTable taxTable) throws URISyntaxException {
         log.debug("REST request to save TaxTable : {}", taxTable);
@@ -57,8 +57,8 @@ public class TaxTableResource {
         TaxTable result = taxTableRepository.save(taxTable);
         taxTableSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/taxTables/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("taxTable", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("taxTable", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -76,16 +76,16 @@ public class TaxTableResource {
         TaxTable result = taxTableRepository.save(taxTable);
         taxTableSearchRepository.save(taxTable);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("taxTable", taxTable.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("taxTable", taxTable.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /taxTables -> get all the taxTables.
      */
     @RequestMapping(value = "/taxTables",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<TaxTable>> getAllTaxTables(Pageable pageable)
         throws URISyntaxException {
@@ -98,8 +98,8 @@ public class TaxTableResource {
      * GET  /taxTables/:id -> get the "id" taxTable.
      */
     @RequestMapping(value = "/taxTables/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<TaxTable> getTaxTable(@PathVariable Long id) {
         log.debug("REST request to get TaxTable : {}", id);
@@ -114,8 +114,8 @@ public class TaxTableResource {
      * DELETE  /taxTables/:id -> delete the "id" taxTable.
      */
     @RequestMapping(value = "/taxTables/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteTaxTable(@PathVariable Long id) {
         log.debug("REST request to delete TaxTable : {}", id);
@@ -134,7 +134,7 @@ public class TaxTableResource {
     @Timed
     public List<TaxTable> searchTaxTables(@PathVariable String query) {
         return StreamSupport
-            .stream(taxTableSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(taxTableSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
 }

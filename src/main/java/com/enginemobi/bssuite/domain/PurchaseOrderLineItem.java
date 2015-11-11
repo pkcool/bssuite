@@ -17,56 +17,55 @@ import java.util.Objects;
 @Entity
 @Table(name = "purchase_order_line_item")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="purchaseorderlineitem")
+@Document(indexName = "purchaseorderlineitem")
 public class PurchaseOrderLineItem implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
     @Column(name = "description")
     private String description;
-    
+
     @Column(name = "cost", precision=10, scale=2)
     private BigDecimal cost;
-    
+
     @Column(name = "list_price", precision=10, scale=2)
     private BigDecimal listPrice;
-    
+
     @Column(name = "qty_ordered")
     private Double qtyOrdered;
-    
+
     @Column(name = "qty_delivered")
     private Double qtyDelivered;
-    
+
     @Column(name = "qty_previously_delivered")
     private Double qtyPreviouslyDelivered;
-    
+
     @Column(name = "qty_imported")
     private Double qtyImported;
-    
+
     @Column(name = "total_tax_charge", precision=10, scale=2)
     private BigDecimal totalTaxCharge;
-    
+
     @Column(name = "discount_percentage", precision=10, scale=2)
     private BigDecimal discountPercentage;
-    
+
     @Column(name = "line_no")
     private Integer lineNo;
-    
+
     @Column(name = "list_price_discount", precision=10, scale=2)
     private BigDecimal listPriceDiscount;
-    
+
     @Column(name = "unit_measure")
     private String unitMeasure;
-    
+
     @Column(name = "is_hidden")
     private Boolean isHidden;
-    
+
     @Column(name = "ref1")
     private String Ref1;
-    
+
     @Column(name = "ref2")
     private String Ref2;
 
@@ -255,22 +254,22 @@ public class PurchaseOrderLineItem implements Serializable {
     @Override
     public String toString() {
         return "PurchaseOrderLineItem{" +
-                "id=" + id +
-                ", description='" + description + "'" +
-                ", cost='" + cost + "'" +
-                ", listPrice='" + listPrice + "'" +
-                ", qtyOrdered='" + qtyOrdered + "'" +
-                ", qtyDelivered='" + qtyDelivered + "'" +
-                ", qtyPreviouslyDelivered='" + qtyPreviouslyDelivered + "'" +
-                ", qtyImported='" + qtyImported + "'" +
-                ", totalTaxCharge='" + totalTaxCharge + "'" +
-                ", discountPercentage='" + discountPercentage + "'" +
-                ", lineNo='" + lineNo + "'" +
-                ", listPriceDiscount='" + listPriceDiscount + "'" +
-                ", unitMeasure='" + unitMeasure + "'" +
-                ", isHidden='" + isHidden + "'" +
-                ", Ref1='" + Ref1 + "'" +
-                ", Ref2='" + Ref2 + "'" +
-                '}';
+            "id=" + id +
+            ", description='" + description + "'" +
+            ", cost='" + cost + "'" +
+            ", listPrice='" + listPrice + "'" +
+            ", qtyOrdered='" + qtyOrdered + "'" +
+            ", qtyDelivered='" + qtyDelivered + "'" +
+            ", qtyPreviouslyDelivered='" + qtyPreviouslyDelivered + "'" +
+            ", qtyImported='" + qtyImported + "'" +
+            ", totalTaxCharge='" + totalTaxCharge + "'" +
+            ", discountPercentage='" + discountPercentage + "'" +
+            ", lineNo='" + lineNo + "'" +
+            ", listPriceDiscount='" + listPriceDiscount + "'" +
+            ", unitMeasure='" + unitMeasure + "'" +
+            ", isHidden='" + isHidden + "'" +
+            ", Ref1='" + Ref1 + "'" +
+            ", Ref2='" + Ref2 + "'" +
+            '}';
     }
 }

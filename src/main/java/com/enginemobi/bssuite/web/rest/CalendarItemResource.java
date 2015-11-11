@@ -52,8 +52,8 @@ public class CalendarItemResource {
      * POST  /calendarItems -> Create a new calendarItem.
      */
     @RequestMapping(value = "/calendarItems",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<CalendarItemDTO> createCalendarItem(@RequestBody CalendarItemDTO calendarItemDTO) throws URISyntaxException {
         log.debug("REST request to save CalendarItem : {}", calendarItemDTO);
@@ -64,8 +64,8 @@ public class CalendarItemResource {
         CalendarItem result = calendarItemRepository.save(calendarItem);
         calendarItemSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/calendarItems/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("calendarItem", result.getId().toString()))
-                .body(calendarItemMapper.calendarItemToCalendarItemDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("calendarItem", result.getId().toString()))
+            .body(calendarItemMapper.calendarItemToCalendarItemDTO(result));
     }
 
     /**
@@ -84,16 +84,16 @@ public class CalendarItemResource {
         CalendarItem result = calendarItemRepository.save(calendarItem);
         calendarItemSearchRepository.save(calendarItem);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("calendarItem", calendarItemDTO.getId().toString()))
-                .body(calendarItemMapper.calendarItemToCalendarItemDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("calendarItem", calendarItemDTO.getId().toString()))
+            .body(calendarItemMapper.calendarItemToCalendarItemDTO(result));
     }
 
     /**
      * GET  /calendarItems -> get all the calendarItems.
      */
     @RequestMapping(value = "/calendarItems",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<CalendarItemDTO>> getAllCalendarItems(Pageable pageable)
@@ -109,8 +109,8 @@ public class CalendarItemResource {
      * GET  /calendarItems/:id -> get the "id" calendarItem.
      */
     @RequestMapping(value = "/calendarItems/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<CalendarItemDTO> getCalendarItem(@PathVariable Long id) {
         log.debug("REST request to get CalendarItem : {}", id);
@@ -126,8 +126,8 @@ public class CalendarItemResource {
      * DELETE  /calendarItems/:id -> delete the "id" calendarItem.
      */
     @RequestMapping(value = "/calendarItems/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteCalendarItem(@PathVariable Long id) {
         log.debug("REST request to delete CalendarItem : {}", id);
@@ -146,7 +146,7 @@ public class CalendarItemResource {
     @Timed
     public List<CalendarItemDTO> searchCalendarItems(@PathVariable String query) {
         return StreamSupport
-            .stream(calendarItemSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(calendarItemSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(calendarItemMapper::calendarItemToCalendarItemDTO)
             .collect(Collectors.toList());
     }

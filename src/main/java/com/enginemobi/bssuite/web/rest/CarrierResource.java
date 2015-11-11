@@ -46,8 +46,8 @@ public class CarrierResource {
      * POST  /carriers -> Create a new carrier.
      */
     @RequestMapping(value = "/carriers",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Carrier> createCarrier(@Valid @RequestBody Carrier carrier) throws URISyntaxException {
         log.debug("REST request to save Carrier : {}", carrier);
@@ -57,8 +57,8 @@ public class CarrierResource {
         Carrier result = carrierRepository.save(carrier);
         carrierSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/carriers/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("carrier", result.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityCreationAlert("carrier", result.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -76,16 +76,16 @@ public class CarrierResource {
         Carrier result = carrierRepository.save(carrier);
         carrierSearchRepository.save(carrier);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("carrier", carrier.getId().toString()))
-                .body(result);
+            .headers(HeaderUtil.createEntityUpdateAlert("carrier", carrier.getId().toString()))
+            .body(result);
     }
 
     /**
      * GET  /carriers -> get all the carriers.
      */
     @RequestMapping(value = "/carriers",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<Carrier>> getAllCarriers(Pageable pageable)
         throws URISyntaxException {
@@ -98,8 +98,8 @@ public class CarrierResource {
      * GET  /carriers/:id -> get the "id" carrier.
      */
     @RequestMapping(value = "/carriers/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Carrier> getCarrier(@PathVariable Long id) {
         log.debug("REST request to get Carrier : {}", id);
@@ -114,8 +114,8 @@ public class CarrierResource {
      * DELETE  /carriers/:id -> delete the "id" carrier.
      */
     @RequestMapping(value = "/carriers/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteCarrier(@PathVariable Long id) {
         log.debug("REST request to delete Carrier : {}", id);
@@ -134,7 +134,7 @@ public class CarrierResource {
     @Timed
     public List<Carrier> searchCarriers(@PathVariable String query) {
         return StreamSupport
-            .stream(carrierSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(carrierSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
 }

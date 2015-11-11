@@ -12,16 +12,22 @@ angular.module('bssuiteApp').controller('PromotionDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:promotionUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.promotion.id != null) {
-                Promotion.update($scope.promotion, onSaveFinished);
+                Promotion.update($scope.promotion, onSaveSuccess, onSaveError);
             } else {
-                Promotion.save($scope.promotion, onSaveFinished);
+                Promotion.save($scope.promotion, onSaveSuccess, onSaveError);
             }
         };
 

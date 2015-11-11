@@ -1,6 +1,6 @@
 package com.enginemobi.bssuite.web.rest.dto;
 
-import org.joda.time.DateTime;
+import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,30 +16,21 @@ public class BackOrderLineItemDTO implements Serializable {
 
     private Boolean isReadyToRelease;
 
-
     private Double qtyAllocated;
-
 
     private Boolean isMarkedForAutoPurchaseOrdering;
 
-
     private Boolean isOnHold;
 
-
-    private DateTime allocatedDate;
-
+    private ZonedDateTime allocatedDate;
 
     private String comment;
 
-
     private Boolean isPicked;
-
 
     private Boolean isMarked;
 
-
     private Long salesOrderLineItemId;
-
     public Long getId() {
         return id;
     }
@@ -56,7 +47,6 @@ public class BackOrderLineItemDTO implements Serializable {
         this.isReadyToRelease = isReadyToRelease;
     }
 
-
     public Double getQtyAllocated() {
         return qtyAllocated;
     }
@@ -64,7 +54,6 @@ public class BackOrderLineItemDTO implements Serializable {
     public void setQtyAllocated(Double qtyAllocated) {
         this.qtyAllocated = qtyAllocated;
     }
-
 
     public Boolean getIsMarkedForAutoPurchaseOrdering() {
         return isMarkedForAutoPurchaseOrdering;
@@ -74,7 +63,6 @@ public class BackOrderLineItemDTO implements Serializable {
         this.isMarkedForAutoPurchaseOrdering = isMarkedForAutoPurchaseOrdering;
     }
 
-
     public Boolean getIsOnHold() {
         return isOnHold;
     }
@@ -83,15 +71,13 @@ public class BackOrderLineItemDTO implements Serializable {
         this.isOnHold = isOnHold;
     }
 
-
-    public DateTime getAllocatedDate() {
+    public ZonedDateTime getAllocatedDate() {
         return allocatedDate;
     }
 
-    public void setAllocatedDate(DateTime allocatedDate) {
+    public void setAllocatedDate(ZonedDateTime allocatedDate) {
         this.allocatedDate = allocatedDate;
     }
-
 
     public String getComment() {
         return comment;
@@ -101,7 +87,6 @@ public class BackOrderLineItemDTO implements Serializable {
         this.comment = comment;
     }
 
-
     public Boolean getIsPicked() {
         return isPicked;
     }
@@ -109,7 +94,6 @@ public class BackOrderLineItemDTO implements Serializable {
     public void setIsPicked(Boolean isPicked) {
         this.isPicked = isPicked;
     }
-
 
     public Boolean getIsMarked() {
         return isMarked;
@@ -119,7 +103,6 @@ public class BackOrderLineItemDTO implements Serializable {
         this.isMarked = isMarked;
     }
 
-
     public Long getSalesOrderLineItemId() {
         return salesOrderLineItemId;
     }
@@ -127,7 +110,6 @@ public class BackOrderLineItemDTO implements Serializable {
     public void setSalesOrderLineItemId(Long salesOrderLineItemId) {
         this.salesOrderLineItemId = salesOrderLineItemId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -152,15 +134,15 @@ public class BackOrderLineItemDTO implements Serializable {
     @Override
     public String toString() {
         return "BackOrderLineItemDTO{" +
-                "id=" + id +
-                ", isReadyToRelease='" + isReadyToRelease + "'" +
-                ", qtyAllocated='" + qtyAllocated + "'" +
-                ", isMarkedForAutoPurchaseOrdering='" + isMarkedForAutoPurchaseOrdering + "'" +
-                ", isOnHold='" + isOnHold + "'" +
-                ", allocatedDate='" + allocatedDate + "'" +
-                ", comment='" + comment + "'" +
-                ", isPicked='" + isPicked + "'" +
-                ", isMarked='" + isMarked + "'" +
-                '}';
+            "id=" + id +
+            ", isReadyToRelease='" + isReadyToRelease + "'" +
+            ", qtyAllocated='" + qtyAllocated + "'" +
+            ", isMarkedForAutoPurchaseOrdering='" + isMarkedForAutoPurchaseOrdering + "'" +
+            ", isOnHold='" + isOnHold + "'" +
+            ", allocatedDate='" + allocatedDate + "'" +
+            ", comment='" + comment + "'" +
+            ", isPicked='" + isPicked + "'" +
+            ", isMarked='" + isMarked + "'" +
+            '}';
     }
 }

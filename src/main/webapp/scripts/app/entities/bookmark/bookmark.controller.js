@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('BookmarkController', function ($scope, Bookmark, BookmarkSearch, ParseLinks) {
+    .controller('BookmarkController', function ($scope, $state, $modal, Bookmark, BookmarkSearch, ParseLinks) {
+      
         $scope.bookmarks = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            Bookmark.get({id: id}, function(result) {
-                $scope.bookmark = result;
-                $('#deleteBookmarkConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            Bookmark.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteBookmarkConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             BookmarkSearch.query({query: $scope.searchQuery}, function(result) {

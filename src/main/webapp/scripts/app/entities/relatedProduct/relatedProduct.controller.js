@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('RelatedProductController', function ($scope, RelatedProduct, RelatedProductSearch, ParseLinks) {
+    .controller('RelatedProductController', function ($scope, $state, $modal, RelatedProduct, RelatedProductSearch, ParseLinks) {
+      
         $scope.relatedProducts = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            RelatedProduct.get({id: id}, function(result) {
-                $scope.relatedProduct = result;
-                $('#deleteRelatedProductConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            RelatedProduct.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteRelatedProductConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             RelatedProductSearch.query({query: $scope.searchQuery}, function(result) {

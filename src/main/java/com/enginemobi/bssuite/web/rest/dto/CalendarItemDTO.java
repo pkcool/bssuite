@@ -1,6 +1,6 @@
 package com.enginemobi.bssuite.web.rest.dto;
 
-import org.joda.time.DateTime;
+import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,33 +17,23 @@ public class CalendarItemDTO implements Serializable {
 
     private String title;
 
+    private ZonedDateTime startedOn;
 
-    private DateTime startedOn;
-
-
-    private DateTime endedOn;
-
+    private ZonedDateTime endedOn;
 
     private Boolean isAllDayEvent;
 
-
     private Boolean isRemainderEnabled;
 
-
-    private DateTime remainderTime;
-
+    private ZonedDateTime remainderTime;
 
     private String webUrl;
 
-
     private Boolean isEditable;
-
 
     private AlarmType alarmType;
 
-
     private Long createdById;
-
     public Long getId() {
         return id;
     }
@@ -60,24 +50,21 @@ public class CalendarItemDTO implements Serializable {
         this.title = title;
     }
 
-
-    public DateTime getStartedOn() {
+    public ZonedDateTime getStartedOn() {
         return startedOn;
     }
 
-    public void setStartedOn(DateTime startedOn) {
+    public void setStartedOn(ZonedDateTime startedOn) {
         this.startedOn = startedOn;
     }
 
-
-    public DateTime getEndedOn() {
+    public ZonedDateTime getEndedOn() {
         return endedOn;
     }
 
-    public void setEndedOn(DateTime endedOn) {
+    public void setEndedOn(ZonedDateTime endedOn) {
         this.endedOn = endedOn;
     }
-
 
     public Boolean getIsAllDayEvent() {
         return isAllDayEvent;
@@ -87,7 +74,6 @@ public class CalendarItemDTO implements Serializable {
         this.isAllDayEvent = isAllDayEvent;
     }
 
-
     public Boolean getIsRemainderEnabled() {
         return isRemainderEnabled;
     }
@@ -96,15 +82,13 @@ public class CalendarItemDTO implements Serializable {
         this.isRemainderEnabled = isRemainderEnabled;
     }
 
-
-    public DateTime getRemainderTime() {
+    public ZonedDateTime getRemainderTime() {
         return remainderTime;
     }
 
-    public void setRemainderTime(DateTime remainderTime) {
+    public void setRemainderTime(ZonedDateTime remainderTime) {
         this.remainderTime = remainderTime;
     }
-
 
     public String getWebUrl() {
         return webUrl;
@@ -114,7 +98,6 @@ public class CalendarItemDTO implements Serializable {
         this.webUrl = webUrl;
     }
 
-
     public Boolean getIsEditable() {
         return isEditable;
     }
@@ -122,7 +105,6 @@ public class CalendarItemDTO implements Serializable {
     public void setIsEditable(Boolean isEditable) {
         this.isEditable = isEditable;
     }
-
 
     public AlarmType getAlarmType() {
         return alarmType;
@@ -132,7 +114,6 @@ public class CalendarItemDTO implements Serializable {
         this.alarmType = alarmType;
     }
 
-
     public Long getCreatedById() {
         return createdById;
     }
@@ -140,7 +121,6 @@ public class CalendarItemDTO implements Serializable {
     public void setCreatedById(Long staffId) {
         this.createdById = staffId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -165,16 +145,16 @@ public class CalendarItemDTO implements Serializable {
     @Override
     public String toString() {
         return "CalendarItemDTO{" +
-                "id=" + id +
-                ", title='" + title + "'" +
-                ", startedOn='" + startedOn + "'" +
-                ", endedOn='" + endedOn + "'" +
-                ", isAllDayEvent='" + isAllDayEvent + "'" +
-                ", isRemainderEnabled='" + isRemainderEnabled + "'" +
-                ", remainderTime='" + remainderTime + "'" +
-                ", webUrl='" + webUrl + "'" +
-                ", isEditable='" + isEditable + "'" +
-                ", alarmType='" + alarmType + "'" +
-                '}';
+            "id=" + id +
+            ", title='" + title + "'" +
+            ", startedOn='" + startedOn + "'" +
+            ", endedOn='" + endedOn + "'" +
+            ", isAllDayEvent='" + isAllDayEvent + "'" +
+            ", isRemainderEnabled='" + isRemainderEnabled + "'" +
+            ", remainderTime='" + remainderTime + "'" +
+            ", webUrl='" + webUrl + "'" +
+            ", isEditable='" + isEditable + "'" +
+            ", alarmType='" + alarmType + "'" +
+            '}';
     }
 }

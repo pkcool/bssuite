@@ -18,16 +18,22 @@ angular.module('bssuiteApp').controller('InvoiceDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:invoiceUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.invoice.id != null) {
-                Invoice.update($scope.invoice, onSaveFinished);
+                Invoice.update($scope.invoice, onSaveSuccess, onSaveError);
             } else {
-                Invoice.save($scope.invoice, onSaveFinished);
+                Invoice.save($scope.invoice, onSaveSuccess, onSaveError);
             }
         };
 

@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('PromotionController', function ($scope, Promotion, PromotionSearch, ParseLinks) {
+    .controller('PromotionController', function ($scope, $state, $modal, Promotion, PromotionSearch, ParseLinks) {
+      
         $scope.promotions = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            Promotion.get({id: id}, function(result) {
-                $scope.promotion = result;
-                $('#deletePromotionConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            Promotion.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deletePromotionConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             PromotionSearch.query({query: $scope.searchQuery}, function(result) {

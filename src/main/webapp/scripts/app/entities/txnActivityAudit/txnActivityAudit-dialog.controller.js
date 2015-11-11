@@ -12,16 +12,22 @@ angular.module('bssuiteApp').controller('TxnActivityAuditDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:txnActivityAuditUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.txnActivityAudit.id != null) {
-                TxnActivityAudit.update($scope.txnActivityAudit, onSaveFinished);
+                TxnActivityAudit.update($scope.txnActivityAudit, onSaveSuccess, onSaveError);
             } else {
-                TxnActivityAudit.save($scope.txnActivityAudit, onSaveFinished);
+                TxnActivityAudit.save($scope.txnActivityAudit, onSaveSuccess, onSaveError);
             }
         };
 

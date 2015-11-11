@@ -91,5 +91,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('stockFamily.delete', {
+                parent: 'stockFamily',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/stockFamily/stockFamily-delete-dialog.html',
+                        controller: 'StockFamilyDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['StockFamily', function(StockFamily) {
+                                return StockFamily.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('stockFamily', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

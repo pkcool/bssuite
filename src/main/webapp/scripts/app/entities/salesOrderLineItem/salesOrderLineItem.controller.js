@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('SalesOrderLineItemController', function ($scope, SalesOrderLineItem, SalesOrderLineItemSearch, ParseLinks) {
+    .controller('SalesOrderLineItemController', function ($scope, $state, $modal, SalesOrderLineItem, SalesOrderLineItemSearch, ParseLinks) {
+      
         $scope.salesOrderLineItems = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            SalesOrderLineItem.get({id: id}, function(result) {
-                $scope.salesOrderLineItem = result;
-                $('#deleteSalesOrderLineItemConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            SalesOrderLineItem.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteSalesOrderLineItemConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             SalesOrderLineItemSearch.query({query: $scope.searchQuery}, function(result) {

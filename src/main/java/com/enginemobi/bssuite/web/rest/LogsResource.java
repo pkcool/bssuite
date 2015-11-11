@@ -1,9 +1,10 @@
 package com.enginemobi.bssuite.web.rest;
 
+import com.enginemobi.bssuite.web.rest.dto.LoggerDTO;
+
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.LoggerContext;
 import com.codahale.metrics.annotation.Timed;
-import com.enginemobi.bssuite.web.rest.dto.LoggerDTO;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,8 +21,8 @@ import java.util.stream.Collectors;
 public class LogsResource {
 
     @RequestMapping(value = "/logs",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<LoggerDTO> getList() {
         LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
@@ -29,11 +30,10 @@ public class LogsResource {
             .stream()
             .map(LoggerDTO::new)
             .collect(Collectors.toList());
-        
     }
 
     @RequestMapping(value = "/logs",
-            method = RequestMethod.PUT)
+        method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Timed
     public void changeLevel(@RequestBody LoggerDTO jsonLogger) {

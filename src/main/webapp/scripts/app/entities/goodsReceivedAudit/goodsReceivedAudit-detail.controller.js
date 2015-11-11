@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.goodsReceivedAudit = result;
             });
         };
-        $rootScope.$on('bssuiteApp:goodsReceivedAuditUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:goodsReceivedAuditUpdate', function(event, result) {
             $scope.goodsReceivedAudit = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

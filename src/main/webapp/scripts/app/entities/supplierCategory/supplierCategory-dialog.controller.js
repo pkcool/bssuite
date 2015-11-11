@@ -11,16 +11,22 @@ angular.module('bssuiteApp').controller('SupplierCategoryDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:supplierCategoryUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.supplierCategory.id != null) {
-                SupplierCategory.update($scope.supplierCategory, onSaveFinished);
+                SupplierCategory.update($scope.supplierCategory, onSaveSuccess, onSaveError);
             } else {
-                SupplierCategory.save($scope.supplierCategory, onSaveFinished);
+                SupplierCategory.save($scope.supplierCategory, onSaveSuccess, onSaveError);
             }
         };
 

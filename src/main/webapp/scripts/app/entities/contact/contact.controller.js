@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('ContactController', function ($scope, Contact, ContactSearch, ParseLinks) {
+    .controller('ContactController', function ($scope, $state, $modal, Contact, ContactSearch, ParseLinks) {
+      
         $scope.contacts = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            Contact.get({id: id}, function(result) {
-                $scope.contact = result;
-                $('#deleteContactConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            Contact.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteContactConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             ContactSearch.query({query: $scope.searchQuery}, function(result) {

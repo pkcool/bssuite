@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.backOrderLineItem = result;
             });
         };
-        $rootScope.$on('bssuiteApp:backOrderLineItemUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:backOrderLineItemUpdate', function(event, result) {
             $scope.backOrderLineItem = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

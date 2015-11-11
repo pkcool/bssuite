@@ -1,13 +1,8 @@
 package com.enginemobi.bssuite.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeDeserializer;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeSerializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
+import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -24,39 +19,35 @@ import com.enginemobi.bssuite.domain.enumeration.ProductActivityType;
 @Entity
 @Table(name = "product_activity_audit")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="productactivityaudit")
+@Document(indexName = "productactivityaudit")
 public class ProductActivityAudit implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
     @Column(name = "created_on")
-    private DateTime createdOn;
-    
+    private ZonedDateTime createdOn;
+
     @Column(name = "txn_number")
     private String txnNumber;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "activity_type")
     private ProductActivityType activityType;
-    
+
     @Column(name = "qty_txn")
     private Double qtyTxn;
-    
+
     @Column(name = "qty_adjusted")
     private Double qtyAdjusted;
-    
+
     @Column(name = "qty_stock_on_hold")
     private Double qtyStockOnHold;
-    
+
     @Column(name = "line_no")
     private String lineNo;
-    
+
     @Column(name = "txn_account_code")
     private String txnAccountCode;
 
@@ -74,11 +65,11 @@ public class ProductActivityAudit implements Serializable {
         this.id = id;
     }
 
-    public DateTime getCreatedOn() {
+    public ZonedDateTime getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(DateTime createdOn) {
+    public void setCreatedOn(ZonedDateTime createdOn) {
         this.createdOn = createdOn;
     }
 
@@ -178,15 +169,15 @@ public class ProductActivityAudit implements Serializable {
     @Override
     public String toString() {
         return "ProductActivityAudit{" +
-                "id=" + id +
-                ", createdOn='" + createdOn + "'" +
-                ", txnNumber='" + txnNumber + "'" +
-                ", activityType='" + activityType + "'" +
-                ", qtyTxn='" + qtyTxn + "'" +
-                ", qtyAdjusted='" + qtyAdjusted + "'" +
-                ", qtyStockOnHold='" + qtyStockOnHold + "'" +
-                ", lineNo='" + lineNo + "'" +
-                ", txnAccountCode='" + txnAccountCode + "'" +
-                '}';
+            "id=" + id +
+            ", createdOn='" + createdOn + "'" +
+            ", txnNumber='" + txnNumber + "'" +
+            ", activityType='" + activityType + "'" +
+            ", qtyTxn='" + qtyTxn + "'" +
+            ", qtyAdjusted='" + qtyAdjusted + "'" +
+            ", qtyStockOnHold='" + qtyStockOnHold + "'" +
+            ", lineNo='" + lineNo + "'" +
+            ", txnAccountCode='" + txnAccountCode + "'" +
+            '}';
     }
 }

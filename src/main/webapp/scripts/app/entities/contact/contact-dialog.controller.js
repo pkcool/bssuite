@@ -20,16 +20,22 @@ angular.module('bssuiteApp').controller('ContactDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:contactUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.contact.id != null) {
-                Contact.update($scope.contact, onSaveFinished);
+                Contact.update($scope.contact, onSaveSuccess, onSaveError);
             } else {
-                Contact.save($scope.contact, onSaveFinished);
+                Contact.save($scope.contact, onSaveSuccess, onSaveError);
             }
         };
 

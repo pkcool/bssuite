@@ -1,13 +1,8 @@
 package com.enginemobi.bssuite.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeDeserializer;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeSerializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
+import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -27,33 +22,29 @@ import com.enginemobi.bssuite.domain.enumeration.TxnEditType;
 @Entity
 @Table(name = "txn_activity_audit")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="txnactivityaudit")
+@Document(indexName = "txnactivityaudit")
 public class TxnActivityAudit implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
     @Column(name = "edited_on")
-    private DateTime editedOn;
-    
+    private ZonedDateTime editedOn;
+
     @Column(name = "txn_number")
     private String txnNumber;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "txn_type")
     private TxnType txnType;
-    
+
     @Column(name = "txn_amount", precision=10, scale=2)
     private BigDecimal txnAmount;
-    
+
     @Column(name = "bank_acc")
     private String bankAcc;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "edit_type")
     private TxnEditType editType;
@@ -69,11 +60,11 @@ public class TxnActivityAudit implements Serializable {
         this.id = id;
     }
 
-    public DateTime getEditedOn() {
+    public ZonedDateTime getEditedOn() {
         return editedOn;
     }
 
-    public void setEditedOn(DateTime editedOn) {
+    public void setEditedOn(ZonedDateTime editedOn) {
         this.editedOn = editedOn;
     }
 
@@ -149,13 +140,13 @@ public class TxnActivityAudit implements Serializable {
     @Override
     public String toString() {
         return "TxnActivityAudit{" +
-                "id=" + id +
-                ", editedOn='" + editedOn + "'" +
-                ", txnNumber='" + txnNumber + "'" +
-                ", txnType='" + txnType + "'" +
-                ", txnAmount='" + txnAmount + "'" +
-                ", bankAcc='" + bankAcc + "'" +
-                ", editType='" + editType + "'" +
-                '}';
+            "id=" + id +
+            ", editedOn='" + editedOn + "'" +
+            ", txnNumber='" + txnNumber + "'" +
+            ", txnType='" + txnType + "'" +
+            ", txnAmount='" + txnAmount + "'" +
+            ", bankAcc='" + bankAcc + "'" +
+            ", editType='" + editType + "'" +
+            '}';
     }
 }

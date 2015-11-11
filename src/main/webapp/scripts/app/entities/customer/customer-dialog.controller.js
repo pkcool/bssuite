@@ -16,16 +16,22 @@ angular.module('bssuiteApp').controller('CustomerDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:customerUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.customer.id != null) {
-                Customer.update($scope.customer, onSaveFinished);
+                Customer.update($scope.customer, onSaveSuccess, onSaveError);
             } else {
-                Customer.save($scope.customer, onSaveFinished);
+                Customer.save($scope.customer, onSaveSuccess, onSaveError);
             }
         };
 

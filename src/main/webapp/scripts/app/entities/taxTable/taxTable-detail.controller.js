@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.taxTable = result;
             });
         };
-        $rootScope.$on('bssuiteApp:taxTableUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:taxTableUpdate', function(event, result) {
             $scope.taxTable = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

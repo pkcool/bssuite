@@ -1,6 +1,7 @@
 package com.enginemobi.bssuite.security;
 
 import com.enginemobi.bssuite.config.Constants;
+
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ public class SpringSecurityAuditorAware implements AuditorAware<String> {
 
     @Override
     public String getCurrentAuditor() {
-        String userName = SecurityUtils.getCurrentLogin();
+        String userName = SecurityUtils.getCurrentUserLogin();
         return (userName != null ? userName : Constants.SYSTEM_ACCOUNT);
     }
 }

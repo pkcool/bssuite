@@ -11,16 +11,22 @@ angular.module('bssuiteApp').controller('PriceScaleDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:priceScaleUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.priceScale.id != null) {
-                PriceScale.update($scope.priceScale, onSaveFinished);
+                PriceScale.update($scope.priceScale, onSaveSuccess, onSaveError);
             } else {
-                PriceScale.save($scope.priceScale, onSaveFinished);
+                PriceScale.save($scope.priceScale, onSaveSuccess, onSaveError);
             }
         };
 

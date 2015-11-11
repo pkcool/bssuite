@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('TxnActivityAuditController', function ($scope, TxnActivityAudit, TxnActivityAuditSearch, ParseLinks) {
+    .controller('TxnActivityAuditController', function ($scope, $state, $modal, TxnActivityAudit, TxnActivityAuditSearch, ParseLinks) {
+      
         $scope.txnActivityAudits = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            TxnActivityAudit.get({id: id}, function(result) {
-                $scope.txnActivityAudit = result;
-                $('#deleteTxnActivityAuditConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            TxnActivityAudit.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteTxnActivityAuditConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             TxnActivityAuditSearch.query({query: $scope.searchQuery}, function(result) {

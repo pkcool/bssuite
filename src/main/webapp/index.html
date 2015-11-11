@@ -9,6 +9,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css assets/styles/vendor.css -->
         <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
         <link rel="stylesheet" href="bower_components/highlightjs/styles/default.css" />
         <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
         <!-- endbower -->
@@ -104,16 +105,6 @@
             ga('create','UA-XXXXX-X');ga('send','pageview');
         </script>-->
 
-    <script>
-        // Configuration for pace script
-    paceOptions = {
-
-    // Only show the progress on regular and ajax-y page navigation,
-    // not every request
-    restartOnRequestAfter: false
-    }
-    </script>
-
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
@@ -124,6 +115,7 @@
         <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+        <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
         <script src="bower_components/angular-resource/angular-resource.js"></script>
         <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -297,6 +289,8 @@
     <script src="scripts/components/smart_admin/notification/SmartNotification.js"></script>
     <script src="scripts/components/user/user.service.js"></script>
     <script src="scripts/components/util/base64.service.js"></script>
+    <script src="scripts/components/util/capitalize.filter.js"></script>
+    <script src="scripts/components/util/data-util.service.js"></script>
     <script src="scripts/components/util/dateutil.service.js"></script>
     <script src="scripts/components/util/parse-links.service.js"></script>
     <script src="scripts/components/util/truncate.filter.js"></script>
@@ -318,6 +312,10 @@
     <script src="scripts/app/account/sessions/sessions.js"></script>
     <script src="scripts/app/account/settings/settings.controller.js"></script>
     <script src="scripts/app/account/settings/settings.js"></script>
+    <script src="scripts/app/account/social/directive/social.directive.js"></script>
+    <script src="scripts/app/account/social/social-register.controller.js"></script>
+    <script src="scripts/app/account/social/social-register.js"></script>
+    <script src="scripts/app/account/social/social.service.js"></script>
     <script src="scripts/app/admin/admin.js"></script>
     <script src="scripts/app/admin/audits/audits.controller.js"></script>
     <script src="scripts/app/admin/audits/audits.js"></script>
@@ -333,137 +331,171 @@
     <script src="scripts/app/admin/metrics/metrics.js"></script>
     <script src="scripts/app/admin/metrics/metrics.modal.controller.js"></script>
     <script src="scripts/app/admin/user-management/user-management-detail.controller.js"></script>
+    <script src="scripts/app/admin/user-management/user-management-dialog.controller.js"></script>
     <script src="scripts/app/admin/user-management/user-management.controller.js"></script>
     <script src="scripts/app/admin/user-management/user-management.js"></script>
+    <script src="scripts/app/entities/address/address-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/address/address-detail.controller.js"></script>
     <script src="scripts/app/entities/address/address-dialog.controller.js"></script>
     <script src="scripts/app/entities/address/address.controller.js"></script>
     <script src="scripts/app/entities/address/address.js"></script>
+    <script src="scripts/app/entities/backOrderLineItem/backOrderLineItem-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/backOrderLineItem/backOrderLineItem-detail.controller.js"></script>
     <script src="scripts/app/entities/backOrderLineItem/backOrderLineItem-dialog.controller.js"></script>
     <script src="scripts/app/entities/backOrderLineItem/backOrderLineItem.controller.js"></script>
     <script src="scripts/app/entities/backOrderLineItem/backOrderLineItem.js"></script>
+    <script src="scripts/app/entities/bookmark/bookmark-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/bookmark/bookmark-detail.controller.js"></script>
     <script src="scripts/app/entities/bookmark/bookmark-dialog.controller.js"></script>
     <script src="scripts/app/entities/bookmark/bookmark.controller.js"></script>
     <script src="scripts/app/entities/bookmark/bookmark.js"></script>
+    <script src="scripts/app/entities/calendarItem/calendarItem-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/calendarItem/calendarItem-detail.controller.js"></script>
     <script src="scripts/app/entities/calendarItem/calendarItem-dialog.controller.js"></script>
     <script src="scripts/app/entities/calendarItem/calendarItem.controller.js"></script>
     <script src="scripts/app/entities/calendarItem/calendarItem.js"></script>
+    <script src="scripts/app/entities/carrier/carrier-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/carrier/carrier-detail.controller.js"></script>
     <script src="scripts/app/entities/carrier/carrier-dialog.controller.js"></script>
     <script src="scripts/app/entities/carrier/carrier.controller.js"></script>
     <script src="scripts/app/entities/carrier/carrier.js"></script>
+    <script src="scripts/app/entities/contact/contact-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/contact/contact-detail.controller.js"></script>
     <script src="scripts/app/entities/contact/contact-dialog.controller.js"></script>
     <script src="scripts/app/entities/contact/contact.controller.js"></script>
     <script src="scripts/app/entities/contact/contact.js"></script>
+    <script src="scripts/app/entities/customer/customer-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/customer/customer-detail.controller.js"></script>
     <script src="scripts/app/entities/customer/customer-dialog.controller.js"></script>
     <script src="scripts/app/entities/customer/customer.controller.js"></script>
     <script src="scripts/app/entities/customer/customer.js"></script>
+    <script src="scripts/app/entities/customerCategory/customerCategory-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/customerCategory/customerCategory-detail.controller.js"></script>
     <script src="scripts/app/entities/customerCategory/customerCategory-dialog.controller.js"></script>
     <script src="scripts/app/entities/customerCategory/customerCategory.controller.js"></script>
     <script src="scripts/app/entities/customerCategory/customerCategory.js"></script>
+    <script src="scripts/app/entities/customerDiscountRule/customerDiscountRule-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/customerDiscountRule/customerDiscountRule-detail.controller.js"></script>
     <script src="scripts/app/entities/customerDiscountRule/customerDiscountRule-dialog.controller.js"></script>
     <script src="scripts/app/entities/customerDiscountRule/customerDiscountRule.controller.js"></script>
     <script src="scripts/app/entities/customerDiscountRule/customerDiscountRule.js"></script>
     <script src="scripts/app/entities/entity.js"></script>
+    <script src="scripts/app/entities/goodsReceivedAudit/goodsReceivedAudit-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/goodsReceivedAudit/goodsReceivedAudit-detail.controller.js"></script>
     <script src="scripts/app/entities/goodsReceivedAudit/goodsReceivedAudit-dialog.controller.js"></script>
     <script src="scripts/app/entities/goodsReceivedAudit/goodsReceivedAudit.controller.js"></script>
     <script src="scripts/app/entities/goodsReceivedAudit/goodsReceivedAudit.js"></script>
+    <script src="scripts/app/entities/invoice/invoice-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/invoice/invoice-detail.controller.js"></script>
     <script src="scripts/app/entities/invoice/invoice-dialog.controller.js"></script>
     <script src="scripts/app/entities/invoice/invoice.controller.js"></script>
     <script src="scripts/app/entities/invoice/invoice.js"></script>
+    <script src="scripts/app/entities/invoiceLineItem/invoiceLineItem-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/invoiceLineItem/invoiceLineItem-detail.controller.js"></script>
     <script src="scripts/app/entities/invoiceLineItem/invoiceLineItem-dialog.controller.js"></script>
     <script src="scripts/app/entities/invoiceLineItem/invoiceLineItem.controller.js"></script>
     <script src="scripts/app/entities/invoiceLineItem/invoiceLineItem.js"></script>
+    <script src="scripts/app/entities/priceScale/priceScale-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/priceScale/priceScale-detail.controller.js"></script>
     <script src="scripts/app/entities/priceScale/priceScale-dialog.controller.js"></script>
     <script src="scripts/app/entities/priceScale/priceScale.controller.js"></script>
     <script src="scripts/app/entities/priceScale/priceScale.js"></script>
+    <script src="scripts/app/entities/product/product-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/product/product-detail.controller.js"></script>
     <script src="scripts/app/entities/product/product-dialog.controller.js"></script>
     <script src="scripts/app/entities/product/product.controller.js"></script>
     <script src="scripts/app/entities/product/product.js"></script>
+    <script src="scripts/app/entities/productActivityAudit/productActivityAudit-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/productActivityAudit/productActivityAudit-detail.controller.js"></script>
     <script src="scripts/app/entities/productActivityAudit/productActivityAudit-dialog.controller.js"></script>
     <script src="scripts/app/entities/productActivityAudit/productActivityAudit.controller.js"></script>
     <script src="scripts/app/entities/productActivityAudit/productActivityAudit.js"></script>
+    <script src="scripts/app/entities/productRelationCategory/productRelationCategory-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/productRelationCategory/productRelationCategory-detail.controller.js"></script>
     <script src="scripts/app/entities/productRelationCategory/productRelationCategory-dialog.controller.js"></script>
     <script src="scripts/app/entities/productRelationCategory/productRelationCategory.controller.js"></script>
     <script src="scripts/app/entities/productRelationCategory/productRelationCategory.js"></script>
+    <script src="scripts/app/entities/promotion/promotion-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/promotion/promotion-detail.controller.js"></script>
     <script src="scripts/app/entities/promotion/promotion-dialog.controller.js"></script>
     <script src="scripts/app/entities/promotion/promotion.controller.js"></script>
     <script src="scripts/app/entities/promotion/promotion.js"></script>
+    <script src="scripts/app/entities/purchaseOrder/purchaseOrder-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/purchaseOrder/purchaseOrder-detail.controller.js"></script>
     <script src="scripts/app/entities/purchaseOrder/purchaseOrder-dialog.controller.js"></script>
     <script src="scripts/app/entities/purchaseOrder/purchaseOrder.controller.js"></script>
     <script src="scripts/app/entities/purchaseOrder/purchaseOrder.js"></script>
+    <script src="scripts/app/entities/purchaseOrderLineItem/purchaseOrderLineItem-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/purchaseOrderLineItem/purchaseOrderLineItem-detail.controller.js"></script>
     <script src="scripts/app/entities/purchaseOrderLineItem/purchaseOrderLineItem-dialog.controller.js"></script>
     <script src="scripts/app/entities/purchaseOrderLineItem/purchaseOrderLineItem.controller.js"></script>
     <script src="scripts/app/entities/purchaseOrderLineItem/purchaseOrderLineItem.js"></script>
+    <script src="scripts/app/entities/quote/quote-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/quote/quote-detail.controller.js"></script>
     <script src="scripts/app/entities/quote/quote-dialog.controller.js"></script>
     <script src="scripts/app/entities/quote/quote.controller.js"></script>
     <script src="scripts/app/entities/quote/quote.js"></script>
+    <script src="scripts/app/entities/quoteLineItem/quoteLineItem-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/quoteLineItem/quoteLineItem-detail.controller.js"></script>
     <script src="scripts/app/entities/quoteLineItem/quoteLineItem-dialog.controller.js"></script>
     <script src="scripts/app/entities/quoteLineItem/quoteLineItem.controller.js"></script>
     <script src="scripts/app/entities/quoteLineItem/quoteLineItem.js"></script>
+    <script src="scripts/app/entities/relatedProduct/relatedProduct-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/relatedProduct/relatedProduct-detail.controller.js"></script>
     <script src="scripts/app/entities/relatedProduct/relatedProduct-dialog.controller.js"></script>
     <script src="scripts/app/entities/relatedProduct/relatedProduct.controller.js"></script>
     <script src="scripts/app/entities/relatedProduct/relatedProduct.js"></script>
+    <script src="scripts/app/entities/salesOrder/salesOrder-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/salesOrder/salesOrder-detail.controller.js"></script>
     <script src="scripts/app/entities/salesOrder/salesOrder-dialog.controller.js"></script>
     <script src="scripts/app/entities/salesOrder/salesOrder.controller.js"></script>
     <script src="scripts/app/entities/salesOrder/salesOrder.js"></script>
+    <script src="scripts/app/entities/salesOrderLineItem/salesOrderLineItem-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/salesOrderLineItem/salesOrderLineItem-detail.controller.js"></script>
     <script src="scripts/app/entities/salesOrderLineItem/salesOrderLineItem-dialog.controller.js"></script>
     <script src="scripts/app/entities/salesOrderLineItem/salesOrderLineItem.controller.js"></script>
     <script src="scripts/app/entities/salesOrderLineItem/salesOrderLineItem.js"></script>
+    <script src="scripts/app/entities/staff/staff-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/staff/staff-detail.controller.js"></script>
     <script src="scripts/app/entities/staff/staff-dialog.controller.js"></script>
     <script src="scripts/app/entities/staff/staff.controller.js"></script>
     <script src="scripts/app/entities/staff/staff.js"></script>
+    <script src="scripts/app/entities/stockFamily/stockFamily-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/stockFamily/stockFamily-detail.controller.js"></script>
     <script src="scripts/app/entities/stockFamily/stockFamily-dialog.controller.js"></script>
     <script src="scripts/app/entities/stockFamily/stockFamily.controller.js"></script>
     <script src="scripts/app/entities/stockFamily/stockFamily.js"></script>
+    <script src="scripts/app/entities/stockGroup/stockGroup-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/stockGroup/stockGroup-detail.controller.js"></script>
     <script src="scripts/app/entities/stockGroup/stockGroup-dialog.controller.js"></script>
     <script src="scripts/app/entities/stockGroup/stockGroup.controller.js"></script>
     <script src="scripts/app/entities/stockGroup/stockGroup.js"></script>
+    <script src="scripts/app/entities/store/store-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/store/store-detail.controller.js"></script>
     <script src="scripts/app/entities/store/store-dialog.controller.js"></script>
     <script src="scripts/app/entities/store/store.controller.js"></script>
     <script src="scripts/app/entities/store/store.js"></script>
+    <script src="scripts/app/entities/supplier/supplier-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/supplier/supplier-detail.controller.js"></script>
     <script src="scripts/app/entities/supplier/supplier-dialog.controller.js"></script>
     <script src="scripts/app/entities/supplier/supplier.controller.js"></script>
     <script src="scripts/app/entities/supplier/supplier.js"></script>
+    <script src="scripts/app/entities/supplierCategory/supplierCategory-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/supplierCategory/supplierCategory-detail.controller.js"></script>
     <script src="scripts/app/entities/supplierCategory/supplierCategory-dialog.controller.js"></script>
     <script src="scripts/app/entities/supplierCategory/supplierCategory.controller.js"></script>
     <script src="scripts/app/entities/supplierCategory/supplierCategory.js"></script>
+    <script src="scripts/app/entities/supplierDiscountRule/supplierDiscountRule-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/supplierDiscountRule/supplierDiscountRule-detail.controller.js"></script>
     <script src="scripts/app/entities/supplierDiscountRule/supplierDiscountRule-dialog.controller.js"></script>
     <script src="scripts/app/entities/supplierDiscountRule/supplierDiscountRule.controller.js"></script>
     <script src="scripts/app/entities/supplierDiscountRule/supplierDiscountRule.js"></script>
+    <script src="scripts/app/entities/taxTable/taxTable-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/taxTable/taxTable-detail.controller.js"></script>
     <script src="scripts/app/entities/taxTable/taxTable-dialog.controller.js"></script>
     <script src="scripts/app/entities/taxTable/taxTable.controller.js"></script>
     <script src="scripts/app/entities/taxTable/taxTable.js"></script>
+    <script src="scripts/app/entities/txnActivityAudit/txnActivityAudit-delete-dialog.controller.js"></script>
     <script src="scripts/app/entities/txnActivityAudit/txnActivityAudit-detail.controller.js"></script>
     <script src="scripts/app/entities/txnActivityAudit/txnActivityAudit-dialog.controller.js"></script>
     <script src="scripts/app/entities/txnActivityAudit/txnActivityAudit.controller.js"></script>
@@ -478,6 +510,5 @@
     <script src="scripts/app/system/system.js"></script>
     <!-- /include -->
     <!-- endbuild -->
-
 </body>
 </html>

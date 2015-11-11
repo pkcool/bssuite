@@ -18,16 +18,22 @@ angular.module('bssuiteApp').controller('SalesOrderDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:salesOrderUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.salesOrder.id != null) {
-                SalesOrder.update($scope.salesOrder, onSaveFinished);
+                SalesOrder.update($scope.salesOrder, onSaveSuccess, onSaveError);
             } else {
-                SalesOrder.save($scope.salesOrder, onSaveFinished);
+                SalesOrder.save($scope.salesOrder, onSaveSuccess, onSaveError);
             }
         };
 

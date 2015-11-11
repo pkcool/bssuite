@@ -1,6 +1,6 @@
 package com.enginemobi.bssuite.web.rest.dto;
 
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -14,45 +14,31 @@ public class StoreDTO implements Serializable {
 
     private String code;
 
-
     private String name;
-
 
     private String address1;
 
-
     private String address2;
-
 
     private String suburb;
 
-
     private String state;
-
 
     private String postcode;
 
-
     private String country;
-
 
     private String phone;
 
-
     private String fax;
-
 
     private String email;
 
-
     private String webUrl;
-
 
     private LocalDate inBusinessSince;
 
-
     private Boolean isArchived;
-
 
     public Long getId() {
         return id;
@@ -70,7 +56,6 @@ public class StoreDTO implements Serializable {
         this.code = code;
     }
 
-
     public String getName() {
         return name;
     }
@@ -78,7 +63,6 @@ public class StoreDTO implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getAddress1() {
         return address1;
@@ -88,7 +72,6 @@ public class StoreDTO implements Serializable {
         this.address1 = address1;
     }
 
-
     public String getAddress2() {
         return address2;
     }
@@ -96,7 +79,6 @@ public class StoreDTO implements Serializable {
     public void setAddress2(String address2) {
         this.address2 = address2;
     }
-
 
     public String getSuburb() {
         return suburb;
@@ -106,7 +88,6 @@ public class StoreDTO implements Serializable {
         this.suburb = suburb;
     }
 
-
     public String getState() {
         return state;
     }
@@ -114,7 +95,6 @@ public class StoreDTO implements Serializable {
     public void setState(String state) {
         this.state = state;
     }
-
 
     public String getPostcode() {
         return postcode;
@@ -124,7 +104,6 @@ public class StoreDTO implements Serializable {
         this.postcode = postcode;
     }
 
-
     public String getCountry() {
         return country;
     }
@@ -132,7 +111,6 @@ public class StoreDTO implements Serializable {
     public void setCountry(String country) {
         this.country = country;
     }
-
 
     public String getPhone() {
         return phone;
@@ -142,7 +120,6 @@ public class StoreDTO implements Serializable {
         this.phone = phone;
     }
 
-
     public String getFax() {
         return fax;
     }
@@ -150,7 +127,6 @@ public class StoreDTO implements Serializable {
     public void setFax(String fax) {
         this.fax = fax;
     }
-
 
     public String getEmail() {
         return email;
@@ -160,7 +136,6 @@ public class StoreDTO implements Serializable {
         this.email = email;
     }
 
-
     public String getWebUrl() {
         return webUrl;
     }
@@ -168,7 +143,6 @@ public class StoreDTO implements Serializable {
     public void setWebUrl(String webUrl) {
         this.webUrl = webUrl;
     }
-
 
     public LocalDate getInBusinessSince() {
         return inBusinessSince;
@@ -178,7 +152,6 @@ public class StoreDTO implements Serializable {
         this.inBusinessSince = inBusinessSince;
     }
 
-
     public Boolean getIsArchived() {
         return isArchived;
     }
@@ -186,7 +159,6 @@ public class StoreDTO implements Serializable {
     public void setIsArchived(Boolean isArchived) {
         this.isArchived = isArchived;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -212,21 +184,21 @@ public class StoreDTO implements Serializable {
     @Override
     public String toString() {
         return "StoreDTO{" +
-                "id=" + id +
-                ", code='" + code + "'" +
-                ", name='" + name + "'" +
-                ", address1='" + address1 + "'" +
-                ", address2='" + address2 + "'" +
-                ", suburb='" + suburb + "'" +
-                ", state='" + state + "'" +
-                ", postcode='" + postcode + "'" +
-                ", country='" + country + "'" +
-                ", phone='" + phone + "'" +
-                ", fax='" + fax + "'" +
-                ", email='" + email + "'" +
-                ", webUrl='" + webUrl + "'" +
-                ", inBusinessSince='" + inBusinessSince + "'" +
-                ", isArchived='" + isArchived + "'" +
-                '}';
+            "id=" + id +
+            ", code='" + code + "'" +
+            ", name='" + name + "'" +
+            ", address1='" + address1 + "'" +
+            ", address2='" + address2 + "'" +
+            ", suburb='" + suburb + "'" +
+            ", state='" + state + "'" +
+            ", postcode='" + postcode + "'" +
+            ", country='" + country + "'" +
+            ", phone='" + phone + "'" +
+            ", fax='" + fax + "'" +
+            ", email='" + email + "'" +
+            ", webUrl='" + webUrl + "'" +
+            ", inBusinessSince='" + inBusinessSince + "'" +
+            ", isArchived='" + isArchived + "'" +
+            '}';
     }
 }

@@ -1,6 +1,6 @@
 package com.enginemobi.bssuite.web.rest.dto;
 
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -17,60 +17,41 @@ public class SupplierDiscountRuleDTO implements Serializable {
     @NotNull
     private String supplierCode;
 
-
     private Integer ruleNo;
-
 
     private Boolean isAppliedToSales;
 
-
     private Boolean isAppliedOnSpecialItemsOnly;
-
 
     private String customerCode;
 
-
     private String customerCategoryCode;
-
 
     private String productCode;
 
-
     private LocalDate startDate;
-
 
     private LocalDate endDate;
 
-
     private Integer qtyBreak;
-
 
     private String fromStockGroupCode;
 
-
     private String toStockGroupCode;
-
 
     private String taxCode;
 
-
     private Boolean isAppliedWhenTaxExempt;
-
 
     private String storeCode;
 
-
     private String discountName;
-
 
     private String stockFamilyCode;
 
-
     private BigDecimal cost;
 
-
     private String discountFormula;
-
 
     public Long getId() {
         return id;
@@ -88,7 +69,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
         this.supplierCode = supplierCode;
     }
 
-
     public Integer getRuleNo() {
         return ruleNo;
     }
@@ -96,7 +76,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
     public void setRuleNo(Integer ruleNo) {
         this.ruleNo = ruleNo;
     }
-
 
     public Boolean getIsAppliedToSales() {
         return isAppliedToSales;
@@ -106,7 +85,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
         this.isAppliedToSales = isAppliedToSales;
     }
 
-
     public Boolean getIsAppliedOnSpecialItemsOnly() {
         return isAppliedOnSpecialItemsOnly;
     }
@@ -114,7 +92,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
     public void setIsAppliedOnSpecialItemsOnly(Boolean isAppliedOnSpecialItemsOnly) {
         this.isAppliedOnSpecialItemsOnly = isAppliedOnSpecialItemsOnly;
     }
-
 
     public String getCustomerCode() {
         return customerCode;
@@ -124,7 +101,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
         this.customerCode = customerCode;
     }
 
-
     public String getCustomerCategoryCode() {
         return customerCategoryCode;
     }
@@ -132,7 +108,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
     public void setCustomerCategoryCode(String customerCategoryCode) {
         this.customerCategoryCode = customerCategoryCode;
     }
-
 
     public String getProductCode() {
         return productCode;
@@ -142,7 +117,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
         this.productCode = productCode;
     }
 
-
     public LocalDate getStartDate() {
         return startDate;
     }
@@ -150,7 +124,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
-
 
     public LocalDate getEndDate() {
         return endDate;
@@ -160,7 +133,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
         this.endDate = endDate;
     }
 
-
     public Integer getQtyBreak() {
         return qtyBreak;
     }
@@ -168,7 +140,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
     public void setQtyBreak(Integer qtyBreak) {
         this.qtyBreak = qtyBreak;
     }
-
 
     public String getFromStockGroupCode() {
         return fromStockGroupCode;
@@ -178,7 +149,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
         this.fromStockGroupCode = fromStockGroupCode;
     }
 
-
     public String getToStockGroupCode() {
         return toStockGroupCode;
     }
@@ -186,7 +156,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
     public void setToStockGroupCode(String toStockGroupCode) {
         this.toStockGroupCode = toStockGroupCode;
     }
-
 
     public String getTaxCode() {
         return taxCode;
@@ -196,7 +165,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
         this.taxCode = taxCode;
     }
 
-
     public Boolean getIsAppliedWhenTaxExempt() {
         return isAppliedWhenTaxExempt;
     }
@@ -204,7 +172,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
     public void setIsAppliedWhenTaxExempt(Boolean isAppliedWhenTaxExempt) {
         this.isAppliedWhenTaxExempt = isAppliedWhenTaxExempt;
     }
-
 
     public String getStoreCode() {
         return storeCode;
@@ -214,7 +181,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
         this.storeCode = storeCode;
     }
 
-
     public String getDiscountName() {
         return discountName;
     }
@@ -222,7 +188,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
     public void setDiscountName(String discountName) {
         this.discountName = discountName;
     }
-
 
     public String getStockFamilyCode() {
         return stockFamilyCode;
@@ -232,7 +197,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
         this.stockFamilyCode = stockFamilyCode;
     }
 
-
     public BigDecimal getCost() {
         return cost;
     }
@@ -241,7 +205,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
         this.cost = cost;
     }
 
-
     public String getDiscountFormula() {
         return discountFormula;
     }
@@ -249,7 +212,6 @@ public class SupplierDiscountRuleDTO implements Serializable {
     public void setDiscountFormula(String discountFormula) {
         this.discountFormula = discountFormula;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -275,26 +237,26 @@ public class SupplierDiscountRuleDTO implements Serializable {
     @Override
     public String toString() {
         return "SupplierDiscountRuleDTO{" +
-                "id=" + id +
-                ", supplierCode='" + supplierCode + "'" +
-                ", ruleNo='" + ruleNo + "'" +
-                ", isAppliedToSales='" + isAppliedToSales + "'" +
-                ", isAppliedOnSpecialItemsOnly='" + isAppliedOnSpecialItemsOnly + "'" +
-                ", customerCode='" + customerCode + "'" +
-                ", customerCategoryCode='" + customerCategoryCode + "'" +
-                ", productCode='" + productCode + "'" +
-                ", startDate='" + startDate + "'" +
-                ", endDate='" + endDate + "'" +
-                ", qtyBreak='" + qtyBreak + "'" +
-                ", fromStockGroupCode='" + fromStockGroupCode + "'" +
-                ", toStockGroupCode='" + toStockGroupCode + "'" +
-                ", taxCode='" + taxCode + "'" +
-                ", isAppliedWhenTaxExempt='" + isAppliedWhenTaxExempt + "'" +
-                ", storeCode='" + storeCode + "'" +
-                ", discountName='" + discountName + "'" +
-                ", stockFamilyCode='" + stockFamilyCode + "'" +
-                ", cost='" + cost + "'" +
-                ", discountFormula='" + discountFormula + "'" +
-                '}';
+            "id=" + id +
+            ", supplierCode='" + supplierCode + "'" +
+            ", ruleNo='" + ruleNo + "'" +
+            ", isAppliedToSales='" + isAppliedToSales + "'" +
+            ", isAppliedOnSpecialItemsOnly='" + isAppliedOnSpecialItemsOnly + "'" +
+            ", customerCode='" + customerCode + "'" +
+            ", customerCategoryCode='" + customerCategoryCode + "'" +
+            ", productCode='" + productCode + "'" +
+            ", startDate='" + startDate + "'" +
+            ", endDate='" + endDate + "'" +
+            ", qtyBreak='" + qtyBreak + "'" +
+            ", fromStockGroupCode='" + fromStockGroupCode + "'" +
+            ", toStockGroupCode='" + toStockGroupCode + "'" +
+            ", taxCode='" + taxCode + "'" +
+            ", isAppliedWhenTaxExempt='" + isAppliedWhenTaxExempt + "'" +
+            ", storeCode='" + storeCode + "'" +
+            ", discountName='" + discountName + "'" +
+            ", stockFamilyCode='" + stockFamilyCode + "'" +
+            ", cost='" + cost + "'" +
+            ", discountFormula='" + discountFormula + "'" +
+            '}';
     }
 }

@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('SupplierController', function ($scope, Supplier, SupplierSearch, ParseLinks) {
+    .controller('SupplierController', function ($scope, $state, $modal, Supplier, SupplierSearch, ParseLinks) {
+      
         $scope.suppliers = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            Supplier.get({id: id}, function(result) {
-                $scope.supplier = result;
-                $('#deleteSupplierConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            Supplier.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteSupplierConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             SupplierSearch.query({query: $scope.searchQuery}, function(result) {

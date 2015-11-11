@@ -1,4 +1,4 @@
-// Generated on 2015-10-10 using generator-jhipster 2.22.0
+// Generated on 2015-11-10 using generator-jhipster 2.23.1
 'use strict';
 var fs = require('fs');
 
@@ -427,23 +427,6 @@ module.exports = function (grunt) {
         'usemin',
         'htmlmin'
     ]);
-
-	grunt.registerTask('appendSkipBower', 'Force skip of bower for Gradle', function () {
-
-		if (!grunt.file.exists(filepath)) {
-			// Assume this is a maven project
-			return true;
-		}
-
-		var fileContent = grunt.file.read(filepath);
-		var skipBowerIndex = fileContent.indexOf("skipBower=true");
-
-		if (skipBowerIndex != -1) {
-			return true;
-		}
-
-		grunt.file.write(filepath, fileContent + "\nskipBower=true\n");
-	});
 
     grunt.registerTask('buildOpenshift', [
         'test',

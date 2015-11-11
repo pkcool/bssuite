@@ -6,9 +6,7 @@ import com.enginemobi.bssuite.config.JHipsterProperties;
 import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StopWatch;
 import springfox.documentation.service.ApiInfo;
@@ -56,9 +54,6 @@ public class SwaggerConfiguration {
             .genericModelSubstitutes(ResponseEntity.class)
             .forCodeGeneration(true)
             .genericModelSubstitutes(ResponseEntity.class)
-            .directModelSubstitute(org.joda.time.LocalDate.class, String.class)
-            .directModelSubstitute(org.joda.time.LocalDateTime.class, Date.class)
-            .directModelSubstitute(org.joda.time.DateTime.class, Date.class)
             .directModelSubstitute(java.time.LocalDate.class, String.class)
             .directModelSubstitute(java.time.ZonedDateTime.class, Date.class)
             .directModelSubstitute(java.time.LocalDateTime.class, Date.class)

@@ -94,5 +94,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('calendarItem.delete', {
+                parent: 'calendarItem',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/calendarItem/calendarItem-delete-dialog.html',
+                        controller: 'CalendarItemDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['CalendarItem', function(CalendarItem) {
+                                return CalendarItem.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('calendarItem', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

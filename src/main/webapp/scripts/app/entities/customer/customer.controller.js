@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('CustomerController', function ($scope, Customer, CustomerSearch, ParseLinks) {
+    .controller('CustomerController', function ($scope, $state, $modal, Customer, CustomerSearch, ParseLinks) {
+      
         $scope.customers = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            Customer.get({id: id}, function(result) {
-                $scope.customer = result;
-                $('#deleteCustomerConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            Customer.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteCustomerConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             CustomerSearch.query({query: $scope.searchQuery}, function(result) {

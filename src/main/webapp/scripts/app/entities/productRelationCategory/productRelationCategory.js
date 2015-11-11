@@ -87,5 +87,28 @@ angular.module('bssuiteApp')
                         $state.go('^');
                     })
                 }]
+            })
+            .state('productRelationCategory.delete', {
+                parent: 'productRelationCategory',
+                url: '/{id}/delete',
+                data: {
+                    authorities: ['ROLE_USER'],
+                },
+                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
+                    $modal.open({
+                        templateUrl: 'scripts/app/entities/productRelationCategory/productRelationCategory-delete-dialog.html',
+                        controller: 'ProductRelationCategoryDeleteController',
+                        size: 'md',
+                        resolve: {
+                            entity: ['ProductRelationCategory', function(ProductRelationCategory) {
+                                return ProductRelationCategory.get({id : $stateParams.id});
+                            }]
+                        }
+                    }).result.then(function(result) {
+                        $state.go('productRelationCategory', null, { reload: true });
+                    }, function() {
+                        $state.go('^');
+                    })
+                }]
             });
     });

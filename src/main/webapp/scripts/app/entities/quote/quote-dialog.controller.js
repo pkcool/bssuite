@@ -16,16 +16,22 @@ angular.module('bssuiteApp').controller('QuoteDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:quoteUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.quote.id != null) {
-                Quote.update($scope.quote, onSaveFinished);
+                Quote.update($scope.quote, onSaveSuccess, onSaveError);
             } else {
-                Quote.save($scope.quote, onSaveFinished);
+                Quote.save($scope.quote, onSaveSuccess, onSaveError);
             }
         };
 

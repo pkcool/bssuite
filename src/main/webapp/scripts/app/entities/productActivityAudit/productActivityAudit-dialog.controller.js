@@ -13,16 +13,22 @@ angular.module('bssuiteApp').controller('ProductActivityAuditDialogController',
             });
         };
 
-        var onSaveFinished = function (result) {
+        var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:productActivityAuditUpdate', result);
             $modalInstance.close(result);
+            $scope.isSaving = false;
+        };
+
+        var onSaveError = function (result) {
+            $scope.isSaving = false;
         };
 
         $scope.save = function () {
+            $scope.isSaving = true;
             if ($scope.productActivityAudit.id != null) {
-                ProductActivityAudit.update($scope.productActivityAudit, onSaveFinished);
+                ProductActivityAudit.update($scope.productActivityAudit, onSaveSuccess, onSaveError);
             } else {
-                ProductActivityAudit.save($scope.productActivityAudit, onSaveFinished);
+                ProductActivityAudit.save($scope.productActivityAudit, onSaveSuccess, onSaveError);
             }
         };
 

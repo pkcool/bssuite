@@ -1,13 +1,8 @@
 package com.enginemobi.bssuite.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeDeserializer;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeSerializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
+import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -24,27 +19,23 @@ import com.enginemobi.bssuite.domain.enumeration.GoodsReceiptType;
 @Entity
 @Table(name = "goods_received_audit")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="goodsreceivedaudit")
+@Document(indexName = "goodsreceivedaudit")
 public class GoodsReceivedAudit implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
     @Column(name = "received_on")
-    private DateTime receivedOn;
-    
+    private ZonedDateTime receivedOn;
+
     @Column(name = "txn_number")
     private String txnNumber;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "type_receipt")
     private GoodsReceiptType typeReceipt;
-    
+
     @Column(name = "qty_received")
     private Double qtyReceived;
 
@@ -68,11 +59,11 @@ public class GoodsReceivedAudit implements Serializable {
         this.id = id;
     }
 
-    public DateTime getReceivedOn() {
+    public ZonedDateTime getReceivedOn() {
         return receivedOn;
     }
 
-    public void setReceivedOn(DateTime receivedOn) {
+    public void setReceivedOn(ZonedDateTime receivedOn) {
         this.receivedOn = receivedOn;
     }
 
@@ -156,11 +147,11 @@ public class GoodsReceivedAudit implements Serializable {
     @Override
     public String toString() {
         return "GoodsReceivedAudit{" +
-                "id=" + id +
-                ", receivedOn='" + receivedOn + "'" +
-                ", txnNumber='" + txnNumber + "'" +
-                ", typeReceipt='" + typeReceipt + "'" +
-                ", qtyReceived='" + qtyReceived + "'" +
-                '}';
+            "id=" + id +
+            ", receivedOn='" + receivedOn + "'" +
+            ", txnNumber='" + txnNumber + "'" +
+            ", typeReceipt='" + typeReceipt + "'" +
+            ", qtyReceived='" + qtyReceived + "'" +
+            '}';
     }
 }

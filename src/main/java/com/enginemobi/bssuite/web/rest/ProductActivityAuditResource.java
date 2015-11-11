@@ -52,8 +52,8 @@ public class ProductActivityAuditResource {
      * POST  /productActivityAudits -> Create a new productActivityAudit.
      */
     @RequestMapping(value = "/productActivityAudits",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<ProductActivityAuditDTO> createProductActivityAudit(@RequestBody ProductActivityAuditDTO productActivityAuditDTO) throws URISyntaxException {
         log.debug("REST request to save ProductActivityAudit : {}", productActivityAuditDTO);
@@ -64,8 +64,8 @@ public class ProductActivityAuditResource {
         ProductActivityAudit result = productActivityAuditRepository.save(productActivityAudit);
         productActivityAuditSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/productActivityAudits/" + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert("productActivityAudit", result.getId().toString()))
-                .body(productActivityAuditMapper.productActivityAuditToProductActivityAuditDTO(result));
+            .headers(HeaderUtil.createEntityCreationAlert("productActivityAudit", result.getId().toString()))
+            .body(productActivityAuditMapper.productActivityAuditToProductActivityAuditDTO(result));
     }
 
     /**
@@ -84,16 +84,16 @@ public class ProductActivityAuditResource {
         ProductActivityAudit result = productActivityAuditRepository.save(productActivityAudit);
         productActivityAuditSearchRepository.save(productActivityAudit);
         return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert("productActivityAudit", productActivityAuditDTO.getId().toString()))
-                .body(productActivityAuditMapper.productActivityAuditToProductActivityAuditDTO(result));
+            .headers(HeaderUtil.createEntityUpdateAlert("productActivityAudit", productActivityAuditDTO.getId().toString()))
+            .body(productActivityAuditMapper.productActivityAuditToProductActivityAuditDTO(result));
     }
 
     /**
      * GET  /productActivityAudits -> get all the productActivityAudits.
      */
     @RequestMapping(value = "/productActivityAudits",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional(readOnly = true)
     public ResponseEntity<List<ProductActivityAuditDTO>> getAllProductActivityAudits(Pageable pageable)
@@ -109,8 +109,8 @@ public class ProductActivityAuditResource {
      * GET  /productActivityAudits/:id -> get the "id" productActivityAudit.
      */
     @RequestMapping(value = "/productActivityAudits/{id}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<ProductActivityAuditDTO> getProductActivityAudit(@PathVariable Long id) {
         log.debug("REST request to get ProductActivityAudit : {}", id);
@@ -126,8 +126,8 @@ public class ProductActivityAuditResource {
      * DELETE  /productActivityAudits/:id -> delete the "id" productActivityAudit.
      */
     @RequestMapping(value = "/productActivityAudits/{id}",
-            method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.DELETE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<Void> deleteProductActivityAudit(@PathVariable Long id) {
         log.debug("REST request to delete ProductActivityAudit : {}", id);
@@ -146,7 +146,7 @@ public class ProductActivityAuditResource {
     @Timed
     public List<ProductActivityAuditDTO> searchProductActivityAudits(@PathVariable String query) {
         return StreamSupport
-            .stream(productActivityAuditSearchRepository.search(queryString(query)).spliterator(), false)
+            .stream(productActivityAuditSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(productActivityAuditMapper::productActivityAuditToProductActivityAuditDTO)
             .collect(Collectors.toList());
     }

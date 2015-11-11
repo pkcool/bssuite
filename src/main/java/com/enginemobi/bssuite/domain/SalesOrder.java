@@ -1,17 +1,10 @@
 package com.enginemobi.bssuite.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.enginemobi.bssuite.domain.util.CustomLocalDateSerializer;
-import com.enginemobi.bssuite.domain.util.ISO8601LocalDateDeserializer;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeDeserializer;
-import com.enginemobi.bssuite.domain.util.CustomDateTimeSerializer;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
-import org.joda.time.DateTime;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -29,84 +22,74 @@ import com.enginemobi.bssuite.domain.enumeration.SalesOrderStatus;
 @Entity
 @Table(name = "sales_order")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName="salesorder")
+@Document(indexName = "salesorder")
 public class SalesOrder implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    
     @Column(name = "order_no")
     private String orderNo;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private SalesOrderStatus status;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @JsonSerialize(using = CustomDateTimeSerializer.class)
-    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
+
     @Column(name = "txn_date")
-    private DateTime txnDate;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+    private ZonedDateTime txnDate;
+
     @Column(name = "forward_date")
     private LocalDate forwardDate;
-    
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
-    @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @JsonDeserialize(using = ISO8601LocalDateDeserializer.class)
+
     @Column(name = "required_date")
     private LocalDate requiredDate;
-    
+
     @Column(name = "customer_order_no")
     private String customerOrderNo;
-    
+
     @Column(name = "our_ref")
     private String ourRef;
-    
+
     @Column(name = "freight", precision=10, scale=2)
     private BigDecimal freight;
-    
+
     @Column(name = "handling_charge", precision=10, scale=2)
     private BigDecimal handlingCharge;
-    
+
     @Column(name = "charge2", precision=10, scale=2)
     private BigDecimal charge2;
-    
+
     @Column(name = "is_taxable")
     private Boolean isTaxable;
-    
+
     @Column(name = "is_locked")
     private Boolean isLocked;
-    
+
     @Column(name = "adjust_tax", precision=10, scale=2)
     private BigDecimal adjustTax;
-    
+
     @Column(name = "adjust_tax_exempt", precision=10, scale=2)
     private BigDecimal adjustTaxExempt;
-    
+
     @Column(name = "prepayment", precision=10, scale=2)
     private BigDecimal prepayment;
-    
+
     @Column(name = "prepayment_no")
     private String prepaymentNo;
-    
+
     @Column(name = "comment")
     private String comment;
-    
+
     @Column(name = "total_tax_amount", precision=10, scale=2)
     private BigDecimal totalTaxAmount;
-    
+
     @Column(name = "total_sell_price", precision=10, scale=2)
     private BigDecimal totalSellPrice;
-    
+
     @Column(name = "total_cost", precision=10, scale=2)
     private BigDecimal totalCost;
-    
+
     @Column(name = "is_suspended")
     private Boolean isSuspended;
 
@@ -163,11 +146,11 @@ public class SalesOrder implements Serializable {
         this.status = status;
     }
 
-    public DateTime getTxnDate() {
+    public ZonedDateTime getTxnDate() {
         return txnDate;
     }
 
-    public void setTxnDate(DateTime txnDate) {
+    public void setTxnDate(ZonedDateTime txnDate) {
         this.txnDate = txnDate;
     }
 
@@ -411,28 +394,28 @@ public class SalesOrder implements Serializable {
     @Override
     public String toString() {
         return "SalesOrder{" +
-                "id=" + id +
-                ", orderNo='" + orderNo + "'" +
-                ", status='" + status + "'" +
-                ", txnDate='" + txnDate + "'" +
-                ", forwardDate='" + forwardDate + "'" +
-                ", requiredDate='" + requiredDate + "'" +
-                ", customerOrderNo='" + customerOrderNo + "'" +
-                ", ourRef='" + ourRef + "'" +
-                ", freight='" + freight + "'" +
-                ", handlingCharge='" + handlingCharge + "'" +
-                ", charge2='" + charge2 + "'" +
-                ", isTaxable='" + isTaxable + "'" +
-                ", isLocked='" + isLocked + "'" +
-                ", adjustTax='" + adjustTax + "'" +
-                ", adjustTaxExempt='" + adjustTaxExempt + "'" +
-                ", prepayment='" + prepayment + "'" +
-                ", prepaymentNo='" + prepaymentNo + "'" +
-                ", comment='" + comment + "'" +
-                ", totalTaxAmount='" + totalTaxAmount + "'" +
-                ", totalSellPrice='" + totalSellPrice + "'" +
-                ", totalCost='" + totalCost + "'" +
-                ", isSuspended='" + isSuspended + "'" +
-                '}';
+            "id=" + id +
+            ", orderNo='" + orderNo + "'" +
+            ", status='" + status + "'" +
+            ", txnDate='" + txnDate + "'" +
+            ", forwardDate='" + forwardDate + "'" +
+            ", requiredDate='" + requiredDate + "'" +
+            ", customerOrderNo='" + customerOrderNo + "'" +
+            ", ourRef='" + ourRef + "'" +
+            ", freight='" + freight + "'" +
+            ", handlingCharge='" + handlingCharge + "'" +
+            ", charge2='" + charge2 + "'" +
+            ", isTaxable='" + isTaxable + "'" +
+            ", isLocked='" + isLocked + "'" +
+            ", adjustTax='" + adjustTax + "'" +
+            ", adjustTaxExempt='" + adjustTaxExempt + "'" +
+            ", prepayment='" + prepayment + "'" +
+            ", prepaymentNo='" + prepaymentNo + "'" +
+            ", comment='" + comment + "'" +
+            ", totalTaxAmount='" + totalTaxAmount + "'" +
+            ", totalSellPrice='" + totalSellPrice + "'" +
+            ", totalCost='" + totalCost + "'" +
+            ", isSuspended='" + isSuspended + "'" +
+            '}';
     }
 }

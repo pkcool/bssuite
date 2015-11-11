@@ -11,13 +11,13 @@
         <div class="form-group">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="stockFamily.id" readonly>
+                    ng-model="stockFamily.id" readonly />
         </div>
         <div class="form-group">
             <label for="field_code">Code</label>
             <input type="text" class="form-control" name="code" id="field_code"
                     ng-model="stockFamily.code"
-                    required ng-minlength="2">
+                    required ng-minlength="2" />
             <div ng-show="editForm.code.$invalid">
                 <p class="help-block"
                     ng-show="editForm.code.$error.required">
@@ -33,31 +33,31 @@
             <label for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                     ng-model="stockFamily.name"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_isDiminishing">IsDiminishing</label>
             <input type="checkbox" class="form-control" name="isDiminishing" id="field_isDiminishing"
                     ng-model="stockFamily.isDiminishing"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_lowestMargin">LowestMargin</label>
             <input type="number" class="form-control" name="lowestMargin" id="field_lowestMargin"
                     ng-model="stockFamily.lowestMargin"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_highestMargin">HighestMargin</label>
             <input type="number" class="form-control" name="highestMargin" id="field_highestMargin"
                     ng-model="stockFamily.highestMargin"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_comment">Comment</label>
             <input type="text" class="form-control" name="comment" id="field_comment"
                     ng-model="stockFamily.comment"
-                    >
+                     />
         </div>
 
         <div class="form-group">
@@ -71,7 +71,7 @@
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
         </button>
-        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
         </button>
     </div>

@@ -8,7 +8,9 @@ angular.module('bssuiteApp')
                 $scope.txnActivityAudit = result;
             });
         };
-        $rootScope.$on('bssuiteApp:txnActivityAuditUpdate', function(event, result) {
+        var unsubscribe = $rootScope.$on('bssuiteApp:txnActivityAuditUpdate', function(event, result) {
             $scope.txnActivityAudit = result;
         });
+        $scope.$on('$destroy', unsubscribe);
+
     });

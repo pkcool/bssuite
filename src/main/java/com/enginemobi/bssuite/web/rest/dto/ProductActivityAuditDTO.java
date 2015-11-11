@@ -1,6 +1,6 @@
 package com.enginemobi.bssuite.web.rest.dto;
 
-import org.joda.time.DateTime;
+import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,34 +15,24 @@ public class ProductActivityAuditDTO implements Serializable {
 
     private Long id;
 
-    private DateTime createdOn;
-
+    private ZonedDateTime createdOn;
 
     private String txnNumber;
 
-
     private ProductActivityType activityType;
-
 
     private Double qtyTxn;
 
-
     private Double qtyAdjusted;
-
 
     private Double qtyStockOnHold;
 
-
     private String lineNo;
-
 
     private String txnAccountCode;
 
-
     private Long createdById;
-
     private Long productId;
-
     public Long getId() {
         return id;
     }
@@ -51,14 +41,13 @@ public class ProductActivityAuditDTO implements Serializable {
         this.id = id;
     }
 
-    public DateTime getCreatedOn() {
+    public ZonedDateTime getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(DateTime createdOn) {
+    public void setCreatedOn(ZonedDateTime createdOn) {
         this.createdOn = createdOn;
     }
-
 
     public String getTxnNumber() {
         return txnNumber;
@@ -68,7 +57,6 @@ public class ProductActivityAuditDTO implements Serializable {
         this.txnNumber = txnNumber;
     }
 
-
     public ProductActivityType getActivityType() {
         return activityType;
     }
@@ -76,7 +64,6 @@ public class ProductActivityAuditDTO implements Serializable {
     public void setActivityType(ProductActivityType activityType) {
         this.activityType = activityType;
     }
-
 
     public Double getQtyTxn() {
         return qtyTxn;
@@ -86,7 +73,6 @@ public class ProductActivityAuditDTO implements Serializable {
         this.qtyTxn = qtyTxn;
     }
 
-
     public Double getQtyAdjusted() {
         return qtyAdjusted;
     }
@@ -94,7 +80,6 @@ public class ProductActivityAuditDTO implements Serializable {
     public void setQtyAdjusted(Double qtyAdjusted) {
         this.qtyAdjusted = qtyAdjusted;
     }
-
 
     public Double getQtyStockOnHold() {
         return qtyStockOnHold;
@@ -104,7 +89,6 @@ public class ProductActivityAuditDTO implements Serializable {
         this.qtyStockOnHold = qtyStockOnHold;
     }
 
-
     public String getLineNo() {
         return lineNo;
     }
@@ -112,7 +96,6 @@ public class ProductActivityAuditDTO implements Serializable {
     public void setLineNo(String lineNo) {
         this.lineNo = lineNo;
     }
-
 
     public String getTxnAccountCode() {
         return txnAccountCode;
@@ -122,7 +105,6 @@ public class ProductActivityAuditDTO implements Serializable {
         this.txnAccountCode = txnAccountCode;
     }
 
-
     public Long getCreatedById() {
         return createdById;
     }
@@ -130,7 +112,6 @@ public class ProductActivityAuditDTO implements Serializable {
     public void setCreatedById(Long staffId) {
         this.createdById = staffId;
     }
-
     public Long getProductId() {
         return productId;
     }
@@ -138,7 +119,6 @@ public class ProductActivityAuditDTO implements Serializable {
     public void setProductId(Long productId) {
         this.productId = productId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -163,15 +143,15 @@ public class ProductActivityAuditDTO implements Serializable {
     @Override
     public String toString() {
         return "ProductActivityAuditDTO{" +
-                "id=" + id +
-                ", createdOn='" + createdOn + "'" +
-                ", txnNumber='" + txnNumber + "'" +
-                ", activityType='" + activityType + "'" +
-                ", qtyTxn='" + qtyTxn + "'" +
-                ", qtyAdjusted='" + qtyAdjusted + "'" +
-                ", qtyStockOnHold='" + qtyStockOnHold + "'" +
-                ", lineNo='" + lineNo + "'" +
-                ", txnAccountCode='" + txnAccountCode + "'" +
-                '}';
+            "id=" + id +
+            ", createdOn='" + createdOn + "'" +
+            ", txnNumber='" + txnNumber + "'" +
+            ", activityType='" + activityType + "'" +
+            ", qtyTxn='" + qtyTxn + "'" +
+            ", qtyAdjusted='" + qtyAdjusted + "'" +
+            ", qtyStockOnHold='" + qtyStockOnHold + "'" +
+            ", lineNo='" + lineNo + "'" +
+            ", txnAccountCode='" + txnAccountCode + "'" +
+            '}';
     }
 }

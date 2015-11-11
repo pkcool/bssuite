@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('TaxTableController', function ($scope, TaxTable, TaxTableSearch, ParseLinks) {
+    .controller('TaxTableController', function ($scope, $state, $modal, TaxTable, TaxTableSearch, ParseLinks) {
+      
         $scope.taxTables = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            TaxTable.get({id: id}, function(result) {
-                $scope.taxTable = result;
-                $('#deleteTaxTableConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            TaxTable.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteTaxTableConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             TaxTableSearch.query({query: $scope.searchQuery}, function(result) {

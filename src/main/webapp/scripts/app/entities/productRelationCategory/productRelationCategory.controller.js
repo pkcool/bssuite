@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('ProductRelationCategoryController', function ($scope, ProductRelationCategory, ProductRelationCategorySearch, ParseLinks) {
+    .controller('ProductRelationCategoryController', function ($scope, $state, $modal, ProductRelationCategory, ProductRelationCategorySearch, ParseLinks) {
+      
         $scope.productRelationCategorys = [];
         $scope.page = 0;
         $scope.loadAll = function() {
@@ -16,21 +17,6 @@ angular.module('bssuiteApp')
         };
         $scope.loadAll();
 
-        $scope.delete = function (id) {
-            ProductRelationCategory.get({id: id}, function(result) {
-                $scope.productRelationCategory = result;
-                $('#deleteProductRelationCategoryConfirmation').modal('show');
-            });
-        };
-
-        $scope.confirmDelete = function (id) {
-            ProductRelationCategory.delete({id: id},
-                function () {
-                    $scope.loadAll();
-                    $('#deleteProductRelationCategoryConfirmation').modal('hide');
-                    $scope.clear();
-                });
-        };
 
         $scope.search = function () {
             ProductRelationCategorySearch.query({query: $scope.searchQuery}, function(result) {

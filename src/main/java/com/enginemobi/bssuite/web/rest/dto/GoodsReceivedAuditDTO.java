@@ -1,6 +1,6 @@
 package com.enginemobi.bssuite.web.rest.dto;
 
-import org.joda.time.DateTime;
+import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,26 +15,18 @@ public class GoodsReceivedAuditDTO implements Serializable {
 
     private Long id;
 
-    private DateTime receivedOn;
-
+    private ZonedDateTime receivedOn;
 
     private String txnNumber;
 
-
     private GoodsReceiptType typeReceipt;
-
 
     private Double qtyReceived;
 
-
     private Long receivedById;
-
     private Long supplierId;
-
     private Long purchaseOrderId;
-
     private Long productId;
-
     public Long getId() {
         return id;
     }
@@ -43,14 +35,13 @@ public class GoodsReceivedAuditDTO implements Serializable {
         this.id = id;
     }
 
-    public DateTime getReceivedOn() {
+    public ZonedDateTime getReceivedOn() {
         return receivedOn;
     }
 
-    public void setReceivedOn(DateTime receivedOn) {
+    public void setReceivedOn(ZonedDateTime receivedOn) {
         this.receivedOn = receivedOn;
     }
-
 
     public String getTxnNumber() {
         return txnNumber;
@@ -60,7 +51,6 @@ public class GoodsReceivedAuditDTO implements Serializable {
         this.txnNumber = txnNumber;
     }
 
-
     public GoodsReceiptType getTypeReceipt() {
         return typeReceipt;
     }
@@ -68,7 +58,6 @@ public class GoodsReceivedAuditDTO implements Serializable {
     public void setTypeReceipt(GoodsReceiptType typeReceipt) {
         this.typeReceipt = typeReceipt;
     }
-
 
     public Double getQtyReceived() {
         return qtyReceived;
@@ -78,7 +67,6 @@ public class GoodsReceivedAuditDTO implements Serializable {
         this.qtyReceived = qtyReceived;
     }
 
-
     public Long getReceivedById() {
         return receivedById;
     }
@@ -86,7 +74,6 @@ public class GoodsReceivedAuditDTO implements Serializable {
     public void setReceivedById(Long staffId) {
         this.receivedById = staffId;
     }
-
     public Long getSupplierId() {
         return supplierId;
     }
@@ -94,7 +81,6 @@ public class GoodsReceivedAuditDTO implements Serializable {
     public void setSupplierId(Long supplierId) {
         this.supplierId = supplierId;
     }
-
     public Long getPurchaseOrderId() {
         return purchaseOrderId;
     }
@@ -102,7 +88,6 @@ public class GoodsReceivedAuditDTO implements Serializable {
     public void setPurchaseOrderId(Long purchaseOrderId) {
         this.purchaseOrderId = purchaseOrderId;
     }
-
     public Long getProductId() {
         return productId;
     }
@@ -110,7 +95,6 @@ public class GoodsReceivedAuditDTO implements Serializable {
     public void setProductId(Long productId) {
         this.productId = productId;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -135,11 +119,11 @@ public class GoodsReceivedAuditDTO implements Serializable {
     @Override
     public String toString() {
         return "GoodsReceivedAuditDTO{" +
-                "id=" + id +
-                ", receivedOn='" + receivedOn + "'" +
-                ", txnNumber='" + txnNumber + "'" +
-                ", typeReceipt='" + typeReceipt + "'" +
-                ", qtyReceived='" + qtyReceived + "'" +
-                '}';
+            "id=" + id +
+            ", receivedOn='" + receivedOn + "'" +
+            ", txnNumber='" + txnNumber + "'" +
+            ", typeReceipt='" + typeReceipt + "'" +
+            ", qtyReceived='" + qtyReceived + "'" +
+            '}';
     }
 }

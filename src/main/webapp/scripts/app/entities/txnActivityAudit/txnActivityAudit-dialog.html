@@ -11,19 +11,19 @@
         <div class="form-group">
             <label for="id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="txnActivityAudit.id" readonly>
+                    ng-model="txnActivityAudit.id" readonly />
         </div>
         <div class="form-group">
             <label for="field_editedOn">EditedOn</label>
             <input type="datetime-local" class="form-control" name="editedOn" id="field_editedOn"
-                    ng-model="txnActivityAudit.editedOn" ng-model-options="{timezone: 'UTC'}"
-                    >
+                    ng-model="txnActivityAudit.editedOn"
+                     />
         </div>
         <div class="form-group">
             <label for="field_txnNumber">TxnNumber</label>
             <input type="text" class="form-control" name="txnNumber" id="field_txnNumber"
                     ng-model="txnActivityAudit.txnNumber"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_txnType">TxnType</label>
@@ -39,13 +39,13 @@
             <label for="field_txnAmount">TxnAmount</label>
             <input type="number" class="form-control" name="txnAmount" id="field_txnAmount"
                     ng-model="txnActivityAudit.txnAmount"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_bankAcc">BankAcc</label>
             <input type="text" class="form-control" name="bankAcc" id="field_bankAcc"
                     ng-model="txnActivityAudit.bankAcc"
-                    >
+                     />
         </div>
         <div class="form-group">
             <label for="field_editType">EditType</label>
@@ -68,7 +68,7 @@
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
         </button>
-        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
         </button>
     </div>

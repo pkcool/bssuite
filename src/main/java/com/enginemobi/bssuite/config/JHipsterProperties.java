@@ -3,7 +3,7 @@ package com.enginemobi.bssuite.config;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.web.cors.CorsConfiguration;
 
 /**
  * Properties specific to JHipster.
@@ -30,6 +30,11 @@ public class JHipsterProperties {
     private final Swagger swagger = new Swagger();
 
     private final Metrics metrics = new Metrics();
+
+    private final CorsConfiguration cors = new CorsConfiguration();
+
+    private final Social social = new Social();
+
 
     public Async getAsync() {
         return async;
@@ -61,6 +66,14 @@ public class JHipsterProperties {
 
     public Metrics getMetrics() {
         return metrics;
+    }
+
+    public CorsConfiguration getCors() {
+        return cors;
+    }
+
+    public Social getSocial() {
+        return social;
     }
 
     public static class Async {
@@ -120,8 +133,6 @@ public class JHipsterProperties {
 
     public static class Datasource {
 
-        private String serverName;
-
         private boolean cachePrepStmts = true;
 
         private int prepStmtCacheSize = 250;
@@ -129,14 +140,6 @@ public class JHipsterProperties {
         private int prepStmtCacheSqlLimit = 2048;
 
         private boolean useServerPrepStmts = true;
-
-        public String getServerName() {
-            return serverName;
-        }
-
-        public void setServerName(String serverName) {
-            this.serverName = serverName;
-        }
 
         public boolean isCachePrepStmts() {
             return cachePrepStmts;
@@ -205,77 +208,7 @@ public class JHipsterProperties {
 
     public static class Mail {
 
-        private String host = "localhost";
-
-        private int port = 25;
-
-        private String username;
-
-        private String password;
-
-        private String protocol = "smtp";
-
-        private boolean tls = false;
-
-        private boolean auth = false;
-
         private String from = "bssuite@localhost";
-
-        public String getHost() {
-            return host;
-        }
-
-        public void setHost(String host) {
-                this.host = host;
-        }
-
-        public int getPort() {
-            return port;
-        }
-
-        public void setPort(int port) {
-            this.port = port;
-        }
-
-        public String getUsername() {
-            return username;
-        }
-
-        public void setUsername(String username) {
-            this.username = username;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
-        public String getProtocol() {
-            return protocol;
-        }
-
-        public void setProtocol(String protocol) {
-            this.protocol = protocol;
-        }
-
-        public boolean isTls() {
-            return tls;
-        }
-
-        public void setTls(boolean tls) {
-            this.tls = tls;
-        }
-
-        public boolean isAuth() {
-            return auth;
-        }
-
-        public void setAuth(boolean auth) {
-            this.auth = auth;
-        }
 
         public String getFrom() {
             return from;
@@ -491,4 +424,15 @@ public class JHipsterProperties {
             }
         }
     }
-}
+    public static class Social {
+
+        private String redirectAfterSignIn = "/#/home";
+
+        public String getRedirectAfterSignIn() {
+            return redirectAfterSignIn;
+        }
+
+        public void setRedirectAfterSignIn(String redirectAfterSignIn) {
+            this.redirectAfterSignIn = redirectAfterSignIn;
+        }
+    }}
