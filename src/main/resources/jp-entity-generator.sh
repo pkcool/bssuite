@@ -26,7 +26,7 @@ yo jhipster:entity Quote
 yo jhipster:entity QuoteLineItem
 yo jhipster:entity ProductRelationCategory
 yo jhipster:entity RelatedProduct
-yo jhipster:entity TaxActivityAudit
+yo jhipster:entity TxnActivityAudit
 yo jhipster:entity GoodsReceivedAudit
 yo jhipster:entity CalendarItem
 yo jhipster:entity ProductActivityAudit
