@@ -67,12 +67,15 @@ public class QuoteLineItem implements Serializable {
     private String Ref2;
 
     @ManyToOne
+    @JoinColumn(name = "quote_id")
     private Quote quote;
 
     @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne
+    @JoinColumn(name = "tax_rate_id")
     private TaxTable taxRate;
 
     public Long getId() {
@@ -227,12 +230,8 @@ public class QuoteLineItem implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         QuoteLineItem quoteLineItem = (QuoteLineItem) o;
-
-        if ( ! Objects.equals(id, quoteLineItem.id)) return false;
-
-        return true;
+        return Objects.equals(id, quoteLineItem.id);
     }
 
     @Override

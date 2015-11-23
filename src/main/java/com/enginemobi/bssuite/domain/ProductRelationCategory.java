@@ -59,12 +59,8 @@ public class ProductRelationCategory implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         ProductRelationCategory productRelationCategory = (ProductRelationCategory) o;
-
-        if ( ! Objects.equals(id, productRelationCategory.id)) return false;
-
-        return true;
+        return Objects.equals(id, productRelationCategory.id);
     }
 
     @Override

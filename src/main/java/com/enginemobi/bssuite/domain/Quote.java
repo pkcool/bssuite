@@ -88,21 +88,27 @@ public class Quote implements Serializable {
     private Boolean isSuspended;
 
     @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @ManyToOne
+    @JoinColumn(name = "contact_id")
     private Contact contact;
 
     @ManyToOne
+    @JoinColumn(name = "delivery_contact_id")
     private Contact deliveryContact;
 
     @ManyToOne
+    @JoinColumn(name = "store_id")
     private Store store;
 
     @ManyToOne
+    @JoinColumn(name = "quote_by_staff_id")
     private Staff quoteByStaff;
 
     @ManyToOne
+    @JoinColumn(name = "created_by_id")
     private Staff createdBy;
 
     @OneToMany(mappedBy = "quote")
@@ -334,12 +340,8 @@ public class Quote implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Quote quote = (Quote) o;
-
-        if ( ! Objects.equals(id, quote.id)) return false;
-
-        return true;
+        return Objects.equals(id, quote.id);
     }
 
     @Override

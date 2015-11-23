@@ -46,10 +46,10 @@ public class SupplierDiscountRule implements Serializable {
     @Column(name = "product_code")
     private String productCode;
 
-    @Column(name = "start_date", nullable = false)
+    @Column(name = "start_date")
     private LocalDate startDate;
 
-    @Column(name = "end_date", nullable = false)
+    @Column(name = "end_date")
     private LocalDate endDate;
 
     @Column(name = "qty_break")
@@ -76,7 +76,7 @@ public class SupplierDiscountRule implements Serializable {
     @Column(name = "stock_family_code")
     private String stockFamilyCode;
 
-    @Column(name = "cost", precision=10, scale=2, nullable = false)
+    @Column(name = "cost", precision=10, scale=2)
     private BigDecimal cost;
 
     @Column(name = "discount_formula")
@@ -250,12 +250,8 @@ public class SupplierDiscountRule implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         SupplierDiscountRule supplierDiscountRule = (SupplierDiscountRule) o;
-
-        if ( ! Objects.equals(id, supplierDiscountRule.id)) return false;
-
-        return true;
+        return Objects.equals(id, supplierDiscountRule.id);
     }
 
     @Override

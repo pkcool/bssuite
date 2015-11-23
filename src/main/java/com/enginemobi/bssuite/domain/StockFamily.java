@@ -45,6 +45,7 @@ public class StockFamily implements Serializable {
     private String comment;
 
     @ManyToOne
+    @JoinColumn(name = "price_scale_id")
     private PriceScale priceScale;
 
     public Long getId() {
@@ -119,12 +120,8 @@ public class StockFamily implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         StockFamily stockFamily = (StockFamily) o;
-
-        if ( ! Objects.equals(id, stockFamily.id)) return false;
-
-        return true;
+        return Objects.equals(id, stockFamily.id);
     }
 
     @Override

@@ -62,12 +62,8 @@ public class SupplierCategory implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         SupplierCategory supplierCategory = (SupplierCategory) o;
-
-        if ( ! Objects.equals(id, supplierCategory.id)) return false;
-
-        return true;
+        return Objects.equals(id, supplierCategory.id);
     }
 
     @Override

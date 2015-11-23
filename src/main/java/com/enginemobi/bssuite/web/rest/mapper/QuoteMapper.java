@@ -37,8 +37,6 @@ public interface QuoteMapper {
         return customer;
     }
 
-
-
     default Contact contactFromId(Long id) {
         if (id == null) {
             return null;

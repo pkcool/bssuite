@@ -103,12 +103,8 @@ public class Address implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Address address = (Address) o;
-
-        if ( ! Objects.equals(id, address.id)) return false;
-
-        return true;
+        return Objects.equals(id, address.id);
     }
 
     @Override

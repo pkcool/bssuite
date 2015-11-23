@@ -52,9 +52,11 @@ public class ProductActivityAudit implements Serializable {
     private String txnAccountCode;
 
     @ManyToOne
+    @JoinColumn(name = "created_by_id")
     private Staff createdBy;
 
     @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
 
     public Long getId() {
@@ -153,12 +155,8 @@ public class ProductActivityAudit implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         ProductActivityAudit productActivityAudit = (ProductActivityAudit) o;
-
-        if ( ! Objects.equals(id, productActivityAudit.id)) return false;
-
-        return true;
+        return Objects.equals(id, productActivityAudit.id);
     }
 
     @Override

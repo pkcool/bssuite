@@ -98,12 +98,8 @@ public class PriceScale implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         PriceScale priceScale = (PriceScale) o;
-
-        if ( ! Objects.equals(id, priceScale.id)) return false;
-
-        return true;
+        return Objects.equals(id, priceScale.id);
     }
 
     @Override

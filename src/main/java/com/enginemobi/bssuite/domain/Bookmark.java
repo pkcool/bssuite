@@ -55,6 +55,7 @@ public class Bookmark implements Serializable {
     private Integer openCount;
 
     @ManyToOne
+    @JoinColumn(name = "created_by_id")
     private Staff createdBy;
 
     public Long getId() {
@@ -145,12 +146,8 @@ public class Bookmark implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Bookmark bookmark = (Bookmark) o;
-
-        if ( ! Objects.equals(id, bookmark.id)) return false;
-
-        return true;
+        return Objects.equals(id, bookmark.id);
     }
 
     @Override

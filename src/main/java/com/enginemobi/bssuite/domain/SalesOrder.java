@@ -94,27 +94,35 @@ public class SalesOrder implements Serializable {
     private Boolean isSuspended;
 
     @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @ManyToOne
+    @JoinColumn(name = "contact_id")
     private Contact contact;
 
     @ManyToOne
+    @JoinColumn(name = "delivery_contact_id")
     private Contact deliveryContact;
 
     @ManyToOne
+    @JoinColumn(name = "store_id")
     private Store store;
 
     @ManyToOne
+    @JoinColumn(name = "carrier_id")
     private Carrier carrier;
 
     @ManyToOne
+    @JoinColumn(name = "salesperson_id")
     private Staff salesperson;
 
     @ManyToOne
+    @JoinColumn(name = "promotion_id")
     private Promotion promotion;
 
     @ManyToOne
+    @JoinColumn(name = "created_by_id")
     private Staff createdBy;
 
     @OneToMany(mappedBy = "salesOrder")
@@ -378,12 +386,8 @@ public class SalesOrder implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         SalesOrder salesOrder = (SalesOrder) o;
-
-        if ( ! Objects.equals(id, salesOrder.id)) return false;
-
-        return true;
+        return Objects.equals(id, salesOrder.id);
     }
 
     @Override

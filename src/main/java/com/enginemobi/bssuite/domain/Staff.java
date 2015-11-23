@@ -60,7 +60,7 @@ public class Staff implements Serializable {
     @Column(name = "home_email")
     private String homeEmail;
 
-    @Column(name = "birthday", nullable = false)
+    @Column(name = "birthday")
     private LocalDate birthday;
 
     @Column(name = "is_locked_to_store")
@@ -70,6 +70,7 @@ public class Staff implements Serializable {
     private Boolean isTechnical;
 
     @ManyToOne
+    @JoinColumn(name = "store_id")
     private Store store;
 
     public Long getId() {
@@ -208,12 +209,8 @@ public class Staff implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Staff staff = (Staff) o;
-
-        if ( ! Objects.equals(id, staff.id)) return false;
-
-        return true;
+        return Objects.equals(id, staff.id);
     }
 
     @Override

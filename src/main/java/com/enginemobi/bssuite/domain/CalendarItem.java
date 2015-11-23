@@ -55,6 +55,7 @@ public class CalendarItem implements Serializable {
     private AlarmType alarmType;
 
     @ManyToOne
+    @JoinColumn(name = "created_by_id")
     private Staff createdBy;
 
     public Long getId() {
@@ -153,12 +154,8 @@ public class CalendarItem implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         CalendarItem calendarItem = (CalendarItem) o;
-
-        if ( ! Objects.equals(id, calendarItem.id)) return false;
-
-        return true;
+        return Objects.equals(id, calendarItem.id);
     }
 
     @Override

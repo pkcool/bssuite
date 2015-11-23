@@ -40,15 +40,19 @@ public class GoodsReceivedAudit implements Serializable {
     private Double qtyReceived;
 
     @ManyToOne
+    @JoinColumn(name = "received_by_id")
     private Staff receivedBy;
 
     @ManyToOne
+    @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 
     @ManyToOne
+    @JoinColumn(name = "purchase_order_id")
     private PurchaseOrder purchaseOrder;
 
     @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
 
     public Long getId() {
@@ -131,12 +135,8 @@ public class GoodsReceivedAudit implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         GoodsReceivedAudit goodsReceivedAudit = (GoodsReceivedAudit) o;
-
-        if ( ! Objects.equals(id, goodsReceivedAudit.id)) return false;
-
-        return true;
+        return Objects.equals(id, goodsReceivedAudit.id);
     }
 
     @Override

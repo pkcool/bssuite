@@ -281,12 +281,8 @@ public class CustomerDiscountRule implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         CustomerDiscountRule customerDiscountRule = (CustomerDiscountRule) o;
-
-        if ( ! Objects.equals(id, customerDiscountRule.id)) return false;
-
-        return true;
+        return Objects.equals(id, customerDiscountRule.id);
     }
 
     @Override

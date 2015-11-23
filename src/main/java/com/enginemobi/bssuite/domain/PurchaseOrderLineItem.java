@@ -70,12 +70,15 @@ public class PurchaseOrderLineItem implements Serializable {
     private String Ref2;
 
     @ManyToOne
+    @JoinColumn(name = "purchase_order_id")
     private PurchaseOrder purchaseOrder;
 
     @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne
+    @JoinColumn(name = "tax_rate_id")
     private TaxTable taxRate;
 
     public Long getId() {
@@ -238,12 +241,8 @@ public class PurchaseOrderLineItem implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         PurchaseOrderLineItem purchaseOrderLineItem = (PurchaseOrderLineItem) o;
-
-        if ( ! Objects.equals(id, purchaseOrderLineItem.id)) return false;
-
-        return true;
+        return Objects.equals(id, purchaseOrderLineItem.id);
     }
 
     @Override

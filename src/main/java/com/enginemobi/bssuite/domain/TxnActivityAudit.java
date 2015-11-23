@@ -50,6 +50,7 @@ public class TxnActivityAudit implements Serializable {
     private TxnEditType editType;
 
     @ManyToOne
+    @JoinColumn(name = "edited_by_id")
     private Staff editedBy;
 
     public Long getId() {
@@ -124,12 +125,8 @@ public class TxnActivityAudit implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         TxnActivityAudit txnActivityAudit = (TxnActivityAudit) o;
-
-        if ( ! Objects.equals(id, txnActivityAudit.id)) return false;
-
-        return true;
+        return Objects.equals(id, txnActivityAudit.id);
     }
 
     @Override

@@ -79,12 +79,15 @@ public class InvoiceLineItem implements Serializable {
     private String Ref2;
 
     @ManyToOne
+    @JoinColumn(name = "invoice_id")
     private Invoice invoice;
 
     @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne
+    @JoinColumn(name = "tax_rate_id")
     private TaxTable taxRate;
 
     public Long getId() {
@@ -271,12 +274,8 @@ public class InvoiceLineItem implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         InvoiceLineItem invoiceLineItem = (InvoiceLineItem) o;
-
-        if ( ! Objects.equals(id, invoiceLineItem.id)) return false;
-
-        return true;
+        return Objects.equals(id, invoiceLineItem.id);
     }
 
     @Override

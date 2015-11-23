@@ -62,12 +62,8 @@ public class CustomerCategory implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         CustomerCategory customerCategory = (CustomerCategory) o;
-
-        if ( ! Objects.equals(id, customerCategory.id)) return false;
-
-        return true;
+        return Objects.equals(id, customerCategory.id);
     }
 
     @Override

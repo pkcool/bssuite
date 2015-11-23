@@ -51,12 +51,15 @@ public class StockGroup implements Serializable {
     private Boolean isArchived;
 
     @ManyToOne
+    @JoinColumn(name = "stock_family_id")
     private StockFamily stockFamily;
 
     @ManyToOne
+    @JoinColumn(name = "price_scale_id")
     private PriceScale priceScale;
 
     @ManyToOne
+    @JoinColumn(name = "tax_rate_id")
     private TaxTable taxRate;
 
     public Long getId() {
@@ -163,12 +166,8 @@ public class StockGroup implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         StockGroup stockGroup = (StockGroup) o;
-
-        if ( ! Objects.equals(id, stockGroup.id)) return false;
-
-        return true;
+        return Objects.equals(id, stockGroup.id);
     }
 
     @Override

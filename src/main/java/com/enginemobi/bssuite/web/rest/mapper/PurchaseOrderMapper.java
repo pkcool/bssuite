@@ -67,8 +67,6 @@ public interface PurchaseOrderMapper {
         return salesOrder;
     }
 
-
-
     default Staff staffFromId(Long id) {
         if (id == null) {
             return null;

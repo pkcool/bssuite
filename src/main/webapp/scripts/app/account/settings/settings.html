@@ -18,7 +18,7 @@
             <form name="form" role="form" novalidate ng-submit="save()" show-validation>
 
                 <div class="form-group">
-                    <label for="firstName">First Name</label>
+                    <label class="control-label" for="firstName">First Name</label>
                     <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Your first name"
                            ng-model="settingsAccount.firstName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
                     <div ng-show="form.firstName.$dirty && form.firstName.$invalid">
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="lastName">Last Name</label>
+                    <label class="control-label" for="lastName">Last Name</label>
                     <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Your last name"
                            ng-model="settingsAccount.lastName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
                     <div ng-show="form.lastName.$dirty && form.lastName.$invalid">
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="email">E-mail</label>
+                    <label class="control-label" for="email">E-mail</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Your e-mail"
                            ng-model="settingsAccount.email" ng-minlength=5 ng-maxlength=100 required maxlength="100">
                     <div ng-show="form.email.$dirty && form.email.$invalid">

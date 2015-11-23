@@ -43,15 +43,15 @@ module.exports = function (config) {
             // endbower
             'main/webapp/scripts/app/app.js',
             'main/webapp/scripts/app/**/*.js',
-            'main/webapp/scripts/components/**/*.{js,html}',
+            'main/webapp/scripts/components/**/*.+(js|html)',
             'test/javascript/spec/helpers/module.js',
             'test/javascript/spec/helpers/httpBackend.js',
-            'test/javascript/**/!(karma.conf).js'
+            'test/javascript/**/!(karma.conf|protractor.conf).js'
         ],
 
 
         // list of files / patterns to exclude
-        exclude: [],
+        exclude: ['test/javascript/e2e/**'],
 
         preprocessors: {
             './**/*.js': ['coverage']
@@ -60,12 +60,12 @@ module.exports = function (config) {
         reporters: ['dots', 'jenkins', 'coverage', 'progress'],
 
         jenkinsReporter: {
-            
+
             outputFile: '../target/test-results/karma/TESTS-results.xml'
         },
 
         coverageReporter: {
-            
+
             dir: '../target/test-results/coverage',
             reporters: [
                 {type: 'lcov', subdir: 'report-lcov'}

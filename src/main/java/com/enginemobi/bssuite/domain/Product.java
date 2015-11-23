@@ -179,15 +179,19 @@ public class Product implements Serializable {
     private String classCode;
 
     @ManyToOne
+    @JoinColumn(name = "stock_group_id")
     private StockGroup stockGroup;
 
     @ManyToOne
+    @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 
     @ManyToOne
+    @JoinColumn(name = "store_id")
     private Store store;
 
     @ManyToOne
+    @JoinColumn(name = "tax_rate_id")
     private TaxTable taxRate;
 
     public Long getId() {
@@ -638,12 +642,8 @@ public class Product implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Product product = (Product) o;
-
-        if ( ! Objects.equals(id, product.id)) return false;
-
-        return true;
+        return Objects.equals(id, product.id);
     }
 
     @Override

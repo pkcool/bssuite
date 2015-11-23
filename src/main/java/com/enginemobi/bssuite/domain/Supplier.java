@@ -80,6 +80,7 @@ public class Supplier implements Serializable {
     private String bankAccount;
 
     @ManyToOne
+    @JoinColumn(name = "supplier_category_id")
     private SupplierCategory supplierCategory;
 
     @OneToOne    private Contact contact;
@@ -244,12 +245,8 @@ public class Supplier implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Supplier supplier = (Supplier) o;
-
-        if ( ! Objects.equals(id, supplier.id)) return false;
-
-        return true;
+        return Objects.equals(id, supplier.id);
     }
 
     @Override

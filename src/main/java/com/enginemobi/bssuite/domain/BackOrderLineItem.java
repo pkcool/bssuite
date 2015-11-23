@@ -49,6 +49,7 @@ public class BackOrderLineItem implements Serializable {
     private Boolean isMarked;
 
     @ManyToOne
+    @JoinColumn(name = "sales_order_line_item_id")
     private SalesOrderLineItem salesOrderLineItem;
 
     public Long getId() {
@@ -139,12 +140,8 @@ public class BackOrderLineItem implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         BackOrderLineItem backOrderLineItem = (BackOrderLineItem) o;
-
-        if ( ! Objects.equals(id, backOrderLineItem.id)) return false;
-
-        return true;
+        return Objects.equals(id, backOrderLineItem.id);
     }
 
     @Override

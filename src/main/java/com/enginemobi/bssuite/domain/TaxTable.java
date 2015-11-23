@@ -127,12 +127,8 @@ public class TaxTable implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         TaxTable taxTable = (TaxTable) o;
-
-        if ( ! Objects.equals(id, taxTable.id)) return false;
-
-        return true;
+        return Objects.equals(id, taxTable.id);
     }
 
     @Override

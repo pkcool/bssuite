@@ -104,7 +104,7 @@ public class Customer implements Serializable {
     @Column(name = "credit_card_holder_name")
     private String creditCardHolderName;
 
-    @Column(name = "credit_card_expiry_date", nullable = false)
+    @Column(name = "credit_card_expiry_date")
     private LocalDate creditCardExpiryDate;
 
     @Enumerated(EnumType.STRING)
@@ -148,33 +148,43 @@ public class Customer implements Serializable {
     private Boolean isPenaltyIssued;
 
     @ManyToOne
+    @JoinColumn(name = "customer_category_id")
     private CustomerCategory customerCategory;
 
     @ManyToOne
+    @JoinColumn(name = "contact_id")
     private Contact contact;
 
     @ManyToOne
+    @JoinColumn(name = "delivery_contact_id")
     private Contact deliveryContact;
 
     @ManyToOne
+    @JoinColumn(name = "sales_primary_contact_id")
     private Contact salesPrimaryContact;
 
     @ManyToOne
+    @JoinColumn(name = "sales_secondary_contact_id")
     private Contact salesSecondaryContact;
 
     @ManyToOne
+    @JoinColumn(name = "account_primary_contact_id")
     private Contact accountPrimaryContact;
 
     @ManyToOne
+    @JoinColumn(name = "account_secondary_contact_id")
     private Contact accountSecondaryContact;
 
     @ManyToOne
+    @JoinColumn(name = "rep_id")
     private Staff rep;
 
     @ManyToOne
+    @JoinColumn(name = "central_billing_account_id")
     private Customer centralBillingAccount;
 
     @ManyToOne
+    @JoinColumn(name = "store_id")
     private Store store;
 
     public Long getId() {
@@ -553,12 +563,8 @@ public class Customer implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Customer customer = (Customer) o;
-
-        if ( ! Objects.equals(id, customer.id)) return false;
-
-        return true;
+        return Objects.equals(id, customer.id);
     }
 
     @Override

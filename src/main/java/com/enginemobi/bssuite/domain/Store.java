@@ -192,12 +192,8 @@ public class Store implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Store store = (Store) o;
-
-        if ( ! Objects.equals(id, store.id)) return false;
-
-        return true;
+        return Objects.equals(id, store.id);
     }
 
     @Override

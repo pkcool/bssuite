@@ -30,12 +30,15 @@ public class RelatedProduct implements Serializable {
     private String comment;
 
     @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne
+    @JoinColumn(name = "equivalent_product_id")
     private Product equivalentProduct;
 
     @ManyToOne
+    @JoinColumn(name = "relation_category_id")
     private ProductRelationCategory relationCategory;
 
     public Long getId() {
@@ -94,12 +97,8 @@ public class RelatedProduct implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         RelatedProduct relatedProduct = (RelatedProduct) o;
-
-        if ( ! Objects.equals(id, relatedProduct.id)) return false;
-
-        return true;
+        return Objects.equals(id, relatedProduct.id);
     }
 
     @Override

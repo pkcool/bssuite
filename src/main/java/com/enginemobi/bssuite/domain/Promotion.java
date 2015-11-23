@@ -35,10 +35,10 @@ public class Promotion implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "start_date", nullable = false)
+    @Column(name = "start_date")
     private LocalDate startDate;
 
-    @Column(name = "end_date", nullable = false)
+    @Column(name = "end_date")
     private LocalDate endDate;
 
     @Column(name = "cost")
@@ -50,10 +50,11 @@ public class Promotion implements Serializable {
     @Column(name = "expense")
     private Double expense;
 
-    @Column(name = "date_created", nullable = false)
+    @Column(name = "date_created")
     private LocalDate dateCreated;
 
     @ManyToOne
+    @JoinColumn(name = "store_id")
     private Store store;
 
     public Long getId() {
@@ -152,12 +153,8 @@ public class Promotion implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Promotion promotion = (Promotion) o;
-
-        if ( ! Objects.equals(id, promotion.id)) return false;
-
-        return true;
+        return Objects.equals(id, promotion.id);
     }
 
     @Override

@@ -193,12 +193,8 @@ public class Carrier implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Carrier carrier = (Carrier) o;
-
-        if ( ! Objects.equals(id, carrier.id)) return false;
-
-        return true;
+        return Objects.equals(id, carrier.id);
     }
 
     @Override
