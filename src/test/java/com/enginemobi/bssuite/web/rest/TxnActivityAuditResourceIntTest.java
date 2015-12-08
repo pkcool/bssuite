@@ -61,7 +61,7 @@ public class TxnActivityAuditResourceIntTest {
     private static final String UPDATED_TXN_NUMBER = "BBBBB";
 
 
-private static final TxnType DEFAULT_TXN_TYPE = TxnType.PURCHASEORDER;
+    private static final TxnType DEFAULT_TXN_TYPE = TxnType.PURCHASEORDER;
     private static final TxnType UPDATED_TXN_TYPE = TxnType.SALESORDER;
 
     private static final BigDecimal DEFAULT_TXN_AMOUNT = new BigDecimal(1);
@@ -70,7 +70,7 @@ private static final TxnType DEFAULT_TXN_TYPE = TxnType.PURCHASEORDER;
     private static final String UPDATED_BANK_ACC = "BBBBB";
 
 
-private static final TxnEditType DEFAULT_EDIT_TYPE = TxnEditType.ADD;
+    private static final TxnEditType DEFAULT_EDIT_TYPE = TxnEditType.ADD;
     private static final TxnEditType UPDATED_EDIT_TYPE = TxnEditType.EDIT;
 
     @Inject
@@ -96,9 +96,9 @@ private static final TxnEditType DEFAULT_EDIT_TYPE = TxnEditType.ADD;
     public void setup() {
         MockitoAnnotations.initMocks(this);
         TxnActivityAuditResource txnActivityAuditResource = new TxnActivityAuditResource();
+        ReflectionTestUtils.setField(txnActivityAuditResource, "txnActivityAuditSearchRepository", txnActivityAuditSearchRepository);
         ReflectionTestUtils.setField(txnActivityAuditResource, "txnActivityAuditRepository", txnActivityAuditRepository);
         ReflectionTestUtils.setField(txnActivityAuditResource, "txnActivityAuditMapper", txnActivityAuditMapper);
-        ReflectionTestUtils.setField(txnActivityAuditResource, "txnActivityAuditSearchRepository", txnActivityAuditSearchRepository);
         this.restTxnActivityAuditMockMvc = MockMvcBuilders.standaloneSetup(txnActivityAuditResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -147,7 +147,7 @@ private static final TxnEditType DEFAULT_EDIT_TYPE = TxnEditType.ADD;
         txnActivityAuditRepository.saveAndFlush(txnActivityAudit);
 
         // Get all the txnActivityAudits
-        restTxnActivityAuditMockMvc.perform(get("/api/txnActivityAudits"))
+        restTxnActivityAuditMockMvc.perform(get("/api/txnActivityAudits?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(txnActivityAudit.getId().intValue())))

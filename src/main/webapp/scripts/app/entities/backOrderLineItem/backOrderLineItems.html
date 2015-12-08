@@ -23,17 +23,17 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>IsReadyToRelease</th>
-                    <th>QtyAllocated</th>
-                    <th>IsMarkedForAutoPurchaseOrdering</th>
-                    <th>IsOnHold</th>
-                    <th>AllocatedDate</th>
-                    <th>Comment</th>
-                    <th>IsPicked</th>
-                    <th>IsMarked</th>
-                    <th>salesOrderLineItem</th>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isReadyToRelease"><span>IsReadyToRelease</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyAllocated"><span>QtyAllocated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isMarkedForAutoPurchaseOrdering"><span>IsMarkedForAutoPurchaseOrdering</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isOnHold"><span>IsOnHold</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="allocatedDate"><span>AllocatedDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="comment"><span>Comment</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isPicked"><span>IsPicked</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isMarked"><span>IsMarked</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="salesOrderLineItemId"><span>salesOrderLineItem</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -71,18 +71,8 @@
                 </tr>
             </tbody>
         </table>
-        <nav>
-            <ul class="pagination">
-                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a>&lt;</a></li>
-                <li ng-show="page > 1" ng-click="loadPage(page - 2)"><a>{{page - 1}}</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(page - 1)"><a>{{page}}</a></li>
-                <li class="active"><a>{{page + 1}}</a></li>
-                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 2}}</a></li>
-                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 3}}</a></li>
-                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
-                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
-            </ul>
-        </nav>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
     </div>
 </div>

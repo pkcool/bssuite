@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('ProductController', function ($scope, $state, $modal, Product, ProductSearch, ParseLinks) {
-      
+    .controller('ProductController', function ($scope, $state, Product, ProductSearch, ParseLinks) {
+
         $scope.products = [];
-        $scope.page = 0;
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Product.query({page: $scope.page, size: 20}, function(result, headers) {
+            Product.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
                 $scope.products = result;
             });
         };

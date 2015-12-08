@@ -47,6 +47,7 @@ public class TaxTable implements Serializable {
     @Column(name = "tax_base")
     private String taxBase;
 
+    
     public Long getId() {
         return id;
     }

@@ -39,16 +39,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class StockGroupResource {
 
     private final Logger log = LoggerFactory.getLogger(StockGroupResource.class);
-
+        
     @Inject
     private StockGroupRepository stockGroupRepository;
-
+    
     @Inject
     private StockGroupMapper stockGroupMapper;
-
+    
     @Inject
     private StockGroupSearchRepository stockGroupSearchRepository;
-
+    
     /**
      * POST  /stockGroups -> Create a new stockGroup.
      */
@@ -59,14 +59,15 @@ public class StockGroupResource {
     public ResponseEntity<StockGroupDTO> createStockGroup(@Valid @RequestBody StockGroupDTO stockGroupDTO) throws URISyntaxException {
         log.debug("REST request to save StockGroup : {}", stockGroupDTO);
         if (stockGroupDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new stockGroup cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("stockGroup", "idexists", "A new stockGroup cannot already have an ID")).body(null);
         }
         StockGroup stockGroup = stockGroupMapper.stockGroupDTOToStockGroup(stockGroupDTO);
-        StockGroup result = stockGroupRepository.save(stockGroup);
-        stockGroupSearchRepository.save(result);
+        stockGroup = stockGroupRepository.save(stockGroup);
+        StockGroupDTO result = stockGroupMapper.stockGroupToStockGroupDTO(stockGroup);
+        stockGroupSearchRepository.save(stockGroup);
         return ResponseEntity.created(new URI("/api/stockGroups/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("stockGroup", result.getId().toString()))
-            .body(stockGroupMapper.stockGroupToStockGroupDTO(result));
+            .body(result);
     }
 
     /**
@@ -82,11 +83,12 @@ public class StockGroupResource {
             return createStockGroup(stockGroupDTO);
         }
         StockGroup stockGroup = stockGroupMapper.stockGroupDTOToStockGroup(stockGroupDTO);
-        StockGroup result = stockGroupRepository.save(stockGroup);
+        stockGroup = stockGroupRepository.save(stockGroup);
+        StockGroupDTO result = stockGroupMapper.stockGroupToStockGroupDTO(stockGroup);
         stockGroupSearchRepository.save(stockGroup);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("stockGroup", stockGroupDTO.getId().toString()))
-            .body(stockGroupMapper.stockGroupToStockGroupDTO(result));
+            .body(result);
     }
 
     /**
@@ -99,7 +101,8 @@ public class StockGroupResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<StockGroupDTO>> getAllStockGroups(Pageable pageable)
         throws URISyntaxException {
-        Page<StockGroup> page = stockGroupRepository.findAll(pageable);
+        log.debug("REST request to get a page of StockGroups");
+        Page<StockGroup> page = stockGroupRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/stockGroups");
         return new ResponseEntity<>(page.getContent().stream()
             .map(stockGroupMapper::stockGroupToStockGroupDTO)
@@ -115,10 +118,11 @@ public class StockGroupResource {
     @Timed
     public ResponseEntity<StockGroupDTO> getStockGroup(@PathVariable Long id) {
         log.debug("REST request to get StockGroup : {}", id);
-        return Optional.ofNullable(stockGroupRepository.findOne(id))
-            .map(stockGroupMapper::stockGroupToStockGroupDTO)
-            .map(stockGroupDTO -> new ResponseEntity<>(
-                stockGroupDTO,
+        StockGroup stockGroup = stockGroupRepository.findOne(id);
+        StockGroupDTO stockGroupDTO = stockGroupMapper.stockGroupToStockGroupDTO(stockGroup);
+        return Optional.ofNullable(stockGroupDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -146,6 +150,7 @@ public class StockGroupResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<StockGroupDTO> searchStockGroups(@PathVariable String query) {
+        log.debug("REST request to search StockGroups for query {}", query);
         return StreamSupport
             .stream(stockGroupSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(stockGroupMapper::stockGroupToStockGroupDTO)

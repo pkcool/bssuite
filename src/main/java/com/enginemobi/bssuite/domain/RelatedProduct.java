@@ -41,6 +41,7 @@ public class RelatedProduct implements Serializable {
     @JoinColumn(name = "relation_category_id")
     private ProductRelationCategory relationCategory;
 
+    
     public Long getId() {
         return id;
     }

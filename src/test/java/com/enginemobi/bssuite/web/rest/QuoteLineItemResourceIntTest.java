@@ -102,8 +102,8 @@ public class QuoteLineItemResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         QuoteLineItemResource quoteLineItemResource = new QuoteLineItemResource();
-        ReflectionTestUtils.setField(quoteLineItemResource, "quoteLineItemRepository", quoteLineItemRepository);
         ReflectionTestUtils.setField(quoteLineItemResource, "quoteLineItemSearchRepository", quoteLineItemSearchRepository);
+        ReflectionTestUtils.setField(quoteLineItemResource, "quoteLineItemRepository", quoteLineItemRepository);
         this.restQuoteLineItemMockMvc = MockMvcBuilders.standaloneSetup(quoteLineItemResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -167,7 +167,7 @@ public class QuoteLineItemResourceIntTest {
         quoteLineItemRepository.saveAndFlush(quoteLineItem);
 
         // Get all the quoteLineItems
-        restQuoteLineItemMockMvc.perform(get("/api/quoteLineItems"))
+        restQuoteLineItemMockMvc.perform(get("/api/quoteLineItems?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(quoteLineItem.getId().intValue())))

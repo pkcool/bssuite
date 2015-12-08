@@ -102,10 +102,13 @@ public class SocialServiceIntTest {
             "PROVIDER");
 
         // Exercise
-        socialService.createSocialUser(connection, "fr");
-
-        // Teardown
-        userRepository.delete(user);
+        try {
+            // Exercise
+            socialService.createSocialUser(connection, "fr");
+        } finally {
+            // Teardown
+            userRepository.delete(user);
+        }
     }
 
     @Test

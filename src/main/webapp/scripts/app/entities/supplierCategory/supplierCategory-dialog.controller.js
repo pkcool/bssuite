@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('SupplierCategoryDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'SupplierCategory',
-        function($scope, $stateParams, $modalInstance, entity, SupplierCategory) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'SupplierCategory',
+        function($scope, $stateParams, $uibModalInstance, entity, SupplierCategory) {
 
         $scope.supplierCategory = entity;
         $scope.load = function(id) {
@@ -13,7 +13,7 @@ angular.module('bssuiteApp').controller('SupplierCategoryDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:supplierCategoryUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -31,6 +31,6 @@ angular.module('bssuiteApp').controller('SupplierCategoryDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

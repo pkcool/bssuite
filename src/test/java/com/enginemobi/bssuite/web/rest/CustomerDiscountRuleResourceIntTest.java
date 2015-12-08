@@ -123,9 +123,9 @@ public class CustomerDiscountRuleResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         CustomerDiscountRuleResource customerDiscountRuleResource = new CustomerDiscountRuleResource();
+        ReflectionTestUtils.setField(customerDiscountRuleResource, "customerDiscountRuleSearchRepository", customerDiscountRuleSearchRepository);
         ReflectionTestUtils.setField(customerDiscountRuleResource, "customerDiscountRuleRepository", customerDiscountRuleRepository);
         ReflectionTestUtils.setField(customerDiscountRuleResource, "customerDiscountRuleMapper", customerDiscountRuleMapper);
-        ReflectionTestUtils.setField(customerDiscountRuleResource, "customerDiscountRuleSearchRepository", customerDiscountRuleSearchRepository);
         this.restCustomerDiscountRuleMockMvc = MockMvcBuilders.standaloneSetup(customerDiscountRuleResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -206,7 +206,7 @@ public class CustomerDiscountRuleResourceIntTest {
         customerDiscountRuleRepository.saveAndFlush(customerDiscountRule);
 
         // Get all the customerDiscountRules
-        restCustomerDiscountRuleMockMvc.perform(get("/api/customerDiscountRules"))
+        restCustomerDiscountRuleMockMvc.perform(get("/api/customerDiscountRules?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(customerDiscountRule.getId().intValue())))

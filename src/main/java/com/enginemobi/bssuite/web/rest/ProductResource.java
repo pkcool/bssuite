@@ -39,16 +39,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class ProductResource {
 
     private final Logger log = LoggerFactory.getLogger(ProductResource.class);
-
+        
     @Inject
     private ProductRepository productRepository;
-
+    
     @Inject
     private ProductMapper productMapper;
-
+    
     @Inject
     private ProductSearchRepository productSearchRepository;
-
+    
     /**
      * POST  /products -> Create a new product.
      */
@@ -59,14 +59,15 @@ public class ProductResource {
     public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductDTO productDTO) throws URISyntaxException {
         log.debug("REST request to save Product : {}", productDTO);
         if (productDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new product cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("product", "idexists", "A new product cannot already have an ID")).body(null);
         }
         Product product = productMapper.productDTOToProduct(productDTO);
-        Product result = productRepository.save(product);
-        productSearchRepository.save(result);
+        product = productRepository.save(product);
+        ProductDTO result = productMapper.productToProductDTO(product);
+        productSearchRepository.save(product);
         return ResponseEntity.created(new URI("/api/products/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("product", result.getId().toString()))
-            .body(productMapper.productToProductDTO(result));
+            .body(result);
     }
 
     /**
@@ -82,11 +83,12 @@ public class ProductResource {
             return createProduct(productDTO);
         }
         Product product = productMapper.productDTOToProduct(productDTO);
-        Product result = productRepository.save(product);
+        product = productRepository.save(product);
+        ProductDTO result = productMapper.productToProductDTO(product);
         productSearchRepository.save(product);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("product", productDTO.getId().toString()))
-            .body(productMapper.productToProductDTO(result));
+            .body(result);
     }
 
     /**
@@ -99,7 +101,8 @@ public class ProductResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<ProductDTO>> getAllProducts(Pageable pageable)
         throws URISyntaxException {
-        Page<Product> page = productRepository.findAll(pageable);
+        log.debug("REST request to get a page of Products");
+        Page<Product> page = productRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/products");
         return new ResponseEntity<>(page.getContent().stream()
             .map(productMapper::productToProductDTO)
@@ -115,10 +118,11 @@ public class ProductResource {
     @Timed
     public ResponseEntity<ProductDTO> getProduct(@PathVariable Long id) {
         log.debug("REST request to get Product : {}", id);
-        return Optional.ofNullable(productRepository.findOne(id))
-            .map(productMapper::productToProductDTO)
-            .map(productDTO -> new ResponseEntity<>(
-                productDTO,
+        Product product = productRepository.findOne(id);
+        ProductDTO productDTO = productMapper.productToProductDTO(product);
+        return Optional.ofNullable(productDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -146,6 +150,7 @@ public class ProductResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<ProductDTO> searchProducts(@PathVariable String query) {
+        log.debug("REST request to search Products for query {}", query);
         return StreamSupport
             .stream(productSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(productMapper::productToProductDTO)

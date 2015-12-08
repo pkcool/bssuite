@@ -105,8 +105,8 @@ public class PurchaseOrderLineItemResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         PurchaseOrderLineItemResource purchaseOrderLineItemResource = new PurchaseOrderLineItemResource();
-        ReflectionTestUtils.setField(purchaseOrderLineItemResource, "purchaseOrderLineItemRepository", purchaseOrderLineItemRepository);
         ReflectionTestUtils.setField(purchaseOrderLineItemResource, "purchaseOrderLineItemSearchRepository", purchaseOrderLineItemSearchRepository);
+        ReflectionTestUtils.setField(purchaseOrderLineItemResource, "purchaseOrderLineItemRepository", purchaseOrderLineItemRepository);
         this.restPurchaseOrderLineItemMockMvc = MockMvcBuilders.standaloneSetup(purchaseOrderLineItemResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -172,7 +172,7 @@ public class PurchaseOrderLineItemResourceIntTest {
         purchaseOrderLineItemRepository.saveAndFlush(purchaseOrderLineItem);
 
         // Get all the purchaseOrderLineItems
-        restPurchaseOrderLineItemMockMvc.perform(get("/api/purchaseOrderLineItems"))
+        restPurchaseOrderLineItemMockMvc.perform(get("/api/purchaseOrderLineItems?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(purchaseOrderLineItem.getId().intValue())))

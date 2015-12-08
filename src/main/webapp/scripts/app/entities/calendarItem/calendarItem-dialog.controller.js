@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('CalendarItemDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'CalendarItem', 'Staff',
-        function($scope, $stateParams, $modalInstance, entity, CalendarItem, Staff) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'CalendarItem', 'Staff',
+        function($scope, $stateParams, $uibModalInstance, entity, CalendarItem, Staff) {
 
         $scope.calendarItem = entity;
         $scope.staffs = Staff.query();
@@ -14,7 +14,7 @@ angular.module('bssuiteApp').controller('CalendarItemDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:calendarItemUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -32,6 +32,6 @@ angular.module('bssuiteApp').controller('CalendarItemDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

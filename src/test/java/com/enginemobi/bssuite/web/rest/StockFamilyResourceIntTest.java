@@ -78,8 +78,8 @@ public class StockFamilyResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         StockFamilyResource stockFamilyResource = new StockFamilyResource();
-        ReflectionTestUtils.setField(stockFamilyResource, "stockFamilyRepository", stockFamilyRepository);
         ReflectionTestUtils.setField(stockFamilyResource, "stockFamilySearchRepository", stockFamilySearchRepository);
+        ReflectionTestUtils.setField(stockFamilyResource, "stockFamilyRepository", stockFamilyRepository);
         this.restStockFamilyMockMvc = MockMvcBuilders.standaloneSetup(stockFamilyResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -145,7 +145,7 @@ public class StockFamilyResourceIntTest {
         stockFamilyRepository.saveAndFlush(stockFamily);
 
         // Get all the stockFamilys
-        restStockFamilyMockMvc.perform(get("/api/stockFamilys"))
+        restStockFamilyMockMvc.perform(get("/api/stockFamilys?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(stockFamily.getId().intValue())))

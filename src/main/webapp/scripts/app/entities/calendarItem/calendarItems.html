@@ -23,18 +23,18 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>StartedOn</th>
-                    <th>EndedOn</th>
-                    <th>IsAllDayEvent</th>
-                    <th>IsRemainderEnabled</th>
-                    <th>RemainderTime</th>
-                    <th>WebUrl</th>
-                    <th>IsEditable</th>
-                    <th>AlarmType</th>
-                    <th>createdBy</th>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="title"><span>Title</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="startedOn"><span>StartedOn</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="endedOn"><span>EndedOn</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isAllDayEvent"><span>IsAllDayEvent</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isRemainderEnabled"><span>IsRemainderEnabled</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="remainderTime"><span>RemainderTime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="webUrl"><span>WebUrl</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isEditable"><span>IsEditable</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="alarmType"><span>AlarmType</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdById"><span>createdBy</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -73,18 +73,8 @@
                 </tr>
             </tbody>
         </table>
-        <nav>
-            <ul class="pagination">
-                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a>&lt;</a></li>
-                <li ng-show="page > 1" ng-click="loadPage(page - 2)"><a>{{page - 1}}</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(page - 1)"><a>{{page}}</a></li>
-                <li class="active"><a>{{page + 1}}</a></li>
-                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 2}}</a></li>
-                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 3}}</a></li>
-                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
-                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
-            </ul>
-        </nav>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
     </div>
 </div>

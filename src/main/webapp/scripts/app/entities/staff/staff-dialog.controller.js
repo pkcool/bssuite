@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('StaffDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Staff', 'Store',
-        function($scope, $stateParams, $modalInstance, entity, Staff, Store) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Staff', 'Store',
+        function($scope, $stateParams, $uibModalInstance, entity, Staff, Store) {
 
         $scope.staff = entity;
         $scope.stores = Store.query();
@@ -14,7 +14,7 @@ angular.module('bssuiteApp').controller('StaffDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:staffUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -32,6 +32,6 @@ angular.module('bssuiteApp').controller('StaffDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

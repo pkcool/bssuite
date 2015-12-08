@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-	.controller('BookmarkDeleteController', function($scope, $modalInstance, entity, Bookmark) {
+	.controller('BookmarkDeleteController', function($scope, $uibModalInstance, entity, Bookmark) {
 
         $scope.bookmark = entity;
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
         $scope.confirmDelete = function (id) {
             Bookmark.delete({id: id},
                 function () {
-                    $modalInstance.close(true);
+                    $uibModalInstance.close(true);
                 });
         };
 

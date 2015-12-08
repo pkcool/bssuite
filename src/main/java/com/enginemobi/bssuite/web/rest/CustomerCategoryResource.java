@@ -35,13 +35,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class CustomerCategoryResource {
 
     private final Logger log = LoggerFactory.getLogger(CustomerCategoryResource.class);
-
+        
     @Inject
     private CustomerCategoryRepository customerCategoryRepository;
-
+    
     @Inject
     private CustomerCategorySearchRepository customerCategorySearchRepository;
-
+    
     /**
      * POST  /customerCategorys -> Create a new customerCategory.
      */
@@ -52,7 +52,7 @@ public class CustomerCategoryResource {
     public ResponseEntity<CustomerCategory> createCustomerCategory(@Valid @RequestBody CustomerCategory customerCategory) throws URISyntaxException {
         log.debug("REST request to save CustomerCategory : {}", customerCategory);
         if (customerCategory.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new customerCategory cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("customerCategory", "idexists", "A new customerCategory cannot already have an ID")).body(null);
         }
         CustomerCategory result = customerCategoryRepository.save(customerCategory);
         customerCategorySearchRepository.save(result);
@@ -74,7 +74,7 @@ public class CustomerCategoryResource {
             return createCustomerCategory(customerCategory);
         }
         CustomerCategory result = customerCategoryRepository.save(customerCategory);
-        customerCategorySearchRepository.save(customerCategory);
+        customerCategorySearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("customerCategory", customerCategory.getId().toString()))
             .body(result);
@@ -89,7 +89,8 @@ public class CustomerCategoryResource {
     @Timed
     public ResponseEntity<List<CustomerCategory>> getAllCustomerCategorys(Pageable pageable)
         throws URISyntaxException {
-        Page<CustomerCategory> page = customerCategoryRepository.findAll(pageable);
+        log.debug("REST request to get a page of CustomerCategorys");
+        Page<CustomerCategory> page = customerCategoryRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/customerCategorys");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -103,9 +104,10 @@ public class CustomerCategoryResource {
     @Timed
     public ResponseEntity<CustomerCategory> getCustomerCategory(@PathVariable Long id) {
         log.debug("REST request to get CustomerCategory : {}", id);
-        return Optional.ofNullable(customerCategoryRepository.findOne(id))
-            .map(customerCategory -> new ResponseEntity<>(
-                customerCategory,
+        CustomerCategory customerCategory = customerCategoryRepository.findOne(id);
+        return Optional.ofNullable(customerCategory)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -133,6 +135,7 @@ public class CustomerCategoryResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<CustomerCategory> searchCustomerCategorys(@PathVariable String query) {
+        log.debug("REST request to search CustomerCategorys for query {}", query);
         return StreamSupport
             .stream(customerCategorySearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());

@@ -44,8 +44,8 @@ angular.module('bssuiteApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
                         templateUrl: 'scripts/app/entities/priceScale/priceScale-dialog.html',
                         controller: 'PriceScaleDialogController',
                         size: 'lg',
@@ -74,8 +74,8 @@ angular.module('bssuiteApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
                         templateUrl: 'scripts/app/entities/priceScale/priceScale-dialog.html',
                         controller: 'PriceScaleDialogController',
                         size: 'lg',
@@ -97,8 +97,8 @@ angular.module('bssuiteApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
                         templateUrl: 'scripts/app/entities/priceScale/priceScale-delete-dialog.html',
                         controller: 'PriceScaleDeleteController',
                         size: 'md',

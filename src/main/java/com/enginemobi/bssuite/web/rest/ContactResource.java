@@ -38,16 +38,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class ContactResource {
 
     private final Logger log = LoggerFactory.getLogger(ContactResource.class);
-
+        
     @Inject
     private ContactRepository contactRepository;
-
+    
     @Inject
     private ContactMapper contactMapper;
-
+    
     @Inject
     private ContactSearchRepository contactSearchRepository;
-
+    
     /**
      * POST  /contacts -> Create a new contact.
      */
@@ -58,14 +58,15 @@ public class ContactResource {
     public ResponseEntity<ContactDTO> createContact(@RequestBody ContactDTO contactDTO) throws URISyntaxException {
         log.debug("REST request to save Contact : {}", contactDTO);
         if (contactDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new contact cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("contact", "idexists", "A new contact cannot already have an ID")).body(null);
         }
         Contact contact = contactMapper.contactDTOToContact(contactDTO);
-        Contact result = contactRepository.save(contact);
-        contactSearchRepository.save(result);
+        contact = contactRepository.save(contact);
+        ContactDTO result = contactMapper.contactToContactDTO(contact);
+        contactSearchRepository.save(contact);
         return ResponseEntity.created(new URI("/api/contacts/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("contact", result.getId().toString()))
-            .body(contactMapper.contactToContactDTO(result));
+            .body(result);
     }
 
     /**
@@ -81,11 +82,12 @@ public class ContactResource {
             return createContact(contactDTO);
         }
         Contact contact = contactMapper.contactDTOToContact(contactDTO);
-        Contact result = contactRepository.save(contact);
+        contact = contactRepository.save(contact);
+        ContactDTO result = contactMapper.contactToContactDTO(contact);
         contactSearchRepository.save(contact);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("contact", contactDTO.getId().toString()))
-            .body(contactMapper.contactToContactDTO(result));
+            .body(result);
     }
 
     /**
@@ -98,7 +100,8 @@ public class ContactResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<ContactDTO>> getAllContacts(Pageable pageable)
         throws URISyntaxException {
-        Page<Contact> page = contactRepository.findAll(pageable);
+        log.debug("REST request to get a page of Contacts");
+        Page<Contact> page = contactRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/contacts");
         return new ResponseEntity<>(page.getContent().stream()
             .map(contactMapper::contactToContactDTO)
@@ -114,10 +117,11 @@ public class ContactResource {
     @Timed
     public ResponseEntity<ContactDTO> getContact(@PathVariable Long id) {
         log.debug("REST request to get Contact : {}", id);
-        return Optional.ofNullable(contactRepository.findOne(id))
-            .map(contactMapper::contactToContactDTO)
-            .map(contactDTO -> new ResponseEntity<>(
-                contactDTO,
+        Contact contact = contactRepository.findOne(id);
+        ContactDTO contactDTO = contactMapper.contactToContactDTO(contact);
+        return Optional.ofNullable(contactDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -145,6 +149,7 @@ public class ContactResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<ContactDTO> searchContacts(@PathVariable String query) {
+        log.debug("REST request to search Contacts for query {}", query);
         return StreamSupport
             .stream(contactSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(contactMapper::contactToContactDTO)

@@ -23,22 +23,22 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Address1</th>
-                    <th>Address2</th>
-                    <th>Suburb</th>
-                    <th>State</th>
-                    <th>Postcode</th>
-                    <th>Country</th>
-                    <th>Phone</th>
-                    <th>Fax</th>
-                    <th>Email</th>
-                    <th>WebUrl</th>
-                    <th>InBusinessSince</th>
-                    <th>IsArchived</th>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="code"><span>Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address1"><span>Address1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address2"><span>Address2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="suburb"><span>Suburb</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="state"><span>State</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="postcode"><span>Postcode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="country"><span>Country</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="phone"><span>Phone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fax"><span>Fax</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="email"><span>Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="webUrl"><span>WebUrl</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="inBusinessSince"><span>InBusinessSince</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isArchived"><span>IsArchived</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -79,13 +79,6 @@
                 </tr>
             </tbody>
         </table>
-        <nav>
-            <ul class="pager">
-                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a href="#">&lt;&lt;</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a href="#">&lt;</a></li>
-                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a href="#">&gt;</a></li>
-                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a href="#">&gt;&gt;</a></li>
-            </ul>
-        </nav>
     </div>
+    <uib-pager total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pager>
 </div>

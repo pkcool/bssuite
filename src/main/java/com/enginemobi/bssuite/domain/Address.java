@@ -39,6 +39,7 @@ public class Address implements Serializable {
     @Column(name = "country")
     private String country;
 
+    
     public Long getId() {
         return id;
     }

@@ -59,7 +59,7 @@ public class ProductActivityAuditResourceIntTest {
     private static final String UPDATED_TXN_NUMBER = "BBBBB";
 
 
-private static final ProductActivityType DEFAULT_ACTIVITY_TYPE = ProductActivityType.PURCHASEORDER;
+    private static final ProductActivityType DEFAULT_ACTIVITY_TYPE = ProductActivityType.PURCHASEORDER;
     private static final ProductActivityType UPDATED_ACTIVITY_TYPE = ProductActivityType.SALESORDER;
 
     private static final Double DEFAULT_QTY_TXN = 1D;
@@ -98,9 +98,9 @@ private static final ProductActivityType DEFAULT_ACTIVITY_TYPE = ProductActivity
     public void setup() {
         MockitoAnnotations.initMocks(this);
         ProductActivityAuditResource productActivityAuditResource = new ProductActivityAuditResource();
+        ReflectionTestUtils.setField(productActivityAuditResource, "productActivityAuditSearchRepository", productActivityAuditSearchRepository);
         ReflectionTestUtils.setField(productActivityAuditResource, "productActivityAuditRepository", productActivityAuditRepository);
         ReflectionTestUtils.setField(productActivityAuditResource, "productActivityAuditMapper", productActivityAuditMapper);
-        ReflectionTestUtils.setField(productActivityAuditResource, "productActivityAuditSearchRepository", productActivityAuditSearchRepository);
         this.restProductActivityAuditMockMvc = MockMvcBuilders.standaloneSetup(productActivityAuditResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -153,7 +153,7 @@ private static final ProductActivityType DEFAULT_ACTIVITY_TYPE = ProductActivity
         productActivityAuditRepository.saveAndFlush(productActivityAudit);
 
         // Get all the productActivityAudits
-        restProductActivityAuditMockMvc.perform(get("/api/productActivityAudits"))
+        restProductActivityAuditMockMvc.perform(get("/api/productActivityAudits?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(productActivityAudit.getId().intValue())))

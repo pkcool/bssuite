@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('CustomerCategoryController', function ($scope, $state, $modal, CustomerCategory, CustomerCategorySearch, ParseLinks) {
-      
+    .controller('CustomerCategoryController', function ($scope, $state, CustomerCategory, CustomerCategorySearch, ParseLinks) {
+
         $scope.customerCategorys = [];
-        $scope.page = 0;
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            CustomerCategory.query({page: $scope.page, size: 20}, function(result, headers) {
+            CustomerCategory.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
                 $scope.customerCategorys = result;
             });
         };

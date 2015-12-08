@@ -38,16 +38,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class StoreResource {
 
     private final Logger log = LoggerFactory.getLogger(StoreResource.class);
-
+        
     @Inject
     private StoreRepository storeRepository;
-
+    
     @Inject
     private StoreMapper storeMapper;
-
+    
     @Inject
     private StoreSearchRepository storeSearchRepository;
-
+    
     /**
      * POST  /stores -> Create a new store.
      */
@@ -58,14 +58,15 @@ public class StoreResource {
     public ResponseEntity<StoreDTO> createStore(@RequestBody StoreDTO storeDTO) throws URISyntaxException {
         log.debug("REST request to save Store : {}", storeDTO);
         if (storeDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new store cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("store", "idexists", "A new store cannot already have an ID")).body(null);
         }
         Store store = storeMapper.storeDTOToStore(storeDTO);
-        Store result = storeRepository.save(store);
-        storeSearchRepository.save(result);
+        store = storeRepository.save(store);
+        StoreDTO result = storeMapper.storeToStoreDTO(store);
+        storeSearchRepository.save(store);
         return ResponseEntity.created(new URI("/api/stores/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("store", result.getId().toString()))
-            .body(storeMapper.storeToStoreDTO(result));
+            .body(result);
     }
 
     /**
@@ -81,11 +82,12 @@ public class StoreResource {
             return createStore(storeDTO);
         }
         Store store = storeMapper.storeDTOToStore(storeDTO);
-        Store result = storeRepository.save(store);
+        store = storeRepository.save(store);
+        StoreDTO result = storeMapper.storeToStoreDTO(store);
         storeSearchRepository.save(store);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("store", storeDTO.getId().toString()))
-            .body(storeMapper.storeToStoreDTO(result));
+            .body(result);
     }
 
     /**
@@ -98,7 +100,8 @@ public class StoreResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<StoreDTO>> getAllStores(Pageable pageable)
         throws URISyntaxException {
-        Page<Store> page = storeRepository.findAll(pageable);
+        log.debug("REST request to get a page of Stores");
+        Page<Store> page = storeRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/stores");
         return new ResponseEntity<>(page.getContent().stream()
             .map(storeMapper::storeToStoreDTO)
@@ -114,10 +117,11 @@ public class StoreResource {
     @Timed
     public ResponseEntity<StoreDTO> getStore(@PathVariable Long id) {
         log.debug("REST request to get Store : {}", id);
-        return Optional.ofNullable(storeRepository.findOne(id))
-            .map(storeMapper::storeToStoreDTO)
-            .map(storeDTO -> new ResponseEntity<>(
-                storeDTO,
+        Store store = storeRepository.findOne(id);
+        StoreDTO storeDTO = storeMapper.storeToStoreDTO(store);
+        return Optional.ofNullable(storeDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -145,6 +149,7 @@ public class StoreResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<StoreDTO> searchStores(@PathVariable String query) {
+        log.debug("REST request to search Stores for query {}", query);
         return StreamSupport
             .stream(storeSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(storeMapper::storeToStoreDTO)

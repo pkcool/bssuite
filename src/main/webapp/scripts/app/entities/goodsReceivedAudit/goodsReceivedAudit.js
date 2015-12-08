@@ -44,8 +44,8 @@ angular.module('bssuiteApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
                         templateUrl: 'scripts/app/entities/goodsReceivedAudit/goodsReceivedAudit-dialog.html',
                         controller: 'GoodsReceivedAuditDialogController',
                         size: 'lg',
@@ -73,8 +73,8 @@ angular.module('bssuiteApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
                         templateUrl: 'scripts/app/entities/goodsReceivedAudit/goodsReceivedAudit-dialog.html',
                         controller: 'GoodsReceivedAuditDialogController',
                         size: 'lg',
@@ -96,8 +96,8 @@ angular.module('bssuiteApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
                         templateUrl: 'scripts/app/entities/goodsReceivedAudit/goodsReceivedAudit-delete-dialog.html',
                         controller: 'GoodsReceivedAuditDeleteController',
                         size: 'md',

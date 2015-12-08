@@ -44,8 +44,8 @@ angular.module('bssuiteApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
                         templateUrl: 'scripts/app/entities/purchaseOrder/purchaseOrder-dialog.html',
                         controller: 'PurchaseOrderDialogController',
                         size: 'lg',
@@ -81,8 +81,8 @@ angular.module('bssuiteApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
                         templateUrl: 'scripts/app/entities/purchaseOrder/purchaseOrder-dialog.html',
                         controller: 'PurchaseOrderDialogController',
                         size: 'lg',
@@ -104,8 +104,8 @@ angular.module('bssuiteApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
                         templateUrl: 'scripts/app/entities/purchaseOrder/purchaseOrder-delete-dialog.html',
                         controller: 'PurchaseOrderDeleteController',
                         size: 'md',

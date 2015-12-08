@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('QuoteLineItemController', function ($scope, $state, $modal, QuoteLineItem, QuoteLineItemSearch, ParseLinks) {
-      
+    .controller('QuoteLineItemController', function ($scope, $state, QuoteLineItem, QuoteLineItemSearch, ParseLinks) {
+
         $scope.quoteLineItems = [];
-        $scope.page = 0;
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            QuoteLineItem.query({page: $scope.page, size: 20}, function(result, headers) {
+            QuoteLineItem.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
                 $scope.quoteLineItems = result;
             });
         };

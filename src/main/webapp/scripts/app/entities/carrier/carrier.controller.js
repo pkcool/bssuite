@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('CarrierController', function ($scope, $state, $modal, Carrier, CarrierSearch, ParseLinks) {
-      
+    .controller('CarrierController', function ($scope, $state, Carrier, CarrierSearch, ParseLinks) {
+
         $scope.carriers = [];
-        $scope.page = 0;
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Carrier.query({page: $scope.page, size: 20}, function(result, headers) {
+            Carrier.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
                 $scope.carriers = result;
             });
         };

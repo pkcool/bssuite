@@ -57,7 +57,7 @@ public class PurchaseOrderResourceIntTest {
     private static final String UPDATED_ORDER_NO = "BBBBB";
 
 
-private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ONORDER;
+    private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ONORDER;
     private static final PurchaseOrderStatus UPDATED_STATUS = PurchaseOrderStatus.DELIVERED;
 
     private static final ZonedDateTime DEFAULT_CREATED_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
@@ -111,9 +111,9 @@ private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ON
     public void setup() {
         MockitoAnnotations.initMocks(this);
         PurchaseOrderResource purchaseOrderResource = new PurchaseOrderResource();
+        ReflectionTestUtils.setField(purchaseOrderResource, "purchaseOrderSearchRepository", purchaseOrderSearchRepository);
         ReflectionTestUtils.setField(purchaseOrderResource, "purchaseOrderRepository", purchaseOrderRepository);
         ReflectionTestUtils.setField(purchaseOrderResource, "purchaseOrderMapper", purchaseOrderMapper);
-        ReflectionTestUtils.setField(purchaseOrderResource, "purchaseOrderSearchRepository", purchaseOrderSearchRepository);
         this.restPurchaseOrderMockMvc = MockMvcBuilders.standaloneSetup(purchaseOrderResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -174,7 +174,7 @@ private static final PurchaseOrderStatus DEFAULT_STATUS = PurchaseOrderStatus.ON
         purchaseOrderRepository.saveAndFlush(purchaseOrder);
 
         // Get all the purchaseOrders
-        restPurchaseOrderMockMvc.perform(get("/api/purchaseOrders"))
+        restPurchaseOrderMockMvc.perform(get("/api/purchaseOrders?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(purchaseOrder.getId().intValue())))

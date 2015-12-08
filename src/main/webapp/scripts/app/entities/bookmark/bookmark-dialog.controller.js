@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('BookmarkDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Bookmark', 'Staff',
-        function($scope, $stateParams, $modalInstance, entity, Bookmark, Staff) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Bookmark', 'Staff',
+        function($scope, $stateParams, $uibModalInstance, entity, Bookmark, Staff) {
 
         $scope.bookmark = entity;
         $scope.staffs = Staff.query();
@@ -14,7 +14,7 @@ angular.module('bssuiteApp').controller('BookmarkDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:bookmarkUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -32,6 +32,6 @@ angular.module('bssuiteApp').controller('BookmarkDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

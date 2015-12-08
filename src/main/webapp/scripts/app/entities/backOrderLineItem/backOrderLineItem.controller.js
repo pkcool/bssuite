@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('BackOrderLineItemController', function ($scope, $state, $modal, BackOrderLineItem, BackOrderLineItemSearch, ParseLinks) {
-      
+    .controller('BackOrderLineItemController', function ($scope, $state, BackOrderLineItem, BackOrderLineItemSearch, ParseLinks) {
+
         $scope.backOrderLineItems = [];
-        $scope.page = 0;
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            BackOrderLineItem.query({page: $scope.page, size: 20}, function(result, headers) {
+            BackOrderLineItem.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
                 $scope.backOrderLineItems = result;
             });
         };

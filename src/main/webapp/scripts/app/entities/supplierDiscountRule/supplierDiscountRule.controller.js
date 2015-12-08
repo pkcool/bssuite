@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('SupplierDiscountRuleController', function ($scope, $state, $modal, SupplierDiscountRule, SupplierDiscountRuleSearch, ParseLinks) {
-      
+    .controller('SupplierDiscountRuleController', function ($scope, $state, SupplierDiscountRule, SupplierDiscountRuleSearch, ParseLinks) {
+
         $scope.supplierDiscountRules = [];
-        $scope.page = 0;
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            SupplierDiscountRule.query({page: $scope.page, size: 20}, function(result, headers) {
+            SupplierDiscountRule.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
                 $scope.supplierDiscountRules = result;
             });
         };

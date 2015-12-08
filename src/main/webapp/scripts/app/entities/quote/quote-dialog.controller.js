@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('QuoteDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Quote', 'Customer', 'Contact', 'Store', 'Staff', 'QuoteLineItem',
-        function($scope, $stateParams, $modalInstance, entity, Quote, Customer, Contact, Store, Staff, QuoteLineItem) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Quote', 'Customer', 'Contact', 'Store', 'Staff', 'QuoteLineItem',
+        function($scope, $stateParams, $uibModalInstance, entity, Quote, Customer, Contact, Store, Staff, QuoteLineItem) {
 
         $scope.quote = entity;
         $scope.customers = Customer.query();
@@ -18,7 +18,7 @@ angular.module('bssuiteApp').controller('QuoteDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:quoteUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -36,6 +36,6 @@ angular.module('bssuiteApp').controller('QuoteDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

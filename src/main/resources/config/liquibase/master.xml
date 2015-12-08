@@ -38,5 +38,5 @@
     <include file="classpath:config/liquibase/changelog/20151110004006_added_entity_CalendarItem.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151110004008_added_entity_ProductActivityAudit.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20151110004009_added_entity_Bookmark.xml" relativeToChangelogFile="false"/>
-    <!-- JHipster will add liquibase changelogs here -->
+    <!-- jhipster-needle-005 - JHipster will add liquibase changelogs here -->
 </databaseChangeLog>

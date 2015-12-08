@@ -38,16 +38,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class InvoiceResource {
 
     private final Logger log = LoggerFactory.getLogger(InvoiceResource.class);
-
+        
     @Inject
     private InvoiceRepository invoiceRepository;
-
+    
     @Inject
     private InvoiceMapper invoiceMapper;
-
+    
     @Inject
     private InvoiceSearchRepository invoiceSearchRepository;
-
+    
     /**
      * POST  /invoices -> Create a new invoice.
      */
@@ -58,14 +58,15 @@ public class InvoiceResource {
     public ResponseEntity<InvoiceDTO> createInvoice(@RequestBody InvoiceDTO invoiceDTO) throws URISyntaxException {
         log.debug("REST request to save Invoice : {}", invoiceDTO);
         if (invoiceDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new invoice cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("invoice", "idexists", "A new invoice cannot already have an ID")).body(null);
         }
         Invoice invoice = invoiceMapper.invoiceDTOToInvoice(invoiceDTO);
-        Invoice result = invoiceRepository.save(invoice);
-        invoiceSearchRepository.save(result);
+        invoice = invoiceRepository.save(invoice);
+        InvoiceDTO result = invoiceMapper.invoiceToInvoiceDTO(invoice);
+        invoiceSearchRepository.save(invoice);
         return ResponseEntity.created(new URI("/api/invoices/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("invoice", result.getId().toString()))
-            .body(invoiceMapper.invoiceToInvoiceDTO(result));
+            .body(result);
     }
 
     /**
@@ -81,11 +82,12 @@ public class InvoiceResource {
             return createInvoice(invoiceDTO);
         }
         Invoice invoice = invoiceMapper.invoiceDTOToInvoice(invoiceDTO);
-        Invoice result = invoiceRepository.save(invoice);
+        invoice = invoiceRepository.save(invoice);
+        InvoiceDTO result = invoiceMapper.invoiceToInvoiceDTO(invoice);
         invoiceSearchRepository.save(invoice);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("invoice", invoiceDTO.getId().toString()))
-            .body(invoiceMapper.invoiceToInvoiceDTO(result));
+            .body(result);
     }
 
     /**
@@ -98,7 +100,8 @@ public class InvoiceResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<InvoiceDTO>> getAllInvoices(Pageable pageable)
         throws URISyntaxException {
-        Page<Invoice> page = invoiceRepository.findAll(pageable);
+        log.debug("REST request to get a page of Invoices");
+        Page<Invoice> page = invoiceRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/invoices");
         return new ResponseEntity<>(page.getContent().stream()
             .map(invoiceMapper::invoiceToInvoiceDTO)
@@ -114,10 +117,11 @@ public class InvoiceResource {
     @Timed
     public ResponseEntity<InvoiceDTO> getInvoice(@PathVariable Long id) {
         log.debug("REST request to get Invoice : {}", id);
-        return Optional.ofNullable(invoiceRepository.findOne(id))
-            .map(invoiceMapper::invoiceToInvoiceDTO)
-            .map(invoiceDTO -> new ResponseEntity<>(
-                invoiceDTO,
+        Invoice invoice = invoiceRepository.findOne(id);
+        InvoiceDTO invoiceDTO = invoiceMapper.invoiceToInvoiceDTO(invoice);
+        return Optional.ofNullable(invoiceDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -145,6 +149,7 @@ public class InvoiceResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<InvoiceDTO> searchInvoices(@PathVariable String query) {
+        log.debug("REST request to search Invoices for query {}", query);
         return StreamSupport
             .stream(invoiceSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(invoiceMapper::invoiceToInvoiceDTO)

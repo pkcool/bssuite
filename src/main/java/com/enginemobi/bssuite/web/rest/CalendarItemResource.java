@@ -38,16 +38,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class CalendarItemResource {
 
     private final Logger log = LoggerFactory.getLogger(CalendarItemResource.class);
-
+        
     @Inject
     private CalendarItemRepository calendarItemRepository;
-
+    
     @Inject
     private CalendarItemMapper calendarItemMapper;
-
+    
     @Inject
     private CalendarItemSearchRepository calendarItemSearchRepository;
-
+    
     /**
      * POST  /calendarItems -> Create a new calendarItem.
      */
@@ -58,14 +58,15 @@ public class CalendarItemResource {
     public ResponseEntity<CalendarItemDTO> createCalendarItem(@RequestBody CalendarItemDTO calendarItemDTO) throws URISyntaxException {
         log.debug("REST request to save CalendarItem : {}", calendarItemDTO);
         if (calendarItemDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new calendarItem cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("calendarItem", "idexists", "A new calendarItem cannot already have an ID")).body(null);
         }
         CalendarItem calendarItem = calendarItemMapper.calendarItemDTOToCalendarItem(calendarItemDTO);
-        CalendarItem result = calendarItemRepository.save(calendarItem);
-        calendarItemSearchRepository.save(result);
+        calendarItem = calendarItemRepository.save(calendarItem);
+        CalendarItemDTO result = calendarItemMapper.calendarItemToCalendarItemDTO(calendarItem);
+        calendarItemSearchRepository.save(calendarItem);
         return ResponseEntity.created(new URI("/api/calendarItems/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("calendarItem", result.getId().toString()))
-            .body(calendarItemMapper.calendarItemToCalendarItemDTO(result));
+            .body(result);
     }
 
     /**
@@ -81,11 +82,12 @@ public class CalendarItemResource {
             return createCalendarItem(calendarItemDTO);
         }
         CalendarItem calendarItem = calendarItemMapper.calendarItemDTOToCalendarItem(calendarItemDTO);
-        CalendarItem result = calendarItemRepository.save(calendarItem);
+        calendarItem = calendarItemRepository.save(calendarItem);
+        CalendarItemDTO result = calendarItemMapper.calendarItemToCalendarItemDTO(calendarItem);
         calendarItemSearchRepository.save(calendarItem);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("calendarItem", calendarItemDTO.getId().toString()))
-            .body(calendarItemMapper.calendarItemToCalendarItemDTO(result));
+            .body(result);
     }
 
     /**
@@ -98,7 +100,8 @@ public class CalendarItemResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<CalendarItemDTO>> getAllCalendarItems(Pageable pageable)
         throws URISyntaxException {
-        Page<CalendarItem> page = calendarItemRepository.findAll(pageable);
+        log.debug("REST request to get a page of CalendarItems");
+        Page<CalendarItem> page = calendarItemRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/calendarItems");
         return new ResponseEntity<>(page.getContent().stream()
             .map(calendarItemMapper::calendarItemToCalendarItemDTO)
@@ -114,10 +117,11 @@ public class CalendarItemResource {
     @Timed
     public ResponseEntity<CalendarItemDTO> getCalendarItem(@PathVariable Long id) {
         log.debug("REST request to get CalendarItem : {}", id);
-        return Optional.ofNullable(calendarItemRepository.findOne(id))
-            .map(calendarItemMapper::calendarItemToCalendarItemDTO)
-            .map(calendarItemDTO -> new ResponseEntity<>(
-                calendarItemDTO,
+        CalendarItem calendarItem = calendarItemRepository.findOne(id);
+        CalendarItemDTO calendarItemDTO = calendarItemMapper.calendarItemToCalendarItemDTO(calendarItem);
+        return Optional.ofNullable(calendarItemDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -145,6 +149,7 @@ public class CalendarItemResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<CalendarItemDTO> searchCalendarItems(@PathVariable String query) {
+        log.debug("REST request to search CalendarItems for query {}", query);
         return StreamSupport
             .stream(calendarItemSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(calendarItemMapper::calendarItemToCalendarItemDTO)

@@ -3,7 +3,6 @@ package com.enginemobi.bssuite.repository;
 import com.enginemobi.bssuite.domain.SocialUserConnection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.List;
 import java.util.Set;
 

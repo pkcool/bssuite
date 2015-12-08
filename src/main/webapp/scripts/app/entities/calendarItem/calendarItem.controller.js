@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('CalendarItemController', function ($scope, $state, $modal, CalendarItem, CalendarItemSearch, ParseLinks) {
-      
+    .controller('CalendarItemController', function ($scope, $state, CalendarItem, CalendarItemSearch, ParseLinks) {
+
         $scope.calendarItems = [];
-        $scope.page = 0;
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            CalendarItem.query({page: $scope.page, size: 20}, function(result, headers) {
+            CalendarItem.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
                 $scope.calendarItems = result;
             });
         };

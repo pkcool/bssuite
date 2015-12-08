@@ -57,7 +57,7 @@ public class QuoteResourceIntTest {
     private static final String UPDATED_QUOTE_NO = "BBBBB";
 
 
-private static final QuoteStatus DEFAULT_STATUS = QuoteStatus.OPEN;
+    private static final QuoteStatus DEFAULT_STATUS = QuoteStatus.OPEN;
     private static final QuoteStatus UPDATED_STATUS = QuoteStatus.ACCEPTED;
 
     private static final ZonedDateTime DEFAULT_QUOTE_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
@@ -130,9 +130,9 @@ private static final QuoteStatus DEFAULT_STATUS = QuoteStatus.OPEN;
     public void setup() {
         MockitoAnnotations.initMocks(this);
         QuoteResource quoteResource = new QuoteResource();
+        ReflectionTestUtils.setField(quoteResource, "quoteSearchRepository", quoteSearchRepository);
         ReflectionTestUtils.setField(quoteResource, "quoteRepository", quoteRepository);
         ReflectionTestUtils.setField(quoteResource, "quoteMapper", quoteMapper);
-        ReflectionTestUtils.setField(quoteResource, "quoteSearchRepository", quoteSearchRepository);
         this.restQuoteMockMvc = MockMvcBuilders.standaloneSetup(quoteResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -207,7 +207,7 @@ private static final QuoteStatus DEFAULT_STATUS = QuoteStatus.OPEN;
         quoteRepository.saveAndFlush(quote);
 
         // Get all the quotes
-        restQuoteMockMvc.perform(get("/api/quotes"))
+        restQuoteMockMvc.perform(get("/api/quotes?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(quote.getId().intValue())))

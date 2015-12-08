@@ -57,7 +57,7 @@ public class SalesOrderResourceIntTest {
     private static final String UPDATED_ORDER_NO = "BBBBB";
 
 
-private static final SalesOrderStatus DEFAULT_STATUS = SalesOrderStatus.ONORDER;
+    private static final SalesOrderStatus DEFAULT_STATUS = SalesOrderStatus.ONORDER;
     private static final SalesOrderStatus UPDATED_STATUS = SalesOrderStatus.DELIVERED;
 
     private static final ZonedDateTime DEFAULT_TXN_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
@@ -137,9 +137,9 @@ private static final SalesOrderStatus DEFAULT_STATUS = SalesOrderStatus.ONORDER;
     public void setup() {
         MockitoAnnotations.initMocks(this);
         SalesOrderResource salesOrderResource = new SalesOrderResource();
+        ReflectionTestUtils.setField(salesOrderResource, "salesOrderSearchRepository", salesOrderSearchRepository);
         ReflectionTestUtils.setField(salesOrderResource, "salesOrderRepository", salesOrderRepository);
         ReflectionTestUtils.setField(salesOrderResource, "salesOrderMapper", salesOrderMapper);
-        ReflectionTestUtils.setField(salesOrderResource, "salesOrderSearchRepository", salesOrderSearchRepository);
         this.restSalesOrderMockMvc = MockMvcBuilders.standaloneSetup(salesOrderResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -218,7 +218,7 @@ private static final SalesOrderStatus DEFAULT_STATUS = SalesOrderStatus.ONORDER;
         salesOrderRepository.saveAndFlush(salesOrder);
 
         // Get all the salesOrders
-        restSalesOrderMockMvc.perform(get("/api/salesOrders"))
+        restSalesOrderMockMvc.perform(get("/api/salesOrders?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(salesOrder.getId().intValue())))

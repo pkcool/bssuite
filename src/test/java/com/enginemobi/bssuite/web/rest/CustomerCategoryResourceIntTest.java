@@ -67,8 +67,8 @@ public class CustomerCategoryResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         CustomerCategoryResource customerCategoryResource = new CustomerCategoryResource();
-        ReflectionTestUtils.setField(customerCategoryResource, "customerCategoryRepository", customerCategoryRepository);
         ReflectionTestUtils.setField(customerCategoryResource, "customerCategorySearchRepository", customerCategorySearchRepository);
+        ReflectionTestUtils.setField(customerCategoryResource, "customerCategoryRepository", customerCategoryRepository);
         this.restCustomerCategoryMockMvc = MockMvcBuilders.standaloneSetup(customerCategoryResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -126,7 +126,7 @@ public class CustomerCategoryResourceIntTest {
         customerCategoryRepository.saveAndFlush(customerCategory);
 
         // Get all the customerCategorys
-        restCustomerCategoryMockMvc.perform(get("/api/customerCategorys"))
+        restCustomerCategoryMockMvc.perform(get("/api/customerCategorys?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(customerCategory.getId().intValue())))

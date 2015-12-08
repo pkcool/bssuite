@@ -23,16 +23,16 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>ReceivedOn</th>
-                    <th>TxnNumber</th>
-                    <th>TypeReceipt</th>
-                    <th>QtyReceived</th>
-                    <th>receivedBy</th>
-                    <th>supplier</th>
-                    <th>purchaseOrder</th>
-                    <th>product</th>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="receivedOn"><span>ReceivedOn</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="txnNumber"><span>TxnNumber</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="typeReceipt"><span>TypeReceipt</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyReceived"><span>QtyReceived</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="receivedById"><span>receivedBy</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="supplierId"><span>supplier</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="purchaseOrderId"><span>purchaseOrder</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="productId"><span>product</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -75,18 +75,8 @@
                 </tr>
             </tbody>
         </table>
-        <nav>
-            <ul class="pagination">
-                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a>&lt;</a></li>
-                <li ng-show="page > 1" ng-click="loadPage(page - 2)"><a>{{page - 1}}</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(page - 1)"><a>{{page}}</a></li>
-                <li class="active"><a>{{page + 1}}</a></li>
-                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 2}}</a></li>
-                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 3}}</a></li>
-                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
-                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
-            </ul>
-        </nav>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
     </div>
 </div>

@@ -52,6 +52,7 @@ public class BackOrderLineItem implements Serializable {
     @JoinColumn(name = "sales_order_line_item_id")
     private SalesOrderLineItem salesOrderLineItem;
 
+    
     public Long getId() {
         return id;
     }

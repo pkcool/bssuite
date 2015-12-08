@@ -44,8 +44,8 @@ angular.module('bssuiteApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
                         templateUrl: 'scripts/app/entities/backOrderLineItem/backOrderLineItem-dialog.html',
                         controller: 'BackOrderLineItemDialogController',
                         size: 'lg',
@@ -77,8 +77,8 @@ angular.module('bssuiteApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
                         templateUrl: 'scripts/app/entities/backOrderLineItem/backOrderLineItem-dialog.html',
                         controller: 'BackOrderLineItemDialogController',
                         size: 'lg',
@@ -100,8 +100,8 @@ angular.module('bssuiteApp')
                 data: {
                     authorities: ['ROLE_USER'],
                 },
-                onEnter: ['$stateParams', '$state', '$modal', function($stateParams, $state, $modal) {
-                    $modal.open({
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
                         templateUrl: 'scripts/app/entities/backOrderLineItem/backOrderLineItem-delete-dialog.html',
                         controller: 'BackOrderLineItemDeleteController',
                         size: 'md',

@@ -48,6 +48,7 @@ public class StockFamily implements Serializable {
     @JoinColumn(name = "price_scale_id")
     private PriceScale priceScale;
 
+    
     public Long getId() {
         return id;
     }

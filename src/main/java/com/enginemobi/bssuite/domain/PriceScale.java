@@ -42,6 +42,7 @@ public class PriceScale implements Serializable {
     @Column(name = "round")
     private RoundingMethod round;
 
+    
     public Long getId() {
         return id;
     }

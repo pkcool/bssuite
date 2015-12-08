@@ -30,6 +30,7 @@ public class SupplierCategory implements Serializable {
     @Column(name = "name")
     private String name;
 
+    
     public Long getId() {
         return id;
     }

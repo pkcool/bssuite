@@ -78,7 +78,7 @@ public class CalendarItemResourceIntTest {
     private static final Boolean UPDATED_IS_EDITABLE = true;
 
 
-private static final AlarmType DEFAULT_ALARM_TYPE = AlarmType.SOUND;
+    private static final AlarmType DEFAULT_ALARM_TYPE = AlarmType.SOUND;
     private static final AlarmType UPDATED_ALARM_TYPE = AlarmType.EMAIL;
 
     @Inject
@@ -104,9 +104,9 @@ private static final AlarmType DEFAULT_ALARM_TYPE = AlarmType.SOUND;
     public void setup() {
         MockitoAnnotations.initMocks(this);
         CalendarItemResource calendarItemResource = new CalendarItemResource();
+        ReflectionTestUtils.setField(calendarItemResource, "calendarItemSearchRepository", calendarItemSearchRepository);
         ReflectionTestUtils.setField(calendarItemResource, "calendarItemRepository", calendarItemRepository);
         ReflectionTestUtils.setField(calendarItemResource, "calendarItemMapper", calendarItemMapper);
-        ReflectionTestUtils.setField(calendarItemResource, "calendarItemSearchRepository", calendarItemSearchRepository);
         this.restCalendarItemMockMvc = MockMvcBuilders.standaloneSetup(calendarItemResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -161,7 +161,7 @@ private static final AlarmType DEFAULT_ALARM_TYPE = AlarmType.SOUND;
         calendarItemRepository.saveAndFlush(calendarItem);
 
         // Get all the calendarItems
-        restCalendarItemMockMvc.perform(get("/api/calendarItems"))
+        restCalendarItemMockMvc.perform(get("/api/calendarItems?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(calendarItem.getId().intValue())))

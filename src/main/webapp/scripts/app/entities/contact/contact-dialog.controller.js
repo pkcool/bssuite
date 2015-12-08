@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('ContactDialogController',
-    ['$scope', '$stateParams', '$modalInstance', '$q', 'entity', 'Contact', 'Address',
-        function($scope, $stateParams, $modalInstance, $q, entity, Contact, Address) {
+    ['$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'Contact', 'Address',
+        function($scope, $stateParams, $uibModalInstance, $q, entity, Contact, Address) {
 
         $scope.contact = entity;
         $scope.addresss = Address.query({filter: 'contact-is-null'});
@@ -22,7 +22,7 @@ angular.module('bssuiteApp').controller('ContactDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:contactUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -40,6 +40,6 @@ angular.module('bssuiteApp').controller('ContactDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

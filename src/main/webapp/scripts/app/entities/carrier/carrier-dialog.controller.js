@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('CarrierDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Carrier',
-        function($scope, $stateParams, $modalInstance, entity, Carrier) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Carrier',
+        function($scope, $stateParams, $uibModalInstance, entity, Carrier) {
 
         $scope.carrier = entity;
         $scope.load = function(id) {
@@ -13,7 +13,7 @@ angular.module('bssuiteApp').controller('CarrierDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:carrierUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -31,6 +31,6 @@ angular.module('bssuiteApp').controller('CarrierDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

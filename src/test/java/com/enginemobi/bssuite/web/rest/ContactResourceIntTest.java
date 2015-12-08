@@ -86,9 +86,9 @@ public class ContactResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         ContactResource contactResource = new ContactResource();
+        ReflectionTestUtils.setField(contactResource, "contactSearchRepository", contactSearchRepository);
         ReflectionTestUtils.setField(contactResource, "contactRepository", contactRepository);
         ReflectionTestUtils.setField(contactResource, "contactMapper", contactMapper);
-        ReflectionTestUtils.setField(contactResource, "contactSearchRepository", contactSearchRepository);
         this.restContactMockMvc = MockMvcBuilders.standaloneSetup(contactResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -143,7 +143,7 @@ public class ContactResourceIntTest {
         contactRepository.saveAndFlush(contact);
 
         // Get all the contacts
-        restContactMockMvc.perform(get("/api/contacts"))
+        restContactMockMvc.perform(get("/api/contacts?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(contact.getId().intValue())))

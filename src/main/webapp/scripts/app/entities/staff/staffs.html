@@ -23,23 +23,23 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Comment</th>
-                    <th>Commission</th>
-                    <th>Occupation</th>
-                    <th>WorkPhone</th>
-                    <th>HomePhone</th>
-                    <th>WorkMobile</th>
-                    <th>HomeMobile</th>
-                    <th>WebEmail</th>
-                    <th>HomeEmail</th>
-                    <th>Birthday</th>
-                    <th>IsLockedToStore</th>
-                    <th>IsTechnical</th>
-                    <th>store</th>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="code"><span>Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="comment"><span>Comment</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="commission"><span>Commission</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="occupation"><span>Occupation</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="workPhone"><span>WorkPhone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="homePhone"><span>HomePhone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="workMobile"><span>WorkMobile</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="homeMobile"><span>HomeMobile</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="webEmail"><span>WebEmail</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="homeEmail"><span>HomeEmail</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="birthday"><span>Birthday</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isLockedToStore"><span>IsLockedToStore</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isTechnical"><span>IsTechnical</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="storeId"><span>store</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -83,18 +83,8 @@
                 </tr>
             </tbody>
         </table>
-        <nav>
-            <ul class="pagination">
-                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a>&lt;</a></li>
-                <li ng-show="page > 1" ng-click="loadPage(page - 2)"><a>{{page - 1}}</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(page - 1)"><a>{{page}}</a></li>
-                <li class="active"><a>{{page + 1}}</a></li>
-                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 2}}</a></li>
-                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 3}}</a></li>
-                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
-                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
-            </ul>
-        </nav>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
     </div>
 </div>

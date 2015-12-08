@@ -1,4 +1,4 @@
-// Generated on 2015-11-22 using generator-jhipster 2.24.0
+// Generated on 2015-12-07 using generator-jhipster 2.25.0
 'use strict';
 var fs = require('fs');
 
@@ -8,7 +8,13 @@ var parseVersionFromPomXml = function() {
     var version;
     var pomXml = fs.readFileSync('pom.xml', "utf8");
     parseString(pomXml, function (err, result){
-        version = result.project.version[0];
+        if (result.project.version && result.project.version[0]) {
+            version = result.project.version[0];
+        } else if (result.project.parent && result.project.parent[0] && result.project.parent[0].version && result.project.parent[0].version[0]) {
+            version = result.project.parent[0].version[0]
+        } else {
+            throw new Error('pom.xml is malformed. No version is defined');
+        }
     });
     return version;
 };
@@ -331,22 +337,6 @@ module.exports = function (grunt) {
                 singleRun: true
             }
         },
-        protractor: {
-            options: {
-                configFile: 'src/test/javascript/protractor.conf.js'
-            },
-            e2e: {
-                options: {
-                    // Stops Grunt process if a test fails
-                    keepAlive: false
-                }
-            },
-            continuous: {
-                options: {
-                    keepAlive: true
-                }
-            }
-        },
         ngAnnotate: {
             dist: {
                 files: [{
@@ -457,6 +447,6 @@ module.exports = function (grunt) {
         'buildcontrol:openshift'
     ]);
 
-    grunt.registerTask('itest', ['protractor:continuous']);
+
     grunt.registerTask('default', ['serve']);
 };

@@ -82,8 +82,8 @@ public class TaxTableResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         TaxTableResource taxTableResource = new TaxTableResource();
-        ReflectionTestUtils.setField(taxTableResource, "taxTableRepository", taxTableRepository);
         ReflectionTestUtils.setField(taxTableResource, "taxTableSearchRepository", taxTableSearchRepository);
+        ReflectionTestUtils.setField(taxTableResource, "taxTableRepository", taxTableRepository);
         this.restTaxTableMockMvc = MockMvcBuilders.standaloneSetup(taxTableResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -153,7 +153,7 @@ public class TaxTableResourceIntTest {
         taxTableRepository.saveAndFlush(taxTable);
 
         // Get all the taxTables
-        restTaxTableMockMvc.perform(get("/api/taxTables"))
+        restTaxTableMockMvc.perform(get("/api/taxTables?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(taxTable.getId().intValue())))

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('QuoteLineItemDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'QuoteLineItem', 'Quote', 'Product', 'TaxTable',
-        function($scope, $stateParams, $modalInstance, entity, QuoteLineItem, Quote, Product, TaxTable) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'QuoteLineItem', 'Quote', 'Product', 'TaxTable',
+        function($scope, $stateParams, $uibModalInstance, entity, QuoteLineItem, Quote, Product, TaxTable) {
 
         $scope.quoteLineItem = entity;
         $scope.quotes = Quote.query();
@@ -16,7 +16,7 @@ angular.module('bssuiteApp').controller('QuoteLineItemDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:quoteLineItemUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -34,6 +34,6 @@ angular.module('bssuiteApp').controller('QuoteLineItemDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

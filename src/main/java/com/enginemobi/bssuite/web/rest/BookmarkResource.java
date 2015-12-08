@@ -38,16 +38,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class BookmarkResource {
 
     private final Logger log = LoggerFactory.getLogger(BookmarkResource.class);
-
+        
     @Inject
     private BookmarkRepository bookmarkRepository;
-
+    
     @Inject
     private BookmarkMapper bookmarkMapper;
-
+    
     @Inject
     private BookmarkSearchRepository bookmarkSearchRepository;
-
+    
     /**
      * POST  /bookmarks -> Create a new bookmark.
      */
@@ -58,14 +58,15 @@ public class BookmarkResource {
     public ResponseEntity<BookmarkDTO> createBookmark(@RequestBody BookmarkDTO bookmarkDTO) throws URISyntaxException {
         log.debug("REST request to save Bookmark : {}", bookmarkDTO);
         if (bookmarkDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new bookmark cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("bookmark", "idexists", "A new bookmark cannot already have an ID")).body(null);
         }
         Bookmark bookmark = bookmarkMapper.bookmarkDTOToBookmark(bookmarkDTO);
-        Bookmark result = bookmarkRepository.save(bookmark);
-        bookmarkSearchRepository.save(result);
+        bookmark = bookmarkRepository.save(bookmark);
+        BookmarkDTO result = bookmarkMapper.bookmarkToBookmarkDTO(bookmark);
+        bookmarkSearchRepository.save(bookmark);
         return ResponseEntity.created(new URI("/api/bookmarks/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("bookmark", result.getId().toString()))
-            .body(bookmarkMapper.bookmarkToBookmarkDTO(result));
+            .body(result);
     }
 
     /**
@@ -81,11 +82,12 @@ public class BookmarkResource {
             return createBookmark(bookmarkDTO);
         }
         Bookmark bookmark = bookmarkMapper.bookmarkDTOToBookmark(bookmarkDTO);
-        Bookmark result = bookmarkRepository.save(bookmark);
+        bookmark = bookmarkRepository.save(bookmark);
+        BookmarkDTO result = bookmarkMapper.bookmarkToBookmarkDTO(bookmark);
         bookmarkSearchRepository.save(bookmark);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("bookmark", bookmarkDTO.getId().toString()))
-            .body(bookmarkMapper.bookmarkToBookmarkDTO(result));
+            .body(result);
     }
 
     /**
@@ -98,7 +100,8 @@ public class BookmarkResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<BookmarkDTO>> getAllBookmarks(Pageable pageable)
         throws URISyntaxException {
-        Page<Bookmark> page = bookmarkRepository.findAll(pageable);
+        log.debug("REST request to get a page of Bookmarks");
+        Page<Bookmark> page = bookmarkRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/bookmarks");
         return new ResponseEntity<>(page.getContent().stream()
             .map(bookmarkMapper::bookmarkToBookmarkDTO)
@@ -114,10 +117,11 @@ public class BookmarkResource {
     @Timed
     public ResponseEntity<BookmarkDTO> getBookmark(@PathVariable Long id) {
         log.debug("REST request to get Bookmark : {}", id);
-        return Optional.ofNullable(bookmarkRepository.findOne(id))
-            .map(bookmarkMapper::bookmarkToBookmarkDTO)
-            .map(bookmarkDTO -> new ResponseEntity<>(
-                bookmarkDTO,
+        Bookmark bookmark = bookmarkRepository.findOne(id);
+        BookmarkDTO bookmarkDTO = bookmarkMapper.bookmarkToBookmarkDTO(bookmark);
+        return Optional.ofNullable(bookmarkDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -145,6 +149,7 @@ public class BookmarkResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<BookmarkDTO> searchBookmarks(@PathVariable String query) {
+        log.debug("REST request to search Bookmarks for query {}", query);
         return StreamSupport
             .stream(bookmarkSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(bookmarkMapper::bookmarkToBookmarkDTO)

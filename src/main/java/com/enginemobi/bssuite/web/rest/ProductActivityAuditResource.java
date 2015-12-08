@@ -38,16 +38,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class ProductActivityAuditResource {
 
     private final Logger log = LoggerFactory.getLogger(ProductActivityAuditResource.class);
-
+        
     @Inject
     private ProductActivityAuditRepository productActivityAuditRepository;
-
+    
     @Inject
     private ProductActivityAuditMapper productActivityAuditMapper;
-
+    
     @Inject
     private ProductActivityAuditSearchRepository productActivityAuditSearchRepository;
-
+    
     /**
      * POST  /productActivityAudits -> Create a new productActivityAudit.
      */
@@ -58,14 +58,15 @@ public class ProductActivityAuditResource {
     public ResponseEntity<ProductActivityAuditDTO> createProductActivityAudit(@RequestBody ProductActivityAuditDTO productActivityAuditDTO) throws URISyntaxException {
         log.debug("REST request to save ProductActivityAudit : {}", productActivityAuditDTO);
         if (productActivityAuditDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new productActivityAudit cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("productActivityAudit", "idexists", "A new productActivityAudit cannot already have an ID")).body(null);
         }
         ProductActivityAudit productActivityAudit = productActivityAuditMapper.productActivityAuditDTOToProductActivityAudit(productActivityAuditDTO);
-        ProductActivityAudit result = productActivityAuditRepository.save(productActivityAudit);
-        productActivityAuditSearchRepository.save(result);
+        productActivityAudit = productActivityAuditRepository.save(productActivityAudit);
+        ProductActivityAuditDTO result = productActivityAuditMapper.productActivityAuditToProductActivityAuditDTO(productActivityAudit);
+        productActivityAuditSearchRepository.save(productActivityAudit);
         return ResponseEntity.created(new URI("/api/productActivityAudits/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("productActivityAudit", result.getId().toString()))
-            .body(productActivityAuditMapper.productActivityAuditToProductActivityAuditDTO(result));
+            .body(result);
     }
 
     /**
@@ -81,11 +82,12 @@ public class ProductActivityAuditResource {
             return createProductActivityAudit(productActivityAuditDTO);
         }
         ProductActivityAudit productActivityAudit = productActivityAuditMapper.productActivityAuditDTOToProductActivityAudit(productActivityAuditDTO);
-        ProductActivityAudit result = productActivityAuditRepository.save(productActivityAudit);
+        productActivityAudit = productActivityAuditRepository.save(productActivityAudit);
+        ProductActivityAuditDTO result = productActivityAuditMapper.productActivityAuditToProductActivityAuditDTO(productActivityAudit);
         productActivityAuditSearchRepository.save(productActivityAudit);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("productActivityAudit", productActivityAuditDTO.getId().toString()))
-            .body(productActivityAuditMapper.productActivityAuditToProductActivityAuditDTO(result));
+            .body(result);
     }
 
     /**
@@ -98,7 +100,8 @@ public class ProductActivityAuditResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<ProductActivityAuditDTO>> getAllProductActivityAudits(Pageable pageable)
         throws URISyntaxException {
-        Page<ProductActivityAudit> page = productActivityAuditRepository.findAll(pageable);
+        log.debug("REST request to get a page of ProductActivityAudits");
+        Page<ProductActivityAudit> page = productActivityAuditRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/productActivityAudits");
         return new ResponseEntity<>(page.getContent().stream()
             .map(productActivityAuditMapper::productActivityAuditToProductActivityAuditDTO)
@@ -114,10 +117,11 @@ public class ProductActivityAuditResource {
     @Timed
     public ResponseEntity<ProductActivityAuditDTO> getProductActivityAudit(@PathVariable Long id) {
         log.debug("REST request to get ProductActivityAudit : {}", id);
-        return Optional.ofNullable(productActivityAuditRepository.findOne(id))
-            .map(productActivityAuditMapper::productActivityAuditToProductActivityAuditDTO)
-            .map(productActivityAuditDTO -> new ResponseEntity<>(
-                productActivityAuditDTO,
+        ProductActivityAudit productActivityAudit = productActivityAuditRepository.findOne(id);
+        ProductActivityAuditDTO productActivityAuditDTO = productActivityAuditMapper.productActivityAuditToProductActivityAuditDTO(productActivityAudit);
+        return Optional.ofNullable(productActivityAuditDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -145,6 +149,7 @@ public class ProductActivityAuditResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<ProductActivityAuditDTO> searchProductActivityAudits(@PathVariable String query) {
+        log.debug("REST request to search ProductActivityAudits for query {}", query);
         return StreamSupport
             .stream(productActivityAuditSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(productActivityAuditMapper::productActivityAuditToProductActivityAuditDTO)

@@ -59,7 +59,7 @@ public class GoodsReceivedAuditResourceIntTest {
     private static final String UPDATED_TXN_NUMBER = "BBBBB";
 
 
-private static final GoodsReceiptType DEFAULT_TYPE_RECEIPT = GoodsReceiptType.PURCHASEORDER;
+    private static final GoodsReceiptType DEFAULT_TYPE_RECEIPT = GoodsReceiptType.PURCHASEORDER;
     private static final GoodsReceiptType UPDATED_TYPE_RECEIPT = GoodsReceiptType.STOCKRETURN;
 
     private static final Double DEFAULT_QTY_RECEIVED = 1D;
@@ -88,9 +88,9 @@ private static final GoodsReceiptType DEFAULT_TYPE_RECEIPT = GoodsReceiptType.PU
     public void setup() {
         MockitoAnnotations.initMocks(this);
         GoodsReceivedAuditResource goodsReceivedAuditResource = new GoodsReceivedAuditResource();
+        ReflectionTestUtils.setField(goodsReceivedAuditResource, "goodsReceivedAuditSearchRepository", goodsReceivedAuditSearchRepository);
         ReflectionTestUtils.setField(goodsReceivedAuditResource, "goodsReceivedAuditRepository", goodsReceivedAuditRepository);
         ReflectionTestUtils.setField(goodsReceivedAuditResource, "goodsReceivedAuditMapper", goodsReceivedAuditMapper);
-        ReflectionTestUtils.setField(goodsReceivedAuditResource, "goodsReceivedAuditSearchRepository", goodsReceivedAuditSearchRepository);
         this.restGoodsReceivedAuditMockMvc = MockMvcBuilders.standaloneSetup(goodsReceivedAuditResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -135,7 +135,7 @@ private static final GoodsReceiptType DEFAULT_TYPE_RECEIPT = GoodsReceiptType.PU
         goodsReceivedAuditRepository.saveAndFlush(goodsReceivedAudit);
 
         // Get all the goodsReceivedAudits
-        restGoodsReceivedAuditMockMvc.perform(get("/api/goodsReceivedAudits"))
+        restGoodsReceivedAuditMockMvc.perform(get("/api/goodsReceivedAudits?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(goodsReceivedAudit.getId().intValue())))

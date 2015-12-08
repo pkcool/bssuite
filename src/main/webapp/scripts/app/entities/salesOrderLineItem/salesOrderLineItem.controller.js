@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('SalesOrderLineItemController', function ($scope, $state, $modal, SalesOrderLineItem, SalesOrderLineItemSearch, ParseLinks) {
-      
+    .controller('SalesOrderLineItemController', function ($scope, $state, SalesOrderLineItem, SalesOrderLineItemSearch, ParseLinks) {
+
         $scope.salesOrderLineItems = [];
-        $scope.page = 0;
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            SalesOrderLineItem.query({page: $scope.page, size: 20}, function(result, headers) {
+            SalesOrderLineItem.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
                 $scope.salesOrderLineItems = result;
             });
         };

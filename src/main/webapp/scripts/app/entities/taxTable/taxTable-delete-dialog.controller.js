@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-	.controller('TaxTableDeleteController', function($scope, $modalInstance, entity, TaxTable) {
+	.controller('TaxTableDeleteController', function($scope, $uibModalInstance, entity, TaxTable) {
 
         $scope.taxTable = entity;
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
         $scope.confirmDelete = function (id) {
             TaxTable.delete({id: id},
                 function () {
-                    $modalInstance.close(true);
+                    $uibModalInstance.close(true);
                 });
         };
 

@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('QuoteController', function ($scope, $state, $modal, Quote, QuoteSearch, ParseLinks) {
-      
+    .controller('QuoteController', function ($scope, $state, Quote, QuoteSearch, ParseLinks) {
+
         $scope.quotes = [];
-        $scope.page = 0;
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Quote.query({page: $scope.page, size: 20}, function(result, headers) {
+            Quote.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
                 $scope.quotes = result;
             });
         };

@@ -23,60 +23,60 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>InvoiceNo</th>
-                    <th>InvoiceTxnType</th>
-                    <th>TxnDate</th>
-                    <th>DueDate</th>
-                    <th>Reference</th>
-                    <th>OurRef</th>
-                    <th>OurRef2</th>
-                    <th>OurRef3</th>
-                    <th>TaxExemptionCode</th>
-                    <th>IsPenaltyIssued</th>
-                    <th>Freight</th>
-                    <th>HandlingCharge</th>
-                    <th>Charge2</th>
-                    <th>IsTaxable</th>
-                    <th>IsLocked</th>
-                    <th>AdjustTax</th>
-                    <th>AdjustTaxExempt</th>
-                    <th>PaymentCash</th>
-                    <th>PaymentCheque</th>
-                    <th>PaymentCreditCard</th>
-                    <th>PaymentDirectDeposit</th>
-                    <th>PaymentVoucher</th>
-                    <th>PaymentDirectDebit</th>
-                    <th>Payment1</th>
-                    <th>Payment2</th>
-                    <th>Bank</th>
-                    <th>BankBranch</th>
-                    <th>BankAccount</th>
-                    <th>DateOfDeposit</th>
-                    <th>DrawerName</th>
-                    <th>NoAlloc</th>
-                    <th>CoinRound</th>
-                    <th>Prepayment</th>
-                    <th>In2</th>
-                    <th>Comment</th>
-                    <th>TotalTaxAmount</th>
-                    <th>TotalSellPrice</th>
-                    <th>TotalCost</th>
-                    <th>IsOnHold</th>
-                    <th>IsLayBy</th>
-                    <th>IsExternalTxn</th>
-                    <th>IsSuspended</th>
-                    <th>GeneratedFrom</th>
-                    <th>customer</th>
-                    <th>billingCustomer</th>
-                    <th>contact</th>
-                    <th>deliveryContact</th>
-                    <th>store</th>
-                    <th>carrier</th>
-                    <th>salesperson</th>
-                    <th>promotion</th>
-                    <th>createdBy</th>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="invoiceNo"><span>InvoiceNo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="invoiceTxnType"><span>InvoiceTxnType</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="txnDate"><span>TxnDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dueDate"><span>DueDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="reference"><span>Reference</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ourRef"><span>OurRef</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ourRef2"><span>OurRef2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ourRef3"><span>OurRef3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="taxExemptionCode"><span>TaxExemptionCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isPenaltyIssued"><span>IsPenaltyIssued</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="freight"><span>Freight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="handlingCharge"><span>HandlingCharge</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="charge2"><span>Charge2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isTaxable"><span>IsTaxable</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isLocked"><span>IsLocked</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="adjustTax"><span>AdjustTax</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="adjustTaxExempt"><span>AdjustTaxExempt</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paymentCash"><span>PaymentCash</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paymentCheque"><span>PaymentCheque</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paymentCreditCard"><span>PaymentCreditCard</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paymentDirectDeposit"><span>PaymentDirectDeposit</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paymentVoucher"><span>PaymentVoucher</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="paymentDirectDebit"><span>PaymentDirectDebit</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="payment1"><span>Payment1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="payment2"><span>Payment2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bank"><span>Bank</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bankBranch"><span>BankBranch</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bankAccount"><span>BankAccount</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateOfDeposit"><span>DateOfDeposit</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="drawerName"><span>DrawerName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="NoAlloc"><span>NoAlloc</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="coinRound"><span>CoinRound</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="prepayment"><span>Prepayment</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="in2"><span>In2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="comment"><span>Comment</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalTaxAmount"><span>TotalTaxAmount</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalSellPrice"><span>TotalSellPrice</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalCost"><span>TotalCost</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isOnHold"><span>IsOnHold</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isLayBy"><span>IsLayBy</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isExternalTxn"><span>IsExternalTxn</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isSuspended"><span>IsSuspended</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="generatedFrom"><span>GeneratedFrom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="customerId"><span>customer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="billingCustomerId"><span>billingCustomer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="contactId"><span>contact</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="deliveryContactId"><span>deliveryContact</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="storeId"><span>store</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="carrierId"><span>carrier</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="salespersonId"><span>salesperson</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="promotionId"><span>promotion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdById"><span>createdBy</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -173,18 +173,8 @@
                 </tr>
             </tbody>
         </table>
-        <nav>
-            <ul class="pagination">
-                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a>&lt;</a></li>
-                <li ng-show="page > 1" ng-click="loadPage(page - 2)"><a>{{page - 1}}</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(page - 1)"><a>{{page}}</a></li>
-                <li class="active"><a>{{page + 1}}</a></li>
-                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 2}}</a></li>
-                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 3}}</a></li>
-                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
-                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
-            </ul>
-        </nav>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
     </div>
 </div>

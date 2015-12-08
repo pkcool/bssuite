@@ -39,16 +39,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class StaffResource {
 
     private final Logger log = LoggerFactory.getLogger(StaffResource.class);
-
+        
     @Inject
     private StaffRepository staffRepository;
-
+    
     @Inject
     private StaffMapper staffMapper;
-
+    
     @Inject
     private StaffSearchRepository staffSearchRepository;
-
+    
     /**
      * POST  /staffs -> Create a new staff.
      */
@@ -59,14 +59,15 @@ public class StaffResource {
     public ResponseEntity<StaffDTO> createStaff(@Valid @RequestBody StaffDTO staffDTO) throws URISyntaxException {
         log.debug("REST request to save Staff : {}", staffDTO);
         if (staffDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new staff cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("staff", "idexists", "A new staff cannot already have an ID")).body(null);
         }
         Staff staff = staffMapper.staffDTOToStaff(staffDTO);
-        Staff result = staffRepository.save(staff);
-        staffSearchRepository.save(result);
+        staff = staffRepository.save(staff);
+        StaffDTO result = staffMapper.staffToStaffDTO(staff);
+        staffSearchRepository.save(staff);
         return ResponseEntity.created(new URI("/api/staffs/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("staff", result.getId().toString()))
-            .body(staffMapper.staffToStaffDTO(result));
+            .body(result);
     }
 
     /**
@@ -82,11 +83,12 @@ public class StaffResource {
             return createStaff(staffDTO);
         }
         Staff staff = staffMapper.staffDTOToStaff(staffDTO);
-        Staff result = staffRepository.save(staff);
+        staff = staffRepository.save(staff);
+        StaffDTO result = staffMapper.staffToStaffDTO(staff);
         staffSearchRepository.save(staff);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("staff", staffDTO.getId().toString()))
-            .body(staffMapper.staffToStaffDTO(result));
+            .body(result);
     }
 
     /**
@@ -99,7 +101,8 @@ public class StaffResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<StaffDTO>> getAllStaffs(Pageable pageable)
         throws URISyntaxException {
-        Page<Staff> page = staffRepository.findAll(pageable);
+        log.debug("REST request to get a page of Staffs");
+        Page<Staff> page = staffRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/staffs");
         return new ResponseEntity<>(page.getContent().stream()
             .map(staffMapper::staffToStaffDTO)
@@ -115,10 +118,11 @@ public class StaffResource {
     @Timed
     public ResponseEntity<StaffDTO> getStaff(@PathVariable Long id) {
         log.debug("REST request to get Staff : {}", id);
-        return Optional.ofNullable(staffRepository.findOne(id))
-            .map(staffMapper::staffToStaffDTO)
-            .map(staffDTO -> new ResponseEntity<>(
-                staffDTO,
+        Staff staff = staffRepository.findOne(id);
+        StaffDTO staffDTO = staffMapper.staffToStaffDTO(staff);
+        return Optional.ofNullable(staffDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -146,6 +150,7 @@ public class StaffResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<StaffDTO> searchStaffs(@PathVariable String query) {
+        log.debug("REST request to search Staffs for query {}", query);
         return StreamSupport
             .stream(staffSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(staffMapper::staffToStaffDTO)

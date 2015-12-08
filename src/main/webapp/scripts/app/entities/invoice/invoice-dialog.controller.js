@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('InvoiceDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Invoice', 'Customer', 'Contact', 'Store', 'Carrier', 'Staff', 'Promotion', 'InvoiceLineItem',
-        function($scope, $stateParams, $modalInstance, entity, Invoice, Customer, Contact, Store, Carrier, Staff, Promotion, InvoiceLineItem) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Invoice', 'Customer', 'Contact', 'Store', 'Carrier', 'Staff', 'Promotion', 'InvoiceLineItem',
+        function($scope, $stateParams, $uibModalInstance, entity, Invoice, Customer, Contact, Store, Carrier, Staff, Promotion, InvoiceLineItem) {
 
         $scope.invoice = entity;
         $scope.customers = Customer.query();
@@ -20,7 +20,7 @@ angular.module('bssuiteApp').controller('InvoiceDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:invoiceUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -38,6 +38,6 @@ angular.module('bssuiteApp').controller('InvoiceDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

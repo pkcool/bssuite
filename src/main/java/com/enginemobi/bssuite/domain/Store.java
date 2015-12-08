@@ -64,6 +64,7 @@ public class Store implements Serializable {
     @Column(name = "is_archived")
     private Boolean isArchived;
 
+    
     public Long getId() {
         return id;
     }

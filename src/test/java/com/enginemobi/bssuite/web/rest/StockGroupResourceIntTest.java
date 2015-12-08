@@ -89,9 +89,9 @@ public class StockGroupResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         StockGroupResource stockGroupResource = new StockGroupResource();
+        ReflectionTestUtils.setField(stockGroupResource, "stockGroupSearchRepository", stockGroupSearchRepository);
         ReflectionTestUtils.setField(stockGroupResource, "stockGroupRepository", stockGroupRepository);
         ReflectionTestUtils.setField(stockGroupResource, "stockGroupMapper", stockGroupMapper);
-        ReflectionTestUtils.setField(stockGroupResource, "stockGroupSearchRepository", stockGroupSearchRepository);
         this.restStockGroupMockMvc = MockMvcBuilders.standaloneSetup(stockGroupResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -163,7 +163,7 @@ public class StockGroupResourceIntTest {
         stockGroupRepository.saveAndFlush(stockGroup);
 
         // Get all the stockGroups
-        restStockGroupMockMvc.perform(get("/api/stockGroups"))
+        restStockGroupMockMvc.perform(get("/api/stockGroups?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(stockGroup.getId().intValue())))

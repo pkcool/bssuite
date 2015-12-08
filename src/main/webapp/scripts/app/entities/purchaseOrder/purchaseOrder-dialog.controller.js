@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('PurchaseOrderDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'PurchaseOrder', 'Supplier', 'Contact', 'Store', 'SalesOrder', 'Staff', 'PurchaseOrderLineItem',
-        function($scope, $stateParams, $modalInstance, entity, PurchaseOrder, Supplier, Contact, Store, SalesOrder, Staff, PurchaseOrderLineItem) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'PurchaseOrder', 'Supplier', 'Contact', 'Store', 'SalesOrder', 'Staff', 'PurchaseOrderLineItem',
+        function($scope, $stateParams, $uibModalInstance, entity, PurchaseOrder, Supplier, Contact, Store, SalesOrder, Staff, PurchaseOrderLineItem) {
 
         $scope.purchaseOrder = entity;
         $scope.suppliers = Supplier.query();
@@ -19,7 +19,7 @@ angular.module('bssuiteApp').controller('PurchaseOrderDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:purchaseOrderUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -37,6 +37,6 @@ angular.module('bssuiteApp').controller('PurchaseOrderDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

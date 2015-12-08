@@ -59,6 +59,7 @@ public class ProductActivityAudit implements Serializable {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    
     public Long getId() {
         return id;
     }

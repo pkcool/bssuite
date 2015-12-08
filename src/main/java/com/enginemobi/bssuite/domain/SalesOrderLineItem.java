@@ -82,6 +82,7 @@ public class SalesOrderLineItem implements Serializable {
     @JoinColumn(name = "tax_rate_id")
     private TaxTable taxRate;
 
+    
     public Long getId() {
         return id;
     }

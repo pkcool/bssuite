@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('InvoiceLineItemDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'InvoiceLineItem', 'Invoice', 'Product', 'TaxTable',
-        function($scope, $stateParams, $modalInstance, entity, InvoiceLineItem, Invoice, Product, TaxTable) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'InvoiceLineItem', 'Invoice', 'Product', 'TaxTable',
+        function($scope, $stateParams, $uibModalInstance, entity, InvoiceLineItem, Invoice, Product, TaxTable) {
 
         $scope.invoiceLineItem = entity;
         $scope.invoices = Invoice.query();
@@ -16,7 +16,7 @@ angular.module('bssuiteApp').controller('InvoiceLineItemDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:invoiceLineItemUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -34,6 +34,6 @@ angular.module('bssuiteApp').controller('InvoiceLineItemDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

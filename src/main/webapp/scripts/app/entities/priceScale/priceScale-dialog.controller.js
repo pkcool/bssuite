@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('PriceScaleDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'PriceScale',
-        function($scope, $stateParams, $modalInstance, entity, PriceScale) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'PriceScale',
+        function($scope, $stateParams, $uibModalInstance, entity, PriceScale) {
 
         $scope.priceScale = entity;
         $scope.load = function(id) {
@@ -13,7 +13,7 @@ angular.module('bssuiteApp').controller('PriceScaleDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:priceScaleUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -31,6 +31,6 @@ angular.module('bssuiteApp').controller('PriceScaleDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

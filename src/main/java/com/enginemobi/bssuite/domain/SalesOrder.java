@@ -130,6 +130,7 @@ public class SalesOrder implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<SalesOrderLineItem> salesOrderLineItemss = new HashSet<>();
 
+    
     public Long getId() {
         return id;
     }

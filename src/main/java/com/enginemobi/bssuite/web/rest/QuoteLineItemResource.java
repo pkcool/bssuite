@@ -34,13 +34,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class QuoteLineItemResource {
 
     private final Logger log = LoggerFactory.getLogger(QuoteLineItemResource.class);
-
+        
     @Inject
     private QuoteLineItemRepository quoteLineItemRepository;
-
+    
     @Inject
     private QuoteLineItemSearchRepository quoteLineItemSearchRepository;
-
+    
     /**
      * POST  /quoteLineItems -> Create a new quoteLineItem.
      */
@@ -51,7 +51,7 @@ public class QuoteLineItemResource {
     public ResponseEntity<QuoteLineItem> createQuoteLineItem(@RequestBody QuoteLineItem quoteLineItem) throws URISyntaxException {
         log.debug("REST request to save QuoteLineItem : {}", quoteLineItem);
         if (quoteLineItem.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new quoteLineItem cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("quoteLineItem", "idexists", "A new quoteLineItem cannot already have an ID")).body(null);
         }
         QuoteLineItem result = quoteLineItemRepository.save(quoteLineItem);
         quoteLineItemSearchRepository.save(result);
@@ -73,7 +73,7 @@ public class QuoteLineItemResource {
             return createQuoteLineItem(quoteLineItem);
         }
         QuoteLineItem result = quoteLineItemRepository.save(quoteLineItem);
-        quoteLineItemSearchRepository.save(quoteLineItem);
+        quoteLineItemSearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("quoteLineItem", quoteLineItem.getId().toString()))
             .body(result);
@@ -88,7 +88,8 @@ public class QuoteLineItemResource {
     @Timed
     public ResponseEntity<List<QuoteLineItem>> getAllQuoteLineItems(Pageable pageable)
         throws URISyntaxException {
-        Page<QuoteLineItem> page = quoteLineItemRepository.findAll(pageable);
+        log.debug("REST request to get a page of QuoteLineItems");
+        Page<QuoteLineItem> page = quoteLineItemRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/quoteLineItems");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -102,9 +103,10 @@ public class QuoteLineItemResource {
     @Timed
     public ResponseEntity<QuoteLineItem> getQuoteLineItem(@PathVariable Long id) {
         log.debug("REST request to get QuoteLineItem : {}", id);
-        return Optional.ofNullable(quoteLineItemRepository.findOne(id))
-            .map(quoteLineItem -> new ResponseEntity<>(
-                quoteLineItem,
+        QuoteLineItem quoteLineItem = quoteLineItemRepository.findOne(id);
+        return Optional.ofNullable(quoteLineItem)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -132,6 +134,7 @@ public class QuoteLineItemResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<QuoteLineItem> searchQuoteLineItems(@PathVariable String query) {
+        log.debug("REST request to search QuoteLineItems for query {}", query);
         return StreamSupport
             .stream(quoteLineItemSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());

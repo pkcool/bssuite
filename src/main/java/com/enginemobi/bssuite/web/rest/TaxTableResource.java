@@ -35,13 +35,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class TaxTableResource {
 
     private final Logger log = LoggerFactory.getLogger(TaxTableResource.class);
-
+        
     @Inject
     private TaxTableRepository taxTableRepository;
-
+    
     @Inject
     private TaxTableSearchRepository taxTableSearchRepository;
-
+    
     /**
      * POST  /taxTables -> Create a new taxTable.
      */
@@ -52,7 +52,7 @@ public class TaxTableResource {
     public ResponseEntity<TaxTable> createTaxTable(@Valid @RequestBody TaxTable taxTable) throws URISyntaxException {
         log.debug("REST request to save TaxTable : {}", taxTable);
         if (taxTable.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new taxTable cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("taxTable", "idexists", "A new taxTable cannot already have an ID")).body(null);
         }
         TaxTable result = taxTableRepository.save(taxTable);
         taxTableSearchRepository.save(result);
@@ -74,7 +74,7 @@ public class TaxTableResource {
             return createTaxTable(taxTable);
         }
         TaxTable result = taxTableRepository.save(taxTable);
-        taxTableSearchRepository.save(taxTable);
+        taxTableSearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("taxTable", taxTable.getId().toString()))
             .body(result);
@@ -89,7 +89,8 @@ public class TaxTableResource {
     @Timed
     public ResponseEntity<List<TaxTable>> getAllTaxTables(Pageable pageable)
         throws URISyntaxException {
-        Page<TaxTable> page = taxTableRepository.findAll(pageable);
+        log.debug("REST request to get a page of TaxTables");
+        Page<TaxTable> page = taxTableRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/taxTables");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -103,9 +104,10 @@ public class TaxTableResource {
     @Timed
     public ResponseEntity<TaxTable> getTaxTable(@PathVariable Long id) {
         log.debug("REST request to get TaxTable : {}", id);
-        return Optional.ofNullable(taxTableRepository.findOne(id))
-            .map(taxTable -> new ResponseEntity<>(
-                taxTable,
+        TaxTable taxTable = taxTableRepository.findOne(id);
+        return Optional.ofNullable(taxTable)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -133,6 +135,7 @@ public class TaxTableResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<TaxTable> searchTaxTables(@PathVariable String query) {
+        log.debug("REST request to search TaxTables for query {}", query);
         return StreamSupport
             .stream(taxTableSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('ProductActivityAuditDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'ProductActivityAudit', 'Staff', 'Product',
-        function($scope, $stateParams, $modalInstance, entity, ProductActivityAudit, Staff, Product) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'ProductActivityAudit', 'Staff', 'Product',
+        function($scope, $stateParams, $uibModalInstance, entity, ProductActivityAudit, Staff, Product) {
 
         $scope.productActivityAudit = entity;
         $scope.staffs = Staff.query();
@@ -15,7 +15,7 @@ angular.module('bssuiteApp').controller('ProductActivityAuditDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:productActivityAuditUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -33,6 +33,6 @@ angular.module('bssuiteApp').controller('ProductActivityAuditDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

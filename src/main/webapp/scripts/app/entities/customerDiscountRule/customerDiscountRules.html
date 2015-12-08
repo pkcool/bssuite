@@ -23,30 +23,30 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>PriceGroupCode</th>
-                    <th>RuleNo</th>
-                    <th>IsAppliedGlobally</th>
-                    <th>IsAppliedOnSpecialItemsOnly</th>
-                    <th>CustomerCode</th>
-                    <th>CustomerCategoryCode</th>
-                    <th>FromProductCode</th>
-                    <th>ToProductCode</th>
-                    <th>StartDate</th>
-                    <th>EndDate</th>
-                    <th>QtyBreak</th>
-                    <th>FromSupplierCode</th>
-                    <th>ToSupplierCode</th>
-                    <th>FromStockGroupCode</th>
-                    <th>ToStockGroupCode</th>
-                    <th>TaxCode</th>
-                    <th>IsAppliedWhenTaxExempt</th>
-                    <th>StoreCode</th>
-                    <th>DiscountName</th>
-                    <th>StockFamilyCode</th>
-                    <th>ListPrice</th>
-                    <th>DiscountFormula</th>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="priceGroupCode"><span>PriceGroupCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ruleNo"><span>RuleNo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isAppliedGlobally"><span>IsAppliedGlobally</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isAppliedOnSpecialItemsOnly"><span>IsAppliedOnSpecialItemsOnly</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="customerCode"><span>CustomerCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="customerCategoryCode"><span>CustomerCategoryCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fromProductCode"><span>FromProductCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="toProductCode"><span>ToProductCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="startDate"><span>StartDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="endDate"><span>EndDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyBreak"><span>QtyBreak</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fromSupplierCode"><span>FromSupplierCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="toSupplierCode"><span>ToSupplierCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fromStockGroupCode"><span>FromStockGroupCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="toStockGroupCode"><span>ToStockGroupCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="taxCode"><span>TaxCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isAppliedWhenTaxExempt"><span>IsAppliedWhenTaxExempt</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="storeCode"><span>StoreCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="discountName"><span>DiscountName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="stockFamilyCode"><span>StockFamilyCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="listPrice"><span>ListPrice</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="discountFormula"><span>DiscountFormula</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -95,18 +95,8 @@
                 </tr>
             </tbody>
         </table>
-        <nav>
-            <ul class="pagination">
-                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a>&lt;</a></li>
-                <li ng-show="page > 1" ng-click="loadPage(page - 2)"><a>{{page - 1}}</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(page - 1)"><a>{{page}}</a></li>
-                <li class="active"><a>{{page + 1}}</a></li>
-                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 2}}</a></li>
-                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 3}}</a></li>
-                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
-                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
-            </ul>
-        </nav>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
     </div>
 </div>

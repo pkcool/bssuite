@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('InvoiceLineItemController', function ($scope, $state, $modal, InvoiceLineItem, InvoiceLineItemSearch, ParseLinks) {
-      
+    .controller('InvoiceLineItemController', function ($scope, $state, InvoiceLineItem, InvoiceLineItemSearch, ParseLinks) {
+
         $scope.invoiceLineItems = [];
-        $scope.page = 0;
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            InvoiceLineItem.query({page: $scope.page, size: 20}, function(result, headers) {
+            InvoiceLineItem.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
                 $scope.invoiceLineItems = result;
             });
         };

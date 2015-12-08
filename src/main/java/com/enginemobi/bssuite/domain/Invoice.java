@@ -203,6 +203,7 @@ public class Invoice implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<InvoiceLineItem> invoiceLineItemss = new HashSet<>();
 
+    
     public Long getId() {
         return id;
     }

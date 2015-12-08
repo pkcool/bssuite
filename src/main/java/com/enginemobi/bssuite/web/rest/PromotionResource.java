@@ -35,13 +35,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class PromotionResource {
 
     private final Logger log = LoggerFactory.getLogger(PromotionResource.class);
-
+        
     @Inject
     private PromotionRepository promotionRepository;
-
+    
     @Inject
     private PromotionSearchRepository promotionSearchRepository;
-
+    
     /**
      * POST  /promotions -> Create a new promotion.
      */
@@ -52,7 +52,7 @@ public class PromotionResource {
     public ResponseEntity<Promotion> createPromotion(@Valid @RequestBody Promotion promotion) throws URISyntaxException {
         log.debug("REST request to save Promotion : {}", promotion);
         if (promotion.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new promotion cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("promotion", "idexists", "A new promotion cannot already have an ID")).body(null);
         }
         Promotion result = promotionRepository.save(promotion);
         promotionSearchRepository.save(result);
@@ -74,7 +74,7 @@ public class PromotionResource {
             return createPromotion(promotion);
         }
         Promotion result = promotionRepository.save(promotion);
-        promotionSearchRepository.save(promotion);
+        promotionSearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("promotion", promotion.getId().toString()))
             .body(result);
@@ -89,7 +89,8 @@ public class PromotionResource {
     @Timed
     public ResponseEntity<List<Promotion>> getAllPromotions(Pageable pageable)
         throws URISyntaxException {
-        Page<Promotion> page = promotionRepository.findAll(pageable);
+        log.debug("REST request to get a page of Promotions");
+        Page<Promotion> page = promotionRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/promotions");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -103,9 +104,10 @@ public class PromotionResource {
     @Timed
     public ResponseEntity<Promotion> getPromotion(@PathVariable Long id) {
         log.debug("REST request to get Promotion : {}", id);
-        return Optional.ofNullable(promotionRepository.findOne(id))
-            .map(promotion -> new ResponseEntity<>(
-                promotion,
+        Promotion promotion = promotionRepository.findOne(id);
+        return Optional.ofNullable(promotion)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -133,6 +135,7 @@ public class PromotionResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<Promotion> searchPromotions(@PathVariable String query) {
+        log.debug("REST request to search Promotions for query {}", query);
         return StreamSupport
             .stream(promotionSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());

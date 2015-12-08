@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-	.controller('SupplierDiscountRuleDeleteController', function($scope, $modalInstance, entity, SupplierDiscountRule) {
+	.controller('SupplierDiscountRuleDeleteController', function($scope, $uibModalInstance, entity, SupplierDiscountRule) {
 
         $scope.supplierDiscountRule = entity;
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
         $scope.confirmDelete = function (id) {
             SupplierDiscountRule.delete({id: id},
                 function () {
-                    $modalInstance.close(true);
+                    $uibModalInstance.close(true);
                 });
         };
 

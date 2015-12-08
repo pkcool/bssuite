@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-	.controller('CalendarItemDeleteController', function($scope, $modalInstance, entity, CalendarItem) {
+	.controller('CalendarItemDeleteController', function($scope, $uibModalInstance, entity, CalendarItem) {
 
         $scope.calendarItem = entity;
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
         $scope.confirmDelete = function (id) {
             CalendarItem.delete({id: id},
                 function () {
-                    $modalInstance.close(true);
+                    $uibModalInstance.close(true);
                 });
         };
 

@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('TaxTableController', function ($scope, $state, $modal, TaxTable, TaxTableSearch, ParseLinks) {
-      
+    .controller('TaxTableController', function ($scope, $state, TaxTable, TaxTableSearch, ParseLinks) {
+
         $scope.taxTables = [];
-        $scope.page = 0;
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            TaxTable.query({page: $scope.page, size: 20}, function(result, headers) {
+            TaxTable.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
                 $scope.taxTables = result;
             });
         };

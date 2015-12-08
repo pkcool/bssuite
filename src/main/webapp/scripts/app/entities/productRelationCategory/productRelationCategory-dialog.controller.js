@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('ProductRelationCategoryDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'ProductRelationCategory',
-        function($scope, $stateParams, $modalInstance, entity, ProductRelationCategory) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'ProductRelationCategory',
+        function($scope, $stateParams, $uibModalInstance, entity, ProductRelationCategory) {
 
         $scope.productRelationCategory = entity;
         $scope.load = function(id) {
@@ -13,7 +13,7 @@ angular.module('bssuiteApp').controller('ProductRelationCategoryDialogController
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:productRelationCategoryUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -31,6 +31,6 @@ angular.module('bssuiteApp').controller('ProductRelationCategoryDialogController
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

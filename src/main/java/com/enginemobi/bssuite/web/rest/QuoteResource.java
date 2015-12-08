@@ -38,16 +38,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class QuoteResource {
 
     private final Logger log = LoggerFactory.getLogger(QuoteResource.class);
-
+        
     @Inject
     private QuoteRepository quoteRepository;
-
+    
     @Inject
     private QuoteMapper quoteMapper;
-
+    
     @Inject
     private QuoteSearchRepository quoteSearchRepository;
-
+    
     /**
      * POST  /quotes -> Create a new quote.
      */
@@ -58,14 +58,15 @@ public class QuoteResource {
     public ResponseEntity<QuoteDTO> createQuote(@RequestBody QuoteDTO quoteDTO) throws URISyntaxException {
         log.debug("REST request to save Quote : {}", quoteDTO);
         if (quoteDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new quote cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("quote", "idexists", "A new quote cannot already have an ID")).body(null);
         }
         Quote quote = quoteMapper.quoteDTOToQuote(quoteDTO);
-        Quote result = quoteRepository.save(quote);
-        quoteSearchRepository.save(result);
+        quote = quoteRepository.save(quote);
+        QuoteDTO result = quoteMapper.quoteToQuoteDTO(quote);
+        quoteSearchRepository.save(quote);
         return ResponseEntity.created(new URI("/api/quotes/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("quote", result.getId().toString()))
-            .body(quoteMapper.quoteToQuoteDTO(result));
+            .body(result);
     }
 
     /**
@@ -81,11 +82,12 @@ public class QuoteResource {
             return createQuote(quoteDTO);
         }
         Quote quote = quoteMapper.quoteDTOToQuote(quoteDTO);
-        Quote result = quoteRepository.save(quote);
+        quote = quoteRepository.save(quote);
+        QuoteDTO result = quoteMapper.quoteToQuoteDTO(quote);
         quoteSearchRepository.save(quote);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("quote", quoteDTO.getId().toString()))
-            .body(quoteMapper.quoteToQuoteDTO(result));
+            .body(result);
     }
 
     /**
@@ -98,7 +100,8 @@ public class QuoteResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<QuoteDTO>> getAllQuotes(Pageable pageable)
         throws URISyntaxException {
-        Page<Quote> page = quoteRepository.findAll(pageable);
+        log.debug("REST request to get a page of Quotes");
+        Page<Quote> page = quoteRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/quotes");
         return new ResponseEntity<>(page.getContent().stream()
             .map(quoteMapper::quoteToQuoteDTO)
@@ -114,10 +117,11 @@ public class QuoteResource {
     @Timed
     public ResponseEntity<QuoteDTO> getQuote(@PathVariable Long id) {
         log.debug("REST request to get Quote : {}", id);
-        return Optional.ofNullable(quoteRepository.findOne(id))
-            .map(quoteMapper::quoteToQuoteDTO)
-            .map(quoteDTO -> new ResponseEntity<>(
-                quoteDTO,
+        Quote quote = quoteRepository.findOne(id);
+        QuoteDTO quoteDTO = quoteMapper.quoteToQuoteDTO(quote);
+        return Optional.ofNullable(quoteDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -145,6 +149,7 @@ public class QuoteResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<QuoteDTO> searchQuotes(@PathVariable String query) {
+        log.debug("REST request to search Quotes for query {}", query);
         return StreamSupport
             .stream(quoteSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(quoteMapper::quoteToQuoteDTO)

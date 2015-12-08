@@ -98,9 +98,9 @@ public class BackOrderLineItemResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         BackOrderLineItemResource backOrderLineItemResource = new BackOrderLineItemResource();
+        ReflectionTestUtils.setField(backOrderLineItemResource, "backOrderLineItemSearchRepository", backOrderLineItemSearchRepository);
         ReflectionTestUtils.setField(backOrderLineItemResource, "backOrderLineItemRepository", backOrderLineItemRepository);
         ReflectionTestUtils.setField(backOrderLineItemResource, "backOrderLineItemMapper", backOrderLineItemMapper);
-        ReflectionTestUtils.setField(backOrderLineItemResource, "backOrderLineItemSearchRepository", backOrderLineItemSearchRepository);
         this.restBackOrderLineItemMockMvc = MockMvcBuilders.standaloneSetup(backOrderLineItemResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -153,7 +153,7 @@ public class BackOrderLineItemResourceIntTest {
         backOrderLineItemRepository.saveAndFlush(backOrderLineItem);
 
         // Get all the backOrderLineItems
-        restBackOrderLineItemMockMvc.perform(get("/api/backOrderLineItems"))
+        restBackOrderLineItemMockMvc.perform(get("/api/backOrderLineItems?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(backOrderLineItem.getId().intValue())))

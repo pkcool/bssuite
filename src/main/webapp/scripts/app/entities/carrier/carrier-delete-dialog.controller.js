@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-	.controller('CarrierDeleteController', function($scope, $modalInstance, entity, Carrier) {
+	.controller('CarrierDeleteController', function($scope, $uibModalInstance, entity, Carrier) {
 
         $scope.carrier = entity;
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
         $scope.confirmDelete = function (id) {
             Carrier.delete({id: id},
                 function () {
-                    $modalInstance.close(true);
+                    $uibModalInstance.close(true);
                 });
         };
 

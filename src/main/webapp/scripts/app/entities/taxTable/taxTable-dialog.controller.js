@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('TaxTableDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'TaxTable',
-        function($scope, $stateParams, $modalInstance, entity, TaxTable) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'TaxTable',
+        function($scope, $stateParams, $uibModalInstance, entity, TaxTable) {
 
         $scope.taxTable = entity;
         $scope.load = function(id) {
@@ -13,7 +13,7 @@ angular.module('bssuiteApp').controller('TaxTableDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:taxTableUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -31,6 +31,6 @@ angular.module('bssuiteApp').controller('TaxTableDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

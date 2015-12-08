@@ -38,16 +38,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class TxnActivityAuditResource {
 
     private final Logger log = LoggerFactory.getLogger(TxnActivityAuditResource.class);
-
+        
     @Inject
     private TxnActivityAuditRepository txnActivityAuditRepository;
-
+    
     @Inject
     private TxnActivityAuditMapper txnActivityAuditMapper;
-
+    
     @Inject
     private TxnActivityAuditSearchRepository txnActivityAuditSearchRepository;
-
+    
     /**
      * POST  /txnActivityAudits -> Create a new txnActivityAudit.
      */
@@ -58,14 +58,15 @@ public class TxnActivityAuditResource {
     public ResponseEntity<TxnActivityAuditDTO> createTxnActivityAudit(@RequestBody TxnActivityAuditDTO txnActivityAuditDTO) throws URISyntaxException {
         log.debug("REST request to save TxnActivityAudit : {}", txnActivityAuditDTO);
         if (txnActivityAuditDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new txnActivityAudit cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("txnActivityAudit", "idexists", "A new txnActivityAudit cannot already have an ID")).body(null);
         }
         TxnActivityAudit txnActivityAudit = txnActivityAuditMapper.txnActivityAuditDTOToTxnActivityAudit(txnActivityAuditDTO);
-        TxnActivityAudit result = txnActivityAuditRepository.save(txnActivityAudit);
-        txnActivityAuditSearchRepository.save(result);
+        txnActivityAudit = txnActivityAuditRepository.save(txnActivityAudit);
+        TxnActivityAuditDTO result = txnActivityAuditMapper.txnActivityAuditToTxnActivityAuditDTO(txnActivityAudit);
+        txnActivityAuditSearchRepository.save(txnActivityAudit);
         return ResponseEntity.created(new URI("/api/txnActivityAudits/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("txnActivityAudit", result.getId().toString()))
-            .body(txnActivityAuditMapper.txnActivityAuditToTxnActivityAuditDTO(result));
+            .body(result);
     }
 
     /**
@@ -81,11 +82,12 @@ public class TxnActivityAuditResource {
             return createTxnActivityAudit(txnActivityAuditDTO);
         }
         TxnActivityAudit txnActivityAudit = txnActivityAuditMapper.txnActivityAuditDTOToTxnActivityAudit(txnActivityAuditDTO);
-        TxnActivityAudit result = txnActivityAuditRepository.save(txnActivityAudit);
+        txnActivityAudit = txnActivityAuditRepository.save(txnActivityAudit);
+        TxnActivityAuditDTO result = txnActivityAuditMapper.txnActivityAuditToTxnActivityAuditDTO(txnActivityAudit);
         txnActivityAuditSearchRepository.save(txnActivityAudit);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("txnActivityAudit", txnActivityAuditDTO.getId().toString()))
-            .body(txnActivityAuditMapper.txnActivityAuditToTxnActivityAuditDTO(result));
+            .body(result);
     }
 
     /**
@@ -98,7 +100,8 @@ public class TxnActivityAuditResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<TxnActivityAuditDTO>> getAllTxnActivityAudits(Pageable pageable)
         throws URISyntaxException {
-        Page<TxnActivityAudit> page = txnActivityAuditRepository.findAll(pageable);
+        log.debug("REST request to get a page of TxnActivityAudits");
+        Page<TxnActivityAudit> page = txnActivityAuditRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/txnActivityAudits");
         return new ResponseEntity<>(page.getContent().stream()
             .map(txnActivityAuditMapper::txnActivityAuditToTxnActivityAuditDTO)
@@ -114,10 +117,11 @@ public class TxnActivityAuditResource {
     @Timed
     public ResponseEntity<TxnActivityAuditDTO> getTxnActivityAudit(@PathVariable Long id) {
         log.debug("REST request to get TxnActivityAudit : {}", id);
-        return Optional.ofNullable(txnActivityAuditRepository.findOne(id))
-            .map(txnActivityAuditMapper::txnActivityAuditToTxnActivityAuditDTO)
-            .map(txnActivityAuditDTO -> new ResponseEntity<>(
-                txnActivityAuditDTO,
+        TxnActivityAudit txnActivityAudit = txnActivityAuditRepository.findOne(id);
+        TxnActivityAuditDTO txnActivityAuditDTO = txnActivityAuditMapper.txnActivityAuditToTxnActivityAuditDTO(txnActivityAudit);
+        return Optional.ofNullable(txnActivityAuditDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -145,6 +149,7 @@ public class TxnActivityAuditResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<TxnActivityAuditDTO> searchTxnActivityAudits(@PathVariable String query) {
+        log.debug("REST request to search TxnActivityAudits for query {}", query);
         return StreamSupport
             .stream(txnActivityAuditSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(txnActivityAuditMapper::txnActivityAuditToTxnActivityAuditDTO)

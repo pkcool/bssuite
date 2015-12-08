@@ -113,8 +113,8 @@ public class InvoiceLineItemResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         InvoiceLineItemResource invoiceLineItemResource = new InvoiceLineItemResource();
-        ReflectionTestUtils.setField(invoiceLineItemResource, "invoiceLineItemRepository", invoiceLineItemRepository);
         ReflectionTestUtils.setField(invoiceLineItemResource, "invoiceLineItemSearchRepository", invoiceLineItemSearchRepository);
+        ReflectionTestUtils.setField(invoiceLineItemResource, "invoiceLineItemRepository", invoiceLineItemRepository);
         this.restInvoiceLineItemMockMvc = MockMvcBuilders.standaloneSetup(invoiceLineItemResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -186,7 +186,7 @@ public class InvoiceLineItemResourceIntTest {
         invoiceLineItemRepository.saveAndFlush(invoiceLineItem);
 
         // Get all the invoiceLineItems
-        restInvoiceLineItemMockMvc.perform(get("/api/invoiceLineItems"))
+        restInvoiceLineItemMockMvc.perform(get("/api/invoiceLineItems?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(invoiceLineItem.getId().intValue())))

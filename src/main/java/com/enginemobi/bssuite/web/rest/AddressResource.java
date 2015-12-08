@@ -34,13 +34,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class AddressResource {
 
     private final Logger log = LoggerFactory.getLogger(AddressResource.class);
-
+        
     @Inject
     private AddressRepository addressRepository;
-
+    
     @Inject
     private AddressSearchRepository addressSearchRepository;
-
+    
     /**
      * POST  /addresss -> Create a new address.
      */
@@ -51,7 +51,7 @@ public class AddressResource {
     public ResponseEntity<Address> createAddress(@RequestBody Address address) throws URISyntaxException {
         log.debug("REST request to save Address : {}", address);
         if (address.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new address cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("address", "idexists", "A new address cannot already have an ID")).body(null);
         }
         Address result = addressRepository.save(address);
         addressSearchRepository.save(result);
@@ -73,7 +73,7 @@ public class AddressResource {
             return createAddress(address);
         }
         Address result = addressRepository.save(address);
-        addressSearchRepository.save(address);
+        addressSearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("address", address.getId().toString()))
             .body(result);
@@ -88,7 +88,8 @@ public class AddressResource {
     @Timed
     public ResponseEntity<List<Address>> getAllAddresss(Pageable pageable)
         throws URISyntaxException {
-        Page<Address> page = addressRepository.findAll(pageable);
+        log.debug("REST request to get a page of Addresss");
+        Page<Address> page = addressRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/addresss");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -102,9 +103,10 @@ public class AddressResource {
     @Timed
     public ResponseEntity<Address> getAddress(@PathVariable Long id) {
         log.debug("REST request to get Address : {}", id);
-        return Optional.ofNullable(addressRepository.findOne(id))
-            .map(address -> new ResponseEntity<>(
-                address,
+        Address address = addressRepository.findOne(id);
+        return Optional.ofNullable(address)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -132,6 +134,7 @@ public class AddressResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<Address> searchAddresss(@PathVariable String query) {
+        log.debug("REST request to search Addresss for query {}", query);
         return StreamSupport
             .stream(addressSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());

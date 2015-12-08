@@ -212,9 +212,9 @@ public class ProductResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         ProductResource productResource = new ProductResource();
+        ReflectionTestUtils.setField(productResource, "productSearchRepository", productSearchRepository);
         ReflectionTestUtils.setField(productResource, "productRepository", productRepository);
         ReflectionTestUtils.setField(productResource, "productMapper", productMapper);
-        ReflectionTestUtils.setField(productResource, "productSearchRepository", productSearchRepository);
         this.restProductMockMvc = MockMvcBuilders.standaloneSetup(productResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -370,7 +370,7 @@ public class ProductResourceIntTest {
         productRepository.saveAndFlush(product);
 
         // Get all the products
-        restProductMockMvc.perform(get("/api/products"))
+        restProductMockMvc.perform(get("/api/products?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(product.getId().intValue())))

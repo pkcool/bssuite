@@ -58,7 +58,7 @@ public class InvoiceResourceIntTest {
     private static final String UPDATED_INVOICE_NO = "BBBBB";
 
 
-private static final InvoiceTxnType DEFAULT_INVOICE_TXN_TYPE = InvoiceTxnType.INVOICE;
+    private static final InvoiceTxnType DEFAULT_INVOICE_TXN_TYPE = InvoiceTxnType.INVOICE;
     private static final InvoiceTxnType UPDATED_INVOICE_TXN_TYPE = InvoiceTxnType.ADJUSTMENTNOTE;
 
     private static final ZonedDateTime DEFAULT_TXN_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneId.systemDefault());
@@ -172,7 +172,7 @@ private static final InvoiceTxnType DEFAULT_INVOICE_TXN_TYPE = InvoiceTxnType.IN
     private static final Boolean UPDATED_IS_SUSPENDED = true;
 
 
-private static final InvoiceSource DEFAULT_GENERATED_FROM = InvoiceSource.INVOICE;
+    private static final InvoiceSource DEFAULT_GENERATED_FROM = InvoiceSource.INVOICE;
     private static final InvoiceSource UPDATED_GENERATED_FROM = InvoiceSource.SALESORDER;
 
     @Inject
@@ -198,9 +198,9 @@ private static final InvoiceSource DEFAULT_GENERATED_FROM = InvoiceSource.INVOIC
     public void setup() {
         MockitoAnnotations.initMocks(this);
         InvoiceResource invoiceResource = new InvoiceResource();
+        ReflectionTestUtils.setField(invoiceResource, "invoiceSearchRepository", invoiceSearchRepository);
         ReflectionTestUtils.setField(invoiceResource, "invoiceRepository", invoiceRepository);
         ReflectionTestUtils.setField(invoiceResource, "invoiceMapper", invoiceMapper);
-        ReflectionTestUtils.setField(invoiceResource, "invoiceSearchRepository", invoiceSearchRepository);
         this.restInvoiceMockMvc = MockMvcBuilders.standaloneSetup(invoiceResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -323,7 +323,7 @@ private static final InvoiceSource DEFAULT_GENERATED_FROM = InvoiceSource.INVOIC
         invoiceRepository.saveAndFlush(invoice);
 
         // Get all the invoices
-        restInvoiceMockMvc.perform(get("/api/invoices"))
+        restInvoiceMockMvc.perform(get("/api/invoices?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(invoice.getId().intValue())))

@@ -67,8 +67,8 @@ public class ProductRelationCategoryResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         ProductRelationCategoryResource productRelationCategoryResource = new ProductRelationCategoryResource();
-        ReflectionTestUtils.setField(productRelationCategoryResource, "productRelationCategoryRepository", productRelationCategoryRepository);
         ReflectionTestUtils.setField(productRelationCategoryResource, "productRelationCategorySearchRepository", productRelationCategorySearchRepository);
+        ReflectionTestUtils.setField(productRelationCategoryResource, "productRelationCategoryRepository", productRelationCategoryRepository);
         this.restProductRelationCategoryMockMvc = MockMvcBuilders.standaloneSetup(productRelationCategoryResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -108,7 +108,7 @@ public class ProductRelationCategoryResourceIntTest {
         productRelationCategoryRepository.saveAndFlush(productRelationCategory);
 
         // Get all the productRelationCategorys
-        restProductRelationCategoryMockMvc.perform(get("/api/productRelationCategorys"))
+        restProductRelationCategoryMockMvc.perform(get("/api/productRelationCategorys?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(productRelationCategory.getId().intValue())))

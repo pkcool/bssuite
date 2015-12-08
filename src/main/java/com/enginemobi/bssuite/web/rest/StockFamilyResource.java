@@ -35,13 +35,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class StockFamilyResource {
 
     private final Logger log = LoggerFactory.getLogger(StockFamilyResource.class);
-
+        
     @Inject
     private StockFamilyRepository stockFamilyRepository;
-
+    
     @Inject
     private StockFamilySearchRepository stockFamilySearchRepository;
-
+    
     /**
      * POST  /stockFamilys -> Create a new stockFamily.
      */
@@ -52,7 +52,7 @@ public class StockFamilyResource {
     public ResponseEntity<StockFamily> createStockFamily(@Valid @RequestBody StockFamily stockFamily) throws URISyntaxException {
         log.debug("REST request to save StockFamily : {}", stockFamily);
         if (stockFamily.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new stockFamily cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("stockFamily", "idexists", "A new stockFamily cannot already have an ID")).body(null);
         }
         StockFamily result = stockFamilyRepository.save(stockFamily);
         stockFamilySearchRepository.save(result);
@@ -74,7 +74,7 @@ public class StockFamilyResource {
             return createStockFamily(stockFamily);
         }
         StockFamily result = stockFamilyRepository.save(stockFamily);
-        stockFamilySearchRepository.save(stockFamily);
+        stockFamilySearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("stockFamily", stockFamily.getId().toString()))
             .body(result);
@@ -89,7 +89,8 @@ public class StockFamilyResource {
     @Timed
     public ResponseEntity<List<StockFamily>> getAllStockFamilys(Pageable pageable)
         throws URISyntaxException {
-        Page<StockFamily> page = stockFamilyRepository.findAll(pageable);
+        log.debug("REST request to get a page of StockFamilys");
+        Page<StockFamily> page = stockFamilyRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/stockFamilys");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -103,9 +104,10 @@ public class StockFamilyResource {
     @Timed
     public ResponseEntity<StockFamily> getStockFamily(@PathVariable Long id) {
         log.debug("REST request to get StockFamily : {}", id);
-        return Optional.ofNullable(stockFamilyRepository.findOne(id))
-            .map(stockFamily -> new ResponseEntity<>(
-                stockFamily,
+        StockFamily stockFamily = stockFamilyRepository.findOne(id);
+        return Optional.ofNullable(stockFamily)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -133,6 +135,7 @@ public class StockFamilyResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<StockFamily> searchStockFamilys(@PathVariable String query) {
+        log.debug("REST request to search StockFamilys for query {}", query);
         return StreamSupport
             .stream(stockFamilySearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());

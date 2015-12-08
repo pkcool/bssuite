@@ -38,16 +38,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class SalesOrderResource {
 
     private final Logger log = LoggerFactory.getLogger(SalesOrderResource.class);
-
+        
     @Inject
     private SalesOrderRepository salesOrderRepository;
-
+    
     @Inject
     private SalesOrderMapper salesOrderMapper;
-
+    
     @Inject
     private SalesOrderSearchRepository salesOrderSearchRepository;
-
+    
     /**
      * POST  /salesOrders -> Create a new salesOrder.
      */
@@ -58,14 +58,15 @@ public class SalesOrderResource {
     public ResponseEntity<SalesOrderDTO> createSalesOrder(@RequestBody SalesOrderDTO salesOrderDTO) throws URISyntaxException {
         log.debug("REST request to save SalesOrder : {}", salesOrderDTO);
         if (salesOrderDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new salesOrder cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("salesOrder", "idexists", "A new salesOrder cannot already have an ID")).body(null);
         }
         SalesOrder salesOrder = salesOrderMapper.salesOrderDTOToSalesOrder(salesOrderDTO);
-        SalesOrder result = salesOrderRepository.save(salesOrder);
-        salesOrderSearchRepository.save(result);
+        salesOrder = salesOrderRepository.save(salesOrder);
+        SalesOrderDTO result = salesOrderMapper.salesOrderToSalesOrderDTO(salesOrder);
+        salesOrderSearchRepository.save(salesOrder);
         return ResponseEntity.created(new URI("/api/salesOrders/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("salesOrder", result.getId().toString()))
-            .body(salesOrderMapper.salesOrderToSalesOrderDTO(result));
+            .body(result);
     }
 
     /**
@@ -81,11 +82,12 @@ public class SalesOrderResource {
             return createSalesOrder(salesOrderDTO);
         }
         SalesOrder salesOrder = salesOrderMapper.salesOrderDTOToSalesOrder(salesOrderDTO);
-        SalesOrder result = salesOrderRepository.save(salesOrder);
+        salesOrder = salesOrderRepository.save(salesOrder);
+        SalesOrderDTO result = salesOrderMapper.salesOrderToSalesOrderDTO(salesOrder);
         salesOrderSearchRepository.save(salesOrder);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("salesOrder", salesOrderDTO.getId().toString()))
-            .body(salesOrderMapper.salesOrderToSalesOrderDTO(result));
+            .body(result);
     }
 
     /**
@@ -98,7 +100,8 @@ public class SalesOrderResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<SalesOrderDTO>> getAllSalesOrders(Pageable pageable)
         throws URISyntaxException {
-        Page<SalesOrder> page = salesOrderRepository.findAll(pageable);
+        log.debug("REST request to get a page of SalesOrders");
+        Page<SalesOrder> page = salesOrderRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/salesOrders");
         return new ResponseEntity<>(page.getContent().stream()
             .map(salesOrderMapper::salesOrderToSalesOrderDTO)
@@ -114,10 +117,11 @@ public class SalesOrderResource {
     @Timed
     public ResponseEntity<SalesOrderDTO> getSalesOrder(@PathVariable Long id) {
         log.debug("REST request to get SalesOrder : {}", id);
-        return Optional.ofNullable(salesOrderRepository.findOne(id))
-            .map(salesOrderMapper::salesOrderToSalesOrderDTO)
-            .map(salesOrderDTO -> new ResponseEntity<>(
-                salesOrderDTO,
+        SalesOrder salesOrder = salesOrderRepository.findOne(id);
+        SalesOrderDTO salesOrderDTO = salesOrderMapper.salesOrderToSalesOrderDTO(salesOrder);
+        return Optional.ofNullable(salesOrderDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -145,6 +149,7 @@ public class SalesOrderResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<SalesOrderDTO> searchSalesOrders(@PathVariable String query) {
+        log.debug("REST request to search SalesOrders for query {}", query);
         return StreamSupport
             .stream(salesOrderSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(salesOrderMapper::salesOrderToSalesOrderDTO)

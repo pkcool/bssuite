@@ -23,53 +23,53 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>TradingName</th>
-                    <th>Abn</th>
-                    <th>DeliveryInstruction</th>
-                    <th>WebUrl</th>
-                    <th>IsOnHold</th>
-                    <th>IsOrderNoRequired</th>
-                    <th>IsBlacklisted</th>
-                    <th>IsBackorderAllowed</th>
-                    <th>IsArchived</th>
-                    <th>IsHeadOfficeAccount</th>
-                    <th>AgeingMethod</th>
-                    <th>IsWebaccessAllowed</th>
-                    <th>BankName</th>
-                    <th>Bsb</th>
-                    <th>BankAccountNo</th>
-                    <th>BankSuburb</th>
-                    <th>BankAccountName</th>
-                    <th>IsCreditCardBillingActive</th>
-                    <th>CreditCardNo</th>
-                    <th>CreditCardHolderName</th>
-                    <th>CreditCardExpiryDate</th>
-                    <th>CreditCardType</th>
-                    <th>AccountType</th>
-                    <th>CreditAmount</th>
-                    <th>Terms</th>
-                    <th>SettlementTerms</th>
-                    <th>InvoiceDeliveryMethod</th>
-                    <th>StatementDeliveryMethod</th>
-                    <th>InvoiceEmailAddress</th>
-                    <th>InvoiceFaxNo</th>
-                    <th>StatementEmailAddress</th>
-                    <th>StatementFaxNo</th>
-                    <th>IsPenaltyIssued</th>
-                    <th>customerCategory</th>
-                    <th>contact</th>
-                    <th>deliveryContact</th>
-                    <th>salesPrimaryContact</th>
-                    <th>salesSecondaryContact</th>
-                    <th>accountPrimaryContact</th>
-                    <th>accountSecondaryContact</th>
-                    <th>rep</th>
-                    <th>centralBillingAccount</th>
-                    <th>store</th>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="code"><span>Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tradingName"><span>TradingName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="abn"><span>Abn</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="deliveryInstruction"><span>DeliveryInstruction</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="webUrl"><span>WebUrl</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isOnHold"><span>IsOnHold</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isOrderNoRequired"><span>IsOrderNoRequired</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isBlacklisted"><span>IsBlacklisted</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isBackorderAllowed"><span>IsBackorderAllowed</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isArchived"><span>IsArchived</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isHeadOfficeAccount"><span>IsHeadOfficeAccount</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ageingMethod"><span>AgeingMethod</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isWebaccessAllowed"><span>IsWebaccessAllowed</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bankName"><span>BankName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bsb"><span>Bsb</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bankAccountNo"><span>BankAccountNo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bankSuburb"><span>BankSuburb</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bankAccountName"><span>BankAccountName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isCreditCardBillingActive"><span>IsCreditCardBillingActive</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="creditCardNo"><span>CreditCardNo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="creditCardHolderName"><span>CreditCardHolderName</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="creditCardExpiryDate"><span>CreditCardExpiryDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="creditCardType"><span>CreditCardType</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="accountType"><span>AccountType</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="creditAmount"><span>CreditAmount</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="terms"><span>Terms</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="settlementTerms"><span>SettlementTerms</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="invoiceDeliveryMethod"><span>InvoiceDeliveryMethod</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="statementDeliveryMethod"><span>StatementDeliveryMethod</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="invoiceEmailAddress"><span>InvoiceEmailAddress</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="invoiceFaxNo"><span>InvoiceFaxNo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="statementEmailAddress"><span>StatementEmailAddress</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="statementFaxNo"><span>StatementFaxNo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isPenaltyIssued"><span>IsPenaltyIssued</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="customerCategoryId"><span>customerCategory</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="contactId"><span>contact</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="deliveryContactId"><span>deliveryContact</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="salesPrimaryContactId"><span>salesPrimaryContact</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="salesSecondaryContactId"><span>salesSecondaryContact</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="accountPrimaryContactId"><span>accountPrimaryContact</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="accountSecondaryContactId"><span>accountSecondaryContact</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="repId"><span>rep</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="centralBillingAccountId"><span>centralBillingAccount</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="storeId"><span>store</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -161,18 +161,8 @@
                 </tr>
             </tbody>
         </table>
-        <nav>
-            <ul class="pagination">
-                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a>&lt;</a></li>
-                <li ng-show="page > 1" ng-click="loadPage(page - 2)"><a>{{page - 1}}</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(page - 1)"><a>{{page}}</a></li>
-                <li class="active"><a>{{page + 1}}</a></li>
-                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 2}}</a></li>
-                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 3}}</a></li>
-                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
-                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
-            </ul>
-        </nav>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
     </div>
 </div>

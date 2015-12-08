@@ -60,11 +60,11 @@ public class BookmarkResourceIntTest {
     private static final String UPDATED_TXN_NUMBER = "BBBBB";
 
 
-private static final BookmarkType DEFAULT_BOOKMARK_TYPE = BookmarkType.HISTORY;
+    private static final BookmarkType DEFAULT_BOOKMARK_TYPE = BookmarkType.HISTORY;
     private static final BookmarkType UPDATED_BOOKMARK_TYPE = BookmarkType.FAVOURITE;
 
 
-private static final BookmarkArea DEFAULT_BOOKMARK_AREA = BookmarkArea.PURCHASEORDER;
+    private static final BookmarkArea DEFAULT_BOOKMARK_AREA = BookmarkArea.PURCHASEORDER;
     private static final BookmarkArea UPDATED_BOOKMARK_AREA = BookmarkArea.SALESORDER;
     private static final String DEFAULT_KEY_CODE = "AAAAA";
     private static final String UPDATED_KEY_CODE = "BBBBB";
@@ -101,9 +101,9 @@ private static final BookmarkArea DEFAULT_BOOKMARK_AREA = BookmarkArea.PURCHASEO
     public void setup() {
         MockitoAnnotations.initMocks(this);
         BookmarkResource bookmarkResource = new BookmarkResource();
+        ReflectionTestUtils.setField(bookmarkResource, "bookmarkSearchRepository", bookmarkSearchRepository);
         ReflectionTestUtils.setField(bookmarkResource, "bookmarkRepository", bookmarkRepository);
         ReflectionTestUtils.setField(bookmarkResource, "bookmarkMapper", bookmarkMapper);
-        ReflectionTestUtils.setField(bookmarkResource, "bookmarkSearchRepository", bookmarkSearchRepository);
         this.restBookmarkMockMvc = MockMvcBuilders.standaloneSetup(bookmarkResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -156,7 +156,7 @@ private static final BookmarkArea DEFAULT_BOOKMARK_AREA = BookmarkArea.PURCHASEO
         bookmarkRepository.saveAndFlush(bookmark);
 
         // Get all the bookmarks
-        restBookmarkMockMvc.perform(get("/api/bookmarks"))
+        restBookmarkMockMvc.perform(get("/api/bookmarks?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(bookmark.getId().intValue())))

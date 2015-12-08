@@ -38,16 +38,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class RelatedProductResource {
 
     private final Logger log = LoggerFactory.getLogger(RelatedProductResource.class);
-
+        
     @Inject
     private RelatedProductRepository relatedProductRepository;
-
+    
     @Inject
     private RelatedProductMapper relatedProductMapper;
-
+    
     @Inject
     private RelatedProductSearchRepository relatedProductSearchRepository;
-
+    
     /**
      * POST  /relatedProducts -> Create a new relatedProduct.
      */
@@ -58,14 +58,15 @@ public class RelatedProductResource {
     public ResponseEntity<RelatedProductDTO> createRelatedProduct(@RequestBody RelatedProductDTO relatedProductDTO) throws URISyntaxException {
         log.debug("REST request to save RelatedProduct : {}", relatedProductDTO);
         if (relatedProductDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new relatedProduct cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("relatedProduct", "idexists", "A new relatedProduct cannot already have an ID")).body(null);
         }
         RelatedProduct relatedProduct = relatedProductMapper.relatedProductDTOToRelatedProduct(relatedProductDTO);
-        RelatedProduct result = relatedProductRepository.save(relatedProduct);
-        relatedProductSearchRepository.save(result);
+        relatedProduct = relatedProductRepository.save(relatedProduct);
+        RelatedProductDTO result = relatedProductMapper.relatedProductToRelatedProductDTO(relatedProduct);
+        relatedProductSearchRepository.save(relatedProduct);
         return ResponseEntity.created(new URI("/api/relatedProducts/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("relatedProduct", result.getId().toString()))
-            .body(relatedProductMapper.relatedProductToRelatedProductDTO(result));
+            .body(result);
     }
 
     /**
@@ -81,11 +82,12 @@ public class RelatedProductResource {
             return createRelatedProduct(relatedProductDTO);
         }
         RelatedProduct relatedProduct = relatedProductMapper.relatedProductDTOToRelatedProduct(relatedProductDTO);
-        RelatedProduct result = relatedProductRepository.save(relatedProduct);
+        relatedProduct = relatedProductRepository.save(relatedProduct);
+        RelatedProductDTO result = relatedProductMapper.relatedProductToRelatedProductDTO(relatedProduct);
         relatedProductSearchRepository.save(relatedProduct);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("relatedProduct", relatedProductDTO.getId().toString()))
-            .body(relatedProductMapper.relatedProductToRelatedProductDTO(result));
+            .body(result);
     }
 
     /**
@@ -98,7 +100,8 @@ public class RelatedProductResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<RelatedProductDTO>> getAllRelatedProducts(Pageable pageable)
         throws URISyntaxException {
-        Page<RelatedProduct> page = relatedProductRepository.findAll(pageable);
+        log.debug("REST request to get a page of RelatedProducts");
+        Page<RelatedProduct> page = relatedProductRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/relatedProducts");
         return new ResponseEntity<>(page.getContent().stream()
             .map(relatedProductMapper::relatedProductToRelatedProductDTO)
@@ -114,10 +117,11 @@ public class RelatedProductResource {
     @Timed
     public ResponseEntity<RelatedProductDTO> getRelatedProduct(@PathVariable Long id) {
         log.debug("REST request to get RelatedProduct : {}", id);
-        return Optional.ofNullable(relatedProductRepository.findOne(id))
-            .map(relatedProductMapper::relatedProductToRelatedProductDTO)
-            .map(relatedProductDTO -> new ResponseEntity<>(
-                relatedProductDTO,
+        RelatedProduct relatedProduct = relatedProductRepository.findOne(id);
+        RelatedProductDTO relatedProductDTO = relatedProductMapper.relatedProductToRelatedProductDTO(relatedProduct);
+        return Optional.ofNullable(relatedProductDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -145,6 +149,7 @@ public class RelatedProductResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<RelatedProductDTO> searchRelatedProducts(@PathVariable String query) {
+        log.debug("REST request to search RelatedProducts for query {}", query);
         return StreamSupport
             .stream(relatedProductSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(relatedProductMapper::relatedProductToRelatedProductDTO)

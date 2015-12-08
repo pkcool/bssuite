@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('PromotionDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Promotion', 'Store',
-        function($scope, $stateParams, $modalInstance, entity, Promotion, Store) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Promotion', 'Store',
+        function($scope, $stateParams, $uibModalInstance, entity, Promotion, Store) {
 
         $scope.promotion = entity;
         $scope.stores = Store.query();
@@ -14,7 +14,7 @@ angular.module('bssuiteApp').controller('PromotionDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:promotionUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -32,6 +32,6 @@ angular.module('bssuiteApp').controller('PromotionDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

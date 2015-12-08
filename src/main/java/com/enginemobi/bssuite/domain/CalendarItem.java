@@ -58,6 +58,7 @@ public class CalendarItem implements Serializable {
     @JoinColumn(name = "created_by_id")
     private Staff createdBy;
 
+    
     public Long getId() {
         return id;
     }

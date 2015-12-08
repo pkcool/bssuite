@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('StoreDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Store',
-        function($scope, $stateParams, $modalInstance, entity, Store) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Store',
+        function($scope, $stateParams, $uibModalInstance, entity, Store) {
 
         $scope.store = entity;
         $scope.load = function(id) {
@@ -13,7 +13,7 @@ angular.module('bssuiteApp').controller('StoreDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:storeUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -31,6 +31,6 @@ angular.module('bssuiteApp').controller('StoreDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

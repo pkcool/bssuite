@@ -108,8 +108,8 @@ public class SalesOrderLineItemResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         SalesOrderLineItemResource salesOrderLineItemResource = new SalesOrderLineItemResource();
-        ReflectionTestUtils.setField(salesOrderLineItemResource, "salesOrderLineItemRepository", salesOrderLineItemRepository);
         ReflectionTestUtils.setField(salesOrderLineItemResource, "salesOrderLineItemSearchRepository", salesOrderLineItemSearchRepository);
+        ReflectionTestUtils.setField(salesOrderLineItemResource, "salesOrderLineItemRepository", salesOrderLineItemRepository);
         this.restSalesOrderLineItemMockMvc = MockMvcBuilders.standaloneSetup(salesOrderLineItemResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -175,7 +175,7 @@ public class SalesOrderLineItemResourceIntTest {
         salesOrderLineItemRepository.saveAndFlush(salesOrderLineItem);
 
         // Get all the salesOrderLineItems
-        restSalesOrderLineItemMockMvc.perform(get("/api/salesOrderLineItems"))
+        restSalesOrderLineItemMockMvc.perform(get("/api/salesOrderLineItems?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(salesOrderLineItem.getId().intValue())))

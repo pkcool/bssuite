@@ -89,8 +89,8 @@ public class PromotionResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         PromotionResource promotionResource = new PromotionResource();
-        ReflectionTestUtils.setField(promotionResource, "promotionRepository", promotionRepository);
         ReflectionTestUtils.setField(promotionResource, "promotionSearchRepository", promotionSearchRepository);
+        ReflectionTestUtils.setField(promotionResource, "promotionRepository", promotionRepository);
         this.restPromotionMockMvc = MockMvcBuilders.standaloneSetup(promotionResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -162,7 +162,7 @@ public class PromotionResourceIntTest {
         promotionRepository.saveAndFlush(promotion);
 
         // Get all the promotions
-        restPromotionMockMvc.perform(get("/api/promotions"))
+        restPromotionMockMvc.perform(get("/api/promotions?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(promotion.getId().intValue())))

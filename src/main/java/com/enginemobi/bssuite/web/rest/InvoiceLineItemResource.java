@@ -34,13 +34,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class InvoiceLineItemResource {
 
     private final Logger log = LoggerFactory.getLogger(InvoiceLineItemResource.class);
-
+        
     @Inject
     private InvoiceLineItemRepository invoiceLineItemRepository;
-
+    
     @Inject
     private InvoiceLineItemSearchRepository invoiceLineItemSearchRepository;
-
+    
     /**
      * POST  /invoiceLineItems -> Create a new invoiceLineItem.
      */
@@ -51,7 +51,7 @@ public class InvoiceLineItemResource {
     public ResponseEntity<InvoiceLineItem> createInvoiceLineItem(@RequestBody InvoiceLineItem invoiceLineItem) throws URISyntaxException {
         log.debug("REST request to save InvoiceLineItem : {}", invoiceLineItem);
         if (invoiceLineItem.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new invoiceLineItem cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("invoiceLineItem", "idexists", "A new invoiceLineItem cannot already have an ID")).body(null);
         }
         InvoiceLineItem result = invoiceLineItemRepository.save(invoiceLineItem);
         invoiceLineItemSearchRepository.save(result);
@@ -73,7 +73,7 @@ public class InvoiceLineItemResource {
             return createInvoiceLineItem(invoiceLineItem);
         }
         InvoiceLineItem result = invoiceLineItemRepository.save(invoiceLineItem);
-        invoiceLineItemSearchRepository.save(invoiceLineItem);
+        invoiceLineItemSearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("invoiceLineItem", invoiceLineItem.getId().toString()))
             .body(result);
@@ -88,7 +88,8 @@ public class InvoiceLineItemResource {
     @Timed
     public ResponseEntity<List<InvoiceLineItem>> getAllInvoiceLineItems(Pageable pageable)
         throws URISyntaxException {
-        Page<InvoiceLineItem> page = invoiceLineItemRepository.findAll(pageable);
+        log.debug("REST request to get a page of InvoiceLineItems");
+        Page<InvoiceLineItem> page = invoiceLineItemRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/invoiceLineItems");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -102,9 +103,10 @@ public class InvoiceLineItemResource {
     @Timed
     public ResponseEntity<InvoiceLineItem> getInvoiceLineItem(@PathVariable Long id) {
         log.debug("REST request to get InvoiceLineItem : {}", id);
-        return Optional.ofNullable(invoiceLineItemRepository.findOne(id))
-            .map(invoiceLineItem -> new ResponseEntity<>(
-                invoiceLineItem,
+        InvoiceLineItem invoiceLineItem = invoiceLineItemRepository.findOne(id);
+        return Optional.ofNullable(invoiceLineItem)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -132,6 +134,7 @@ public class InvoiceLineItemResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<InvoiceLineItem> searchInvoiceLineItems(@PathVariable String query) {
+        log.debug("REST request to search InvoiceLineItems for query {}", query);
         return StreamSupport
             .stream(invoiceLineItemSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());

@@ -35,13 +35,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class PriceScaleResource {
 
     private final Logger log = LoggerFactory.getLogger(PriceScaleResource.class);
-
+        
     @Inject
     private PriceScaleRepository priceScaleRepository;
-
+    
     @Inject
     private PriceScaleSearchRepository priceScaleSearchRepository;
-
+    
     /**
      * POST  /priceScales -> Create a new priceScale.
      */
@@ -52,7 +52,7 @@ public class PriceScaleResource {
     public ResponseEntity<PriceScale> createPriceScale(@Valid @RequestBody PriceScale priceScale) throws URISyntaxException {
         log.debug("REST request to save PriceScale : {}", priceScale);
         if (priceScale.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new priceScale cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("priceScale", "idexists", "A new priceScale cannot already have an ID")).body(null);
         }
         PriceScale result = priceScaleRepository.save(priceScale);
         priceScaleSearchRepository.save(result);
@@ -74,7 +74,7 @@ public class PriceScaleResource {
             return createPriceScale(priceScale);
         }
         PriceScale result = priceScaleRepository.save(priceScale);
-        priceScaleSearchRepository.save(priceScale);
+        priceScaleSearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("priceScale", priceScale.getId().toString()))
             .body(result);
@@ -89,7 +89,8 @@ public class PriceScaleResource {
     @Timed
     public ResponseEntity<List<PriceScale>> getAllPriceScales(Pageable pageable)
         throws URISyntaxException {
-        Page<PriceScale> page = priceScaleRepository.findAll(pageable);
+        log.debug("REST request to get a page of PriceScales");
+        Page<PriceScale> page = priceScaleRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/priceScales");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -103,9 +104,10 @@ public class PriceScaleResource {
     @Timed
     public ResponseEntity<PriceScale> getPriceScale(@PathVariable Long id) {
         log.debug("REST request to get PriceScale : {}", id);
-        return Optional.ofNullable(priceScaleRepository.findOne(id))
-            .map(priceScale -> new ResponseEntity<>(
-                priceScale,
+        PriceScale priceScale = priceScaleRepository.findOne(id);
+        return Optional.ofNullable(priceScale)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -133,6 +135,7 @@ public class PriceScaleResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<PriceScale> searchPriceScales(@PathVariable String query) {
+        log.debug("REST request to search PriceScales for query {}", query);
         return StreamSupport
             .stream(priceScaleSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());

@@ -65,7 +65,7 @@ public class SupplierResourceIntTest {
     private static final Integer UPDATED_LEAD_TIME = 2;
 
 
-private static final SupplierAccountType DEFAULT_ACCOUNT_TYPE = SupplierAccountType.STANDARD;
+    private static final SupplierAccountType DEFAULT_ACCOUNT_TYPE = SupplierAccountType.STANDARD;
     private static final SupplierAccountType UPDATED_ACCOUNT_TYPE = SupplierAccountType.INTERNAL;
 
     private static final Integer DEFAULT_SETTLEMENT_TERMS = 1;
@@ -78,7 +78,7 @@ private static final SupplierAccountType DEFAULT_ACCOUNT_TYPE = SupplierAccountT
     private static final Integer UPDATED_TERMS = 2;
 
 
-private static final SupplierAgeingMethod DEFAULT_AGEING_METHOD = SupplierAgeingMethod.MONTH;
+    private static final SupplierAgeingMethod DEFAULT_AGEING_METHOD = SupplierAgeingMethod.MONTH;
     private static final SupplierAgeingMethod UPDATED_AGEING_METHOD = SupplierAgeingMethod.TERMS;
 
     private static final Boolean DEFAULT_IS_EFTPAYMENTS_USED = false;
@@ -113,9 +113,9 @@ private static final SupplierAgeingMethod DEFAULT_AGEING_METHOD = SupplierAgeing
     public void setup() {
         MockitoAnnotations.initMocks(this);
         SupplierResource supplierResource = new SupplierResource();
+        ReflectionTestUtils.setField(supplierResource, "supplierSearchRepository", supplierSearchRepository);
         ReflectionTestUtils.setField(supplierResource, "supplierRepository", supplierRepository);
         ReflectionTestUtils.setField(supplierResource, "supplierMapper", supplierMapper);
-        ReflectionTestUtils.setField(supplierResource, "supplierSearchRepository", supplierSearchRepository);
         this.restSupplierMockMvc = MockMvcBuilders.standaloneSetup(supplierResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -203,7 +203,7 @@ private static final SupplierAgeingMethod DEFAULT_AGEING_METHOD = SupplierAgeing
         supplierRepository.saveAndFlush(supplier);
 
         // Get all the suppliers
-        restSupplierMockMvc.perform(get("/api/suppliers"))
+        restSupplierMockMvc.perform(get("/api/suppliers?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(supplier.getId().intValue())))

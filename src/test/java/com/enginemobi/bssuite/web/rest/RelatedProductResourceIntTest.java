@@ -73,9 +73,9 @@ public class RelatedProductResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         RelatedProductResource relatedProductResource = new RelatedProductResource();
+        ReflectionTestUtils.setField(relatedProductResource, "relatedProductSearchRepository", relatedProductSearchRepository);
         ReflectionTestUtils.setField(relatedProductResource, "relatedProductRepository", relatedProductRepository);
         ReflectionTestUtils.setField(relatedProductResource, "relatedProductMapper", relatedProductMapper);
-        ReflectionTestUtils.setField(relatedProductResource, "relatedProductSearchRepository", relatedProductSearchRepository);
         this.restRelatedProductMockMvc = MockMvcBuilders.standaloneSetup(relatedProductResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -116,7 +116,7 @@ public class RelatedProductResourceIntTest {
         relatedProductRepository.saveAndFlush(relatedProduct);
 
         // Get all the relatedProducts
-        restRelatedProductMockMvc.perform(get("/api/relatedProducts"))
+        restRelatedProductMockMvc.perform(get("/api/relatedProducts?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(relatedProduct.getId().intValue())))

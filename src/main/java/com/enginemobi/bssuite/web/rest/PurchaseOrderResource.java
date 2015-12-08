@@ -38,16 +38,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class PurchaseOrderResource {
 
     private final Logger log = LoggerFactory.getLogger(PurchaseOrderResource.class);
-
+        
     @Inject
     private PurchaseOrderRepository purchaseOrderRepository;
-
+    
     @Inject
     private PurchaseOrderMapper purchaseOrderMapper;
-
+    
     @Inject
     private PurchaseOrderSearchRepository purchaseOrderSearchRepository;
-
+    
     /**
      * POST  /purchaseOrders -> Create a new purchaseOrder.
      */
@@ -58,14 +58,15 @@ public class PurchaseOrderResource {
     public ResponseEntity<PurchaseOrderDTO> createPurchaseOrder(@RequestBody PurchaseOrderDTO purchaseOrderDTO) throws URISyntaxException {
         log.debug("REST request to save PurchaseOrder : {}", purchaseOrderDTO);
         if (purchaseOrderDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new purchaseOrder cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("purchaseOrder", "idexists", "A new purchaseOrder cannot already have an ID")).body(null);
         }
         PurchaseOrder purchaseOrder = purchaseOrderMapper.purchaseOrderDTOToPurchaseOrder(purchaseOrderDTO);
-        PurchaseOrder result = purchaseOrderRepository.save(purchaseOrder);
-        purchaseOrderSearchRepository.save(result);
+        purchaseOrder = purchaseOrderRepository.save(purchaseOrder);
+        PurchaseOrderDTO result = purchaseOrderMapper.purchaseOrderToPurchaseOrderDTO(purchaseOrder);
+        purchaseOrderSearchRepository.save(purchaseOrder);
         return ResponseEntity.created(new URI("/api/purchaseOrders/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("purchaseOrder", result.getId().toString()))
-            .body(purchaseOrderMapper.purchaseOrderToPurchaseOrderDTO(result));
+            .body(result);
     }
 
     /**
@@ -81,11 +82,12 @@ public class PurchaseOrderResource {
             return createPurchaseOrder(purchaseOrderDTO);
         }
         PurchaseOrder purchaseOrder = purchaseOrderMapper.purchaseOrderDTOToPurchaseOrder(purchaseOrderDTO);
-        PurchaseOrder result = purchaseOrderRepository.save(purchaseOrder);
+        purchaseOrder = purchaseOrderRepository.save(purchaseOrder);
+        PurchaseOrderDTO result = purchaseOrderMapper.purchaseOrderToPurchaseOrderDTO(purchaseOrder);
         purchaseOrderSearchRepository.save(purchaseOrder);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("purchaseOrder", purchaseOrderDTO.getId().toString()))
-            .body(purchaseOrderMapper.purchaseOrderToPurchaseOrderDTO(result));
+            .body(result);
     }
 
     /**
@@ -98,7 +100,8 @@ public class PurchaseOrderResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<PurchaseOrderDTO>> getAllPurchaseOrders(Pageable pageable)
         throws URISyntaxException {
-        Page<PurchaseOrder> page = purchaseOrderRepository.findAll(pageable);
+        log.debug("REST request to get a page of PurchaseOrders");
+        Page<PurchaseOrder> page = purchaseOrderRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/purchaseOrders");
         return new ResponseEntity<>(page.getContent().stream()
             .map(purchaseOrderMapper::purchaseOrderToPurchaseOrderDTO)
@@ -114,10 +117,11 @@ public class PurchaseOrderResource {
     @Timed
     public ResponseEntity<PurchaseOrderDTO> getPurchaseOrder(@PathVariable Long id) {
         log.debug("REST request to get PurchaseOrder : {}", id);
-        return Optional.ofNullable(purchaseOrderRepository.findOne(id))
-            .map(purchaseOrderMapper::purchaseOrderToPurchaseOrderDTO)
-            .map(purchaseOrderDTO -> new ResponseEntity<>(
-                purchaseOrderDTO,
+        PurchaseOrder purchaseOrder = purchaseOrderRepository.findOne(id);
+        PurchaseOrderDTO purchaseOrderDTO = purchaseOrderMapper.purchaseOrderToPurchaseOrderDTO(purchaseOrder);
+        return Optional.ofNullable(purchaseOrderDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -145,6 +149,7 @@ public class PurchaseOrderResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<PurchaseOrderDTO> searchPurchaseOrders(@PathVariable String query) {
+        log.debug("REST request to search PurchaseOrders for query {}", query);
         return StreamSupport
             .stream(purchaseOrderSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(purchaseOrderMapper::purchaseOrderToPurchaseOrderDTO)

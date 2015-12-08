@@ -53,7 +53,7 @@ public class PriceScaleResourceIntTest {
     private static final String UPDATED_VALUE = "BBBBB";
 
 
-private static final RoundingMethod DEFAULT_ROUND = RoundingMethod.UP;
+    private static final RoundingMethod DEFAULT_ROUND = RoundingMethod.UP;
     private static final RoundingMethod UPDATED_ROUND = RoundingMethod.DOWN;
 
     @Inject
@@ -76,8 +76,8 @@ private static final RoundingMethod DEFAULT_ROUND = RoundingMethod.UP;
     public void setup() {
         MockitoAnnotations.initMocks(this);
         PriceScaleResource priceScaleResource = new PriceScaleResource();
-        ReflectionTestUtils.setField(priceScaleResource, "priceScaleRepository", priceScaleRepository);
         ReflectionTestUtils.setField(priceScaleResource, "priceScaleSearchRepository", priceScaleSearchRepository);
+        ReflectionTestUtils.setField(priceScaleResource, "priceScaleRepository", priceScaleRepository);
         this.restPriceScaleMockMvc = MockMvcBuilders.standaloneSetup(priceScaleResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -141,7 +141,7 @@ private static final RoundingMethod DEFAULT_ROUND = RoundingMethod.UP;
         priceScaleRepository.saveAndFlush(priceScale);
 
         // Get all the priceScales
-        restPriceScaleMockMvc.perform(get("/api/priceScales"))
+        restPriceScaleMockMvc.perform(get("/api/priceScales?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(priceScale.getId().intValue())))

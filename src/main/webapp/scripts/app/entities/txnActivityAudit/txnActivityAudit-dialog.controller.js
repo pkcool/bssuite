@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('TxnActivityAuditDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'TxnActivityAudit', 'Staff',
-        function($scope, $stateParams, $modalInstance, entity, TxnActivityAudit, Staff) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'TxnActivityAudit', 'Staff',
+        function($scope, $stateParams, $uibModalInstance, entity, TxnActivityAudit, Staff) {
 
         $scope.txnActivityAudit = entity;
         $scope.staffs = Staff.query();
@@ -14,7 +14,7 @@ angular.module('bssuiteApp').controller('TxnActivityAuditDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:txnActivityAuditUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -32,6 +32,6 @@ angular.module('bssuiteApp').controller('TxnActivityAuditDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

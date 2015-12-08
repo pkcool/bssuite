@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('StaffController', function ($scope, $state, $modal, Staff, StaffSearch, ParseLinks) {
-      
+    .controller('StaffController', function ($scope, $state, Staff, StaffSearch, ParseLinks) {
+
         $scope.staffs = [];
-        $scope.page = 0;
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            Staff.query({page: $scope.page, size: 20}, function(result, headers) {
+            Staff.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
                 $scope.staffs = result;
             });
         };

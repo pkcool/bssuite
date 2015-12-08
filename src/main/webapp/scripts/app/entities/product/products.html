@@ -23,62 +23,62 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>LongDescription</th>
-                    <th>AlternateCode</th>
-                    <th>Bin</th>
-                    <th>IsOnSpecial</th>
-                    <th>IsOnHold</th>
-                    <th>IsInPricelistReports</th>
-                    <th>QtyOnOrder</th>
-                    <th>QtyStockOnHold</th>
-                    <th>QtyBackordered</th>
-                    <th>QtyAllocated</th>
-                    <th>QtyBackorderHold</th>
-                    <th>QtyConsigned</th>
-                    <th>QtyWarehouseReceived</th>
-                    <th>QtyStocktakeVariance</th>
-                    <th>QtyTransitIn</th>
-                    <th>QtyTransitOut</th>
-                    <th>Cost</th>
-                    <th>WholesaleListPrice</th>
-                    <th>ListPrice</th>
-                    <th>TradePrice</th>
-                    <th>BoxCost</th>
-                    <th>UnitMeasure</th>
-                    <th>BoxMeasure</th>
-                    <th>BoxConversionFactor</th>
-                    <th>Weight</th>
-                    <th>Volumn</th>
-                    <th>ServiceCover</th>
-                    <th>QtyFloorLevel</th>
-                    <th>QtyReorderLevel</th>
-                    <th>QtyOverstockLevel</th>
-                    <th>IsComment</th>
-                    <th>IsDiminishing</th>
-                    <th>IsNonTaxExeptable</th>
-                    <th>LeadTime</th>
-                    <th>PurchaseUnit</th>
-                    <th>EstMonthlySales</th>
-                    <th>DateFirstSale</th>
-                    <th>DateLastSale</th>
-                    <th>DateFirstOrder</th>
-                    <th>DateCreated</th>
-                    <th>DateLastDelivery</th>
-                    <th>DateNextDelivery</th>
-                    <th>DateLastTransfer</th>
-                    <th>DateLastOrder</th>
-                    <th>DateLastStocktake</th>
-                    <th>IsArchived</th>
-                    <th>ClassCode</th>
-                    <th>stockGroup</th>
-                    <th>supplier</th>
-                    <th>store</th>
-                    <th>taxRate</th>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="code"><span>Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span>Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="longDescription"><span>LongDescription</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="alternateCode"><span>AlternateCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="bin"><span>Bin</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isOnSpecial"><span>IsOnSpecial</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isOnHold"><span>IsOnHold</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isInPricelistReports"><span>IsInPricelistReports</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyOnOrder"><span>QtyOnOrder</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyStockOnHold"><span>QtyStockOnHold</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyBackordered"><span>QtyBackordered</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyAllocated"><span>QtyAllocated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyBackorderHold"><span>QtyBackorderHold</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyConsigned"><span>QtyConsigned</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyWarehouseReceived"><span>QtyWarehouseReceived</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyStocktakeVariance"><span>QtyStocktakeVariance</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyTransitIn"><span>QtyTransitIn</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyTransitOut"><span>QtyTransitOut</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cost"><span>Cost</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="wholesaleListPrice"><span>WholesaleListPrice</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="listPrice"><span>ListPrice</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tradePrice"><span>TradePrice</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="boxCost"><span>BoxCost</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="unitMeasure"><span>UnitMeasure</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="boxMeasure"><span>BoxMeasure</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="boxConversionFactor"><span>BoxConversionFactor</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="weight"><span>Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="volumn"><span>Volumn</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="serviceCover"><span>ServiceCover</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyFloorLevel"><span>QtyFloorLevel</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyReorderLevel"><span>QtyReorderLevel</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyOverstockLevel"><span>QtyOverstockLevel</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isComment"><span>IsComment</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isDiminishing"><span>IsDiminishing</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isNonTaxExeptable"><span>IsNonTaxExeptable</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="leadTime"><span>LeadTime</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="purchaseUnit"><span>PurchaseUnit</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="estMonthlySales"><span>EstMonthlySales</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateFirstSale"><span>DateFirstSale</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateLastSale"><span>DateLastSale</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateFirstOrder"><span>DateFirstOrder</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateCreated"><span>DateCreated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateLastDelivery"><span>DateLastDelivery</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateNextDelivery"><span>DateNextDelivery</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateLastTransfer"><span>DateLastTransfer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateLastOrder"><span>DateLastOrder</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateLastStocktake"><span>DateLastStocktake</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isArchived"><span>IsArchived</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="classCode"><span>ClassCode</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="stockGroupId"><span>stockGroup</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="supplierId"><span>supplier</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="storeId"><span>store</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="taxRateId"><span>taxRate</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -167,18 +167,8 @@
                 </tr>
             </tbody>
         </table>
-        <nav>
-            <ul class="pagination">
-                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a>&lt;</a></li>
-                <li ng-show="page > 1" ng-click="loadPage(page - 2)"><a>{{page - 1}}</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(page - 1)"><a>{{page}}</a></li>
-                <li class="active"><a>{{page + 1}}</a></li>
-                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 2}}</a></li>
-                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 3}}</a></li>
-                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
-                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
-            </ul>
-        </nav>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
     </div>
 </div>

@@ -100,9 +100,9 @@ public class StoreResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         StoreResource storeResource = new StoreResource();
+        ReflectionTestUtils.setField(storeResource, "storeSearchRepository", storeSearchRepository);
         ReflectionTestUtils.setField(storeResource, "storeRepository", storeRepository);
         ReflectionTestUtils.setField(storeResource, "storeMapper", storeMapper);
-        ReflectionTestUtils.setField(storeResource, "storeSearchRepository", storeSearchRepository);
         this.restStoreMockMvc = MockMvcBuilders.standaloneSetup(storeResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -167,7 +167,7 @@ public class StoreResourceIntTest {
         storeRepository.saveAndFlush(store);
 
         // Get all the stores
-        restStoreMockMvc.perform(get("/api/stores"))
+        restStoreMockMvc.perform(get("/api/stores?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(store.getId().intValue())))

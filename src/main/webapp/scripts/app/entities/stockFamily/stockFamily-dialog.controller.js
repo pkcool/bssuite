@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('StockFamilyDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'StockFamily', 'PriceScale',
-        function($scope, $stateParams, $modalInstance, entity, StockFamily, PriceScale) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'StockFamily', 'PriceScale',
+        function($scope, $stateParams, $uibModalInstance, entity, StockFamily, PriceScale) {
 
         $scope.stockFamily = entity;
         $scope.pricescales = PriceScale.query();
@@ -14,7 +14,7 @@ angular.module('bssuiteApp').controller('StockFamilyDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:stockFamilyUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -32,6 +32,6 @@ angular.module('bssuiteApp').controller('StockFamilyDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

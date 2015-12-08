@@ -39,16 +39,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class CustomerResource {
 
     private final Logger log = LoggerFactory.getLogger(CustomerResource.class);
-
+        
     @Inject
     private CustomerRepository customerRepository;
-
+    
     @Inject
     private CustomerMapper customerMapper;
-
+    
     @Inject
     private CustomerSearchRepository customerSearchRepository;
-
+    
     /**
      * POST  /customers -> Create a new customer.
      */
@@ -59,14 +59,15 @@ public class CustomerResource {
     public ResponseEntity<CustomerDTO> createCustomer(@Valid @RequestBody CustomerDTO customerDTO) throws URISyntaxException {
         log.debug("REST request to save Customer : {}", customerDTO);
         if (customerDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new customer cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("customer", "idexists", "A new customer cannot already have an ID")).body(null);
         }
         Customer customer = customerMapper.customerDTOToCustomer(customerDTO);
-        Customer result = customerRepository.save(customer);
-        customerSearchRepository.save(result);
+        customer = customerRepository.save(customer);
+        CustomerDTO result = customerMapper.customerToCustomerDTO(customer);
+        customerSearchRepository.save(customer);
         return ResponseEntity.created(new URI("/api/customers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("customer", result.getId().toString()))
-            .body(customerMapper.customerToCustomerDTO(result));
+            .body(result);
     }
 
     /**
@@ -82,11 +83,12 @@ public class CustomerResource {
             return createCustomer(customerDTO);
         }
         Customer customer = customerMapper.customerDTOToCustomer(customerDTO);
-        Customer result = customerRepository.save(customer);
+        customer = customerRepository.save(customer);
+        CustomerDTO result = customerMapper.customerToCustomerDTO(customer);
         customerSearchRepository.save(customer);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("customer", customerDTO.getId().toString()))
-            .body(customerMapper.customerToCustomerDTO(result));
+            .body(result);
     }
 
     /**
@@ -99,7 +101,8 @@ public class CustomerResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<CustomerDTO>> getAllCustomers(Pageable pageable)
         throws URISyntaxException {
-        Page<Customer> page = customerRepository.findAll(pageable);
+        log.debug("REST request to get a page of Customers");
+        Page<Customer> page = customerRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/customers");
         return new ResponseEntity<>(page.getContent().stream()
             .map(customerMapper::customerToCustomerDTO)
@@ -115,10 +118,11 @@ public class CustomerResource {
     @Timed
     public ResponseEntity<CustomerDTO> getCustomer(@PathVariable Long id) {
         log.debug("REST request to get Customer : {}", id);
-        return Optional.ofNullable(customerRepository.findOne(id))
-            .map(customerMapper::customerToCustomerDTO)
-            .map(customerDTO -> new ResponseEntity<>(
-                customerDTO,
+        Customer customer = customerRepository.findOne(id);
+        CustomerDTO customerDTO = customerMapper.customerToCustomerDTO(customer);
+        return Optional.ofNullable(customerDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -146,6 +150,7 @@ public class CustomerResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<CustomerDTO> searchCustomers(@PathVariable String query) {
+        log.debug("REST request to search Customers for query {}", query);
         return StreamSupport
             .stream(customerSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(customerMapper::customerToCustomerDTO)

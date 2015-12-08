@@ -53,6 +53,7 @@ public class TxnActivityAudit implements Serializable {
     @JoinColumn(name = "edited_by_id")
     private Staff editedBy;
 
+    
     public Long getId() {
         return id;
     }

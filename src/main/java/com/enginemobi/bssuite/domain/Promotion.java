@@ -57,6 +57,7 @@ public class Promotion implements Serializable {
     @JoinColumn(name = "store_id")
     private Store store;
 
+    
     public Long getId() {
         return id;
     }

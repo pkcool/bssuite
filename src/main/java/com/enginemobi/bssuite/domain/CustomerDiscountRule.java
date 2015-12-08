@@ -89,6 +89,7 @@ public class CustomerDiscountRule implements Serializable {
     @Column(name = "discount_formula")
     private String discountFormula;
 
+    
     public Long getId() {
         return id;
     }

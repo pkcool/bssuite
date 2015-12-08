@@ -35,13 +35,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class CarrierResource {
 
     private final Logger log = LoggerFactory.getLogger(CarrierResource.class);
-
+        
     @Inject
     private CarrierRepository carrierRepository;
-
+    
     @Inject
     private CarrierSearchRepository carrierSearchRepository;
-
+    
     /**
      * POST  /carriers -> Create a new carrier.
      */
@@ -52,7 +52,7 @@ public class CarrierResource {
     public ResponseEntity<Carrier> createCarrier(@Valid @RequestBody Carrier carrier) throws URISyntaxException {
         log.debug("REST request to save Carrier : {}", carrier);
         if (carrier.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new carrier cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("carrier", "idexists", "A new carrier cannot already have an ID")).body(null);
         }
         Carrier result = carrierRepository.save(carrier);
         carrierSearchRepository.save(result);
@@ -74,7 +74,7 @@ public class CarrierResource {
             return createCarrier(carrier);
         }
         Carrier result = carrierRepository.save(carrier);
-        carrierSearchRepository.save(carrier);
+        carrierSearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("carrier", carrier.getId().toString()))
             .body(result);
@@ -89,7 +89,8 @@ public class CarrierResource {
     @Timed
     public ResponseEntity<List<Carrier>> getAllCarriers(Pageable pageable)
         throws URISyntaxException {
-        Page<Carrier> page = carrierRepository.findAll(pageable);
+        log.debug("REST request to get a page of Carriers");
+        Page<Carrier> page = carrierRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/carriers");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -103,9 +104,10 @@ public class CarrierResource {
     @Timed
     public ResponseEntity<Carrier> getCarrier(@PathVariable Long id) {
         log.debug("REST request to get Carrier : {}", id);
-        return Optional.ofNullable(carrierRepository.findOne(id))
-            .map(carrier -> new ResponseEntity<>(
-                carrier,
+        Carrier carrier = carrierRepository.findOne(id);
+        return Optional.ofNullable(carrier)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -133,6 +135,7 @@ public class CarrierResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<Carrier> searchCarriers(@PathVariable String query) {
+        log.debug("REST request to search Carriers for query {}", query);
         return StreamSupport
             .stream(carrierSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());

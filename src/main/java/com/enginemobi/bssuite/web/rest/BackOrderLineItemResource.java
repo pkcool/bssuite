@@ -38,16 +38,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class BackOrderLineItemResource {
 
     private final Logger log = LoggerFactory.getLogger(BackOrderLineItemResource.class);
-
+        
     @Inject
     private BackOrderLineItemRepository backOrderLineItemRepository;
-
+    
     @Inject
     private BackOrderLineItemMapper backOrderLineItemMapper;
-
+    
     @Inject
     private BackOrderLineItemSearchRepository backOrderLineItemSearchRepository;
-
+    
     /**
      * POST  /backOrderLineItems -> Create a new backOrderLineItem.
      */
@@ -58,14 +58,15 @@ public class BackOrderLineItemResource {
     public ResponseEntity<BackOrderLineItemDTO> createBackOrderLineItem(@RequestBody BackOrderLineItemDTO backOrderLineItemDTO) throws URISyntaxException {
         log.debug("REST request to save BackOrderLineItem : {}", backOrderLineItemDTO);
         if (backOrderLineItemDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new backOrderLineItem cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("backOrderLineItem", "idexists", "A new backOrderLineItem cannot already have an ID")).body(null);
         }
         BackOrderLineItem backOrderLineItem = backOrderLineItemMapper.backOrderLineItemDTOToBackOrderLineItem(backOrderLineItemDTO);
-        BackOrderLineItem result = backOrderLineItemRepository.save(backOrderLineItem);
-        backOrderLineItemSearchRepository.save(result);
+        backOrderLineItem = backOrderLineItemRepository.save(backOrderLineItem);
+        BackOrderLineItemDTO result = backOrderLineItemMapper.backOrderLineItemToBackOrderLineItemDTO(backOrderLineItem);
+        backOrderLineItemSearchRepository.save(backOrderLineItem);
         return ResponseEntity.created(new URI("/api/backOrderLineItems/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("backOrderLineItem", result.getId().toString()))
-            .body(backOrderLineItemMapper.backOrderLineItemToBackOrderLineItemDTO(result));
+            .body(result);
     }
 
     /**
@@ -81,11 +82,12 @@ public class BackOrderLineItemResource {
             return createBackOrderLineItem(backOrderLineItemDTO);
         }
         BackOrderLineItem backOrderLineItem = backOrderLineItemMapper.backOrderLineItemDTOToBackOrderLineItem(backOrderLineItemDTO);
-        BackOrderLineItem result = backOrderLineItemRepository.save(backOrderLineItem);
+        backOrderLineItem = backOrderLineItemRepository.save(backOrderLineItem);
+        BackOrderLineItemDTO result = backOrderLineItemMapper.backOrderLineItemToBackOrderLineItemDTO(backOrderLineItem);
         backOrderLineItemSearchRepository.save(backOrderLineItem);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("backOrderLineItem", backOrderLineItemDTO.getId().toString()))
-            .body(backOrderLineItemMapper.backOrderLineItemToBackOrderLineItemDTO(result));
+            .body(result);
     }
 
     /**
@@ -98,7 +100,8 @@ public class BackOrderLineItemResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<BackOrderLineItemDTO>> getAllBackOrderLineItems(Pageable pageable)
         throws URISyntaxException {
-        Page<BackOrderLineItem> page = backOrderLineItemRepository.findAll(pageable);
+        log.debug("REST request to get a page of BackOrderLineItems");
+        Page<BackOrderLineItem> page = backOrderLineItemRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/backOrderLineItems");
         return new ResponseEntity<>(page.getContent().stream()
             .map(backOrderLineItemMapper::backOrderLineItemToBackOrderLineItemDTO)
@@ -114,10 +117,11 @@ public class BackOrderLineItemResource {
     @Timed
     public ResponseEntity<BackOrderLineItemDTO> getBackOrderLineItem(@PathVariable Long id) {
         log.debug("REST request to get BackOrderLineItem : {}", id);
-        return Optional.ofNullable(backOrderLineItemRepository.findOne(id))
-            .map(backOrderLineItemMapper::backOrderLineItemToBackOrderLineItemDTO)
-            .map(backOrderLineItemDTO -> new ResponseEntity<>(
-                backOrderLineItemDTO,
+        BackOrderLineItem backOrderLineItem = backOrderLineItemRepository.findOne(id);
+        BackOrderLineItemDTO backOrderLineItemDTO = backOrderLineItemMapper.backOrderLineItemToBackOrderLineItemDTO(backOrderLineItem);
+        return Optional.ofNullable(backOrderLineItemDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -145,6 +149,7 @@ public class BackOrderLineItemResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<BackOrderLineItemDTO> searchBackOrderLineItems(@PathVariable String query) {
+        log.debug("REST request to search BackOrderLineItems for query {}", query);
         return StreamSupport
             .stream(backOrderLineItemSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(backOrderLineItemMapper::backOrderLineItemToBackOrderLineItemDTO)

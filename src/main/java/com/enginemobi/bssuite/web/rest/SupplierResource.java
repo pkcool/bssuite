@@ -39,16 +39,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class SupplierResource {
 
     private final Logger log = LoggerFactory.getLogger(SupplierResource.class);
-
+        
     @Inject
     private SupplierRepository supplierRepository;
-
+    
     @Inject
     private SupplierMapper supplierMapper;
-
+    
     @Inject
     private SupplierSearchRepository supplierSearchRepository;
-
+    
     /**
      * POST  /suppliers -> Create a new supplier.
      */
@@ -59,14 +59,15 @@ public class SupplierResource {
     public ResponseEntity<SupplierDTO> createSupplier(@Valid @RequestBody SupplierDTO supplierDTO) throws URISyntaxException {
         log.debug("REST request to save Supplier : {}", supplierDTO);
         if (supplierDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new supplier cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("supplier", "idexists", "A new supplier cannot already have an ID")).body(null);
         }
         Supplier supplier = supplierMapper.supplierDTOToSupplier(supplierDTO);
-        Supplier result = supplierRepository.save(supplier);
-        supplierSearchRepository.save(result);
+        supplier = supplierRepository.save(supplier);
+        SupplierDTO result = supplierMapper.supplierToSupplierDTO(supplier);
+        supplierSearchRepository.save(supplier);
         return ResponseEntity.created(new URI("/api/suppliers/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("supplier", result.getId().toString()))
-            .body(supplierMapper.supplierToSupplierDTO(result));
+            .body(result);
     }
 
     /**
@@ -82,11 +83,12 @@ public class SupplierResource {
             return createSupplier(supplierDTO);
         }
         Supplier supplier = supplierMapper.supplierDTOToSupplier(supplierDTO);
-        Supplier result = supplierRepository.save(supplier);
+        supplier = supplierRepository.save(supplier);
+        SupplierDTO result = supplierMapper.supplierToSupplierDTO(supplier);
         supplierSearchRepository.save(supplier);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("supplier", supplierDTO.getId().toString()))
-            .body(supplierMapper.supplierToSupplierDTO(result));
+            .body(result);
     }
 
     /**
@@ -99,7 +101,8 @@ public class SupplierResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<SupplierDTO>> getAllSuppliers(Pageable pageable)
         throws URISyntaxException {
-        Page<Supplier> page = supplierRepository.findAll(pageable);
+        log.debug("REST request to get a page of Suppliers");
+        Page<Supplier> page = supplierRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/suppliers");
         return new ResponseEntity<>(page.getContent().stream()
             .map(supplierMapper::supplierToSupplierDTO)
@@ -115,10 +118,11 @@ public class SupplierResource {
     @Timed
     public ResponseEntity<SupplierDTO> getSupplier(@PathVariable Long id) {
         log.debug("REST request to get Supplier : {}", id);
-        return Optional.ofNullable(supplierRepository.findOne(id))
-            .map(supplierMapper::supplierToSupplierDTO)
-            .map(supplierDTO -> new ResponseEntity<>(
-                supplierDTO,
+        Supplier supplier = supplierRepository.findOne(id);
+        SupplierDTO supplierDTO = supplierMapper.supplierToSupplierDTO(supplier);
+        return Optional.ofNullable(supplierDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -146,6 +150,7 @@ public class SupplierResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<SupplierDTO> searchSuppliers(@PathVariable String query) {
+        log.debug("REST request to search Suppliers for query {}", query);
         return StreamSupport
             .stream(supplierSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(supplierMapper::supplierToSupplierDTO)

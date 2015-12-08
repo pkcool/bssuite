@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-	.controller('TxnActivityAuditDeleteController', function($scope, $modalInstance, entity, TxnActivityAudit) {
+	.controller('TxnActivityAuditDeleteController', function($scope, $uibModalInstance, entity, TxnActivityAudit) {
 
         $scope.txnActivityAudit = entity;
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
         $scope.confirmDelete = function (id) {
             TxnActivityAudit.delete({id: id},
                 function () {
-                    $modalInstance.close(true);
+                    $uibModalInstance.close(true);
                 });
         };
 

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('CustomerDiscountRuleDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'CustomerDiscountRule',
-        function($scope, $stateParams, $modalInstance, entity, CustomerDiscountRule) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'CustomerDiscountRule',
+        function($scope, $stateParams, $uibModalInstance, entity, CustomerDiscountRule) {
 
         $scope.customerDiscountRule = entity;
         $scope.load = function(id) {
@@ -13,7 +13,7 @@ angular.module('bssuiteApp').controller('CustomerDiscountRuleDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:customerDiscountRuleUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -31,6 +31,6 @@ angular.module('bssuiteApp').controller('CustomerDiscountRuleDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

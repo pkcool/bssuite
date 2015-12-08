@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-	.controller('SalesOrderDeleteController', function($scope, $modalInstance, entity, SalesOrder) {
+	.controller('SalesOrderDeleteController', function($scope, $uibModalInstance, entity, SalesOrder) {
 
         $scope.salesOrder = entity;
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
         $scope.confirmDelete = function (id) {
             SalesOrder.delete({id: id},
                 function () {
-                    $modalInstance.close(true);
+                    $uibModalInstance.close(true);
                 });
         };
 

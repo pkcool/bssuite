@@ -34,13 +34,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class PurchaseOrderLineItemResource {
 
     private final Logger log = LoggerFactory.getLogger(PurchaseOrderLineItemResource.class);
-
+        
     @Inject
     private PurchaseOrderLineItemRepository purchaseOrderLineItemRepository;
-
+    
     @Inject
     private PurchaseOrderLineItemSearchRepository purchaseOrderLineItemSearchRepository;
-
+    
     /**
      * POST  /purchaseOrderLineItems -> Create a new purchaseOrderLineItem.
      */
@@ -51,7 +51,7 @@ public class PurchaseOrderLineItemResource {
     public ResponseEntity<PurchaseOrderLineItem> createPurchaseOrderLineItem(@RequestBody PurchaseOrderLineItem purchaseOrderLineItem) throws URISyntaxException {
         log.debug("REST request to save PurchaseOrderLineItem : {}", purchaseOrderLineItem);
         if (purchaseOrderLineItem.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new purchaseOrderLineItem cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("purchaseOrderLineItem", "idexists", "A new purchaseOrderLineItem cannot already have an ID")).body(null);
         }
         PurchaseOrderLineItem result = purchaseOrderLineItemRepository.save(purchaseOrderLineItem);
         purchaseOrderLineItemSearchRepository.save(result);
@@ -73,7 +73,7 @@ public class PurchaseOrderLineItemResource {
             return createPurchaseOrderLineItem(purchaseOrderLineItem);
         }
         PurchaseOrderLineItem result = purchaseOrderLineItemRepository.save(purchaseOrderLineItem);
-        purchaseOrderLineItemSearchRepository.save(purchaseOrderLineItem);
+        purchaseOrderLineItemSearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("purchaseOrderLineItem", purchaseOrderLineItem.getId().toString()))
             .body(result);
@@ -88,7 +88,8 @@ public class PurchaseOrderLineItemResource {
     @Timed
     public ResponseEntity<List<PurchaseOrderLineItem>> getAllPurchaseOrderLineItems(Pageable pageable)
         throws URISyntaxException {
-        Page<PurchaseOrderLineItem> page = purchaseOrderLineItemRepository.findAll(pageable);
+        log.debug("REST request to get a page of PurchaseOrderLineItems");
+        Page<PurchaseOrderLineItem> page = purchaseOrderLineItemRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/purchaseOrderLineItems");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -102,9 +103,10 @@ public class PurchaseOrderLineItemResource {
     @Timed
     public ResponseEntity<PurchaseOrderLineItem> getPurchaseOrderLineItem(@PathVariable Long id) {
         log.debug("REST request to get PurchaseOrderLineItem : {}", id);
-        return Optional.ofNullable(purchaseOrderLineItemRepository.findOne(id))
-            .map(purchaseOrderLineItem -> new ResponseEntity<>(
-                purchaseOrderLineItem,
+        PurchaseOrderLineItem purchaseOrderLineItem = purchaseOrderLineItemRepository.findOne(id);
+        return Optional.ofNullable(purchaseOrderLineItem)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -132,6 +134,7 @@ public class PurchaseOrderLineItemResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<PurchaseOrderLineItem> searchPurchaseOrderLineItems(@PathVariable String query) {
+        log.debug("REST request to search PurchaseOrderLineItems for query {}", query);
         return StreamSupport
             .stream(purchaseOrderLineItemSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());

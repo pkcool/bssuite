@@ -23,26 +23,26 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Description</th>
-                    <th>Cost</th>
-                    <th>SoldFor</th>
-                    <th>QtyOrdered</th>
-                    <th>QtyAllocated</th>
-                    <th>TotalTaxCharge</th>
-                    <th>DiscountPercentage</th>
-                    <th>LineNo</th>
-                    <th>RequiredDate</th>
-                    <th>ListPrice</th>
-                    <th>ListPriceDiscount</th>
-                    <th>Cost2</th>
-                    <th>IsHidden</th>
-                    <th>Ref1</th>
-                    <th>Ref2</th>
-                    <th>salesOrder</th>
-                    <th>product</th>
-                    <th>taxRate</th>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span>Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cost"><span>Cost</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="soldFor"><span>SoldFor</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyOrdered"><span>QtyOrdered</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="qtyAllocated"><span>QtyAllocated</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="totalTaxCharge"><span>TotalTaxCharge</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="discountPercentage"><span>DiscountPercentage</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lineNo"><span>LineNo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="requiredDate"><span>RequiredDate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="listPrice"><span>ListPrice</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="listPriceDiscount"><span>ListPriceDiscount</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cost2"><span>Cost2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isHidden"><span>IsHidden</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="Ref1"><span>Ref1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="Ref2"><span>Ref2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="salesOrder.id"><span>salesOrder</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="product.id"><span>product</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="taxRate.id"><span>taxRate</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -93,18 +93,8 @@
                 </tr>
             </tbody>
         </table>
-        <nav>
-            <ul class="pagination">
-                <li ng-show="links['first'] >= 0" ng-click="loadPage(links['first'])"><a>&lt;&lt;</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(links['prev'] || 0)"><a>&lt;</a></li>
-                <li ng-show="page > 1" ng-click="loadPage(page - 2)"><a>{{page - 1}}</a></li>
-                <li ng-show="page > 0" ng-click="loadPage(page - 1)"><a>{{page}}</a></li>
-                <li class="active"><a>{{page + 1}}</a></li>
-                <li ng-show="page < links['last']" ng-click="loadPage(page + 1)"><a>{{page + 2}}</a></li>
-                <li ng-show="page < links['last'] - 1" ng-click="loadPage(page + 2)"><a>{{page + 3}}</a></li>
-                <li ng-show="links['next']" ng-click="loadPage(links['next'])"><a>&gt;</a></li>
-                <li ng-show="links['last'] > 0" ng-click="loadPage(links['last'])"><a>&gt;&gt;</a></li>
-            </ul>
-        </nav>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
     </div>
 </div>

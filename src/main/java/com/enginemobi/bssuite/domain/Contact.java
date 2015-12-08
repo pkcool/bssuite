@@ -52,6 +52,7 @@ public class Contact implements Serializable {
 
     @OneToOne    private Address address;
 
+    
     public Long getId() {
         return id;
     }

@@ -65,6 +65,7 @@ public class Carrier implements Serializable {
     @Column(name = "docket_ref_no")
     private String docketRefNo;
 
+    
     public Long getId() {
         return id;
     }

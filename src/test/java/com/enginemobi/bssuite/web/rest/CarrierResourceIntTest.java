@@ -98,8 +98,8 @@ public class CarrierResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         CarrierResource carrierResource = new CarrierResource();
-        ReflectionTestUtils.setField(carrierResource, "carrierRepository", carrierRepository);
         ReflectionTestUtils.setField(carrierResource, "carrierSearchRepository", carrierSearchRepository);
+        ReflectionTestUtils.setField(carrierResource, "carrierRepository", carrierRepository);
         this.restCarrierMockMvc = MockMvcBuilders.standaloneSetup(carrierResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -181,7 +181,7 @@ public class CarrierResourceIntTest {
         carrierRepository.saveAndFlush(carrier);
 
         // Get all the carriers
-        restCarrierMockMvc.perform(get("/api/carriers"))
+        restCarrierMockMvc.perform(get("/api/carriers?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(carrier.getId().intValue())))

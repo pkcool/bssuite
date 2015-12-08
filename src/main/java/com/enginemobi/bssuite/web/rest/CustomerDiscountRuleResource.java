@@ -38,16 +38,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class CustomerDiscountRuleResource {
 
     private final Logger log = LoggerFactory.getLogger(CustomerDiscountRuleResource.class);
-
+        
     @Inject
     private CustomerDiscountRuleRepository customerDiscountRuleRepository;
-
+    
     @Inject
     private CustomerDiscountRuleMapper customerDiscountRuleMapper;
-
+    
     @Inject
     private CustomerDiscountRuleSearchRepository customerDiscountRuleSearchRepository;
-
+    
     /**
      * POST  /customerDiscountRules -> Create a new customerDiscountRule.
      */
@@ -58,14 +58,15 @@ public class CustomerDiscountRuleResource {
     public ResponseEntity<CustomerDiscountRuleDTO> createCustomerDiscountRule(@RequestBody CustomerDiscountRuleDTO customerDiscountRuleDTO) throws URISyntaxException {
         log.debug("REST request to save CustomerDiscountRule : {}", customerDiscountRuleDTO);
         if (customerDiscountRuleDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new customerDiscountRule cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("customerDiscountRule", "idexists", "A new customerDiscountRule cannot already have an ID")).body(null);
         }
         CustomerDiscountRule customerDiscountRule = customerDiscountRuleMapper.customerDiscountRuleDTOToCustomerDiscountRule(customerDiscountRuleDTO);
-        CustomerDiscountRule result = customerDiscountRuleRepository.save(customerDiscountRule);
-        customerDiscountRuleSearchRepository.save(result);
+        customerDiscountRule = customerDiscountRuleRepository.save(customerDiscountRule);
+        CustomerDiscountRuleDTO result = customerDiscountRuleMapper.customerDiscountRuleToCustomerDiscountRuleDTO(customerDiscountRule);
+        customerDiscountRuleSearchRepository.save(customerDiscountRule);
         return ResponseEntity.created(new URI("/api/customerDiscountRules/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("customerDiscountRule", result.getId().toString()))
-            .body(customerDiscountRuleMapper.customerDiscountRuleToCustomerDiscountRuleDTO(result));
+            .body(result);
     }
 
     /**
@@ -81,11 +82,12 @@ public class CustomerDiscountRuleResource {
             return createCustomerDiscountRule(customerDiscountRuleDTO);
         }
         CustomerDiscountRule customerDiscountRule = customerDiscountRuleMapper.customerDiscountRuleDTOToCustomerDiscountRule(customerDiscountRuleDTO);
-        CustomerDiscountRule result = customerDiscountRuleRepository.save(customerDiscountRule);
+        customerDiscountRule = customerDiscountRuleRepository.save(customerDiscountRule);
+        CustomerDiscountRuleDTO result = customerDiscountRuleMapper.customerDiscountRuleToCustomerDiscountRuleDTO(customerDiscountRule);
         customerDiscountRuleSearchRepository.save(customerDiscountRule);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("customerDiscountRule", customerDiscountRuleDTO.getId().toString()))
-            .body(customerDiscountRuleMapper.customerDiscountRuleToCustomerDiscountRuleDTO(result));
+            .body(result);
     }
 
     /**
@@ -98,7 +100,8 @@ public class CustomerDiscountRuleResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<CustomerDiscountRuleDTO>> getAllCustomerDiscountRules(Pageable pageable)
         throws URISyntaxException {
-        Page<CustomerDiscountRule> page = customerDiscountRuleRepository.findAll(pageable);
+        log.debug("REST request to get a page of CustomerDiscountRules");
+        Page<CustomerDiscountRule> page = customerDiscountRuleRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/customerDiscountRules");
         return new ResponseEntity<>(page.getContent().stream()
             .map(customerDiscountRuleMapper::customerDiscountRuleToCustomerDiscountRuleDTO)
@@ -114,10 +117,11 @@ public class CustomerDiscountRuleResource {
     @Timed
     public ResponseEntity<CustomerDiscountRuleDTO> getCustomerDiscountRule(@PathVariable Long id) {
         log.debug("REST request to get CustomerDiscountRule : {}", id);
-        return Optional.ofNullable(customerDiscountRuleRepository.findOne(id))
-            .map(customerDiscountRuleMapper::customerDiscountRuleToCustomerDiscountRuleDTO)
-            .map(customerDiscountRuleDTO -> new ResponseEntity<>(
-                customerDiscountRuleDTO,
+        CustomerDiscountRule customerDiscountRule = customerDiscountRuleRepository.findOne(id);
+        CustomerDiscountRuleDTO customerDiscountRuleDTO = customerDiscountRuleMapper.customerDiscountRuleToCustomerDiscountRuleDTO(customerDiscountRule);
+        return Optional.ofNullable(customerDiscountRuleDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -145,6 +149,7 @@ public class CustomerDiscountRuleResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<CustomerDiscountRuleDTO> searchCustomerDiscountRules(@PathVariable String query) {
+        log.debug("REST request to search CustomerDiscountRules for query {}", query);
         return StreamSupport
             .stream(customerDiscountRuleSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(customerDiscountRuleMapper::customerDiscountRuleToCustomerDiscountRuleDTO)

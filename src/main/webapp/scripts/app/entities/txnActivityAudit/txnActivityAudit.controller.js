@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('TxnActivityAuditController', function ($scope, $state, $modal, TxnActivityAudit, TxnActivityAuditSearch, ParseLinks) {
-      
+    .controller('TxnActivityAuditController', function ($scope, $state, TxnActivityAudit, TxnActivityAuditSearch, ParseLinks) {
+
         $scope.txnActivityAudits = [];
-        $scope.page = 0;
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            TxnActivityAudit.query({page: $scope.page, size: 20}, function(result, headers) {
+            TxnActivityAudit.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
                 $scope.txnActivityAudits = result;
             });
         };

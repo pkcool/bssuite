@@ -83,7 +83,7 @@ public class CustomerResourceIntTest {
     private static final Boolean UPDATED_IS_HEAD_OFFICE_ACCOUNT = true;
 
 
-private static final CustomerAgeingMethod DEFAULT_AGEING_METHOD = CustomerAgeingMethod.MONTH;
+    private static final CustomerAgeingMethod DEFAULT_AGEING_METHOD = CustomerAgeingMethod.MONTH;
     private static final CustomerAgeingMethod UPDATED_AGEING_METHOD = CustomerAgeingMethod.TERMS;
 
     private static final Boolean DEFAULT_IS_WEBACCESS_ALLOWED = false;
@@ -110,11 +110,11 @@ private static final CustomerAgeingMethod DEFAULT_AGEING_METHOD = CustomerAgeing
     private static final LocalDate UPDATED_CREDIT_CARD_EXPIRY_DATE = LocalDate.now(ZoneId.systemDefault());
 
 
-private static final CreditCardType DEFAULT_CREDIT_CARD_TYPE = CreditCardType.VISA;
+    private static final CreditCardType DEFAULT_CREDIT_CARD_TYPE = CreditCardType.VISA;
     private static final CreditCardType UPDATED_CREDIT_CARD_TYPE = CreditCardType.AMX;
 
 
-private static final CustomerAccountType DEFAULT_ACCOUNT_TYPE = CustomerAccountType.STANDARD;
+    private static final CustomerAccountType DEFAULT_ACCOUNT_TYPE = CustomerAccountType.STANDARD;
     private static final CustomerAccountType UPDATED_ACCOUNT_TYPE = CustomerAccountType.INTERNAL;
 
     private static final Double DEFAULT_CREDIT_AMOUNT = 1D;
@@ -127,11 +127,11 @@ private static final CustomerAccountType DEFAULT_ACCOUNT_TYPE = CustomerAccountT
     private static final Integer UPDATED_SETTLEMENT_TERMS = 2;
 
 
-private static final CustomerInvoiceDeliveryMethod DEFAULT_INVOICE_DELIVERY_METHOD = CustomerInvoiceDeliveryMethod.EMAIL;
+    private static final CustomerInvoiceDeliveryMethod DEFAULT_INVOICE_DELIVERY_METHOD = CustomerInvoiceDeliveryMethod.EMAIL;
     private static final CustomerInvoiceDeliveryMethod UPDATED_INVOICE_DELIVERY_METHOD = CustomerInvoiceDeliveryMethod.FAX;
 
 
-private static final CustomerStatementDeliveryMethod DEFAULT_STATEMENT_DELIVERY_METHOD = CustomerStatementDeliveryMethod.EMAIL;
+    private static final CustomerStatementDeliveryMethod DEFAULT_STATEMENT_DELIVERY_METHOD = CustomerStatementDeliveryMethod.EMAIL;
     private static final CustomerStatementDeliveryMethod UPDATED_STATEMENT_DELIVERY_METHOD = CustomerStatementDeliveryMethod.FAX;
     private static final String DEFAULT_INVOICE_EMAIL_ADDRESS = "AAAAA";
     private static final String UPDATED_INVOICE_EMAIL_ADDRESS = "BBBBB";
@@ -168,9 +168,9 @@ private static final CustomerStatementDeliveryMethod DEFAULT_STATEMENT_DELIVERY_
     public void setup() {
         MockitoAnnotations.initMocks(this);
         CustomerResource customerResource = new CustomerResource();
+        ReflectionTestUtils.setField(customerResource, "customerSearchRepository", customerSearchRepository);
         ReflectionTestUtils.setField(customerResource, "customerRepository", customerRepository);
         ReflectionTestUtils.setField(customerResource, "customerMapper", customerMapper);
-        ReflectionTestUtils.setField(customerResource, "customerSearchRepository", customerSearchRepository);
         this.restCustomerMockMvc = MockMvcBuilders.standaloneSetup(customerResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -296,7 +296,7 @@ private static final CustomerStatementDeliveryMethod DEFAULT_STATEMENT_DELIVERY_
         customerRepository.saveAndFlush(customer);
 
         // Get all the customers
-        restCustomerMockMvc.perform(get("/api/customers"))
+        restCustomerMockMvc.perform(get("/api/customers?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(customer.getId().intValue())))

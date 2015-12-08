@@ -35,13 +35,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class SupplierCategoryResource {
 
     private final Logger log = LoggerFactory.getLogger(SupplierCategoryResource.class);
-
+        
     @Inject
     private SupplierCategoryRepository supplierCategoryRepository;
-
+    
     @Inject
     private SupplierCategorySearchRepository supplierCategorySearchRepository;
-
+    
     /**
      * POST  /supplierCategorys -> Create a new supplierCategory.
      */
@@ -52,7 +52,7 @@ public class SupplierCategoryResource {
     public ResponseEntity<SupplierCategory> createSupplierCategory(@Valid @RequestBody SupplierCategory supplierCategory) throws URISyntaxException {
         log.debug("REST request to save SupplierCategory : {}", supplierCategory);
         if (supplierCategory.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new supplierCategory cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("supplierCategory", "idexists", "A new supplierCategory cannot already have an ID")).body(null);
         }
         SupplierCategory result = supplierCategoryRepository.save(supplierCategory);
         supplierCategorySearchRepository.save(result);
@@ -74,7 +74,7 @@ public class SupplierCategoryResource {
             return createSupplierCategory(supplierCategory);
         }
         SupplierCategory result = supplierCategoryRepository.save(supplierCategory);
-        supplierCategorySearchRepository.save(supplierCategory);
+        supplierCategorySearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("supplierCategory", supplierCategory.getId().toString()))
             .body(result);
@@ -89,7 +89,8 @@ public class SupplierCategoryResource {
     @Timed
     public ResponseEntity<List<SupplierCategory>> getAllSupplierCategorys(Pageable pageable)
         throws URISyntaxException {
-        Page<SupplierCategory> page = supplierCategoryRepository.findAll(pageable);
+        log.debug("REST request to get a page of SupplierCategorys");
+        Page<SupplierCategory> page = supplierCategoryRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/supplierCategorys");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -103,9 +104,10 @@ public class SupplierCategoryResource {
     @Timed
     public ResponseEntity<SupplierCategory> getSupplierCategory(@PathVariable Long id) {
         log.debug("REST request to get SupplierCategory : {}", id);
-        return Optional.ofNullable(supplierCategoryRepository.findOne(id))
-            .map(supplierCategory -> new ResponseEntity<>(
-                supplierCategory,
+        SupplierCategory supplierCategory = supplierCategoryRepository.findOne(id);
+        return Optional.ofNullable(supplierCategory)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -133,6 +135,7 @@ public class SupplierCategoryResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<SupplierCategory> searchSupplierCategorys(@PathVariable String query) {
+        log.debug("REST request to search SupplierCategorys for query {}", query);
         return StreamSupport
             .stream(supplierCategorySearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());

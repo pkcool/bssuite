@@ -85,6 +85,7 @@ public class Supplier implements Serializable {
 
     @OneToOne    private Contact contact;
 
+    
     public Long getId() {
         return id;
     }

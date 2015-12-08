@@ -75,8 +75,8 @@ public class AddressResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         AddressResource addressResource = new AddressResource();
-        ReflectionTestUtils.setField(addressResource, "addressRepository", addressRepository);
         ReflectionTestUtils.setField(addressResource, "addressSearchRepository", addressSearchRepository);
+        ReflectionTestUtils.setField(addressResource, "addressRepository", addressRepository);
         this.restAddressMockMvc = MockMvcBuilders.standaloneSetup(addressResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -124,7 +124,7 @@ public class AddressResourceIntTest {
         addressRepository.saveAndFlush(address);
 
         // Get all the addresss
-        restAddressMockMvc.perform(get("/api/addresss"))
+        restAddressMockMvc.perform(get("/api/addresss?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(address.getId().intValue())))

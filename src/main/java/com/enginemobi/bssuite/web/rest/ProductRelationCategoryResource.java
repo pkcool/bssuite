@@ -34,13 +34,13 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class ProductRelationCategoryResource {
 
     private final Logger log = LoggerFactory.getLogger(ProductRelationCategoryResource.class);
-
+        
     @Inject
     private ProductRelationCategoryRepository productRelationCategoryRepository;
-
+    
     @Inject
     private ProductRelationCategorySearchRepository productRelationCategorySearchRepository;
-
+    
     /**
      * POST  /productRelationCategorys -> Create a new productRelationCategory.
      */
@@ -51,7 +51,7 @@ public class ProductRelationCategoryResource {
     public ResponseEntity<ProductRelationCategory> createProductRelationCategory(@RequestBody ProductRelationCategory productRelationCategory) throws URISyntaxException {
         log.debug("REST request to save ProductRelationCategory : {}", productRelationCategory);
         if (productRelationCategory.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new productRelationCategory cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("productRelationCategory", "idexists", "A new productRelationCategory cannot already have an ID")).body(null);
         }
         ProductRelationCategory result = productRelationCategoryRepository.save(productRelationCategory);
         productRelationCategorySearchRepository.save(result);
@@ -73,7 +73,7 @@ public class ProductRelationCategoryResource {
             return createProductRelationCategory(productRelationCategory);
         }
         ProductRelationCategory result = productRelationCategoryRepository.save(productRelationCategory);
-        productRelationCategorySearchRepository.save(productRelationCategory);
+        productRelationCategorySearchRepository.save(result);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("productRelationCategory", productRelationCategory.getId().toString()))
             .body(result);
@@ -88,7 +88,8 @@ public class ProductRelationCategoryResource {
     @Timed
     public ResponseEntity<List<ProductRelationCategory>> getAllProductRelationCategorys(Pageable pageable)
         throws URISyntaxException {
-        Page<ProductRelationCategory> page = productRelationCategoryRepository.findAll(pageable);
+        log.debug("REST request to get a page of ProductRelationCategorys");
+        Page<ProductRelationCategory> page = productRelationCategoryRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/productRelationCategorys");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -102,9 +103,10 @@ public class ProductRelationCategoryResource {
     @Timed
     public ResponseEntity<ProductRelationCategory> getProductRelationCategory(@PathVariable Long id) {
         log.debug("REST request to get ProductRelationCategory : {}", id);
-        return Optional.ofNullable(productRelationCategoryRepository.findOne(id))
-            .map(productRelationCategory -> new ResponseEntity<>(
-                productRelationCategory,
+        ProductRelationCategory productRelationCategory = productRelationCategoryRepository.findOne(id);
+        return Optional.ofNullable(productRelationCategory)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -132,6 +134,7 @@ public class ProductRelationCategoryResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<ProductRelationCategory> searchProductRelationCategorys(@PathVariable String query) {
+        log.debug("REST request to search ProductRelationCategorys for query {}", query);
         return StreamSupport
             .stream(productRelationCategorySearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());

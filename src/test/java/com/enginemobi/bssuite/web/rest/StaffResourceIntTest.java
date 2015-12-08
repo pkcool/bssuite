@@ -102,9 +102,9 @@ public class StaffResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         StaffResource staffResource = new StaffResource();
+        ReflectionTestUtils.setField(staffResource, "staffSearchRepository", staffSearchRepository);
         ReflectionTestUtils.setField(staffResource, "staffRepository", staffRepository);
         ReflectionTestUtils.setField(staffResource, "staffMapper", staffMapper);
-        ReflectionTestUtils.setField(staffResource, "staffSearchRepository", staffSearchRepository);
         this.restStaffMockMvc = MockMvcBuilders.standaloneSetup(staffResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -188,7 +188,7 @@ public class StaffResourceIntTest {
         staffRepository.saveAndFlush(staff);
 
         // Get all the staffs
-        restStaffMockMvc.perform(get("/api/staffs"))
+        restStaffMockMvc.perform(get("/api/staffs?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(staff.getId().intValue())))

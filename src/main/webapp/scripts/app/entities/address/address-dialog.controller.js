@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('AddressDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Address',
-        function($scope, $stateParams, $modalInstance, entity, Address) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Address',
+        function($scope, $stateParams, $uibModalInstance, entity, Address) {
 
         $scope.address = entity;
         $scope.load = function(id) {
@@ -13,7 +13,7 @@ angular.module('bssuiteApp').controller('AddressDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:addressUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -31,6 +31,6 @@ angular.module('bssuiteApp').controller('AddressDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

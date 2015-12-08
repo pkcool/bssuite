@@ -67,8 +67,8 @@ public class SupplierCategoryResourceIntTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         SupplierCategoryResource supplierCategoryResource = new SupplierCategoryResource();
-        ReflectionTestUtils.setField(supplierCategoryResource, "supplierCategoryRepository", supplierCategoryRepository);
         ReflectionTestUtils.setField(supplierCategoryResource, "supplierCategorySearchRepository", supplierCategorySearchRepository);
+        ReflectionTestUtils.setField(supplierCategoryResource, "supplierCategoryRepository", supplierCategoryRepository);
         this.restSupplierCategoryMockMvc = MockMvcBuilders.standaloneSetup(supplierCategoryResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setMessageConverters(jacksonMessageConverter).build();
@@ -126,7 +126,7 @@ public class SupplierCategoryResourceIntTest {
         supplierCategoryRepository.saveAndFlush(supplierCategory);
 
         // Get all the supplierCategorys
-        restSupplierCategoryMockMvc.perform(get("/api/supplierCategorys"))
+        restSupplierCategoryMockMvc.perform(get("/api/supplierCategorys?sort=id,desc"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(supplierCategory.getId().intValue())))

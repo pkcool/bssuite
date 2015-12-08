@@ -38,16 +38,16 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class GoodsReceivedAuditResource {
 
     private final Logger log = LoggerFactory.getLogger(GoodsReceivedAuditResource.class);
-
+        
     @Inject
     private GoodsReceivedAuditRepository goodsReceivedAuditRepository;
-
+    
     @Inject
     private GoodsReceivedAuditMapper goodsReceivedAuditMapper;
-
+    
     @Inject
     private GoodsReceivedAuditSearchRepository goodsReceivedAuditSearchRepository;
-
+    
     /**
      * POST  /goodsReceivedAudits -> Create a new goodsReceivedAudit.
      */
@@ -58,14 +58,15 @@ public class GoodsReceivedAuditResource {
     public ResponseEntity<GoodsReceivedAuditDTO> createGoodsReceivedAudit(@RequestBody GoodsReceivedAuditDTO goodsReceivedAuditDTO) throws URISyntaxException {
         log.debug("REST request to save GoodsReceivedAudit : {}", goodsReceivedAuditDTO);
         if (goodsReceivedAuditDTO.getId() != null) {
-            return ResponseEntity.badRequest().header("Failure", "A new goodsReceivedAudit cannot already have an ID").body(null);
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("goodsReceivedAudit", "idexists", "A new goodsReceivedAudit cannot already have an ID")).body(null);
         }
         GoodsReceivedAudit goodsReceivedAudit = goodsReceivedAuditMapper.goodsReceivedAuditDTOToGoodsReceivedAudit(goodsReceivedAuditDTO);
-        GoodsReceivedAudit result = goodsReceivedAuditRepository.save(goodsReceivedAudit);
-        goodsReceivedAuditSearchRepository.save(result);
+        goodsReceivedAudit = goodsReceivedAuditRepository.save(goodsReceivedAudit);
+        GoodsReceivedAuditDTO result = goodsReceivedAuditMapper.goodsReceivedAuditToGoodsReceivedAuditDTO(goodsReceivedAudit);
+        goodsReceivedAuditSearchRepository.save(goodsReceivedAudit);
         return ResponseEntity.created(new URI("/api/goodsReceivedAudits/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("goodsReceivedAudit", result.getId().toString()))
-            .body(goodsReceivedAuditMapper.goodsReceivedAuditToGoodsReceivedAuditDTO(result));
+            .body(result);
     }
 
     /**
@@ -81,11 +82,12 @@ public class GoodsReceivedAuditResource {
             return createGoodsReceivedAudit(goodsReceivedAuditDTO);
         }
         GoodsReceivedAudit goodsReceivedAudit = goodsReceivedAuditMapper.goodsReceivedAuditDTOToGoodsReceivedAudit(goodsReceivedAuditDTO);
-        GoodsReceivedAudit result = goodsReceivedAuditRepository.save(goodsReceivedAudit);
+        goodsReceivedAudit = goodsReceivedAuditRepository.save(goodsReceivedAudit);
+        GoodsReceivedAuditDTO result = goodsReceivedAuditMapper.goodsReceivedAuditToGoodsReceivedAuditDTO(goodsReceivedAudit);
         goodsReceivedAuditSearchRepository.save(goodsReceivedAudit);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("goodsReceivedAudit", goodsReceivedAuditDTO.getId().toString()))
-            .body(goodsReceivedAuditMapper.goodsReceivedAuditToGoodsReceivedAuditDTO(result));
+            .body(result);
     }
 
     /**
@@ -98,7 +100,8 @@ public class GoodsReceivedAuditResource {
     @Transactional(readOnly = true)
     public ResponseEntity<List<GoodsReceivedAuditDTO>> getAllGoodsReceivedAudits(Pageable pageable)
         throws URISyntaxException {
-        Page<GoodsReceivedAudit> page = goodsReceivedAuditRepository.findAll(pageable);
+        log.debug("REST request to get a page of GoodsReceivedAudits");
+        Page<GoodsReceivedAudit> page = goodsReceivedAuditRepository.findAll(pageable); 
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/goodsReceivedAudits");
         return new ResponseEntity<>(page.getContent().stream()
             .map(goodsReceivedAuditMapper::goodsReceivedAuditToGoodsReceivedAuditDTO)
@@ -114,10 +117,11 @@ public class GoodsReceivedAuditResource {
     @Timed
     public ResponseEntity<GoodsReceivedAuditDTO> getGoodsReceivedAudit(@PathVariable Long id) {
         log.debug("REST request to get GoodsReceivedAudit : {}", id);
-        return Optional.ofNullable(goodsReceivedAuditRepository.findOne(id))
-            .map(goodsReceivedAuditMapper::goodsReceivedAuditToGoodsReceivedAuditDTO)
-            .map(goodsReceivedAuditDTO -> new ResponseEntity<>(
-                goodsReceivedAuditDTO,
+        GoodsReceivedAudit goodsReceivedAudit = goodsReceivedAuditRepository.findOne(id);
+        GoodsReceivedAuditDTO goodsReceivedAuditDTO = goodsReceivedAuditMapper.goodsReceivedAuditToGoodsReceivedAuditDTO(goodsReceivedAudit);
+        return Optional.ofNullable(goodsReceivedAuditDTO)
+            .map(result -> new ResponseEntity<>(
+                result,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -145,6 +149,7 @@ public class GoodsReceivedAuditResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public List<GoodsReceivedAuditDTO> searchGoodsReceivedAudits(@PathVariable String query) {
+        log.debug("REST request to search GoodsReceivedAudits for query {}", query);
         return StreamSupport
             .stream(goodsReceivedAuditSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .map(goodsReceivedAuditMapper::goodsReceivedAuditToGoodsReceivedAuditDTO)

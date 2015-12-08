@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bssuiteApp').controller('BackOrderLineItemDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'BackOrderLineItem', 'SalesOrderLineItem',
-        function($scope, $stateParams, $modalInstance, entity, BackOrderLineItem, SalesOrderLineItem) {
+    ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'BackOrderLineItem', 'SalesOrderLineItem',
+        function($scope, $stateParams, $uibModalInstance, entity, BackOrderLineItem, SalesOrderLineItem) {
 
         $scope.backOrderLineItem = entity;
         $scope.salesorderlineitems = SalesOrderLineItem.query();
@@ -14,7 +14,7 @@ angular.module('bssuiteApp').controller('BackOrderLineItemDialogController',
 
         var onSaveSuccess = function (result) {
             $scope.$emit('bssuiteApp:backOrderLineItemUpdate', result);
-            $modalInstance.close(result);
+            $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
 
@@ -32,6 +32,6 @@ angular.module('bssuiteApp').controller('BackOrderLineItemDialogController',
         };
 
         $scope.clear = function() {
-            $modalInstance.dismiss('cancel');
+            $uibModalInstance.dismiss('cancel');
         };
 }]);

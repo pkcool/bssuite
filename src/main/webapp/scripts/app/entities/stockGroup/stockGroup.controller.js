@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('bssuiteApp')
-    .controller('StockGroupController', function ($scope, $state, $modal, StockGroup, StockGroupSearch, ParseLinks) {
-      
+    .controller('StockGroupController', function ($scope, $state, StockGroup, StockGroupSearch, ParseLinks) {
+
         $scope.stockGroups = [];
-        $scope.page = 0;
+        $scope.predicate = 'id';
+        $scope.reverse = true;
+        $scope.page = 1;
         $scope.loadAll = function() {
-            StockGroup.query({page: $scope.page, size: 20}, function(result, headers) {
+            StockGroup.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
                 $scope.links = ParseLinks.parse(headers('link'));
+                $scope.totalItems = headers('X-Total-Count');
                 $scope.stockGroups = result;
             });
         };
